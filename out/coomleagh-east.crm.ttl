@@ -1,0 +1,61 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
+@prefix data: <http://data.ogham.link/crm/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+data:stone_55 a ogham:OghamStone,
+        crm:E22_Human-Made_Object ;
+    rdfs:label "An Com Liath Thoir | Coomleagh East (CIIC 55)" ;
+    crm:P128_carries data:inscription_55 ;
+    crm:P1_is_identified_by data:id_55_CIIC,
+        data:id_55_CISP,
+        data:id_55_SMR,
+        data:id_55_TM ;
+    crm:P2_has_type data:type_Pillar ;
+    crm:P53_has_former_or_current_location data:place_55 ;
+    crm:P56_bears_feature data:surface_55 .
+
+data:id_55_CIIC a crm:E42_Identifier ;
+    rdfs:label "55" ;
+    crm:P2_has_type "CIIC" .
+
+data:id_55_CISP a crm:E42_Identifier ;
+    rdfs:label "COOME/1" ;
+    crm:P2_has_type "CISP" .
+
+data:id_55_SMR a crm:E42_Identifier ;
+    rdfs:label "CO106-064----" ;
+    crm:P2_has_type "SMR" .
+
+data:id_55_TM a crm:E42_Identifier ;
+    rdfs:label "172523" ;
+    crm:P2_has_type "TM" .
+
+data:inscription_55 a ogham:Inscription,
+        crmtex:TX1_Written_Text ;
+    rdfs:label ".. ? ..TETA" ;
+    crm:P67_refers_to data:person_55_OGALA,
+        data:person_55_SAINA,
+        data:person_55_TEMOCA .
+
+data:person_55_OGALA a crm:E21_Person ;
+    rdfs:label "OGALA" .
+
+data:person_55_SAINA a crm:E21_Person ;
+    rdfs:label "SAINA" .
+
+data:person_55_TEMOCA a crm:E21_Person ;
+    rdfs:label "TEMOCA" .
+
+data:place_55 a crm:E53_Place ;
+    rdfs:label "Coomleagh East (An Com Liath Thoir)" ;
+    geo:asWKT "POINT(-9.30337 51.72827)"^^geo:wktLiteral .
+
+data:surface_55 a crm:E25_Human-Made_Feature ;
+    rdfs:label "inscribed surface" .
+
+data:type_Pillar a crm:E55_Type ;
+    rdfs:label "Pillar" .
+

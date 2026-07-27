@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng"
+schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng"
+schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="en">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Gigha 1</title>
+             <editor role="editor" xml:id="NW">
+                 <persName>Nora White</persName>                  
+                 <orgName>Maynooth University, Department of Early Irish</orgName>
+             </editor>
+                 <editor role="editor" xml:id="XS">
+                    <persName>Xenia Spanachi</persName>
+                    <orgName>University of Glasgow</orgName>
+                </editor>
+                <editor role="editor" xml:id="POC"><persName>Patricia O Connor</persName>
+                <orgName>Maynooth University, Department of Early Irish</orgName></editor> 
+                <funder>Irish Research Council (grant no. IRC/W001985/1) and Arts and Humanities Research Council (grant no. AH/W001985/1)</funder>
+                <funder>
+                <ref target="https://research.ie/funding/uk-ireland-collaboration-in-the-digital-humanities-research-grants%e2%80%af/?f=principal-investigator-led">UK-Ireland Collaboration in the Digital Humanities Research Grant</ref>
+                </funder>
+                <respStmt>
+                <name ref="https://orcid.org/0000-0001-7957-651X">Nora White</name>
+                <resp>data collection, editing and encoding</resp>
+                </respStmt>
+                 <respStmt>
+                    <name xml:id="JB">Jef Bucas</name>
+                      <orgName>Dublin Institute for Advanced Studies</orgName>
+                    <resp>batch conversion to EpiDoc</resp>
+                </respStmt>
+                 <respStmt>
+                    <name>Xenia Spanachi</name>
+                    <resp>encoding and editing</resp>
+                </respStmt>
+                <respStmt>
+                    <name ref="https://orcid.org/0000-0003-1011-7539" xml:id="MK">Megan Kasten</name>
+                     <orgName>University of Glasgow (OG(H)AM project)</orgName>
+                    <resp>Capture: Photogrammetry  <date when="2022-09-15"/>; Software: Agisoft Metashape.</resp>
+                </respStmt>
+                  <respStmt>
+                    <name>Susan, IGHT workshop participant</name>
+                     <orgName>Isle of Gigha Heritage Trust</orgName>
+                    <resp>Capture: Photogrammetry  <date when="2022-09-15"/>; Software: Agisoft Metashape.</resp>
+                </respStmt>
+                <respStmt>
+                <name ref="https://orcid.org/0000-0001-5880-4704">Patricia O Connor</name>
+                <resp>editing and encoding</resp>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <authority>OG(H)AM</authority>
+                <idno type="filename">S-ARL-001</idno>
+                 <idno type="CIIC">506</idno>
+                <idno type="CISP">GIGHA/1</idno>
+                 <availability>
+                    <licence target="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</licence>   
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                         <country>Scotland</country>
+                        <repository/>
+                        <idno type="invNo"/>
+                    </msIdentifier>
+                    <msContents>
+                          <msItem>                            
+                            <textLang mainLang="sga-Ogam" cert="low">Possibly Old Irish written in ogham script</textLang>                                
+                           </msItem>
+                    </msContents>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support><p><ref target="https://www.trove.scot/place/38529">Trove</ref> <idno type="Trove">38529</idno></p>
+                                    <material type="stone">Granite</material> 
+                                    <objectType key="monument">Pillar</objectType>                                     
+                                    <dimensions unit="m">                                         
+                                            <height>1.7</height>
+                                            <width>0.25 at base, 0.20 at the top</width>
+                                            <depth>0.31 at base, 0.23 at the top</depth>
+                                     </dimensions>         
+                                </support>
+                                <condition>A tall, square-shaped pillar, it <q>is unclear whether the monument is a re-used pre-historic standing stone or a pillar specially erected for the bearing of the inscription</q> (Forsyth 1996, 289). <q>The stone has fallen and been re-erected at least twice</q>, the first time it was intentionally toppled by some young men while the second fall was as a result of quarrying near the base on one side of the stone (Forsyth 1996, 288-289). There is general weathering with <q>a series of four large, shallow, unevenly spaced chunks missing from the ogham-bearing arris</q> (Forsyth 1996, 290). The ogham inscription <q>which is worn and in bad condition, is defaced by series of spalls on the arris</q> (Forsyth 1996, 290). The portion of the inscription <q>nearest the ground is the most badly worn and the most disputed</q> (Forsyth 1996, 291).
+                                </condition>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout style="vertical" rend="arris_up">The ogham inscription is on the north west edge of the four-sided pillar stone and reads upwards from the bottom.
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>There is a wide range of published interpretations of the ogham that along with its general poor condition make a definitive reading difficult. On the same grounds, it is difficult to make definitive statements about its carving technique. <q>As they now survive, the strokes are finger-scale and with a U-section. Where it can be measured with any certainty the length of h-<distinct xml:lang="ga">aicme</distinct> strokes is about <height unit="mm">60</height>mm</q> (Forsyth 1996, 291). The gaps between the letters most likely contained vowel notches now lost. Forsyth (ibid. 295) describes the Gigha inscription as <q>ogham with no drawn stem-line and vowels which are little more than nicks - the "text-book" form of the script</q>.
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace>
+                                <placeName type="parish">Gigha and Cara</placeName>, <placeName type="county">Argyll</placeName>, <placeName type="country">Scotland</placeName>
+                                <geo>55.669722, -5.750278</geo>
+                                <note>National Grid Reference: NR 6426 4817</note>
+                            </origPlace>
+                            <origDate/>
+                        </origin>
+                        <provenance type="found" when="1873">Formerly the middle stone of a straight alignment of three stones known locally as the 'Clocks of Gigha'. The ogham stone is located on a hillock, <placeName>Cnoc na Carraigh ('hill of the rock')</placeName>, about 90 m NW of the ruined chapel of Kilchattan on the island of <placeName>Gigha</placeName>. Although the stone has been noted since <date>1695</date>, the inscription was not noticed until <date>1873</date>. 
+                        </provenance>
+                        <provenance type="observed" when="2022-09-14">Visited and recorded in situ in 2022.          
+                        </provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+             <encodingDesc xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include href="../charDecl.xml" parse="xml" xpointer="symbols"/></encodingDesc>
+        <profileDesc>
+            <calendarDesc>
+                <calendar xml:id="julian">
+                    <p>Julian Calendar</p>
+                </calendar>
+                </calendarDesc>
+            <langUsage>
+                <language ident="en">English</language>
+                <language ident="la">Latin</language>
+                <language ident="pgl">Primitive Irish</language>
+                <language ident="sga">Old Irish</language>
+                <language ident="mga">Middle Irish</language>
+                <language ident="ga">Irish</language>
+                <language ident="xpi">Pictish</language>  
+
+                </langUsage>
+            <textClass>
+                <keywords scheme="https://ontology.inscriptiones.org/type_of_inscription/#vocabularies">
+                    <term ref="https://ontology.inscriptiones.org/type_of_inscription/#Commemorative">Commemorative</term> 
+                </keywords>
+            </textClass>
+           <!-- <creation>Transcription from previous editor</creation> if not read by OG(H)AM team-->
+        </profileDesc>
+        <revisionDesc status="draft">
+            <listChange>
+                <change when="2022-09-28" who="#JB">Jef Bucas autogenerated EpiDoc output from spreadsheet</change>   
+                <change when="2024-01-22" who="NW">Nora White updated template, including removing # from bibl tag</change>
+                <change when="2024-06-19" who="#NW">Updated template for Scottish oghams autogeneration from spreadsheet</change>
+                <change when="2024-07-06" who="#XS">Xenia Spanachi added and encoded further data, including information on publication content, layout, execution, provenance and condition</change>
+                <change when="2024-07-10" who="#XS">Xenia Spanachi updated apparatus section to include past alternative readings, fixed the citations to be outside the quote tag and updated the transcription and transliteration according to the updated spreadsheet</change>
+                <change when="2024-07-25" who="#POC">Added encodingDesc for character encoding.</change>
+                <change when="2024-09-04" who="#POC">Added paragraph to support and National Grid Reference, closed unused elements, numbered and added notes to apparatus and commented out translation</change>
+                <change when="2025-02-19" who="#POC">Proofreading updates, moved information from layout to condition and provenance</change>  
+                <change when="2025-02-20" who="#POC">Added more information from Forsyth 1996.</change>
+                <change when="2025-03-03" who="#POC">Proofreading changes, added missing bibl tags to bibliography section, added images</change>
+                <change when="2025-03-12" who="#POC">Added attribute values to material and objectType</change>
+                <change when="2025-03-26" who="#POC">Added country to origPlace</change>
+                <change when="2025-05-09" who="#POC">Proofreading updates, remove carriage return spaces from edition, added persName encoding to commentary instead of foreign for personal names</change> 
+                <change when="2025-05-19" who="#POC">Remove Scottish Gaelic, update lang code in textLang and edition</change>
+                <change when="2025-05-20" who="#POC">Replace Canmore with Trove link</change>           
+                <change when="2025-05-26" who="#POC">Update image link</change>
+                <change when="2025-06-27" who="#POC">Add ab (string without diacritics) for display list to edition, correct bibl reference encoding</change>
+                <change when="2025-08-19" who="#MK">Added 3D resp.</change>
+                <change when="2026-02-13" who="#POC">Replace scaled images with originals</change>   
+                <change when="2026-03-17" who="#POC">Replace Canmore references with Trove</change>
+            </listChange>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="SCO/S-ARL-001-Gigha-a.jpg"><desc>Photograph by Megan Kasten</desc></graphic>
+        <graphic url="SCO/S-ARL-001-Gigha-b.jpg"><desc>Photograph by Megan Kasten</desc></graphic>
+        <graphic url="SCO/S-ARL-001-Gigha-c.jpg"><desc>Photograph by Megan Kasten</desc></graphic>
+         <!--<media url="example.jpg" mimeType="text/html"><desc><!-\-3d model by Megan/Gary/? on SketchFab/3dhop-\-></desc></media>-->
+    </facsimile>    
+   <text>
+    <body>
+        <div type="edition" subtype="ogham" xml:space="preserve" xml:lang="sga-Ogam" cert="low" resp="#XS">             
+                <ab>
+                    <lb n="1" style="text-direction:up"/><gap reason="lost" quantity="6" unit="character"/><unclear cert="low">ᚋᚐ</unclear>ᚊ<gap reason="lost" extent="unknown" unit="character"/>ᚉ<unclear cert="low">ᚑᚌᚔᚅ</unclear><gap reason="lost" extent="unknown" unit="character"/>
+                    </ab> 
+            </div>
+            <div type="edition" subtype="transliteration" xml:lang="sga-Ogam" cert="low" xml:space="preserve" resp="#KF">
+                <ab>
+                    <lb n="1" style="text-direction:up"/><gap reason="lost" quantity="6" unit="character"/><unclear cert="low">MA</unclear>Q<gap reason="lost" extent="unknown" unit="character"/>C<unclear cert="low">OGIN</unclear><gap reason="lost" extent="unknown" unit="character"/>
+                    </ab> 
+                <ab type="list">[---]MAQ[---]COGIN[---]</ab>
+            </div>
+            <div type="apparatus">
+               <listApp>
+                   <app n="1">
+                       <note>As Forsyth (1996, 292) notes <q>The first six letters are extremely doubtful</q>. For the portion of the inscription closest to the ground, the indentations of strokes <q>can be clearly felt on the arris, but the lines are too indistinct to interpret</q> (Forsyth 1996, 292). From the seventh character onwards the carving is clearer and there is greater agreement amongst previous editors (Forsyth 1996, 293).</note>
+                   </app>
+                   <app n="2">
+                       <note>Rhys (1899) read:</note>
+                       <rdg resp="RHY1899">
+                           MAQICAGILEB
+                       </rdg>
+                   </app>
+                       <app n="3">
+                           <note>Rhys (1901) read:</note>
+                           <rdg resp="RHY1901">
+                           OGMA MAQI TIGERNI
+                       </rdg>
+                       </app>
+                       <app n="4">
+                           <note>Macalister (1902) read:</note>
+                           <rdg resp="MAC1902">
+                           VICULA MAQ COMGINI
+                       </rdg>
+                       </app>
+                       <app n="5">
+                           <note>Macalister (1945, 484) read:</note>
+                           <rdg resp="MAC1945">
+                           VICULA MAQ CUGINI
+                       </rdg>
+                       </app>
+                       <!--<app n="6">
+                           <note>Diack (1926) read:</note>
+                           <rdg resp="DIA1926">
+                           <lb n="1" style="text-direction:up"/>
+                           VIDDOSAMO QOICOGINI
+                       </rdg>
+                       </app> Reference not in Zotero -->
+                       <!--<app n="7">
+                           <note>Jackson (1971, 96-97) read:</note>
+                           <rdg resp="JAC1971">
+                           <lb n="1" style="text-direction:up"/>
+                           H[-\-]MAQt/cAGII/bb
+                       </rdg>
+                   </app> Reference not in Zotero -->
+               </listApp>
+            </div>
+            <div type="translation">
+                <p>According to Forsyth (1996, 297), Jackson offered <q>a very hypothetical</q> interpretation: the son of <persName>Coicéile</persName> (see <ref target="https://www.trove.scot/activities/695592">Trove</ref>).</p>
+            </div>
+            <div type="commentary">
+                        <p><q>If the letters before the M are not admitted then the formula "MAQ-X" is likely, either as "the son of X", or more likely, as a compound name with first element MAQ</q> (Forsyth 1996, 296). However, Forsyth maintains that there is sufficient evidence for the existence of some ogham carvings before the letter M which consequently implies that Gigha 1 conforms to the Irish formula 'X son of Y'.</p>
+                         <p>Forsyth (1996, 297) also rejects Macalister's (1945, 484) suggestion for VICULA as <distinct xml:lang="sga">Fiacal</distinct> meaning 'tooth' on the grounds that <q>OIr ia is from earlier e, both long and short i remained as i</q>. Meanwhile the second name COMGINI is interpreted by Macalister (1945, 484) as OIr <persName xml:lang="sga">Coemgen</persName>, which Forsyth (1996, 291) comments is a <q>widespread and well-known male name (<distinct xml:lang="sga"><ref target="https://dil.ie/7590">Coem</ref></distinct> + -<distinct xml:lang="sga">gen</distinct> "fair born" (Uhlich 1993,207)), found variously spelled, including <persName xml:lang="ga">Comgani</persName></q>.</p>
+                         <p>Forsyth (1996, 296) is in favor of considering this example as one of the earliest oghams in Scotland due to the fact that comparable scripts are ubiquitous in Ireland. Moreover, the stone's size and shape, and the positioning of the inscriptions' lettering and proportion of its strokes which is, as Forsyth (1996, 297) notes <q>closest of all the Scottish examples to the Southern Irish norm</q>.</p>
+            </div>
+            <div type="bibliography">
+                 <listBibl>
+                     <bibl>
+                         <ptr target="FOR1996"/>
+                         <citedRange>288-298</citedRange>
+                     </bibl>
+                     <bibl>
+                         <ptr target="MAC1945"/>
+                         <citedRange>484</citedRange>
+                     </bibl>
+                     <bibl>
+                         <ptr target="MAC1902"/>
+                     </bibl>
+                     <bibl>
+                         <ptr target="RHY1901"/>
+                         <citedRange>18-23</citedRange>
+                     </bibl>
+                     <bibl>
+                          <ptr target="RHY1899"/>
+                         <citedRange>390-403</citedRange>
+                     </bibl>
+                    <!-- <bibl>
+                         <ptr target="DIA1926"/>
+                         <citedRange>??</citedRange>
+                         </bibl>-->
+                     <!--<bibl>
+                         <ptr target="JAC1971"/>
+                         <citedRange>96-97</citedRange>
+                     </bibl>-->
+                 </listBibl>
+            </div>
+        </body>
+    </text>
+</TEI>
+

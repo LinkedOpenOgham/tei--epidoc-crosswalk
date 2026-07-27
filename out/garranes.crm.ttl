@@ -1,0 +1,56 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
+@prefix data: <http://data.ogham.link/crm/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+data:stone_81 a ogham:OghamStone,
+        crm:E22_Human-Made_Object ;
+    rdfs:label "An Garrán | Garranes (CIIC 81)" ;
+    crm:P128_carries data:inscription_81 ;
+    crm:P1_is_identified_by data:id_81_CIIC,
+        data:id_81_CISP,
+        data:id_81_SMR ;
+    crm:P2_has_type data:type_Pillar ;
+    crm:P45_consists_of data:material_Sandstone ;
+    crm:P53_has_former_or_current_location data:place_81 ;
+    crm:P56_bears_feature data:surface_81 .
+
+data:id_81_CIIC a crm:E42_Identifier ;
+    rdfs:label "81" ;
+    crm:P2_has_type "CIIC" .
+
+data:id_81_CISP a crm:E42_Identifier ;
+    rdfs:label "GARES/1" ;
+    crm:P2_has_type "CISP" .
+
+data:id_81_SMR a crm:E42_Identifier ;
+    rdfs:label "CO084-090002-" ;
+    crm:P2_has_type "SMR" .
+
+data:inscription_81 a ogham:Inscription,
+        crmtex:TX1_Written_Text ;
+    rdfs:label "CASSITTAS MAQI MUCOI CALLITI" ;
+    crm:P67_refers_to data:person_81_CALLITI,
+        data:person_81_CASSITTAS .
+
+data:material_Sandstone a crm:E57_Material ;
+    rdfs:label "Sandstone" .
+
+data:person_81_CALLITI a crm:E21_Person ;
+    rdfs:label "CALLITI" .
+
+data:person_81_CASSITTAS a crm:E21_Person ;
+    rdfs:label "CASSITTAS" .
+
+data:place_81 a crm:E53_Place ;
+    rdfs:label "Garranes (An Garrán)" ;
+    geo:asWKT "POINT(-8.765479 51.816848)"^^geo:wktLiteral .
+
+data:surface_81 a crm:E25_Human-Made_Feature ;
+    rdfs:label "inscribed surface" .
+
+data:type_Pillar a crm:E55_Type ;
+    rdfs:label "Pillar" .
+

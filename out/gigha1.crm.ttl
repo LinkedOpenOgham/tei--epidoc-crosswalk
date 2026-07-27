@@ -1,0 +1,48 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
+@prefix data: <http://data.ogham.link/crm/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+data:stone_506 a ogham:OghamStone,
+        crm:E22_Human-Made_Object ;
+    rdfs:label "Gigha 1 (CIIC 506)" ;
+    crm:P128_carries data:inscription_506 ;
+    crm:P1_is_identified_by data:id_506_CIIC,
+        data:id_506_CISP,
+        data:id_506_Trove ;
+    crm:P2_has_type data:type_Pillar ;
+    crm:P45_consists_of data:material_Granite ;
+    crm:P53_has_former_or_current_location data:place_506 ;
+    crm:P56_bears_feature data:surface_506 .
+
+data:id_506_CIIC a crm:E42_Identifier ;
+    rdfs:label "506" ;
+    crm:P2_has_type "CIIC" .
+
+data:id_506_CISP a crm:E42_Identifier ;
+    rdfs:label "GIGHA/1" ;
+    crm:P2_has_type "CISP" .
+
+data:id_506_Trove a crm:E42_Identifier ;
+    rdfs:label "38529" ;
+    crm:P2_has_type "Trove" .
+
+data:inscription_506 a ogham:Inscription,
+        crmtex:TX1_Written_Text ;
+    rdfs:label "[---]MAQ[---]COGIN[---]" .
+
+data:material_Granite a crm:E57_Material ;
+    rdfs:label "Granite" .
+
+data:place_506 a crm:E53_Place ;
+    rdfs:label "Gigha and Cara" ;
+    geo:asWKT "POINT(-5.750278 55.669722)"^^geo:wktLiteral .
+
+data:surface_506 a crm:E25_Human-Made_Feature ;
+    rdfs:label "inscribed surface" .
+
+data:type_Pillar a crm:E55_Type ;
+    rdfs:label "Pillar" .
+
