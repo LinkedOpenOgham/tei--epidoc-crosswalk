@@ -3,6 +3,7 @@
 @prefix data: <http://data.ogham.link/crm/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix ogham: <http://ontology.ogham.link/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 data:stone_55 a ogham:OghamStone,
@@ -16,6 +17,12 @@ data:stone_55 a ogham:OghamStone,
     crm:P2_has_type data:type_Pillar ;
     crm:P53_has_former_or_current_location data:place_55 ;
     crm:P56_bears_feature data:surface_55 .
+
+data:agent_MAC1945 a prov:Agent ;
+    rdfs:label "Macalister 1945" .
+
+data:agent_OGHAM_NW a prov:Agent ;
+    rdfs:label "OG(H)AM edition (NW)" .
 
 data:id_55_CIIC a crm:E42_Identifier ;
     rdfs:label "55" ;
@@ -38,7 +45,9 @@ data:inscription_55 a ogham:Inscription,
     rdfs:label ".. ? ..TETA" ;
     crm:P67_refers_to data:person_55_OGALA,
         data:person_55_SAINA,
-        data:person_55_TEMOCA .
+        data:person_55_TEMOCA ;
+    crmtex:TXP4_has_segment data:reading_55_MAC1945,
+        data:reading_55_OGHAM_NW .
 
 data:person_55_OGALA a crm:E21_Person ;
     rdfs:label "OGALA" .
@@ -52,6 +61,16 @@ data:person_55_TEMOCA a crm:E21_Person ;
 data:place_55 a crm:E53_Place ;
     rdfs:label "Coomleagh East (An Com Liath Thoir)" ;
     geo:asWKT "POINT(-9.30337 51.72827)"^^geo:wktLiteral .
+
+data:reading_55_MAC1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "ANM SAINA MAQ OGALA MUCOI TEMOCA" ;
+    prov:wasAttributedTo data:agent_MAC1945 .
+
+data:reading_55_OGHAM_NW a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label ".. ? ..TETA" ;
+    prov:wasAttributedTo data:agent_OGHAM_NW .
 
 data:surface_55 a crm:E25_Human-Made_Feature ;
     rdfs:label "inscribed surface" .

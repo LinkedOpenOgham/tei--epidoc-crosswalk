@@ -3,6 +3,7 @@
 @prefix data: <http://data.ogham.link/crm/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix ogham: <http://ontology.ogham.link/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 data:stone_506 a ogham:OghamStone,
@@ -16,6 +17,21 @@ data:stone_506 a ogham:OghamStone,
     crm:P45_consists_of data:material_Granite ;
     crm:P53_has_former_or_current_location data:place_506 ;
     crm:P56_bears_feature data:surface_506 .
+
+data:agent_MAC1902 a prov:Agent ;
+    rdfs:label "Macalister 1902" .
+
+data:agent_MAC1945 a prov:Agent ;
+    rdfs:label "Macalister 1945" .
+
+data:agent_OGHAM_KF a prov:Agent ;
+    rdfs:label "OG(H)AM edition (KF)" .
+
+data:agent_RHY1899 a prov:Agent ;
+    rdfs:label "Rhys 1899" .
+
+data:agent_RHY1901 a prov:Agent ;
+    rdfs:label "Rhys 1901" .
 
 data:id_506_CIIC a crm:E42_Identifier ;
     rdfs:label "506" ;
@@ -31,7 +47,12 @@ data:id_506_Trove a crm:E42_Identifier ;
 
 data:inscription_506 a ogham:Inscription,
         crmtex:TX1_Written_Text ;
-    rdfs:label "[---]MAQ[---]COGIN[---]" .
+    rdfs:label "[---]MAQ[---]COGIN[---]" ;
+    crmtex:TXP4_has_segment data:reading_506_MAC1902,
+        data:reading_506_MAC1945,
+        data:reading_506_OGHAM_KF,
+        data:reading_506_RHY1899,
+        data:reading_506_RHY1901 .
 
 data:material_Granite a crm:E57_Material ;
     rdfs:label "Granite" .
@@ -39,6 +60,31 @@ data:material_Granite a crm:E57_Material ;
 data:place_506 a crm:E53_Place ;
     rdfs:label "Gigha and Cara" ;
     geo:asWKT "POINT(-5.750278 55.669722)"^^geo:wktLiteral .
+
+data:reading_506_MAC1902 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "VICULA MAQ COMGINI" ;
+    prov:wasAttributedTo data:agent_MAC1902 .
+
+data:reading_506_MAC1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "VICULA MAQ CUGINI" ;
+    prov:wasAttributedTo data:agent_MAC1945 .
+
+data:reading_506_OGHAM_KF a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "[---]MAQ[---]COGIN[---]" ;
+    prov:wasAttributedTo data:agent_OGHAM_KF .
+
+data:reading_506_RHY1899 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "MAQICAGILEB" ;
+    prov:wasAttributedTo data:agent_RHY1899 .
+
+data:reading_506_RHY1901 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "OGMA MAQI TIGERNI" ;
+    prov:wasAttributedTo data:agent_RHY1901 .
 
 data:surface_506 a crm:E25_Human-Made_Feature ;
     rdfs:label "inscribed surface" .

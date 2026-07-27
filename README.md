@@ -25,6 +25,7 @@ serialised as Turtle (`out/<stone>.crm.ttl`):
 | `<material>` | `crm:E57_Material` | `P45_consists_of` |
 | inscribed surface | `crm:E25_Human-Made_Feature` | `P56_bears_feature` |
 | `<div type="edition">` | `crmtex:TX1_Written_Text` | `P128_carries` |
+| `<div type="edition">` / `<rdg>` (readings) | `crmtex:TX6_Transcription` | `TXP4_has_segment` + `prov:wasAttributedTo` |
 | `<origPlace>` + `<geo>` | `crm:E53_Place` (+ `geo:asWKT`) | `P53_has_former_or_current_location` |
 | `<name nymRef>` / `<persName>` | `crm:E21_Person` | `P67_refers_to` |
 
@@ -77,12 +78,19 @@ plus `out/README.md`. Single-file mode:
 python py/main.py --input data/S-ARL-001.xml --output out/gigha1.crm.ttl
 ```
 
-## Open modelling decisions
+## Resolved modelling decisions
 
-Documented in `out/README.md` and in the `MAPPING` at the top of `py/main.py`:
-material as `E57_Material` (CRM-conformant) vs. the ontology's `Material ⊑ E55`;
-place of origin via `P53` vs. a richer `E12_Production` / `E9_Move` event;
-readings as `crmtex:TX5/TX6` (handled in `tei--epidoc-amt`, axis 2).
+- **Material** → `E57_Material` via `P45_consists_of`. `E57_Material` is the CRM class for
+  the substance an object is made of and is `rdfs:subClassOf E55_Type`; the ontology's
+  `Material ⊑ E55` should be tightened to `⊑ E57` so `P45` is type-consistent.
+- **Readings** → `crmtex:TX6_Transcription`, `TXP4_has_segment` from the `TX1`,
+  `prov:wasAttributedTo` the editor — following the ontology (`Reading ⊑ TX6`,
+  `identifiedAs ⊑ TXP4_has_segment`). The `amt:weight` belief stays in axis 2.
+- **Place** → `P53_has_former_or_current_location` (the recorded `<geo>` is the
+  findspot), matching the ontology's `disclosedAt ⊑ P53`; a reconstructed origin
+  would use `E12_Production` / `P7_took_place_at`.
+
+See `out/README.md` for the per-stone detail.
 
 ## Author & licence
 
