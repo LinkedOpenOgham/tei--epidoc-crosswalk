@@ -25,10 +25,12 @@ import argparse
 import glob
 import re
 from collections import Counter
+
+import wikidata  # local module (py/wikidata.py)
 from pathlib import Path
 
 from lxml import etree
-from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib import BNode, Graph, Literal, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, XSD, OWL
 
 # --- repo-root-relative paths -------------------------------------------------
@@ -36,6 +38,7 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = ROOT / "out"
 SHAPES = ROOT / "shapes" / "crosswalk-shapes.ttl"   # committed SHACL rules (not generated)
+RECON_CACHE = DATA / "wikidata-links.csv"          # committed Wikidata reconciliation cache
 
 STONES = [
     ("S-ARL-001.xml", "gigha1"),
@@ -60,6 +63,7 @@ SCHEMA = Namespace("http://schema.org/")
 TIME = Namespace("http://www.w3.org/2006/time#")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 TEIAPP = Namespace("http://ontology.ogham.link/tei-application/")
+WD = Namespace("http://www.wikidata.org/entity/")
 
 # Derived per CRM class: the TEI/EpiDoc application class name + the NFDI Core term.
 # (The application classes correspond to the EpiDoc tags in MAPPING.)
@@ -283,7 +287,7 @@ def write_out_readme(results: list[tuple]) -> None:
         "which is `rdfs:subClassOf` the CRM class — so the domain ontology *is* the "
         "crosswalk. The inscription and every competing reading are modelled here "
         "(structurally, in CRMtex); the `amt:weight` belief over the readings is added in "
-        "`tei--epidoc-amt` (axis 2).\n")
+        "`tei--epidoc-amt` (axis 2). Selected terms (materials, object types, editors) are also anchored to Wikidata via weighted `skos:closeMatch` (cache: `../data/wikidata-links.csv`).\n")
 
     add("## 2. The crosswalk: EpiDoc → Linked Open Ogham class → CIDOC CRM\n")
     add("The crosswalk runs through an **intermediate domain layer**: each EpiDoc element "
@@ -309,7 +313,9 @@ def write_out_readme(results: list[tuple]) -> None:
     add("| **GeoSPARQL** (OGC) | `geo:` | geometry of places | `geo:asWKT` on `E53_Place` |")
     add("| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |")
     add("| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |")
-    add("| **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |\n")
+    add("| **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |")
+    add("| **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | "
+        "weighted `skos:closeMatch` on materials/types/editors, with `ogham:matchConfidence` |\n")
 
     add("## 4. Resolved modelling decisions\n")
     add("- **Material → `E57_Material` via `P45_consists_of`.** `E57_Material` is the CRM "
@@ -408,6 +414,10 @@ def build_crosswalk_ontology() -> Graph:
     g.add((OGHAM["nfdiCoreMatch"], RDFS.comment,
            Literal("Indicative class-level alignment to the NFDI Core Metadata Profile "
                    "(schema.org / DCAT / DataCite via the N4O OCMDP).")))
+    for prop, lbl in (("matchConfidence", "Wikidata reconciliation confidence [0,1]"),
+                      ("matchStatus", "Wikidata reconciliation status (auto/verified)")):
+        g.add((OGHAM[prop], RDF.type, OWL.AnnotationProperty))
+        g.add((OGHAM[prop], RDFS.label, Literal(lbl)))
 
     for r in MAPPING:
         tei, nfdi = CROSSWALK_EXTRA[r["crm"]]
@@ -561,6 +571,10 @@ def write_data_readme(presence, n_files):
         add(f"| `{esc(r['el'])}` | {n}/{n_files} | `{esc(r['ogham'])}` | "
             f"`{esc(r['crm'])}` | `{esc(r['prop'])}` |")
     add("")
+    add("Selected terms (materials, object types, editors) are additionally anchored to "
+        "**Wikidata** via weighted `skos:closeMatch`. The reconciliation cache is "
+        "`wikidata-links.csv` (committed): check and flip `status: auto` → `verified` "
+        "once a QID is confirmed.\n")
     (DATA / "README.md").write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"  -> wrote {(DATA / 'README.md').relative_to(ROOT)}")
 
@@ -586,16 +600,62 @@ def write_all_elements_readme(total, n_files):
     print(f"  -> wrote {(DATA / 'all-epidoc-elements.md').relative_to(ROOT)}")
 
 
-def process(input_path: Path, output_path: Path):
+def editor_surname(source_id: str):
+    """Surname of a historical editor from a reading id (e.g. MAC1945 -> Macalister),
+    or None for the current OG(H)AM edition."""
+    m = re.match(r"([A-Za-z]+)\d{4}", source_id or "")
+    return EDITOR_PREFIXES.get(m.group(1).upper()) if m else None
+
+
+def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool) -> list:
+    """Anchor selected terms (material, object type, editors) to Wikidata via
+    weighted skos:closeMatch, written straight into the stone's CRM graph.
+    Returns the list of (kind, label, Match) actually linked (for the summary)."""
+    g.bind("skos", SKOS)
+    g.bind("wd", WD)
+    sid = _slug(d["ciic"])
+    targets = []
+    if d["material"]:
+        targets.append(("material", d["material"], DATA_NS[f"material_{_slug(d['material'])}"]))
+    if d["objectType"]:
+        targets.append(("objectType", d["objectType"], DATA_NS[f"type_{_slug(d['objectType'])}"]))
+    for r in d["readings"]:
+        sur = editor_surname(r["id"])
+        if sur:
+            targets.append(("editor", sur, DATA_NS[f"agent_{_slug(r['id'])}"]))
+
+    linked = []
+    for kind, label, node in targets:
+        m = wikidata.reconcile(label, kind, cache, online=online)
+        if not m.qid:
+            continue
+        wd_uri = WD[m.qid]
+        g.add((node, SKOS.closeMatch, wd_uri))
+        # weighted, reified: reconciliation is uncertain -> record confidence + status
+        st = BNode()
+        g.add((st, RDF.type, RDF.Statement))
+        g.add((st, RDF.subject, node))
+        g.add((st, RDF.predicate, SKOS.closeMatch))
+        g.add((st, RDF.object, wd_uri))
+        g.add((st, OGHAM.matchConfidence, Literal(f"{m.confidence:.2f}", datatype=XSD.decimal)))
+        g.add((st, OGHAM.matchStatus, Literal(m.status)))
+        linked.append((kind, label, m))
+    return linked
+
+
+def process(input_path: Path, output_path: Path, cache=None, online: bool = True):
     tree = etree.parse(str(input_path))
     d = parse(tree)
     g, records = build_graph(d)
+    linked = enrich_wikidata(g, d, cache, online) if cache is not None else []
     output_path.parent.mkdir(parents=True, exist_ok=True)
     g.serialize(destination=str(output_path), format="turtle")
     print(f"\n{d['title'] or '?'} (CIIC {d['ciic']}) -- {len(records)} elements -> "
           f"{output_path.relative_to(ROOT)} ({len(g)} triples)")
     for el, val, klass, node in records:
         print(f"  {el:24} -> {klass:26} {(val or '')[:40]}")
+    for kind, label, m in linked:
+        print(f"  wikidata  {kind:10} {label:14} -> {m.qid} ({m.status}, conf={m.confidence:.2f})")
     return d["title"] or "?", d["ciic"], output_path.name, records
 
 
@@ -603,15 +663,23 @@ def main() -> None:
     ap = argparse.ArgumentParser(description="EpiDoc -> CIDOC CRM (Linked Open Ogham, axis 1)")
     ap.add_argument("--input", type=Path, help="single EpiDoc file (default: all stones)")
     ap.add_argument("--output", type=Path, help="output Turtle file (single-file mode only)")
+    ap.add_argument("--offline", action="store_true", help="skip live Wikidata calls (cache only)")
     args = ap.parse_args()
 
+    cache = wikidata.load_cache(RECON_CACHE)
+    online = not args.offline
     if args.input:
         out = args.output or (OUT / (args.input.stem + ".crm.ttl"))
-        process(args.input, out)
+        process(args.input, out, cache=cache, online=online)
     else:
-        results = [process(DATA / f, OUT / f"{b}.crm.ttl") for f, b in STONES]
+        results = [process(DATA / f, OUT / f"{b}.crm.ttl", cache=cache, online=online)
+                   for f, b in STONES]
         write_out_readme(results)
         emit_and_validate_crosswalk()
+        wikidata.save_cache(RECON_CACHE, cache)
+        n_res = sum(1 for m in cache.values() if m.qid)
+        print(f"  -> updated {RECON_CACHE.relative_to(ROOT)} "
+              f"({n_res}/{len(cache)} terms resolved)")
         total, presence, n_files = scan_tags()
         write_data_readme(presence, n_files)
         write_all_elements_readme(total, n_files)

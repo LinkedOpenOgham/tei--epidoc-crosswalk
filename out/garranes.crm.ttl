@@ -4,7 +4,11 @@
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix ogham: <http://ontology.ogham.link/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 data:stone_81 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
@@ -40,9 +44,6 @@ data:inscription_81 a ogham:Inscription,
         data:person_81_CASSITTAS ;
     crmtex:TXP4_has_segment data:reading_81_OGHAM_NW .
 
-data:material_Sandstone a crm:E57_Material ;
-    rdfs:label "Sandstone" .
-
 data:person_81_CALLITI a crm:E21_Person ;
     rdfs:label "CALLITI" .
 
@@ -61,6 +62,25 @@ data:reading_81_OGHAM_NW a ogham:Reading,
 data:surface_81 a crm:E25_Human-Made_Feature ;
     rdfs:label "inscribed surface" .
 
+data:material_Sandstone a crm:E57_Material ;
+    rdfs:label "Sandstone" ;
+    skos:closeMatch wd:Q13085 .
+
 data:type_Pillar a crm:E55_Type ;
-    rdfs:label "Pillar" .
+    rdfs:label "Pillar" ;
+    skos:closeMatch wd:Q4817 .
+
+[] a rdf:Statement ;
+    ogham:matchConfidence 0.90 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q13085 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:material_Sandstone .
+
+[] a rdf:Statement ;
+    ogham:matchConfidence 0.50 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q4817 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:type_Pillar .
 

@@ -7,6 +7,12 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix teiapp: <http://ontology.ogham.link/tei-application/> .
 
+ogham:matchConfidence a owl:AnnotationProperty ;
+    rdfs:label "Wikidata reconciliation confidence [0,1]" .
+
+ogham:matchStatus a owl:AnnotationProperty ;
+    rdfs:label "Wikidata reconciliation status (auto/verified)" .
+
 ogham:nfdiCoreMatch a owl:AnnotationProperty ;
     rdfs:label "aligns with NFDI Core term" ;
     rdfs:comment "Indicative class-level alignment to the NFDI Core Metadata Profile (schema.org / DCAT / DataCite via the N4O OCMDP)." .

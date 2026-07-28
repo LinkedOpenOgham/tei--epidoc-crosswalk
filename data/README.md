@@ -15,3 +15,5 @@
 | `<origDate> (when present)` | 4/4 | `—` | `crm:E52_Time-Span` | `P4_has_time-span` |
 | `<name nymRef> / <persName>` | 4/4 | `ogham:Person` | `crm:E21_Person` | `P67_refers_to` |
 
+Selected terms (materials, object types, editors) are additionally anchored to **Wikidata** via weighted `skos:closeMatch`. The reconciliation cache is `wikidata-links.csv` (committed): check and flip `status: auto` → `verified` once a QID is confirmed.
+

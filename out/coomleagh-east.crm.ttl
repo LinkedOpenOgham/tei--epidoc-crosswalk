@@ -4,7 +4,11 @@
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix ogham: <http://ontology.ogham.link/> .
 @prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 data:stone_55 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
@@ -17,9 +21,6 @@ data:stone_55 a ogham:OghamStone,
     crm:P2_has_type data:type_Pillar ;
     crm:P53_has_former_or_current_location data:place_55 ;
     crm:P56_bears_feature data:surface_55 .
-
-data:agent_MAC1945 a prov:Agent ;
-    rdfs:label "Macalister 1945" .
 
 data:agent_OGHAM_NW a prov:Agent ;
     rdfs:label "OG(H)AM edition (NW)" .
@@ -75,6 +76,25 @@ data:reading_55_OGHAM_NW a ogham:Reading,
 data:surface_55 a crm:E25_Human-Made_Feature ;
     rdfs:label "inscribed surface" .
 
+data:agent_MAC1945 a prov:Agent ;
+    rdfs:label "Macalister 1945" ;
+    skos:closeMatch wd:Q55163415 .
+
 data:type_Pillar a crm:E55_Type ;
-    rdfs:label "Pillar" .
+    rdfs:label "Pillar" ;
+    skos:closeMatch wd:Q4817 .
+
+[] a rdf:Statement ;
+    ogham:matchConfidence 0.90 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q55163415 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:agent_MAC1945 .
+
+[] a rdf:Statement ;
+    ogham:matchConfidence 0.50 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q4817 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:type_Pillar .
 

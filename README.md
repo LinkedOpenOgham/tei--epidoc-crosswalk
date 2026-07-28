@@ -61,6 +61,7 @@ tei--epidoc-crosswalk/
 ├── data/                      # inputs (EpiDoc XML) + generated element docs
 │   ├── README.md              # crosswalk of the mapped elements (generated)
 │   ├── all-epidoc-elements.md # full element inventory + candidates (generated)
+│   ├── wikidata-links.csv     # Wikidata reconciliation cache (committed, human-verifiable)
 │   ├── S-ARL-001.xml          # Gigha 1 (CIIC 506)
 │   ├── I-COR-001.xml          # Coomleagh East (CIIC 55)
 │   ├── I-COR-030.xml          # Garranes (CIIC 81)
@@ -100,6 +101,7 @@ plus `out/README.md`. Single-file mode:
 
 ```
 python py/main.py --input data/S-ARL-001.xml --output out/gigha1.crm.ttl
+python py/main.py --offline   # skip live Wikidata calls (cache only)
 ```
 
 ## Resolved modelling decisions
@@ -115,6 +117,17 @@ python py/main.py --input data/S-ARL-001.xml --output out/gigha1.crm.ttl
   would use `E12_Production` / `P7_took_place_at`.
 
 See `out/README.md` for the per-stone detail.
+
+## Wikidata reconciliation (term anchoring)
+
+Selected terms — **materials, object types, editors** — are anchored to Wikidata
+QIDs and written straight into the `*.crm.ttl` as weighted `skos:closeMatch`, each
+with an `ogham:matchConfidence` and `ogham:matchStatus` (reconciliation is itself
+uncertain, so links are weighted, not hard `owl:sameAs`). The committed cache
+`data/wikidata-links.csv` makes runs deterministic and lets you verify machine
+suggestions: `verified` entries are trusted; `auto` entries are refreshed from the
+live API and should be checked; `pending` entries are resolved on the next online
+run. Use `--offline` to skip the live API entirely.
 
 ## Author & licence
 
