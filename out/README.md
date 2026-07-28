@@ -4,7 +4,7 @@
 
 ## 1. What the crosswalk does
 
-For each ogham stone the core EpiDoc elements are mapped to **CIDOC CRM 7.1.3** and its text extension **CRMtex**, and serialised as RDF/Turtle (`out/<stone>.crm.ttl`). Instances also carry the matching `ogham.link` class, which is `rdfs:subClassOf` the CRM class — so the domain ontology *is* the crosswalk. The inscription and every competing reading are modelled here (structurally, in CRMtex); the `amt:weight` belief over the readings is added in `tei--epidoc-amt` (axis 2). Selected terms (materials, object types, editors) are also anchored to Wikidata via weighted `skos:closeMatch` (cache: `../data/wikidata-links.csv`).
+For each ogham stone the core EpiDoc elements are mapped to **CIDOC CRM 7.1.3** and its text extension **CRMtex**, and serialised as RDF/Turtle (`out/<stone>.crm.ttl`). Instances also carry the matching `ogham.link` class, which is `rdfs:subClassOf` the CRM class — so the domain ontology *is* the crosswalk. The inscription and every competing reading are modelled here (structurally, in CRMtex); the `amt:weight` belief over the readings is added in `tei--epidoc-amt` (axis 2). Selected terms (materials, object types, editors) are also anchored to Wikidata via weighted `skos:closeMatch` (cache: `../reconciliation/wikidata-links.csv`).
 
 ## 2. The crosswalk: EpiDoc → Linked Open Ogham class → CIDOC CRM
 
@@ -37,6 +37,7 @@ Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC vocabulari
 | **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |
 | **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |
 | **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | weighted `skos:closeMatch` (materials/types/editors) with `ogham:matchConfidence` + P31/P279 `ogham:matchTypeCheck` |
+| **AMT** | `amt:` | making the match a weighted belief | each match is a reified `amt:weight` quadruple; `skos:closeMatch` is typed `amt:Role` (AMT-conformant, aligned with axis 2) |
 
 ## 4. Resolved modelling decisions
 

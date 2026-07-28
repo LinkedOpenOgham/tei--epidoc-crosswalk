@@ -1,3 +1,4 @@
+@prefix amt: <http://academic-meta-tool.xyz/vocab#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
 @prefix data: <http://data.ogham.link/crm/> .
@@ -9,6 +10,60 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+data:match_agent_MAC1902 a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "unknown" ;
+    rdf:object wd:Q983129 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:agent_MAC1902 .
+
+data:match_agent_MAC1945 a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "unknown" ;
+    rdf:object wd:Q983129 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:agent_MAC1945 .
+
+data:match_agent_RHY1899 a rdf:Statement ;
+    amt:weight 0.75 ;
+    ogham:matchConfidence 0.75 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "ok" ;
+    rdf:object wd:Q3050565 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:agent_RHY1899 .
+
+data:match_agent_RHY1901 a rdf:Statement ;
+    amt:weight 0.75 ;
+    ogham:matchConfidence 0.75 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "ok" ;
+    rdf:object wd:Q3050565 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:agent_RHY1901 .
+
+data:match_material_Granite a rdf:Statement ;
+    amt:weight 0.95 ;
+    ogham:matchConfidence 0.95 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "ok" ;
+    rdf:object wd:Q41177 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:material_Granite .
+
+data:match_type_Pillar a rdf:Statement ;
+    amt:weight 0.25 ;
+    ogham:matchConfidence 0.25 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "mismatch" ;
+    rdf:object wd:Q4817 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:type_Pillar .
 
 data:stone_506 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
@@ -101,52 +156,4 @@ data:material_Granite a crm:E57_Material ;
 data:type_Pillar a crm:E55_Type ;
     rdfs:label "Pillar" ;
     skos:closeMatch wd:Q4817 .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.95 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "ok" ;
-    rdf:object wd:Q41177 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:material_Granite .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "unknown" ;
-    rdf:object wd:Q983129 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:agent_MAC1945 .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.75 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "ok" ;
-    rdf:object wd:Q3050565 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:agent_RHY1899 .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.25 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "mismatch" ;
-    rdf:object wd:Q4817 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:type_Pillar .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "unknown" ;
-    rdf:object wd:Q983129 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:agent_MAC1902 .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.75 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "ok" ;
-    rdf:object wd:Q3050565 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:agent_RHY1901 .
 

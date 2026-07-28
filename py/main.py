@@ -38,8 +38,12 @@ ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = ROOT / "out"
 SHAPES = ROOT / "shapes" / "crosswalk-shapes.ttl"   # committed SHACL rules (not generated)
-RECON_CACHE = DATA / "wikidata-links.csv"          # committed Wikidata reconciliation cache
-OBJTYPE_ALLOWLIST = DATA / "objecttype-allowlist.csv"   # committed curated object-type QIDs
+RECON = ROOT / "reconciliation"                    # Wikidata cache + curated allowlists (committed)
+RECON_CACHE = RECON / "wikidata-links.csv"
+ALLOWLISTS = {"material": RECON / "material-allowlist.csv",
+              "editor": RECON / "editor-allowlist.csv",
+              "objectType": RECON / "objecttype-allowlist.csv"}
+ELEMENT_DOCS = ROOT / "element-docs"               # generated element documentation
 
 STONES = [
     ("S-ARL-001.xml", "gigha1"),
@@ -65,6 +69,7 @@ TIME = Namespace("http://www.w3.org/2006/time#")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
 TEIAPP = Namespace("http://ontology.ogham.link/tei-application/")
 WD = Namespace("http://www.wikidata.org/entity/")
+AMT = Namespace("http://academic-meta-tool.xyz/vocab#")
 
 # Derived per CRM class: the TEI/EpiDoc application class name + the NFDI Core term.
 # (The application classes correspond to the EpiDoc tags in MAPPING.)
@@ -288,7 +293,7 @@ def write_out_readme(results: list[tuple]) -> None:
         "which is `rdfs:subClassOf` the CRM class — so the domain ontology *is* the "
         "crosswalk. The inscription and every competing reading are modelled here "
         "(structurally, in CRMtex); the `amt:weight` belief over the readings is added in "
-        "`tei--epidoc-amt` (axis 2). Selected terms (materials, object types, editors) are also anchored to Wikidata via weighted `skos:closeMatch` (cache: `../data/wikidata-links.csv`).\n")
+        "`tei--epidoc-amt` (axis 2). Selected terms (materials, object types, editors) are also anchored to Wikidata via weighted `skos:closeMatch` (cache: `../reconciliation/wikidata-links.csv`).\n")
 
     add("## 2. The crosswalk: EpiDoc → Linked Open Ogham class → CIDOC CRM\n")
     add("The crosswalk runs through an **intermediate domain layer**: each EpiDoc element "
@@ -317,7 +322,10 @@ def write_out_readme(results: list[tuple]) -> None:
     add("| **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |")
     add("| **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | "
         "weighted `skos:closeMatch` (materials/types/editors) with `ogham:matchConfidence` + "
-        "P31/P279 `ogham:matchTypeCheck` |\n")
+        "P31/P279 `ogham:matchTypeCheck` |")
+    add("| **AMT** | `amt:` | making the match a weighted belief | each match is a reified "
+        "`amt:weight` quadruple; `skos:closeMatch` is typed `amt:Role` (AMT-conformant, "
+        "aligned with axis 2) |\n")
 
     add("## 4. Resolved modelling decisions\n")
     add("- **Material → `E57_Material` via `P45_consists_of`.** `E57_Material` is the CRM "
@@ -421,6 +429,15 @@ def build_crosswalk_ontology() -> Graph:
                       ("matchTypeCheck", "Wikidata P31/P279 type check (ok/mismatch/unknown)")):
         g.add((OGHAM[prop], RDF.type, OWL.AnnotationProperty))
         g.add((OGHAM[prop], RDFS.label, Literal(lbl)))
+    amt_ns = Namespace("http://academic-meta-tool.xyz/vocab#")
+    skos_ns = Namespace("http://www.w3.org/2004/02/skos/core#")
+    g.bind("amt", amt_ns)
+    g.bind("skos", skos_ns)
+    g.add((skos_ns.closeMatch, RDF.type, amt_ns.Role))
+    g.add((skos_ns.closeMatch, RDFS.label, Literal("close match (weighted Wikidata anchor)")))
+    g.add((skos_ns.closeMatch, RDFS.comment,
+           Literal("Used as an AMT role: each reconciliation quadruple carries amt:weight "
+                   "(the match confidence), so links are weighted beliefs, aligned with axis 2.")))
 
     for r in MAPPING:
         tei, nfdi = CROSSWALK_EXTRA[r["crm"]]
@@ -561,9 +578,10 @@ def write_data_readme(presence, n_files):
     L, add = [], None
     L = []; add = L.append
     esc = lambda s: str(s).replace("|", "\\|")
-    add("# `data/` \u2014 EpiDoc elements crosswalked to CIDOC CRM (current mapping)\n")
+    ELEMENT_DOCS.mkdir(parents=True, exist_ok=True)
+    add("# EpiDoc elements crosswalked to CIDOC CRM (current mapping)\n")
     add(f"> **Generated** by `python py/main.py`. Describes the crosswalk for the EpiDoc "
-        f"elements currently handled, based on the {n_files} input files in this folder. "
+        f"elements currently handled, based on the {n_files} input EpiDoc files in `../data/`. "
         f"For every element in the corpus (including the ones not yet mapped) see "
         f"`all-epidoc-elements.md`; for the full documentation see `../out/README.md`.\n")
     add(f"| EpiDoc element | in stones | Linked Open Ogham class | CIDOC CRM / CRMtex | property |")
@@ -575,16 +593,17 @@ def write_data_readme(presence, n_files):
             f"`{esc(r['crm'])}` | `{esc(r['prop'])}` |")
     add("")
     add("Selected terms (materials, object types, editors) are additionally anchored to "
-        "**Wikidata** via weighted `skos:closeMatch`. The reconciliation cache is "
-        "`wikidata-links.csv` (committed): check and flip `status: auto` → `verified` "
-        "once a QID is confirmed.\n")
-    (DATA / "README.md").write_text("\n".join(L) + "\n", encoding="utf-8")
-    print(f"  -> wrote {(DATA / 'README.md').relative_to(ROOT)}")
+        "**Wikidata** via weighted `skos:closeMatch`. The reconciliation cache and the "
+        "curated allowlists live in `../reconciliation/` (`wikidata-links.csv`, "
+        "`material-allowlist.csv`, `editor-allowlist.csv`, `objecttype-allowlist.csv`).\n")
+    (ELEMENT_DOCS / "README.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+    print(f"  -> wrote {(ELEMENT_DOCS / 'README.md').relative_to(ROOT)}")
 
 
 def write_all_elements_readme(total, n_files):
     L = []; add = L.append
     esc = lambda s: str(s).replace("|", "\\|")
+    ELEMENT_DOCS.mkdir(parents=True, exist_ok=True)
     add("# All EpiDoc elements in the corpus \u2014 crosswalk status & candidates\n")
     add(f"> **Generated** by `python py/main.py`. Every EpiDoc element tag found across the "
         f"{n_files} input files, with its crosswalk status: **\u2705 mapped** (emitted now), "
@@ -599,8 +618,8 @@ def write_all_elements_readme(total, n_files):
         status, target = classify(tag)
         add(f"| `{tag}` | {n} | {status} | {esc(target)} |")
     add("")
-    (DATA / "all-epidoc-elements.md").write_text("\n".join(L) + "\n", encoding="utf-8")
-    print(f"  -> wrote {(DATA / 'all-epidoc-elements.md').relative_to(ROOT)}")
+    (ELEMENT_DOCS / "all-epidoc-elements.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+    print(f"  -> wrote {(ELEMENT_DOCS / 'all-epidoc-elements.md').relative_to(ROOT)}")
 
 
 def editor_surname(source_id: str):
@@ -616,6 +635,7 @@ def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool, verify: bool, 
     Returns the list of (kind, label, Match) actually linked (for the summary)."""
     g.bind("skos", SKOS)
     g.bind("wd", WD)
+    g.bind("amt", AMT)
     sid = _slug(d["ciic"])
     targets = []
     if d["material"]:
@@ -639,12 +659,14 @@ def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool, verify: bool, 
             continue
         wd_uri = WD[m.qid]
         g.add((node, SKOS.closeMatch, wd_uri))
-        # weighted, reified: reconciliation is uncertain -> record confidence + status
-        st = BNode()
+        # AMT-conformant weighted quadruple (named, addressable): the match confidence is
+        # the amt:weight; reconciliation is uncertain, so the link is a weighted belief.
+        st = DATA_NS[f"match_{str(node).split('/')[-1]}"]
         g.add((st, RDF.type, RDF.Statement))
         g.add((st, RDF.subject, node))
         g.add((st, RDF.predicate, SKOS.closeMatch))
         g.add((st, RDF.object, wd_uri))
+        g.add((st, AMT.weight, Literal(f"{m.confidence:.2f}", datatype=XSD.decimal)))
         g.add((st, OGHAM.matchConfidence, Literal(f"{m.confidence:.2f}", datatype=XSD.decimal)))
         g.add((st, OGHAM.matchStatus, Literal(m.status)))
         g.add((st, OGHAM.matchTypeCheck, Literal(m.type_match or "unknown")))
@@ -681,7 +703,9 @@ def main() -> None:
     online = not args.offline
     verify = not args.no_verify
     resolved = set()   # terms reconciled this run (fetch once)
-    overrides = wikidata.load_overrides(OBJTYPE_ALLOWLIST, "objectType")
+    overrides = {}
+    for _kind, _path in ALLOWLISTS.items():
+        overrides.update(wikidata.load_overrides(_path, _kind))
     if args.input:
         out = args.output or (OUT / (args.input.stem + ".crm.ttl"))
         process(args.input, out, cache=cache, online=online, verify=verify, resolved=resolved, overrides=overrides)

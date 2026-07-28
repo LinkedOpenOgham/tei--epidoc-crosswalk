@@ -1,3 +1,4 @@
+@prefix amt: <http://academic-meta-tool.xyz/vocab#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
 @prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
 @prefix data: <http://data.ogham.link/crm/> .
@@ -9,6 +10,24 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+data:match_material_Sandstone a rdf:Statement ;
+    amt:weight 0.90 ;
+    ogham:matchConfidence 0.90 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "unknown" ;
+    rdf:object wd:Q13085 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:material_Sandstone .
+
+data:match_type_Pillar a rdf:Statement ;
+    amt:weight 0.25 ;
+    ogham:matchConfidence 0.25 ;
+    ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "mismatch" ;
+    rdf:object wd:Q4817 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:type_Pillar .
 
 data:stone_153 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
@@ -66,20 +85,4 @@ data:material_Sandstone a crm:E57_Material ;
 data:type_Pillar a crm:E55_Type ;
     rdfs:label "Pillar" ;
     skos:closeMatch wd:Q4817 .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.90 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "unknown" ;
-    rdf:object wd:Q13085 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:material_Sandstone .
-
-[] a rdf:Statement ;
-    ogham:matchConfidence 0.25 ;
-    ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "mismatch" ;
-    rdf:object wd:Q4817 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:type_Pillar .
 

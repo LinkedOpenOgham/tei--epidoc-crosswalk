@@ -1,6 +1,6 @@
-# `data/` — EpiDoc elements crosswalked to CIDOC CRM (current mapping)
+# EpiDoc elements crosswalked to CIDOC CRM (current mapping)
 
-> **Generated** by `python py/main.py`. Describes the crosswalk for the EpiDoc elements currently handled, based on the 4 input files in this folder. For every element in the corpus (including the ones not yet mapped) see `all-epidoc-elements.md`; for the full documentation see `../out/README.md`.
+> **Generated** by `python py/main.py`. Describes the crosswalk for the EpiDoc elements currently handled, based on the 4 input EpiDoc files in `../data/`. For every element in the corpus (including the ones not yet mapped) see `all-epidoc-elements.md`; for the full documentation see `../out/README.md`.
 
 | EpiDoc element | in stones | Linked Open Ogham class | CIDOC CRM / CRMtex | property |
 |---|---|---|---|---|
@@ -15,5 +15,5 @@
 | `<origDate> (when present)` | 4/4 | `—` | `crm:E52_Time-Span` | `P4_has_time-span` |
 | `<name nymRef> / <persName>` | 4/4 | `ogham:Person` | `crm:E21_Person` | `P67_refers_to` |
 
-Selected terms (materials, object types, editors) are additionally anchored to **Wikidata** via weighted `skos:closeMatch`. The reconciliation cache is `wikidata-links.csv` (committed): check and flip `status: auto` → `verified` once a QID is confirmed.
+Selected terms (materials, object types, editors) are additionally anchored to **Wikidata** via weighted `skos:closeMatch`. The reconciliation cache and the curated allowlists live in `../reconciliation/` (`wikidata-links.csv`, `material-allowlist.csv`, `editor-allowlist.csv`, `objecttype-allowlist.csv`).
 

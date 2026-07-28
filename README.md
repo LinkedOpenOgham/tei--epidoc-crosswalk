@@ -13,7 +13,7 @@ See **`out/README.md`** (generated) for: the three-layer crosswalk
 (EpiDoc → Linked Open Ogham class → CIDOC CRM), the supporting vocabularies
 (GeoSPARQL, PROV-O, OWL-Time, RDFS), the upward alignment of CIDOC CRM to the
 NFDI reference (OCMDP / NFDI Core → schema.org, DCAT, DataCite), and the
-element-by-element result for every stone.
+element-by-element result for every stone. The per-element documentation (mapped elements + full inventory of all EpiDoc tags) is generated into `element-docs/`.
 
 ## What it does
 
@@ -58,11 +58,7 @@ SHACL-valid.
 
 ```
 tei--epidoc-crosswalk/
-├── data/                      # inputs (EpiDoc XML) + generated element docs
-│   ├── README.md              # crosswalk of the mapped elements (generated)
-│   ├── all-epidoc-elements.md # full element inventory + candidates (generated)
-│   ├── wikidata-links.csv     # Wikidata reconciliation cache (committed, human-verifiable)
-│   ├── objecttype-allowlist.csv # curated object-type QIDs (committed override)
+├── data/                      # inputs only (EpiDoc XML)
 │   ├── S-ARL-001.xml          # Gigha 1 (CIIC 506)
 │   ├── I-COR-001.xml          # Coomleagh East (CIIC 55)
 │   ├── I-COR-030.xml          # Garranes (CIIC 81)
@@ -71,10 +67,19 @@ tei--epidoc-crosswalk/
 │   ├── README.md              # documentation (generated)
 │   ├── *.crm.ttl              # one CIDOC CRM instance graph per stone (generated)
 │   └── crosswalk.ttl          # the crosswalk as an OWL class hierarchy (generated)
+├── reconciliation/            # Wikidata cache + curated allowlists (committed)
+│   ├── wikidata-links.csv     # reconciliation cache (human-verifiable)
+│   ├── material-allowlist.csv     # curated material QIDs (override)
+│   ├── editor-allowlist.csv       # curated editor QIDs (override)
+│   └── objecttype-allowlist.csv   # curated object-type QIDs (override)
+├── element-docs/              # generated element documentation
+│   ├── README.md              # crosswalk of the mapped elements (generated)
+│   └── all-epidoc-elements.md # full element inventory + candidates (generated)
 ├── shapes/                    # committed SHACL validation rules (not generated)
 │   └── crosswalk-shapes.ttl   # every TEI class → CRM superclass + NFDI link
 ├── py/
-│   └── main.py                # single entry point:  python py/main.py
+│   ├── main.py                # single entry point:  python py/main.py
+│   └── wikidata.py             # Wikidata reconciliation module
 ├── .gitignore
 ├── LICENSE
 ├── README.md
@@ -129,12 +134,12 @@ verified against Wikidata **P31/P279** (editor → human; material → rock/ston
 object type → monument/standing stone …): the best type-fitting candidate is kept, otherwise the top hit is kept with **halved confidence** and flagged
 `matchTypeCheck = mismatch` — this catches e.g. *Pillar → column (architectural)* or
 *Rhys → the given name*. Use `--no-verify` to skip the type check. The committed cache
-`data/wikidata-links.csv` makes runs deterministic and lets you verify machine
+`reconciliation/wikidata-links.csv` makes runs deterministic and lets you verify machine
 suggestions: `verified` entries are trusted; `auto` entries are refreshed from the
 live API and should be checked; `pending` entries are resolved on the next online
 run. Use `--offline` to skip the live API entirely.
 
-For object types, the search is unreliable (e.g. *Pillar* resolves to *column*, an architectural element). A committed curated allowlist `data/objecttype-allowlist.csv` maps an object-type term to a fixed QID (e.g. `Pillar` → a standing-stone / ogham-stone item); a filled entry **overrides** the search and is marked `matchStatus verified`, `matchTypeCheck curated`. It ships with `Pillar` present but empty — fill the QID you consider correct.
+Where the search is unreliable, **committed curated allowlists** in `reconciliation/` pin a fixed QID per term: `material-allowlist.csv`, `editor-allowlist.csv`, `objecttype-allowlist.csv`. A filled entry **overrides** the search entirely and is marked `matchStatus verified`, `matchTypeCheck curated`. This is the fix for e.g. *Pillar → column* (architectural): put the standing-stone / ogham-stone QID in `objecttype-allowlist.csv`. The allowlists ship with the relevant terms present but QIDs empty — fill the ones you confirm.
 
 ## Author & licence
 
