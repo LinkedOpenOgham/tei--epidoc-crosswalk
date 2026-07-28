@@ -78,22 +78,24 @@ data:surface_55 a crm:E25_Human-Made_Feature ;
 
 data:agent_MAC1945 a prov:Agent ;
     rdfs:label "Macalister 1945" ;
-    skos:closeMatch wd:Q55163415 .
+    skos:closeMatch wd:Q983129 .
 
 data:type_Pillar a crm:E55_Type ;
     rdfs:label "Pillar" ;
     skos:closeMatch wd:Q4817 .
 
 [] a rdf:Statement ;
-    ogham:matchConfidence 0.90 ;
+    ogham:matchConfidence 0.70 ;
     ogham:matchStatus "auto" ;
-    rdf:object wd:Q55163415 ;
+    ogham:matchTypeCheck "unknown" ;
+    rdf:object wd:Q983129 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:agent_MAC1945 .
 
 [] a rdf:Statement ;
-    ogham:matchConfidence 0.50 ;
+    ogham:matchConfidence 0.25 ;
     ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "mismatch" ;
     rdf:object wd:Q4817 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:type_Pillar .

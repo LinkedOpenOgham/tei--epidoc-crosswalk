@@ -36,7 +36,7 @@ Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC vocabulari
 | **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |
 | **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |
 | **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |
-| **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | weighted `skos:closeMatch` on materials/types/editors, with `ogham:matchConfidence` |
+| **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | weighted `skos:closeMatch` (materials/types/editors) with `ogham:matchConfidence` + P31/P279 `ogham:matchTypeCheck` |
 
 ## 4. Resolved modelling decisions
 

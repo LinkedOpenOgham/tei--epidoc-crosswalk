@@ -1,6 +1,6 @@
-kind,label,qid,wd_label,confidence,status
-editor,Macalister,Q55163415,MacAlister,0.90,auto
-editor,Rhys,Q743332,Rhys,0.90,auto
-material,Granite,Q41177,granite,0.90,auto
-material,Sandstone,Q13085,sandstone,0.90,auto
-objectType,Pillar,Q4817,column,0.50,auto
+kind,label,qid,wd_label,confidence,status,type_match
+editor,Macalister,Q983129,R. A. Stewart Macalister,0.70,auto,unknown
+editor,Rhys,Q3050565,John Rhys,0.75,auto,ok
+material,Granite,Q41177,granite,0.95,auto,ok
+material,Sandstone,Q13085,sandstone,0.90,auto,
+objectType,Pillar,Q4817,column,0.25,auto,mismatch

@@ -70,13 +70,15 @@ data:type_Pillar a crm:E55_Type ;
 [] a rdf:Statement ;
     ogham:matchConfidence 0.90 ;
     ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "unknown" ;
     rdf:object wd:Q13085 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:material_Sandstone .
 
 [] a rdf:Statement ;
-    ogham:matchConfidence 0.50 ;
+    ogham:matchConfidence 0.25 ;
     ogham:matchStatus "auto" ;
+    ogham:matchTypeCheck "mismatch" ;
     rdf:object wd:Q4817 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:type_Pillar .

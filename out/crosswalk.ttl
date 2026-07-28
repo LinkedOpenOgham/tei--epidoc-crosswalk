@@ -13,6 +13,9 @@ ogham:matchConfidence a owl:AnnotationProperty ;
 ogham:matchStatus a owl:AnnotationProperty ;
     rdfs:label "Wikidata reconciliation status (auto/verified)" .
 
+ogham:matchTypeCheck a owl:AnnotationProperty ;
+    rdfs:label "Wikidata P31/P279 type check (ok/mismatch/unknown)" .
+
 ogham:nfdiCoreMatch a owl:AnnotationProperty ;
     rdfs:label "aligns with NFDI Core term" ;
     rdfs:comment "Indicative class-level alignment to the NFDI Core Metadata Profile (schema.org / DCAT / DataCite via the N4O OCMDP)." .

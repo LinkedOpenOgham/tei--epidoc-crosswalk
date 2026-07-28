@@ -39,6 +39,7 @@ DATA = ROOT / "data"
 OUT = ROOT / "out"
 SHAPES = ROOT / "shapes" / "crosswalk-shapes.ttl"   # committed SHACL rules (not generated)
 RECON_CACHE = DATA / "wikidata-links.csv"          # committed Wikidata reconciliation cache
+OBJTYPE_ALLOWLIST = DATA / "objecttype-allowlist.csv"   # committed curated object-type QIDs
 
 STONES = [
     ("S-ARL-001.xml", "gigha1"),
@@ -315,7 +316,8 @@ def write_out_readme(results: list[tuple]) -> None:
     add("| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |")
     add("| **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |")
     add("| **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | "
-        "weighted `skos:closeMatch` on materials/types/editors, with `ogham:matchConfidence` |\n")
+        "weighted `skos:closeMatch` (materials/types/editors) with `ogham:matchConfidence` + "
+        "P31/P279 `ogham:matchTypeCheck` |\n")
 
     add("## 4. Resolved modelling decisions\n")
     add("- **Material → `E57_Material` via `P45_consists_of`.** `E57_Material` is the CRM "
@@ -415,7 +417,8 @@ def build_crosswalk_ontology() -> Graph:
            Literal("Indicative class-level alignment to the NFDI Core Metadata Profile "
                    "(schema.org / DCAT / DataCite via the N4O OCMDP).")))
     for prop, lbl in (("matchConfidence", "Wikidata reconciliation confidence [0,1]"),
-                      ("matchStatus", "Wikidata reconciliation status (auto/verified)")):
+                      ("matchStatus", "Wikidata reconciliation status (auto/verified)"),
+                      ("matchTypeCheck", "Wikidata P31/P279 type check (ok/mismatch/unknown)")):
         g.add((OGHAM[prop], RDF.type, OWL.AnnotationProperty))
         g.add((OGHAM[prop], RDFS.label, Literal(lbl)))
 
@@ -607,7 +610,7 @@ def editor_surname(source_id: str):
     return EDITOR_PREFIXES.get(m.group(1).upper()) if m else None
 
 
-def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool) -> list:
+def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool, verify: bool, resolved: set, overrides: dict) -> list:
     """Anchor selected terms (material, object type, editors) to Wikidata via
     weighted skos:closeMatch, written straight into the stone's CRM graph.
     Returns the list of (kind, label, Match) actually linked (for the summary)."""
@@ -626,7 +629,12 @@ def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool) -> list:
 
     linked = []
     for kind, label, node in targets:
-        m = wikidata.reconcile(label, kind, cache, online=online)
+        key = (kind, label)
+        if key in resolved:                       # reconcile each term once per run
+            m = cache.get(key) or wikidata.Match()
+        else:
+            m = wikidata.reconcile(label, kind, cache, online=online, verify=verify, overrides=overrides)
+            resolved.add(key)
         if not m.qid:
             continue
         wd_uri = WD[m.qid]
@@ -639,15 +647,16 @@ def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool) -> list:
         g.add((st, RDF.object, wd_uri))
         g.add((st, OGHAM.matchConfidence, Literal(f"{m.confidence:.2f}", datatype=XSD.decimal)))
         g.add((st, OGHAM.matchStatus, Literal(m.status)))
+        g.add((st, OGHAM.matchTypeCheck, Literal(m.type_match or "unknown")))
         linked.append((kind, label, m))
     return linked
 
 
-def process(input_path: Path, output_path: Path, cache=None, online: bool = True):
+def process(input_path: Path, output_path: Path, cache=None, online: bool = True, verify: bool = True, resolved=None, overrides=None):
     tree = etree.parse(str(input_path))
     d = parse(tree)
     g, records = build_graph(d)
-    linked = enrich_wikidata(g, d, cache, online) if cache is not None else []
+    linked = enrich_wikidata(g, d, cache, online, verify, resolved if resolved is not None else set(), overrides or {}) if cache is not None else []
     output_path.parent.mkdir(parents=True, exist_ok=True)
     g.serialize(destination=str(output_path), format="turtle")
     print(f"\n{d['title'] or '?'} (CIIC {d['ciic']}) -- {len(records)} elements -> "
@@ -655,7 +664,8 @@ def process(input_path: Path, output_path: Path, cache=None, online: bool = True
     for el, val, klass, node in records:
         print(f"  {el:24} -> {klass:26} {(val or '')[:40]}")
     for kind, label, m in linked:
-        print(f"  wikidata  {kind:10} {label:14} -> {m.qid} ({m.status}, conf={m.confidence:.2f})")
+        print(f"  wikidata  {kind:10} {label:14} -> {m.qid} "
+              f"({m.status}/{m.type_match or 'unknown'}, conf={m.confidence:.2f})")
     return d["title"] or "?", d["ciic"], output_path.name, records
 
 
@@ -664,15 +674,19 @@ def main() -> None:
     ap.add_argument("--input", type=Path, help="single EpiDoc file (default: all stones)")
     ap.add_argument("--output", type=Path, help="output Turtle file (single-file mode only)")
     ap.add_argument("--offline", action="store_true", help="skip live Wikidata calls (cache only)")
+    ap.add_argument("--no-verify", action="store_true", help="skip P31/P279 type verification")
     args = ap.parse_args()
 
     cache = wikidata.load_cache(RECON_CACHE)
     online = not args.offline
+    verify = not args.no_verify
+    resolved = set()   # terms reconciled this run (fetch once)
+    overrides = wikidata.load_overrides(OBJTYPE_ALLOWLIST, "objectType")
     if args.input:
         out = args.output or (OUT / (args.input.stem + ".crm.ttl"))
-        process(args.input, out, cache=cache, online=online)
+        process(args.input, out, cache=cache, online=online, verify=verify, resolved=resolved, overrides=overrides)
     else:
-        results = [process(DATA / f, OUT / f"{b}.crm.ttl", cache=cache, online=online)
+        results = [process(DATA / f, OUT / f"{b}.crm.ttl", cache=cache, online=online, verify=verify, resolved=resolved, overrides=overrides)
                    for f, b in STONES]
         write_out_readme(results)
         emit_and_validate_crosswalk()

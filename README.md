@@ -62,6 +62,7 @@ tei--epidoc-crosswalk/
 │   ├── README.md              # crosswalk of the mapped elements (generated)
 │   ├── all-epidoc-elements.md # full element inventory + candidates (generated)
 │   ├── wikidata-links.csv     # Wikidata reconciliation cache (committed, human-verifiable)
+│   ├── objecttype-allowlist.csv # curated object-type QIDs (committed override)
 │   ├── S-ARL-001.xml          # Gigha 1 (CIIC 506)
 │   ├── I-COR-001.xml          # Coomleagh East (CIIC 55)
 │   ├── I-COR-030.xml          # Garranes (CIIC 81)
@@ -123,11 +124,17 @@ See `out/README.md` for the per-stone detail.
 Selected terms — **materials, object types, editors** — are anchored to Wikidata
 QIDs and written straight into the `*.crm.ttl` as weighted `skos:closeMatch`, each
 with an `ogham:matchConfidence` and `ogham:matchStatus` (reconciliation is itself
-uncertain, so links are weighted, not hard `owl:sameAs`). The committed cache
+uncertain, so links are weighted, not hard `owl:sameAs`). Each candidate's type is
+verified against Wikidata **P31/P279** (editor → human; material → rock/stone;
+object type → monument/standing stone …): the best type-fitting candidate is kept, otherwise the top hit is kept with **halved confidence** and flagged
+`matchTypeCheck = mismatch` — this catches e.g. *Pillar → column (architectural)* or
+*Rhys → the given name*. Use `--no-verify` to skip the type check. The committed cache
 `data/wikidata-links.csv` makes runs deterministic and lets you verify machine
 suggestions: `verified` entries are trusted; `auto` entries are refreshed from the
 live API and should be checked; `pending` entries are resolved on the next online
 run. Use `--offline` to skip the live API entirely.
+
+For object types, the search is unreliable (e.g. *Pillar* resolves to *column*, an architectural element). A committed curated allowlist `data/objecttype-allowlist.csv` maps an object-type term to a fixed QID (e.g. `Pillar` → a standing-stone / ogham-stone item); a filled entry **overrides** the search and is marked `matchStatus verified`, `matchTypeCheck curated`. It ships with `Pillar` present but empty — fill the QID you consider correct.
 
 ## Author & licence
 
