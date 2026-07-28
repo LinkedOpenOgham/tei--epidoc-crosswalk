@@ -9,8 +9,11 @@ crosswalk and the companion of
 vagueness modelling). It supports the DHd 2027 poster *"Mind the Gap zwischen
 Stein und Graph"*.
 
-See **`out/README.md`** (generated) for the element-by-element result — how each
-EpiDoc element ends up in CIDOC CRM for every stone.
+See **`out/README.md`** (generated) for: the three-layer crosswalk
+(EpiDoc → Linked Open Ogham class → CIDOC CRM), the supporting vocabularies
+(GeoSPARQL, PROV-O, OWL-Time, RDFS), the upward alignment of CIDOC CRM to the
+NFDI reference (OCMDP / NFDI Core → schema.org, DCAT, DataCite), and the
+element-by-element result for every stone.
 
 ## What it does
 

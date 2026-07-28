@@ -54,17 +54,32 @@ PROV = Namespace("http://www.w3.org/ns/prov#")
 OGHAM = Namespace("http://ontology.ogham.link/")
 DATA_NS = Namespace("http://data.ogham.link/crm/")
 
-# The core crosswalk. Drives emission AND the generated documentation.
+# The core crosswalk. Each row: EpiDoc element -> Linked Open Ogham ontology class
+# -> CIDOC CRM/CRMtex class (+ property), with any supporting vocabulary used on the
+# way. `ogham="—"` means the crosswalk goes straight to the CRM class (no dedicated
+# domain class). Drives the generated documentation.
 MAPPING = [
-    ("<support> (msDesc)",          "the stone",           "crm:E22_Human-Made_Object",  "(root node)"),
-    ("<idno type=CIIC|CISP|TM|SMR|Trove>", "identifiers",  "crm:E42_Identifier",         "P1_is_identified_by (+ P2_has_type)"),
-    ("<objectType>",                "object type",         "crm:E55_Type",               "P2_has_type"),
-    ("<material>",                  "material",            "crm:E57_Material",           "P45_consists_of"),
-    ("inscribed surface / <layout>","inscribed face",      "crm:E25_Human-Made_Feature", "P56_bears_feature"),
-    ("<div type=edition>",          "inscription text",    "crmtex:TX1_Written_Text",    "P128_carries"),
-    ("<div type=edition> / <rdg>",  "readings",            "crmtex:TX6_Transcription",   "TXP4_has_segment (from TX1) + prov:wasAttributedTo"),
-    ("<origPlace> + <geo>",         "place of origin",     "crm:E53_Place",              "P53_has_former_or_current_location (+ geo:asWKT)"),
-    ("<name nymRef> / <persName>",  "referenced name",     "crm:E21_Person",             "P67_refers_to (from TX1)"),
+    dict(el="<support> (msDesc)", role="the stone", ogham="ogham:OghamStone",
+         crm="crm:E22_Human-Made_Object", prop="(root node)", vocab="—"),
+    dict(el="<idno type=CIIC|CISP|TM|SMR|Trove>", role="identifiers", ogham="—",
+         crm="crm:E42_Identifier", prop="P1_is_identified_by (+ P2_has_type)", vocab="—"),
+    dict(el="<objectType>", role="object type", ogham="—",
+         crm="crm:E55_Type", prop="P2_has_type", vocab="—"),
+    dict(el="<material>", role="material", ogham="ogham:Material",
+         crm="crm:E57_Material", prop="P45_consists_of", vocab="—"),
+    dict(el="inscribed surface / <layout>", role="inscribed face", ogham="—",
+         crm="crm:E25_Human-Made_Feature", prop="P56_bears_feature", vocab="—"),
+    dict(el="<div type=edition>", role="inscription text", ogham="ogham:Inscription",
+         crm="crmtex:TX1_Written_Text", prop="P128_carries", vocab="CRMtex"),
+    dict(el="<div type=edition> / <rdg>", role="readings", ogham="ogham:Reading",
+         crm="crmtex:TX6_Transcription", prop="TXP4_has_segment + prov:wasAttributedTo",
+         vocab="CRMtex, PROV-O"),
+    dict(el="<origPlace> + <geo>", role="place of origin", ogham="ogham:Place",
+         crm="crm:E53_Place", prop="P53_has_former_or_current_location", vocab="GeoSPARQL"),
+    dict(el="<origDate> (when present)", role="date of origin", ogham="—",
+         crm="crm:E52_Time-Span", prop="P4_has_time-span", vocab="OWL-Time"),
+    dict(el="<name nymRef> / <persName>", role="referenced name", ogham="ogham:Person",
+         crm="crm:E21_Person", prop="P67_refers_to", vocab="—"),
 ]
 
 
@@ -248,17 +263,33 @@ def write_out_readme(results: list[tuple]) -> None:
         "(structurally, in CRMtex); the `amt:weight` belief over the readings is added in "
         "`tei--epidoc-amt` (axis 2).\n")
 
-    add("## 2. The crosswalk (EpiDoc element → CIDOC CRM / CRMtex)\n")
-    add("| EpiDoc element | role | CRM/CRMtex class | CRM property |")
-    add("|---|---|---|---|")
-    for el, role, klass, prop in MAPPING:
-        add(f"| `{esc(el)}` | {esc(role)} | `{esc(klass)}` | `{esc(prop)}` |")
+    add("## 2. The crosswalk: EpiDoc → Linked Open Ogham class → CIDOC CRM\n")
+    add("The crosswalk runs through an **intermediate domain layer**: each EpiDoc element "
+        "is mapped to a Linked Open Ogham ontology class, which is `rdfs:subClassOf` the "
+        "target CIDOC CRM / CRMtex class. `—` means the mapping goes straight to CRM.\n")
+    add("| EpiDoc element | Linked Open Ogham class | CIDOC CRM / CRMtex class | property | other vocab |")
+    add("|---|---|---|---|---|")
+    for r in MAPPING:
+        add(f"| `{esc(r['el'])}` | `{esc(r['ogham'])}` | `{esc(r['crm'])}` | "
+            f"`{esc(r['prop'])}` | {esc(r['vocab'])} |")
     add("")
     add("Namespaces: `crm: http://www.cidoc-crm.org/cidoc-crm/`, "
         "`crmtex: …/cidoc-crm/crmtex/`, `geo: http://www.opengis.net/ont/geosparql#`, "
-        "`prov: http://www.w3.org/ns/prov#`, `ogham: http://ontology.ogham.link/`.\n")
+        "`prov: http://www.w3.org/ns/prov#`, `time: http://www.w3.org/2006/time#`, "
+        "`ogham: http://ontology.ogham.link/`.\n")
 
-    add("## 3. Resolved modelling decisions\n")
+    add("## 3. Supporting vocabularies (used alongside CIDOC CRM)\n")
+    add("Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC "
+        "vocabularies for the aspects CRM deliberately leaves to specialised standards:\n")
+    add("| vocabulary | prefix | used for | in this graph |")
+    add("|---|---|---|---|")
+    add("| **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TX6_Transcription`, `TXP4_has_segment` |")
+    add("| **GeoSPARQL** (OGC) | `geo:` | geometry of places | `geo:asWKT` on `E53_Place` |")
+    add("| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |")
+    add("| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |")
+    add("| **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |\n")
+
+    add("## 4. Resolved modelling decisions\n")
     add("- **Material → `E57_Material` via `P45_consists_of`.** `E57_Material` is the CRM "
         "class for the substance an object is made of and is itself `rdfs:subClassOf E55_Type`; "
         "the ontology's `Material ⊑ E55` should be tightened to `⊑ E57` so `P45` is "
@@ -270,7 +301,30 @@ def write_out_readme(results: list[tuple]) -> None:
         "site/findspot), matching the ontology's `disclosedAt ⊑ P53`; a reconstructed origin "
         "would use `E12_Production` / `P7_took_place_at` instead.\n")
 
-    add("## 4. Per stone — how each element ends up in CIDOC CRM\n")
+    add("## 5. Where CIDOC CRM sits in the NFDI reference stack\n")
+    add("CIDOC CRM is the **domain-rich, event-based** reference for cultural-heritage "
+        "objects. For discovery-level interoperability across the NFDI, these classes align "
+        "*upward* via the NFDI4Objects **Object Core Metadata Profile (OCMDP)**, whose "
+        "super-elements crosswalk to the **NFDI Core Metadata Profile** — schema.org, "
+        "DataCite, DCAT, NFDI Core / NFDIcore, CodeMeta — as well as DublinCore and Wikidata; "
+        "on the class side, **MaCHeCO** provides the hierarchical crosswalk to CIDOC CRM "
+        "(Thiery, Gerber & Fricke 2025). Indicative class-level alignment:\n")
+    add("| CIDOC CRM | schema.org | DCAT / DCTERMS | DataCite |")
+    add("|---|---|---|---|")
+    add("| `E22_Human-Made_Object` | `schema:CreativeWork` / `Thing` | `dcat:Resource` | `resourceTypeGeneral=PhysicalObject` |")
+    add("| `E42_Identifier` | `schema:identifier` | `dct:identifier` | `Identifier` |")
+    add("| `E21_Person` | `schema:Person` / `creator` | `dct:creator` | `creator` / `contributor` |")
+    add("| `E53_Place` (+ geo) | `schema:spatialCoverage` | `dct:spatial` | `geoLocation` |")
+    add("| `E52_Time-Span` | `schema:temporalCoverage` | `dct:temporal` | `date` |")
+    add("| `E55_Type` | `schema:additionalType` | `dcat:theme` | `subject` |")
+    add("| `E57_Material` | `schema:material` | — | — |")
+    add("| `crmtex:TX1_Written_Text` | `schema:text` | — | — |\n")
+    add("*Indicative only.* The authoritative crosswalk is defined at the OCMDP super-element "
+        "level (Thiery, F., Gerber, A. & Fricke, F. 2025, *Squirrel Papers* 7(4), "
+        "https://doi.org/10.5281/zenodo.17159183; N4O TWG OCMDP/MaCHeCO, "
+        "https://www.nfdi4objects.net/en/twgs/twg2024-1_omds_oo/).\n")
+
+    add("## 6. Per stone — how each element ends up in CIDOC CRM\n")
     for title, ciic, out, records in results:
         add(f"### {title} (CIIC {ciic})\n")
         add(f"`{out}` — {len(records)} mapped elements.\n")

@@ -6,29 +6,61 @@
 
 For each ogham stone the core EpiDoc elements are mapped to **CIDOC CRM 7.1.3** and its text extension **CRMtex**, and serialised as RDF/Turtle (`out/<stone>.crm.ttl`). Instances also carry the matching `ogham.link` class, which is `rdfs:subClassOf` the CRM class — so the domain ontology *is* the crosswalk. The inscription and every competing reading are modelled here (structurally, in CRMtex); the `amt:weight` belief over the readings is added in `tei--epidoc-amt` (axis 2).
 
-## 2. The crosswalk (EpiDoc element → CIDOC CRM / CRMtex)
+## 2. The crosswalk: EpiDoc → Linked Open Ogham class → CIDOC CRM
 
-| EpiDoc element | role | CRM/CRMtex class | CRM property |
+The crosswalk runs through an **intermediate domain layer**: each EpiDoc element is mapped to a Linked Open Ogham ontology class, which is `rdfs:subClassOf` the target CIDOC CRM / CRMtex class. `—` means the mapping goes straight to CRM.
+
+| EpiDoc element | Linked Open Ogham class | CIDOC CRM / CRMtex class | property | other vocab |
+|---|---|---|---|---|
+| `<support> (msDesc)` | `ogham:OghamStone` | `crm:E22_Human-Made_Object` | `(root node)` | — |
+| `<idno type=CIIC\|CISP\|TM\|SMR\|Trove>` | `—` | `crm:E42_Identifier` | `P1_is_identified_by (+ P2_has_type)` | — |
+| `<objectType>` | `—` | `crm:E55_Type` | `P2_has_type` | — |
+| `<material>` | `ogham:Material` | `crm:E57_Material` | `P45_consists_of` | — |
+| `inscribed surface / <layout>` | `—` | `crm:E25_Human-Made_Feature` | `P56_bears_feature` | — |
+| `<div type=edition>` | `ogham:Inscription` | `crmtex:TX1_Written_Text` | `P128_carries` | CRMtex |
+| `<div type=edition> / <rdg>` | `ogham:Reading` | `crmtex:TX6_Transcription` | `TXP4_has_segment + prov:wasAttributedTo` | CRMtex, PROV-O |
+| `<origPlace> + <geo>` | `ogham:Place` | `crm:E53_Place` | `P53_has_former_or_current_location` | GeoSPARQL |
+| `<origDate> (when present)` | `—` | `crm:E52_Time-Span` | `P4_has_time-span` | OWL-Time |
+| `<name nymRef> / <persName>` | `ogham:Person` | `crm:E21_Person` | `P67_refers_to` | — |
+
+Namespaces: `crm: http://www.cidoc-crm.org/cidoc-crm/`, `crmtex: …/cidoc-crm/crmtex/`, `geo: http://www.opengis.net/ont/geosparql#`, `prov: http://www.w3.org/ns/prov#`, `time: http://www.w3.org/2006/time#`, `ogham: http://ontology.ogham.link/`.
+
+## 3. Supporting vocabularies (used alongside CIDOC CRM)
+
+Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC vocabularies for the aspects CRM deliberately leaves to specialised standards:
+
+| vocabulary | prefix | used for | in this graph |
 |---|---|---|---|
-| `<support> (msDesc)` | the stone | `crm:E22_Human-Made_Object` | `(root node)` |
-| `<idno type=CIIC\|CISP\|TM\|SMR\|Trove>` | identifiers | `crm:E42_Identifier` | `P1_is_identified_by (+ P2_has_type)` |
-| `<objectType>` | object type | `crm:E55_Type` | `P2_has_type` |
-| `<material>` | material | `crm:E57_Material` | `P45_consists_of` |
-| `inscribed surface / <layout>` | inscribed face | `crm:E25_Human-Made_Feature` | `P56_bears_feature` |
-| `<div type=edition>` | inscription text | `crmtex:TX1_Written_Text` | `P128_carries` |
-| `<div type=edition> / <rdg>` | readings | `crmtex:TX6_Transcription` | `TXP4_has_segment (from TX1) + prov:wasAttributedTo` |
-| `<origPlace> + <geo>` | place of origin | `crm:E53_Place` | `P53_has_former_or_current_location (+ geo:asWKT)` |
-| `<name nymRef> / <persName>` | referenced name | `crm:E21_Person` | `P67_refers_to (from TX1)` |
+| **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TX6_Transcription`, `TXP4_has_segment` |
+| **GeoSPARQL** (OGC) | `geo:` | geometry of places | `geo:asWKT` on `E53_Place` |
+| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |
+| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |
+| **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |
 
-Namespaces: `crm: http://www.cidoc-crm.org/cidoc-crm/`, `crmtex: …/cidoc-crm/crmtex/`, `geo: http://www.opengis.net/ont/geosparql#`, `prov: http://www.w3.org/ns/prov#`, `ogham: http://ontology.ogham.link/`.
-
-## 3. Resolved modelling decisions
+## 4. Resolved modelling decisions
 
 - **Material → `E57_Material` via `P45_consists_of`.** `E57_Material` is the CRM class for the substance an object is made of and is itself `rdfs:subClassOf E55_Type`; the ontology's `Material ⊑ E55` should be tightened to `⊑ E57` so `P45` is type-consistent.
 - **Readings → `crmtex:TX6_Transcription`, `TXP4_has_segment` from the `TX1`, `prov:wasAttributedTo` the editor.** This follows the ontology (`Reading ⊑ TX6`, `identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2.
 - **Place → `P53_has_former_or_current_location`** (the recorded `<geo>` is the site/findspot), matching the ontology's `disclosedAt ⊑ P53`; a reconstructed origin would use `E12_Production` / `P7_took_place_at` instead.
 
-## 4. Per stone — how each element ends up in CIDOC CRM
+## 5. Where CIDOC CRM sits in the NFDI reference stack
+
+CIDOC CRM is the **domain-rich, event-based** reference for cultural-heritage objects. For discovery-level interoperability across the NFDI, these classes align *upward* via the NFDI4Objects **Object Core Metadata Profile (OCMDP)**, whose super-elements crosswalk to the **NFDI Core Metadata Profile** — schema.org, DataCite, DCAT, NFDI Core / NFDIcore, CodeMeta — as well as DublinCore and Wikidata; on the class side, **MaCHeCO** provides the hierarchical crosswalk to CIDOC CRM (Thiery, Gerber & Fricke 2025). Indicative class-level alignment:
+
+| CIDOC CRM | schema.org | DCAT / DCTERMS | DataCite |
+|---|---|---|---|
+| `E22_Human-Made_Object` | `schema:CreativeWork` / `Thing` | `dcat:Resource` | `resourceTypeGeneral=PhysicalObject` |
+| `E42_Identifier` | `schema:identifier` | `dct:identifier` | `Identifier` |
+| `E21_Person` | `schema:Person` / `creator` | `dct:creator` | `creator` / `contributor` |
+| `E53_Place` (+ geo) | `schema:spatialCoverage` | `dct:spatial` | `geoLocation` |
+| `E52_Time-Span` | `schema:temporalCoverage` | `dct:temporal` | `date` |
+| `E55_Type` | `schema:additionalType` | `dcat:theme` | `subject` |
+| `E57_Material` | `schema:material` | — | — |
+| `crmtex:TX1_Written_Text` | `schema:text` | — | — |
+
+*Indicative only.* The authoritative crosswalk is defined at the OCMDP super-element level (Thiery, F., Gerber, A. & Fricke, F. 2025, *Squirrel Papers* 7(4), https://doi.org/10.5281/zenodo.17159183; N4O TWG OCMDP/MaCHeCO, https://www.nfdi4objects.net/en/twgs/twg2024-1_omds_oo/).
+
+## 6. Per stone — how each element ends up in CIDOC CRM
 
 ### Gigha 1 (CIIC 506)
 
