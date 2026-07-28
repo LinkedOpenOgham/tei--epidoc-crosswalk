@@ -26,13 +26,14 @@ import re
 from pathlib import Path
 
 from lxml import etree
-from rdflib import Graph, Literal, Namespace
-from rdflib.namespace import RDF, RDFS, XSD
+from rdflib import Graph, Literal, Namespace, URIRef
+from rdflib.namespace import RDF, RDFS, XSD, OWL
 
 # --- repo-root-relative paths -------------------------------------------------
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "data"
 OUT = ROOT / "out"
+SHAPES = ROOT / "shapes" / "crosswalk-shapes.ttl"   # committed SHACL rules (not generated)
 
 STONES = [
     ("S-ARL-001.xml", "gigha1"),
@@ -53,6 +54,25 @@ GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 OGHAM = Namespace("http://ontology.ogham.link/")
 DATA_NS = Namespace("http://data.ogham.link/crm/")
+SCHEMA = Namespace("http://schema.org/")
+TIME = Namespace("http://www.w3.org/2006/time#")
+SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
+TEIAPP = Namespace("http://ontology.ogham.link/tei-application/")
+
+# Derived per CRM class: the TEI/EpiDoc application class name + the NFDI Core term.
+# (The application classes correspond to the EpiDoc tags in MAPPING.)
+CROSSWALK_EXTRA = {
+    "crm:E22_Human-Made_Object": ("Support", "schema:CreativeWork"),
+    "crm:E42_Identifier": ("Idno", "schema:identifier"),
+    "crm:E55_Type": ("ObjectType", "schema:DefinedTerm"),
+    "crm:E57_Material": ("Material", "schema:material"),
+    "crm:E25_Human-Made_Feature": ("Layout", "schema:Thing"),
+    "crmtex:TX1_Written_Text": ("EditionText", "schema:CreativeWork"),
+    "crmtex:TX6_Transcription": ("Reading", "schema:CreativeWork"),
+    "crm:E53_Place": ("OrigPlace", "schema:Place"),
+    "crm:E52_Time-Span": ("OrigDate", "schema:Date"),
+    "crm:E21_Person": ("PersName", "schema:Person"),
+}
 
 # The core crosswalk. Each row: EpiDoc element -> Linked Open Ogham ontology class
 # -> CIDOC CRM/CRMtex class (+ property), with any supporting vocabulary used on the
@@ -324,7 +344,20 @@ def write_out_readme(results: list[tuple]) -> None:
         "https://doi.org/10.5281/zenodo.17159183; N4O TWG OCMDP/MaCHeCO, "
         "https://www.nfdi4objects.net/en/twgs/twg2024-1_omds_oo/).\n")
 
-    add("## 6. Per stone — how each element ends up in CIDOC CRM\n")
+    add("## 6. The crosswalk as an OWL ontology (`crosswalk.ttl`) + SHACL\n")
+    add("The crosswalk is also emitted as an **OWL ontology** (`out/crosswalk.ttl`) that "
+        "models it as a class hierarchy: each TEI/EpiDoc application class "
+        "(`teiapp:Support`, `teiapp:Idno`, `teiapp:Reading`, …, derived from the tags) is "
+        "`rdfs:subClassOf` its Linked Open Ogham class, which is `rdfs:subClassOf` the CIDOC "
+        "CRM class, up to `crm:E1_CRM_Entity rdfs:subClassOf owl:Thing`. Every CRM class also "
+        "carries an `ogham:nfdiCoreMatch` to a NFDI Core / schema.org term.\n")
+    add("A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every application "
+        "class (`sh:targetClass teiapp:TEIApplicationClass`) on two constraints:\n")
+    add("1. it must reach `crm:E1_CRM_Entity` via `rdfs:subClassOf+` — it has a CIDOC CRM superclass;")
+    add("2. it (or a superclass) must carry `ogham:nfdiCoreMatch` — it is linked to the NFDI Core profile.\n")
+    add("`python py/main.py` runs this validation; the current crosswalk is **SHACL-valid**.\n")
+
+    add("## 7. Per stone — how each element ends up in CIDOC CRM\n")
     for title, ciic, out, records in results:
         add(f"### {title} (CIIC {ciic})\n")
         add(f"`{out}` — {len(records)} mapped elements.\n")
@@ -338,6 +371,81 @@ def write_out_readme(results: list[tuple]) -> None:
 
     (OUT / "README.md").write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"  -> wrote {(OUT / 'README.md').relative_to(ROOT)}")
+
+
+def _term(qname: str):
+    pfx, local = qname.split(":", 1)
+    ns = {"crm": CRM, "crmtex": CRMTEX, "ogham": OGHAM, "schema": SCHEMA,
+          "time": TIME, "teiapp": TEIAPP, "skos": SKOS}[pfx]
+    return ns[local]
+
+
+def build_crosswalk_ontology() -> Graph:
+    """Model the crosswalk as an OWL class hierarchy:
+    teiapp:<tag> rdfs:subClassOf ogham:<class> rdfs:subClassOf crm:<class>
+    rdfs:subClassOf crm:E1_CRM_Entity rdfs:subClassOf owl:Thing, with an
+    ogham:nfdiCoreMatch on every CRM class."""
+    g = Graph()
+    for pfx, ns in (("owl", OWL), ("rdfs", RDFS), ("skos", SKOS), ("crm", CRM),
+                    ("crmtex", CRMTEX), ("ogham", OGHAM), ("schema", SCHEMA),
+                    ("time", TIME), ("teiapp", TEIAPP)):
+        g.bind(pfx, ns)
+
+    onto = URIRef("http://ontology.ogham.link/tei-application")
+    g.add((onto, RDF.type, OWL.Ontology))
+    g.add((onto, RDFS.label, Literal("TEI/EpiDoc \u2192 CIDOC CRM crosswalk ontology (Linked Open Ogham)")))
+
+    g.add((CRM["E1_CRM_Entity"], RDF.type, OWL.Class))
+    g.add((CRM["E1_CRM_Entity"], RDFS.subClassOf, OWL.Thing))
+
+    g.add((TEIAPP["TEIApplicationClass"], RDF.type, OWL.Class))
+    g.add((TEIAPP["TEIApplicationClass"], RDFS.label, Literal("TEI/EpiDoc application class")))
+
+    g.add((OGHAM["nfdiCoreMatch"], RDF.type, OWL.AnnotationProperty))
+    g.add((OGHAM["nfdiCoreMatch"], RDFS.label, Literal("aligns with NFDI Core term")))
+    g.add((OGHAM["nfdiCoreMatch"], RDFS.comment,
+           Literal("Indicative class-level alignment to the NFDI Core Metadata Profile "
+                   "(schema.org / DCAT / DataCite via the N4O OCMDP).")))
+
+    for r in MAPPING:
+        tei, nfdi = CROSSWALK_EXTRA[r["crm"]]
+        crm_uri = _term(r["crm"])
+        g.add((crm_uri, RDF.type, OWL.Class))
+        g.add((crm_uri, RDFS.subClassOf, CRM["E1_CRM_Entity"]))
+        g.add((crm_uri, OGHAM["nfdiCoreMatch"], _term(nfdi)))
+        parent = crm_uri
+        if r["ogham"] != "\u2014":
+            og = _term(r["ogham"])
+            g.add((og, RDF.type, OWL.Class))
+            g.add((og, RDFS.subClassOf, crm_uri))          # anchor from the Linked Ogham ontology
+            parent = og
+        tc = TEIAPP[tei]
+        g.add((tc, RDF.type, OWL.Class))
+        g.add((tc, RDF.type, TEIAPP["TEIApplicationClass"]))   # OWL punning for SHACL targeting
+        g.add((tc, RDFS.subClassOf, parent))
+        g.add((tc, RDFS.label, Literal(f"TEI/EpiDoc {r['el']}")))
+        g.add((tc, SKOS.note, Literal(f"Application class derived from EpiDoc {r['el']}.")))
+    return g
+
+
+def emit_and_validate_crosswalk() -> None:
+    onto = build_crosswalk_ontology()
+    onto.serialize(destination=str(OUT / "crosswalk.ttl"), format="turtle")
+    print(f"  -> wrote out/crosswalk.ttl ({len(onto)} triples)")
+    if not SHAPES.exists():
+        print(f"  (SHACL skipped: {SHAPES.relative_to(ROOT)} not found)")
+        return
+    try:
+        from pyshacl import validate
+        conforms, _, report = validate(data_graph=str(OUT / "crosswalk.ttl"),
+                                       shacl_graph=str(SHAPES),
+                                       advanced=True)
+        print(f"  crosswalk SHACL: {'VALID' if conforms else 'INVALID'} "
+              f"({len(MAPPING)} TEI application classes checked)")
+        if not conforms:
+            print(report)
+    except ImportError:
+        print("  (install pyshacl to validate the crosswalk ontology)")
 
 
 def process(input_path: Path, output_path: Path):
@@ -365,6 +473,7 @@ def main() -> None:
     else:
         results = [process(DATA / f, OUT / f"{b}.crm.ttl") for f, b in STONES]
         write_out_readme(results)
+        emit_and_validate_crosswalk()
 
 
 if __name__ == "__main__":

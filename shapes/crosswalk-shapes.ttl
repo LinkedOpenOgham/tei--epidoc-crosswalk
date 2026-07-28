@@ -1,0 +1,21 @@
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix teiapp: <http://ontology.ogham.link/tei-application/> .
+
+teiapp:crosswalkPrefixes
+    sh:declare [ sh:prefix "rdfs" ; sh:namespace "http://www.w3.org/2000/01/rdf-schema#"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "crm" ; sh:namespace "http://www.cidoc-crm.org/cidoc-crm/"^^xsd:anyURI ] ;
+    sh:declare [ sh:prefix "ogham" ; sh:namespace "http://ontology.ogham.link/"^^xsd:anyURI ] .
+
+teiapp:ApplicationClassShape a sh:NodeShape ;
+    sh:targetClass teiapp:TEIApplicationClass ;
+    sh:sparql [
+        sh:message "TEI application class has no CIDOC CRM superclass (must reach crm:E1_CRM_Entity)." ;
+        sh:prefixes teiapp:crosswalkPrefixes ;
+        sh:select "SELECT $this WHERE { FILTER NOT EXISTS { $this rdfs:subClassOf+ crm:E1_CRM_Entity } }" ;
+    ] ;
+    sh:sparql [
+        sh:message "TEI application class is not linked to the NFDI Core profile (no ogham:nfdiCoreMatch on it or a superclass)." ;
+        sh:prefixes teiapp:crosswalkPrefixes ;
+        sh:select "SELECT $this WHERE { FILTER NOT EXISTS { $this rdfs:subClassOf* ?c . ?c ogham:nfdiCoreMatch ?n } }" ;
+    ] .

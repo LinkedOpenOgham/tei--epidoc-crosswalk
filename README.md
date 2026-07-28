@@ -38,6 +38,22 @@ crosswalk. Namespaces are aligned with the `ogham.link` ontology
 (`crm: http://www.cidoc-crm.org/cidoc-crm/`, `crmtex: …/cidoc-crm/crmtex/`,
 `geo: http://www.opengis.net/ont/geosparql#`).
 
+## Crosswalk ontology & SHACL validation
+
+Two kinds of RDF are produced. The per-stone `*.crm.ttl` files are **instances**
+(A-Box). The crosswalk itself is emitted as an **OWL ontology** `out/crosswalk.ttl`
+(T-Box): every TEI/EpiDoc application class (`teiapp:Support`, `teiapp:Idno`,
+`teiapp:Reading`, … — derived from the tags) is `rdfs:subClassOf` its Linked Open
+Ogham class, which is `rdfs:subClassOf` the CIDOC CRM class, up to
+`crm:E1_CRM_Entity rdfs:subClassOf owl:Thing`; every CRM class carries an
+`ogham:nfdiCoreMatch` to a NFDI Core / schema.org term.
+
+`shapes/crosswalk-shapes.ttl` (SHACL) then validates every application class on two
+constraints: (1) it must reach `crm:E1_CRM_Entity` (has a CIDOC CRM superclass),
+and (2) it or a superclass must carry `ogham:nfdiCoreMatch` (is linked to the NFDI
+Core profile). `python py/main.py` runs the check — the current crosswalk is
+SHACL-valid.
+
 ## Repository structure
 
 ```
@@ -48,8 +64,11 @@ tei--epidoc-crosswalk/
 │   ├── I-COR-030.xml          # Garranes (CIIC 81)
 │   └── I-KER-020.xml          # Ballinrannig 6 (CIIC 153)
 ├── out/                       # generated outputs
-│   ├── README.md              # element-by-element CRM result (generated)
-│   └── *.crm.ttl              # one CIDOC CRM graph per stone (generated)
+│   ├── README.md              # documentation (generated)
+│   ├── *.crm.ttl              # one CIDOC CRM instance graph per stone (generated)
+│   └── crosswalk.ttl          # the crosswalk as an OWL class hierarchy (generated)
+├── shapes/                    # committed SHACL validation rules (not generated)
+│   └── crosswalk-shapes.ttl   # every TEI class → CRM superclass + NFDI link
 ├── py/
 │   └── main.py                # single entry point:  python py/main.py
 ├── .gitignore

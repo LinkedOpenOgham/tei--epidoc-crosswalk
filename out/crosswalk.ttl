@@ -1,0 +1,140 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema1: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix teiapp: <http://ontology.ogham.link/tei-application/> .
+
+ogham:nfdiCoreMatch a owl:AnnotationProperty ;
+    rdfs:label "aligns with NFDI Core term" ;
+    rdfs:comment "Indicative class-level alignment to the NFDI Core Metadata Profile (schema.org / DCAT / DataCite via the N4O OCMDP)." .
+
+ogham:tei-application a owl:Ontology ;
+    rdfs:label "TEI/EpiDoc → CIDOC CRM crosswalk ontology (Linked Open Ogham)" .
+
+teiapp:EditionText a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <div type=edition>" ;
+    rdfs:subClassOf ogham:Inscription ;
+    skos:note "Application class derived from EpiDoc <div type=edition>." .
+
+teiapp:Idno a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <idno type=CIIC|CISP|TM|SMR|Trove>" ;
+    rdfs:subClassOf crm:E42_Identifier ;
+    skos:note "Application class derived from EpiDoc <idno type=CIIC|CISP|TM|SMR|Trove>." .
+
+teiapp:Layout a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc inscribed surface / <layout>" ;
+    rdfs:subClassOf crm:E25_Human-Made_Feature ;
+    skos:note "Application class derived from EpiDoc inscribed surface / <layout>." .
+
+teiapp:Material a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <material>" ;
+    rdfs:subClassOf ogham:Material ;
+    skos:note "Application class derived from EpiDoc <material>." .
+
+teiapp:ObjectType a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <objectType>" ;
+    rdfs:subClassOf crm:E55_Type ;
+    skos:note "Application class derived from EpiDoc <objectType>." .
+
+teiapp:OrigDate a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <origDate> (when present)" ;
+    rdfs:subClassOf crm:E52_Time-Span ;
+    skos:note "Application class derived from EpiDoc <origDate> (when present)." .
+
+teiapp:OrigPlace a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <origPlace> + <geo>" ;
+    rdfs:subClassOf ogham:Place ;
+    skos:note "Application class derived from EpiDoc <origPlace> + <geo>." .
+
+teiapp:PersName a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <name nymRef> / <persName>" ;
+    rdfs:subClassOf ogham:Person ;
+    skos:note "Application class derived from EpiDoc <name nymRef> / <persName>." .
+
+teiapp:Reading a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <div type=edition> / <rdg>" ;
+    rdfs:subClassOf ogham:Reading ;
+    skos:note "Application class derived from EpiDoc <div type=edition> / <rdg>." .
+
+teiapp:Support a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <support> (msDesc)" ;
+    rdfs:subClassOf ogham:OghamStone ;
+    skos:note "Application class derived from EpiDoc <support> (msDesc)." .
+
+ogham:Inscription a owl:Class ;
+    rdfs:subClassOf crmtex:TX1_Written_Text .
+
+ogham:Material a owl:Class ;
+    rdfs:subClassOf crm:E57_Material .
+
+ogham:OghamStone a owl:Class ;
+    rdfs:subClassOf crm:E22_Human-Made_Object .
+
+ogham:Person a owl:Class ;
+    rdfs:subClassOf crm:E21_Person .
+
+ogham:Place a owl:Class ;
+    rdfs:subClassOf crm:E53_Place .
+
+ogham:Reading a owl:Class ;
+    rdfs:subClassOf crmtex:TX6_Transcription .
+
+crm:E21_Person a owl:Class ;
+    ogham:nfdiCoreMatch schema1:Person ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E22_Human-Made_Object a owl:Class ;
+    ogham:nfdiCoreMatch schema1:CreativeWork ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E25_Human-Made_Feature a owl:Class ;
+    ogham:nfdiCoreMatch schema1:Thing ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E42_Identifier a owl:Class ;
+    ogham:nfdiCoreMatch schema1:identifier ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E52_Time-Span a owl:Class ;
+    ogham:nfdiCoreMatch schema1:Date ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E53_Place a owl:Class ;
+    ogham:nfdiCoreMatch schema1:Place ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E55_Type a owl:Class ;
+    ogham:nfdiCoreMatch schema1:DefinedTerm ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E57_Material a owl:Class ;
+    ogham:nfdiCoreMatch schema1:material ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crmtex:TX1_Written_Text a owl:Class ;
+    ogham:nfdiCoreMatch schema1:CreativeWork ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crmtex:TX6_Transcription a owl:Class ;
+    ogham:nfdiCoreMatch schema1:CreativeWork ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+teiapp:TEIApplicationClass a owl:Class ;
+    rdfs:label "TEI/EpiDoc application class" .
+
+crm:E1_CRM_Entity a owl:Class ;
+    rdfs:subClassOf owl:Thing .
+

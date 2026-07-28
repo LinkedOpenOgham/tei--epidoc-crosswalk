@@ -60,7 +60,18 @@ CIDOC CRM is the **domain-rich, event-based** reference for cultural-heritage ob
 
 *Indicative only.* The authoritative crosswalk is defined at the OCMDP super-element level (Thiery, F., Gerber, A. & Fricke, F. 2025, *Squirrel Papers* 7(4), https://doi.org/10.5281/zenodo.17159183; N4O TWG OCMDP/MaCHeCO, https://www.nfdi4objects.net/en/twgs/twg2024-1_omds_oo/).
 
-## 6. Per stone — how each element ends up in CIDOC CRM
+## 6. The crosswalk as an OWL ontology (`crosswalk.ttl`) + SHACL
+
+The crosswalk is also emitted as an **OWL ontology** (`out/crosswalk.ttl`) that models it as a class hierarchy: each TEI/EpiDoc application class (`teiapp:Support`, `teiapp:Idno`, `teiapp:Reading`, …, derived from the tags) is `rdfs:subClassOf` its Linked Open Ogham class, which is `rdfs:subClassOf` the CIDOC CRM class, up to `crm:E1_CRM_Entity rdfs:subClassOf owl:Thing`. Every CRM class also carries an `ogham:nfdiCoreMatch` to a NFDI Core / schema.org term.
+
+A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every application class (`sh:targetClass teiapp:TEIApplicationClass`) on two constraints:
+
+1. it must reach `crm:E1_CRM_Entity` via `rdfs:subClassOf+` — it has a CIDOC CRM superclass;
+2. it (or a superclass) must carry `ogham:nfdiCoreMatch` — it is linked to the NFDI Core profile.
+
+`python py/main.py` runs this validation; the current crosswalk is **SHACL-valid**.
+
+## 7. Per stone — how each element ends up in CIDOC CRM
 
 ### Gigha 1 (CIIC 506)
 
