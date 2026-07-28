@@ -58,7 +58,9 @@ SHACL-valid.
 
 ```
 tei--epidoc-crosswalk/
-├── data/                      # inputs (EpiDoc XML)
+├── data/                      # inputs (EpiDoc XML) + generated element docs
+│   ├── README.md              # crosswalk of the mapped elements (generated)
+│   ├── all-epidoc-elements.md # full element inventory + candidates (generated)
 │   ├── S-ARL-001.xml          # Gigha 1 (CIIC 506)
 │   ├── I-COR-001.xml          # Coomleagh East (CIIC 55)
 │   ├── I-COR-030.xml          # Garranes (CIIC 81)

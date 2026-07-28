@@ -22,7 +22,9 @@ the CRM classes), so the domain ontology *is* the crosswalk.
 from __future__ import annotations
 
 import argparse
+import glob
 import re
+from collections import Counter
 from pathlib import Path
 
 from lxml import etree
@@ -448,6 +450,142 @@ def emit_and_validate_crosswalk() -> None:
         print("  (install pyshacl to validate the crosswalk ontology)")
 
 
+# --- element inventory & classification (for the data/ documentation) ----------
+PRIMARY_TAG = {
+    "crm:E22_Human-Made_Object": "support", "crm:E42_Identifier": "idno",
+    "crm:E55_Type": "objectType", "crm:E57_Material": "material",
+    "crm:E25_Human-Made_Feature": "layout", "crmtex:TX1_Written_Text": "div",
+    "crmtex:TX6_Transcription": "rdg", "crm:E53_Place": "origPlace",
+    "crm:E52_Time-Span": "origDate", "crm:E21_Person": "name",
+}
+ALSO_MAPPED = {
+    "geo": "crm:E53_Place (via <origPlace>)",
+    "persName": "crm:E21_Person (via <name>)",
+    "ab": "crmtex:TX1_Written_Text (display line, feeds the edition text)",
+}
+# sensible CIDOC CRM targets we could add next (not yet emitted)
+CANDIDATE = {
+    "dimensions": "crm:E54_Dimension (P43_has_dimension)",
+    "height": "crm:E54_Dimension (P90/P91)", "width": "crm:E54_Dimension",
+    "depth": "crm:E54_Dimension", "dim": "crm:E54_Dimension",
+    "condition": "crm:E3_Condition_State (P44_has_condition)",
+    "repository": "crm:E40_Legal_Body / E39_Actor (P50_has_current_keeper)",
+    "title": "crm:E35_Title (P102_has_title)",
+    "provenance": "crm:E5_Event / E9_Move (object biography)",
+    "origin": "crm:E12_Production (P108_has_produced)",
+    "history": "crm:E5_Event (object-biography wrapper)",
+    "bibl": "crm:E31_Document (P70_documents)", "listBibl": "crm:E31_Document",
+    "citedRange": "crm:E31_Document (cited range)",
+    "lb": "crmtex:TX7_Written_Text_Segment",
+    "w": "crm:E36_Visual_Item / ogham:Word",
+    "term": "crm:E55_Type (e.g. type_of_inscription)",
+    "keywords": "crm:E55_Type (classification)",
+    "rs": "crm:E55_Type (e.g. execution technique)",
+    "date": "crm:E52_Time-Span (P4_has_time-span)",
+    "placeName": "crm:E53_Place (place hierarchy)",
+    "country": "crm:E53_Place (place hierarchy)",
+    "language": "crm:E56_Language / crmtex:TX3_Writing_System",
+    "textLang": "crm:E56_Language / crmtex:TX3_Writing_System",
+    "editor": "crm:E39_Actor (P14_carried_out_by)",
+    "resp": "crm:E39_Actor (editorial responsibility)",
+    "respStmt": "crm:E39_Actor (PROV)",
+    "orgName": "crm:E74_Group / E40_Legal_Body",
+    "graphic": "crmdig:D1_Digital_Object (image)",
+    "facsimile": "crmdig:D1_Digital_Object",
+    "media": "crmdig:D1_Digital_Object (3D/photo)",
+    "note": "crm:E62_String (P3_has_note)",
+    "q": "crm:E33_Linguistic_Object (quotation)",
+}
+DOUBT = {
+    "unclear": "\u2192 amt:weight (axis 2)", "supplied": "\u2192 amt:weight (axis 2)",
+    "gap": "\u2192 amt:weight (axis 2)", "certainty": "\u2192 amt:weight (axis 2)",
+    "app": "apparatus \u2192 axis 2", "listApp": "apparatus \u2192 axis 2",
+}
+STRUCTURAL = {
+    "TEI", "teiHeader", "fileDesc", "titleStmt", "publicationStmt", "sourceDesc",
+    "encodingDesc", "profileDesc", "revisionDesc", "textClass", "langUsage",
+    "msDesc", "msIdentifier", "msContents", "msItem", "physDesc", "objectDesc",
+    "supportDesc", "layoutDesc", "handDesc", "handNote", "body", "text", "p",
+    "desc", "funder", "licence", "availability", "authority", "change",
+    "listChange", "include", "altIdentifier", "calendar", "calendarDesc",
+    "distinct", "ptr", "ref",
+}
+
+
+def scan_tags():
+    """Return (total counts, per-file presence 0..4) for every EpiDoc element tag."""
+    total, presence = Counter(), Counter()
+    files = sorted(glob.glob(str(DATA / "*.xml")))
+    for f in files:
+        seen = set()
+        for el in etree.parse(f).iter():
+            if isinstance(el.tag, str):
+                tag = etree.QName(el).localname
+                total[tag] += 1
+                seen.add(tag)
+        for tag in seen:
+            presence[tag] += 1
+    return total, presence, len(files)
+
+
+def classify(tag):
+    """(status, target) for a tag in the full inventory."""
+    for r in MAPPING:
+        if PRIMARY_TAG.get(r["crm"]) == tag:
+            return "\u2705 mapped", r["crm"]
+    if tag in ALSO_MAPPED:
+        return "\u2705 mapped", ALSO_MAPPED[tag]
+    if tag in CANDIDATE:
+        return "\U0001f527 candidate", CANDIDATE[tag]
+    if tag in DOUBT:
+        return "\u2461 axis 2 (AMT)", DOUBT[tag]
+    if tag in STRUCTURAL:
+        return "\u25ab structural", "\u2014 (TEI structure / record metadata)"
+    return "? to review", "\u2014"
+
+
+def write_data_readme(presence, n_files):
+    L, add = [], None
+    L = []; add = L.append
+    esc = lambda s: str(s).replace("|", "\\|")
+    add("# `data/` \u2014 EpiDoc elements crosswalked to CIDOC CRM (current mapping)\n")
+    add(f"> **Generated** by `python py/main.py`. Describes the crosswalk for the EpiDoc "
+        f"elements currently handled, based on the {n_files} input files in this folder. "
+        f"For every element in the corpus (including the ones not yet mapped) see "
+        f"`all-epidoc-elements.md`; for the full documentation see `../out/README.md`.\n")
+    add(f"| EpiDoc element | in stones | Linked Open Ogham class | CIDOC CRM / CRMtex | property |")
+    add("|---|---|---|---|---|")
+    for r in MAPPING:
+        tag = PRIMARY_TAG.get(r["crm"], "")
+        n = presence.get(tag, 0)
+        add(f"| `{esc(r['el'])}` | {n}/{n_files} | `{esc(r['ogham'])}` | "
+            f"`{esc(r['crm'])}` | `{esc(r['prop'])}` |")
+    add("")
+    (DATA / "README.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+    print(f"  -> wrote {(DATA / 'README.md').relative_to(ROOT)}")
+
+
+def write_all_elements_readme(total, n_files):
+    L = []; add = L.append
+    esc = lambda s: str(s).replace("|", "\\|")
+    add("# All EpiDoc elements in the corpus \u2014 crosswalk status & candidates\n")
+    add(f"> **Generated** by `python py/main.py`. Every EpiDoc element tag found across the "
+        f"{n_files} input files, with its crosswalk status: **\u2705 mapped** (emitted now), "
+        f"**\U0001f527 candidate** (a sensible CIDOC CRM target we could add next), "
+        f"**\u2461 axis 2** (doubt signal, handled in `tei--epidoc-amt`), or "
+        f"**\u25ab structural** (TEI wrapper / record metadata).\n")
+    tally = Counter(classify(tag)[0] for tag in total)
+    add("Summary: " + " \u00b7 ".join(f"{k} {v}" for k, v in sorted(tally.items())) + ".\n")
+    add("| element | count | status | CIDOC CRM target / note |")
+    add("|---|---|---|---|")
+    for tag, n in sorted(total.items(), key=lambda x: (-x[1], x[0])):
+        status, target = classify(tag)
+        add(f"| `{tag}` | {n} | {status} | {esc(target)} |")
+    add("")
+    (DATA / "all-epidoc-elements.md").write_text("\n".join(L) + "\n", encoding="utf-8")
+    print(f"  -> wrote {(DATA / 'all-epidoc-elements.md').relative_to(ROOT)}")
+
+
 def process(input_path: Path, output_path: Path):
     tree = etree.parse(str(input_path))
     d = parse(tree)
@@ -474,6 +612,9 @@ def main() -> None:
         results = [process(DATA / f, OUT / f"{b}.crm.ttl") for f, b in STONES]
         write_out_readme(results)
         emit_and_validate_crosswalk()
+        total, presence, n_files = scan_tags()
+        write_data_readme(presence, n_files)
+        write_all_elements_readme(total, n_files)
 
 
 if __name__ == "__main__":
