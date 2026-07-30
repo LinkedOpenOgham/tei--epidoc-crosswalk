@@ -136,6 +136,7 @@ drift apart:
 | `docs/words.html` | the formulaic vocabulary, filterable by word, points or hex density |
 | `docs/readings.html` | stones with competing readings, by distance and editor |
 | `docs/keepers.html` | findspot-to-museum arcs, filterable by institution |
+| `docs/setting.html` | how each stone stands today, in the landscape or under a roof |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
 Over the full corpus: **504 stones, 395 distinct places** across 12 administrative
@@ -149,6 +150,58 @@ a landing page and, at the moment, two views — the findspot map (filterable by
 country and by free text, with hedged findspots as dashed rings and the
 `data:findspot_*` node in every popup) and the formulaic-word map. Nothing in them
 re-parses the XML, so map, table and graph cannot drift apart.
+
+## Where the stones stand today (`docs/setting.html`)
+
+`<repository>` answers one question: is it in an institution? For the 322 stones
+where it is silent, the answer is not *unknown* — it is **not known to be in an
+institution**, and `<provenance type="observed">` usually says a good deal more:
+
+> *"In situ in pasture, on a gentle south facing slope"*
+> *"Built into the wall of a summer house in the garden of Lancarffe House"*
+> *"Still in place above the south window of the church at Knockboy"*
+> *"Kept in a nearby modern enclosure with I-KER-118 and a boulder with rock art"*
+
+So the reading runs on two axes. **Custody** is coarse and mostly reliable:
+
+| | stones |
+|---|---|
+| out in the landscape | 213 |
+| in an institution | 183 |
+| indoors, but visitable | 58 |
+| not described | 35 |
+| lost or unlocated | 15 |
+
+**Setting** is finer, and is a reading of free prose: *in situ or at the find site*
+(86), *built into a structure* (54), *inside a church* (53), *in private or
+institutional grounds* (29), *in a protective enclosure* (23), *in a churchyard*
+(21), *visitor or heritage centre* (5), *in conservation* (1).
+
+On the map a **circle** is out of doors and a **square** is under a roof, so the
+coarse fact survives at a zoom where the colours run together.
+
+### Every verdict shows its working
+
+The rules were written against the corpus rather than guessed at, and each stone
+carries the sentence it was judged on plus the phrase that decided it:
+
+> **Lancarffe** · built into a structure
+> *"Built into the wall of a summer house in the garden of Lancarffe House by Mr Dunn in 1928."*
+> decided by: matched "Built into"
+
+Of the 469 stones with an observed statement, **all 469 now classify**; the 35
+`not described` are exactly those where the edition says nothing. That is not the
+same as unknown — it still tells you the stone is not recorded as being in a museum.
+
+Two things this shook out. A bare *"conservation"* appears in project credits, and
+put the seven Knockboy lintels — stones built into a church wall — in a conservation
+workshop; the rule now requires the real phrase, and only S-PER-004 is left, which
+genuinely is with a conservator. And the ordering matters: *"Still in place above the
+south window of the church"* is a stone in a fabric, not a stone in a churchyard, so
+the specific rule has to win.
+
+`reconciliation/setting-overrides.csv` replaces a machine verdict with a human one,
+recorded as `set by hand`.
 
 ## From findspot to museum (`docs/keepers.html`)
 
@@ -645,6 +698,7 @@ tei--epidoc-crosswalk/
 │   ├── words.html             # formulaic-word filter map (generated)
 │   ├── readings.html          # editorial-disagreement map (generated)
 │   ├── keepers.html           # findspot-to-museum map (generated)
+│   ├── setting.html           # present-setting map (generated)
 │   ├── places.geojson         # point layer beside the map (generated)
 │   └── .nojekyll
 ├── py/
@@ -655,6 +709,7 @@ tei--epidoc-crosswalk/
 │   ├── dissent.py             # comparison of competing readings
 │   ├── worklist.py            # what is still missing, by priority
 │   ├── keepers.py             # geocoding of the holding institutions
+│   ├── setting.py             # present setting, read from the observed provenance
 │   ├── webmap.py              # docs/ map builder
 │   └── wikidata.py             # Wikidata reconciliation module
 ├── .gitignore

@@ -274,6 +274,11 @@ def parse_place(path: Path) -> dict | None:
     else:
         rec["geo_status"] = "asserted"
 
+    # how the stone stands today, in the editors' own words
+    rec["observed"] = " ".join(
+        _text(prov) for prov in tree.findall(f".//{{{TEI}}}provenance")
+        if prov.get("type") == "observed" and _text(prov))
+
     # projected national-grid coordinates that some records tuck into a <note>
     for note in origplace.findall(f".//{{{TEI}}}note"):
         m = ITM_RE.search(_text(note))

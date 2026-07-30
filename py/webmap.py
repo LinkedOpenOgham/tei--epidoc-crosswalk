@@ -1413,6 +1413,350 @@ buildList();
 draw();
 """
 
+HEAD_SETTING = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — where the stones stand today</title>
+<meta name="description" content="Which ogham stones still stand in the landscape and which are in museums, read from what the editors observed.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body>
+"""
+
+WORDS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe (one stroke below the line) with the crossbar that softens it.
+           Feather marks open and close the inscription. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Formulaic words</h1>
+      <p class="sub">McManus's formulaic vocabulary matched against every reading
+      of every ogham inscription — not just the current one.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <div id="gloss" class="gloss"></div>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#3f7d8c;
+          border:1.6px solid rgba(19,28,27,.7)"></i> in the current edition</span>
+        <span><i class="pin vague" style="width:11px;height:11px;
+          border:1.6px dashed #b07d2b"></i> only in an older reading</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q">Filter the vocabulary</label>
+      <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
+
+      <div class="wordlist" id="wordlist"></div>
+
+      <p class="note">Word list from
+      <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">o3d-epidoc-extractor</a>
+      (Homburg &amp; Thiery, DHd 2020), after McManus 1991. <b>Name elements are
+      matched as substrings</b>, which is that project's semantics and is not
+      precise: short elements such as CON or VIR also fire inside unrelated names.
+      Each hit records which mode produced it.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="words.csv" download>Download matches (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+SETTING_JS = r"""
+const STONES = __STONES__;
+const CATS   = __CATS__;
+const CUSTODY = __CUSTODY__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
+addMapControls(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+
+// Shape carries the coarse fact -- out of doors or under a roof -- so the map stays
+// readable where the colours run together at low zoom.
+function icon(colour, shape){
+  const d = 13;
+  const radius = shape === "square" ? "2px" : "50%";
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin" style="width:${d}px;height:${d}px;background:${colour};`
+       + `border-radius:${radius};border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+function popup(s){
+  const c = CATS[s.key] || {};
+  return `<div class="pop">
+    <h2>${esc(s.title || s.id)}</h2>
+    <div class="where">${esc([s.county, s.country].filter(Boolean).join(", "))}
+      ${s.ciic ? " · CIIC " + esc(s.ciic) : ""}</div>
+    <span class="flag" style="background:${c.colour}22;color:${c.colour}">${esc(c.label || s.key)}</span>
+    ${s.evidence ? `<p class="rdg">${esc(s.evidence)}</p>` : ""}
+    <dl><dt>decided by</dt><dd>${esc(s.method)}</dd></dl>
+    <div class="links">
+      <a href="findspots.html">on the findspot map</a>
+      ${s.keeper ? `<a href="keepers.html">its keeper</a>` : ""}
+    </div>
+  </div>`;
+}
+
+let custodyFilter = null, catFilter = null;
+
+function matches(s){
+  if (custodyFilter && s.custody !== custodyFilter) return false;
+  if (catFilter && s.key !== catFilter) return false;
+  return true;
+}
+
+function draw(){
+  const keep = STONES.filter(matches);
+  scene.slug = "setting";
+  scene.title = catFilter ? ((CATS[catFilter] || {}).label || catFilter)
+              : (custodyFilter ? CUSTODY[custodyFilter] : "");
+  scene.points = keep.map(s => ({lat:s.lat, lon:s.lon,
+                                 colour:(CATS[s.key] || {}).colour || "#6d7b77", vague:false}));
+  const markers = keep.map(s => {
+    const c = CATS[s.key] || {};
+    return L.marker([s.lat, s.lon], {icon:icon(c.colour || "#6d7b77", c.shape || "circle"),
+                                     title:s.title || s.id})
+            .bindPopup(() => popup(s), {maxWidth:340});
+  });
+  showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length) map.fitBounds(L.latLngBounds(keep.map(s => [s.lat, s.lon])).pad(0.08));
+}
+
+function list(box, items, current, pick, allLabel, allCount){
+  box.innerHTML = "";
+  const add = (value, label, colour, shape, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    const swatch = colour
+      ? `<span class="dot" style="background:${colour};border-radius:${shape === "square" ? "2px" : "50%"}"></span>`
+      : "";
+    l.innerHTML = `<input type="radio" name="${box.id}" ${checked ? "checked" : ""}>`
+                + swatch + `<b>${esc(label)}</b><span class="tr"></span>`
+                + `<span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => pick(value));
+    box.appendChild(l);
+  };
+  add(null, allLabel, null, null, allCount, current === null);
+  items.forEach(i => add(i.value, i.label, i.colour, i.shape, i.n, current === i.value));
+}
+
+function buildLists(){
+  const cus = {}, cat = {};
+  STONES.forEach(s => {
+    cus[s.custody] = (cus[s.custody] || 0) + 1;
+    if (!custodyFilter || s.custody === custodyFilter) cat[s.key] = (cat[s.key] || 0) + 1;
+  });
+  list(document.getElementById("custodylist"),
+       Object.keys(CUSTODY).filter(k => cus[k]).map(k => ({value:k, label:CUSTODY[k], n:cus[k]})),
+       custodyFilter,
+       v => { custodyFilter = v; catFilter = null; draw(); buildLists(); },
+       "Anywhere", STONES.length);
+  const shown = STONES.filter(s => !custodyFilter || s.custody === custodyFilter).length;
+  list(document.getElementById("catlist"),
+       Object.keys(CATS).filter(k => cat[k])
+             .sort((a,b) => cat[b] - cat[a])
+             .map(k => ({value:k, label:CATS[k].label, colour:CATS[k].colour,
+                         shape:CATS[k].shape, n:cat[k]})),
+       catFilter, v => { catFilter = v; draw(); buildLists(); }, "Any setting", shown);
+}
+
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildLists();
+draw();
+"""
+
+SETTING_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Where the stones stand today</h1>
+      <p class="sub">Which ogham you can still walk up to, and which are behind a
+      museum door.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <p class="field">Custody</p>
+      <div class="wordlist" id="custodylist"></div>
+
+      <p class="field" style="margin-top:20px">Setting</p>
+      <div class="wordlist" id="catlist"></div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <p class="note">A <b>circle</b> is out of doors, a <b>square</b> is under a roof.
+      Every verdict is a reading of what the editors wrote in
+      <code>&lt;provenance type="observed"&gt;</code>, and the popup shows that sentence
+      together with the phrase that decided it. Where the edition says nothing the stone
+      is <b>not described</b> &mdash; which still tells you it is not recorded as being in
+      a museum.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="setting.csv" download>Download settings (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
 KEEPERS_BODY = r"""<div id="app">
   <aside id="side">
     <header>
@@ -1708,6 +2052,350 @@ document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("ch
 
 buildList();
 draw();
+"""
+
+HEAD_SETTING = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — where the stones stand today</title>
+<meta name="description" content="Which ogham stones still stand in the landscape and which are in museums, read from what the editors observed.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body>
+"""
+
+WORDS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe (one stroke below the line) with the crossbar that softens it.
+           Feather marks open and close the inscription. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Formulaic words</h1>
+      <p class="sub">McManus's formulaic vocabulary matched against every reading
+      of every ogham inscription — not just the current one.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <div id="gloss" class="gloss"></div>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#3f7d8c;
+          border:1.6px solid rgba(19,28,27,.7)"></i> in the current edition</span>
+        <span><i class="pin vague" style="width:11px;height:11px;
+          border:1.6px dashed #b07d2b"></i> only in an older reading</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q">Filter the vocabulary</label>
+      <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
+
+      <div class="wordlist" id="wordlist"></div>
+
+      <p class="note">Word list from
+      <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">o3d-epidoc-extractor</a>
+      (Homburg &amp; Thiery, DHd 2020), after McManus 1991. <b>Name elements are
+      matched as substrings</b>, which is that project's semantics and is not
+      precise: short elements such as CON or VIR also fire inside unrelated names.
+      Each hit records which mode produced it.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="words.csv" download>Download matches (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+SETTING_JS = r"""
+const STONES = __STONES__;
+const CATS   = __CATS__;
+const CUSTODY = __CUSTODY__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+
+const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
+addMapControls(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+
+// Shape carries the coarse fact -- out of doors or under a roof -- so the map stays
+// readable where the colours run together at low zoom.
+function icon(colour, shape){
+  const d = 13;
+  const radius = shape === "square" ? "2px" : "50%";
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin" style="width:${d}px;height:${d}px;background:${colour};`
+       + `border-radius:${radius};border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+function popup(s){
+  const c = CATS[s.key] || {};
+  return `<div class="pop">
+    <h2>${esc(s.title || s.id)}</h2>
+    <div class="where">${esc([s.county, s.country].filter(Boolean).join(", "))}
+      ${s.ciic ? " · CIIC " + esc(s.ciic) : ""}</div>
+    <span class="flag" style="background:${c.colour}22;color:${c.colour}">${esc(c.label || s.key)}</span>
+    ${s.evidence ? `<p class="rdg">${esc(s.evidence)}</p>` : ""}
+    <dl><dt>decided by</dt><dd>${esc(s.method)}</dd></dl>
+    <div class="links">
+      <a href="findspots.html">on the findspot map</a>
+      ${s.keeper ? `<a href="keepers.html">its keeper</a>` : ""}
+    </div>
+  </div>`;
+}
+
+let custodyFilter = null, catFilter = null;
+
+function matches(s){
+  if (custodyFilter && s.custody !== custodyFilter) return false;
+  if (catFilter && s.key !== catFilter) return false;
+  return true;
+}
+
+function draw(){
+  const keep = STONES.filter(matches);
+  scene.slug = "setting";
+  scene.title = catFilter ? ((CATS[catFilter] || {}).label || catFilter)
+              : (custodyFilter ? CUSTODY[custodyFilter] : "");
+  scene.points = keep.map(s => ({lat:s.lat, lon:s.lon,
+                                 colour:(CATS[s.key] || {}).colour || "#6d7b77", vague:false}));
+  const markers = keep.map(s => {
+    const c = CATS[s.key] || {};
+    return L.marker([s.lat, s.lon], {icon:icon(c.colour || "#6d7b77", c.shape || "circle"),
+                                     title:s.title || s.id})
+            .bindPopup(() => popup(s), {maxWidth:340});
+  });
+  showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length) map.fitBounds(L.latLngBounds(keep.map(s => [s.lat, s.lon])).pad(0.08));
+}
+
+function list(box, items, current, pick, allLabel, allCount){
+  box.innerHTML = "";
+  const add = (value, label, colour, shape, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    const swatch = colour
+      ? `<span class="dot" style="background:${colour};border-radius:${shape === "square" ? "2px" : "50%"}"></span>`
+      : "";
+    l.innerHTML = `<input type="radio" name="${box.id}" ${checked ? "checked" : ""}>`
+                + swatch + `<b>${esc(label)}</b><span class="tr"></span>`
+                + `<span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => pick(value));
+    box.appendChild(l);
+  };
+  add(null, allLabel, null, null, allCount, current === null);
+  items.forEach(i => add(i.value, i.label, i.colour, i.shape, i.n, current === i.value));
+}
+
+function buildLists(){
+  const cus = {}, cat = {};
+  STONES.forEach(s => {
+    cus[s.custody] = (cus[s.custody] || 0) + 1;
+    if (!custodyFilter || s.custody === custodyFilter) cat[s.key] = (cat[s.key] || 0) + 1;
+  });
+  list(document.getElementById("custodylist"),
+       Object.keys(CUSTODY).filter(k => cus[k]).map(k => ({value:k, label:CUSTODY[k], n:cus[k]})),
+       custodyFilter,
+       v => { custodyFilter = v; catFilter = null; draw(); buildLists(); },
+       "Anywhere", STONES.length);
+  const shown = STONES.filter(s => !custodyFilter || s.custody === custodyFilter).length;
+  list(document.getElementById("catlist"),
+       Object.keys(CATS).filter(k => cat[k])
+             .sort((a,b) => cat[b] - cat[a])
+             .map(k => ({value:k, label:CATS[k].label, colour:CATS[k].colour,
+                         shape:CATS[k].shape, n:cat[k]})),
+       catFilter, v => { catFilter = v; draw(); buildLists(); }, "Any setting", shown);
+}
+
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildLists();
+draw();
+"""
+
+SETTING_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Where the stones stand today</h1>
+      <p class="sub">Which ogham you can still walk up to, and which are behind a
+      museum door.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <p class="field">Custody</p>
+      <div class="wordlist" id="custodylist"></div>
+
+      <p class="field" style="margin-top:20px">Setting</p>
+      <div class="wordlist" id="catlist"></div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <p class="note">A <b>circle</b> is out of doors, a <b>square</b> is under a roof.
+      Every verdict is a reading of what the editors wrote in
+      <code>&lt;provenance type="observed"&gt;</code>, and the popup shows that sentence
+      together with the phrase that decided it. Where the edition says nothing the stone
+      is <b>not described</b> &mdash; which still tells you it is not recorded as being in
+      a museum.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="setting.csv" download>Download settings (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
 """
 
 KEEPERS_BODY = r"""<div id="app">
@@ -2304,6 +2992,14 @@ PAGES = [
                  "from the findspot to the institution that holds them now. The "
                  "institutions are geocoded against Wikidata and OpenStreetMap.",
     },
+    {
+        "slug": "setting.html",
+        "nav": "In the wild",
+        "title": "Where the stones stand today",
+        "blurb": "Which ogham you can still go and see in the landscape, and which "
+                 "sit in a museum. Read out of what the editors observed on site, "
+                 "with the sentence behind every verdict.",
+    },
 ]
 
 
@@ -2461,6 +3157,48 @@ def _same_country(r: dict) -> bool:
         return True                       # unknown country: do not claim a crossing
     lat0, lat1, lon0, lon1 = box
     return lat0 <= r["keeper_lat"] <= lat1 and lon0 <= r["keeper_lon"] <= lon1
+
+
+def build_setting(place_records: list[dict], docs: Path, root: Path | None = None,
+                  provenance: dict | None = None) -> dict:
+    """docs/setting.html -- how each stone stands today, and on what evidence."""
+    import setting as setting_mod
+    docs.mkdir(parents=True, exist_ok=True)
+
+    cats: dict[str, dict] = {}
+    for key, label, custody, colour, shape, _ in setting_mod.RULES:
+        cats[key] = {"label": label, "custody": custody, "colour": colour, "shape": shape}
+    key, label, custody, colour, shape = setting_mod.UNDESCRIBED
+    cats[key] = {"label": label, "custody": custody, "colour": colour, "shape": shape}
+    cats["institution_unrecorded"] = {"label": "institution named only in prose",
+                                      "custody": "institution", "colour": "#5b6f8c",
+                                      "shape": "square"}
+
+    stones = [{
+        "id": r["ogham_id"], "title": r["title"], "ciic": r.get("ciic", ""),
+        "county": r.get("pn_county", ""), "country": r.get("pn_country", ""),
+        "lat": r["lat"], "lon": r["lon"],
+        "key": r["setting"]["key"], "custody": r["setting"]["custody"],
+        "evidence": r["setting"]["evidence"], "method": r["setting"]["method"],
+        "keeper": r.get("repository", ""),
+    } for r in place_records if r.get("lat") is not None and r.get("setting")]
+
+    html = (_page(HEAD_SETTING, SETTING_BODY, SETTING_JS)
+            .replace("__NAV__", nav_html("setting.html"))
+            .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
+            .replace("__CATS__", json.dumps(cats, ensure_ascii=False, separators=(",", ":")))
+            .replace("__CUSTODY__", json.dumps(setting_mod.CUSTODY_LABEL,
+                                               ensure_ascii=False, separators=(",", ":")))
+            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__PROV__", _provenance_html(provenance or {})))
+    (docs / "setting.html").write_text(html, encoding="utf-8")
+
+    rel = (lambda x: x.relative_to(root)) if root else (lambda x: x)
+    size = (docs / "setting.html").stat().st_size / 1024
+    wild = sum(1 for s in stones if s["custody"] == "landscape")
+    print(f"  -> wrote {rel(docs / 'setting.html')} ({len(stones)} stones, "
+          f"{wild} in the landscape, {size:.0f} KB)")
+    return {"stones": len(stones), "landscape": wild}
 
 
 def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],

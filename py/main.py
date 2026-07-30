@@ -40,6 +40,7 @@ import keepers   # local module (py/keepers.py) -- present location of the stone
 import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
 import words     # local module (py/words.py) -- formulaic-word extractor
+import setting   # local module (py/setting.py) -- present setting of each stone
 import worklist  # local module (py/worklist.py) -- what is still missing
 import wikidata  # local module (py/wikidata.py)
 from pathlib import Path
@@ -70,6 +71,7 @@ CORPUS_MANIFEST = DATA / "corpus-manifest.yaml"    # provenance record (committe
 WORD_LIST = DATA / "words.csv"                     # McManus vocabulary (committed)
 KEEPER_CACHE = RECON / "keeper-coordinates.csv"    # geocoded institutions (committed)
 FINDSPOT_OVERRIDES = RECON / "findspot-overrides.csv"   # coordinates the editions lack
+SETTING_OVERRIDES = RECON / "setting-overrides.csv"     # hand-set present settings
 # data/origin/ is the only location discovered automatically -- see corpus.resolve
 
 STONES = [
@@ -898,6 +900,7 @@ def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
         "words.html": words_figs,
         "readings.html": readings_figs,
         "keepers.html": keeper_figs,
+        "setting.html": place_summary.get("setting_figs", dash),
     }
 
 
@@ -1006,6 +1009,16 @@ def main() -> None:
                     word_summary["analysis"], places_summary["records"],
                     word_summary["dissent"], DOCS, root=ROOT, provenance=prov)
                 shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
+            obs = {r["ogham_id"]: r.get("observed", "") for r in places_summary["records"]}
+            sres = setting.apply(places_summary["records"], obs,
+                                 setting.load_overrides(SETTING_OVERRIDES))
+            setting.write_csv(places_summary["records"], obs, OUT / "setting.csv")
+            print(f"\nsetting layer -- how the stones stand today")
+            for k, v in sorted(sres["by_custody"].items(), key=lambda x: -x[1]):
+                print(f"  {v:4}  {setting.CUSTODY_LABEL.get(k, k)}")
+            print(f"  -> wrote {(OUT / 'setting.csv').relative_to(ROOT)}")
+            webmap.build_setting(places_summary["records"], DOCS, root=ROOT, provenance=prov)
+            shutil.copyfile(OUT / "setting.csv", DOCS / "setting.csv")
             if word_summary:
                 counts = worklist.build(places_summary["records"],
                                         word_summary["records_for_worklist"],
@@ -1027,6 +1040,11 @@ def main() -> None:
             if ks:
                 shutil.copyfile(OUT / "keepers.csv", DOCS / "keepers.csv")
 
+            places_summary["setting_figs"] = [
+                (str(sres["by_custody"].get("landscape", 0)), "out in the landscape"),
+                (str(sres["by_custody"].get("institution", 0)), "in an institution"),
+                (str(sres["by_custody"].get("undescribed", 0)), "setting not described"),
+            ]
             webmap.build_landing(DOCS, landing_figures(places_summary, word_summary),
                                  root=ROOT, provenance=prov)
         if word_summary and places_summary:
