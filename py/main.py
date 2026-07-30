@@ -845,6 +845,13 @@ def main() -> None:
                                    word_summary["vocabulary"], DOCS, root=ROOT,
                                    provenance=prov)
                 shutil.copyfile(OUT / "words.csv", DOCS / "words.csv")
+            webmap.build_landing(DOCS, {
+                "findspots.html": [(str(summary["mapped"]), "findspots mapped"),
+                                   (str(summary["places"]), "distinct places")],
+                "words.html": [(str(word_summary["stones"]), "stones with a match"),
+                               (str(word_summary["occurrences"]), "occurrences")]
+                if word_summary else [],
+            }, root=ROOT, provenance=prov)
         return
 
     cache = wikidata.load_cache(RECON_CACHE)
@@ -871,6 +878,21 @@ def main() -> None:
                     word_summary["records"], places_summary["records"],
                     word_summary["vocabulary"], DOCS, root=ROOT, provenance=prov)
                 shutil.copyfile(OUT / "words.csv", DOCS / "words.csv")
+
+            figures = {
+                "findspots.html": [
+                    (str(places_summary["mapped"]), "findspots mapped"),
+                    (str(places_summary["places"]), "distinct places"),
+                    (str(places_summary["status"].get("qualified", 0)
+                         + places_summary["status"].get("textual_only", 0)), "hedged by the editors"),
+                ],
+                "words.html": [
+                    (str(word_summary["stones"]) if word_summary else "—", "stones with a match"),
+                    (str(word_summary["occurrences"]) if word_summary else "—", "occurrences"),
+                    (str(word_summary["words"]) if word_summary else "—", "words searched"),
+                ],
+            }
+            webmap.build_landing(DOCS, figures, root=ROOT, provenance=prov)
         if word_summary and places_summary:
             places_summary["word_layer"] = {k: v for k, v in word_summary.items()
                                             if k not in ("records", "vocabulary")}

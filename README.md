@@ -131,7 +131,8 @@ drift apart:
 | `out/places.crm.ttl` | CIDOC CRM place graph — `E53_Place`, `P89_falls_within`, `geo:asWKT` |
 | `out/places.csv` | one row per inscription, all `<placeName>` levels as columns |
 | `out/places.geojson` | WGS84 point layer; each feature carries its `data:findspot_*` URI |
-| `docs/index.html` | browsable Leaflet map of the findspots (GitHub Pages) |
+| `docs/index.html` | the landing page: what exists, with live figures |
+| `docs/findspots.html` | browsable Leaflet map of the findspots |
 | `docs/words.html` | the formulaic vocabulary, filterable by word |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
@@ -141,11 +142,25 @@ per-stone graphs mint, so `out/*.crm.ttl` and `out/places.crm.ttl` merge directl
 
 ### The map (GitHub Pages)
 
-`py/webmap.py` publishes the same records as a self-contained Leaflet map in
-`docs/` — filterable by country and by free text (name, CIIC, CISP, TM, SMR),
-with hedged findspots drawn as dashed rings and each popup showing the
-`data:findspot_*` node the point corresponds to. Nothing in it re-parses the XML,
-so map, table and graph cannot drift apart.
+`py/webmap.py` publishes the same records as self-contained pages in `docs/`:
+a landing page and, at the moment, two views — the findspot map (filterable by
+country and by free text, with hedged findspots as dashed rings and the
+`data:findspot_*` node in every popup) and the formulaic-word map. Nothing in them
+re-parses the XML, so map, table and graph cannot drift apart.
+
+The site is generated from a **page registry** in `py/webmap.py`:
+
+```python
+PAGES = [
+    {"slug": "findspots.html", "nav": "Findspots", "title": "Findspot map", "blurb": "…"},
+    {"slug": "words.html",     "nav": "Formulaic words", "title": "…", "blurb": "…"},
+]
+```
+
+The navigation on every page and the cards on the landing page are both built from
+that list, and the figures on each card are passed in from the run. Adding a third
+view later means writing its builder and appending one entry — not editing three
+templates and hoping the links stay in step.
 
 To publish: **Settings → Pages → Source: Deploy from a branch → `main` / `/docs`**.
 A `.nojekyll` file is written alongside so Pages serves the directory as-is. The
@@ -263,7 +278,8 @@ tei--epidoc-crosswalk/
 ├── shapes/                    # committed SHACL validation rules (not generated)
 │   └── crosswalk-shapes.ttl   # every TEI class → CRM superclass + NFDI link
 ├── docs/                      # generated GitHub Pages site
-│   ├── index.html             # Leaflet map of the findspots (generated)
+│   ├── index.html             # landing page (generated)
+│   ├── findspots.html         # Leaflet map of the findspots (generated)
 │   ├── words.html             # formulaic-word filter map (generated)
 │   ├── places.geojson         # point layer beside the map (generated)
 │   └── .nojekyll

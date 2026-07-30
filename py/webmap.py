@@ -113,6 +113,39 @@ nav a[aria-current]{background:var(--sc);border-color:var(--sc);color:#0f1918;fo
 .pop .rdg em{color:var(--muted);font-style:normal}
 .pop mark{background:rgba(63,125,140,.45);color:#eef0ea;border-radius:2px;padding:0 1px}
 
+/* landing page: one centred column, no map */
+body.landing{overflow:auto}
+.wrap{max-width:760px;margin:0 auto;padding:56px 28px 72px}
+.wrap .stem{height:44px;margin-bottom:22px}
+.wrap h1{font-family:var(--display);font-size:38px;line-height:1.08;margin:0 0 12px;font-weight:700}
+.lede{font-size:15.5px;line-height:1.6;color:#c3ccc8;margin:0 0 8px;max-width:60ch}
+.lede code{font-size:13.5px;color:var(--stone)}
+.byline{font-size:12.5px;color:var(--muted);margin:0 0 40px}
+.byline a{color:var(--stone)}
+
+.cards{display:grid;gap:14px;margin-bottom:44px}
+.card{display:block;text-decoration:none;color:inherit;background:var(--panel);
+  border:1px solid var(--line);border-radius:4px;padding:20px 22px;
+  transition:border-color .15s ease,background .15s ease}
+.card:hover{border-color:var(--sc);background:var(--panel-2)}
+.card h2{font-family:var(--display);font-size:22px;margin:0 0 5px;font-weight:600}
+.card p{margin:0 0 13px;font-size:13.5px;line-height:1.55;color:#b9c2be;max-width:58ch}
+.figs{display:flex;gap:26px;flex-wrap:wrap}
+.fig{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.35}
+.fig b{display:block;font-size:19px;font-weight:500;color:var(--text);letter-spacing:-.02em}
+.soon{border-style:dashed;opacity:.6}
+.soon:hover{border-color:var(--line);background:var(--panel)}
+
+.section{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 12px;padding-top:26px;border-top:1px solid var(--line)}
+.files{display:grid;gap:9px;margin:0 0 34px;font-size:13px}
+.files a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line)}
+.files a:hover{color:#fff;border-color:var(--sc)}
+.files span{color:var(--muted);font-size:12px}
+.foot{font-size:12px;color:var(--muted);line-height:1.6}
+.foot a{color:var(--stone)}
+.foot code{font-size:11.5px}
+
 #map{flex:1;background:#e8e6df}
 .leaflet-container{font-family:var(--sans);background:#e8e6df}
 .pin{border-radius:50%;border:1.6px solid rgba(19,28,27,.7);box-shadow:0 1px 3px rgba(0,0,0,.3)}
@@ -205,10 +238,7 @@ BODY = r"""<div id="app">
       <code>E53_Place</code>.</p>
     </header>
     <div class="scroll">
-      <nav>
-        <a href="index.html" aria-current="page">Findspots</a>
-        <a href="words.html">Formulaic words</a>
-      </nav>
+__NAV__
       <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
 
       <label class="field" for="q">Search name or identifier</label>
@@ -354,6 +384,22 @@ document.getElementById("missingList").innerHTML =
   MISSING.map(m => `<li>${esc(m.id)} — ${esc(m.reason)}</li>`).join("");
 """
 
+HEAD_LANDING = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — TEI/EpiDoc to CIDOC CRM</title>
+<meta name="description" content="The OG(H)AM TEI/EpiDoc editions crosswalked to CIDOC CRM: findspot map, formulaic vocabulary, RDF.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body class="landing">
+"""
+
 HEAD_WORDS = r"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -393,10 +439,7 @@ WORDS_BODY = r"""<div id="app">
       of every ogham inscription — not just the current one.</p>
     </header>
     <div class="scroll">
-      <nav>
-        <a href="index.html">Findspots</a>
-        <a href="words.html" aria-current="page">Formulaic words</a>
-      </nav>
+__NAV__
       <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
 
       <div id="gloss" class="gloss"></div>
@@ -489,7 +532,7 @@ function popup(stone, key){
     ${w ? `<span class="flag">${esc(w.word)}${w.tr ? " — " + esc(w.tr) : ""}</span>` : ""}
     ${rows}
     <div class="links">
-      <a href="index.html">on the findspot map</a>
+      <a href="findspots.html">on the findspot map</a>
       ${w && w.wd ? `<a href="${esc(w.wd)}" target="_blank" rel="noopener">Wikidata</a>` : ""}
     </div>
   </div>`;
@@ -575,9 +618,128 @@ draw();
 """
 
 
+# --- the site ------------------------------------------------------------------
+# One entry per page. The navigation and the landing page are both generated from
+# this list, so adding a view later means adding a builder and one entry here --
+# not editing three templates.
+PAGES = [
+    {
+        "slug": "findspots.html",
+        "nav": "Findspots",
+        "title": "Findspot map",
+        "blurb": "Where the inscribed stones were found, read out of "
+                 "<code>&lt;origPlace&gt;/&lt;geo&gt;</code> and crosswalked to CIDOC CRM "
+                 "<code>E53_Place</code>. Filterable by country; findspots the editors "
+                 "hedged are drawn as dashed rings.",
+    },
+    {
+        "slug": "words.html",
+        "nav": "Formulaic words",
+        "title": "Formulaic words",
+        "blurb": "McManus's formulaic vocabulary matched against every reading of every "
+                 "inscription — so a word belongs to a reading and its editor, not to a "
+                 "stone. Picks up the DHd 2020 extractor on the successor corpus.",
+    },
+]
+
+
+def nav_html(active_slug: str) -> str:
+    """Navigation shared by the map pages; the landing page navigates by its cards."""
+    links = ['      <nav>', '        <a href="index.html">Overview</a>']
+    for page in PAGES:
+        current = ' aria-current="page"' if page["slug"] == active_slug else ""
+        links.append(f'        <a href="{page["slug"]}"{current}>{page["nav"]}</a>')
+    links.append('      </nav>')
+    return "\n".join(links)
+
+
+LANDING = r"""<div class="wrap">
+  <!-- MAP on a stemline: M = aicme Muine 1 (diagonal), A = aicme Ailme 1
+       (perpendicular), P = the forfid peith, beithe with its softening crossbar.
+       Feather marks open and close the inscription. -->
+  <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+    <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+      <path d="M4 17 h292" stroke-width="1.1"/>
+      <path d="M4 17 l7 -7 M4 17 l7 7"/>
+      <path d="M82 27 l15 -20"/>
+      <path d="M150 6 v22"/>
+      <path d="M210 17 v11 M203 23 h14"/>
+      <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+    </g>
+  </svg>
+  <h1>Linked Open Ogham</h1>
+  <p class="lede">The TEI/EpiDoc editions of the OG(H)AM corpus, crosswalked to
+  <b>CIDOC CRM 7.1.3</b> and <b>CRMtex</b>. These pages are the browsable side of that
+  graph: each one is generated from the same parse as the RDF, so a map and the
+  triples behind it cannot disagree.</p>
+  <p class="byline">Axis 1 of the Linked Open Ogham crosswalk ·
+  <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">source and RDF on GitHub</a></p>
+
+  <div class="cards">__CARDS__</div>
+
+  <p class="section">Data</p>
+  <div class="files">__FILES__</div>
+
+  <p class="section">Provenance</p>
+  <p class="foot">__FOOT__</p>
+</div>
+
+"""
+
+
+def _card(page: dict, figures: list[tuple[str, str]]) -> str:
+    figs = "".join(f'<span class="fig"><b>{value}</b>{label}</span>'
+                   for value, label in figures)
+    return (f'<a class="card" href="{page["slug"]}">\n'
+            f'      <h2>{page["title"]}</h2>\n'
+            f'      <p>{page["blurb"]}</p>\n'
+            f'      <div class="figs">{figs}</div>\n    </a>')
+
+
+def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],
+                  root: Path | None = None, provenance: dict | None = None) -> None:
+    """docs/index.html -- the way in, and the place a new view gets announced."""
+    docs.mkdir(parents=True, exist_ok=True)
+    cards = "\n    ".join(_card(page, figures.get(page["slug"], [])) for page in PAGES)
+
+    prov = provenance or {}
+    files = [
+        ("places.geojson", "every resolved findspot, WGS84"),
+        ("words.csv", "every word occurrence, per reading"),
+    ]
+    files_html = "\n    ".join(
+        f'<div><a href="{name}" download>{name}</a> <span>— {desc}</span></div>'
+        for name, desc in files if (docs / name).exists())
+    files_html += ('\n    <div><a href="https://github.com/LinkedOpenOgham/'
+                   'tei--epidoc-crosswalk/tree/main/out">out/*.ttl</a> '
+                   '<span>— the CIDOC CRM graphs themselves</span></div>')
+
+    if prov.get("commit"):
+        tree = prov.get("tree_url", "")
+        foot = (f'Built from OG(H)AM corpus commit '
+                f'<a href="{tree}" target="_blank" rel="noopener"><code>{prov["commit"][:7]}</code></a> '
+                f'({(prov.get("commit_date") or "")[:10]}), {prov.get("edition_count", "?")} editions. '
+                f'Generated {dt.date.today().isoformat()}.<br>'
+                f'Editions &copy; the OG(H)AM project, CC BY 4.0. '
+                f'Word list from <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">'
+                f'o3d-epidoc-extractor</a>, MIT.')
+    else:
+        foot = (f'Generated {dt.date.today().isoformat()}. Editions &copy; the OG(H)AM '
+                f'project, CC BY 4.0.')
+
+    html = (_page(HEAD_LANDING, LANDING, "")
+            .replace("__CARDS__", cards)
+            .replace("__FILES__", files_html)
+            .replace("__FOOT__", foot))
+    (docs / "index.html").write_text(html, encoding="utf-8")
+    rel = (lambda x: x.relative_to(root)) if root else (lambda x: x)
+    print(f"  -> wrote {rel(docs / 'index.html')} ({len(PAGES)} views linked)")
+
+
 def _page(head: str, body: str, js: str) -> str:
-    """Assemble a page from the shared shell."""
-    return head.replace("__CSS__", CSS) + body + SCRIPTS + js + FOOT
+    """Assemble a page from the shared shell. Empty js means no map libraries."""
+    shell = head.replace("__CSS__", CSS) + body
+    return shell + SCRIPTS + js + FOOT if js else shell + "</body>\n</html>\n"
 
 
 def _slim(rec: dict) -> dict:
@@ -619,11 +781,12 @@ def build(records: list[dict], docs: Path, root: Path | None = None,
                for r in records if r.get("lat") is None]
 
     html = (_page(HEAD, BODY, JS)
+            .replace("__NAV__", nav_html("findspots.html"))
             .replace("__DATA__", json.dumps(mapped, ensure_ascii=False, separators=(",", ":")))
             .replace("__MISSING__", json.dumps(missing, ensure_ascii=False, separators=(",", ":")))
             .replace("__BUILT__", dt.date.today().isoformat())
             .replace("__PROV__", _provenance_html(provenance or {})))
-    (docs / "index.html").write_text(html, encoding="utf-8")
+    (docs / "findspots.html").write_text(html, encoding="utf-8")
 
     # GeoJSON beside the map, so the Pages site doubles as a small data endpoint
     features = [{"type": "Feature", "id": p["id"],
@@ -638,8 +801,8 @@ def build(records: list[dict], docs: Path, root: Path | None = None,
     (docs / ".nojekyll").write_text("", encoding="utf-8")
 
     rel = (lambda p: p.relative_to(root)) if root else (lambda p: p)
-    size = (docs / "index.html").stat().st_size / 1024
-    print(f"  -> wrote {rel(docs / 'index.html')} ({len(mapped)} points, {size:.0f} KB)")
+    size = (docs / "findspots.html").stat().st_size / 1024
+    print(f"  -> wrote {rel(docs / 'findspots.html')} ({len(mapped)} points, {size:.0f} KB)")
     print(f"  -> wrote {rel(docs / 'places.geojson')}")
     return {"mapped": len(mapped), "missing": len(missing)}
 
@@ -691,6 +854,7 @@ def build_words(word_records: list[dict], place_records: list[dict],
         })
 
     html = (_page(HEAD_WORDS, WORDS_BODY, WORDS_JS)
+            .replace("__NAV__", nav_html("words.html"))
             .replace("__WORDS__", json.dumps(vocab, ensure_ascii=False, separators=(",", ":")))
             .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
             .replace("__BUILT__", dt.date.today().isoformat())
