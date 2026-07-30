@@ -1,4 +1,4 @@
-# tei--epidoc-crosswalk
+# TEI/Epidoc Crosswalk - Ogham Prototype
 
 Crosswalk TEI/EpiDoc editions of ogham stones to **CIDOC CRM 7.1.3** and its text
 extension **CRMtex**, producing FAIR RDF per stone.
