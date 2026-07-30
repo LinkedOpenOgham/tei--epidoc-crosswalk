@@ -1,0 +1,1061 @@
+@prefix amt: <http://academic-meta-tool.xyz/vocab#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix data: <http://data.ogham.link/crm/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+data:match_keeper_Brecknock_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q15204378 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Brecknock_Museum .
+
+data:match_keeper_British_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q6373 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_British_Museum .
+
+data:match_keeper_Bute_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q17775932 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Bute_Museum .
+
+data:match_keeper_Cork_Public_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q24041450 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Cork_Public_Museum .
+
+data:match_keeper_Dumfries_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q5313798 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Dumfries_Museum .
+
+data:match_keeper_Dunrobin_Castle_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q72011449 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Dunrobin_Castle_Museum .
+
+data:match_keeper_Herbert_Art_Gallery_and_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q917262 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Herbert_Art_Gallery_and_Museum .
+
+data:match_keeper_Kerry_County_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q6394504 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Kerry_County_Museum .
+
+data:match_keeper_M_saem_Chorca_Dhuibhne a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q56379441 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_M_saem_Chorca_Dhuibhne .
+
+data:match_keeper_Manx_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q11988082 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Manx_Museum .
+
+data:match_keeper_Margam_Stones_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q6759082 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Margam_Stones_Museum .
+
+data:match_keeper_National_Museum_Cardiff a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q1321874 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_National_Museum_Cardiff .
+
+data:match_keeper_National_Museum_Wales a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q2046319 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_National_Museum_Wales .
+
+data:match_keeper_National_Museum_of_Ireland a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q1672840 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_National_Museum_of_Ireland .
+
+data:match_keeper_National_Museum_of_Scotland a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q1633842 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_National_Museum_of_Scotland .
+
+data:match_keeper_National_Museums_of_Scotland a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q1967502 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_National_Museums_of_Scotland .
+
+data:match_keeper_Norwich_Castle_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q55361621 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Norwich_Castle_Museum .
+
+data:match_keeper_Orkney_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q2383929 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Orkney_Museum .
+
+data:match_keeper_Perth_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q122199223 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Perth_Museum .
+
+data:match_keeper_Reading_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q6941004 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Reading_Museum .
+
+data:match_keeper_Rothe_House_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q3752845 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Rothe_House_Museum .
+
+data:match_keeper_Royal_Cornwall_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q1251321 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Royal_Cornwall_Museum .
+
+data:match_keeper_Shetland_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q2278527 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Shetland_Museum .
+
+data:match_keeper_St_Brynach_s_Church a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q26236358 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_St_Brynach_s_Church .
+
+data:match_keeper_Swansea_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q7653706 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Swansea_Museum .
+
+data:match_keeper_Trinity_College_Dublin a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q258464 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Trinity_College_Dublin .
+
+data:match_keeper_University_College_Cork a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q1574185 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_University_College_Cork .
+
+data:stone_E_CON_005 crm:P50_has_current_keeper data:keeper_Royal_Cornwall_Museum ;
+    crm:P55_has_current_location data:place_keeper_Royal_Cornwall_Museum .
+
+data:stone_E_DEV_001 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_E_HAM_001 crm:P50_has_current_keeper data:keeper_Reading_Museum ;
+    crm:P55_has_current_location data:place_keeper_Reading_Museum .
+
+data:stone_E_NFK_001 crm:P50_has_current_keeper data:keeper_Norwich_Castle_Museum ;
+    crm:P55_has_current_location data:place_keeper_Norwich_Castle_Museum .
+
+data:stone_E_WAR_001 crm:P50_has_current_keeper data:keeper_Herbert_Art_Gallery_and_Museum ;
+    crm:P55_has_current_location data:place_keeper_Herbert_Art_Gallery_and_Museum .
+
+data:stone_E_WRY_001 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_I_ANT_002 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_CAR_004 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_CLA_003 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_I_COR_009 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_011 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_017 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_018 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_019 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_027 crm:P50_has_current_keeper data:keeper_Pitt_Rivers_Museum_Oxford ;
+    crm:P55_has_current_location data:place_keeper_Pitt_Rivers_Museum_Oxford .
+
+data:stone_I_COR_028 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_029 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_030 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_032 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_034 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_035 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_036 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_037 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_038 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_039 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_041 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_042 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_043 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_044 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_045 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_046 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_047 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_048 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_049 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_050 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_051 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_052 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_054 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_055 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_I_COR_056 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_061 crm:P50_has_current_keeper data:keeper_Pitt_Rivers_Museum_Oxford ;
+    crm:P55_has_current_location data:place_keeper_Pitt_Rivers_Museum_Oxford .
+
+data:stone_I_COR_062 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_063 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_064 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_065 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_066 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_067 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_069 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_070 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_071 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_074 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_I_COR_076 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_I_COR_077 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_I_COR_078 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_I_COR_079 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_080 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_COR_088 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_089 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_090 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_COR_091 crm:P50_has_current_keeper data:keeper_Millstreet_Museum ;
+    crm:P55_has_current_location data:place_keeper_Millstreet_Museum .
+
+data:stone_I_COR_092 crm:P50_has_current_keeper data:keeper_Millstreet_Museum ;
+    crm:P55_has_current_location data:place_keeper_Millstreet_Museum .
+
+data:stone_I_COR_093 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_FER_001 crm:P50_has_current_keeper data:keeper_Ulster_Museum_Belfast ;
+    crm:P55_has_current_location data:place_keeper_Ulster_Museum_Belfast .
+
+data:stone_I_FER_X01 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_003 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_004 crm:P50_has_current_keeper data:keeper_Trinity_College_Dublin ;
+    crm:P55_has_current_location data:place_keeper_Trinity_College_Dublin .
+
+data:stone_I_KER_008 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_010 crm:P50_has_current_keeper data:keeper_Cork_Public_Museum ;
+    crm:P55_has_current_location data:place_keeper_Cork_Public_Museum .
+
+data:stone_I_KER_013 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_033 crm:P50_has_current_keeper data:keeper_Cork_Public_Museum ;
+    crm:P55_has_current_location data:place_keeper_Cork_Public_Museum .
+
+data:stone_I_KER_034 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_041 crm:P50_has_current_keeper data:keeper_M_saem_Chorca_Dhuibhne ;
+    crm:P55_has_current_location data:place_keeper_M_saem_Chorca_Dhuibhne .
+
+data:stone_I_KER_049 crm:P50_has_current_keeper data:keeper_M_saem_Chorca_Dhuibhne ;
+    crm:P55_has_current_location data:place_keeper_M_saem_Chorca_Dhuibhne .
+
+data:stone_I_KER_051 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_052 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_053 crm:P50_has_current_keeper data:keeper_Trinity_College_Dublin ;
+    crm:P55_has_current_location data:place_keeper_Trinity_College_Dublin .
+
+data:stone_I_KER_060 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_064 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_065 crm:P50_has_current_keeper data:keeper_M_saem_Chorca_Dhuibhne ;
+    crm:P55_has_current_location data:place_keeper_M_saem_Chorca_Dhuibhne .
+
+data:stone_I_KER_074 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_085 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_086 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_087 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_088 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_094 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_099 crm:P50_has_current_keeper data:keeper_Pitt_Rivers_Museum_Oxford ;
+    crm:P55_has_current_location data:place_keeper_Pitt_Rivers_Museum_Oxford .
+
+data:stone_I_KER_108 crm:P50_has_current_keeper data:keeper_Kerry_County_Museum ;
+    crm:P55_has_current_location data:place_keeper_Kerry_County_Museum .
+
+data:stone_I_KER_124 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_125 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_126 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_127 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_128 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_135 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_136 crm:P50_has_current_keeper data:keeper_Cork_Public_Museum ;
+    crm:P55_has_current_location data:place_keeper_Cork_Public_Museum .
+
+data:stone_I_KER_137 crm:P50_has_current_keeper data:keeper_Cork_Public_Museum ;
+    crm:P55_has_current_location data:place_keeper_Cork_Public_Museum .
+
+data:stone_I_KER_138 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KER_141 crm:P50_has_current_keeper data:keeper_M_saem_Chorca_Dhuibhne ;
+    crm:P55_has_current_location data:place_keeper_M_saem_Chorca_Dhuibhne .
+
+data:stone_I_KER_143 crm:P50_has_current_keeper data:keeper_Kerry_County_Museum ;
+    crm:P55_has_current_location data:place_keeper_Kerry_County_Museum .
+
+data:stone_I_KER_150 crm:P50_has_current_keeper data:keeper_Kerry_County_Museum ;
+    crm:P55_has_current_location data:place_keeper_Kerry_County_Museum .
+
+data:stone_I_KID_001 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KID_002 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KID_008 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KIK_001 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_KIK_014 crm:P50_has_current_keeper data:keeper_Rothe_House_Museum ;
+    crm:P55_has_current_location data:place_keeper_Rothe_House_Museum .
+
+data:stone_I_LOU_002 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_MAY_002 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_MAY_X02 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_MEA_001 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_MEA_003 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_MEA_004 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_OFF_002 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_OFF_005 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_TIP_X01 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WAT_001 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
+data:stone_I_WAT_003 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WAT_007 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WAT_021 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WAT_024 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WAT_030 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WAT_031 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WAT_041 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WEX_003 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_WIC_003 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_M_IOM_001 crm:P50_has_current_keeper data:keeper_Manx_Museum ;
+    crm:P55_has_current_location data:place_keeper_Manx_Museum .
+
+data:stone_M_IOM_002 crm:P50_has_current_keeper data:keeper_Manx_Museum ;
+    crm:P55_has_current_location data:place_keeper_Manx_Museum .
+
+data:stone_M_IOM_003 crm:P50_has_current_keeper data:keeper_Manx_Museum ;
+    crm:P55_has_current_location data:place_keeper_Manx_Museum .
+
+data:stone_M_IOM_004 crm:P50_has_current_keeper data:keeper_Manx_Museum ;
+    crm:P55_has_current_location data:place_keeper_Manx_Museum .
+
+data:stone_M_IOM_007 crm:P50_has_current_keeper data:keeper_Manx_Museum ;
+    crm:P55_has_current_location data:place_keeper_Manx_Museum .
+
+data:stone_M_IOM_009 crm:P50_has_current_keeper data:keeper_Manx_Museum ;
+    crm:P55_has_current_location data:place_keeper_Manx_Museum .
+
+data:stone_S_ANS_001 crm:P50_has_current_keeper data:keeper_St_Vigeans_Museum ;
+    crm:P55_has_current_location data:place_keeper_St_Vigeans_Museum .
+
+data:stone_S_ANS_003 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ARL_002 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_BUT_002 crm:P50_has_current_keeper data:keeper_Bute_Museum ;
+    crm:P55_has_current_location data:place_keeper_Bute_Museum .
+
+data:stone_S_BUT_003 crm:P50_has_current_keeper data:keeper_National_Museum_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Scotland .
+
+data:stone_S_BUT_004 crm:P50_has_current_keeper data:keeper_National_Museum_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_of_Scotland .
+
+data:stone_S_CAI_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_DGY_001 crm:P50_has_current_keeper data:keeper_Dumfries_Museum ;
+    crm:P55_has_current_location data:place_keeper_Dumfries_Museum .
+
+data:stone_S_FIF_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_INV_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_LKS_X01 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ORK_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ORK_002 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ORK_003 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ORK_004 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ORK_005 crm:P50_has_current_keeper data:keeper_Orkney_Museum ;
+    crm:P55_has_current_location data:place_keeper_Orkney_Museum .
+
+data:stone_S_ORK_006 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ORK_007 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_ORK_008 crm:P50_has_current_keeper data:keeper_Orkney_Museum ;
+    crm:P55_has_current_location data:place_keeper_Orkney_Museum .
+
+data:stone_S_ORK_X01 crm:P50_has_current_keeper data:keeper_Orkney_Museum ;
+    crm:P55_has_current_location data:place_keeper_Orkney_Museum .
+
+data:stone_S_PER_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_PER_003 crm:P50_has_current_keeper data:keeper_Perth_Museum ;
+    crm:P55_has_current_location data:place_keeper_Perth_Museum .
+
+data:stone_S_SHE_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_002 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_003 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_004 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_005 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_006 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_007 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_009 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_010 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_SHE_011 crm:P50_has_current_keeper data:keeper_Shetland_Museum ;
+    crm:P55_has_current_location data:place_keeper_Shetland_Museum .
+
+data:stone_S_SUT_001 crm:P50_has_current_keeper data:keeper_Dunrobin_Castle_Museum ;
+    crm:P55_has_current_location data:place_keeper_Dunrobin_Castle_Museum .
+
+data:stone_S_SUT_002 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_W_BRE_003 crm:P50_has_current_keeper data:keeper_Cyfarthfa_Museum ;
+    crm:P55_has_current_location data:place_keeper_Cyfarthfa_Museum .
+
+data:stone_W_BRE_004 crm:P50_has_current_keeper data:keeper_Brecknock_Museum ;
+    crm:P55_has_current_location data:place_keeper_Brecknock_Museum .
+
+data:stone_W_BRE_006 crm:P50_has_current_keeper data:keeper_British_Museum ;
+    crm:P55_has_current_location data:place_keeper_British_Museum .
+
+data:stone_W_CGN_001 crm:P50_has_current_keeper data:keeper_National_Museum_Wales ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_Wales .
+
+data:stone_W_DEN_001 crm:P50_has_current_keeper data:keeper_National_Museum_Wales ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_Wales .
+
+data:stone_W_GLA_001 crm:P50_has_current_keeper data:keeper_Margam_Stones_Museum ;
+    crm:P55_has_current_location data:place_keeper_Margam_Stones_Museum .
+
+data:stone_W_GLA_002 crm:P50_has_current_keeper data:keeper_Swansea_Museum ;
+    crm:P55_has_current_location data:place_keeper_Swansea_Museum .
+
+data:stone_W_GLA_X01 crm:P50_has_current_keeper data:keeper_National_Museum_Cardiff ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_Cardiff .
+
+data:stone_W_GLA_X02 crm:P50_has_current_keeper data:keeper_Margam_Stones_Museum ;
+    crm:P55_has_current_location data:place_keeper_Margam_Stones_Museum .
+
+data:stone_W_PEM_014 crm:P50_has_current_keeper data:keeper_St_Brynach_s_Church ;
+    crm:P55_has_current_location data:place_keeper_St_Brynach_s_Church .
+
+data:keeper_Cyfarthfa_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Cyfarthfa Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Cyfarthfa_Museum .
+
+data:keeper_St_Vigeans_Museum a crm:E40_Legal_Body ;
+    rdfs:label "St Vigeans Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_St_Vigeans_Museum .
+
+data:keeper_Ulster_Museum_Belfast a crm:E40_Legal_Body ;
+    rdfs:label "Ulster Museum, Belfast" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Ulster_Museum_Belfast .
+
+data:keeper_Brecknock_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Brecknock Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Brecknock_Museum ;
+    skos:closeMatch wd:Q15204378 .
+
+data:keeper_Bute_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Bute Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Bute_Museum ;
+    skos:closeMatch wd:Q17775932 .
+
+data:keeper_Dumfries_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Dumfries Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Dumfries_Museum ;
+    skos:closeMatch wd:Q5313798 .
+
+data:keeper_Dunrobin_Castle_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Dunrobin Castle Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Dunrobin_Castle_Museum ;
+    skos:closeMatch wd:Q72011449 .
+
+data:keeper_Herbert_Art_Gallery_and_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Herbert Art Gallery and Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Herbert_Art_Gallery_and_Museum ;
+    skos:closeMatch wd:Q917262 .
+
+data:keeper_Millstreet_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Millstreet Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Millstreet_Museum .
+
+data:keeper_National_Museum_Cardiff a crm:E40_Legal_Body ;
+    rdfs:label "National Museum Cardiff" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_Cardiff ;
+    skos:closeMatch wd:Q1321874 .
+
+data:keeper_Norwich_Castle_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Norwich Castle Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Norwich_Castle_Museum ;
+    skos:closeMatch wd:Q55361621 .
+
+data:keeper_Perth_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Perth Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Perth_Museum ;
+    skos:closeMatch wd:Q122199223 .
+
+data:keeper_Reading_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Reading Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Reading_Museum ;
+    skos:closeMatch wd:Q6941004 .
+
+data:keeper_Rothe_House_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Rothe House Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Rothe_House_Museum ;
+    skos:closeMatch wd:Q3752845 .
+
+data:keeper_Royal_Cornwall_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Royal Cornwall Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Royal_Cornwall_Museum ;
+    skos:closeMatch wd:Q1251321 .
+
+data:keeper_Shetland_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Shetland Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Shetland_Museum ;
+    skos:closeMatch wd:Q2278527 .
+
+data:keeper_St_Brynach_s_Church a crm:E40_Legal_Body ;
+    rdfs:label "St. Brynach's Church" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_St_Brynach_s_Church ;
+    skos:closeMatch wd:Q26236358 .
+
+data:keeper_Swansea_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Swansea Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Swansea_Museum ;
+    skos:closeMatch wd:Q7653706 .
+
+data:place_keeper_Brecknock_Museum a crm:E53_Place ;
+    rdfs:label "Brecknock Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.3893 51.9462)"^^geo:wktLiteral .
+
+data:place_keeper_Bute_Museum a crm:E53_Place ;
+    rdfs:label "Bute Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-5.05489 55.8359)"^^geo:wktLiteral .
+
+data:place_keeper_Cyfarthfa_Museum a crm:E53_Place ;
+    rdfs:label "Cyfarthfa Museum (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-3.389848 51.756656)"^^geo:wktLiteral .
+
+data:place_keeper_Dumfries_Museum a crm:E53_Place ;
+    rdfs:label "Dumfries Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.6146 55.0652)"^^geo:wktLiteral .
+
+data:place_keeper_Dunrobin_Castle_Museum a crm:E53_Place ;
+    rdfs:label "Dunrobin Castle Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.942489 57.982333)"^^geo:wktLiteral .
+
+data:place_keeper_Herbert_Art_Gallery_and_Museum a crm:E53_Place ;
+    rdfs:label "Herbert Art Gallery and Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-1.506222 52.407222)"^^geo:wktLiteral .
+
+data:place_keeper_National_Museum_Cardiff a crm:E53_Place ;
+    rdfs:label "National Museum Cardiff (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.177128 51.485577)"^^geo:wktLiteral .
+
+data:place_keeper_Norwich_Castle_Museum a crm:E53_Place ;
+    rdfs:label "Norwich Castle Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(1.2964 52.6286)"^^geo:wktLiteral .
+
+data:place_keeper_Perth_Museum a crm:E53_Place ;
+    rdfs:label "Perth Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.4294 56.39585)"^^geo:wktLiteral .
+
+data:place_keeper_Reading_Museum a crm:E53_Place ;
+    rdfs:label "Reading Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-0.969885 51.457134)"^^geo:wktLiteral .
+
+data:place_keeper_Rothe_House_Museum a crm:E53_Place ;
+    rdfs:label "Rothe House Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-7.254954 52.654709)"^^geo:wktLiteral .
+
+data:place_keeper_Royal_Cornwall_Museum a crm:E53_Place ;
+    rdfs:label "Royal Cornwall Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-5.0548 50.2637)"^^geo:wktLiteral .
+
+data:place_keeper_Shetland_Museum a crm:E53_Place ;
+    rdfs:label "Shetland Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-1.150111 60.157833)"^^geo:wktLiteral .
+
+data:place_keeper_St_Brynach_s_Church a crm:E53_Place ;
+    rdfs:label "St. Brynach's Church (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.346175 51.922953)"^^geo:wktLiteral .
+
+data:place_keeper_St_Vigeans_Museum a crm:E53_Place ;
+    rdfs:label "St Vigeans Museum (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-2.590367 56.577007)"^^geo:wktLiteral .
+
+data:place_keeper_Swansea_Museum a crm:E53_Place ;
+    rdfs:label "Swansea Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.9381 51.6178)"^^geo:wktLiteral .
+
+data:place_keeper_Ulster_Museum_Belfast a crm:E53_Place ;
+    rdfs:label "Ulster Museum, Belfast (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-5.935317 54.582245)"^^geo:wktLiteral .
+
+data:keeper_Margam_Stones_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Margam Stones Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Margam_Stones_Museum ;
+    skos:closeMatch wd:Q6759082 .
+
+data:keeper_National_Museum_Wales a crm:E40_Legal_Body ;
+    rdfs:label "National Museum Wales" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_Wales ;
+    skos:closeMatch wd:Q2046319 .
+
+data:keeper_National_Museum_of_Scotland a crm:E40_Legal_Body ;
+    rdfs:label "National Museum of Scotland" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_of_Scotland ;
+    skos:closeMatch wd:Q1633842 .
+
+data:keeper_Pitt_Rivers_Museum_Oxford a crm:E40_Legal_Body ;
+    rdfs:label "Pitt-Rivers Museum, Oxford" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Pitt_Rivers_Museum_Oxford .
+
+data:keeper_Trinity_College_Dublin a crm:E40_Legal_Body ;
+    rdfs:label "Trinity College Dublin" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Trinity_College_Dublin ;
+    skos:closeMatch wd:Q258464 .
+
+data:place_keeper_Margam_Stones_Museum a crm:E53_Place ;
+    rdfs:label "Margam Stones Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.73057 51.56327)"^^geo:wktLiteral .
+
+data:place_keeper_Millstreet_Museum a crm:E53_Place ;
+    rdfs:label "Millstreet Museum (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-9.06717 52.059744)"^^geo:wktLiteral .
+
+data:place_keeper_National_Museum_Wales a crm:E53_Place ;
+    rdfs:label "National Museum Wales (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-3.176869 51.486309)"^^geo:wktLiteral .
+
+data:place_keeper_National_Museum_of_Scotland a crm:E53_Place ;
+    rdfs:label "National Museum of Scotland (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.19 55.946944)"^^geo:wktLiteral .
+
+data:place_keeper_Trinity_College_Dublin a crm:E53_Place ;
+    rdfs:label "Trinity College Dublin (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-6.2577 53.3444)"^^geo:wktLiteral .
+
+data:keeper_Kerry_County_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Kerry County Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Kerry_County_Museum ;
+    skos:closeMatch wd:Q6394504 .
+
+data:keeper_Orkney_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Orkney Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Orkney_Museum ;
+    skos:closeMatch wd:Q2383929 .
+
+data:place_keeper_Kerry_County_Museum a crm:E53_Place ;
+    rdfs:label "Kerry County Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-9.7059 52.2669)"^^geo:wktLiteral .
+
+data:place_keeper_Orkney_Museum a crm:E53_Place ;
+    rdfs:label "Orkney Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-2.96084 58.98152)"^^geo:wktLiteral .
+
+data:place_keeper_Pitt_Rivers_Museum_Oxford a crm:E53_Place ;
+    rdfs:label "Pitt-Rivers Museum, Oxford (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-1.255064 51.758759)"^^geo:wktLiteral .
+
+data:keeper_Cork_Public_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Cork Public Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Cork_Public_Museum ;
+    skos:closeMatch wd:Q24041450 .
+
+data:keeper_M_saem_Chorca_Dhuibhne a crm:E40_Legal_Body ;
+    rdfs:label "Músaem Chorca Dhuibhne" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_M_saem_Chorca_Dhuibhne ;
+    skos:closeMatch wd:Q56379441 .
+
+data:place_keeper_Cork_Public_Museum a crm:E53_Place ;
+    rdfs:label "Cork Public Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-8.4943 51.8961)"^^geo:wktLiteral .
+
+data:place_keeper_M_saem_Chorca_Dhuibhne a crm:E53_Place ;
+    rdfs:label "Músaem Chorca Dhuibhne (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-10.406074 52.166535)"^^geo:wktLiteral .
+
+data:keeper_Manx_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Manx Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Manx_Museum ;
+    skos:closeMatch wd:Q11988082 .
+
+data:place_keeper_Manx_Museum a crm:E53_Place ;
+    rdfs:label "Manx Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-4.48187 54.15445)"^^geo:wktLiteral .
+
+data:keeper_British_Museum a crm:E40_Legal_Body ;
+    rdfs:label "British Museum" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_British_Museum ;
+    skos:closeMatch wd:Q6373 .
+
+data:place_keeper_British_Museum a crm:E53_Place ;
+    rdfs:label "British Museum (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-0.126944 51.519444)"^^geo:wktLiteral .
+
+data:keeper_National_Museums_of_Scotland a crm:E40_Legal_Body ;
+    rdfs:label "National Museums of Scotland" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_National_Museums_of_Scotland ;
+    skos:closeMatch wd:Q1967502 .
+
+data:place_keeper_National_Museums_of_Scotland a crm:E53_Place ;
+    rdfs:label "National Museums of Scotland (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.189 55.947)"^^geo:wktLiteral .
+
+data:keeper_University_College_Cork a crm:E40_Legal_Body ;
+    rdfs:label "University College Cork" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_University_College_Cork ;
+    skos:closeMatch wd:Q1574185 .
+
+data:place_keeper_University_College_Cork a crm:E53_Place ;
+    rdfs:label "University College Cork (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-8.49289 51.89291)"^^geo:wktLiteral .
+
+data:keeper_National_Museum_of_Ireland a crm:E40_Legal_Body ;
+    rdfs:label "National Museum of Ireland" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_of_Ireland ;
+    skos:closeMatch wd:Q1672840 .
+
+data:place_keeper_National_Museum_of_Ireland a crm:E53_Place ;
+    rdfs:label "National Museum of Ireland (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-6.254722 53.340278)"^^geo:wktLiteral .
+

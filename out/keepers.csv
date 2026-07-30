@@ -1,0 +1,174 @@
+ogham_id,ciic,title,findspot_county,findspot_country,findspot_lat,findspot_lon,keeper,keeper_qid,keeper_lat,keeper_lon,keeper_source,distance_km
+E-CON-005,-,Pennwydh | Penwith,Cornwall,England,50.088333,-5.545833,Royal Cornwall Museum,Q1251321,50.2637,-5.0548,wikidata,40.0
+E-DEV-001,489,Fardel,Devon,England,50.400019,-3.955761,British Museum,Q6373,51.519444,-0.126944,wikidata,295.6
+E-HAM-001,496,Silchester,Hampshire,England,51.357914,-1.019333,Reading Museum,Q6941004,51.457134,-0.969885,wikidata,11.6
+E-NFK-001,,Weeting-with-Broomhill,Norfolk,England,52.477039,0.581231,Norwich Castle Museum,Q55361621,52.6286,1.2964,wikidata,51.2
+E-WAR-001,,Coventry,Warwickshire,England,52.398772,-1.457633,Herbert Art Gallery and Museum,Q917262,52.407222,-1.506222,wikidata,3.4
+E-WRY-001,,Vale of York brooch fragment,West Riding of Yorkshire,England,53.989228,-1.530225,British Museum,Q6373,51.519444,-0.126944,wikidata,290.4
+I-ANT-002,310,Carn Coim | Carncome 2,Co. Antrim,Northern Ireland,54.8045,-6.1961,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,162.9
+I-CAR-004,17,Tuca Mín | Tuckamine,Co. Carlow,Ireland,52.84355,-6.72916,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,63.7
+I-CLA-003,53,Inis | Ennis bead,Co. Clare,Ireland,52.840588,-8.978509,British Museum,Q6373,51.519444,-0.126944,wikidata,620.7
+I-COR-009,61,Oileán an Easpaig | Bishop’s Island,Co. Cork,Ireland,52.004,-8.358,University College Cork,Q1574185,51.89291,-8.49289,wikidata,15.4
+I-COR-011,63,Gleann an Mhuilinn | Glenawillin 1,Co. Cork,Ireland,51.969371,-8.179727,University College Cork,Q1574185,51.89291,-8.49289,wikidata,23.1
+I-COR-017,69,Achadh Loiscthe | Ahalisky 1,Co. Cork,Ireland,51.681206,-8.84702,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,254.5
+I-COR-018,70,Achadh Loiscthe | Ahalisky 2,Co. Cork,Ireland,51.681206,-8.84702,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,254.5
+I-COR-019,71,Achadh Loiscthe | Ahalisky 3,Co. Cork,Ireland,51.681206,-8.84702,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,254.5
+I-COR-027,,Cúil an Fhéich | Coolineagh 3,Co. Cork,Ireland,51.952526,-8.815681,"Pitt-Rivers Museum, Oxford",,51.758759,-1.255064,osm,519.5
+I-COR-028,79,Gleann an Phúca | Glenaphuca 1,Co. Cork,Ireland,51.96797,-8.07234,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,195.7
+I-COR-029,80,Gleann an Phúca | Glenaphuca 2,Co. Cork,Ireland,51.967973,-8.072345,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,195.7
+I-COR-030,81,An Garrán | Garranes,Co. Cork,Ireland,51.816848,-8.765479,University College Cork,Q1574185,51.89291,-8.49289,wikidata,20.5
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-034,85,Baile an Chamhaicigh Thuaidh | Ballyknock North 4,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-035,86,Baile an Chamhaicigh Thuaidh | Ballyknock North 5,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-036,87,Baile an Chamhaicigh Thuaidh | Ballyknock North 6,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-037,88,Baile an Chamhaicigh Thuaidh | Ballyknock North 7,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-038,89,Baile an Chamhaicigh Thuaidh | Ballyknock North 8,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-039,90,Baile an Chamhaicigh Thuaidh | Ballyknock North 9,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-041,92,Baile an Chamhaicigh Thuaidh | Ballyknock North 11,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-042,93,Baile an Chamhaicigh Thuaidh | Ballyknock North 12,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-043,94,Baile an Chamhaicigh Thuaidh | Ballyknock North 13,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-044,95,Baile an Chamhaicigh Thuaidh | Ballyknock North 14,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-045,96,Baile an Chamhaicigh Thuaidh | Ballyknock North 15,Co. Cork,Ireland,52.03462,-8.08237,University College Cork,Q1574185,51.89291,-8.49289,wikidata,32.2
+I-COR-046,97,Baile Sheanc | Ballyhank 1,Co. Cork,Ireland,51.831516,-8.609832,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,231.2
+I-COR-047,98,Baile Sheanc | Ballyhank 2,Co. Cork,Ireland,51.831516,-8.609832,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,231.2
+I-COR-048,99,Baile Sheanc | Ballyhank 3,Co. Cork,Ireland,51.831516,-8.609832,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,231.2
+I-COR-049,100,Baile Sheanc | Ballyhank 4,Co. Cork,Ireland,51.831516,-8.609832,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,231.2
+I-COR-050,101,Baile Sheanc | Ballyhank 5,Co. Cork,Ireland,51.831516,-8.609832,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,231.2
+I-COR-051,102,Baile Sheanc | Ballyhank 6,Co. Cork,Ireland,51.831516,-8.609832,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,231.2
+I-COR-052,103,Barr an Chárthainn | Barrahaurin,Co. Cork,Ireland,51.999993,-8.813893,University College Cork,Q1574185,51.89291,-8.49289,wikidata,25.0
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,Co. Cork,Ireland,51.95252,-8.81568,University College Cork,Q1574185,51.89291,-8.49289,wikidata,23.1
+I-COR-055,106,Duílis | Deelish,Co. Cork,Ireland,51.9387,-8.88666,British Museum,Q6373,51.519444,-0.126944,wikidata,604.7
+I-COR-056,107,Gleann na gCloch Thuaidh | Glenaglogh,Co. Cork,Ireland,51.9907,-8.8671,University College Cork,Q1574185,51.89291,-8.49289,wikidata,27.9
+I-COR-061,,An Cnoc Ramhar | Knockrour 3,Co. Cork,Ireland,51.96999,-8.84582,"Pitt-Rivers Museum, Oxford",,51.758759,-1.255064,osm,521.5
+I-COR-062,112,Cnoc Seanmhaí | Knockshanawee 1,Co. Cork,Ireland,51.872673,-8.796211,University College Cork,Q1574185,51.89291,-8.49289,wikidata,20.9
+I-COR-063,113,Cnoc Seanmhaí | Knockshanawee 2,Co. Cork,Ireland,51.872673,-8.796211,University College Cork,Q1574185,51.89291,-8.49289,wikidata,20.9
+I-COR-064,114,Cnoc Seanmhaí | Knockshanawee 3,Co. Cork,Ireland,51.872673,-8.796211,University College Cork,Q1574185,51.89291,-8.49289,wikidata,20.9
+I-COR-065,115,Cnoc Seanmhaí | Knockshanawee 4,Co. Cork,Ireland,51.872673,-8.796211,University College Cork,Q1574185,51.89291,-8.49289,wikidata,20.9
+I-COR-066,116,Cnoc Seanmhaí | Knockshanawee 5,Co. Cork,Ireland,51.872673,-8.796211,University College Cork,Q1574185,51.89291,-8.49289,wikidata,20.9
+I-COR-067,117,Cnoc Seanmhaí | Knockshanawee 6,Co. Cork,Ireland,51.872673,-8.796211,University College Cork,Q1574185,51.89291,-8.49289,wikidata,20.9
+I-COR-069,118,Móin an tSagairt | Monataggart 1,Co. Cork,Ireland,51.976513,-8.787796,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,228.4
+I-COR-070,119,Móin an tSagairt | Monataggart 2,Co. Cork,Ireland,51.976513,-8.787796,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,228.4
+I-COR-071,120,Móin an tSagairt | Monataggart 3,Co. Cork,Ireland,51.976513,-8.787796,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,228.4
+I-COR-074,123,Cnoc idir Dhá Abhainn | Mountrivers 2,Co. Cork,Ireland,51.957629,-8.81211,British Museum,Q6373,51.519444,-0.126944,wikidata,599.7
+I-COR-076,124,An Rú Mór | Rooves More 1,Co. Cork,Ireland,51.88324,-8.788478,British Museum,Q6373,51.519444,-0.126944,wikidata,597.9
+I-COR-077,125,An Rú Mór | Rooves More 2,Co. Cork,Ireland,51.88324,-8.788478,British Museum,Q6373,51.519444,-0.126944,wikidata,597.9
+I-COR-078,126,An Rú Mór | Rooves More 3,Co. Cork,Ireland,51.88324,-8.788478,British Museum,Q6373,51.519444,-0.126944,wikidata,597.9
+I-COR-079,127,An Tulaigh Mhór | Tullig More,Co. Cork,Ireland,51.947,-8.758,University College Cork,Q1574185,51.89291,-8.49289,wikidata,19.2
+I-COR-080,128,Carraig an Ghiolla | Carrigagulla,Co. Cork,Ireland,52.015,-8.909,University College Cork,Q1574185,51.89291,-8.49289,wikidata,31.6
+I-COR-088,,Bun an Chnoic | Underhill 1,Co. Cork,Ireland,51.715236,-9.111685,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,264.5
+I-COR-089,,Bun an Chnoic | Underhill 2,Co. Cork,Ireland,51.715236,-9.111685,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,264.5
+I-COR-090,,Bun an Chnoic | Underhill 3,Co. Cork,Ireland,51.715236,-9.111685,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,264.5
+I-COR-091,,Lios Catháin | Liscahane 1,Co. Cork,Ireland,52.052268,-9.045799,Millstreet Museum,,52.059744,-9.06717,osm,1.7
+I-COR-092,,Lios Catháin | Liscahane 2,Co. Cork,Ireland,52.052268,-9.045799,Millstreet Museum,,52.059744,-9.06717,osm,1.7
+I-COR-093,,Bun Coille | Bunkilla,Co. Cork,Ireland,51.978115,-8.699242,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,223.9
+I-FER-001,315,Mullach an Chnoic | Topped Mountain,Co. Fermanagh,Northern Ireland,54.3594,-7.5217,"Ulster Museum, Belfast",,54.582245,-5.935317,osm,105.5
+I-FER-X01,,Ballydoolagh,Co. Fermanagh,Northern Ireland,54.38069,-7.56255,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,144.0
+I-KER-003,,An Deirc | Derk,Co. Kerry,Ireland,52.3715,-9.38419,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,236.1
+I-KER-004,137,Clochán Ruairc | Fortwilliam,Co. Kerry,Ireland,52.365209,-9.726907,Trinity College Dublin,Q258464,53.3444,-6.2577,wikidata,257.1
+I-KER-008,141,An Eaglais | Aglish 1,Co. Kerry,Ireland,52.13606,-10.13772,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,293.7
+I-KER-010,143,Áth na gCeap | Annagap,Co. Kerry,Ireland,52.1601,-10.05993,Cork Public Museum,Q24041450,51.8961,-8.4943,wikidata,111.1
+I-KER-013,146,An Riasc | Reask (Ballineanig),Co. Kerry,Ireland,52.1639,-10.3909,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,307.5
+I-KER-033,165,Baile an Tearmainn | Ballintermon 2,Co. Kerry,Ireland,52.161414,-10.039355,Cork Public Museum,Q24041450,51.8961,-8.4943,wikidata,109.7
+I-KER-034,166,Baile an Bhóthair | Ballinvoher,Co. Kerry,Ireland,52.168473,-10.028213,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,285.4
+I-KER-041,173,An Bhreac-chluain | Brackloon,Co. Kerry,Ireland,52.149426,-10.045703,Músaem Chorca Dhuibhne,Q56379441,52.166535,-10.406074,osm,24.7
+I-KER-049,181,Imleach an Daingin | Emlagh West,Co. Kerry,Ireland,52.136316,-10.269093,Músaem Chorca Dhuibhne,Q56379441,52.166535,-10.406074,osm,9.9
+I-KER-051,183,Gleann Fán | Glanfahan,Co. Kerry,Ireland,52.100774,-10.434394,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,313.4
+I-KER-052,184,Gort na gCuileannach | Gortnagullanagh,Co. Kerry,Ireland,52.142167,-10.123942,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,292.5
+I-KER-053,185,Inis Mhic Aoibhleáin | Inishvickillane,Co. Kerry,Ireland,52.044062,-10.606102,Trinity College Dublin,Q258464,53.3444,-6.2577,wikidata,326.7
+I-KER-060,192,Martromán | Martramane,Co. Kerry,Ireland,52.257493,-10.019614,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,280.2
+I-KER-064,195,Ráth Málóid | Rathmalode 1,Co. Kerry,Ireland,52.171589,-9.992082,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,283.1
+I-KER-065,196,Ráth Málóid | Rathmalode 2,Co. Kerry,Ireland,52.171589,-9.992082,Músaem Chorca Dhuibhne,Q56379441,52.166535,-10.406074,osm,28.2
+I-KER-074,205,"""Derrygarriv"" Doire Coinche | Derryquin 1",Co. Kerry,Ireland,51.8183,-9.8723,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,297.2
+I-KER-085,215,Bánchluain | Whitefield 1,Co. Kerry,Ireland,52.08496,-9.70064,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,270.8
+I-KER-086,216,Bánchluain | Whitefield 2,Co. Kerry,Ireland,52.08496,-9.70064,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,270.8
+I-KER-087,217,Bánchluain | Whitefield 3,Co. Kerry,Ireland,52.08496,-9.70064,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,270.8
+I-KER-088,218,Bánchluain | Whitefield 4,Co. Kerry,Ireland,52.08496,-9.70064,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,270.8
+I-KER-094,223,"""Parknasilla"" Doire Coinche | Derryquin 2""",Co. Kerry,Ireland,51.818379,-9.872346,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,297.2
+I-KER-099,228,Na Ceathrúna | Carhoona,Co. Kerry,Ireland,52.571346,-9.421646,"Pitt-Rivers Museum, Oxford",,51.758759,-1.255064,osm,564.0
+I-KER-108,238,Leitir | Letter,Co. Kerry,Ireland,51.924969,-10.219151,Kerry County Museum,Q6394504,52.2669,-9.7059,wikidata,51.7
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),Co. Kerry,Ireland,52.212276,-9.56944,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,255.8
+I-KER-125,253,Cill Orglan | Killorglin I ('near'),Co. Kerry,Ireland,52.104272,-9.777245,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,274.1
+I-KER-126,254,Fearann na gCat | Churchtown,Co. Kerry,Ireland,52.0727,-9.6864,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,270.7
+I-KER-127,255,Tigh na hAille | Tinnahally 1,Co. Kerry,Ireland,52.126506,-9.749639,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,271.2
+I-KER-128,256,Tigh na hAille | Tinnahally 2,Co. Kerry,Ireland,52.126506,-9.749639,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,271.2
+I-KER-135,1086,Cill Ghuilbin Thoir | Kilgulbin East,Co. Kerry,Ireland,52.346,-9.712,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,257.1
+I-KER-136,,Oileán an Teampaill | Church Island,Co. Kerry,Ireland,51.937578,-10.283295,Cork Public Museum,Q24041450,51.8961,-8.4943,wikidata,122.8
+I-KER-137,,An Gaorthadh Theas | Gearha South,Co. Kerry,Ireland,51.887801,-9.761091,Cork Public Museum,Q24041450,51.8961,-8.4943,wikidata,86.9
+I-KER-138,,Caol na bhFuarán | Brookhill,Co. Kerry,Ireland,52.072139,-9.735859,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,273.6
+I-KER-141,,Com an Lóndraigh | Coumlanders,Co. Kerry,Ireland,52.125601,-10.175898,Músaem Chorca Dhuibhne,Q56379441,52.166535,-10.406074,osm,16.4
+I-KER-143,,Trá Lí | Tralee,Co. Kerry,Ireland,52.269425,-9.723075,Kerry County Museum,Q6394504,52.2669,-9.7059,wikidata,1.2
+I-KER-150,,Formaoil |Fermoyle,Co. Kerry,Ireland,52.244086,-10.144093,Kerry County Museum,Q6394504,52.2669,-9.7059,wikidata,29.9
+I-KID-001,19,Baile Choilbín | Colbinstown 1,Co. Kildare,Ireland,53.02854,-6.76087,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,48.4
+I-KID-002,20,Baile Choilbín | Colbinstown 2,Co. Kildare,Ireland,53.02854,-6.76087,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,48.4
+I-KID-008,26,Domhnach Mór | Donaghmore,Co. Kildare,Ireland,53.377093,-6.552943,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,20.2
+I-KIK-001,27,Baile Uí Spealáin | Ballyspellan,Co. Kilkenny,Ireland,52.761,-7.511,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,105.8
+I-KIK-014,,An tSeanchill |Shankill,Co. Kilkenny,Ireland,52.6873,-7.0094,Rothe House Museum,Q3752845,52.654709,-7.254954,wikidata,16.9
+I-LOU-002,,Baile Bhalraic | Ballybarrack,Co. Louth,Ireland,53.986176,-6.424458,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,72.7
+I-MAY-002,4,Cill Mhainín | Kilmannin,Co. Mayo,Ireland,53.772989,-8.76517,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,172.7
+I-MAY-X02,,An Caol Thiar | Keel West,Co. Mayo,Ireland,53.968912,-10.202474,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,269.3
+I-MEA-001,40,Baile Phaghain | Painestown,Co. Meath,Ireland,53.667656,-6.565704,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,41.8
+I-MEA-003,,Moynagh Lough,Co. Meath,Ireland,53.81765,-6.75564,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,62.5
+I-MEA-004,,Sí an Bhrú | Newgrange,Co. Meath,Ireland,53.694,-6.476,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,42.0
+I-OFF-002,,Baile na hInse | Ballynahinch (Ballinderry Crannóg),Co. Offaly,Ireland,53.40075,-7.67659,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,94.6
+I-OFF-005,,An Liath Beag | Leabeg,Co. Offaly,Ireland,53.302,-7.731,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,98.1
+I-TIP-X01,,Liath | Leigh,Co. Tipperary,Ireland,52.673,-7.661,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,119.8
+I-WAT-001,262,Suí Mochuda | Seemochuda,Co. Waterford,Ireland,52.20345,-7.99903,University College Cork,Q1574185,51.89291,-8.49289,wikidata,48.3
+I-WAT-003,264,Aird Mhór | Ardmore 2,Co. Waterford,Ireland,51.948819,-7.726118,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,183.8
+I-WAT-007,268,An Drom Mór | Dromore 3 (Cill Tíre),Co. Waterford,Ireland,52.0743,-7.8477,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,177.0
+I-WAT-021,282,An Baile Beag | Fox’s Castle,Co. Waterford,Ireland,52.15361,-7.50168,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,156.4
+I-WAT-024,285,An Chill Bheag | Kilbeg,Co. Waterford,Ireland,52.164,-7.316,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,149.0
+I-WAT-030,,Cill Ghruabháin | Kilgrovan 6,Co. Waterford,Ireland,52.0899,-7.5498,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,164.1
+I-WAT-031,,Cill Ghruabháin | Kilgrovan 7,Co. Waterford,Ireland,52.089906,-7.549858,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,164.1
+I-WAT-041,,An Cnoc Buí | Knockboy 9,Co. Waterford,Ireland,52.194667,-7.684895,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,159.6
+I-WEX-003,46,Geata an Phóirtéaraigh | Portersgate,Co. Wexford,Ireland,52.1514,-6.8894,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,138.9
+I-WIC-003,49,Bealach Conglais | Baltinglass,Co. Wicklow,Ireland,52.94,-6.711,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,53.9
+M-IOM-001,503,Ballaqueeney 1,,Isle of Man,54.076378,-4.752794,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,19.7
+M-IOM-002,504,Ballaqueeney 2,,Isle of Man,54.076378,-4.752794,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,19.7
+M-IOM-003,501,Bimaken Friary 1,,Isle of Man,54.099614,-4.679378,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,14.2
+M-IOM-004,502,Bimaken Friary 2,,Isle of Man,54.099614,-4.679378,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,14.2
+M-IOM-007,500,Knoc y Doonee,,Isle of Man,54.390192,-4.459517,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,26.3
+M-IOM-009,,Speke Farm Keeill Stone,,Isle of Man,54.139086,-4.559436,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,5.3
+S-ANS-001,,St Vigeans,Angus,Scotland,56.576944,-2.590278,St Vigeans Museum,,56.577007,-2.590367,osm,0.0
+S-ANS-003,,Monifieth,Angus,Scotland,56.480556,-2.821111,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,63.5
+S-ARL-002,507,Poltalloch,Argyll and Bute,Scotland,56.1175,-5.507222,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,145.3
+S-BUT-002,,Inchmarnock 1,Bute,Scotland,55.789444,-5.153611,Bute Museum,Q17775932,55.8359,-5.05489,wikidata,8.0
+S-BUT-003,,Inchmarnock 2,Bute,Scotland,55.789444,-5.153611,National Museum of Scotland,Q1633842,55.946944,-3.19,wikidata,123.8
+S-BUT-004,,Inchmarnock 3,Bute,Scotland,55.789444,-5.153611,National Museum of Scotland,Q1633842,55.946944,-3.19,wikidata,123.8
+S-CAI-001,,Ackergill,Caithness,Scotland,58.478333,-3.119167,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,281.5
+S-DGY-001,,Lochnaw,Dumfries and Galloway,Scotland,54.912222,-5.137222,Dumfries Museum,Q5313798,55.0652,-3.6146,wikidata,98.6
+S-FIF-001,,Scoonie,Fife,Scotland,56.203611,-2.994444,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,31.0
+S-INV-001,,Bac Mhic Connain,Inverness-shire,Scotland,57.659167,-7.419167,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,320.2
+S-LKS-X01,,Bishop Loch,Lanarkshire,Scotland,55.876389,-4.100278,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,57.3
+S-ORK-001,,Burrian,Orkney,Scotland,59.348056,-2.418889,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,380.9
+S-ORK-002,,Gurness,Orkney,Scotland,59.123889,-3.081111,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,353.3
+S-ORK-003,,Birsay 1,Orkney,Scotland,59.136389,-3.330278,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,354.7
+S-ORK-004,,Birsay 2,Orkney,Scotland,59.136389,-3.330278,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,354.7
+S-ORK-005,,Buckquoy,Orkney,Scotland,59.134167,-3.323333,Orkney Museum,Q2383929,58.98152,-2.96084,wikidata,26.8
+S-ORK-006,,Birsay 3,Orkney,Scotland,59.136389,-3.330278,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,354.7
+S-ORK-007,,Birsay 4,Orkney,Scotland,59.136389,-3.330278,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,354.7
+S-ORK-008,,Pool 1,Orkney,Scotland,59.225556,-2.668611,Orkney Museum,Q2383929,58.98152,-2.96084,wikidata,31.9
+S-ORK-X01,,Pool 2,Orkney,Scotland,59.225556,-2.668612,Orkney Museum,Q2383929,58.98152,-2.96084,wikidata,31.9
+S-PER-001,,Abernethy 1,Perthshire,Scotland,56.333056,-3.311667,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,43.6
+S-PER-003,,Inchyra,Perthshire,Scotland,56.376111,-3.3125,Perth Museum,Q122199223,56.39585,-3.4294,wikidata,7.5
+S-SHE-001,,Bressay,Shetland,Scotland,60.161944,-1.063056,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,485.0
+S-SHE-002,,Cunningsburgh 1,Shetland,Scotland,60.033611,-1.224722,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,468.9
+S-SHE-003,,Cunningsburgh 2,Shetland,Scotland,60.033611,-1.224722,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,468.9
+S-SHE-004,,St Ninian's Isle 1,Shetland,Scotland,59.971389,-1.341667,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,460.5
+S-SHE-005,,St Ninian's Isle 2,Shetland,Scotland,59.971389,-1.341667,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,460.5
+S-SHE-006,,St Ninian's Isle 3,Shetland,Scotland,59.971389,-1.341667,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,460.5
+S-SHE-007,,Lunnasting,Shetland,Scotland,60.366389,-1.167778,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,505.5
+S-SHE-009,,Cunningsburgh 4,Shetland,Scotland,60.033611,-1.224722,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,468.9
+S-SHE-010,,Whiteness,Shetland,Scotland,60.1825,-1.304722,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,483.8
+S-SHE-011,,Bigton,Shetland,Scotland,59.973333,-1.323333,Shetland Museum,Q2278527,60.157833,-1.150111,wikidata,22.7
+S-SUT-001,,Golspie,Sutherland,Scotland,57.975833,-3.968056,Dunrobin Castle Museum,Q72011449,57.982333,-3.942489,wikidata,1.7
+S-SUT-002,,Latheron,Sutherland,Scotland,58.279722,-3.369167,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,259.6
+W-BRE-003,345,Ystradfellte,Brecknockshire,Wales,51.809528,-3.553209,Cyfarthfa Museum,,51.756656,-3.389848,osm,12.7
+W-BRE-004,327,Crickhowell,Brecknockshire,Wales,51.866872,-3.126958,Brecknock Museum,Q15204378,51.9462,-3.3893,wikidata,20.0
+W-BRE-006,341,Pentre Poeth | Llywel,Brecknockshire,Wales,51.925325,-3.625936,British Museum,Q6373,51.519444,-0.126944,wikidata,245.2
+W-CGN-001,353,Llanwenog,Cardiganshire,Wales,52.059325,-4.209772,National Museum Wales,Q2046319,51.486309,-3.176869,osm,95.4
+W-DEN-001,399,Clocaenog,Denbighshire,Wales,53.067967,-3.415525,National Museum Wales,Q2046319,51.486309,-3.176869,osm,176.6
+W-GLA-001,409,Egylwys Nynnid | Margam,Glamorgan,Wales,51.545939,-3.727606,Margam Stones Museum,Q6759082,51.56327,-3.73057,wikidata,1.9
+W-GLA-002,405,Loughor,Glamorgan,Wales,51.664108,-4.06135,Swansea Museum,Q7653706,51.6178,-3.9381,wikidata,9.9
+W-GLA-X01,404,Gelli-Gaer,Glamorgan,Wales,51.715653,-3.249856,National Museum Cardiff,Q1321874,51.485577,-3.177128,wikidata,26.1
+W-GLA-X02,408,Margam,Glamorgan,Wales,51.585703,-3.689275,Margam Stones Museum,Q6759082,51.56327,-3.73057,wikidata,3.8
+W-PEM-014,446,Nevern 1,Pembrokeshire,Wales,52.025392,-4.795144,St. Brynach's Church,Q26236358,51.922953,-3.346175,wikidata,99.9

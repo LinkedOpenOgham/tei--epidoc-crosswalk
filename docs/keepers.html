@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — findspot to museum</title>
+<meta name="description" content="Ogham stones moved from their findspot to a museum, drawn as arcs, with the institutions geocoded.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#131c1b; --panel:#1b2725; --panel-2:#233130; --line:#33433f;
+  --text:#e9e5da; --muted:#93a29d; --stone:#b8b2a7;
+  --ie:#5b8c5a; --ni:#9aab3f; --sc:#3f7d8c; --wa:#b07d2b; --en:#7a5c8e; --im:#b0413e;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --display:'Vollkorn',Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:var(--sans);background:var(--ink);color:var(--text);overflow:hidden}
+#app{display:flex;height:100vh}
+
+#side{width:342px;flex:0 0 342px;background:var(--panel);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;overflow:hidden}
+header{padding:20px 20px 14px;border-bottom:1px solid var(--line)}
+.stem{display:block;width:100%;height:34px;margin-bottom:11px}
+h1{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.15;margin:0 0 5px}
+.sub{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0}
+.sub a{color:var(--stone)}
+
+.scroll{overflow-y:auto;padding:16px 20px 26px;flex:1}
+.scroll::-webkit-scrollbar{width:8px}
+.scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+
+.tally{font-family:var(--mono);font-size:12px;color:var(--muted);
+  padding:2px 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tally b{color:var(--text);font-size:22px;font-weight:500;display:block;letter-spacing:-.02em}
+
+.field{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 7px;padding:0}
+input[type=search]{width:100%;padding:9px 11px;background:var(--panel-2);color:var(--text);
+  border:1px solid var(--line);border-radius:3px;font-family:var(--mono);font-size:13px}
+input[type=search]::placeholder{color:#6d7b77}
+input[type=search]:focus{outline:2px solid var(--sc);outline-offset:1px}
+
+fieldset{border:0;padding:0;margin:22px 0 0}
+.opt{display:flex;align-items:center;gap:9px;padding:5px 0;cursor:pointer;font-size:13.5px}
+.opt input{accent-color:var(--sc);margin:0;width:14px;height:14px;flex:0 0 14px}
+.opt .dot{width:11px;height:11px;border-radius:50%;flex:0 0 11px}
+.opt .n{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.opt:hover{color:#fff}
+.opt:focus-within{outline:1px solid var(--sc);outline-offset:3px}
+
+.note{font-size:12px;color:var(--muted);line-height:1.55;margin-top:22px;
+  padding-top:15px;border-top:1px solid var(--line)}
+.note code{color:var(--stone);font-size:11.5px}
+details{margin-top:12px}
+details summary{cursor:pointer;font-size:12.5px;color:var(--stone)}
+details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-left:16px;line-height:1.75;margin:8px 0 0}
+.dl{margin-top:16px;font-size:12px;line-height:1.9}
+.dl a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line)}
+.dl a:hover{color:#fff;border-color:var(--sc)}
+.btn{flex:1;padding:8px 6px;font-family:var(--sans);font-size:12px;cursor:pointer;
+  color:var(--text);background:var(--panel-2);border:1px solid var(--line);border-radius:3px}
+.btn:hover{border-color:var(--sc);color:#fff}
+.btn:active{background:var(--sc);color:#0f1918}
+.btn:disabled{opacity:.5;cursor:progress}
+
+nav{display:flex;gap:2px;margin-bottom:14px}
+nav a{flex:1;text-align:center;padding:7px 4px;font-size:12px;letter-spacing:.04em;
+  color:var(--muted);text-decoration:none;background:var(--panel-2);
+  border:1px solid var(--line);border-radius:3px}
+nav a:hover{color:var(--text)}
+nav a[aria-current]{background:var(--sc);border-color:var(--sc);color:#0f1918;font-weight:600}
+
+.wordlist{margin-top:6px}
+.wordgroup{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#6d7b77;
+  margin:16px 0 5px;padding-top:11px;border-top:1px solid var(--line)}
+.wordgroup:first-child{border-top:0;padding-top:0;margin-top:8px}
+.word{display:flex;align-items:baseline;gap:8px;padding:4px 0;cursor:pointer;font-size:13px}
+.word input{margin:0;accent-color:var(--sc);flex:0 0 13px}
+.word b{font-family:var(--mono);font-weight:500;font-size:12.5px}
+.word .tr{color:var(--muted);font-size:11.5px;flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.word .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.word:hover b{color:#fff}
+
+.gloss{background:var(--panel-2);border:1px solid var(--line);border-radius:3px;
+  padding:11px 12px;margin:14px 0 0;font-size:12.5px;line-height:1.55}
+.gloss h2{font-family:var(--display);font-size:19px;margin:0 0 2px;font-weight:600}
+.gloss .meta{color:var(--muted);font-size:11.5px;margin-bottom:7px}
+.gloss a{color:var(--stone)}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--muted);margin-top:11px;
+  align-items:center;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:6px}
+.pop .rdg{font-family:var(--mono);font-size:11.5px;line-height:1.5;margin:0 0 8px}
+.pop .rdg em{color:var(--muted);font-style:normal}
+.pop mark{background:rgba(63,125,140,.45);color:#eef0ea;border-radius:2px;padding:0 1px}
+.pop .badge{display:inline-block;font-size:10px;padding:1px 6px;border-radius:2px;
+  margin-left:6px;font-family:var(--sans);letter-spacing:.02em}
+.pop .gain{color:#9aab3f;font-size:11px}
+.pop .loss{color:#b0413e;font-size:11px}
+.pin.keeper{border-radius:2px}
+
+/* landing page: one centred column, no map */
+body.landing{overflow:auto}
+.wrap{max-width:760px;margin:0 auto;padding:56px 28px 72px}
+.wrap .stem{height:44px;margin-bottom:22px}
+.wrap h1{font-family:var(--display);font-size:38px;line-height:1.08;margin:0 0 12px;font-weight:700}
+.lede{font-size:15.5px;line-height:1.6;color:#c3ccc8;margin:0 0 8px;max-width:60ch}
+.lede code{font-size:13.5px;color:var(--stone)}
+.byline{font-size:12.5px;color:var(--muted);margin:0 0 40px}
+.byline a{color:var(--stone)}
+
+.cards{display:grid;gap:14px;margin-bottom:44px}
+.card{display:block;text-decoration:none;color:inherit;background:var(--panel);
+  border:1px solid var(--line);border-radius:4px;padding:20px 22px;
+  transition:border-color .15s ease,background .15s ease}
+.card:hover{border-color:var(--sc);background:var(--panel-2)}
+.card h2{font-family:var(--display);font-size:22px;margin:0 0 5px;font-weight:600}
+.card p{margin:0 0 13px;font-size:13.5px;line-height:1.55;color:#b9c2be;max-width:58ch}
+.figs{display:flex;gap:26px;flex-wrap:wrap}
+.fig{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.35}
+.fig b{display:block;font-size:19px;font-weight:500;color:var(--text);letter-spacing:-.02em}
+.soon{border-style:dashed;opacity:.6}
+.soon:hover{border-color:var(--line);background:var(--panel)}
+
+.section{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 12px;padding-top:26px;border-top:1px solid var(--line)}
+.files{display:grid;gap:9px;margin:0 0 34px;font-size:13px}
+.files a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line)}
+.files a:hover{color:#fff;border-color:var(--sc)}
+.files span{color:var(--muted);font-size:12px}
+.foot{font-size:12px;color:var(--muted);line-height:1.6}
+.foot a{color:var(--stone)}
+.foot code{font-size:11.5px}
+
+.hex-legend{background:rgba(27,39,37,.93);color:var(--text);padding:8px 11px;
+  border-radius:3px;font-family:var(--mono);font-size:11px;line-height:1.75;
+  box-shadow:0 1px 6px rgba(0,0,0,.3)}
+.hex-legend b{font-family:var(--sans);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);font-weight:500}
+.hex-legend .sw{display:inline-block;width:13px;height:13px;margin-right:7px;
+  vertical-align:-2px;border:1px solid rgba(0,0,0,.35)}
+.leaflet-bar a.ogham-fs{display:flex;align-items:center;justify-content:center;
+  color:#3b4a46}
+.leaflet-bar a.ogham-fs:hover{color:#131c1b}
+#map:fullscreen{width:100vw;height:100vh}
+
+.seg{display:flex;gap:2px;margin:0 0 10px}
+.seg label{flex:1;text-align:center;padding:6px 4px;font-size:12px;cursor:pointer;
+  color:var(--muted);background:var(--panel-2);border:1px solid var(--line);border-radius:3px}
+.seg label:hover{color:var(--text)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input:checked + span{color:#0f1918}
+.seg label:has(input:checked){background:var(--sc);border-color:var(--sc);
+  color:#0f1918;font-weight:600}
+.seg label:focus-within{outline:2px solid var(--sc);outline-offset:2px}
+#hexsize,#hexscale{display:none}
+#hexsize.on,#hexscale.on{display:flex}
+
+#map{flex:1;background:#e8e6df}
+.leaflet-container{font-family:var(--sans);background:#e8e6df}
+.pin{border-radius:50%;border:1.6px solid rgba(19,28,27,.7);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.pin.vague{border-style:dashed;background:transparent!important}
+
+/* clusters: drawn entirely in CSS, no sprite sheets, no default stylesheet */
+.ogham-cluster{background:rgba(51,67,63,.35);border-radius:50%;
+  transition:background .15s ease}
+.ogham-cluster:hover{background:rgba(63,125,140,.45)}
+.ogham-cluster div{width:30px;height:30px;margin:5px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#eef0ea;font-family:var(--mono);font-size:12px;font-weight:500;
+  box-shadow:0 1px 4px rgba(0,0,0,.28)}
+.ogham-cluster.sm div{background:#4a635e}
+.ogham-cluster.md{background:rgba(51,74,70,.34)}
+.ogham-cluster.md div{background:#334a46;font-size:12.5px}
+.ogham-cluster.lg div{background:#1d2b28;font-size:13px}
+.ogham-cluster.lg{background:rgba(29,43,40,.32)}
+
+.leaflet-popup-content-wrapper{background:var(--panel);color:var(--text);border-radius:3px;
+  box-shadow:0 3px 16px rgba(0,0,0,.35)}
+.leaflet-popup-tip{background:var(--panel)}
+.leaflet-popup-content{margin:15px 17px;font-size:13px;line-height:1.5;max-width:290px}
+.leaflet-container a.leaflet-popup-close-button{color:var(--muted)}
+.pop h2{font-family:var(--display);font-size:17px;margin:0 0 2px;font-weight:600;line-height:1.2}
+.pop .where{color:var(--muted);font-size:12.5px;margin-bottom:10px}
+.pop .flag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:2px;
+  background:rgba(176,125,43,.22);color:#e0bd77;margin-bottom:9px}
+.pop dl{display:grid;grid-template-columns:auto 1fr;gap:2px 11px;margin:0 0 10px;
+  font-family:var(--mono);font-size:11.5px}
+.pop dt{color:var(--muted)}
+.pop dd{margin:0;word-break:break-all}
+.pop .links a{color:var(--stone);font-size:12px;margin-right:11px}
+.leaflet-control-attribution{background:rgba(255,255,255,.82);font-size:10.5px}
+
+@media (max-width:760px){
+  #app{flex-direction:column}
+  #side{width:100%;flex:0 0 auto;max-height:48vh;border-right:0;border-bottom:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <header>
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>From findspot to museum</h1>
+      <p class="sub">Stones that no longer stand where they were found. Each arc runs
+      from the findspot to the institution holding the stone today.</p>
+    </header>
+    <div class="scroll">
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="findspots.html">Findspots</a>
+        <a href="words.html">Formulaic words</a>
+        <a href="readings.html">Disagreement</a>
+        <a href="keepers.html" aria-current="page">Displacement</a>
+      </nav>
+      <div id="empty" class="gloss" style="display:none">
+        <h2>Nothing geocoded yet</h2>
+        <div class="meta">The corpus names the institutions but gives no coordinates.</div>
+        <div style="margin-top:8px">Run <code>python py/main.py</code> once with network
+        access and the names are resolved against Wikidata and OpenStreetMap into
+        <code>reconciliation/keeper-coordinates.csv</code>.</div>
+      </div>
+
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <fieldset>
+        <legend class="field">Distance</legend>
+        <label class="opt"><input type="checkbox" id="onlyCross"> Only where the stone
+          left its country <span class="n" id="crossN"></span></label>
+      </fieldset>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#5b8c5a;
+          border:1.6px solid rgba(19,28,27,.7)"></i> stayed in its country</span>
+        <span><i class="pin" style="width:11px;height:11px;background:#b0413e;
+          border:1.6px solid rgba(19,28,27,.7)"></i> crossed a border</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <p class="field" style="margin-top:20px">Keeper</p>
+      <div class="wordlist" id="keeperlist"></div>
+
+      <p class="note">Institutions are geocoded automatically — Wikidata first,
+      because an institution has a QID and the QID is what belongs in the graph, then
+      OpenStreetMap for the small local museums Wikidata does not carry. Suggestions
+      are marked <code>auto</code> in
+      <code>reconciliation/keeper-coordinates.csv</code> and are meant to be read and
+      confirmed. A coordinate points at the institution, not at the stone's shelf.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="keepers.csv" download>Download displacements (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">2026-07-30</span> by
+      <code>py/webmap.py</code> from OG(H)AM corpus <a href="https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML" target="_blank" rel="noopener"><code>bb62ccd</code></a> (2026-07-02). Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script>
+
+// --- map controls -------------------------------------------------------------
+// Zoom sits top-left so the bottom-right corner is free for the density legend,
+// which is where the legend also lands in an exported figure. Full screen uses the
+// browser's own Fullscreen API on the map pane rather than a plugin: one less
+// dependency, and the sidebar gets out of the way while inspecting a cluster.
+function addMapControls(map) {
+  L.control.zoom({ position: "topleft" }).addTo(map);
+
+  const ICON_IN =
+    '<svg viewBox="0 0 18 18" width="14" height="14" aria-hidden="true">' +
+    '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">' +
+    '<path d="M2 6V2h4M16 6V2h-4M2 12v4h4M16 12v4h-4"/></g></svg>';
+  const ICON_OUT =
+    '<svg viewBox="0 0 18 18" width="14" height="14" aria-hidden="true">' +
+    '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">' +
+    '<path d="M6 2v4H2M12 2v4h4M6 16v-4H2M12 16v-4h4"/></g></svg>';
+
+  const Fullscreen = L.Control.extend({
+    options: { position: "topleft" },
+    onAdd: function () {
+      const wrap = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+      const link = L.DomUtil.create("a", "ogham-fs", wrap);
+      link.href = "#";
+      link.title = "Full screen";
+      link.setAttribute("role", "button");
+      link.innerHTML = ICON_IN;
+      L.DomEvent.on(link, "click", L.DomEvent.stopPropagation)
+                .on(link, "click", L.DomEvent.preventDefault)
+                .on(link, "click", () => {
+        const el = document.getElementById("map");
+        const on = document.fullscreenElement || document.webkitFullscreenElement;
+        if (on) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        else (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+      });
+      this._link = link;
+      return wrap;
+    }
+  });
+  const control = new Fullscreen();
+  map.addControl(control);
+
+  const sync = () => {
+    const on = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (control._link) {
+      control._link.innerHTML = on ? ICON_OUT : ICON_IN;
+      control._link.title = on ? "Leave full screen" : "Full screen";
+    }
+    setTimeout(() => map.invalidateSize(), 120);
+  };
+  document.addEventListener("fullscreenchange", sync);
+  document.addEventListener("webkitfullscreenchange", sync);
+}
+
+// --- hex-binned density -------------------------------------------------------
+// Ported from the holy-wells notebook of the SPARQLing Archaeology OER
+// (n4o-rse/oer-001-sparqling-archaeology): axial hex coordinates with cube
+// rounding, latitude corrected against the mean latitude of the points so cells
+// stay roughly equal-area over the corpus's 10 degrees of latitude. Binning runs
+// in the browser on whatever is currently filtered, not once at build time.
+const HEX = (function () {
+  const RAMP = ["#e7e6d4", "#bccbaa", "#84ae9a", "#4f8b8d", "#2b5f6b"];
+  let ky = 1;
+
+  function setLatitude(meanLat) { ky = 1 / Math.cos(meanLat * Math.PI / 180); }
+
+  function key(lon, lat, size) {
+    const x = lon, y = lat * ky;
+    const q = (2 / 3) * x / size;
+    const r = (-1 / 3) * x / size + (Math.sqrt(3) / 3) * y / size;
+    let cx = q, cz = r, cy = -cx - cz;
+    let rx = Math.round(cx), ry = Math.round(cy), rz = Math.round(cz);
+    const dx = Math.abs(rx - cx), dy = Math.abs(ry - cy), dz = Math.abs(rz - cz);
+    if (dx > dy && dx > dz) rx = -ry - rz;
+    else if (dy > dz) ry = -rx - rz;
+    else rz = -rx - ry;
+    return rx + "," + rz;
+  }
+
+  function polygon(q, r, size) {
+    const cx = size * 1.5 * q;
+    const cy = size * Math.sqrt(3) * (r + q / 2);
+    const out = [];
+    for (let i = 0; i < 6; i++) {
+      const a = 60 * i * Math.PI / 180;
+      out.push([(cy + size * Math.sin(a)) / ky, cx + size * Math.cos(a)]);
+    }
+    return out;
+  }
+
+  // Two ways of cutting the counts into five steps.
+  //
+  //   linear  the notebook's scheme: equal-width bands over 1..max
+  //   log     equal-ratio bands
+  //
+  // Linear is faithful to the original but unreadable on this corpus: the
+  // findspots are so concentrated in Kerry and Cork that ~91% of cells fall in
+  // the palest band and the map goes flat. Counts this skewed (median 1-2,
+  // maximum 25-81 depending on cell size) are what log binning is for, so that
+  // is the default here; linear stays available for comparison.
+  function edges(maxN, scale) {
+    const n = RAMP.length, out = [];
+    for (let i = 0; i < n; i++) {
+      out.push(scale === "log"
+        ? Math.max(1, Math.round(Math.pow(maxN, (i + 1) / n)))
+        : Math.ceil((i + 1) / n * maxN));
+    }
+    out[n - 1] = maxN;
+    return out;
+  }
+
+  function bandOf(count, maxN, scale) {
+    if (maxN <= 1) return 0;
+    const t = scale === "log"
+      ? Math.log(count) / Math.log(maxN)
+      : (count - 1) / maxN;
+    return Math.min(RAMP.length - 1, Math.floor(t * RAMP.length));
+  }
+
+  // Integer count ranges per ramp step, so the legend never claims a band the
+  // data cannot fill (max 3 stones must not read as "1-5").
+  function bands(maxN, scale) {
+    const out = [];
+    let prev = 1;
+    edges(maxN, scale).forEach((edge, i) => {
+      if (edge < prev) return;
+      out.push({ colour: RAMP[i], label: edge === prev ? String(prev) : prev + "\u2013" + edge });
+      prev = edge + 1;
+    });
+    return out;
+  }
+
+  function build(points, size, noun, scale) {
+    scale = scale || "log";
+    const counts = {};
+    for (const [lon, lat] of points) {
+      const k = key(lon, lat, size);
+      counts[k] = (counts[k] || 0) + 1;
+    }
+    const values = Object.values(counts);
+    const maxN = values.length ? Math.max.apply(null, values) : 1;
+    const layer = L.layerGroup();
+    for (const k in counts) {
+      const [q, r] = k.split(",").map(Number);
+      const n = counts[k];
+      L.polygon(polygon(q, r, size), {
+        color: "#2b3a37", weight: 0.7,
+        fillColor: RAMP[bandOf(n, maxN, scale)], fillOpacity: 0.75
+      }).bindTooltip("<b>" + n + "</b> " + noun + (n !== 1 ? "s" : ""), { sticky: true })
+        .addTo(layer);
+    }
+    return { layer, legend: bands(maxN, scale), cells: Object.keys(counts).length };
+  }
+
+  return { setLatitude, build };
+})();
+
+function makeLegend(map) {
+  const control = L.control({ position: "bottomright" });
+  control.onAdd = function () {
+    const div = L.DomUtil.create("div", "hex-legend");
+    div.innerHTML = control._html || "";
+    return div;
+  };
+  control.set = function (title, bands) {
+    control._html = "<b>" + title + "</b><br>" + bands.map(b =>
+      '<span class="sw" style="background:' + b.colour + '"></span>' + b.label).join("<br>");
+    if (control._container) control._container.innerHTML = control._html;
+  };
+  return control;
+}
+
+// --- export the current view --------------------------------------------------
+// Both formats are drawn from the same scene description that the display switch
+// keeps up to date, so an export shows what is on screen rather than a re-run of
+// the filters. Points are drawn individually even when the screen shows clusters:
+// a figure wants the distribution, not the bubbles.
+//
+// Basemap tiles are cross-origin. Rather than putting `crossOrigin` on the live
+// tile layer -- which would break the map outright if the server ever stopped
+// sending CORS headers -- the tiles are re-fetched with it only at export time,
+// and the export degrades to a vector-only file if that fails.
+let scene = { points: [], hexes: [], legend: null, title: "", noun: "stone" };
+
+function tileURLs(mapEl, rect) {
+  return [...mapEl.querySelectorAll("img.leaflet-tile")]
+    .filter(i => i.src && i.complete && i.naturalWidth)
+    .map(i => {
+      const r = i.getBoundingClientRect();
+      return { src: i.src, x: r.left - rect.left, y: r.top - rect.top,
+               w: r.width, h: r.height };
+    });
+}
+
+function loadCORS(src) {
+  return new Promise(resolve => {
+    const im = new Image();
+    im.crossOrigin = "anonymous";
+    im.onload = () => resolve(im);
+    im.onerror = () => resolve(null);
+    im.src = src;
+  });
+}
+
+async function basemapRaster(scale) {
+  const mapEl = document.getElementById("map");
+  const rect = mapEl.getBoundingClientRect();
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(rect.width * scale);
+  canvas.height = Math.round(rect.height * scale);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#e8e6df";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const tiles = tileURLs(mapEl, rect);
+  const images = await Promise.all(tiles.map(t => loadCORS(t.src)));
+  let drawn = 0;
+  images.forEach((im, i) => {
+    if (!im) return;
+    const t = tiles[i];
+    ctx.drawImage(im, t.x * scale, t.y * scale, t.w * scale, t.h * scale);
+    drawn++;
+  });
+  try {
+    return { canvas, ctx, dataURL: canvas.toDataURL("image/png"),
+             complete: drawn === tiles.length && drawn > 0 };
+  } catch (e) {                       // tainted despite the CORS attempt
+    ctx.fillStyle = "#e8e6df";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    return { canvas, ctx, dataURL: null, complete: false };
+  }
+}
+
+function projected() {
+  const pt = ll => map.latLngToContainerPoint(L.latLng(ll[0], ll[1]));
+  return {
+    hexes: scene.hexes.map(h => ({
+      fill: h.fill,
+      ring: h.ring.map(ll => { const p = pt(ll); return [p.x, p.y]; })
+    })),
+    points: scene.points.map(p0 => {
+      const p = pt([p0.lat, p0.lon]);
+      return { x: p.x, y: p.y, colour: p0.colour, vague: p0.vague };
+    })
+  };
+}
+
+const ATTRIB = "\u00a9 OpenStreetMap contributors \u00a9 CARTO \u00b7 editions: OG(H)AM (CC BY 4.0)";
+
+function download(blob, name) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function stamp(ext) {
+  const bits = ["ogham", scene.slug || "map",
+                (scene.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")];
+  return bits.filter(Boolean).join("-").slice(0, 70) + "-"
+       + new Date().toISOString().slice(0, 10) + "." + ext;
+}
+
+// Bottom-right, matching where the legend sits on screen and leaving the top-left
+// corner -- now the zoom and full-screen controls -- out of the figure.
+function drawLegendOnCanvas(ctx, rect) {
+  if (!scene.legend || !scene.legend.length) return;
+  const rows = scene.legend.length, lh = 17, bw = 132;
+  const bh = rows * lh + 24, bx = rect.width - bw - 12, by = rect.height - bh - 26;
+  ctx.fillStyle = "rgba(27,39,37,.93)";
+  ctx.beginPath();
+  ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 3) : ctx.rect(bx, by, bw, bh);
+  ctx.fill();
+  ctx.fillStyle = "#93a29d";
+  ctx.font = "10px sans-serif";
+  ctx.fillText((scene.legendTitle || "").toUpperCase(), bx + 10, by + 17);
+  ctx.font = "11px monospace";
+  scene.legend.forEach((b, i) => {
+    const y = by + 30 + i * lh;
+    ctx.fillStyle = b.colour;
+    ctx.fillRect(bx + 10, y, 12, 12);
+    ctx.strokeStyle = "rgba(0,0,0,.35)";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(bx + 10.5, y + 0.5, 11, 11);
+    ctx.fillStyle = "#e9e5da";
+    ctx.fillText(b.label, bx + 28, y + 10);
+  });
+}
+
+async function exportRaster() {
+  const rect = document.getElementById("map").getBoundingClientRect();
+  const scale = 2;
+  const { canvas, ctx, complete } = await basemapRaster(scale);
+  const geo = projected();
+  ctx.save();
+  ctx.scale(scale, scale);
+  for (const h of geo.hexes) {
+    ctx.beginPath();
+    h.ring.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+    ctx.closePath();
+    ctx.fillStyle = h.fill; ctx.globalAlpha = 0.75; ctx.fill();
+    ctx.globalAlpha = 1; ctx.strokeStyle = "#2b3a37"; ctx.lineWidth = 0.7; ctx.stroke();
+  }
+  for (const p of geo.points) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 6.5, 0, Math.PI * 2);
+    if (p.vague) {
+      ctx.strokeStyle = p.colour; ctx.lineWidth = 1.6; ctx.setLineDash([3, 2]);
+      ctx.stroke(); ctx.setLineDash([]);
+    } else {
+      ctx.fillStyle = p.colour; ctx.fill();
+      ctx.strokeStyle = "rgba(19,28,27,.7)"; ctx.lineWidth = 1.6; ctx.stroke();
+    }
+  }
+  drawLegendOnCanvas(ctx, rect);
+  ctx.font = "11px sans-serif";
+  const pad = 6, text = ATTRIB + (complete ? "" : " \u00b7 basemap incomplete");
+  const w = ctx.measureText(text).width;
+  ctx.fillStyle = "rgba(255,255,255,.82)";
+  ctx.fillRect(rect.width - w - pad * 2, rect.height - 18, w + pad * 2, 18);
+  ctx.fillStyle = "#333";
+  ctx.fillText(text, rect.width - w - pad, rect.height - 5);
+  ctx.restore();
+  canvas.toBlob(b => download(b, stamp("jpg")), "image/jpeg", 0.92);
+}
+
+async function exportVector() {
+  const rect = document.getElementById("map").getBoundingClientRect();
+  const w = Math.round(rect.width), h = Math.round(rect.height);
+  const { dataURL } = await basemapRaster(2);
+  const geo = projected();
+  const esc2 = t => String(t).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  const out = [];
+  out.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" `
+         + `width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`);
+  out.push(`<title>${esc2(scene.title || "Ogham map")}</title>`);
+  out.push(`<desc>${esc2(ATTRIB)}</desc>`);
+  out.push(`<rect width="${w}" height="${h}" fill="#e8e6df"/>`);
+  if (dataURL) {
+    out.push(`<g id="basemap"><image x="0" y="0" width="${w}" height="${h}" `
+           + `xlink:href="${dataURL}"/></g>`);
+  } else {
+    out.push(`<!-- basemap omitted: tiles could not be read cross-origin -->`);
+  }
+  out.push('<g id="data">');
+  for (const hx of geo.hexes) {
+    const d = hx.ring.map(([x, y], i) => (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1)).join(" ") + " Z";
+    out.push(`<path d="${d}" fill="${hx.fill}" fill-opacity="0.75" stroke="#2b3a37" stroke-width="0.7"/>`);
+  }
+  for (const p of geo.points) {
+    out.push(p.vague
+      ? `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6.5" fill="none" `
+        + `stroke="${p.colour}" stroke-width="1.6" stroke-dasharray="3 2"/>`
+      : `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6.5" fill="${p.colour}" `
+        + `stroke="rgba(19,28,27,.7)" stroke-width="1.6"/>`);
+  }
+  out.push("</g>");
+  if (scene.legend && scene.legend.length) {
+    const lh = 17, bw = 132, bh = scene.legend.length * lh + 24;
+    const bx = w - bw - 12, by = h - bh - 26;
+    out.push(`<g id="legend"><rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="3" `
+           + `fill="rgba(27,39,37,.93)"/>`);
+    out.push(`<text x="${bx + 10}" y="${by + 17}" font-family="sans-serif" font-size="10" `
+           + `fill="#93a29d" letter-spacing="0.6">${esc2((scene.legendTitle || "").toUpperCase())}</text>`);
+    scene.legend.forEach((b, i) => {
+      const y = by + 30 + i * lh;
+      out.push(`<rect x="${bx + 10}" y="${y}" width="12" height="12" fill="${b.colour}" `
+             + `stroke="rgba(0,0,0,.35)"/>`);
+      out.push(`<text x="${bx + 28}" y="${y + 10}" font-family="monospace" font-size="11" `
+             + `fill="#e9e5da">${esc2(b.label)}</text>`);
+    });
+    out.push("</g>");
+  }
+  out.push(`<text x="${w - 6}" y="${h - 6}" text-anchor="end" font-family="sans-serif" `
+         + `font-size="10" fill="#555">${esc2(ATTRIB)}</text>`);
+  out.push("</svg>");
+  download(new Blob([out.join("\n")], { type: "image/svg+xml" }), stamp("svg"));
+}
+
+function wireExport(id, fn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("click", async () => {
+    el.disabled = true;
+    try { await fn(); } finally { el.disabled = false; }
+  });
+}
+wireExport("dl-svg", exportVector);
+wireExport("dl-jpg", exportRaster);
+
+const LINKS = [{"id":"E-CON-005","title":"Pennwydh | Penwith","ciic":"-","county":"Cornwall","country":"England","lat":50.088333,"lon":-5.545833,"klat":50.2637,"klon":-5.0548,"keeper":"Royal Cornwall Museum","qid":"Q1251321","src":"wikidata","km":40.0,"cross":false},{"id":"E-DEV-001","title":"Fardel","ciic":"489","county":"Devon","country":"England","lat":50.400019,"lon":-3.955761,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":295.6,"cross":false},{"id":"E-HAM-001","title":"Silchester","ciic":"496","county":"Hampshire","country":"England","lat":51.357914,"lon":-1.019333,"klat":51.457134,"klon":-0.969885,"keeper":"Reading Museum","qid":"Q6941004","src":"wikidata","km":11.6,"cross":false},{"id":"E-NFK-001","title":"Weeting-with-Broomhill","ciic":"","county":"Norfolk","country":"England","lat":52.477039,"lon":0.581231,"klat":52.6286,"klon":1.2964,"keeper":"Norwich Castle Museum","qid":"Q55361621","src":"wikidata","km":51.2,"cross":false},{"id":"E-WAR-001","title":"Coventry","ciic":"","county":"Warwickshire","country":"England","lat":52.398772,"lon":-1.457633,"klat":52.407222,"klon":-1.506222,"keeper":"Herbert Art Gallery and Museum","qid":"Q917262","src":"wikidata","km":3.4,"cross":false},{"id":"E-WRY-001","title":"Vale of York brooch fragment","ciic":"","county":"West Riding of Yorkshire","country":"England","lat":53.989228,"lon":-1.530225,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":290.4,"cross":false},{"id":"I-ANT-002","title":"Carn Coim | Carncome 2","ciic":"310","county":"Co. Antrim","country":"Northern Ireland","lat":54.8045,"lon":-6.1961,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":162.9,"cross":true},{"id":"I-CAR-004","title":"Tuca Mín | Tuckamine","ciic":"17","county":"Co. Carlow","country":"Ireland","lat":52.84355,"lon":-6.72916,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":63.7,"cross":false},{"id":"I-CLA-003","title":"Inis | Ennis bead","ciic":"53","county":"Co. Clare","country":"Ireland","lat":52.840588,"lon":-8.978509,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":620.7,"cross":true},{"id":"I-COR-009","title":"Oileán an Easpaig | Bishop’s Island","ciic":"61","county":"Co. Cork","country":"Ireland","lat":52.004,"lon":-8.358,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":15.4,"cross":false},{"id":"I-COR-011","title":"Gleann an Mhuilinn | Glenawillin 1","ciic":"63","county":"Co. Cork","country":"Ireland","lat":51.969371,"lon":-8.179727,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":23.1,"cross":false},{"id":"I-COR-017","title":"Achadh Loiscthe | Ahalisky 1","ciic":"69","county":"Co. Cork","country":"Ireland","lat":51.681206,"lon":-8.84702,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":254.5,"cross":false},{"id":"I-COR-018","title":"Achadh Loiscthe | Ahalisky 2","ciic":"70","county":"Co. Cork","country":"Ireland","lat":51.681206,"lon":-8.84702,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":254.5,"cross":false},{"id":"I-COR-019","title":"Achadh Loiscthe | Ahalisky 3","ciic":"71","county":"Co. Cork","country":"Ireland","lat":51.681206,"lon":-8.84702,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":254.5,"cross":false},{"id":"I-COR-027","title":"Cúil an Fhéich | Coolineagh 3","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.952526,"lon":-8.815681,"klat":51.758759,"klon":-1.255064,"keeper":"Pitt-Rivers Museum, Oxford","qid":"","src":"osm","km":519.5,"cross":true},{"id":"I-COR-028","title":"Gleann an Phúca | Glenaphuca 1","ciic":"79","county":"Co. Cork","country":"Ireland","lat":51.96797,"lon":-8.07234,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":195.7,"cross":false},{"id":"I-COR-029","title":"Gleann an Phúca | Glenaphuca 2","ciic":"80","county":"Co. Cork","country":"Ireland","lat":51.967973,"lon":-8.072345,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":195.7,"cross":false},{"id":"I-COR-030","title":"An Garrán | Garranes","ciic":"81","county":"Co. Cork","country":"Ireland","lat":51.816848,"lon":-8.765479,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":20.5,"cross":false},{"id":"I-COR-032","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 2","ciic":"83","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-034","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 4","ciic":"85","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-035","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 5","ciic":"86","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-036","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 6","ciic":"87","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-037","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 7","ciic":"88","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-038","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 8","ciic":"89","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-039","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 9","ciic":"90","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-041","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 11","ciic":"92","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-042","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 12","ciic":"93","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-043","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 13","ciic":"94","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-044","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 14","ciic":"95","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-045","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 15","ciic":"96","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":32.2,"cross":false},{"id":"I-COR-046","title":"Baile Sheanc | Ballyhank 1","ciic":"97","county":"Co. Cork","country":"Ireland","lat":51.831516,"lon":-8.609832,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":231.2,"cross":false},{"id":"I-COR-047","title":"Baile Sheanc | Ballyhank 2","ciic":"98","county":"Co. Cork","country":"Ireland","lat":51.831516,"lon":-8.609832,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":231.2,"cross":false},{"id":"I-COR-048","title":"Baile Sheanc | Ballyhank 3","ciic":"99","county":"Co. Cork","country":"Ireland","lat":51.831516,"lon":-8.609832,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":231.2,"cross":false},{"id":"I-COR-049","title":"Baile Sheanc | Ballyhank 4","ciic":"100","county":"Co. Cork","country":"Ireland","lat":51.831516,"lon":-8.609832,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":231.2,"cross":false},{"id":"I-COR-050","title":"Baile Sheanc | Ballyhank 5","ciic":"101","county":"Co. Cork","country":"Ireland","lat":51.831516,"lon":-8.609832,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":231.2,"cross":false},{"id":"I-COR-051","title":"Baile Sheanc | Ballyhank 6","ciic":"102","county":"Co. Cork","country":"Ireland","lat":51.831516,"lon":-8.609832,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":231.2,"cross":false},{"id":"I-COR-052","title":"Barr an Chárthainn | Barrahaurin","ciic":"103","county":"Co. Cork","country":"Ireland","lat":51.999993,"lon":-8.813893,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":25.0,"cross":false},{"id":"I-COR-054","title":"Cúil an Fhéich | Coolineagh 2","ciic":"105","county":"Co. Cork","country":"Ireland","lat":51.95252,"lon":-8.81568,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":23.1,"cross":false},{"id":"I-COR-055","title":"Duílis | Deelish","ciic":"106","county":"Co. Cork","country":"Ireland","lat":51.9387,"lon":-8.88666,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":604.7,"cross":true},{"id":"I-COR-056","title":"Gleann na gCloch Thuaidh | Glenaglogh","ciic":"107","county":"Co. Cork","country":"Ireland","lat":51.9907,"lon":-8.8671,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":27.9,"cross":false},{"id":"I-COR-061","title":"An Cnoc Ramhar | Knockrour 3","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.96999,"lon":-8.84582,"klat":51.758759,"klon":-1.255064,"keeper":"Pitt-Rivers Museum, Oxford","qid":"","src":"osm","km":521.5,"cross":true},{"id":"I-COR-062","title":"Cnoc Seanmhaí | Knockshanawee 1","ciic":"112","county":"Co. Cork","country":"Ireland","lat":51.872673,"lon":-8.796211,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":20.9,"cross":false},{"id":"I-COR-063","title":"Cnoc Seanmhaí | Knockshanawee 2","ciic":"113","county":"Co. Cork","country":"Ireland","lat":51.872673,"lon":-8.796211,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":20.9,"cross":false},{"id":"I-COR-064","title":"Cnoc Seanmhaí | Knockshanawee 3","ciic":"114","county":"Co. Cork","country":"Ireland","lat":51.872673,"lon":-8.796211,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":20.9,"cross":false},{"id":"I-COR-065","title":"Cnoc Seanmhaí | Knockshanawee 4","ciic":"115","county":"Co. Cork","country":"Ireland","lat":51.872673,"lon":-8.796211,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":20.9,"cross":false},{"id":"I-COR-066","title":"Cnoc Seanmhaí | Knockshanawee 5","ciic":"116","county":"Co. Cork","country":"Ireland","lat":51.872673,"lon":-8.796211,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":20.9,"cross":false},{"id":"I-COR-067","title":"Cnoc Seanmhaí | Knockshanawee 6","ciic":"117","county":"Co. Cork","country":"Ireland","lat":51.872673,"lon":-8.796211,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":20.9,"cross":false},{"id":"I-COR-069","title":"Móin an tSagairt | Monataggart 1","ciic":"118","county":"Co. Cork","country":"Ireland","lat":51.976513,"lon":-8.787796,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":228.4,"cross":false},{"id":"I-COR-070","title":"Móin an tSagairt | Monataggart 2","ciic":"119","county":"Co. Cork","country":"Ireland","lat":51.976513,"lon":-8.787796,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":228.4,"cross":false},{"id":"I-COR-071","title":"Móin an tSagairt | Monataggart 3","ciic":"120","county":"Co. Cork","country":"Ireland","lat":51.976513,"lon":-8.787796,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":228.4,"cross":false},{"id":"I-COR-074","title":"Cnoc idir Dhá Abhainn | Mountrivers 2","ciic":"123","county":"Co. Cork","country":"Ireland","lat":51.957629,"lon":-8.81211,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":599.7,"cross":true},{"id":"I-COR-076","title":"An Rú Mór | Rooves More 1","ciic":"124","county":"Co. Cork","country":"Ireland","lat":51.88324,"lon":-8.788478,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":597.9,"cross":true},{"id":"I-COR-077","title":"An Rú Mór | Rooves More 2","ciic":"125","county":"Co. Cork","country":"Ireland","lat":51.88324,"lon":-8.788478,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":597.9,"cross":true},{"id":"I-COR-078","title":"An Rú Mór | Rooves More 3","ciic":"126","county":"Co. Cork","country":"Ireland","lat":51.88324,"lon":-8.788478,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":597.9,"cross":true},{"id":"I-COR-079","title":"An Tulaigh Mhór | Tullig More","ciic":"127","county":"Co. Cork","country":"Ireland","lat":51.947,"lon":-8.758,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":19.2,"cross":false},{"id":"I-COR-080","title":"Carraig an Ghiolla | Carrigagulla","ciic":"128","county":"Co. Cork","country":"Ireland","lat":52.015,"lon":-8.909,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":31.6,"cross":false},{"id":"I-COR-088","title":"Bun an Chnoic | Underhill 1","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.715236,"lon":-9.111685,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":264.5,"cross":false},{"id":"I-COR-089","title":"Bun an Chnoic | Underhill 2","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.715236,"lon":-9.111685,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":264.5,"cross":false},{"id":"I-COR-090","title":"Bun an Chnoic | Underhill 3","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.715236,"lon":-9.111685,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":264.5,"cross":false},{"id":"I-COR-091","title":"Lios Catháin | Liscahane 1","ciic":"","county":"Co. Cork","country":"Ireland","lat":52.052268,"lon":-9.045799,"klat":52.059744,"klon":-9.06717,"keeper":"Millstreet Museum","qid":"","src":"osm","km":1.7,"cross":false},{"id":"I-COR-092","title":"Lios Catháin | Liscahane 2","ciic":"","county":"Co. Cork","country":"Ireland","lat":52.052268,"lon":-9.045799,"klat":52.059744,"klon":-9.06717,"keeper":"Millstreet Museum","qid":"","src":"osm","km":1.7,"cross":false},{"id":"I-COR-093","title":"Bun Coille | Bunkilla","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.978115,"lon":-8.699242,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":223.9,"cross":false},{"id":"I-FER-001","title":"Mullach an Chnoic | Topped Mountain","ciic":"315","county":"Co. Fermanagh","country":"Northern Ireland","lat":54.3594,"lon":-7.5217,"klat":54.582245,"klon":-5.935317,"keeper":"Ulster Museum, Belfast","qid":"","src":"osm","km":105.5,"cross":false},{"id":"I-FER-X01","title":"Ballydoolagh","ciic":"","county":"Co. Fermanagh","country":"Northern Ireland","lat":54.38069,"lon":-7.56255,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":144.0,"cross":true},{"id":"I-KER-003","title":"An Deirc | Derk","ciic":"","county":"Co. Kerry","country":"Ireland","lat":52.3715,"lon":-9.38419,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":236.1,"cross":false},{"id":"I-KER-004","title":"Clochán Ruairc | Fortwilliam","ciic":"137","county":"Co. Kerry","country":"Ireland","lat":52.365209,"lon":-9.726907,"klat":53.3444,"klon":-6.2577,"keeper":"Trinity College Dublin","qid":"Q258464","src":"wikidata","km":257.1,"cross":false},{"id":"I-KER-008","title":"An Eaglais | Aglish 1","ciic":"141","county":"Co. Kerry","country":"Ireland","lat":52.13606,"lon":-10.13772,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":293.7,"cross":false},{"id":"I-KER-010","title":"Áth na gCeap | Annagap","ciic":"143","county":"Co. Kerry","country":"Ireland","lat":52.1601,"lon":-10.05993,"klat":51.8961,"klon":-8.4943,"keeper":"Cork Public Museum","qid":"Q24041450","src":"wikidata","km":111.1,"cross":false},{"id":"I-KER-013","title":"An Riasc | Reask (Ballineanig)","ciic":"146","county":"Co. Kerry","country":"Ireland","lat":52.1639,"lon":-10.3909,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":307.5,"cross":false},{"id":"I-KER-033","title":"Baile an Tearmainn | Ballintermon 2","ciic":"165","county":"Co. Kerry","country":"Ireland","lat":52.161414,"lon":-10.039355,"klat":51.8961,"klon":-8.4943,"keeper":"Cork Public Museum","qid":"Q24041450","src":"wikidata","km":109.7,"cross":false},{"id":"I-KER-034","title":"Baile an Bhóthair | Ballinvoher","ciic":"166","county":"Co. Kerry","country":"Ireland","lat":52.168473,"lon":-10.028213,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":285.4,"cross":false},{"id":"I-KER-041","title":"An Bhreac-chluain | Brackloon","ciic":"173","county":"Co. Kerry","country":"Ireland","lat":52.149426,"lon":-10.045703,"klat":52.166535,"klon":-10.406074,"keeper":"Músaem Chorca Dhuibhne","qid":"Q56379441","src":"osm","km":24.7,"cross":false},{"id":"I-KER-049","title":"Imleach an Daingin | Emlagh West","ciic":"181","county":"Co. Kerry","country":"Ireland","lat":52.136316,"lon":-10.269093,"klat":52.166535,"klon":-10.406074,"keeper":"Músaem Chorca Dhuibhne","qid":"Q56379441","src":"osm","km":9.9,"cross":false},{"id":"I-KER-051","title":"Gleann Fán | Glanfahan","ciic":"183","county":"Co. Kerry","country":"Ireland","lat":52.100774,"lon":-10.434394,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":313.4,"cross":false},{"id":"I-KER-052","title":"Gort na gCuileannach | Gortnagullanagh","ciic":"184","county":"Co. Kerry","country":"Ireland","lat":52.142167,"lon":-10.123942,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":292.5,"cross":false},{"id":"I-KER-053","title":"Inis Mhic Aoibhleáin | Inishvickillane","ciic":"185","county":"Co. Kerry","country":"Ireland","lat":52.044062,"lon":-10.606102,"klat":53.3444,"klon":-6.2577,"keeper":"Trinity College Dublin","qid":"Q258464","src":"wikidata","km":326.7,"cross":false},{"id":"I-KER-060","title":"Martromán | Martramane","ciic":"192","county":"Co. Kerry","country":"Ireland","lat":52.257493,"lon":-10.019614,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":280.2,"cross":false},{"id":"I-KER-064","title":"Ráth Málóid | Rathmalode 1","ciic":"195","county":"Co. Kerry","country":"Ireland","lat":52.171589,"lon":-9.992082,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":283.1,"cross":false},{"id":"I-KER-065","title":"Ráth Málóid | Rathmalode 2","ciic":"196","county":"Co. Kerry","country":"Ireland","lat":52.171589,"lon":-9.992082,"klat":52.166535,"klon":-10.406074,"keeper":"Músaem Chorca Dhuibhne","qid":"Q56379441","src":"osm","km":28.2,"cross":false},{"id":"I-KER-074","title":"\"Derrygarriv\" Doire Coinche | Derryquin 1","ciic":"205","county":"Co. Kerry","country":"Ireland","lat":51.8183,"lon":-9.8723,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":297.2,"cross":false},{"id":"I-KER-085","title":"Bánchluain | Whitefield 1","ciic":"215","county":"Co. Kerry","country":"Ireland","lat":52.08496,"lon":-9.70064,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":270.8,"cross":false},{"id":"I-KER-086","title":"Bánchluain | Whitefield 2","ciic":"216","county":"Co. Kerry","country":"Ireland","lat":52.08496,"lon":-9.70064,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":270.8,"cross":false},{"id":"I-KER-087","title":"Bánchluain | Whitefield 3","ciic":"217","county":"Co. Kerry","country":"Ireland","lat":52.08496,"lon":-9.70064,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":270.8,"cross":false},{"id":"I-KER-088","title":"Bánchluain | Whitefield 4","ciic":"218","county":"Co. Kerry","country":"Ireland","lat":52.08496,"lon":-9.70064,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":270.8,"cross":false},{"id":"I-KER-094","title":"\"Parknasilla\" Doire Coinche | Derryquin 2\"","ciic":"223","county":"Co. Kerry","country":"Ireland","lat":51.818379,"lon":-9.872346,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":297.2,"cross":false},{"id":"I-KER-099","title":"Na Ceathrúna | Carhoona","ciic":"228","county":"Co. Kerry","country":"Ireland","lat":52.571346,"lon":-9.421646,"klat":51.758759,"klon":-1.255064,"keeper":"Pitt-Rivers Museum, Oxford","qid":"","src":"osm","km":564.0,"cross":true},{"id":"I-KER-108","title":"Leitir | Letter","ciic":"238","county":"Co. Kerry","country":"Ireland","lat":51.924969,"lon":-10.219151,"klat":52.2669,"klon":-9.7059,"keeper":"Kerry County Museum","qid":"Q6394504","src":"wikidata","km":51.7,"cross":false},{"id":"I-KER-124","title":"An Garrán Darach | Garraundarragh ('Gurrane')","ciic":"252","county":"Co. Kerry","country":"Ireland","lat":52.212276,"lon":-9.56944,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":255.8,"cross":false},{"id":"I-KER-125","title":"Cill Orglan | Killorglin I ('near')","ciic":"253","county":"Co. Kerry","country":"Ireland","lat":52.104272,"lon":-9.777245,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":274.1,"cross":false},{"id":"I-KER-126","title":"Fearann na gCat | Churchtown","ciic":"254","county":"Co. Kerry","country":"Ireland","lat":52.0727,"lon":-9.6864,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":270.7,"cross":false},{"id":"I-KER-127","title":"Tigh na hAille | Tinnahally 1","ciic":"255","county":"Co. Kerry","country":"Ireland","lat":52.126506,"lon":-9.749639,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":271.2,"cross":false},{"id":"I-KER-128","title":"Tigh na hAille | Tinnahally 2","ciic":"256","county":"Co. Kerry","country":"Ireland","lat":52.126506,"lon":-9.749639,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":271.2,"cross":false},{"id":"I-KER-135","title":"Cill Ghuilbin Thoir | Kilgulbin East","ciic":"1086","county":"Co. Kerry","country":"Ireland","lat":52.346,"lon":-9.712,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":257.1,"cross":false},{"id":"I-KER-136","title":"Oileán an Teampaill | Church Island","ciic":"","county":"Co. Kerry","country":"Ireland","lat":51.937578,"lon":-10.283295,"klat":51.8961,"klon":-8.4943,"keeper":"Cork Public Museum","qid":"Q24041450","src":"wikidata","km":122.8,"cross":false},{"id":"I-KER-137","title":"An Gaorthadh Theas | Gearha South","ciic":"","county":"Co. Kerry","country":"Ireland","lat":51.887801,"lon":-9.761091,"klat":51.8961,"klon":-8.4943,"keeper":"Cork Public Museum","qid":"Q24041450","src":"wikidata","km":86.9,"cross":false},{"id":"I-KER-138","title":"Caol na bhFuarán | Brookhill","ciic":"","county":"Co. Kerry","country":"Ireland","lat":52.072139,"lon":-9.735859,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":273.6,"cross":false},{"id":"I-KER-141","title":"Com an Lóndraigh | Coumlanders","ciic":"","county":"Co. Kerry","country":"Ireland","lat":52.125601,"lon":-10.175898,"klat":52.166535,"klon":-10.406074,"keeper":"Músaem Chorca Dhuibhne","qid":"Q56379441","src":"osm","km":16.4,"cross":false},{"id":"I-KER-143","title":"Trá Lí | Tralee","ciic":"","county":"Co. Kerry","country":"Ireland","lat":52.269425,"lon":-9.723075,"klat":52.2669,"klon":-9.7059,"keeper":"Kerry County Museum","qid":"Q6394504","src":"wikidata","km":1.2,"cross":false},{"id":"I-KER-150","title":"Formaoil |Fermoyle","ciic":"","county":"Co. Kerry","country":"Ireland","lat":52.244086,"lon":-10.144093,"klat":52.2669,"klon":-9.7059,"keeper":"Kerry County Museum","qid":"Q6394504","src":"wikidata","km":29.9,"cross":false},{"id":"I-KID-001","title":"Baile Choilbín | Colbinstown 1","ciic":"19","county":"Co. Kildare","country":"Ireland","lat":53.02854,"lon":-6.76087,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":48.4,"cross":false},{"id":"I-KID-002","title":"Baile Choilbín | Colbinstown 2","ciic":"20","county":"Co. Kildare","country":"Ireland","lat":53.02854,"lon":-6.76087,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":48.4,"cross":false},{"id":"I-KID-008","title":"Domhnach Mór | Donaghmore","ciic":"26","county":"Co. Kildare","country":"Ireland","lat":53.377093,"lon":-6.552943,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":20.2,"cross":false},{"id":"I-KIK-001","title":"Baile Uí Spealáin | Ballyspellan","ciic":"27","county":"Co. Kilkenny","country":"Ireland","lat":52.761,"lon":-7.511,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":105.8,"cross":false},{"id":"I-KIK-014","title":"An tSeanchill |Shankill","ciic":"","county":"Co. Kilkenny","country":"Ireland","lat":52.6873,"lon":-7.0094,"klat":52.654709,"klon":-7.254954,"keeper":"Rothe House Museum","qid":"Q3752845","src":"wikidata","km":16.9,"cross":false},{"id":"I-LOU-002","title":"Baile Bhalraic | Ballybarrack","ciic":"","county":"Co. Louth","country":"Ireland","lat":53.986176,"lon":-6.424458,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":72.7,"cross":false},{"id":"I-MAY-002","title":"Cill Mhainín | Kilmannin","ciic":"4","county":"Co. Mayo","country":"Ireland","lat":53.772989,"lon":-8.76517,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":172.7,"cross":false},{"id":"I-MAY-X02","title":"An Caol Thiar | Keel West","ciic":"","county":"Co. Mayo","country":"Ireland","lat":53.968912,"lon":-10.202474,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":269.3,"cross":false},{"id":"I-MEA-001","title":"Baile Phaghain | Painestown","ciic":"40","county":"Co. Meath","country":"Ireland","lat":53.667656,"lon":-6.565704,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":41.8,"cross":false},{"id":"I-MEA-003","title":"Moynagh Lough","ciic":"","county":"Co. Meath","country":"Ireland","lat":53.81765,"lon":-6.75564,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":62.5,"cross":false},{"id":"I-MEA-004","title":"Sí an Bhrú | Newgrange","ciic":"","county":"Co. Meath","country":"Ireland","lat":53.694,"lon":-6.476,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":42.0,"cross":false},{"id":"I-OFF-002","title":"Baile na hInse | Ballynahinch (Ballinderry Crannóg)","ciic":"","county":"Co. Offaly","country":"Ireland","lat":53.40075,"lon":-7.67659,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":94.6,"cross":false},{"id":"I-OFF-005","title":"An Liath Beag | Leabeg","ciic":"","county":"Co. Offaly","country":"Ireland","lat":53.302,"lon":-7.731,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":98.1,"cross":false},{"id":"I-TIP-X01","title":"Liath | Leigh","ciic":"","county":"Co. Tipperary","country":"Ireland","lat":52.673,"lon":-7.661,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":119.8,"cross":false},{"id":"I-WAT-001","title":"Suí Mochuda | Seemochuda","ciic":"262","county":"Co. Waterford","country":"Ireland","lat":52.20345,"lon":-7.99903,"klat":51.89291,"klon":-8.49289,"keeper":"University College Cork","qid":"Q1574185","src":"wikidata","km":48.3,"cross":false},{"id":"I-WAT-003","title":"Aird Mhór | Ardmore 2","ciic":"264","county":"Co. Waterford","country":"Ireland","lat":51.948819,"lon":-7.726118,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":183.8,"cross":false},{"id":"I-WAT-007","title":"An Drom Mór | Dromore 3 (Cill Tíre)","ciic":"268","county":"Co. Waterford","country":"Ireland","lat":52.0743,"lon":-7.8477,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":177.0,"cross":false},{"id":"I-WAT-021","title":"An Baile Beag | Fox’s Castle","ciic":"282","county":"Co. Waterford","country":"Ireland","lat":52.15361,"lon":-7.50168,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":156.4,"cross":false},{"id":"I-WAT-024","title":"An Chill Bheag | Kilbeg","ciic":"285","county":"Co. Waterford","country":"Ireland","lat":52.164,"lon":-7.316,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":149.0,"cross":false},{"id":"I-WAT-030","title":"Cill Ghruabháin | Kilgrovan 6","ciic":"","county":"Co. Waterford","country":"Ireland","lat":52.0899,"lon":-7.5498,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":164.1,"cross":false},{"id":"I-WAT-031","title":"Cill Ghruabháin | Kilgrovan 7","ciic":"","county":"Co. Waterford","country":"Ireland","lat":52.089906,"lon":-7.549858,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":164.1,"cross":false},{"id":"I-WAT-041","title":"An Cnoc Buí | Knockboy 9","ciic":"","county":"Co. Waterford","country":"Ireland","lat":52.194667,"lon":-7.684895,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":159.6,"cross":false},{"id":"I-WEX-003","title":"Geata an Phóirtéaraigh | Portersgate","ciic":"46","county":"Co. Wexford","country":"Ireland","lat":52.1514,"lon":-6.8894,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":138.9,"cross":false},{"id":"I-WIC-003","title":"Bealach Conglais | Baltinglass","ciic":"49","county":"Co. Wicklow","country":"Ireland","lat":52.94,"lon":-6.711,"klat":53.340278,"klon":-6.254722,"keeper":"National Museum of Ireland","qid":"Q1672840","src":"wikidata","km":53.9,"cross":false},{"id":"M-IOM-001","title":"Ballaqueeney 1","ciic":"503","county":"","country":"Isle of Man","lat":54.076378,"lon":-4.752794,"klat":54.15445,"klon":-4.48187,"keeper":"Manx Museum","qid":"Q11988082","src":"wikidata","km":19.7,"cross":false},{"id":"M-IOM-002","title":"Ballaqueeney 2","ciic":"504","county":"","country":"Isle of Man","lat":54.076378,"lon":-4.752794,"klat":54.15445,"klon":-4.48187,"keeper":"Manx Museum","qid":"Q11988082","src":"wikidata","km":19.7,"cross":false},{"id":"M-IOM-003","title":"Bimaken Friary 1","ciic":"501","county":"","country":"Isle of Man","lat":54.099614,"lon":-4.679378,"klat":54.15445,"klon":-4.48187,"keeper":"Manx Museum","qid":"Q11988082","src":"wikidata","km":14.2,"cross":false},{"id":"M-IOM-004","title":"Bimaken Friary 2","ciic":"502","county":"","country":"Isle of Man","lat":54.099614,"lon":-4.679378,"klat":54.15445,"klon":-4.48187,"keeper":"Manx Museum","qid":"Q11988082","src":"wikidata","km":14.2,"cross":false},{"id":"M-IOM-007","title":"Knoc y Doonee","ciic":"500","county":"","country":"Isle of Man","lat":54.390192,"lon":-4.459517,"klat":54.15445,"klon":-4.48187,"keeper":"Manx Museum","qid":"Q11988082","src":"wikidata","km":26.3,"cross":false},{"id":"M-IOM-009","title":"Speke Farm Keeill Stone","ciic":"","county":"","country":"Isle of Man","lat":54.139086,"lon":-4.559436,"klat":54.15445,"klon":-4.48187,"keeper":"Manx Museum","qid":"Q11988082","src":"wikidata","km":5.3,"cross":false},{"id":"S-ANS-001","title":"St Vigeans","ciic":"","county":"Angus","country":"Scotland","lat":56.576944,"lon":-2.590278,"klat":56.577007,"klon":-2.590367,"keeper":"St Vigeans Museum","qid":"","src":"osm","km":0.0,"cross":false},{"id":"S-ANS-003","title":"Monifieth","ciic":"","county":"Angus","country":"Scotland","lat":56.480556,"lon":-2.821111,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":63.5,"cross":false},{"id":"S-ARL-002","title":"Poltalloch","ciic":"507","county":"Argyll and Bute","country":"Scotland","lat":56.1175,"lon":-5.507222,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":145.3,"cross":false},{"id":"S-BUT-002","title":"Inchmarnock 1","ciic":"","county":"Bute","country":"Scotland","lat":55.789444,"lon":-5.153611,"klat":55.8359,"klon":-5.05489,"keeper":"Bute Museum","qid":"Q17775932","src":"wikidata","km":8.0,"cross":false},{"id":"S-BUT-003","title":"Inchmarnock 2","ciic":"","county":"Bute","country":"Scotland","lat":55.789444,"lon":-5.153611,"klat":55.946944,"klon":-3.19,"keeper":"National Museum of Scotland","qid":"Q1633842","src":"wikidata","km":123.8,"cross":false},{"id":"S-BUT-004","title":"Inchmarnock 3","ciic":"","county":"Bute","country":"Scotland","lat":55.789444,"lon":-5.153611,"klat":55.946944,"klon":-3.19,"keeper":"National Museum of Scotland","qid":"Q1633842","src":"wikidata","km":123.8,"cross":false},{"id":"S-CAI-001","title":"Ackergill","ciic":"","county":"Caithness","country":"Scotland","lat":58.478333,"lon":-3.119167,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":281.5,"cross":false},{"id":"S-DGY-001","title":"Lochnaw","ciic":"","county":"Dumfries and Galloway","country":"Scotland","lat":54.912222,"lon":-5.137222,"klat":55.0652,"klon":-3.6146,"keeper":"Dumfries Museum","qid":"Q5313798","src":"wikidata","km":98.6,"cross":false},{"id":"S-FIF-001","title":"Scoonie","ciic":"","county":"Fife","country":"Scotland","lat":56.203611,"lon":-2.994444,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":31.0,"cross":false},{"id":"S-INV-001","title":"Bac Mhic Connain","ciic":"","county":"Inverness-shire","country":"Scotland","lat":57.659167,"lon":-7.419167,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":320.2,"cross":false},{"id":"S-LKS-X01","title":"Bishop Loch","ciic":"","county":"Lanarkshire","country":"Scotland","lat":55.876389,"lon":-4.100278,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":57.3,"cross":false},{"id":"S-ORK-001","title":"Burrian","ciic":"","county":"Orkney","country":"Scotland","lat":59.348056,"lon":-2.418889,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":380.9,"cross":false},{"id":"S-ORK-002","title":"Gurness","ciic":"","county":"Orkney","country":"Scotland","lat":59.123889,"lon":-3.081111,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":353.3,"cross":false},{"id":"S-ORK-003","title":"Birsay 1","ciic":"","county":"Orkney","country":"Scotland","lat":59.136389,"lon":-3.330278,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":354.7,"cross":false},{"id":"S-ORK-004","title":"Birsay 2","ciic":"","county":"Orkney","country":"Scotland","lat":59.136389,"lon":-3.330278,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":354.7,"cross":false},{"id":"S-ORK-005","title":"Buckquoy","ciic":"","county":"Orkney","country":"Scotland","lat":59.134167,"lon":-3.323333,"klat":58.98152,"klon":-2.96084,"keeper":"Orkney Museum","qid":"Q2383929","src":"wikidata","km":26.8,"cross":false},{"id":"S-ORK-006","title":"Birsay 3","ciic":"","county":"Orkney","country":"Scotland","lat":59.136389,"lon":-3.330278,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":354.7,"cross":false},{"id":"S-ORK-007","title":"Birsay 4","ciic":"","county":"Orkney","country":"Scotland","lat":59.136389,"lon":-3.330278,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":354.7,"cross":false},{"id":"S-ORK-008","title":"Pool 1","ciic":"","county":"Orkney","country":"Scotland","lat":59.225556,"lon":-2.668611,"klat":58.98152,"klon":-2.96084,"keeper":"Orkney Museum","qid":"Q2383929","src":"wikidata","km":31.9,"cross":false},{"id":"S-ORK-X01","title":"Pool 2","ciic":"","county":"Orkney","country":"Scotland","lat":59.225556,"lon":-2.668612,"klat":58.98152,"klon":-2.96084,"keeper":"Orkney Museum","qid":"Q2383929","src":"wikidata","km":31.9,"cross":false},{"id":"S-PER-001","title":"Abernethy 1","ciic":"","county":"Perthshire","country":"Scotland","lat":56.333056,"lon":-3.311667,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":43.6,"cross":false},{"id":"S-PER-003","title":"Inchyra","ciic":"","county":"Perthshire","country":"Scotland","lat":56.376111,"lon":-3.3125,"klat":56.39585,"klon":-3.4294,"keeper":"Perth Museum","qid":"Q122199223","src":"wikidata","km":7.5,"cross":false},{"id":"S-SHE-001","title":"Bressay","ciic":"","county":"Shetland","country":"Scotland","lat":60.161944,"lon":-1.063056,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":485.0,"cross":false},{"id":"S-SHE-002","title":"Cunningsburgh 1","ciic":"","county":"Shetland","country":"Scotland","lat":60.033611,"lon":-1.224722,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":468.9,"cross":false},{"id":"S-SHE-003","title":"Cunningsburgh 2","ciic":"","county":"Shetland","country":"Scotland","lat":60.033611,"lon":-1.224722,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":468.9,"cross":false},{"id":"S-SHE-004","title":"St Ninian's Isle 1","ciic":"","county":"Shetland","country":"Scotland","lat":59.971389,"lon":-1.341667,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":460.5,"cross":false},{"id":"S-SHE-005","title":"St Ninian's Isle 2","ciic":"","county":"Shetland","country":"Scotland","lat":59.971389,"lon":-1.341667,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":460.5,"cross":false},{"id":"S-SHE-006","title":"St Ninian's Isle 3","ciic":"","county":"Shetland","country":"Scotland","lat":59.971389,"lon":-1.341667,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":460.5,"cross":false},{"id":"S-SHE-007","title":"Lunnasting","ciic":"","county":"Shetland","country":"Scotland","lat":60.366389,"lon":-1.167778,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":505.5,"cross":false},{"id":"S-SHE-009","title":"Cunningsburgh 4","ciic":"","county":"Shetland","country":"Scotland","lat":60.033611,"lon":-1.224722,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":468.9,"cross":false},{"id":"S-SHE-010","title":"Whiteness","ciic":"","county":"Shetland","country":"Scotland","lat":60.1825,"lon":-1.304722,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":483.8,"cross":false},{"id":"S-SHE-011","title":"Bigton","ciic":"","county":"Shetland","country":"Scotland","lat":59.973333,"lon":-1.323333,"klat":60.157833,"klon":-1.150111,"keeper":"Shetland Museum","qid":"Q2278527","src":"wikidata","km":22.7,"cross":false},{"id":"S-SUT-001","title":"Golspie","ciic":"","county":"Sutherland","country":"Scotland","lat":57.975833,"lon":-3.968056,"klat":57.982333,"klon":-3.942489,"keeper":"Dunrobin Castle Museum","qid":"Q72011449","src":"wikidata","km":1.7,"cross":false},{"id":"S-SUT-002","title":"Latheron","ciic":"","county":"Sutherland","country":"Scotland","lat":58.279722,"lon":-3.369167,"klat":55.947,"klon":-3.189,"keeper":"National Museums of Scotland","qid":"Q1967502","src":"wikidata","km":259.6,"cross":false},{"id":"W-BRE-003","title":"Ystradfellte","ciic":"345","county":"Brecknockshire","country":"Wales","lat":51.809528,"lon":-3.553209,"klat":51.756656,"klon":-3.389848,"keeper":"Cyfarthfa Museum","qid":"","src":"osm","km":12.7,"cross":false},{"id":"W-BRE-004","title":"Crickhowell","ciic":"327","county":"Brecknockshire","country":"Wales","lat":51.866872,"lon":-3.126958,"klat":51.9462,"klon":-3.3893,"keeper":"Brecknock Museum","qid":"Q15204378","src":"wikidata","km":20.0,"cross":false},{"id":"W-BRE-006","title":"Pentre Poeth | Llywel","ciic":"341","county":"Brecknockshire","country":"Wales","lat":51.925325,"lon":-3.625936,"klat":51.519444,"klon":-0.126944,"keeper":"British Museum","qid":"Q6373","src":"wikidata","km":245.2,"cross":true},{"id":"W-CGN-001","title":"Llanwenog","ciic":"353","county":"Cardiganshire","country":"Wales","lat":52.059325,"lon":-4.209772,"klat":51.486309,"klon":-3.176869,"keeper":"National Museum Wales","qid":"Q2046319","src":"osm","km":95.4,"cross":false},{"id":"W-DEN-001","title":"Clocaenog","ciic":"399","county":"Denbighshire","country":"Wales","lat":53.067967,"lon":-3.415525,"klat":51.486309,"klon":-3.176869,"keeper":"National Museum Wales","qid":"Q2046319","src":"osm","km":176.6,"cross":false},{"id":"W-GLA-001","title":"Egylwys Nynnid | Margam","ciic":"409","county":"Glamorgan","country":"Wales","lat":51.545939,"lon":-3.727606,"klat":51.56327,"klon":-3.73057,"keeper":"Margam Stones Museum","qid":"Q6759082","src":"wikidata","km":1.9,"cross":false},{"id":"W-GLA-002","title":"Loughor","ciic":"405","county":"Glamorgan","country":"Wales","lat":51.664108,"lon":-4.06135,"klat":51.6178,"klon":-3.9381,"keeper":"Swansea Museum","qid":"Q7653706","src":"wikidata","km":9.9,"cross":false},{"id":"W-GLA-X01","title":"Gelli-Gaer","ciic":"404","county":"Glamorgan","country":"Wales","lat":51.715653,"lon":-3.249856,"klat":51.485577,"klon":-3.177128,"keeper":"National Museum Cardiff","qid":"Q1321874","src":"wikidata","km":26.1,"cross":false},{"id":"W-GLA-X02","title":"Margam","ciic":"408","county":"Glamorgan","country":"Wales","lat":51.585703,"lon":-3.689275,"klat":51.56327,"klon":-3.73057,"keeper":"Margam Stones Museum","qid":"Q6759082","src":"wikidata","km":3.8,"cross":false},{"id":"W-PEM-014","title":"Nevern 1","ciic":"446","county":"Pembrokeshire","country":"Wales","lat":52.025392,"lon":-4.795144,"klat":51.922953,"klon":-3.346175,"keeper":"St. Brynach's Church","qid":"Q26236358","src":"wikidata","km":99.9,"cross":false}];
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const STAY = "#5b8c5a", CROSS = "#b0413e", KEEPER_COLOUR = "#3f7d8c";
+
+const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
+addMapControls(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+const arcs = L.layerGroup().addTo(map);
+const keeperPins = L.layerGroup().addTo(map);
+
+function icon(colour, square){
+  const d = 13;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin${square ? " keeper" : ""}" style="width:${d}px;height:${d}px;`
+       + `background:${colour};border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+// A straight line between two points hides how many stones travelled the same way;
+// a slight bow separates them and reads as movement rather than as a boundary.
+function arc(a, b, bend){
+  const pts = [], steps = 24;
+  const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+  const dx = b[0] - a[0], dy = b[1] - a[1];
+  const cx = mx - dy * bend, cy = my + dx * bend;
+  for (let i = 0; i <= steps; i++){
+    const t = i / steps, u = 1 - t;
+    pts.push([u*u*a[0] + 2*u*t*cx + t*t*b[0], u*u*a[1] + 2*u*t*cy + t*t*b[1]]);
+  }
+  return pts;
+}
+
+function popup(r){
+  return `<div class="pop">
+    <h2>${esc(r.title || r.id)}</h2>
+    <div class="where">${esc([r.county, r.country].filter(Boolean).join(", "))}
+      ${r.ciic ? " · CIIC " + esc(r.ciic) : ""}</div>
+    <dl>
+      <dt>found</dt><dd>${esc([r.county, r.country].filter(Boolean).join(", ")) || "—"}</dd>
+      <dt>now in</dt><dd>${esc(r.keeper)}</dd>
+      <dt>distance</dt><dd>${r.km} km${r.cross ? " · left its country" : ""}</dd>
+      <dt>geocode</dt><dd>${esc(r.src)}${r.qid ? " · " + esc(r.qid) : ""}</dd>
+    </dl>
+    <div class="links">
+      <a href="findspots.html">on the findspot map</a>
+      ${r.qid ? `<a href="https://www.wikidata.org/entity/${esc(r.qid)}" target="_blank" rel="noopener">Wikidata</a>` : ""}
+    </div>
+  </div>`;
+}
+
+let keeperFilter = null;
+
+function matches(r){
+  if (keeperFilter && r.keeper !== keeperFilter) return false;
+  if (document.getElementById("onlyCross").checked && !r.cross) return false;
+  return true;
+}
+
+function draw(){
+  const keep = LINKS.filter(matches);
+  scene.slug = "keepers";
+  scene.title = keeperFilter || "";
+  scene.points = keep.map(r => ({lat:r.lat, lon:r.lon,
+                                 colour:r.cross ? CROSS : STAY, vague:false}));
+  arcs.clearLayers();
+  keeperPins.clearLayers();
+  if (displayMode === "points"){
+    const seen = {};
+    keep.forEach(r => {
+      L.polyline(arc([r.lat, r.lon], [r.klat, r.klon], 0.16), {
+        color: r.cross ? CROSS : STAY, weight: 1.2, opacity: 0.55
+      }).addTo(arcs);
+      const key = r.keeper;
+      if (!seen[key]){
+        seen[key] = true;
+        L.marker([r.klat, r.klon], {icon:icon(KEEPER_COLOUR, true), title:r.keeper})
+         .bindTooltip(r.keeper, {direction:"top"}).addTo(keeperPins);
+      }
+    });
+  }
+  const markers = keep.map(r =>
+    L.marker([r.lat, r.lon], {icon:icon(r.cross ? CROSS : STAY), title:r.title || r.id})
+     .bindPopup(() => popup(r), {maxWidth:340}));
+  showOn(map, keep.map(r => [r.lon, r.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length){
+    const bounds = L.latLngBounds(keep.flatMap(r => [[r.lat, r.lon], [r.klat, r.klon]]));
+    map.fitBounds(bounds.pad(0.08));
+  }
+}
+
+function buildList(){
+  const box = document.getElementById("keeperlist");
+  const counts = {};
+  LINKS.forEach(r => { counts[r.keeper] = (counts[r.keeper] || 0) + 1; });
+  box.innerHTML = "";
+  const add = (value, label, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    l.innerHTML = `<input type="radio" name="keeper" ${checked ? "checked" : ""}>`
+                + `<b>${esc(label)}</b><span class="tr"></span><span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => {
+      keeperFilter = value; draw(); buildList();
+    });
+    box.appendChild(l);
+  };
+  add(null, "Any keeper", LINKS.length, keeperFilter === null);
+  Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+        .forEach(k => add(k, k, counts[k], keeperFilter === k));
+}
+
+document.getElementById("crossN").textContent = LINKS.filter(r => r.cross).length;
+document.getElementById("onlyCross").addEventListener("change", draw);
+if (!LINKS.length) document.getElementById("empty").style.display = "block";
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildList();
+draw();
+</script>
+</body>
+</html>

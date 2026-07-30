@@ -121,6 +121,7 @@ nav a[aria-current]{background:var(--sc);border-color:var(--sc);color:#0f1918;fo
   margin-left:6px;font-family:var(--sans);letter-spacing:.02em}
 .pop .gain{color:#9aab3f;font-size:11px}
 .pop .loss{color:#b0413e;font-size:11px}
+.pin.keeper{border-radius:2px}
 
 /* landing page: one centred column, no map */
 body.landing{overflow:auto}
@@ -1104,6 +1105,662 @@ __NAV__
 
 """
 
+HEAD_KEEPERS = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — findspot to museum</title>
+<meta name="description" content="Ogham stones moved from their findspot to a museum, drawn as arcs, with the institutions geocoded.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body>
+"""
+
+WORDS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe (one stroke below the line) with the crossbar that softens it.
+           Feather marks open and close the inscription. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Formulaic words</h1>
+      <p class="sub">McManus's formulaic vocabulary matched against every reading
+      of every ogham inscription — not just the current one.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <div id="gloss" class="gloss"></div>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#3f7d8c;
+          border:1.6px solid rgba(19,28,27,.7)"></i> in the current edition</span>
+        <span><i class="pin vague" style="width:11px;height:11px;
+          border:1.6px dashed #b07d2b"></i> only in an older reading</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q">Filter the vocabulary</label>
+      <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
+
+      <div class="wordlist" id="wordlist"></div>
+
+      <p class="note">Word list from
+      <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">o3d-epidoc-extractor</a>
+      (Homburg &amp; Thiery, DHd 2020), after McManus 1991. <b>Name elements are
+      matched as substrings</b>, which is that project's semantics and is not
+      precise: short elements such as CON or VIR also fire inside unrelated names.
+      Each hit records which mode produced it.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="words.csv" download>Download matches (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+KEEPERS_JS = r"""
+const LINKS = __LINKS__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const STAY = "#5b8c5a", CROSS = "#b0413e", KEEPER_COLOUR = "#3f7d8c";
+
+const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
+addMapControls(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+const arcs = L.layerGroup().addTo(map);
+const keeperPins = L.layerGroup().addTo(map);
+
+function icon(colour, square){
+  const d = 13;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin${square ? " keeper" : ""}" style="width:${d}px;height:${d}px;`
+       + `background:${colour};border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+// A straight line between two points hides how many stones travelled the same way;
+// a slight bow separates them and reads as movement rather than as a boundary.
+function arc(a, b, bend){
+  const pts = [], steps = 24;
+  const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+  const dx = b[0] - a[0], dy = b[1] - a[1];
+  const cx = mx - dy * bend, cy = my + dx * bend;
+  for (let i = 0; i <= steps; i++){
+    const t = i / steps, u = 1 - t;
+    pts.push([u*u*a[0] + 2*u*t*cx + t*t*b[0], u*u*a[1] + 2*u*t*cy + t*t*b[1]]);
+  }
+  return pts;
+}
+
+function popup(r){
+  return `<div class="pop">
+    <h2>${esc(r.title || r.id)}</h2>
+    <div class="where">${esc([r.county, r.country].filter(Boolean).join(", "))}
+      ${r.ciic ? " · CIIC " + esc(r.ciic) : ""}</div>
+    <dl>
+      <dt>found</dt><dd>${esc([r.county, r.country].filter(Boolean).join(", ")) || "—"}</dd>
+      <dt>now in</dt><dd>${esc(r.keeper)}</dd>
+      <dt>distance</dt><dd>${r.km} km${r.cross ? " · left its country" : ""}</dd>
+      <dt>geocode</dt><dd>${esc(r.src)}${r.qid ? " · " + esc(r.qid) : ""}</dd>
+    </dl>
+    <div class="links">
+      <a href="findspots.html">on the findspot map</a>
+      ${r.qid ? `<a href="https://www.wikidata.org/entity/${esc(r.qid)}" target="_blank" rel="noopener">Wikidata</a>` : ""}
+    </div>
+  </div>`;
+}
+
+let keeperFilter = null;
+
+function matches(r){
+  if (keeperFilter && r.keeper !== keeperFilter) return false;
+  if (document.getElementById("onlyCross").checked && !r.cross) return false;
+  return true;
+}
+
+function draw(){
+  const keep = LINKS.filter(matches);
+  scene.slug = "keepers";
+  scene.title = keeperFilter || "";
+  scene.points = keep.map(r => ({lat:r.lat, lon:r.lon,
+                                 colour:r.cross ? CROSS : STAY, vague:false}));
+  arcs.clearLayers();
+  keeperPins.clearLayers();
+  if (displayMode === "points"){
+    const seen = {};
+    keep.forEach(r => {
+      L.polyline(arc([r.lat, r.lon], [r.klat, r.klon], 0.16), {
+        color: r.cross ? CROSS : STAY, weight: 1.2, opacity: 0.55
+      }).addTo(arcs);
+      const key = r.keeper;
+      if (!seen[key]){
+        seen[key] = true;
+        L.marker([r.klat, r.klon], {icon:icon(KEEPER_COLOUR, true), title:r.keeper})
+         .bindTooltip(r.keeper, {direction:"top"}).addTo(keeperPins);
+      }
+    });
+  }
+  const markers = keep.map(r =>
+    L.marker([r.lat, r.lon], {icon:icon(r.cross ? CROSS : STAY), title:r.title || r.id})
+     .bindPopup(() => popup(r), {maxWidth:340}));
+  showOn(map, keep.map(r => [r.lon, r.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length){
+    const bounds = L.latLngBounds(keep.flatMap(r => [[r.lat, r.lon], [r.klat, r.klon]]));
+    map.fitBounds(bounds.pad(0.08));
+  }
+}
+
+function buildList(){
+  const box = document.getElementById("keeperlist");
+  const counts = {};
+  LINKS.forEach(r => { counts[r.keeper] = (counts[r.keeper] || 0) + 1; });
+  box.innerHTML = "";
+  const add = (value, label, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    l.innerHTML = `<input type="radio" name="keeper" ${checked ? "checked" : ""}>`
+                + `<b>${esc(label)}</b><span class="tr"></span><span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => {
+      keeperFilter = value; draw(); buildList();
+    });
+    box.appendChild(l);
+  };
+  add(null, "Any keeper", LINKS.length, keeperFilter === null);
+  Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+        .forEach(k => add(k, k, counts[k], keeperFilter === k));
+}
+
+document.getElementById("crossN").textContent = LINKS.filter(r => r.cross).length;
+document.getElementById("onlyCross").addEventListener("change", draw);
+if (!LINKS.length) document.getElementById("empty").style.display = "block";
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildList();
+draw();
+"""
+
+KEEPERS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>From findspot to museum</h1>
+      <p class="sub">Stones that no longer stand where they were found. Each arc runs
+      from the findspot to the institution holding the stone today.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div id="empty" class="gloss" style="display:none">
+        <h2>Nothing geocoded yet</h2>
+        <div class="meta">The corpus names the institutions but gives no coordinates.</div>
+        <div style="margin-top:8px">Run <code>python py/main.py</code> once with network
+        access and the names are resolved against Wikidata and OpenStreetMap into
+        <code>reconciliation/keeper-coordinates.csv</code>.</div>
+      </div>
+
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <fieldset>
+        <legend class="field">Distance</legend>
+        <label class="opt"><input type="checkbox" id="onlyCross"> Only where the stone
+          left its country <span class="n" id="crossN"></span></label>
+      </fieldset>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#5b8c5a;
+          border:1.6px solid rgba(19,28,27,.7)"></i> stayed in its country</span>
+        <span><i class="pin" style="width:11px;height:11px;background:#b0413e;
+          border:1.6px solid rgba(19,28,27,.7)"></i> crossed a border</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <p class="field" style="margin-top:20px">Keeper</p>
+      <div class="wordlist" id="keeperlist"></div>
+
+      <p class="note">Institutions are geocoded automatically — Wikidata first,
+      because an institution has a QID and the QID is what belongs in the graph, then
+      OpenStreetMap for the small local museums Wikidata does not carry. Suggestions
+      are marked <code>auto</code> in
+      <code>reconciliation/keeper-coordinates.csv</code> and are meant to be read and
+      confirmed. A coordinate points at the institution, not at the stone's shelf.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="keepers.csv" download>Download displacements (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+KEEPERS_JS = r"""
+const LINKS = __LINKS__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const STAY = "#5b8c5a", CROSS = "#b0413e", KEEPER_COLOUR = "#3f7d8c";
+
+const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
+addMapControls(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+const arcs = L.layerGroup().addTo(map);
+const keeperPins = L.layerGroup().addTo(map);
+
+function icon(colour, square){
+  const d = 13;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin${square ? " keeper" : ""}" style="width:${d}px;height:${d}px;`
+       + `background:${colour};border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+// A straight line between two points hides how many stones travelled the same way;
+// a slight bow separates them and reads as movement rather than as a boundary.
+function arc(a, b, bend){
+  const pts = [], steps = 24;
+  const mx = (a[0] + b[0]) / 2, my = (a[1] + b[1]) / 2;
+  const dx = b[0] - a[0], dy = b[1] - a[1];
+  const cx = mx - dy * bend, cy = my + dx * bend;
+  for (let i = 0; i <= steps; i++){
+    const t = i / steps, u = 1 - t;
+    pts.push([u*u*a[0] + 2*u*t*cx + t*t*b[0], u*u*a[1] + 2*u*t*cy + t*t*b[1]]);
+  }
+  return pts;
+}
+
+function popup(r){
+  return `<div class="pop">
+    <h2>${esc(r.title || r.id)}</h2>
+    <div class="where">${esc([r.county, r.country].filter(Boolean).join(", "))}
+      ${r.ciic ? " · CIIC " + esc(r.ciic) : ""}</div>
+    <dl>
+      <dt>found</dt><dd>${esc([r.county, r.country].filter(Boolean).join(", ")) || "—"}</dd>
+      <dt>now in</dt><dd>${esc(r.keeper)}</dd>
+      <dt>distance</dt><dd>${r.km} km${r.cross ? " · left its country" : ""}</dd>
+      <dt>geocode</dt><dd>${esc(r.src)}${r.qid ? " · " + esc(r.qid) : ""}</dd>
+    </dl>
+    <div class="links">
+      <a href="findspots.html">on the findspot map</a>
+      ${r.qid ? `<a href="https://www.wikidata.org/entity/${esc(r.qid)}" target="_blank" rel="noopener">Wikidata</a>` : ""}
+    </div>
+  </div>`;
+}
+
+let keeperFilter = null;
+
+function matches(r){
+  if (keeperFilter && r.keeper !== keeperFilter) return false;
+  if (document.getElementById("onlyCross").checked && !r.cross) return false;
+  return true;
+}
+
+function draw(){
+  const keep = LINKS.filter(matches);
+  scene.slug = "keepers";
+  scene.title = keeperFilter || "";
+  scene.points = keep.map(r => ({lat:r.lat, lon:r.lon,
+                                 colour:r.cross ? CROSS : STAY, vague:false}));
+  arcs.clearLayers();
+  keeperPins.clearLayers();
+  if (displayMode === "points"){
+    const seen = {};
+    keep.forEach(r => {
+      L.polyline(arc([r.lat, r.lon], [r.klat, r.klon], 0.16), {
+        color: r.cross ? CROSS : STAY, weight: 1.2, opacity: 0.55
+      }).addTo(arcs);
+      const key = r.keeper;
+      if (!seen[key]){
+        seen[key] = true;
+        L.marker([r.klat, r.klon], {icon:icon(KEEPER_COLOUR, true), title:r.keeper})
+         .bindTooltip(r.keeper, {direction:"top"}).addTo(keeperPins);
+      }
+    });
+  }
+  const markers = keep.map(r =>
+    L.marker([r.lat, r.lon], {icon:icon(r.cross ? CROSS : STAY), title:r.title || r.id})
+     .bindPopup(() => popup(r), {maxWidth:340}));
+  showOn(map, keep.map(r => [r.lon, r.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length){
+    const bounds = L.latLngBounds(keep.flatMap(r => [[r.lat, r.lon], [r.klat, r.klon]]));
+    map.fitBounds(bounds.pad(0.08));
+  }
+}
+
+function buildList(){
+  const box = document.getElementById("keeperlist");
+  const counts = {};
+  LINKS.forEach(r => { counts[r.keeper] = (counts[r.keeper] || 0) + 1; });
+  box.innerHTML = "";
+  const add = (value, label, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    l.innerHTML = `<input type="radio" name="keeper" ${checked ? "checked" : ""}>`
+                + `<b>${esc(label)}</b><span class="tr"></span><span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => {
+      keeperFilter = value; draw(); buildList();
+    });
+    box.appendChild(l);
+  };
+  add(null, "Any keeper", LINKS.length, keeperFilter === null);
+  Object.keys(counts).sort((a, b) => counts[b] - counts[a] || a.localeCompare(b))
+        .forEach(k => add(k, k, counts[k], keeperFilter === k));
+}
+
+document.getElementById("crossN").textContent = LINKS.filter(r => r.cross).length;
+document.getElementById("onlyCross").addEventListener("change", draw);
+if (!LINKS.length) document.getElementById("empty").style.display = "block";
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildList();
+draw();
+"""
+
+KEEPERS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>From findspot to museum</h1>
+      <p class="sub">Stones that no longer stand where they were found. Each arc runs
+      from the findspot to the institution holding the stone today.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div id="empty" class="gloss" style="display:none">
+        <h2>Nothing geocoded yet</h2>
+        <div class="meta">The corpus names the institutions but gives no coordinates.</div>
+        <div style="margin-top:8px">Run <code>python py/main.py</code> once with network
+        access and the names are resolved against Wikidata and OpenStreetMap into
+        <code>reconciliation/keeper-coordinates.csv</code>.</div>
+      </div>
+
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <fieldset>
+        <legend class="field">Distance</legend>
+        <label class="opt"><input type="checkbox" id="onlyCross"> Only where the stone
+          left its country <span class="n" id="crossN"></span></label>
+      </fieldset>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#5b8c5a;
+          border:1.6px solid rgba(19,28,27,.7)"></i> stayed in its country</span>
+        <span><i class="pin" style="width:11px;height:11px;background:#b0413e;
+          border:1.6px solid rgba(19,28,27,.7)"></i> crossed a border</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <p class="field" style="margin-top:20px">Keeper</p>
+      <div class="wordlist" id="keeperlist"></div>
+
+      <p class="note">Institutions are geocoded automatically — Wikidata first,
+      because an institution has a QID and the QID is what belongs in the graph, then
+      OpenStreetMap for the small local museums Wikidata does not carry. Suggestions
+      are marked <code>auto</code> in
+      <code>reconciliation/keeper-coordinates.csv</code> and are meant to be read and
+      confirmed. A coordinate points at the institution, not at the stone's shelf.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="keepers.csv" download>Download displacements (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
 READINGS_JS = r"""
 const STONES = __STONES__;
 const BANDS  = __BANDS__;
@@ -1600,6 +2257,14 @@ PAGES = [
                  "current edition sits from what an earlier editor saw. Filterable by "
                  "editor, and by whether a formulaic word is what is at stake.",
     },
+    {
+        "slug": "keepers.html",
+        "nav": "Displacement",
+        "title": "From findspot to museum",
+        "blurb": "Stones that no longer stand where they were found, drawn as an arc "
+                 "from the findspot to the institution that holds them now. The "
+                 "institutions are geocoded against Wikidata and OpenStreetMap.",
+    },
 ]
 
 
@@ -1698,6 +2363,61 @@ def build_readings(analysis: list[dict], place_records: list[dict], summary: dic
     print(f"  -> wrote {rel(docs / 'readings.html')} ({len(stones)} stones, "
           f"{len(editors)} editors, {size:.0f} KB)")
     return {"stones": len(stones), "editors": len(editors)}
+
+
+def build_keepers(links: list[dict], docs: Path, root: Path | None = None,
+                  provenance: dict | None = None) -> dict:
+    """docs/keepers.html -- findspot to present keeper, as arcs.
+
+    Written even when nothing is geocoded yet: the page then says so and gives the
+    command that fixes it, which is more use than a blank map or a missing file.
+    """
+    docs.mkdir(parents=True, exist_ok=True)
+    payload = [{
+        "id": r["ogham_id"], "title": r["title"], "ciic": r["ciic"],
+        "county": r["county"], "country": r["country"],
+        "lat": r["lat"], "lon": r["lon"],
+        "klat": r["keeper_lat"], "klon": r["keeper_lon"],
+        "keeper": r["keeper"], "qid": r["keeper_qid"], "src": r["keeper_source"],
+        "km": r["km"], "cross": bool(r["country"]) and not _same_country(r),
+    } for r in links]
+
+    html = (_page(HEAD_KEEPERS, KEEPERS_BODY, KEEPERS_JS)
+            .replace("__NAV__", nav_html("keepers.html"))
+            .replace("__LINKS__", json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__PROV__", _provenance_html(provenance or {})))
+    (docs / "keepers.html").write_text(html, encoding="utf-8")
+
+    rel = (lambda x: x.relative_to(root)) if root else (lambda x: x)
+    size = (docs / "keepers.html").stat().st_size / 1024
+    keepers_n = len({r["keeper"] for r in links})
+    crossed = sum(1 for r in payload if r["cross"])
+    print(f"  -> wrote {rel(docs / 'keepers.html')} ({len(links)} stones, "
+          f"{keepers_n} institutions, {crossed} across a border, {size:.0f} KB)")
+    return {"stones": len(links), "keepers": keepers_n, "crossed": crossed}
+
+
+# Which country a museum sits in is not in the corpus, so it is decided by distance:
+# a stone whose keeper is more than 20 km away and in a different country would need
+# the keeper's country to say so. Deciding it from the keeper name is guesswork, so
+# the test used here is a coarse bounding-box one against the findspot's country.
+COUNTRY_BOXES = {
+    "Ireland": (51.3, 55.5, -10.8, -5.9),
+    "Northern Ireland": (53.9, 55.4, -8.3, -5.3),
+    "Scotland": (54.5, 61.0, -8.7, -0.7),
+    "Wales": (51.3, 53.5, -5.4, -2.6),
+    "England": (49.8, 55.9, -6.5, 1.9),
+    "Isle of Man": (54.0, 54.5, -4.9, -4.2),
+}
+
+
+def _same_country(r: dict) -> bool:
+    box = COUNTRY_BOXES.get(r.get("country") or "")
+    if not box:
+        return True                       # unknown country: do not claim a crossing
+    lat0, lat1, lon0, lon1 = box
+    return lat0 <= r["keeper_lat"] <= lat1 and lon0 <= r["keeper_lon"] <= lon1
 
 
 def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],

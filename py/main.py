@@ -36,6 +36,7 @@ from collections import Counter
 
 import corpus    # local module (py/corpus.py) -- fetch + provenance manifest
 import dissent   # local module (py/dissent.py) -- competing readings
+import keepers   # local module (py/keepers.py) -- present location of the stones
 import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
 import words     # local module (py/words.py) -- formulaic-word extractor
@@ -66,6 +67,7 @@ DOCS = ROOT / "docs"                               # generated GitHub Pages site
 CORPUS_DIR = DATA / "origin"                       # fetched editions (gitignored)
 CORPUS_MANIFEST = DATA / "corpus-manifest.yaml"    # provenance record (committed)
 WORD_LIST = DATA / "words.csv"                     # McManus vocabulary (committed)
+KEEPER_CACHE = RECON / "keeper-coordinates.csv"    # geocoded institutions (committed)
 # data/origin/ is the only location discovered automatically -- see corpus.resolve
 
 STONES = [
@@ -800,6 +802,35 @@ def run_words(corpus_dir: Path, prov: dict, no_map: bool) -> dict | None:
 
 
 
+
+def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | None:
+    """Geocode the institutions named in <repository> and link findspot to keeper."""
+    names = sorted({(r.get("repository") or "").strip() for r in place_records
+                    if (r.get("repository") or "").strip() and r.get("lat") is not None})
+    if not names:
+        return None
+    cache = keepers.load_cache(KEEPER_CACHE)
+    print(f"\nkeeper layer -- {len(names)} institutions named in <repository>")
+    pending = [n for n in names if not (cache.get(n) and cache[n].located)]
+    if pending and online:
+        print(f"  geocoding {len(pending)} (Wikidata, then OpenStreetMap)")
+    summary = keepers.resolve(names, cache, online=online)
+    keepers.save_cache(KEEPER_CACHE, cache)
+    links = keepers.link(place_records, cache)
+    rows = keepers.write_csv(links, OUT / "keepers.csv")
+    g, gs = keepers.build_graph(links, cache)
+    g.serialize(destination=str(OUT / "keepers.crm.ttl"), format="turtle")
+    print(f"  {summary['located']}/{summary['total']} institutions located, "
+          f"{len(links)} stones linked")
+    if summary["located"] < summary["total"]:
+        print(f"  {summary['total'] - summary['located']} still without coordinates -- see "
+              f"{KEEPER_CACHE.relative_to(ROOT)}"
+              + ("" if online else " (run without --offline to geocode)"))
+    print(f"  -> wrote {(OUT / 'keepers.csv').relative_to(ROOT)} ({rows} rows)")
+    print(f"  -> wrote {(OUT / 'keepers.crm.ttl').relative_to(ROOT)} ({len(g)} triples)")
+    return {"links": links, **gs, **summary}
+
+
 def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
     """Numbers shown on the landing-page cards, keyed by page slug."""
     dash = [("\u2014", "")]
@@ -809,6 +840,12 @@ def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
         (str(word_summary["words"]), "words searched"),
     ]
     dis = (word_summary or {}).get("dissent")
+    keeper_summary = place_summary.get("keeper_layer")
+    keeper_figs = dash if not keeper_summary else [
+        (str(keeper_summary["stones"]), "stones displaced"),
+        (str(keeper_summary["keepers"]), "institutions"),
+        (f"{keeper_summary['located']}/{keeper_summary['total']}", "geocoded"),
+    ]
     readings_figs = dash if not dis else [
         (str(dis["stones"]), "stones contested"),
         (str(dis["pairs"]), "comparisons"),
@@ -824,6 +861,7 @@ def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
         ],
         "words.html": words_figs,
         "readings.html": readings_figs,
+        "keepers.html": keeper_figs,
     }
 
 
@@ -889,6 +927,11 @@ def main() -> None:
                                       word_summary["dissent"], DOCS, root=ROOT,
                                       provenance=prov)
                 shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
+            ks = run_keepers(summary["records"], not args.offline, prov)
+            summary["keeper_layer"] = ks
+            webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT, provenance=prov)
+            if ks:
+                shutil.copyfile(OUT / "keepers.csv", DOCS / "keepers.csv")
             webmap.build_landing(DOCS, landing_figures(summary, word_summary),
                                  root=ROOT, provenance=prov)
         return
@@ -921,6 +964,11 @@ def main() -> None:
                     word_summary["analysis"], places_summary["records"],
                     word_summary["dissent"], DOCS, root=ROOT, provenance=prov)
                 shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
+            ks = run_keepers(places_summary["records"], online, prov)
+            places_summary["keeper_layer"] = ks
+            webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT, provenance=prov)
+            if ks:
+                shutil.copyfile(OUT / "keepers.csv", DOCS / "keepers.csv")
 
             webmap.build_landing(DOCS, landing_figures(places_summary, word_summary),
                                  root=ROOT, provenance=prov)

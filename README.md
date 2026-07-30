@@ -135,6 +135,7 @@ drift apart:
 | `docs/findspots.html` | browsable Leaflet map of the findspots, points or hex density |
 | `docs/words.html` | the formulaic vocabulary, filterable by word, points or hex density |
 | `docs/readings.html` | stones with competing readings, by distance and editor |
+| `docs/keepers.html` | findspot-to-museum arcs, filterable by institution |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
 Over the full corpus: **504 stones, 395 distinct places** across 12 administrative
@@ -148,6 +149,51 @@ a landing page and, at the moment, two views — the findspot map (filterable by
 country and by free text, with hedged findspots as dashed rings and the
 `data:findspot_*` node in every popup) and the formulaic-word map. Nothing in them
 re-parses the XML, so map, table and graph cannot drift apart.
+
+## From findspot to museum (`docs/keepers.html`)
+
+**181 stones** name a present keeper in `<msIdentifier>/<repository>` *and* have a
+findspot coordinate — 39 institutions in all, from the National Museum of Ireland
+(64 stones) down to a parish church holding one. The corpus names them but gives no
+coordinates, so the displacement cannot be drawn without geocoding.
+
+`py/keepers.py` resolves each name against **Wikidata first** — an institution has a
+QID, and the QID is what belongs in the graph — then falls back to **OSM Nominatim**
+for the small local museums Wikidata does not carry. A candidate is only accepted if
+one of its `P31` types reads like something that keeps objects (museum, library,
+gallery, university, church…); without that check "Perth Museum" cheerfully resolves
+to a town in Australia.
+
+Results land in `reconciliation/keeper-coordinates.csv`, committed, in the same shape
+as the Wikidata cache: machine suggestions are marked `auto` and are meant to be read
+and either confirmed (`verified`) or corrected. **The file ships with every entry
+`pending`** — geocodes are claims about the world and none has been made yet. One
+online run fills it:
+
+```
+python py/main.py            # geocodes what is still pending, then rebuilds
+```
+
+Until then the page renders, says nothing is geocoded, and gives that command.
+
+### The modelling, and an ambiguity it resolves
+
+```turtle
+data:stone_I_KER_020  crm:P50_has_current_keeper    data:keeper_Kerry_County_Museum ;
+                      crm:P55_has_current_location  data:place_keeper_Kerry_County_Museum .
+data:keeper_Kerry_County_Museum a crm:E40_Legal_Body ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Kerry_County_Museum ;
+    skos:closeMatch wd:Q6396857 .
+```
+
+The findspot keeps `P53_has_former_or_current_location`; the museum gets **`P55`**,
+which is specifically the *current* location. Both were candidates for `P53`, which
+would have made "where it was found" and "where it is" indistinguishable in a query.
+
+Arcs are bowed rather than straight: sixty stones travelling from Cork to Dublin on
+the same line would read as one, and a bow also reads as movement rather than as a
+boundary. Stones that left their country are drawn in red — the check is a coarse
+bounding box per country, since the corpus does not say where a museum is.
 
 ## Where the editors disagree (`docs/readings.html`)
 
@@ -392,6 +438,7 @@ tei--epidoc-crosswalk/
 │   ├── findspots.html         # Leaflet map of the findspots (generated)
 │   ├── words.html             # formulaic-word filter map (generated)
 │   ├── readings.html          # editorial-disagreement map (generated)
+│   ├── keepers.html           # findspot-to-museum map (generated)
 │   ├── places.geojson         # point layer beside the map (generated)
 │   └── .nojekyll
 ├── py/
@@ -400,6 +447,7 @@ tei--epidoc-crosswalk/
 │   ├── places.py              # corpus-wide place layer (E53 + GeoSPARQL)
 │   ├── words.py               # formulaic vocabulary across all readings
 │   ├── dissent.py             # comparison of competing readings
+│   ├── keepers.py             # geocoding of the holding institutions
 │   ├── webmap.py              # docs/ map builder
 │   └── wikidata.py             # Wikidata reconciliation module
 ├── .gitignore
@@ -500,7 +548,5 @@ and reviewed by Florian Thiery.
 - Data licence / attribution for the EpiDoc input (OG(H)AM project)
 - ORCID / affiliation
 - Dimensions (`<dimensions>`) → `E54_Dimension`
-- `<repository>` → `E40_Legal_Body` / `P50_has_current_keeper` (current location, as
-  opposed to the findspot the place layer models)
 - Reconcile the 395 places against Wikidata / GeoNames via the existing Logainm and
   RCAHMW anchors
