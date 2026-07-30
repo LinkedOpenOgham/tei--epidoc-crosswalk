@@ -105,6 +105,14 @@ data:match_keeper_Margam_Stones_Museum a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Margam_Stones_Museum .
 
+data:match_keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway a rdf:Statement ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
+    rdf:object wd:Q113363735 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway .
+
 data:match_keeper_National_Museum_Wales a rdf:Statement ;
     amt:weight 0.70 ;
     ogham:matchConfidence 0.70 ;
@@ -192,14 +200,6 @@ data:match_keeper_Shetland_Museum a rdf:Statement ;
     rdf:object wd:Q2278527 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Shetland_Museum .
-
-data:match_keeper_St_Brynach_s_Church a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
-    rdf:object wd:Q26236358 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:keeper_St_Brynach_s_Church .
 
 data:match_keeper_Swansea_Museum a rdf:Statement ;
     amt:weight 0.70 ;
@@ -590,6 +590,9 @@ data:stone_I_WAT_021 crm:P50_has_current_keeper data:keeper_National_Museum_of_I
 data:stone_I_WAT_024 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
     crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
 
+data:stone_I_WAT_025 crm:P50_has_current_keeper data:keeper_Mount_Mellary_Abbey_Heritage_Center ;
+    crm:P55_has_current_location data:place_keeper_Mount_Mellary_Abbey_Heritage_Center .
+
 data:stone_I_WAT_030 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
     crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
 
@@ -626,6 +629,9 @@ data:stone_M_IOM_009 crm:P50_has_current_keeper data:keeper_Manx_Museum ;
 data:stone_S_ANS_001 crm:P50_has_current_keeper data:keeper_St_Vigeans_Museum ;
     crm:P55_has_current_location data:place_keeper_St_Vigeans_Museum .
 
+data:stone_S_ANS_002 crm:P50_has_current_keeper data:keeper_Meffan_Museum_and_Gallery_Forfar ;
+    crm:P55_has_current_location data:place_keeper_Meffan_Museum_and_Gallery_Forfar .
+
 data:stone_S_ANS_003 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
     crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
 
@@ -652,6 +658,9 @@ data:stone_S_FIF_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_
 
 data:stone_S_INV_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
     crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
+
+data:stone_S_INV_002 crm:P50_has_current_keeper data:keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway ;
+    crm:P55_has_current_location data:place_keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway .
 
 data:stone_S_LKS_X01 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
     crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
@@ -688,6 +697,9 @@ data:stone_S_PER_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_
 
 data:stone_S_PER_003 crm:P50_has_current_keeper data:keeper_Perth_Museum ;
     crm:P55_has_current_location data:place_keeper_Perth_Museum .
+
+data:stone_S_SEL_X01 crm:P50_has_current_keeper data:keeper_Live_Borders_Library_HQ_Selkirk ;
+    crm:P55_has_current_location data:place_keeper_Live_Borders_Library_HQ_Selkirk .
 
 data:stone_S_SHE_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
     crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
@@ -743,6 +755,9 @@ data:stone_W_CMN_002 crm:P50_has_current_keeper data:keeper_Carmarthen_Museum_Ab
 data:stone_W_CMN_005 crm:P50_has_current_keeper data:keeper_Carmarthen_Museum_Abergwili ;
     crm:P55_has_current_location data:place_keeper_Carmarthen_Museum_Abergwili .
 
+data:stone_W_CMN_X02 crm:P50_has_current_keeper data:keeper_Llansaint_Chapel_All_Saints_Church ;
+    crm:P55_has_current_location data:place_keeper_Llansaint_Chapel_All_Saints_Church .
+
 data:stone_W_DEN_001 crm:P50_has_current_keeper data:keeper_National_Museum_Wales ;
     crm:P55_has_current_location data:place_keeper_National_Museum_Wales .
 
@@ -764,6 +779,26 @@ data:stone_W_PEM_014 crm:P50_has_current_keeper data:keeper_St_Brynach_s_Church 
 data:keeper_Cyfarthfa_Museum a crm:E40_Legal_Body ;
     rdfs:label "Cyfarthfa Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Cyfarthfa_Museum .
+
+data:keeper_Live_Borders_Library_HQ_Selkirk a crm:E40_Legal_Body ;
+    rdfs:label "Live Borders Library HQ, Selkirk" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Live_Borders_Library_HQ_Selkirk .
+
+data:keeper_Llansaint_Chapel_All_Saints_Church a crm:E40_Legal_Body ;
+    rdfs:label "Llansaint Chapel (All Saints' Church)" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Llansaint_Chapel_All_Saints_Church .
+
+data:keeper_Meffan_Museum_and_Gallery_Forfar a crm:E40_Legal_Body ;
+    rdfs:label "Meffan Museum and Gallery, Forfar" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Meffan_Museum_and_Gallery_Forfar .
+
+data:keeper_Mount_Mellary_Abbey_Heritage_Center a crm:E40_Legal_Body ;
+    rdfs:label "Mount Mellary Abbey Heritage Center" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Mount_Mellary_Abbey_Heritage_Center .
+
+data:keeper_St_Brynach_s_Church a crm:E40_Legal_Body ;
+    rdfs:label "St. Brynach's Church" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_St_Brynach_s_Church .
 
 data:keeper_St_Vigeans_Museum a crm:E40_Legal_Body ;
     rdfs:label "St Vigeans Museum" ;
@@ -807,6 +842,11 @@ data:keeper_Millstreet_Museum a crm:E40_Legal_Body ;
     rdfs:label "Millstreet Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Millstreet_Museum .
 
+data:keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway a crm:E40_Legal_Body ;
+    rdfs:label "Museum nan Eilean in Steòrnabhagh | Stornoway" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway ;
+    skos:closeMatch wd:Q113363735 .
+
 data:keeper_Norwich_Castle_Museum a crm:E40_Legal_Body ;
     rdfs:label "Norwich Castle Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Norwich_Castle_Museum ;
@@ -836,11 +876,6 @@ data:keeper_Shetland_Museum a crm:E40_Legal_Body ;
     rdfs:label "Shetland Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Shetland_Museum ;
     skos:closeMatch wd:Q2278527 .
-
-data:keeper_St_Brynach_s_Church a crm:E40_Legal_Body ;
-    rdfs:label "St. Brynach's Church" ;
-    crm:P74_has_current_or_former_residence data:place_keeper_St_Brynach_s_Church ;
-    skos:closeMatch wd:Q26236358 .
 
 data:keeper_Swansea_Museum a crm:E40_Legal_Body ;
     rdfs:label "Swansea Museum" ;
@@ -887,6 +922,31 @@ data:place_keeper_Herbert_Art_Gallery_and_Museum a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-1.506222 52.407222)"^^geo:wktLiteral .
 
+data:place_keeper_Live_Borders_Library_HQ_Selkirk a crm:E53_Place ;
+    rdfs:label "Live Borders Library HQ, Selkirk (present location)" ;
+    ogham:geocodedFrom "osm-id" ;
+    geo:asWKT "POINT(-2.84234 55.548299)"^^geo:wktLiteral .
+
+data:place_keeper_Llansaint_Chapel_All_Saints_Church a crm:E53_Place ;
+    rdfs:label "Llansaint Chapel (All Saints' Church) (present location)" ;
+    ogham:geocodedFrom "osm-id" ;
+    geo:asWKT "POINT(-4.341421 51.74781)"^^geo:wktLiteral .
+
+data:place_keeper_Meffan_Museum_and_Gallery_Forfar a crm:E53_Place ;
+    rdfs:label "Meffan Museum and Gallery, Forfar (present location)" ;
+    ogham:geocodedFrom "osm-id" ;
+    geo:asWKT "POINT(-2.889497 56.644114)"^^geo:wktLiteral .
+
+data:place_keeper_Mount_Mellary_Abbey_Heritage_Center a crm:E53_Place ;
+    rdfs:label "Mount Mellary Abbey Heritage Center (present location)" ;
+    ogham:geocodedFrom "osm-id" ;
+    geo:asWKT "POINT(-7.857753 52.188119)"^^geo:wktLiteral .
+
+data:place_keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway a crm:E53_Place ;
+    rdfs:label "Museum nan Eilean in Steòrnabhagh | Stornoway (present location)" ;
+    ogham:geocodedFrom "manual" ;
+    geo:asWKT "POINT(-6.39514 58.211518)"^^geo:wktLiteral .
+
 data:place_keeper_Norwich_Castle_Museum a crm:E53_Place ;
     rdfs:label "Norwich Castle Museum (present location)" ;
     ogham:geocodedFrom "wikidata" ;
@@ -919,8 +979,8 @@ data:place_keeper_Shetland_Museum a crm:E53_Place ;
 
 data:place_keeper_St_Brynach_s_Church a crm:E53_Place ;
     rdfs:label "St. Brynach's Church (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
-    geo:asWKT "POINT(-3.346175 51.922953)"^^geo:wktLiteral .
+    ogham:geocodedFrom "osm-id" ;
+    geo:asWKT "POINT(-3.346197 51.922943)"^^geo:wktLiteral .
 
 data:place_keeper_St_Vigeans_Museum a crm:E53_Place ;
     rdfs:label "St Vigeans Museum (present location)" ;

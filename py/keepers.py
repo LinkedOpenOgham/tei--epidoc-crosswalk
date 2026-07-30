@@ -38,6 +38,8 @@ from rdflib.namespace import RDF, RDFS, XSD
 
 WD_API = "https://www.wikidata.org/w/api.php"
 NOMINATIM = "https://nominatim.openstreetmap.org/search"
+NOMINATIM_LOOKUP = "https://nominatim.openstreetmap.org/lookup"
+OSM_API = "https://api.openstreetmap.org/api/0.6"
 UA = "LinkedOpenOgham-keeper-geocoder/0.1 (https://github.com/LinkedOpenOgham)"
 
 CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
@@ -61,6 +63,7 @@ TYPE_KEYWORDS = {
 class Keeper:
     repository: str = ""
     alias_of: str = ""        # another repository string naming the same place
+    osm_id: str = ""          # e.g. way/404085430 -- a human-checked identification
     qid: str = ""
     wd_label: str = ""
     lat: str = ""
@@ -76,8 +79,8 @@ class Keeper:
 
 def _get(url: str, params: dict, timeout: int = 12):
     try:
-        req = urllib.request.Request(f"{url}?{urllib.parse.urlencode(params)}",
-                                     headers={"User-Agent": UA})
+        full = f"{url}?{urllib.parse.urlencode(params)}" if params else url
+        req = urllib.request.Request(full, headers={"User-Agent": UA})
         with urllib.request.urlopen(req, timeout=timeout) as r:
             return json.load(r)
     except Exception:
@@ -196,6 +199,49 @@ def _wikidata(name: str, country: str = "") -> tuple[str, str, str, str]:
     return fallback
 
 
+def _osm_centroid(kind: str, number: str) -> tuple[str, str]:
+    """Mean of an object's node coordinates, straight from the OSM API.
+
+    Nominatim only knows objects its indexer has picked up; the OSM API knows
+    every object that exists, including ones mapped last week. It is the fallback
+    when a perfectly valid id comes back empty from the geocoder.
+    """
+    if kind == "node":
+        data = _get(f"{OSM_API}/node/{number}.json", {})
+        nodes = [e for e in (data or {}).get("elements", []) if e.get("type") == "node"]
+    else:
+        data = _get(f"{OSM_API}/{kind}/{number}/full.json", {})
+        nodes = [e for e in (data or {}).get("elements", []) if e.get("type") == "node"]
+    if not nodes:
+        return "", ""
+    lat = sum(n["lat"] for n in nodes) / len(nodes)
+    lon = sum(n["lon"] for n in nodes) / len(nodes)
+    return f"{lat:.6f}", f"{lon:.6f}"
+
+
+def _osm_lookup(osm_id: str) -> tuple[str, str]:
+    """Coordinates for a specific OSM object, e.g. ``way/404085430``.
+
+    An OSM id supplied by an editor is worth more than any search: it names one
+    object, it can be checked, and it does not drift the way a coordinate typed
+    from a map does. Where one is present it is used in preference to searching.
+
+    Two sources are tried. Nominatim's ``/lookup`` endpoint -- note *lookup*, not
+    *search*: ``osm_ids`` is not a search parameter, and sending it to /search
+    silently returns nothing, which is exactly how this failed the first time.
+    Then the OSM API itself, whose coverage is complete.
+    """
+    kind, _, number = osm_id.strip().lower().partition("/")
+    prefix = {"way": "W", "node": "N", "relation": "R"}.get(kind)
+    if not prefix or not number.isdigit():
+        return "", ""
+    data = _get(NOMINATIM_LOOKUP, {"osm_ids": f"{prefix}{number}", "format": "json"})
+    time.sleep(1.1)
+    if data:
+        return f"{float(data[0]['lat']):.6f}", f"{float(data[0]['lon']):.6f}"
+    return _osm_centroid(kind, number)
+
+
 def _nominatim(name: str, country: str = "") -> tuple[str, str]:
     code = COUNTRY_CODE.get(country or "")
     for params in ([{"q": name, "format": "json", "limit": 1, "countrycodes": code}] if code else []) \
@@ -232,12 +278,38 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
     fetched = 0
     for name in names:
         entry = cache.setdefault(name, Keeper(repository=name))
-        if entry.status == "verified" or entry.located:
+        if entry.status == "verified":
+            continue
+        # An editor-supplied OSM id outranks whatever a search previously found:
+        # adding one is how a wrong `auto` coordinate gets corrected, so it must
+        # not be skipped just because the row already holds a coordinate.
+        needs_osm = entry.osm_id and entry.source != "osm-id"
+        if entry.located and not needs_osm:
             continue
         if not online:
             continue
         country = countries.get(name, "")
         qid = label = lat = lon = source = ""
+
+        if entry.osm_id:                  # an editor already identified the object
+            lat, lon = _osm_lookup(entry.osm_id)
+            if lat:
+                entry.lat, entry.lon = lat, lon
+                entry.source = "osm-id"
+                # the identification was human; only the coordinate was looked up
+                entry.status = "verified"
+                fetched += 1
+                print(f"    {name[:44]:46} osm-id   {lat}, {lon}")
+            else:
+                # Deliberately no fall-back to searching. An id is usually present
+                # *because* the search got it wrong, so quietly reinstating the
+                # search result would undo the correction and mark it plausible.
+                entry.note = (entry.note or "") and entry.note.split(" || ")[0]
+                entry.note = f"{entry.note} || {entry.osm_id} did not resolve".strip(" |")
+                print(f"    {name[:44]:46} {entry.osm_id} did not resolve; left unset "
+                      f"rather than falling back to a search")
+            continue
+
         for variant in name_variants(name):
             qid, label, lat, lon = _wikidata(variant, country)
             if lat:

@@ -1,40 +1,40 @@
-repository,alias_of,qid,wd_label,lat,lon,source,status,note
-Armagh Robinson library (No 5 Vicars’ Hill Museum),,Q17779528,Armagh Robinson Library,54.348600,-6.657150,wikidata,auto,1 stone(s); awaiting geocode
-Brecknock Museum,,Q15204378,Y Gaer (cultural hub),51.946200,-3.389300,wikidata,auto,1 stone(s); awaiting geocode
-British Museum,,Q6373,British Museum,51.519444,-0.126944,wikidata,auto,9 stone(s); awaiting geocode
-Bute Museum,,Q17775932,Bute Museum,55.835900,-5.054890,wikidata,auto,1 stone(s); awaiting geocode
-"Carmarthen Museum, Abergwili",,,,51.865495,-4.265748,osm,auto,2 stone(s); awaiting geocode
-Cork Public Museum,,Q24041450,Cork Public Museum,51.896100,-8.494300,wikidata,auto,4 stone(s); awaiting geocode
-Cyfarthfa Museum,,,,51.756656,-3.389848,osm,auto,1 stone(s); awaiting geocode
-Dumfries Museum,,Q5313798,Dumfries Museum,55.065200,-3.614600,wikidata,auto,1 stone(s); awaiting geocode
-Dunrobin Castle Museum,,Q72011449,Dunrobin Castle Museum,57.982333,-3.942489,wikidata,auto,1 stone(s); awaiting geocode
-Herbert Art Gallery and Museum,,Q917262,Herbert Art Gallery and Museum,52.407222,-1.506222,wikidata,auto,1 stone(s); awaiting geocode
-Kerry County Museum,,Q6394504,Kerry County Museum,52.266900,-9.705900,wikidata,auto,3 stone(s); awaiting geocode
-"Live Borders Library HQ, Selkirk",,,,,,,pending,1 stone(s); awaiting geocode
-Llansaint Chapel (All Saints' Church),,,,,,,pending,1 stone(s); awaiting geocode
-Manx Museum,,Q11988082,Manx Museum,54.154450,-4.481870,wikidata,auto,6 stone(s); awaiting geocode
-Margam Stones Museum,,Q6759082,Margam Stones Museum,51.563270,-3.730570,wikidata,auto,2 stone(s); awaiting geocode
-"Meffan Museum and Gallery, Forfar",,,,,,,pending,1 stone(s); awaiting geocode
-Millstreet Museum,,,,52.059744,-9.067170,osm,auto,2 stone(s); awaiting geocode
-Mount Mellary Abbey Heritage Center,,,,,,,pending,1 stone(s); awaiting geocode
-Museum nan Eilean in Steòrnabhagh | Stornoway,,,,,,,pending,1 stone(s); awaiting geocode
-Músaem Chorca Dhuibhne,,Q56379441,Músaem Chorca Dhuibhne,52.166535,-10.406074,osm,auto,4 stone(s); awaiting geocode
-National Museum Cardiff,National Museum Wales,Q1321874,National Museum Cardiff,51.485577,-3.177128,wikidata,auto,same place as National Museum Wales; merged on the map
-National Museum Wales,,Q1321874,National Museum Cardiff,51.485577,-3.177128,wikidata,auto,2 stone(s); awaiting geocode
-National Museum of Ireland,,Q1672840,National Museum of Ireland,53.340278,-6.254722,wikidata,auto,64 stone(s); awaiting geocode
-National Museum of Scotland,National Museums of Scotland,Q1633842,National Museum of Scotland,55.946944,-3.190000,wikidata,auto,same place as National Museums of Scotland; merged on the map
-National Museums of Scotland,,Q1967502,National Museums Scotland,55.947000,-3.189000,wikidata,auto,23 stone(s); awaiting geocode
-Norwich Castle Museum,,Q55361621,Norfolk Museums Collections,52.628600,1.296400,wikidata,auto,1 stone(s); awaiting geocode
-Orkney Museum,,Q2383929,Orkney Museum,58.981520,-2.960840,wikidata,auto,3 stone(s); awaiting geocode
-Perth Museum,,Q122199223,Perth Museum,56.395850,-3.429400,wikidata,auto,1 stone(s); awaiting geocode
-"Pitt-Rivers Museum, Oxford",,Q1456119,Pitt Rivers Museum,51.758611,-1.255000,wikidata,auto,3 stone(s); awaiting geocode
-Reading Museum,,Q6941004,Reading Museum,51.457134,-0.969885,wikidata,auto,1 stone(s); awaiting geocode
-Rothe House Museum,,Q3752845,Rothe House,52.654709,-7.254954,wikidata,auto,1 stone(s); awaiting geocode
-Royal Cornwall Museum,,Q1251321,,50.263700,-5.054800,wikidata,auto,1 stone(s); awaiting geocode
-Shetland Museum,,Q2278527,Shetland Museum,60.157833,-1.150111,wikidata,auto,1 stone(s); awaiting geocode
-St Vigeans Museum,,,,56.577007,-2.590367,osm,auto,1 stone(s); awaiting geocode
-St. Brynach's Church,,Q26236358,St Brynach's Church,51.922953,-3.346175,wikidata,auto,1 stone(s); awaiting geocode
-Swansea Museum,,Q7653706,Swansea Museum,51.617800,-3.938100,wikidata,auto,1 stone(s); awaiting geocode
-Trinity College Dublin,,Q258464,"Trinity College, Dublin",53.344400,-6.257700,wikidata,auto,2 stone(s); awaiting geocode
-"Ulster Museum, Belfast",,Q3547979,Ulster Museum,54.582000,-5.935000,wikidata,auto,1 stone(s); awaiting geocode
-University College Cork,,Q1574185,University College Cork,51.892910,-8.492890,wikidata,auto,27 stone(s); awaiting geocode
+repository,alias_of,osm_id,qid,wd_label,lat,lon,source,status,note
+Armagh Robinson library (No 5 Vicars’ Hill Museum),,,Q17779528,Armagh Robinson Library,54.348600,-6.657150,wikidata,auto,1 stone(s); awaiting geocode
+Brecknock Museum,,,Q15204378,Y Gaer (cultural hub),51.946200,-3.389300,wikidata,auto,1 stone(s); awaiting geocode
+British Museum,,,Q6373,British Museum,51.519444,-0.126944,wikidata,auto,9 stone(s); awaiting geocode
+Bute Museum,,,Q17775932,Bute Museum,55.835900,-5.054890,wikidata,auto,1 stone(s); awaiting geocode
+"Carmarthen Museum, Abergwili",,,,,51.865495,-4.265748,osm,auto,2 stone(s); awaiting geocode
+Cork Public Museum,,,Q24041450,Cork Public Museum,51.896100,-8.494300,wikidata,auto,4 stone(s); awaiting geocode
+Cyfarthfa Museum,,,,,51.756656,-3.389848,osm,auto,1 stone(s); awaiting geocode
+Dumfries Museum,,,Q5313798,Dumfries Museum,55.065200,-3.614600,wikidata,auto,1 stone(s); awaiting geocode
+Dunrobin Castle Museum,,,Q72011449,Dunrobin Castle Museum,57.982333,-3.942489,wikidata,auto,1 stone(s); awaiting geocode
+Herbert Art Gallery and Museum,,,Q917262,Herbert Art Gallery and Museum,52.407222,-1.506222,wikidata,auto,1 stone(s); awaiting geocode
+Kerry County Museum,,,Q6394504,Kerry County Museum,52.266900,-9.705900,wikidata,auto,3 stone(s); awaiting geocode
+"Live Borders Library HQ, Selkirk",,way/1001969300,,,55.548299,-2.842340,osm-id,verified,Selkirk Library; identified by the editor
+Llansaint Chapel (All Saints' Church),,way/1060152504,,,51.747810,-4.341421,osm-id,verified,"Llansaint, Carmarthenshire -- NOT the Irish church the search found"
+Manx Museum,,,Q11988082,Manx Museum,54.154450,-4.481870,wikidata,auto,6 stone(s); awaiting geocode
+Margam Stones Museum,,,Q6759082,Margam Stones Museum,51.563270,-3.730570,wikidata,auto,2 stone(s); awaiting geocode
+"Meffan Museum and Gallery, Forfar",,way/407744946,,,56.644114,-2.889497,osm-id,verified,Meffan Institute Museum & Gallery; identified by the editor
+Millstreet Museum,,,,,52.059744,-9.067170,osm,auto,2 stone(s); awaiting geocode
+Mount Mellary Abbey Heritage Center,,way/226430858,,,52.188119,-7.857753,osm-id,verified,Mount Melleray Abbey; corpus spells it Mellary
+Museum nan Eilean in Steòrnabhagh | Stornoway,,way/382540720,Q113363735,"Museum nan Eilean, Steòrnabhagh",58.211518,-6.395140,manual,verified,identified by the editor; coordinate from Wikidata P625
+Músaem Chorca Dhuibhne,,,Q56379441,Músaem Chorca Dhuibhne,52.166535,-10.406074,osm,auto,4 stone(s); awaiting geocode
+National Museum Cardiff,National Museum Wales,,Q1321874,National Museum Cardiff,51.485577,-3.177128,wikidata,auto,same place as National Museum Wales; merged on the map
+National Museum Wales,,,Q1321874,National Museum Cardiff,51.485577,-3.177128,wikidata,auto,2 stone(s); awaiting geocode
+National Museum of Ireland,,,Q1672840,National Museum of Ireland,53.340278,-6.254722,wikidata,auto,64 stone(s); awaiting geocode
+National Museum of Scotland,National Museums of Scotland,,Q1633842,National Museum of Scotland,55.946944,-3.190000,wikidata,auto,same place as National Museums of Scotland; merged on the map
+National Museums of Scotland,,,Q1967502,National Museums Scotland,55.947000,-3.189000,wikidata,auto,23 stone(s); awaiting geocode
+Norwich Castle Museum,,,Q55361621,Norfolk Museums Collections,52.628600,1.296400,wikidata,auto,1 stone(s); awaiting geocode
+Orkney Museum,,,Q2383929,Orkney Museum,58.981520,-2.960840,wikidata,auto,3 stone(s); awaiting geocode
+Perth Museum,,,Q122199223,Perth Museum,56.395850,-3.429400,wikidata,auto,1 stone(s); awaiting geocode
+"Pitt-Rivers Museum, Oxford",,,Q1456119,Pitt Rivers Museum,51.758611,-1.255000,wikidata,auto,3 stone(s); awaiting geocode
+Reading Museum,,,Q6941004,Reading Museum,51.457134,-0.969885,wikidata,auto,1 stone(s); awaiting geocode
+Rothe House Museum,,,Q3752845,Rothe House,52.654709,-7.254954,wikidata,auto,1 stone(s); awaiting geocode
+Royal Cornwall Museum,,,Q1251321,,50.263700,-5.054800,wikidata,auto,1 stone(s); awaiting geocode
+Shetland Museum,,,Q2278527,Shetland Museum,60.157833,-1.150111,wikidata,auto,1 stone(s); awaiting geocode
+St Vigeans Museum,,,,,56.577007,-2.590367,osm,auto,1 stone(s); awaiting geocode
+St. Brynach's Church,,way/404085430,,,51.922943,-3.346197,osm-id,verified,"Nevern, Pembrokeshire -- NOT Llanfrynach, which the search found"
+Swansea Museum,,,Q7653706,Swansea Museum,51.617800,-3.938100,wikidata,auto,1 stone(s); awaiting geocode
+Trinity College Dublin,,,Q258464,"Trinity College, Dublin",53.344400,-6.257700,wikidata,auto,2 stone(s); awaiting geocode
+"Ulster Museum, Belfast",,,Q3547979,Ulster Museum,54.582000,-5.935000,wikidata,auto,1 stone(s); awaiting geocode
+University College Cork,,,Q1574185,University College Cork,51.892910,-8.492890,wikidata,auto,27 stone(s); awaiting geocode

@@ -118,6 +118,7 @@ I-WAT-003,264,Aird Mhór | Ardmore 2,Co. Waterford,Ireland,51.948819,-7.726118,N
 I-WAT-007,268,An Drom Mór | Dromore 3 (Cill Tíre),Co. Waterford,Ireland,52.0743,-7.8477,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,177.0
 I-WAT-021,282,An Baile Beag | Fox’s Castle,Co. Waterford,Ireland,52.15361,-7.50168,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,156.4
 I-WAT-024,285,An Chill Bheag | Kilbeg,Co. Waterford,Ireland,52.164,-7.316,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,149.0
+I-WAT-025,286,Cill Ghruabháin | Kilgrovan 1,Co. Waterford,Ireland,52.089906,-7.549858,Mount Mellary Abbey Heritage Center,,52.188119,-7.857753,osm-id,23.7
 I-WAT-030,,Cill Ghruabháin | Kilgrovan 6,Co. Waterford,Ireland,52.0899,-7.5498,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,164.1
 I-WAT-031,,Cill Ghruabháin | Kilgrovan 7,Co. Waterford,Ireland,52.089906,-7.549858,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,164.1
 I-WAT-041,,An Cnoc Buí | Knockboy 9,Co. Waterford,Ireland,52.194667,-7.684895,National Museum of Ireland,Q1672840,53.340278,-6.254722,wikidata,159.6
@@ -130,6 +131,7 @@ M-IOM-004,502,Bimaken Friary 2,,Isle of Man,54.099614,-4.679378,Manx Museum,Q119
 M-IOM-007,500,Knoc y Doonee,,Isle of Man,54.390192,-4.459517,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,26.3
 M-IOM-009,,Speke Farm Keeill Stone,,Isle of Man,54.139086,-4.559436,Manx Museum,Q11988082,54.15445,-4.48187,wikidata,5.3
 S-ANS-001,,St Vigeans,Angus,Scotland,56.576944,-2.590278,St Vigeans Museum,,56.577007,-2.590367,osm,0.0
+S-ANS-002,,Kirriemuir,Angus,Scotland,56.678056,-2.998056,"Meffan Museum and Gallery, Forfar",,56.644114,-2.889497,osm-id,7.6
 S-ANS-003,,Monifieth,Angus,Scotland,56.480556,-2.821111,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,63.5
 S-ARL-002,507,Poltalloch,Argyll and Bute,Scotland,56.1175,-5.507222,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,145.3
 S-BUT-002,,Inchmarnock 1,Bute,Scotland,55.789444,-5.153611,Bute Museum,Q17775932,55.8359,-5.05489,wikidata,8.0
@@ -139,6 +141,7 @@ S-CAI-001,,Ackergill,Caithness,Scotland,58.478333,-3.119167,National Museums of 
 S-DGY-001,,Lochnaw,Dumfries and Galloway,Scotland,54.912222,-5.137222,Dumfries Museum,Q5313798,55.0652,-3.6146,wikidata,98.6
 S-FIF-001,,Scoonie,Fife,Scotland,56.203611,-2.994444,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,31.0
 S-INV-001,,Bac Mhic Connain,Inverness-shire,Scotland,57.659167,-7.419167,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,320.2
+S-INV-002,,Bornais,Inverness-shire,Scotland,57.245,-7.425,Museum nan Eilean in Steòrnabhagh | Stornoway,Q113363735,58.211518,-6.39514,manual,123.6
 S-LKS-X01,,Bishop Loch,Lanarkshire,Scotland,55.876389,-4.100278,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,57.3
 S-ORK-001,,Burrian,Orkney,Scotland,59.348056,-2.418889,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,380.9
 S-ORK-002,,Gurness,Orkney,Scotland,59.123889,-3.081111,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,353.3
@@ -151,6 +154,7 @@ S-ORK-008,,Pool 1,Orkney,Scotland,59.225556,-2.668611,Orkney Museum,Q2383929,58.
 S-ORK-X01,,Pool 2,Orkney,Scotland,59.225556,-2.668612,Orkney Museum,Q2383929,58.98152,-2.96084,wikidata,31.9
 S-PER-001,,Abernethy 1,Perthshire,Scotland,56.333056,-3.311667,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,43.6
 S-PER-003,,Inchyra,Perthshire,Scotland,56.376111,-3.3125,Perth Museum,Q122199223,56.39585,-3.4294,wikidata,7.5
+S-SEL-X01,,Selkirk,Selkirkshire,Scotland,55.538333,-2.836667,"Live Borders Library HQ, Selkirk",,55.548299,-2.84234,osm-id,1.2
 S-SHE-001,,Bressay,Shetland,Scotland,60.161944,-1.063056,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,485.0
 S-SHE-002,,Cunningsburgh 1,Shetland,Scotland,60.033611,-1.224722,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,468.9
 S-SHE-003,,Cunningsburgh 2,Shetland,Scotland,60.033611,-1.224722,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,468.9
@@ -169,9 +173,10 @@ W-BRE-006,341,Pentre Poeth | Llywel,Brecknockshire,Wales,51.925325,-3.625936,Bri
 W-CGN-001,353,Llanwenog,Cardiganshire,Wales,52.059325,-4.209772,National Museum Wales,Q1321874,51.485577,-3.177128,wikidata,95.5
 W-CMN-002,378,Llanwinio,Carmarthenshire,Wales,51.909456,-4.52955,"Carmarthen Museum, Abergwili",,51.865495,-4.265748,osm,18.8
 W-CMN-005,358,Castell Dwyran,Carmarthenshire,Wales,51.831406,-4.695,"Carmarthen Museum, Abergwili",,51.865495,-4.265748,osm,29.7
+W-CMN-X02,376,St Ishmaels,Carmarthenshire,Wales,51.747706,-4.341428,Llansaint Chapel (All Saints' Church),,51.74781,-4.341421,osm-id,0.0
 W-DEN-001,399,Clocaenog,Denbighshire,Wales,53.067967,-3.415525,National Museum Wales,Q1321874,51.485577,-3.177128,wikidata,176.7
 W-GLA-001,409,Egylwys Nynnid | Margam,Glamorgan,Wales,51.545939,-3.727606,Margam Stones Museum,Q6759082,51.56327,-3.73057,wikidata,1.9
 W-GLA-002,405,Loughor,Glamorgan,Wales,51.664108,-4.06135,Swansea Museum,Q7653706,51.6178,-3.9381,wikidata,9.9
 W-GLA-X01,404,Gelli-Gaer,Glamorgan,Wales,51.715653,-3.249856,National Museum Wales,Q1321874,51.485577,-3.177128,wikidata,26.1
 W-GLA-X02,408,Margam,Glamorgan,Wales,51.585703,-3.689275,Margam Stones Museum,Q6759082,51.56327,-3.73057,wikidata,3.8
-W-PEM-014,446,Nevern 1,Pembrokeshire,Wales,52.025392,-4.795144,St. Brynach's Church,Q26236358,51.922953,-3.346175,wikidata,99.9
+W-PEM-014,446,Nevern 1,Pembrokeshire,Wales,52.025392,-4.795144,St. Brynach's Church,,51.922943,-3.346197,osm-id,99.9

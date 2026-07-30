@@ -221,6 +221,39 @@ unrestricted.
 resolver improvement can be applied without hand-editing the cache. Rows marked
 `verified` are never touched.
 
+### An OSM id beats a search
+
+The cache carries an **`osm_id`** column (`way/404085430`). Where one is present the
+coordinate is taken from that object and the row is marked `verified` — the
+identification was human, only the coordinate was fetched.
+
+Two sources are tried, in order. **Nominatim's `/lookup` endpoint** — note *lookup*,
+not *search*: `osm_ids` is not a search parameter, and sending it to `/search`
+returns nothing at all rather than an error, which is exactly how this failed on its
+first outing. Then the **OSM API** (`/api/0.6/way/{id}/full.json`), averaging the
+object's node coordinates; Nominatim only knows what its indexer has picked up,
+while the OSM API knows every object that exists, including one mapped last week.
+
+If both fail the row is **left unset**. There is deliberately no fall-back to
+searching: an id is usually present *because* the search got it wrong, so quietly
+reinstating the search result would undo the correction and stamp it plausible.
+
+An id is worth more than a typed coordinate: it names one object, it can be checked
+by anyone, and it does not silently drift. It also **outranks an existing automatic
+coordinate**, which is how a wrong `auto` row gets corrected — adding the id and
+re-running is enough, no hand-editing of latitudes.
+
+The six that needed human eyes now carry one:
+
+| repository string | OSM object | what it fixes |
+|---|---|---|
+| `Museum nan Eilean in Steòrnabhagh \| Stornoway` | `way/382540720` | never resolved (pipe in the name) |
+| `Live Borders Library HQ, Selkirk` | `way/1001969300` | never resolved |
+| `Meffan Museum and Gallery, Forfar` | `way/407744946` | never resolved |
+| `Mount Mellary Abbey Heritage Center` | `way/226430858` | corpus spells Melleray with an A |
+| `St. Brynach's Church` | `way/404085430` | search found Llanfrynach, 100 km from Nevern |
+| `Llansaint Chapel (All Saints' Church)` | `way/1060152504` | search found a church in Ireland, 317 km away |
+
 ### Two names, one place
 
 The corpus names some institutions at two granularities — *National Museums of
