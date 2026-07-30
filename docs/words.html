@@ -69,8 +69,11 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
 .btn:active{background:var(--sc);color:#0f1918}
 .btn:disabled{opacity:.5;cursor:progress}
 
-nav{display:flex;gap:2px;margin-bottom:14px}
-nav a{flex:1;text-align:center;padding:7px 4px;font-size:12px;letter-spacing:.04em;
+/* wraps onto a second row rather than squeezing, so a sixth view can be added
+   without the labels breaking mid-word */
+nav{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:14px}
+nav a{flex:1 1 auto;text-align:center;padding:7px 9px;font-size:11.5px;
+  letter-spacing:.04em;white-space:nowrap;
   color:var(--muted);text-decoration:none;background:var(--panel-2);
   border:1px solid var(--line);border-radius:3px}
 nav a:hover{color:var(--text)}
@@ -231,9 +234,9 @@ body.landing{overflow:auto}
       <nav>
         <a href="index.html">Overview</a>
         <a href="findspots.html">Findspots</a>
-        <a href="words.html" aria-current="page">Formulaic words</a>
-        <a href="readings.html">Disagreement</a>
-        <a href="keepers.html">Displacement</a>
+        <a href="words.html" aria-current="page">Words</a>
+        <a href="readings.html">Readings</a>
+        <a href="keepers.html">Museums</a>
       </nav>
       <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
 

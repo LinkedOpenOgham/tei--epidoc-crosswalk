@@ -69,8 +69,11 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
 .btn:active{background:var(--sc);color:#0f1918}
 .btn:disabled{opacity:.5;cursor:progress}
 
-nav{display:flex;gap:2px;margin-bottom:14px}
-nav a{flex:1;text-align:center;padding:7px 4px;font-size:12px;letter-spacing:.04em;
+/* wraps onto a second row rather than squeezing, so a sixth view can be added
+   without the labels breaking mid-word */
+nav{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:14px}
+nav a{flex:1 1 auto;text-align:center;padding:7px 9px;font-size:11.5px;
+  letter-spacing:.04em;white-space:nowrap;
   color:var(--muted);text-decoration:none;background:var(--panel-2);
   border:1px solid var(--line);border-radius:3px}
 nav a:hover{color:var(--text)}
@@ -245,7 +248,7 @@ body.landing{overflow:auto}
     <a class="card" href="keepers.html">
       <h2>From findspot to museum</h2>
       <p>Stones that no longer stand where they were found, drawn as an arc from the findspot to the institution that holds them now. The institutions are geocoded against Wikidata and OpenStreetMap.</p>
-      <div class="figs"><span class="fig"><b>173</b>stones displaced</span><span class="fig"><b>32</b>institutions</span><span class="fig"><b>32/39</b>geocoded</span></div>
+      <div class="figs"><span class="fig"><b>177</b>stones displaced</span><span class="fig"><b>35</b>institutions</span><span class="fig"><b>35/39</b>geocoded</span></div>
     </a></div>
 
   <p class="section">Data</p>

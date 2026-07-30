@@ -176,6 +176,42 @@ python py/main.py            # geocodes what is still pending, then rebuilds
 
 Until then the page renders, says nothing is geocoded, and gives that command.
 
+### What the first run produced, and what it got wrong
+
+A run against the live services resolved **32 of 39 institutions**, covering 173 of
+the 182 stones — 159 from Wikidata, 14 from OpenStreetMap. The type check did its
+job: *Perth Museum* landed in Perth, Scotland, not in Australia. Every institution
+fell inside the islands, and the QIDs correctly kept apart pairs that sit metres
+from each other and are genuinely different bodies (Trinity College Dublin 498 m
+from the National Museum of Ireland; University College Cork 367 m from Cork Public
+Museum).
+
+**One geocode was wrong, and it is instructive.** `St. Brynach's Church` resolved to
+Llanfrynach near Brecon — but the stone, Nevern 1 (W-PEM-014), stands in St
+Brynach's churchyard at *Nevern* in Pembrokeshire, 100 km away. There are five St
+Brynach's in Wales and the search picked another. The stone had not moved at all.
+
+That case is now caught automatically. A church, chapel, graveyard or abbey normally
+holds a stone *in situ*, so a large distance means the wrong building of that
+dedication was found, not that the stone travelled:
+
+```
+  1 geocode(s) worth checking:
+    W-PEM-014   St. Brynach's Church   a church or chapel 99.9 km from the findspot
+                                       is probably the wrong one of that dedication
+```
+
+Distance on its own is deliberately **not** a warning: Shetland to Edinburgh is
+genuinely 460 km and Cork to the British Museum 600, and flagging those would bury
+the one real error under eighteen false alarms.
+
+The seven that did not resolve all carry a qualifier the search chokes on —
+`Carmarthen Museum, Abergwili`, `Armagh Robinson library (No 5 Vicars' Hill Museum)`,
+`Museum nan Eilean in Steòrnabhagh | Stornoway`. The resolver now retries with the
+name progressively simplified (parenthetical dropped, then everything after a comma
+or pipe, then the parenthetical alone), most specific first. `Mount Mellary Abbey
+Heritage Center` will still need a hand: the corpus spells Melleray with an A.
+
 ### The modelling, and an ambiguity it resolves
 
 ```turtle

@@ -83,6 +83,40 @@ def _get(url: str, params: dict, timeout: int = 12):
         return None
 
 
+# The corpus qualifies institution names in ways a search engine chokes on:
+# "Carmarthen Museum, Abergwili", "Armagh Robinson library (No 5 Vicars’ Hill
+# Museum)", "Museum nan Eilean in Steòrnabhagh | Stornoway". Searching the full
+# string returns nothing; the leading name almost always resolves. Tried in order,
+# most specific first, so a qualifier is only dropped when it has to be.
+def name_variants(name: str) -> list[str]:
+    import re
+    out, seen = [], set()
+    for candidate in (name,
+                      re.sub(r"\s*\([^)]*\)", "", name),
+                      re.split(r"\s*[|,]", name)[0],
+                      re.sub(r"\s*\([^)]*\)", "", re.split(r"\s*[|,]", name)[0]),
+                      (re.search(r"\(([^)]*)\)", name).group(1) if "(" in name else "")):
+        candidate = candidate.strip(" ,|")
+        if len(candidate) > 3 and candidate.lower() not in seen:
+            seen.add(candidate.lower())
+            out.append(candidate)
+    return out
+
+
+# A church, chapel or graveyard normally holds a stone *in situ*: a large distance
+# from the findspot means the geocoder found a different church of the same
+# dedication, not that the stone travelled. St Brynach's is the case in point --
+# there are five in Wales, and the stone is at the one in Nevern.
+IN_SITU_WORDS = {"church", "chapel", "graveyard", "cemetery", "abbey", "cathedral",
+                 "eaglais", "capel", "llan"}
+IN_SITU_MAX_KM = 25.0
+
+
+def looks_in_situ(name: str) -> bool:
+    lowered = name.lower()
+    return any(w in lowered for w in IN_SITU_WORDS)
+
+
 def _wikidata(name: str) -> tuple[str, str, str, str]:
     """(qid, label, lat, lon) from Wikidata, or empty strings."""
     hits = _get(WD_API, {"action": "wbsearchentities", "search": name, "language": "en",
@@ -160,11 +194,18 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True) -> 
             continue
         if not online:
             continue
-        qid, label, lat, lon = _wikidata(name)
-        source = "wikidata" if lat else ""
+        qid = label = lat = lon = source = ""
+        for variant in name_variants(name):
+            qid, label, lat, lon = _wikidata(variant)
+            if lat:
+                source = "wikidata"
+                break
         if not lat:
-            lat, lon = _nominatim(name)
-            source = "osm" if lat else ""
+            for variant in name_variants(name):
+                lat, lon = _nominatim(variant)
+                if lat:
+                    source = "osm"
+                    break
         if qid:
             entry.qid, entry.wd_label = qid, label
         if lat:
@@ -193,6 +234,17 @@ def _km(a_lat, a_lon, b_lat, b_lon) -> float:
     dp, dl = p2 - p1, math.radians(b_lon - a_lon)
     h = math.sin(dp / 2) ** 2 + math.cos(p1) * math.cos(p2) * math.sin(dl / 2) ** 2
     return 2 * r * math.asin(min(1.0, math.sqrt(h)))
+
+
+def check(links: list[dict]) -> list[dict]:
+    """Geocodes worth a second look, so they do not sit unexamined in the graph."""
+    # Distance alone says nothing: Shetland to Edinburgh is genuinely 460 km and
+    # Cork to the British Museum 600, both correct. Only the in-situ case is a real
+    # signal, and on the current data it fires once -- on the right record.
+    return [{**r, "why": f"a church or chapel {r['km']} km from the findspot is "
+                         f"probably the wrong one of that dedication"}
+            for r in links
+            if looks_in_situ(r["keeper"]) and r["km"] > IN_SITU_MAX_KM]
 
 
 def link(place_records: list[dict], cache: dict[str, Keeper]) -> list[dict]:

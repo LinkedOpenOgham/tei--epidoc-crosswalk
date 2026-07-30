@@ -826,6 +826,11 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
         print(f"  {summary['total'] - summary['located']} still without coordinates -- see "
               f"{KEEPER_CACHE.relative_to(ROOT)}"
               + ("" if online else " (run without --offline to geocode)"))
+    flagged = keepers.check(links)
+    if flagged:
+        print(f"  {len(flagged)} geocode(s) worth checking:")
+        for f in flagged[:8]:
+            print(f"    {f['ogham_id']:11} {f['keeper'][:34]:36} {f['why']}")
     print(f"  -> wrote {(OUT / 'keepers.csv').relative_to(ROOT)} ({rows} rows)")
     print(f"  -> wrote {(OUT / 'keepers.crm.ttl').relative_to(ROOT)} ({len(g)} triples)")
     return {"links": links, **gs, **summary}

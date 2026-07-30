@@ -87,8 +87,11 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
 .btn:active{background:var(--sc);color:#0f1918}
 .btn:disabled{opacity:.5;cursor:progress}
 
-nav{display:flex;gap:2px;margin-bottom:14px}
-nav a{flex:1;text-align:center;padding:7px 4px;font-size:12px;letter-spacing:.04em;
+/* wraps onto a second row rather than squeezing, so a sixth view can be added
+   without the labels breaking mid-word */
+nav{display:flex;flex-wrap:wrap;gap:3px;margin-bottom:14px}
+nav a{flex:1 1 auto;text-align:center;padding:7px 9px;font-size:11.5px;
+  letter-spacing:.04em;white-space:nowrap;
   color:var(--muted);text-decoration:none;background:var(--panel-2);
   border:1px solid var(--line);border-radius:3px}
 nav a:hover{color:var(--text)}
@@ -2243,7 +2246,7 @@ PAGES = [
     },
     {
         "slug": "words.html",
-        "nav": "Formulaic words",
+        "nav": "Words",
         "title": "Formulaic words",
         "blurb": "McManus's formulaic vocabulary matched against every reading of every "
                  "inscription — so a word belongs to a reading and its editor, not to a "
@@ -2251,7 +2254,7 @@ PAGES = [
     },
     {
         "slug": "readings.html",
-        "nav": "Disagreement",
+        "nav": "Readings",
         "title": "Where the editors disagree",
         "blurb": "Stones that carry more than one reading, coloured by how far the "
                  "current edition sits from what an earlier editor saw. Filterable by "
@@ -2259,7 +2262,7 @@ PAGES = [
     },
     {
         "slug": "keepers.html",
-        "nav": "Displacement",
+        "nav": "Museums",
         "title": "From findspot to museum",
         "blurb": "Stones that no longer stand where they were found, drawn as an arc "
                  "from the findspot to the institution that holds them now. The "

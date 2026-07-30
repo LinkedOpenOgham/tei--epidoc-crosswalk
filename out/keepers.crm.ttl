@@ -9,6 +9,14 @@
 @prefix wd: <http://www.wikidata.org/entity/> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+data:match_keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q17779528 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum .
+
 data:match_keeper_Brecknock_Museum a rdf:Statement ;
     amt:weight 0.70 ;
     ogham:matchConfidence 0.70 ;
@@ -72,6 +80,14 @@ data:match_keeper_Kerry_County_Museum a rdf:Statement ;
     rdf:object wd:Q6394504 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Kerry_County_Museum .
+
+data:match_keeper_Llansaint_Chapel_All_Saints_Church a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q55027722 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Llansaint_Chapel_All_Saints_Church .
 
 data:match_keeper_M_saem_Chorca_Dhuibhne a rdf:Statement ;
     amt:weight 0.70 ;
@@ -161,6 +177,14 @@ data:match_keeper_Perth_Museum a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Perth_Museum .
 
+data:match_keeper_Pitt_Rivers_Museum_Oxford a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q1456119 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Pitt_Rivers_Museum_Oxford .
+
 data:match_keeper_Reading_Museum a rdf:Statement ;
     amt:weight 0.70 ;
     ogham:matchConfidence 0.70 ;
@@ -217,6 +241,14 @@ data:match_keeper_Trinity_College_Dublin a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Trinity_College_Dublin .
 
+data:match_keeper_Ulster_Museum_Belfast a rdf:Statement ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
+    ogham:matchStatus "auto" ;
+    rdf:object wd:Q3547979 ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:keeper_Ulster_Museum_Belfast .
+
 data:match_keeper_University_College_Cork a rdf:Statement ;
     amt:weight 0.70 ;
     ogham:matchConfidence 0.70 ;
@@ -245,6 +277,9 @@ data:stone_E_WRY_001 crm:P50_has_current_keeper data:keeper_British_Museum ;
 
 data:stone_I_ANT_002 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
     crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
+
+data:stone_I_ARM_001 crm:P50_has_current_keeper data:keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum ;
+    crm:P55_has_current_location data:place_keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum .
 
 data:stone_I_CAR_004 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
     crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
@@ -726,6 +761,15 @@ data:stone_W_BRE_006 crm:P50_has_current_keeper data:keeper_British_Museum ;
 data:stone_W_CGN_001 crm:P50_has_current_keeper data:keeper_National_Museum_Wales ;
     crm:P55_has_current_location data:place_keeper_National_Museum_Wales .
 
+data:stone_W_CMN_002 crm:P50_has_current_keeper data:keeper_Carmarthen_Museum_Abergwili ;
+    crm:P55_has_current_location data:place_keeper_Carmarthen_Museum_Abergwili .
+
+data:stone_W_CMN_005 crm:P50_has_current_keeper data:keeper_Carmarthen_Museum_Abergwili ;
+    crm:P55_has_current_location data:place_keeper_Carmarthen_Museum_Abergwili .
+
+data:stone_W_CMN_X02 crm:P50_has_current_keeper data:keeper_Llansaint_Chapel_All_Saints_Church ;
+    crm:P55_has_current_location data:place_keeper_Llansaint_Chapel_All_Saints_Church .
+
 data:stone_W_DEN_001 crm:P50_has_current_keeper data:keeper_National_Museum_Wales ;
     crm:P55_has_current_location data:place_keeper_National_Museum_Wales .
 
@@ -752,9 +796,10 @@ data:keeper_St_Vigeans_Museum a crm:E40_Legal_Body ;
     rdfs:label "St Vigeans Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_St_Vigeans_Museum .
 
-data:keeper_Ulster_Museum_Belfast a crm:E40_Legal_Body ;
-    rdfs:label "Ulster Museum, Belfast" ;
-    crm:P74_has_current_or_former_residence data:place_keeper_Ulster_Museum_Belfast .
+data:keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum a crm:E40_Legal_Body ;
+    rdfs:label "Armagh Robinson library (No 5 Vicars’ Hill Museum)" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum ;
+    skos:closeMatch wd:Q17779528 .
 
 data:keeper_Brecknock_Museum a crm:E40_Legal_Body ;
     rdfs:label "Brecknock Museum" ;
@@ -765,6 +810,10 @@ data:keeper_Bute_Museum a crm:E40_Legal_Body ;
     rdfs:label "Bute Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Bute_Museum ;
     skos:closeMatch wd:Q17775932 .
+
+data:keeper_Carmarthen_Museum_Abergwili a crm:E40_Legal_Body ;
+    rdfs:label "Carmarthen Museum, Abergwili" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Carmarthen_Museum_Abergwili .
 
 data:keeper_Dumfries_Museum a crm:E40_Legal_Body ;
     rdfs:label "Dumfries Museum" ;
@@ -780,6 +829,11 @@ data:keeper_Herbert_Art_Gallery_and_Museum a crm:E40_Legal_Body ;
     rdfs:label "Herbert Art Gallery and Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Herbert_Art_Gallery_and_Museum ;
     skos:closeMatch wd:Q917262 .
+
+data:keeper_Llansaint_Chapel_All_Saints_Church a crm:E40_Legal_Body ;
+    rdfs:label "Llansaint Chapel (All Saints' Church)" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Llansaint_Chapel_All_Saints_Church ;
+    skos:closeMatch wd:Q55027722 .
 
 data:keeper_Millstreet_Museum a crm:E40_Legal_Body ;
     rdfs:label "Millstreet Museum" ;
@@ -830,6 +884,16 @@ data:keeper_Swansea_Museum a crm:E40_Legal_Body ;
     crm:P74_has_current_or_former_residence data:place_keeper_Swansea_Museum ;
     skos:closeMatch wd:Q7653706 .
 
+data:keeper_Ulster_Museum_Belfast a crm:E40_Legal_Body ;
+    rdfs:label "Ulster Museum, Belfast" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Ulster_Museum_Belfast ;
+    skos:closeMatch wd:Q3547979 .
+
+data:place_keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum a crm:E53_Place ;
+    rdfs:label "Armagh Robinson library (No 5 Vicars’ Hill Museum) (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-6.65715 54.3486)"^^geo:wktLiteral .
+
 data:place_keeper_Brecknock_Museum a crm:E53_Place ;
     rdfs:label "Brecknock Museum (present location)" ;
     ogham:geocodedFrom "wikidata" ;
@@ -859,6 +923,11 @@ data:place_keeper_Herbert_Art_Gallery_and_Museum a crm:E53_Place ;
     rdfs:label "Herbert Art Gallery and Museum (present location)" ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-1.506222 52.407222)"^^geo:wktLiteral .
+
+data:place_keeper_Llansaint_Chapel_All_Saints_Church a crm:E53_Place ;
+    rdfs:label "Llansaint Chapel (All Saints' Church) (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-7.07916 54.07546)"^^geo:wktLiteral .
 
 data:place_keeper_National_Museum_Cardiff a crm:E53_Place ;
     rdfs:label "National Museum Cardiff (present location)" ;
@@ -912,8 +981,8 @@ data:place_keeper_Swansea_Museum a crm:E53_Place ;
 
 data:place_keeper_Ulster_Museum_Belfast a crm:E53_Place ;
     rdfs:label "Ulster Museum, Belfast (present location)" ;
-    ogham:geocodedFrom "osm" ;
-    geo:asWKT "POINT(-5.935317 54.582245)"^^geo:wktLiteral .
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-5.935 54.582)"^^geo:wktLiteral .
 
 data:keeper_Margam_Stones_Museum a crm:E40_Legal_Body ;
     rdfs:label "Margam Stones Museum" ;
@@ -930,14 +999,15 @@ data:keeper_National_Museum_of_Scotland a crm:E40_Legal_Body ;
     crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_of_Scotland ;
     skos:closeMatch wd:Q1633842 .
 
-data:keeper_Pitt_Rivers_Museum_Oxford a crm:E40_Legal_Body ;
-    rdfs:label "Pitt-Rivers Museum, Oxford" ;
-    crm:P74_has_current_or_former_residence data:place_keeper_Pitt_Rivers_Museum_Oxford .
-
 data:keeper_Trinity_College_Dublin a crm:E40_Legal_Body ;
     rdfs:label "Trinity College Dublin" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Trinity_College_Dublin ;
     skos:closeMatch wd:Q258464 .
+
+data:place_keeper_Carmarthen_Museum_Abergwili a crm:E53_Place ;
+    rdfs:label "Carmarthen Museum, Abergwili (present location)" ;
+    ogham:geocodedFrom "osm" ;
+    geo:asWKT "POINT(-4.265748 51.865495)"^^geo:wktLiteral .
 
 data:place_keeper_Margam_Stones_Museum a crm:E53_Place ;
     rdfs:label "Margam Stones Museum (present location)" ;
@@ -974,6 +1044,11 @@ data:keeper_Orkney_Museum a crm:E40_Legal_Body ;
     crm:P74_has_current_or_former_residence data:place_keeper_Orkney_Museum ;
     skos:closeMatch wd:Q2383929 .
 
+data:keeper_Pitt_Rivers_Museum_Oxford a crm:E40_Legal_Body ;
+    rdfs:label "Pitt-Rivers Museum, Oxford" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_Pitt_Rivers_Museum_Oxford ;
+    skos:closeMatch wd:Q1456119 .
+
 data:place_keeper_Kerry_County_Museum a crm:E53_Place ;
     rdfs:label "Kerry County Museum (present location)" ;
     ogham:geocodedFrom "wikidata" ;
@@ -986,8 +1061,8 @@ data:place_keeper_Orkney_Museum a crm:E53_Place ;
 
 data:place_keeper_Pitt_Rivers_Museum_Oxford a crm:E53_Place ;
     rdfs:label "Pitt-Rivers Museum, Oxford (present location)" ;
-    ogham:geocodedFrom "osm" ;
-    geo:asWKT "POINT(-1.255064 51.758759)"^^geo:wktLiteral .
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-1.255 51.758611)"^^geo:wktLiteral .
 
 data:keeper_Cork_Public_Museum a crm:E40_Legal_Body ;
     rdfs:label "Cork Public Museum" ;
