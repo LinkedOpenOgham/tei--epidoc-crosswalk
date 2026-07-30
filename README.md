@@ -287,6 +287,14 @@ gives each its own QID, but on a map of places they are one point. An `alias_of`
 column in the cache merges them: 35 institutions become 33, and Scotland's count
 goes from 23 + 2 to 25.
 
+An alias row carries no coordinate of its own and is skipped when geocoding — two
+API calls saved per run, and, more usefully, it is no longer counted as an
+outstanding gap. A run that has resolved everything now says so:
+
+```
+  37/37 institutions located (2 merged into another by alias), 181 stones linked
+```
+
 Merging is a curatorial decision, so it lives in the reviewable CSV rather than in
 code. Pairs that sit metres apart but are genuinely distinct — Trinity College Dublin
 498 m from the National Museum of Ireland, University College Cork 367 m from Cork

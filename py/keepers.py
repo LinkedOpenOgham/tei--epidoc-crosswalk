@@ -332,9 +332,13 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
         else:
             entry.note = entry.note or "not found; fill lat/lon by hand"
             print(f"    {name[:44]:46} not found")
+    # An alias has no coordinate of its own by design, so it is neither located
+    # nor outstanding: counting it would report a permanent shortfall.
+    wanted = [n for n in names if not (cache.get(n) and cache[n].alias_of)]
     return {"fetched": fetched,
-            "located": sum(1 for k in cache.values() if k.located),
-            "total": len(names)}
+            "located": sum(1 for n in wanted if cache.get(n) and cache[n].located),
+            "total": len(wanted),
+            "aliases": len(names) - len(wanted)}
 
 
 # --- linking ------------------------------------------------------------------

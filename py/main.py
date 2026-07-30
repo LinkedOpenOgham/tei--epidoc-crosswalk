@@ -838,8 +838,10 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
     rows = keepers.write_csv(links, OUT / "keepers.csv")
     g, gs = keepers.build_graph(links, cache)
     g.serialize(destination=str(OUT / "keepers.crm.ttl"), format="turtle")
-    print(f"  {summary['located']}/{summary['total']} institutions located, "
-          f"{len(links)} stones linked")
+    merged = summary.get("aliases", 0)
+    print(f"  {summary['located']}/{summary['total']} institutions located"
+          + (f" ({merged} merged into another by alias)" if merged else "")
+          + f", {len(links)} stones linked")
     if summary["located"] < summary["total"]:
         print(f"  {summary['total'] - summary['located']} still without coordinates -- see "
               f"{KEEPER_CACHE.relative_to(ROOT)}"
