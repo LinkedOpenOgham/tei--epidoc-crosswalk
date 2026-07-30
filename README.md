@@ -361,6 +361,46 @@ the same line would read as one, and a bow also reads as movement rather than as
 boundary. Stones that left their country are drawn in red — the check is a coarse
 bounding box per country, since the corpus does not say where a museum is.
 
+## What is still missing (`out/worklist.md`)
+
+Every gap the pipeline can see, generated on each run so it shrinks as the corpus
+and the override files grow. `out/worklist.csv` is the same thing to work through
+offline.
+
+The grouping matters more than the list, because OG(H)AM's identifiers carry a
+distinction a naive gap report would flatten:
+
+| series | example | meaning |
+|---|---|---|
+| numbered | `I-KER-042` | extant and catalogued |
+| `L` | `I-KER-L02` | **lost** — *"broken up for building material, no record of its inscription was preserved"* (Macalister 1945) |
+| `X` | `I-KER-X01` | **doubtful** — often *"findspot uncertain"* in the edition itself |
+
+Supplying a coordinate for a numbered stone completes a record. Supplying one for
+an `X` stone may assert a precision the evidence does not carry, which is the
+opposite of the point. So the tiers run:
+
+| tier | stones | |
+|---|---|---|
+| extant, no findspot | 5 | the real gaps — all but one in Co. Kerry |
+| coordinates the editors hedged | 6 | a better source may firm them up, or confirm the hedge |
+| lost stones, no findspot | 7 | the stone is gone; the field may still be recorded |
+| doubtful stones, no findspot | 10 | lowest priority, and sometimes the right answer is to leave it |
+| no edition text at all | 38 | invisible to the word and disagreement layers |
+
+Where the edition says the provenance is *unrecorded* — I-KER-043 does — the row is
+marked **stated as not recoverable**, because that is a finding rather than an
+omission and should not cost anyone an afternoon.
+
+### A corpus fix that is not research
+
+**200 of the CISP links in the corpus do not resolve.** CISP publishes a stone at
+`.../stone/wvale_1.html`, but 160 `corresp` values carry the *identifier* form
+`.../stone/TMINE/1.html`, and 40 are empty. The identifier form converts
+mechanically — lowercase, `/` becomes `_` — so the worklist repairs its own links on
+the way out; the corpus still has them wrong. The empty ones lack a CISP identifier
+altogether, so they need one before a link can exist.
+
 ## Where the editors disagree (`docs/readings.html`)
 
 The third view asks what the earlier two cannot: **which stones have been read more
@@ -613,6 +653,7 @@ tei--epidoc-crosswalk/
 │   ├── places.py              # corpus-wide place layer (E53 + GeoSPARQL)
 │   ├── words.py               # formulaic vocabulary across all readings
 │   ├── dissent.py             # comparison of competing readings
+│   ├── worklist.py            # what is still missing, by priority
 │   ├── keepers.py             # geocoding of the holding institutions
 │   ├── webmap.py              # docs/ map builder
 │   └── wikidata.py             # Wikidata reconciliation module

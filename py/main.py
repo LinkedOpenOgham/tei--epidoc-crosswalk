@@ -40,6 +40,7 @@ import keepers   # local module (py/keepers.py) -- present location of the stone
 import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
 import words     # local module (py/words.py) -- formulaic-word extractor
+import worklist  # local module (py/worklist.py) -- what is still missing
 import wikidata  # local module (py/wikidata.py)
 from pathlib import Path
 
@@ -795,6 +796,7 @@ def run_words(corpus_dir: Path, prov: dict, no_map: bool) -> dict | None:
     print(f"  -> wrote {(OUT / 'readings.csv').relative_to(ROOT)} ({rows_r} rows)")
     summary["analysis"] = analysis
     summary["dissent"] = d
+    summary["records_for_worklist"] = records
     print(f"  {summary['stones']} stones carry a match, "
           f"{summary['occurrences']} occurrences over all readings")
     print(f"  -> wrote {(OUT / 'words.csv').relative_to(ROOT)} ({rows} rows)")
@@ -1004,6 +1006,20 @@ def main() -> None:
                     word_summary["analysis"], places_summary["records"],
                     word_summary["dissent"], DOCS, root=ROOT, provenance=prov)
                 shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
+            if word_summary:
+                counts = worklist.build(places_summary["records"],
+                                        word_summary["records_for_worklist"],
+                                        OUT / "worklist.md")
+                n = worklist.write_csv(places_summary["records"],
+                                       word_summary["records_for_worklist"],
+                                       OUT / "worklist.csv")
+                print(f"\nworklist -- {counts['numbered_without_findspot']} extant stones "
+                      f"without a findspot, {counts['hedged']} hedged, "
+                      f"{counts['lost_without_findspot']} lost, "
+                      f"{counts['doubtful_without_findspot']} doubtful, "
+                      f"{counts['without_edition_text']} without edition text")
+                print(f"  -> wrote {(OUT / 'worklist.md').relative_to(ROOT)} "
+                      f"and worklist.csv ({n} rows)")
             ks = run_keepers(places_summary["records"], online, prov)
             places_summary["keeper_layer"] = ks
             webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT,
