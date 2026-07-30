@@ -238,6 +238,30 @@ If both fail the row is **left unset**. There is deliberately no fall-back to
 searching: an id is usually present *because* the search got it wrong, so quietly
 reinstating the search result would undo the correction and stamp it plausible.
 
+**An id is not automatically right, either.** Four of the five supplied ids landed
+where they should — Llansaint came out 0.0 km from its stone, which is what *in
+situ* looks like. The fifth did not: `way/404085430` sits two metres from the
+Wikidata hit it was meant to correct, because it is St Brynach's at **Llanfrynach**
+near Brecon. *Llanfrynach* means "church of Brynach", so Wales has several, and both
+the search and the manual lookup found the same wrong one. The in-situ check keeps
+flagging it, and now says what the value probably is:
+
+```
+  W-PEM-014  St. Brynach's Church
+     a church or chapel 99.9 km from the findspot is probably the wrong one of
+     that dedication; if the stone is in situ the keeper coordinate is 52.0254, -4.7951
+```
+
+This is the argument for keeping the check even after a human has been round the
+data: a human-supplied identifier is a better claim than a search result, not a
+guaranteed one.
+
+The row is now set by hand — `52.025392, -4.795144`, `source: manual`,
+`status: verified` — and the rejected id is recorded in the note so nobody spends an
+afternoon finding it again. The `osm_id` is cleared rather than left in place: it
+names a real church, just not this one. After that the run reports **181 stones, 37
+institutions, 12 across a border and no geocodes worth checking**.
+
 An id is worth more than a typed coordinate: it names one object, it can be checked
 by anyone, and it does not silently drift. It also **outranks an existing automatic
 coordinate**, which is how a wrong `auto` row gets corrected — adding the id and

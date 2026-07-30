@@ -278,6 +278,8 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
     fetched = 0
     for name in names:
         entry = cache.setdefault(name, Keeper(repository=name))
+        if entry.alias_of:                # merged into another row; nothing to look up
+            continue
         if entry.status == "verified":
             continue
         # An editor-supplied OSM id outranks whatever a search previously found:
@@ -356,8 +358,9 @@ def check(links: list[dict]) -> list[dict]:
     # Distance alone says nothing: Shetland to Edinburgh is genuinely 460 km and
     # Cork to the British Museum 600, both correct. Only the in-situ case is a real
     # signal, and on the current data it fires once -- on the right record.
-    return [{**r, "why": f"a church or chapel {r['km']} km from the findspot is "
-                         f"probably the wrong one of that dedication"}
+    return [{**r, "why": f"a church or chapel {r['km']} km from the findspot is probably "
+                         f"the wrong one of that dedication; if the stone is in situ the "
+                         f"keeper coordinate is {r['lat']:.4f}, {r['lon']:.4f}"}
             for r in links
             if looks_in_situ(r["keeper"]) and r["km"] > IN_SITU_MAX_KM]
 

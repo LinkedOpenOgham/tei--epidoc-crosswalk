@@ -19,10 +19,10 @@ Millstreet Museum,,,,,52.059744,-9.067170,osm,auto,2 stone(s); awaiting geocode
 Mount Mellary Abbey Heritage Center,,way/226430858,,,52.188119,-7.857753,osm-id,verified,Mount Melleray Abbey; corpus spells it Mellary
 Museum nan Eilean in Steòrnabhagh | Stornoway,,way/382540720,Q113363735,"Museum nan Eilean, Steòrnabhagh",58.211518,-6.395140,manual,verified,identified by the editor; coordinate from Wikidata P625
 Músaem Chorca Dhuibhne,,,Q56379441,Músaem Chorca Dhuibhne,52.166535,-10.406074,osm,auto,4 stone(s); awaiting geocode
-National Museum Cardiff,National Museum Wales,,Q1321874,National Museum Cardiff,51.485577,-3.177128,wikidata,auto,same place as National Museum Wales; merged on the map
+National Museum Cardiff,National Museum Wales,,,,,,,pending,same place as National Museum Wales; merged on the map
 National Museum Wales,,,Q1321874,National Museum Cardiff,51.485577,-3.177128,wikidata,auto,2 stone(s); awaiting geocode
 National Museum of Ireland,,,Q1672840,National Museum of Ireland,53.340278,-6.254722,wikidata,auto,64 stone(s); awaiting geocode
-National Museum of Scotland,National Museums of Scotland,,Q1633842,National Museum of Scotland,55.946944,-3.190000,wikidata,auto,same place as National Museums of Scotland; merged on the map
+National Museum of Scotland,National Museums of Scotland,,,,,,,pending,same place as National Museums of Scotland; merged on the map
 National Museums of Scotland,,,Q1967502,National Museums Scotland,55.947000,-3.189000,wikidata,auto,23 stone(s); awaiting geocode
 Norwich Castle Museum,,,Q55361621,Norfolk Museums Collections,52.628600,1.296400,wikidata,auto,1 stone(s); awaiting geocode
 Orkney Museum,,,Q2383929,Orkney Museum,58.981520,-2.960840,wikidata,auto,3 stone(s); awaiting geocode
@@ -33,7 +33,7 @@ Rothe House Museum,,,Q3752845,Rothe House,52.654709,-7.254954,wikidata,auto,1 st
 Royal Cornwall Museum,,,Q1251321,,50.263700,-5.054800,wikidata,auto,1 stone(s); awaiting geocode
 Shetland Museum,,,Q2278527,Shetland Museum,60.157833,-1.150111,wikidata,auto,1 stone(s); awaiting geocode
 St Vigeans Museum,,,,,56.577007,-2.590367,osm,auto,1 stone(s); awaiting geocode
-St. Brynach's Church,,way/404085430,,,51.922943,-3.346197,osm-id,verified,"Nevern, Pembrokeshire -- NOT Llanfrynach, which the search found"
+St. Brynach's Church,,,,,52.025392,-4.795144,manual,verified,"Nevern, Pembrokeshire. The stone (W-PEM-014, Nevern 1) stands in the churchyard, so the findspot coordinate is the keeper coordinate. way/404085430 was checked and rejected: it is St Brynach's at Llanfrynach near Brecon, 99.9 km away, as are the Wikidata hits."
 Swansea Museum,,,Q7653706,Swansea Museum,51.617800,-3.938100,wikidata,auto,1 stone(s); awaiting geocode
 Trinity College Dublin,,,Q258464,"Trinity College, Dublin",53.344400,-6.257700,wikidata,auto,2 stone(s); awaiting geocode
 "Ulster Museum, Belfast",,,Q3547979,Ulster Museum,54.582000,-5.935000,wikidata,auto,1 stone(s); awaiting geocode

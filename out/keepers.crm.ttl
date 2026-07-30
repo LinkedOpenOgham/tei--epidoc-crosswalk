@@ -979,8 +979,8 @@ data:place_keeper_Shetland_Museum a crm:E53_Place ;
 
 data:place_keeper_St_Brynach_s_Church a crm:E53_Place ;
     rdfs:label "St. Brynach's Church (present location)" ;
-    ogham:geocodedFrom "osm-id" ;
-    geo:asWKT "POINT(-3.346197 51.922943)"^^geo:wktLiteral .
+    ogham:geocodedFrom "manual" ;
+    geo:asWKT "POINT(-4.795144 52.025392)"^^geo:wktLiteral .
 
 data:place_keeper_St_Vigeans_Museum a crm:E53_Place ;
     rdfs:label "St Vigeans Museum (present location)" ;
