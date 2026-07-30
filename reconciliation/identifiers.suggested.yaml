@@ -1,0 +1,108 @@
+# Identifiers the automatic lookup found, for review. GENERATED -- rewritten on
+# every run, safe to delete.
+#
+# Each entry is an institution whose coordinate currently comes from a *search*.
+# The search also names the object it matched, and that identifier is worth more
+# than the coordinate: paste the entry into reconciliation/identifiers.yaml and the
+# question stops being re-asked. From then on the run fetches that object's current
+# coordinate directly -- one call, no searching, and no chance of landing somewhere
+# else because a name was ambiguous.
+#
+# Check the coordinate in the comment before promoting an entry. A search result is
+# a guess until someone has looked at it.
+
+keepers:
+  # 54.348600, -6.657150 -- found by wikidata search
+  Armagh Robinson library (No 5 Vicars’ Hill Museum):
+    qid: Q17779528
+  # 51.946200, -3.389300 -- found by wikidata search
+  Brecknock Museum:
+    qid: Q15204378
+  # 51.519444, -0.126944 -- found by wikidata search
+  British Museum:
+    qid: Q6373
+  # 55.835900, -5.054890 -- found by wikidata search
+  Bute Museum:
+    qid: Q17775932
+  # 51.865495, -4.265748 -- found by osm search
+  Carmarthen Museum, Abergwili:
+    osm_id: node/778289912
+  # 51.896100, -8.494300 -- found by wikidata search
+  Cork Public Museum:
+    qid: Q24041450
+  # 51.756656, -3.389848 -- found by osm search
+  Cyfarthfa Museum:
+    osm_id: node/12554346276
+  # 55.065200, -3.614600 -- found by wikidata search
+  Dumfries Museum:
+    qid: Q5313798
+  # 57.982333, -3.942489 -- found by wikidata search
+  Dunrobin Castle Museum:
+    qid: Q72011449
+  # 52.407222, -1.506222 -- found by wikidata search
+  Herbert Art Gallery and Museum:
+    qid: Q917262
+  # 52.266900, -9.705900 -- found by wikidata search
+  Kerry County Museum:
+    qid: Q6394504
+  # 54.154450, -4.481870 -- found by wikidata search
+  Manx Museum:
+    qid: Q11988082
+  # 51.563270, -3.730570 -- found by wikidata search
+  Margam Stones Museum:
+    qid: Q6759082
+  # 52.059744, -9.067170 -- found by osm search
+  Millstreet Museum:
+    osm_id: way/231707328
+  # 52.166535, -10.406074 -- found by osm search
+  Músaem Chorca Dhuibhne:
+    osm_id: way/239440151
+    qid: Q56379441
+  # 51.485577, -3.177128 -- found by wikidata search
+  National Museum Wales:
+    qid: Q1321874
+  # 53.340278, -6.254722 -- found by wikidata search
+  National Museum of Ireland:
+    qid: Q1672840
+  # 55.947000, -3.189000 -- found by wikidata search
+  National Museums of Scotland:
+    qid: Q1967502
+  # 52.628600, 1.296400 -- found by wikidata search
+  Norwich Castle Museum:
+    qid: Q55361621
+  # 58.981520, -2.960840 -- found by wikidata search
+  Orkney Museum:
+    qid: Q2383929
+  # 56.395850, -3.429400 -- found by wikidata search
+  Perth Museum:
+    qid: Q122199223
+  # 51.758611, -1.255000 -- found by wikidata search
+  Pitt-Rivers Museum, Oxford:
+    qid: Q1456119
+  # 51.457134, -0.969885 -- found by wikidata search
+  Reading Museum:
+    qid: Q6941004
+  # 52.654709, -7.254954 -- found by wikidata search
+  Rothe House Museum:
+    qid: Q3752845
+  # 50.263700, -5.054800 -- found by wikidata search
+  Royal Cornwall Museum:
+    qid: Q1251321
+  # 60.157833, -1.150111 -- found by wikidata search
+  Shetland Museum:
+    qid: Q2278527
+  # 56.577007, -2.590367 -- found by osm search
+  St Vigeans Museum:
+    osm_id: way/929249849
+  # 51.617800, -3.938100 -- found by wikidata search
+  Swansea Museum:
+    qid: Q7653706
+  # 53.344400, -6.257700 -- found by wikidata search
+  Trinity College Dublin:
+    qid: Q258464
+  # 54.582000, -5.935000 -- found by wikidata search
+  Ulster Museum, Belfast:
+    qid: Q3547979
+  # 51.892910, -8.492890 -- found by wikidata search
+  University College Cork:
+    qid: Q1574185

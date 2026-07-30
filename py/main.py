@@ -36,6 +36,7 @@ from collections import Counter
 
 import corpus    # local module (py/corpus.py) -- fetch + provenance manifest
 import dissent   # local module (py/dissent.py) -- competing readings
+import identifiers  # local module (py/identifiers.py) -- the hand-edited file
 import keepers   # local module (py/keepers.py) -- present location of the stones
 import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
@@ -70,7 +71,8 @@ CORPUS_DIR = DATA / "origin"                       # fetched editions (gitignore
 CORPUS_MANIFEST = DATA / "corpus-manifest.yaml"    # provenance record (committed)
 WORD_LIST = DATA / "words.csv"                     # McManus vocabulary (committed)
 KEEPER_CACHE = RECON / "keeper-coordinates.csv"    # geocoded institutions (committed)
-FINDSPOT_OVERRIDES = RECON / "findspot-overrides.csv"   # coordinates the editions lack
+IDENTIFIERS = RECON / "identifiers.yaml"            # QIDs, OSM ids and coordinates set by hand
+IDENTIFIERS_FOUND = RECON / "identifiers.suggested.yaml"   # what the lookup found, for review
 SETTING_OVERRIDES = RECON / "setting-overrides.csv"     # hand-set present settings
 # data/origin/ is the only location discovered automatically -- see corpus.resolve
 
@@ -809,6 +811,8 @@ def run_words(corpus_dir: Path, prov: dict, no_map: bool) -> dict | None:
 
 
 REGEOCODE = [False]      # set from the command line; keeps run_keepers' signature stable
+HAND: dict = {}          # reconciliation/identifiers.yaml, loaded once in main()
+KNOWN_KEYS: dict = {}    # what the corpus actually contains, for validating HAND
 
 
 def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | None:
@@ -818,6 +822,9 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
     if not names:
         return None
     cache = keepers.load_cache(KEEPER_CACHE)
+    n_hand = keepers.apply_identifiers(cache, HAND.get("keepers"))
+    if n_hand:
+        print(f"  {n_hand} entr(ies) set by hand in {IDENTIFIERS.relative_to(ROOT)}")
     if REGEOCODE[0]:
         cleared = 0
         for entry in cache.values():
@@ -859,6 +866,30 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
         print(f"  {len(no_geo)} stone(s) name a keeper but have no findspot coordinate:")
         for u in no_geo:
             print(f"    {u['ogham_id']:11} CIIC {u['ciic'] or '—':>4}  {u['keeper'][:34]}")
+    # identifiers the lookup found for itself, offered for promotion into the
+    # hand-maintained file -- an identifier outlives a coordinate
+    hand = set(HAND.get("keepers") or {})
+    suggestions = []
+    for name in sorted(names):
+        entry = cache.get(name)
+        if not entry or entry.alias_of or name in hand:
+            continue
+        if entry.source not in ("wikidata", "osm"):
+            continue
+        fields = {}
+        if entry.qid:
+            fields["qid"] = entry.qid
+        if entry.osm_id:
+            fields["osm_id"] = entry.osm_id
+        if not fields:
+            continue
+        suggestions.append((name, fields,
+                            f"{entry.lat}, {entry.lon} -- found by {entry.source} search"))
+    n_sugg = identifiers.write_suggestions(IDENTIFIERS_FOUND, suggestions)
+    if n_sugg:
+        print(f"  {n_sugg} identifier(s) found by search -> "
+              f"{IDENTIFIERS_FOUND.relative_to(ROOT)} (paste into identifiers.yaml to fix them)")
+
     flagged = keepers.check(links)
     if flagged:
         print(f"  {len(flagged)} geocode(s) worth checking:")
@@ -932,6 +963,11 @@ def main() -> None:
     # The editions belong in data/origin/. If they are not there yet, fetch them --
     # 8 MB and two seconds is a better default than silently mapping four stones.
     REGEOCODE[0] = args.regeocode
+    identifiers.path_or_create(IDENTIFIERS)
+    HAND.update(identifiers.load(IDENTIFIERS))
+    if any(HAND.values()):
+        print(f"hand-set identifiers: {identifiers.summarise(HAND)} "
+              f"({IDENTIFIERS.relative_to(ROOT)})")
     if args.fetch_corpus or (args.corpus is None
                              and not corpus.has_editions(CORPUS_DIR)
                              and not (args.no_fetch or args.offline)):
@@ -940,6 +976,7 @@ def main() -> None:
             args.corpus = CORPUS_DIR
 
     corpus_dir, why = corpus.resolve(args.corpus, CORPUS_DIR, DATA, ROOT)
+    KNOWN_KEYS.update(corpus_dir=corpus_dir)
     prov = corpus.provenance(CORPUS_MANIFEST, corpus_dir)
     if why == "fallback":
         print(f"! data/origin/ holds no editions -- the place layer and the docs/ map\n"
@@ -957,7 +994,7 @@ def main() -> None:
     if args.places_only:
         OUT.mkdir(parents=True, exist_ok=True)
         summary = places.run(corpus_dir, OUT, root=ROOT, provenance=prov,
-                             overrides=FINDSPOT_OVERRIDES)
+                             overrides=HAND.get("findspots"))
         word_summary = None if args.no_words else run_words(corpus_dir, prov, args.no_map)
         if not args.no_map:
             webmap.build(summary["records"], DOCS, root=ROOT, provenance=prov)
@@ -994,7 +1031,7 @@ def main() -> None:
         results = [process(DATA / f, OUT / f"{b}.crm.ttl", cache=cache, online=online, verify=verify, resolved=resolved, overrides=overrides)
                    for f, b in STONES]
         places_summary = None if args.no_places else places.run(corpus_dir, OUT, root=ROOT, provenance=prov,
-                             overrides=FINDSPOT_OVERRIDES)
+                             overrides=HAND.get("findspots"))
         word_summary = (None if (args.no_words or not places_summary)
                         else run_words(corpus_dir, prov, args.no_map))
         if places_summary and not args.no_map:
@@ -1009,6 +1046,13 @@ def main() -> None:
                     word_summary["analysis"], places_summary["records"],
                     word_summary["dissent"], DOCS, root=ROOT, provenance=prov)
                 shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
+            problems = identifiers.validate(HAND, {
+                "keepers": {(r.get("repository") or "").strip()
+                            for r in places_summary["records"] if r.get("repository")},
+                "findspots": {r["ogham_id"] for r in places_summary["records"]}})
+            for problem in problems:
+                print(f"  ! identifiers.yaml -- {problem}")
+
             obs = {r["ogham_id"]: r.get("observed", "") for r in places_summary["records"]}
             sres = setting.apply(places_summary["records"], obs,
                                  setting.load_overrides(SETTING_OVERRIDES))

@@ -262,15 +262,21 @@ def _osm_lookup(osm_id: str) -> tuple[str, str]:
     return _osm_centroid(kind, number)
 
 
-def _nominatim(name: str, country: str = "") -> tuple[str, str]:
+def _nominatim(name: str, country: str = "") -> tuple[str, str, str]:
+    """(lat, lon, osm_id). The search response names the object it matched, so the
+    identifier is kept: it is what turns a guess into something checkable, and what
+    lets a later run fetch the coordinate without searching again."""
     code = COUNTRY_CODE.get(country or "")
     for params in ([{"q": name, "format": "json", "limit": 1, "countrycodes": code}] if code else []) \
                   + [{"q": name, "format": "json", "limit": 1}]:
         data = _get(NOMINATIM, params)
         time.sleep(1.1)                   # Nominatim asks for at most one call a second
         if data:
-            return f"{float(data[0]['lat']):.6f}", f"{float(data[0]['lon']):.6f}"
-    return "", ""
+            hit = data[0]
+            osm = (f"{hit['osm_type']}/{hit['osm_id']}"
+                   if hit.get("osm_type") and hit.get("osm_id") else "")
+            return f"{float(hit['lat']):.6f}", f"{float(hit['lon']):.6f}", osm
+    return "", "", ""
 
 
 def load_cache(path: Path) -> dict[str, Keeper]:
@@ -291,6 +297,29 @@ def save_cache(path: Path, cache: dict[str, Keeper]) -> None:
             w.writerow(asdict(cache[key]))
 
 
+def apply_identifiers(cache: dict[str, Keeper], entries: dict) -> int:
+    """Lay the hand-set file over the cache. Runs before every resolve, so the
+    cache can be deleted without losing a single decision."""
+    applied = 0
+    for name, row in (entries or {}).items():
+        entry = cache.setdefault(name, Keeper(repository=name))
+        touched = False
+        for field in ("qid", "osm_id", "alias_of", "note"):
+            if row.get(field) and getattr(entry, field) != str(row[field]):
+                setattr(entry, field, str(row[field]))
+                touched = True
+        if row.get("lat") is not None and row.get("lon") is not None:
+            lat, lon = f"{float(row['lat']):.6f}", f"{float(row['lon']):.6f}"
+            if (entry.lat, entry.lon) != (lat, lon):
+                entry.lat, entry.lon = lat, lon
+                entry.source = row.get("source") or "manual"
+                entry.status = "verified"
+                touched = True
+        if touched:
+            applied += 1
+    return applied
+
+
 def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
             countries: dict[str, str] | None = None) -> dict:
     """Fill in whatever is missing. Verified entries are never touched."""
@@ -300,13 +329,14 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
         entry = cache.setdefault(name, Keeper(repository=name))
         if entry.alias_of:                # merged into another row; nothing to look up
             continue
-        if entry.status == "verified":
+        if entry.source == "manual":      # a coordinate typed from a source is final
             continue
-        # An editor-supplied OSM id outranks whatever a search previously found:
-        # adding one is how a wrong `auto` coordinate gets corrected, so it must
-        # not be skipped just because the row already holds a coordinate.
-        pinned = ((entry.qid and entry.source != "wikidata-qid")
-                  or (entry.osm_id and entry.source != "osm-id"))
+        # An identifier is refreshed on every run rather than resolved once: the
+        # fixed file holds the identifier, this cache holds today's coordinate, and
+        # if Wikidata or OSM moves the point the next run picks it up. Only a search
+        # result is taken from the cache, because repeating a search is not a refresh
+        # -- it is another chance to land somewhere else.
+        pinned = bool(entry.qid or entry.osm_id)
         if entry.located and not pinned:
             continue
         if not online:
@@ -317,7 +347,7 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
         # Order of precedence: a QID set by hand, then an OSM id set by hand, then a
         # search. Both identifiers are human decisions; the QID wins because it is
         # what ends up in the graph as the close match anyway.
-        if entry.qid and entry.source != "wikidata-qid":
+        if entry.qid:
             label, lat, lon = _wikidata_by_qid(entry.qid)
             if lat:
                 entry.lat, entry.lon = lat, lon
@@ -331,7 +361,7 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
             entry.note = f"{entry.note} || {entry.qid} carries no P625".strip(" |")
             continue
 
-        if entry.osm_id:                  # an editor already identified the object
+        if entry.osm_id:                  # a named object: fetch its coordinate
             lat, lon = _osm_lookup(entry.osm_id)
             if lat:
                 entry.lat, entry.lon = lat, lon
@@ -357,9 +387,11 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
                 break
         if not lat:
             for variant in name_variants(name):
-                lat, lon = _nominatim(variant, country)
+                lat, lon, found_osm = _nominatim(variant, country)
                 if lat:
                     source = "osm"
+                    if found_osm and not entry.osm_id:
+                        entry.osm_id = found_osm
                     break
         if qid:
             entry.qid, entry.wd_label = qid, label

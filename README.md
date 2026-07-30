@@ -274,6 +274,82 @@ unrestricted.
 resolver improvement can be applied without hand-editing the cache. Rows marked
 `verified` are never touched.
 
+### One file a human owns
+
+`reconciliation/identifiers.yaml` holds every identifier and coordinate decided by
+hand — QIDs, OSM object ids, coordinates typed from a source, and the aliases that
+merge two names for one place. **The pipeline never writes it.**
+
+That separation was missing at first, and it was a design error: hand decisions
+lived inside `keeper-coordinates.csv`, which is a cache the run rewrites. They sat
+one `--regeocode` away from being reformatted or lost, and nothing distinguished a
+value someone had checked from one a search had guessed.
+
+The flow is now one-way. Hand values are read from the YAML and applied over
+whatever the lookup found, on every run. **Delete the cache and nothing is lost** —
+the next run rebuilds it and re-applies them. Keys are what the corpus itself says,
+so a mistyped repository string is caught rather than silently doing nothing:
+
+```
+  ! identifiers.yaml -- keepers: 'Manx Musuem' -- no such keeper in the corpus;
+    check the spelling, this entry does nothing
+```
+
+```yaml
+keepers:
+  Live Borders Library HQ, Selkirk:
+    qid: Q140775537
+  Meffan Museum and Gallery, Forfar:
+    osm_id: way/407744946
+  National Museum of Scotland:
+    alias_of: National Museums of Scotland
+  St. Brynach's Church:
+    lat: 52.025392
+    lon: -4.795144
+    note: Nevern, Pembrokeshire -- not Llanfrynach, which the search found.
+
+findspots:
+  I-COR-087:
+    qid: Q85394128
+    lat: 51.926111
+    lon: -9.083889
+    source: CISP MUSIC/1; Macalister 1945, 131
+```
+
+Precedence: **lat/lon > qid > osm_id > automatic lookup.**
+
+### An identifier outlives a coordinate
+
+Once an entry carries an identifier, the run stops searching and starts **refreshing**:
+one call for that object's current coordinate, every run. The fixed file holds the
+identifier, the cache holds today's coordinate, and if Wikidata or OSM moves the
+point the next run picks it up. Only a *search* result is taken from the cache —
+repeating a search is not a refresh, it is another chance to land somewhere else.
+
+To make that easy to reach, every run writes
+**`reconciliation/identifiers.suggested.yaml`**: the identifiers the lookup found
+for itself, in the shape `identifiers.yaml` expects, with the coordinate in a
+comment so it can be checked before promoting.
+
+```yaml
+keepers:
+  # 51.519444, -0.126944 -- found by wikidata search
+  British Museum:
+    qid: Q6373
+  # 52.059744, -9.06717 -- found by osm search
+  Millstreet Museum:
+    osm_id: way/…
+```
+
+It is a separate, generated file rather than a merge into `identifiers.yaml`,
+because that file is the one thing here a person owns and a generator would take
+away its comments and ordering. Paste an entry across and that institution is
+settled for good.
+
+Nominatim's search response names the object it matched; that id used to be thrown
+away and is now kept, which is what lets an OSM-matched institution be promoted the
+same way as a Wikidata one.
+
 ### A hand-set identifier beats a search
 
 The cache takes two kinds of identifier, and either one closes the question a search

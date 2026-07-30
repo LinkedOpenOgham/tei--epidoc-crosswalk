@@ -487,12 +487,11 @@ def add_ontology_terms(g: Graph) -> None:
 OVERRIDE_FIELDS = ["ogham_id", "lat", "lon", "qid", "source", "status", "note"]
 
 
-def load_overrides(path: Path) -> dict[str, dict]:
-    if not path.exists():
-        return {}
-    with path.open(encoding="utf-8-sig", newline="") as fh:
-        return {row["ogham_id"]: row for row in csv.DictReader(fh)
-                if row.get("ogham_id") and row.get("lat") and row.get("lon")}
+def load_overrides(entries: dict) -> dict[str, dict]:
+    """Findspot entries from reconciliation/identifiers.yaml that carry a coordinate."""
+    return {oid: row for oid, row in (entries or {}).items()
+            if isinstance(row, dict) and row.get("lat") is not None
+            and row.get("lon") is not None}
 
 
 def apply_overrides(records: list[dict], overrides: dict[str, dict]) -> dict:
@@ -510,7 +509,7 @@ def apply_overrides(records: list[dict], overrides: dict[str, dict]) -> dict:
         rec["geo_source"] = row.get("source", "")
         rec["geo_note"] = row.get("note", "")
         rec["geo_qid"] = row.get("qid", "")
-        rec["geo_supplied_status"] = row.get("status", "auto")
+        rec["geo_supplied_status"] = row.get("status", "verified")
         applied.append(rec["ogham_id"])
     return {"applied": applied, "refused": refused}
 
@@ -576,7 +575,7 @@ def collect_files(corpus: Path) -> list[Path]:
 
 
 def run(corpus: Path, out_dir: Path, root: Path | None = None,
-        provenance: dict | None = None, overrides: Path | None = None) -> dict:
+        provenance: dict | None = None, overrides: dict | None = None) -> dict:
     """Parse the corpus, emit places.crm.ttl / places.csv / places.geojson."""
     files = collect_files(corpus)
     RECOVERED.clear()
@@ -592,7 +591,7 @@ def run(corpus: Path, out_dir: Path, root: Path | None = None,
         for line in RECOVERED:
             print(f"    {line}")
 
-    ov = apply_overrides(records, load_overrides(overrides)) if overrides else {"applied": [], "refused": []}
+    ov = apply_overrides(records, load_overrides(overrides))
     if ov["applied"]:
         print(f"  supplied {len(ov['applied'])} findspot(s) the edition leaves empty: "
               f"{', '.join(ov['applied'])}")

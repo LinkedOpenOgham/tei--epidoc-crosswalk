@@ -1,0 +1,62 @@
+# Identifiers and coordinates decided by hand. THE PIPELINE NEVER WRITES THIS FILE.
+#
+# Everything here is applied over whatever the automatic lookup found, on every
+# run. reconciliation/keeper-coordinates.csv is only a cache -- delete it and this
+# file rebuilds the decisions.
+#
+# Per entry, any of:
+#   qid:      Wikidata item, e.g. Q140775537. Resolved directly via P625; no search.
+#   osm_id:   OSM object, e.g. way/407744946. Resolved via Nominatim, then the OSM API.
+#   lat/lon:  a coordinate typed from a source. Wins over both of the above.
+#   alias_of: another key naming the same place; merges the two (keepers only).
+#   source:   where the value came from. Say it, even briefly.
+#   note:     anything the next person needs, including what you ruled out.
+#
+# Precedence: lat/lon > qid > osm_id > automatic lookup.
+
+# Institutions named in <msIdentifier>/<repository>. The key is that exact string.
+keepers:
+  Live Borders Library HQ, Selkirk:
+    note: Selkirk Library. Mapped to Wikidata Q140775537 by the editor; the coordinate is taken
+      from that item's P625. Previously resolved from OSM way/1001969300, which is kept here
+      only as a record.
+    qid: Q140775537
+  Llansaint Chapel (All Saints' Church):
+    note: Llansaint, Carmarthenshire -- NOT the Irish church the search found
+    osm_id: way/1060152504
+  Meffan Museum and Gallery, Forfar:
+    note: Meffan Institute Museum & Gallery; identified by the editor
+    osm_id: way/407744946
+  Mount Mellary Abbey Heritage Center:
+    note: Mount Melleray Abbey; corpus spells it Mellary
+    osm_id: way/226430858
+  Museum nan Eilean in Steòrnabhagh | Stornoway:
+    lat: 58.211518
+    lon: -6.39514
+    note: identified by the editor; coordinate from Wikidata P625
+    osm_id: way/382540720
+    qid: Q113363735
+  National Museum Cardiff:
+    alias_of: National Museum Wales
+    note: same place as National Museum Wales; merged on the map
+  National Museum of Scotland:
+    alias_of: National Museums of Scotland
+    note: same place as National Museums of Scotland; merged on the map
+  St. Brynach's Church:
+    lat: 52.025392
+    lon: -4.795144
+    note: 'Nevern, Pembrokeshire. The stone (W-PEM-014, Nevern 1) stands in the churchyard,
+      so the findspot coordinate is the keeper coordinate. way/404085430 was checked and rejected:
+      it is St Brynach''s at Llanfrynach near Brecon, 99.9 km away, as are the Wikidata hits.'
+
+# Findspots the edition leaves empty. The key is the OG(H)AM edition id.
+findspots:
+  I-COR-087:
+    lat: 51.926111
+    lon: -9.083889
+    note: 'Mount Music / Knockoran, West Muskerry, Co. Cork. The edition carries an empty <geo/>.
+      Macalister 1945, 131: Windele found the stone prostrate in a field in 1845, set it up
+      again, later moved it to his own house; acquired from his representatives and now in University
+      College Cork. The coordinate is the field, i.e. the findspot, not the college.'
+    qid: Q85394128
+    source: CISP MUSIC/1; Macalister 1945, 131; Wikidata Q85394128
