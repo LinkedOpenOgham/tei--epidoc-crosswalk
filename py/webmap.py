@@ -146,6 +146,26 @@ body.landing{overflow:auto}
 .foot a{color:var(--stone)}
 .foot code{font-size:11.5px}
 
+.hex-legend{background:rgba(27,39,37,.93);color:var(--text);padding:8px 11px;
+  border-radius:3px;font-family:var(--mono);font-size:11px;line-height:1.75;
+  box-shadow:0 1px 6px rgba(0,0,0,.3)}
+.hex-legend b{font-family:var(--sans);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);font-weight:500}
+.hex-legend .sw{display:inline-block;width:13px;height:13px;margin-right:7px;
+  vertical-align:-2px;border:1px solid rgba(0,0,0,.35)}
+
+.seg{display:flex;gap:2px;margin:0 0 10px}
+.seg label{flex:1;text-align:center;padding:6px 4px;font-size:12px;cursor:pointer;
+  color:var(--muted);background:var(--panel-2);border:1px solid var(--line);border-radius:3px}
+.seg label:hover{color:var(--text)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input:checked + span{color:#0f1918}
+.seg label:has(input:checked){background:var(--sc);border-color:var(--sc);
+  color:#0f1918;font-weight:600}
+.seg label:focus-within{outline:2px solid var(--sc);outline-offset:2px}
+#hexsize,#hexscale{display:none}
+#hexsize.on,#hexscale.on{display:flex}
+
 #map{flex:1;background:#e8e6df}
 .leaflet-container{font-family:var(--sans);background:#e8e6df}
 .pin{border-radius:50%;border:1.6px solid rgba(19,28,27,.7);box-shadow:0 1px 3px rgba(0,0,0,.3)}
@@ -214,6 +234,126 @@ SCRIPTS = r"""<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/
 <script>
 """
 
+HEX_JS = r"""
+// --- hex-binned density -------------------------------------------------------
+// Ported from the holy-wells notebook of the SPARQLing Archaeology OER
+// (n4o-rse/oer-001-sparqling-archaeology): axial hex coordinates with cube
+// rounding, latitude corrected against the mean latitude of the points so cells
+// stay roughly equal-area over the corpus's 10 degrees of latitude. Binning runs
+// in the browser on whatever is currently filtered, not once at build time.
+const HEX = (function () {
+  const RAMP = ["#e7e6d4", "#bccbaa", "#84ae9a", "#4f8b8d", "#2b5f6b"];
+  let ky = 1;
+
+  function setLatitude(meanLat) { ky = 1 / Math.cos(meanLat * Math.PI / 180); }
+
+  function key(lon, lat, size) {
+    const x = lon, y = lat * ky;
+    const q = (2 / 3) * x / size;
+    const r = (-1 / 3) * x / size + (Math.sqrt(3) / 3) * y / size;
+    let cx = q, cz = r, cy = -cx - cz;
+    let rx = Math.round(cx), ry = Math.round(cy), rz = Math.round(cz);
+    const dx = Math.abs(rx - cx), dy = Math.abs(ry - cy), dz = Math.abs(rz - cz);
+    if (dx > dy && dx > dz) rx = -ry - rz;
+    else if (dy > dz) ry = -rx - rz;
+    else rz = -rx - ry;
+    return rx + "," + rz;
+  }
+
+  function polygon(q, r, size) {
+    const cx = size * 1.5 * q;
+    const cy = size * Math.sqrt(3) * (r + q / 2);
+    const out = [];
+    for (let i = 0; i < 6; i++) {
+      const a = 60 * i * Math.PI / 180;
+      out.push([(cy + size * Math.sin(a)) / ky, cx + size * Math.cos(a)]);
+    }
+    return out;
+  }
+
+  // Two ways of cutting the counts into five steps.
+  //
+  //   linear  the notebook's scheme: equal-width bands over 1..max
+  //   log     equal-ratio bands
+  //
+  // Linear is faithful to the original but unreadable on this corpus: the
+  // findspots are so concentrated in Kerry and Cork that ~91% of cells fall in
+  // the palest band and the map goes flat. Counts this skewed (median 1-2,
+  // maximum 25-81 depending on cell size) are what log binning is for, so that
+  // is the default here; linear stays available for comparison.
+  function edges(maxN, scale) {
+    const n = RAMP.length, out = [];
+    for (let i = 0; i < n; i++) {
+      out.push(scale === "log"
+        ? Math.max(1, Math.round(Math.pow(maxN, (i + 1) / n)))
+        : Math.ceil((i + 1) / n * maxN));
+    }
+    out[n - 1] = maxN;
+    return out;
+  }
+
+  function bandOf(count, maxN, scale) {
+    if (maxN <= 1) return 0;
+    const t = scale === "log"
+      ? Math.log(count) / Math.log(maxN)
+      : (count - 1) / maxN;
+    return Math.min(RAMP.length - 1, Math.floor(t * RAMP.length));
+  }
+
+  // Integer count ranges per ramp step, so the legend never claims a band the
+  // data cannot fill (max 3 stones must not read as "1-5").
+  function bands(maxN, scale) {
+    const out = [];
+    let prev = 1;
+    edges(maxN, scale).forEach((edge, i) => {
+      if (edge < prev) return;
+      out.push({ colour: RAMP[i], label: edge === prev ? String(prev) : prev + "\u2013" + edge });
+      prev = edge + 1;
+    });
+    return out;
+  }
+
+  function build(points, size, noun, scale) {
+    scale = scale || "log";
+    const counts = {};
+    for (const [lon, lat] of points) {
+      const k = key(lon, lat, size);
+      counts[k] = (counts[k] || 0) + 1;
+    }
+    const values = Object.values(counts);
+    const maxN = values.length ? Math.max.apply(null, values) : 1;
+    const layer = L.layerGroup();
+    for (const k in counts) {
+      const [q, r] = k.split(",").map(Number);
+      const n = counts[k];
+      L.polygon(polygon(q, r, size), {
+        color: "#2b3a37", weight: 0.7,
+        fillColor: RAMP[bandOf(n, maxN, scale)], fillOpacity: 0.75
+      }).bindTooltip("<b>" + n + "</b> " + noun + (n !== 1 ? "s" : ""), { sticky: true })
+        .addTo(layer);
+    }
+    return { layer, legend: bands(maxN, scale), cells: Object.keys(counts).length };
+  }
+
+  return { setLatitude, build };
+})();
+
+function makeLegend(map) {
+  const control = L.control({ position: "bottomright" });
+  control.onAdd = function () {
+    const div = L.DomUtil.create("div", "hex-legend");
+    div.innerHTML = control._html || "";
+    return div;
+  };
+  control.set = function (title, bands) {
+    control._html = "<b>" + title + "</b><br>" + bands.map(b =>
+      '<span class="sw" style="background:' + b.colour + '"></span>' + b.label).join("<br>");
+    if (control._container) control._container.innerHTML = control._html;
+  };
+  return control;
+}
+"""
+
 BODY = r"""<div id="app">
   <aside id="side">
     <header>
@@ -251,6 +391,21 @@ __NAV__
         <label class="opt"><input type="checkbox" id="onlyVague"> Only hedged findspots
           <span class="n" id="vagueN"></span></label>
       </fieldset>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
 
       <p class="note">Dashed rings mark findspots the editors hedged — either
       <code>@cert="low"</code> on <code>&lt;geo&gt;</code> or a qualifier such as
@@ -367,11 +522,58 @@ function apply(){
     on.has(p.country || "unrecorded") &&
     (!onlyVague.checked || p.vague) &&
     (!term || p._hay.includes(term)));
-  cluster.clearLayers();
-  cluster.addLayers(keep.map(p => p._m));
+  showOn(map, keep.map(p => [p.lon, p.lat]), keep.map(p => p._m),
+         "stone", "Stones per cell");
   document.getElementById("count").textContent = keep.length;
   document.getElementById("countLabel").textContent = keep.length === 1 ? "stone shown" : "stones shown";
 }
+const redraw = apply;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+    } else {
+      hexLegend.remove();
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
 fs.addEventListener("change", apply);
 onlyVague.addEventListener("change", apply);
 q.addEventListener("input", apply);
@@ -451,7 +653,22 @@ __NAV__
           border:1.6px dashed #b07d2b"></i> only in an older reading</span>
       </div>
 
-      <label class="field" for="q" style="margin-top:22px">Filter the vocabulary</label>
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q">Filter the vocabulary</label>
       <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
 
       <div class="wordlist" id="wordlist"></div>
@@ -553,13 +770,14 @@ function isCurrent(stone, key){
 
 function draw(){
   const keep = stonesFor(selected);
-  cluster.clearLayers();
-  cluster.addLayers(keep.map(s => {
+  const markers = keep.map(s => {
     const cur = isCurrent(s, selected);
     const m = L.marker([s.lat, s.lon], {icon:icon(cur), title:s.title || s.id});
     m.bindPopup(() => popup(s, selected), {maxWidth:340});
     return m;
-  }));
+  });
+  showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone",
+         selected === null ? "Stones per cell" : WORDS[selected].word + " per cell");
   document.getElementById("count").textContent = keep.length;
   document.getElementById("countLabel").textContent =
     keep.length === 1 ? "stone shown" : "stones shown";
@@ -611,6 +829,53 @@ function buildList(){
   box.querySelectorAll("input[name=w]").forEach(i =>
     i.addEventListener("change", () => { selected = i.value || null; draw(); }));
 }
+
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+    } else {
+      hexLegend.remove();
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
 
 document.getElementById("q").addEventListener("input", buildList);
 buildList();
@@ -739,7 +1004,7 @@ def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],
 def _page(head: str, body: str, js: str) -> str:
     """Assemble a page from the shared shell. Empty js means no map libraries."""
     shell = head.replace("__CSS__", CSS) + body
-    return shell + SCRIPTS + js + FOOT if js else shell + "</body>\n</html>\n"
+    return shell + SCRIPTS + HEX_JS + js + FOOT if js else shell + "</body>\n</html>\n"
 
 
 def _slim(rec: dict) -> dict:

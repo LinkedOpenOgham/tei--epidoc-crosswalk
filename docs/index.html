@@ -128,6 +128,26 @@ body.landing{overflow:auto}
 .foot a{color:var(--stone)}
 .foot code{font-size:11.5px}
 
+.hex-legend{background:rgba(27,39,37,.93);color:var(--text);padding:8px 11px;
+  border-radius:3px;font-family:var(--mono);font-size:11px;line-height:1.75;
+  box-shadow:0 1px 6px rgba(0,0,0,.3)}
+.hex-legend b{font-family:var(--sans);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);font-weight:500}
+.hex-legend .sw{display:inline-block;width:13px;height:13px;margin-right:7px;
+  vertical-align:-2px;border:1px solid rgba(0,0,0,.35)}
+
+.seg{display:flex;gap:2px;margin:0 0 10px}
+.seg label{flex:1;text-align:center;padding:6px 4px;font-size:12px;cursor:pointer;
+  color:var(--muted);background:var(--panel-2);border:1px solid var(--line);border-radius:3px}
+.seg label:hover{color:var(--text)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input:checked + span{color:#0f1918}
+.seg label:has(input:checked){background:var(--sc);border-color:var(--sc);
+  color:#0f1918;font-weight:600}
+.seg label:focus-within{outline:2px solid var(--sc);outline-offset:2px}
+#hexsize,#hexscale{display:none}
+#hexsize.on,#hexscale.on{display:flex}
+
 #map{flex:1;background:#e8e6df}
 .leaflet-container{font-family:var(--sans);background:#e8e6df}
 .pin{border-radius:50%;border:1.6px solid rgba(19,28,27,.7);box-shadow:0 1px 3px rgba(0,0,0,.3)}

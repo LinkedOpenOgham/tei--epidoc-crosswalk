@@ -132,8 +132,8 @@ drift apart:
 | `out/places.csv` | one row per inscription, all `<placeName>` levels as columns |
 | `out/places.geojson` | WGS84 point layer; each feature carries its `data:findspot_*` URI |
 | `docs/index.html` | the landing page: what exists, with live figures |
-| `docs/findspots.html` | browsable Leaflet map of the findspots |
-| `docs/words.html` | the formulaic vocabulary, filterable by word |
+| `docs/findspots.html` | browsable Leaflet map of the findspots, points or hex density |
+| `docs/words.html` | the formulaic vocabulary, filterable by word, points or hex density |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
 Over the full corpus: **504 stones, 395 distinct places** across 12 administrative
@@ -147,6 +147,32 @@ a landing page and, at the moment, two views — the findspot map (filterable by
 country and by free text, with hedged findspots as dashed rings and the
 `data:findspot_*` node in every popup) and the formulaic-word map. Nothing in them
 re-parses the XML, so map, table and graph cannot drift apart.
+
+### Points or density
+
+Both maps have two displays. **Points** is the clustered marker view. **Density**
+bins whatever is currently filtered into a hexagonal grid, ported from the
+[SPARQLing Archaeology OER](https://github.com/n4o-rse/oer-001-sparqling-archaeology)
+holy-wells notebook: axial hex coordinates with cube rounding, latitude corrected
+against the mean latitude of the points. The binning is bit-identical to that
+notebook's Python — checked cell by cell — but runs in the browser, so it follows
+the country filter, the search box and the selected word rather than being computed
+once at build time.
+
+Cell size is selectable (0.5° / 0.25° / 0.12°, giving 71 / 124 / 186 cells for the
+481 findspots). So is the **colour scale**, and that needs a word:
+
+| scale | palest band holds | why |
+|---|---|---|
+| `log` (default) | 68% of cells | equal-ratio bands |
+| `linear` | 91% of cells | the notebook's scheme, equal-width bands |
+
+The wells dataset was spread evenly enough for equal-width bands. This corpus is
+not: the findspots pile up in Kerry and Cork, the median cell holds one or two
+stones and the fullest holds 42, so linear bands push almost everything into the
+palest step and the map goes flat. Log binning is therefore the default; linear is
+kept one click away for comparison. Legend labels are integer count ranges, so a
+band is never advertised that the data cannot fill.
 
 The site is generated from a **page registry** in `py/webmap.py`:
 
