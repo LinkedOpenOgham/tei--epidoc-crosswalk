@@ -20,6 +20,8 @@ The crosswalk runs through an **intermediate domain layer**: each EpiDoc element
 | `<div type=edition>` | `ogham:Inscription` | `crmtex:TX1_Written_Text` | `P128_carries` | CRMtex |
 | `<div type=edition> / <rdg>` | `ogham:Reading` | `crmtex:TX6_Transcription` | `TXP4_has_segment + prov:wasAttributedTo` | CRMtex, PROV-O |
 | `<origPlace> + <geo>` | `ogham:Place` | `crm:E53_Place` | `P53_has_former_or_current_location` | GeoSPARQL |
+| `<placeName type=townland\|parish\|county\|…>` | `ogham:Place` | `crm:E53_Place` | `P89_falls_within (chained)` | — |
+| `<ref target=logainm\|rcahmw\|coflein>` | `ogham:Place` | `crm:E53_Place` | `skos:closeMatch (weighted)` | SKOS, AMT |
 | `<origDate> (when present)` | `—` | `crm:E52_Time-Span` | `P4_has_time-span` | OWL-Time |
 | `<name nymRef> / <persName>` | `ogham:Person` | `crm:E21_Person` | `P67_refers_to` | — |
 
@@ -81,20 +83,20 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 
 | EpiDoc element | extracted value | → CRM class | node |
 |---|---|---|---|
-| `<support>` | Gigha 1 | `E22_Human-Made_Object` | `data:stone_506` |
-| `<idno type=CIIC>` | 506 | `E42_Identifier` | `data:id_506_CIIC` |
-| `<idno type=CISP>` | GIGHA/1 | `E42_Identifier` | `data:id_506_CISP` |
-| `<idno type=Trove>` | 38529 | `E42_Identifier` | `data:id_506_Trove` |
+| `<support>` | Gigha 1 | `E22_Human-Made_Object` | `data:stone_S_ARL_001` |
+| `<idno type=CIIC>` | 506 | `E42_Identifier` | `data:id_S_ARL_001_CIIC` |
+| `<idno type=CISP>` | GIGHA/1 | `E42_Identifier` | `data:id_S_ARL_001_CISP` |
+| `<idno type=Trove>` | 38529 | `E42_Identifier` | `data:id_S_ARL_001_Trove` |
 | `<objectType>` | Pillar | `E55_Type` | `data:type_Pillar` |
 | `<material>` | Granite | `E57_Material` | `data:material_Granite` |
-| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_506` |
-| `<div type=edition>` | [---]MAQ[---]COGIN[---] | `crmtex:TX1_Written_Text` | `data:inscription_506` |
-| `<rdg> (edition)` | OG(H)AM edition (KF): [---]MAQ[---]COGIN[… | `crmtex:TX6_Transcription` | `data:reading_506_OGHAM_KF` |
-| `<rdg> (historical)` | Rhys 1899: MAQICAGILEB | `crmtex:TX6_Transcription` | `data:reading_506_RHY1899` |
-| `<rdg> (historical)` | Rhys 1901: OGMA MAQI TIGERNI | `crmtex:TX6_Transcription` | `data:reading_506_RHY1901` |
-| `<rdg> (historical)` | Macalister 1902: VICULA MAQ COMGINI | `crmtex:TX6_Transcription` | `data:reading_506_MAC1902` |
-| `<rdg> (historical)` | Macalister 1945: VICULA MAQ CUGINI | `crmtex:TX6_Transcription` | `data:reading_506_MAC1945` |
-| `<origPlace> + <geo>` | Gigha and Cara · POINT(-5.750278 55.669722) | `E53_Place` | `data:place_506` |
+| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_S_ARL_001` |
+| `<div type=edition>` | [---]MAQ[---]COGIN[---] | `crmtex:TX1_Written_Text` | `data:inscription_S_ARL_001` |
+| `<rdg> (edition)` | OG(H)AM edition (KF): [---]MAQ[---]COGIN[… | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_OGHAM_KF` |
+| `<rdg> (historical)` | Rhys 1899: MAQICAGILEB | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_RHY1899` |
+| `<rdg> (historical)` | Rhys 1901: OGMA MAQI TIGERNI | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_RHY1901` |
+| `<rdg> (historical)` | Macalister 1902: VICULA MAQ COMGINI | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_MAC1902` |
+| `<rdg> (historical)` | Macalister 1945: VICULA MAQ CUGINI | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_MAC1945` |
+| `<origPlace> + <geo>` | Gigha and Cara · POINT(-5.750278 55.669722) | `E53_Place` | `data:place_S_ARL_001` |
 
 ### An Com Liath Thoir | Coomleagh East (CIIC 55)
 
@@ -102,20 +104,20 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 
 | EpiDoc element | extracted value | → CRM class | node |
 |---|---|---|---|
-| `<support>` | An Com Liath Thoir \| Coomleagh East | `E22_Human-Made_Object` | `data:stone_55` |
-| `<idno type=CIIC>` | 55 | `E42_Identifier` | `data:id_55_CIIC` |
-| `<idno type=CISP>` | COOME/1 | `E42_Identifier` | `data:id_55_CISP` |
-| `<idno type=TM>` | 172523 | `E42_Identifier` | `data:id_55_TM` |
-| `<idno type=SMR>` | CO106-064---- | `E42_Identifier` | `data:id_55_SMR` |
+| `<support>` | An Com Liath Thoir \| Coomleagh East | `E22_Human-Made_Object` | `data:stone_I_COR_001` |
+| `<idno type=CIIC>` | 55 | `E42_Identifier` | `data:id_I_COR_001_CIIC` |
+| `<idno type=CISP>` | COOME/1 | `E42_Identifier` | `data:id_I_COR_001_CISP` |
+| `<idno type=TM>` | 172523 | `E42_Identifier` | `data:id_I_COR_001_TM` |
+| `<idno type=SMR>` | CO106-064---- | `E42_Identifier` | `data:id_I_COR_001_SMR` |
 | `<objectType>` | Pillar | `E55_Type` | `data:type_Pillar` |
-| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_55` |
-| `<div type=edition>` | .. ? ..TETA | `crmtex:TX1_Written_Text` | `data:inscription_55` |
-| `<rdg> (edition)` | OG(H)AM edition (NW): .. ? ..TETA | `crmtex:TX6_Transcription` | `data:reading_55_OGHAM_NW` |
-| `<rdg> (historical)` | Macalister 1945: ANM SAINA MAQ OGALA MUCO… | `crmtex:TX6_Transcription` | `data:reading_55_MAC1945` |
-| `<origPlace> + <geo>` | Coomleagh East (An Com Liath Thoir) · POI… | `E53_Place` | `data:place_55` |
-| `<name nymRef>` | SAINA | `E21_Person` | `data:person_55_SAINA` |
-| `<name nymRef>` | OGALA | `E21_Person` | `data:person_55_OGALA` |
-| `<name nymRef>` | TEMOCA | `E21_Person` | `data:person_55_TEMOCA` |
+| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_I_COR_001` |
+| `<div type=edition>` | .. ? ..TETA | `crmtex:TX1_Written_Text` | `data:inscription_I_COR_001` |
+| `<rdg> (edition)` | OG(H)AM edition (NW): .. ? ..TETA | `crmtex:TX6_Transcription` | `data:reading_I_COR_001_OGHAM_NW` |
+| `<rdg> (historical)` | Macalister 1945: ANM SAINA MAQ OGALA MUCO… | `crmtex:TX6_Transcription` | `data:reading_I_COR_001_MAC1945` |
+| `<origPlace> + <geo>` | Coomleagh East (An Com Liath Thoir) · POI… | `E53_Place` | `data:place_I_COR_001` |
+| `<name nymRef>` | SAINA | `E21_Person` | `data:person_I_COR_001_SAINA` |
+| `<name nymRef>` | OGALA | `E21_Person` | `data:person_I_COR_001_OGALA` |
+| `<name nymRef>` | TEMOCA | `E21_Person` | `data:person_I_COR_001_TEMOCA` |
 
 ### An Garrán | Garranes (CIIC 81)
 
@@ -123,18 +125,18 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 
 | EpiDoc element | extracted value | → CRM class | node |
 |---|---|---|---|
-| `<support>` | An Garrán \| Garranes | `E22_Human-Made_Object` | `data:stone_81` |
-| `<idno type=CIIC>` | 81 | `E42_Identifier` | `data:id_81_CIIC` |
-| `<idno type=CISP>` | GARES/1 | `E42_Identifier` | `data:id_81_CISP` |
-| `<idno type=SMR>` | CO084-090002- | `E42_Identifier` | `data:id_81_SMR` |
+| `<support>` | An Garrán \| Garranes | `E22_Human-Made_Object` | `data:stone_I_COR_030` |
+| `<idno type=CIIC>` | 81 | `E42_Identifier` | `data:id_I_COR_030_CIIC` |
+| `<idno type=CISP>` | GARES/1 | `E42_Identifier` | `data:id_I_COR_030_CISP` |
+| `<idno type=SMR>` | CO084-090002- | `E42_Identifier` | `data:id_I_COR_030_SMR` |
 | `<objectType>` | Pillar | `E55_Type` | `data:type_Pillar` |
 | `<material>` | Sandstone | `E57_Material` | `data:material_Sandstone` |
-| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_81` |
-| `<div type=edition>` | CASSITTAS MAQI MUCOI CALLITI | `crmtex:TX1_Written_Text` | `data:inscription_81` |
-| `<rdg> (edition)` | OG(H)AM edition (NW): CASSITTAS MAQI MUCO… | `crmtex:TX6_Transcription` | `data:reading_81_OGHAM_NW` |
-| `<origPlace> + <geo>` | Garranes (An Garrán) · POINT(-8.765479 51… | `E53_Place` | `data:place_81` |
-| `<name nymRef>` | CASSITTAS | `E21_Person` | `data:person_81_CASSITTAS` |
-| `<name nymRef>` | CALLITI | `E21_Person` | `data:person_81_CALLITI` |
+| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_I_COR_030` |
+| `<div type=edition>` | CASSITTAS MAQI MUCOI CALLITI | `crmtex:TX1_Written_Text` | `data:inscription_I_COR_030` |
+| `<rdg> (edition)` | OG(H)AM edition (NW): CASSITTAS MAQI MUCO… | `crmtex:TX6_Transcription` | `data:reading_I_COR_030_OGHAM_NW` |
+| `<origPlace> + <geo>` | Garranes (An Garrán) · POINT(-8.765479 51… | `E53_Place` | `data:place_I_COR_030` |
+| `<name nymRef>` | CASSITTAS | `E21_Person` | `data:person_I_COR_030_CASSITTAS` |
+| `<name nymRef>` | CALLITI | `E21_Person` | `data:person_I_COR_030_CALLITI` |
 
 ### Baile an Reannaigh | Ballinrannig 6 (CIIC 153)
 
@@ -142,15 +144,60 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 
 | EpiDoc element | extracted value | → CRM class | node |
 |---|---|---|---|
-| `<support>` | Baile an Reannaigh \| Ballinrannig 6 | `E22_Human-Made_Object` | `data:stone_153` |
-| `<idno type=CIIC>` | 153 | `E42_Identifier` | `data:id_153_CIIC` |
-| `<idno type=CISP>` | BALIG/6 | `E42_Identifier` | `data:id_153_CISP` |
-| `<idno type=TM>` | www.trismegistos.org/text/172983 | `E42_Identifier` | `data:id_153_TM` |
-| `<idno type=SMR>` | KE042-057011- | `E42_Identifier` | `data:id_153_SMR` |
+| `<support>` | Baile an Reannaigh \| Ballinrannig 6 | `E22_Human-Made_Object` | `data:stone_I_KER_020` |
+| `<idno type=CIIC>` | 153 | `E42_Identifier` | `data:id_I_KER_020_CIIC` |
+| `<idno type=CISP>` | BALIG/6 | `E42_Identifier` | `data:id_I_KER_020_CISP` |
+| `<idno type=TM>` | www.trismegistos.org/text/172983 | `E42_Identifier` | `data:id_I_KER_020_TM` |
+| `<idno type=SMR>` | KE042-057011- | `E42_Identifier` | `data:id_I_KER_020_SMR` |
 | `<objectType>` | Pillar | `E55_Type` | `data:type_Pillar` |
 | `<material>` | Sandstone | `E57_Material` | `data:material_Sandstone` |
-| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_153` |
-| `<div type=edition>` | CCICAMINIvac. MAQQ[/I] C[A]TTINI | `crmtex:TX1_Written_Text` | `data:inscription_153` |
-| `<rdg> (edition)` | OG(H)AM edition (NW): CCICAMINIvac. MAQQ[… | `crmtex:TX6_Transcription` | `data:reading_153_OGHAM_NW` |
-| `<origPlace> + <geo>` | Ballinrannig (Baile an Reannaigh) · POINT… | `E53_Place` | `data:place_153` |
+| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_I_KER_020` |
+| `<div type=edition>` | CCICAMINIvac. MAQQ[/I] C[A]TTINI | `crmtex:TX1_Written_Text` | `data:inscription_I_KER_020` |
+| `<rdg> (edition)` | OG(H)AM edition (NW): CCICAMINIvac. MAQQ[… | `crmtex:TX6_Transcription` | `data:reading_I_KER_020_OGHAM_NW` |
+| `<origPlace> + <geo>` | Ballinrannig (Baile an Reannaigh) · POINT… | `E53_Place` | `data:place_I_KER_020` |
+
+## 8. The place layer across the whole corpus (`places.crm.ttl`)
+
+`main.py` crosswalks a few stones in full; the place layer crosswalks **one aspect across every EpiDoc file it is given** (`--corpus`, default `data/`). This run read **506 files** (504 editions, 2 template/test files skipped) and produced **391 distinct places** over 12 administrative levels, 146 gazetteer links and 10037 triples.
+
+| EpiDoc | Linked Open Ogham class | CIDOC CRM | property |
+|---|---|---|---|
+| `<origPlace>` | `ogham:Place` | `crm:E53_Place` | `P53_has_former_or_current_location` from the stone |
+| `<geo>` | — | (on the `E53`) | `geo:asWKT` |
+| `<placeName type=…>` | `ogham:Place` | `crm:E53_Place` | `P89_falls_within` (chained) |
+| `@type` of the `<placeName>` | — | `crm:E55_Type` | `P2_has_type` |
+| `<distinct xml:lang=…>` | — | — | `rdfs:label` with that language tag |
+| `<ref target="logainm…">` | — | — | weighted `skos:closeMatch` |
+
+**The findspot is a place of its own, not the townland.** Stones in one townland do not always carry the same coordinates, so the geometry sits on a per-stone `data:findspot_*` node which `P89_falls_within` the shared townland node. Putting the geometry on the townland would invent a consensus the editions do not assert.
+
+### Coordinate status
+
+`<geo>` is not a strictly typed field. Beside plain `lat, lon` pairs it holds hedges (`(approximate)`, `(possible original location)`), `@cert="low"`, and in a few records prose instead of numbers. Every findspot therefore carries `ogham:geoStatus`, and the editors' own wording is kept verbatim in a `P3_has_note`:
+
+| `ogham:geoStatus` | n | meaning |
+|---|---|---|
+| `asserted` | 475 | bare coordinate pair, no hedge |
+| `qualified` | 6 | coordinates plus `@cert` or a textual hedge |
+| `textual_only` | 3 | prose in `<geo>`, no numbers |
+| `missing` | 20 | empty `<geo/>` |
+
+This is the **hand-over point to axis 2**: `tei--epidoc-amt` turns `geoStatus`/`geoCertainty` and the note into an `amt:weight`-bearing reified statement over `geo:asWKT`, bridged to `crminf:I2_Belief`. Axis 1 stays structural and only records that the editors hedged, and how.
+
+### Side outputs
+
+`places.csv` (504 rows) and `places.geojson` (481 points, WGS84) are written from the same parse, so the table, the map layer and the graph cannot drift apart. Each GeoJSON feature carries the URI of its `data:findspot_*` node, which is how a map click gets back into the graph.
+
+### Which corpus state this is
+
+The editions are a living repository, so the graph records what it was built from — in `../data/corpus-manifest.yaml` and, as PROV-O, in the graph itself on `data:places-graph`:
+
+| | |
+|---|---|
+| upstream commit | `bb62ccd146cc` (2026-07-02) |
+| fetched | 2026-07-30 |
+| editions | 504 |
+| tree | <https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML> |
+
+`py/webmap.py` publishes the same records as a Leaflet map in `docs/` (481 points), which is what GitHub Pages serves. Nothing there re-parses the XML, so map, table and graph cannot disagree.
 

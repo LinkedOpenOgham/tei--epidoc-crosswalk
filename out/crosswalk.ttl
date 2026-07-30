@@ -8,8 +8,26 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix teiapp: <http://ontology.ogham.link/tei-application/> .
 
+ogham:corpusCommit a owl:AnnotationProperty ;
+    rdfs:label "upstream OG(H)AM commit the graph was derived from" .
+
+ogham:corpusCommitDate a owl:AnnotationProperty ;
+    rdfs:label "date of that upstream commit" .
+
+ogham:corpusEditionCount a owl:AnnotationProperty ;
+    rdfs:label "number of editions in that corpus state" .
+
+ogham:geoCertainty a owl:AnnotationProperty ;
+    rdfs:label "editorial @cert on the <geo> value" .
+
+ogham:geoStatus a owl:AnnotationProperty ;
+    rdfs:label "findspot coordinate status (asserted/qualified/textual_only/missing)" .
+
 ogham:matchConfidence a owl:AnnotationProperty ;
     rdfs:label "Wikidata reconciliation confidence [0,1]" .
+
+ogham:matchSource a owl:AnnotationProperty ;
+    rdfs:label "gazetteer the close match points into" .
 
 ogham:matchStatus a owl:AnnotationProperty ;
     rdfs:label "Wikidata reconciliation status (auto/verified)" .
@@ -29,6 +47,12 @@ teiapp:EditionText a teiapp:TEIApplicationClass,
     rdfs:label "TEI/EpiDoc <div type=edition>" ;
     rdfs:subClassOf ogham:Inscription ;
     skos:note "Application class derived from EpiDoc <div type=edition>." .
+
+teiapp:GazetteerRef a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <ref target=logainm|rcahmw|coflein>" ;
+    rdfs:subClassOf ogham:Place ;
+    skos:note "Application class derived from EpiDoc <ref target=logainm|rcahmw|coflein>." .
 
 teiapp:Idno a teiapp:TEIApplicationClass,
         owl:Class ;
@@ -72,6 +96,12 @@ teiapp:PersName a teiapp:TEIApplicationClass,
     rdfs:subClassOf ogham:Person ;
     skos:note "Application class derived from EpiDoc <name nymRef> / <persName>." .
 
+teiapp:PlaceName a teiapp:TEIApplicationClass,
+        owl:Class ;
+    rdfs:label "TEI/EpiDoc <placeName type=townland|parish|county|…>" ;
+    rdfs:subClassOf ogham:Place ;
+    skos:note "Application class derived from EpiDoc <placeName type=townland|parish|county|…>." .
+
 teiapp:Reading a teiapp:TEIApplicationClass,
         owl:Class ;
     rdfs:label "TEI/EpiDoc <div type=edition> / <rdg>" ;
@@ -99,9 +129,6 @@ ogham:OghamStone a owl:Class ;
 
 ogham:Person a owl:Class ;
     rdfs:subClassOf crm:E21_Person .
-
-ogham:Place a owl:Class ;
-    rdfs:subClassOf crm:E53_Place .
 
 ogham:Reading a owl:Class ;
     rdfs:subClassOf crmtex:TX6_Transcription .
@@ -146,9 +173,12 @@ crmtex:TX6_Transcription a owl:Class ;
     ogham:nfdiCoreMatch schema1:CreativeWork ;
     rdfs:subClassOf crm:E1_CRM_Entity .
 
-teiapp:TEIApplicationClass a owl:Class ;
-    rdfs:label "TEI/EpiDoc application class" .
+ogham:Place a owl:Class ;
+    rdfs:subClassOf crm:E53_Place .
 
 crm:E1_CRM_Entity a owl:Class ;
     rdfs:subClassOf owl:Thing .
+
+teiapp:TEIApplicationClass a owl:Class ;
+    rdfs:label "TEI/EpiDoc application class" .
 

@@ -9,6 +9,11 @@ __pycache__/
 venv/
 env/
 
+# The OG(H)AM editions, fetched by `python py/main.py --fetch-corpus`.
+# XML only (~8 MB), but an input from another repository -- never committed here.
+# data/corpus-manifest.yaml IS committed: it records which upstream state was used.
+data/origin/
+
 # OS / editor
 .DS_Store
 Thumbs.db

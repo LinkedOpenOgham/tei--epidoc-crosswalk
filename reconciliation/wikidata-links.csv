@@ -2,5 +2,5 @@ kind,label,qid,wd_label,confidence,status,type_match
 editor,Macalister,Q983129,R. A. Stewart Macalister,0.70,auto,unknown
 editor,Rhys,Q3050565,John Rhys,0.75,auto,ok
 material,Granite,Q41177,granite,0.95,auto,ok
-material,Sandstone,Q13085,sandstone,0.90,auto,
+material,Sandstone,Q13085,sandstone,0.95,auto,ok
 objectType,Pillar,Q4817,column,0.25,auto,mismatch

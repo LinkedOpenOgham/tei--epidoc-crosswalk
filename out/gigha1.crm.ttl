@@ -65,72 +65,72 @@ data:match_type_Pillar a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:type_Pillar .
 
-data:stone_506 a ogham:OghamStone,
+data:stone_S_ARL_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gigha 1 (CIIC 506)" ;
-    crm:P128_carries data:inscription_506 ;
-    crm:P1_is_identified_by data:id_506_CIIC,
-        data:id_506_CISP,
-        data:id_506_Trove ;
+    crm:P128_carries data:inscription_S_ARL_001 ;
+    crm:P1_is_identified_by data:id_S_ARL_001_CIIC,
+        data:id_S_ARL_001_CISP,
+        data:id_S_ARL_001_Trove ;
     crm:P2_has_type data:type_Pillar ;
     crm:P45_consists_of data:material_Granite ;
-    crm:P53_has_former_or_current_location data:place_506 ;
-    crm:P56_bears_feature data:surface_506 .
+    crm:P53_has_former_or_current_location data:place_S_ARL_001 ;
+    crm:P56_bears_feature data:surface_S_ARL_001 .
 
 data:agent_OGHAM_KF a prov:Agent ;
     rdfs:label "OG(H)AM edition (KF)" .
 
-data:id_506_CIIC a crm:E42_Identifier ;
+data:id_S_ARL_001_CIIC a crm:E42_Identifier ;
     rdfs:label "506" ;
     crm:P2_has_type "CIIC" .
 
-data:id_506_CISP a crm:E42_Identifier ;
+data:id_S_ARL_001_CISP a crm:E42_Identifier ;
     rdfs:label "GIGHA/1" ;
     crm:P2_has_type "CISP" .
 
-data:id_506_Trove a crm:E42_Identifier ;
+data:id_S_ARL_001_Trove a crm:E42_Identifier ;
     rdfs:label "38529" ;
     crm:P2_has_type "Trove" .
 
-data:inscription_506 a ogham:Inscription,
+data:inscription_S_ARL_001 a ogham:Inscription,
         crmtex:TX1_Written_Text ;
     rdfs:label "[---]MAQ[---]COGIN[---]" ;
-    crmtex:TXP4_has_segment data:reading_506_MAC1902,
-        data:reading_506_MAC1945,
-        data:reading_506_OGHAM_KF,
-        data:reading_506_RHY1899,
-        data:reading_506_RHY1901 .
+    crmtex:TXP4_has_segment data:reading_S_ARL_001_MAC1902,
+        data:reading_S_ARL_001_MAC1945,
+        data:reading_S_ARL_001_OGHAM_KF,
+        data:reading_S_ARL_001_RHY1899,
+        data:reading_S_ARL_001_RHY1901 .
 
-data:place_506 a crm:E53_Place ;
+data:place_S_ARL_001 a crm:E53_Place ;
     rdfs:label "Gigha and Cara" ;
     geo:asWKT "POINT(-5.750278 55.669722)"^^geo:wktLiteral .
 
-data:reading_506_MAC1902 a ogham:Reading,
+data:reading_S_ARL_001_MAC1902 a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "VICULA MAQ COMGINI" ;
     prov:wasAttributedTo data:agent_MAC1902 .
 
-data:reading_506_MAC1945 a ogham:Reading,
+data:reading_S_ARL_001_MAC1945 a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "VICULA MAQ CUGINI" ;
     prov:wasAttributedTo data:agent_MAC1945 .
 
-data:reading_506_OGHAM_KF a ogham:Reading,
+data:reading_S_ARL_001_OGHAM_KF a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "[---]MAQ[---]COGIN[---]" ;
     prov:wasAttributedTo data:agent_OGHAM_KF .
 
-data:reading_506_RHY1899 a ogham:Reading,
+data:reading_S_ARL_001_RHY1899 a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "MAQICAGILEB" ;
     prov:wasAttributedTo data:agent_RHY1899 .
 
-data:reading_506_RHY1901 a ogham:Reading,
+data:reading_S_ARL_001_RHY1901 a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "OGMA MAQI TIGERNI" ;
     prov:wasAttributedTo data:agent_RHY1901 .
 
-data:surface_506 a crm:E25_Human-Made_Feature ;
+data:surface_S_ARL_001 a crm:E25_Human-Made_Feature ;
     rdfs:label "inscribed surface" .
 
 data:agent_MAC1902 a prov:Agent ;

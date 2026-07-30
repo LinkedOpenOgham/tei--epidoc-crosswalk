@@ -29,70 +29,70 @@ data:match_type_Pillar a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:type_Pillar .
 
-data:stone_55 a ogham:OghamStone,
+data:stone_I_COR_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Com Liath Thoir | Coomleagh East (CIIC 55)" ;
-    crm:P128_carries data:inscription_55 ;
-    crm:P1_is_identified_by data:id_55_CIIC,
-        data:id_55_CISP,
-        data:id_55_SMR,
-        data:id_55_TM ;
+    crm:P128_carries data:inscription_I_COR_001 ;
+    crm:P1_is_identified_by data:id_I_COR_001_CIIC,
+        data:id_I_COR_001_CISP,
+        data:id_I_COR_001_SMR,
+        data:id_I_COR_001_TM ;
     crm:P2_has_type data:type_Pillar ;
-    crm:P53_has_former_or_current_location data:place_55 ;
-    crm:P56_bears_feature data:surface_55 .
+    crm:P53_has_former_or_current_location data:place_I_COR_001 ;
+    crm:P56_bears_feature data:surface_I_COR_001 .
 
 data:agent_OGHAM_NW a prov:Agent ;
     rdfs:label "OG(H)AM edition (NW)" .
 
-data:id_55_CIIC a crm:E42_Identifier ;
+data:id_I_COR_001_CIIC a crm:E42_Identifier ;
     rdfs:label "55" ;
     crm:P2_has_type "CIIC" .
 
-data:id_55_CISP a crm:E42_Identifier ;
+data:id_I_COR_001_CISP a crm:E42_Identifier ;
     rdfs:label "COOME/1" ;
     crm:P2_has_type "CISP" .
 
-data:id_55_SMR a crm:E42_Identifier ;
+data:id_I_COR_001_SMR a crm:E42_Identifier ;
     rdfs:label "CO106-064----" ;
     crm:P2_has_type "SMR" .
 
-data:id_55_TM a crm:E42_Identifier ;
+data:id_I_COR_001_TM a crm:E42_Identifier ;
     rdfs:label "172523" ;
     crm:P2_has_type "TM" .
 
-data:inscription_55 a ogham:Inscription,
+data:inscription_I_COR_001 a ogham:Inscription,
         crmtex:TX1_Written_Text ;
     rdfs:label ".. ? ..TETA" ;
-    crm:P67_refers_to data:person_55_OGALA,
-        data:person_55_SAINA,
-        data:person_55_TEMOCA ;
-    crmtex:TXP4_has_segment data:reading_55_MAC1945,
-        data:reading_55_OGHAM_NW .
+    crm:P67_refers_to data:person_I_COR_001_OGALA,
+        data:person_I_COR_001_SAINA,
+        data:person_I_COR_001_TEMOCA ;
+    crmtex:TXP4_has_segment data:reading_I_COR_001_MAC1945,
+        data:reading_I_COR_001_OGHAM_NW .
 
-data:person_55_OGALA a crm:E21_Person ;
+data:person_I_COR_001_OGALA a crm:E21_Person ;
     rdfs:label "OGALA" .
 
-data:person_55_SAINA a crm:E21_Person ;
+data:person_I_COR_001_SAINA a crm:E21_Person ;
     rdfs:label "SAINA" .
 
-data:person_55_TEMOCA a crm:E21_Person ;
+data:person_I_COR_001_TEMOCA a crm:E21_Person ;
     rdfs:label "TEMOCA" .
 
-data:place_55 a crm:E53_Place ;
+data:place_I_COR_001 a crm:E53_Place ;
     rdfs:label "Coomleagh East (An Com Liath Thoir)" ;
     geo:asWKT "POINT(-9.30337 51.72827)"^^geo:wktLiteral .
 
-data:reading_55_MAC1945 a ogham:Reading,
+data:reading_I_COR_001_MAC1945 a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "ANM SAINA MAQ OGALA MUCOI TEMOCA" ;
     prov:wasAttributedTo data:agent_MAC1945 .
 
-data:reading_55_OGHAM_NW a ogham:Reading,
+data:reading_I_COR_001_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label ".. ? ..TETA" ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:surface_55 a crm:E25_Human-Made_Feature ;
+data:surface_I_COR_001 a crm:E25_Human-Made_Feature ;
     rdfs:label "inscribed surface" .
 
 data:agent_MAC1945 a prov:Agent ;

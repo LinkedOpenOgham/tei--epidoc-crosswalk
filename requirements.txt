@@ -1,3 +1,4 @@
 rdflib>=7.0
 lxml>=5.0
 pyshacl>=0.26   # for the crosswalk-ontology SHACL validation
+PyYAML>=6.0     # for data/corpus-manifest.yaml

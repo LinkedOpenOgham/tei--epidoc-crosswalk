@@ -7,10 +7,18 @@ Linked Open Ogham crosswalk). Run from the repo root:
 
     python py/main.py            # process all stones in STONES, write out/README.md
     python py/main.py --input data/S-ARL-001.xml --output out/gigha1.crm.ttl
+    python py/main.py --corpus ../og-h-am        # place layer over the whole corpus
 
 For each stone it maps the core EpiDoc elements to CIDOC CRM 7.1.3 and its text
 extension CRMtex, emits Turtle, and documents the element-by-element result in a
 generated ``out/README.md``.
+
+Alongside the per-stone crosswalk it runs the **place layer** (``py/places.py``),
+which applies the same CIDOC CRM modelling to the geography of *every* EpiDoc file
+it is pointed at -- ``data/`` by default, or a full OG(H)AM corpus clone via
+``--fetch-corpus``/``--corpus`` -- and writes ``out/places.crm.ttl``, ``places.csv`` and
+``places.geojson``. ``py/webmap.py`` then publishes the same records as a Leaflet
+map in ``docs/``, which is what GitHub Pages serves.
 
 Companion of ``tei--epidoc-amt`` (axis 2). Axis 1 is the **structural** crosswalk:
 it models the inscription and every competing reading in CRMtex (who read what).
@@ -22,10 +30,12 @@ the CRM classes), so the domain ontology *is* the crosswalk.
 from __future__ import annotations
 
 import argparse
-import glob
 import re
 from collections import Counter
 
+import corpus    # local module (py/corpus.py) -- fetch + provenance manifest
+import places    # local module (py/places.py) -- corpus-wide place layer
+import webmap    # local module (py/webmap.py) -- docs/ map for GitHub Pages
 import wikidata  # local module (py/wikidata.py)
 from pathlib import Path
 
@@ -44,6 +54,15 @@ ALLOWLISTS = {"material": RECON / "material-allowlist.csv",
               "editor": RECON / "editor-allowlist.csv",
               "objectType": RECON / "objecttype-allowlist.csv"}
 ELEMENT_DOCS = ROOT / "element-docs"               # generated element documentation
+DOCS = ROOT / "docs"                               # generated GitHub Pages site (the map)
+
+# The OG(H)AM editions are a separate, living repository; py/corpus.py fetches the
+# XML into data/origin/ (gitignored) and records the upstream state in a committed
+# manifest. The place layer runs over whichever checkout it finds, in this order;
+# data/ (four sample stones) is only the last resort.
+CORPUS_DIR = DATA / "origin"                       # fetched editions (gitignored)
+CORPUS_MANIFEST = DATA / "corpus-manifest.yaml"    # provenance record (committed)
+# data/origin/ is the only location discovered automatically -- see corpus.resolve
 
 STONES = [
     ("S-ARL-001.xml", "gigha1"),
@@ -108,11 +127,25 @@ MAPPING = [
          vocab="CRMtex, PROV-O"),
     dict(el="<origPlace> + <geo>", role="place of origin", ogham="ogham:Place",
          crm="crm:E53_Place", prop="P53_has_former_or_current_location", vocab="GeoSPARQL"),
+    dict(el="<placeName type=townland|parish|county|…>", role="place hierarchy",
+         ogham="ogham:Place", crm="crm:E53_Place", prop="P89_falls_within (chained)",
+         vocab="—", teiapp="PlaceName", tag="placeName"),
+    dict(el="<ref target=logainm|rcahmw|coflein>", role="gazetteer anchor", ogham="ogham:Place",
+         crm="crm:E53_Place", prop="skos:closeMatch (weighted)", vocab="SKOS, AMT",
+         teiapp="GazetteerRef", tag="ref",
+         note="gazetteer targets inside <origPlace> only; other <ref> are record metadata"),
     dict(el="<origDate> (when present)", role="date of origin", ogham="—",
          crm="crm:E52_Time-Span", prop="P4_has_time-span", vocab="OWL-Time"),
     dict(el="<name nymRef> / <persName>", role="referenced name", ogham="ogham:Person",
          crm="crm:E21_Person", prop="P67_refers_to", vocab="—"),
 ]
+
+
+def crosswalk_extra(row: dict) -> tuple[str, str]:
+    """(TEI application class, NFDI Core term) for a MAPPING row. Rows may override
+    the class name, so that several rows can share one CIDOC CRM class."""
+    tei, nfdi = CROSSWALK_EXTRA[row["crm"]]
+    return row.get("teiapp", tei), row.get("nfdi", nfdi)
 
 
 def _text(el) -> str:
@@ -135,7 +168,11 @@ def parse(tree) -> dict:
     d: dict = {}
     idnos = {i.get("type"): (i.text or "").strip() for i in tree.findall(f".//{{{TEI}}}idno[@type]")}
     d["ids"] = {k: v for k, v in idnos.items() if k in ID_SYSTEMS and v}
-    d["ciic"] = idnos.get("CIIC", idnos.get("filename", "x"))
+    d["ciic"] = idnos.get("CIIC", "").strip()
+    d["ogham_id"] = idnos.get("filename", "").strip()
+    # URI key: shared with the place layer, so the graphs merge (see places.stone_key)
+    d["key"] = places.stone_key(idnos)
+    d["label_id"] = f"CIIC {d['ciic']}" if d["ciic"] else (d["ogham_id"] or d["key"])
     d["title"] = _text(tree.find(f".//{{{TEI}}}title"))
     d["material"] = _text(tree.find(f".//{{{TEI}}}material")) or None
     d["objectType"] = _text(tree.find(f".//{{{TEI}}}objectType")) or None
@@ -189,14 +226,13 @@ def build_graph(d: dict):
                     ("ogham", OGHAM), ("data", DATA_NS), ("rdfs", RDFS), ("xsd", XSD)):
         g.bind(pfx, ns)
 
-    ciic = d["ciic"]
-    sid = _slug(ciic)
+    sid = _slug(d["key"])
     records: list[tuple] = []
 
     stone = DATA_NS[f"stone_{sid}"]
     g.add((stone, RDF.type, CRM["E22_Human-Made_Object"]))
     g.add((stone, RDF.type, OGHAM.OghamStone))
-    g.add((stone, RDFS.label, Literal(f"{d['title'] or 'Ogham stone'} (CIIC {ciic})")))
+    g.add((stone, RDFS.label, Literal(f"{d['title'] or 'Ogham stone'} ({d['label_id']})")))
     records.append(("<support>", d["title"], "E22_Human-Made_Object", f"data:stone_{sid}"))
 
     for system, value in d["ids"].items():
@@ -278,7 +314,7 @@ def build_graph(d: dict):
     return g, records
 
 
-def write_out_readme(results: list[tuple]) -> None:
+def write_out_readme(results: list[tuple], places_summary: dict | None = None) -> None:
     L = []
     add = L.append
     esc = lambda s: str(s).replace("|", "\\|")
@@ -376,8 +412,8 @@ def write_out_readme(results: list[tuple]) -> None:
     add("`python py/main.py` runs this validation; the current crosswalk is **SHACL-valid**.\n")
 
     add("## 7. Per stone — how each element ends up in CIDOC CRM\n")
-    for title, ciic, out, records in results:
-        add(f"### {title} (CIIC {ciic})\n")
+    for title, label_id, out, records in results:
+        add(f"### {title} ({label_id})\n")
         add(f"`{out}` — {len(records)} mapped elements.\n")
         add("| EpiDoc element | extracted value | → CRM class | node |")
         add("|---|---|---|---|")
@@ -386,6 +422,9 @@ def write_out_readme(results: list[tuple]) -> None:
             v = v if len(v) <= 44 else v[:41] + "…"
             add(f"| `{esc(el)}` | {esc(v) or '—'} | `{esc(klass)}` | `{esc(node)}` |")
         add("")
+
+    if places_summary:
+        L.extend(places.readme_section(places_summary))
 
     (OUT / "README.md").write_text("\n".join(L) + "\n", encoding="utf-8")
     print(f"  -> wrote {(OUT / 'README.md').relative_to(ROOT)}")
@@ -440,7 +479,7 @@ def build_crosswalk_ontology() -> Graph:
                    "(the match confidence), so links are weighted beliefs, aligned with axis 2.")))
 
     for r in MAPPING:
-        tei, nfdi = CROSSWALK_EXTRA[r["crm"]]
+        tei, nfdi = crosswalk_extra(r)
         crm_uri = _term(r["crm"])
         g.add((crm_uri, RDF.type, OWL.Class))
         g.add((crm_uri, RDFS.subClassOf, CRM["E1_CRM_Entity"]))
@@ -457,6 +496,7 @@ def build_crosswalk_ontology() -> Graph:
         g.add((tc, RDFS.subClassOf, parent))
         g.add((tc, RDFS.label, Literal(f"TEI/EpiDoc {r['el']}")))
         g.add((tc, SKOS.note, Literal(f"Application class derived from EpiDoc {r['el']}.")))
+    places.add_ontology_terms(g)      # ogham:geoStatus / geoCertainty / matchSource
     return g
 
 
@@ -489,7 +529,9 @@ PRIMARY_TAG = {
     "crm:E52_Time-Span": "origDate", "crm:E21_Person": "name",
 }
 ALSO_MAPPED = {
-    "geo": "crm:E53_Place (via <origPlace>)",
+    "geo": "crm:E53_Place (geo:asWKT on the findspot)",
+    "country": "crm:E53_Place (place hierarchy, P89_falls_within)",
+    "distinct": "rdfs:label on the E53_Place (vernacular name form, language-tagged)",
     "persName": "crm:E21_Person (via <name>)",
     "ab": "crmtex:TX1_Written_Text (display line, feeds the edition text)",
 }
@@ -499,7 +541,6 @@ CANDIDATE = {
     "height": "crm:E54_Dimension (P90/P91)", "width": "crm:E54_Dimension",
     "depth": "crm:E54_Dimension", "dim": "crm:E54_Dimension",
     "condition": "crm:E3_Condition_State (P44_has_condition)",
-    "repository": "crm:E40_Legal_Body / E39_Actor (P50_has_current_keeper)",
     "title": "crm:E35_Title (P102_has_title)",
     "provenance": "crm:E5_Event / E9_Move (object biography)",
     "origin": "crm:E12_Production (P108_has_produced)",
@@ -509,11 +550,10 @@ CANDIDATE = {
     "lb": "crmtex:TX7_Written_Text_Segment",
     "w": "crm:E36_Visual_Item / ogham:Word",
     "term": "crm:E55_Type (e.g. type_of_inscription)",
+    "repository": "crm:E40_Legal_Body / E39_Actor (P50_has_current_keeper)",
     "keywords": "crm:E55_Type (classification)",
     "rs": "crm:E55_Type (e.g. execution technique)",
     "date": "crm:E52_Time-Span (P4_has_time-span)",
-    "placeName": "crm:E53_Place (place hierarchy)",
-    "country": "crm:E53_Place (place hierarchy)",
     "language": "crm:E56_Language / crmtex:TX3_Writing_System",
     "textLang": "crm:E56_Language / crmtex:TX3_Writing_System",
     "editor": "crm:E39_Actor (P14_carried_out_by)",
@@ -525,11 +565,32 @@ CANDIDATE = {
     "media": "crmdig:D1_Digital_Object (3D/photo)",
     "note": "crm:E62_String (P3_has_note)",
     "q": "crm:E33_Linguistic_Object (quotation)",
+    # --- seen across the full OG(H)AM corpus (--corpus), not in the data/ sample ---
+    "g": "crmtex:TX7_Written_Text_Segment (ogham glyph; resolves via <charDecl>/<glyph>)",
+    "c": "crmtex:TX7_Written_Text_Segment (single character)",
+    "space": "crmtex:TX7_Written_Text_Segment (vacat)",
+    "del": "crm:E13_Attribute_Assignment (carved deletion)",
+    "add": "crm:E13_Attribute_Assignment (carved addition)",
+    "handShift": "crm:E55_Type (change of hand / carver)",
+    "creation": "crm:E65_Creation (origin of the text)",
+    "surname": "crm:E41_Appellation (P1_is_identified_by on E21_Person)",
+    "roleName": "crm:E55_Type (role of the named person)",
+    "glyph": "crmtex:TX3_Writing_System (ogham character declaration)",
+    "charDecl": "crmtex:TX3_Writing_System (character declaration)",
 }
 DOUBT = {
     "unclear": "\u2192 amt:weight (axis 2)", "supplied": "\u2192 amt:weight (axis 2)",
     "gap": "\u2192 amt:weight (axis 2)", "certainty": "\u2192 amt:weight (axis 2)",
     "app": "apparatus \u2192 axis 2", "listApp": "apparatus \u2192 axis 2",
+    "lem": "apparatus lemma \u2192 axis 2",
+    # editorial alternatives: the editor asserts one form over another
+    "choice": "editorial alternative \u2192 axis 2", "corr": "editorial correction \u2192 axis 2",
+    "sic": "editorial correction \u2192 axis 2", "orig": "editorial normalisation \u2192 axis 2",
+    "reg": "editorial normalisation \u2192 axis 2",
+    "damage": "damage-induced doubt \u2192 axis 2",
+    "surplus": "editor judges characters surplus \u2192 axis 2",
+    "abbr": "abbreviation/expansion \u2192 axis 2", "expan": "abbreviation/expansion \u2192 axis 2",
+    "ex": "editor-supplied expansion \u2192 axis 2",
 }
 STRUCTURAL = {
     "TEI", "teiHeader", "fileDesc", "titleStmt", "publicationStmt", "sourceDesc",
@@ -538,17 +599,21 @@ STRUCTURAL = {
     "supportDesc", "layoutDesc", "handDesc", "handNote", "body", "text", "p",
     "desc", "funder", "licence", "availability", "authority", "change",
     "listChange", "include", "altIdentifier", "calendar", "calendarDesc",
-    "distinct", "ptr", "ref",
+    "ptr", "hi", "emph", "list", "item", "num", "xml",
 }
 
 
-def scan_tags():
-    """Return (total counts, per-file presence 0..4) for every EpiDoc element tag."""
+def scan_tags(corpus_dir: Path = DATA):
+    """Return (total counts, per-file presence) for every EpiDoc element tag in
+    ``corpus_dir`` -- ``data/`` by default, or a fetched OG(H)AM checkout."""
     total, presence = Counter(), Counter()
-    files = sorted(glob.glob(str(DATA / "*.xml")))
+    files = [str(f) for f in places.collect_files(corpus_dir)]
     for f in files:
         seen = set()
-        for el in etree.parse(f).iter():
+        tree = places.parse_xml(Path(f))     # tolerant: shares the place layer's parser
+        if tree is None:
+            continue
+        for el in tree.iter():
             if isinstance(el.tag, str):
                 tag = etree.QName(el).localname
                 total[tag] += 1
@@ -558,11 +623,16 @@ def scan_tags():
     return total, presence, len(files)
 
 
+def primary_tag(row: dict) -> str:
+    """EpiDoc tag a MAPPING row is anchored on (rows may override the default)."""
+    return row.get("tag") or PRIMARY_TAG.get(row["crm"], "")
+
+
 def classify(tag):
     """(status, target) for a tag in the full inventory."""
     for r in MAPPING:
-        if PRIMARY_TAG.get(r["crm"]) == tag:
-            return "\u2705 mapped", r["crm"]
+        if primary_tag(r) == tag:
+            return "\u2705 mapped", r["crm"] + (f" — {r['note']}" if r.get("note") else "")
     if tag in ALSO_MAPPED:
         return "\u2705 mapped", ALSO_MAPPED[tag]
     if tag in CANDIDATE:
@@ -574,20 +644,20 @@ def classify(tag):
     return "? to review", "\u2014"
 
 
-def write_data_readme(presence, n_files):
+def write_data_readme(presence, n_files, source="../data/"):
     L, add = [], None
     L = []; add = L.append
     esc = lambda s: str(s).replace("|", "\\|")
     ELEMENT_DOCS.mkdir(parents=True, exist_ok=True)
     add("# EpiDoc elements crosswalked to CIDOC CRM (current mapping)\n")
     add(f"> **Generated** by `python py/main.py`. Describes the crosswalk for the EpiDoc "
-        f"elements currently handled, based on the {n_files} input EpiDoc files in `../data/`. "
+        f"elements currently handled, based on the {n_files} input EpiDoc files in `{source}`. "
         f"For every element in the corpus (including the ones not yet mapped) see "
         f"`all-epidoc-elements.md`; for the full documentation see `../out/README.md`.\n")
     add(f"| EpiDoc element | in stones | Linked Open Ogham class | CIDOC CRM / CRMtex | property |")
     add("|---|---|---|---|---|")
     for r in MAPPING:
-        tag = PRIMARY_TAG.get(r["crm"], "")
+        tag = primary_tag(r)
         n = presence.get(tag, 0)
         add(f"| `{esc(r['el'])}` | {n}/{n_files} | `{esc(r['ogham'])}` | "
             f"`{esc(r['crm'])}` | `{esc(r['prop'])}` |")
@@ -600,13 +670,13 @@ def write_data_readme(presence, n_files):
     print(f"  -> wrote {(ELEMENT_DOCS / 'README.md').relative_to(ROOT)}")
 
 
-def write_all_elements_readme(total, n_files):
+def write_all_elements_readme(total, n_files, source="../data/"):
     L = []; add = L.append
     esc = lambda s: str(s).replace("|", "\\|")
     ELEMENT_DOCS.mkdir(parents=True, exist_ok=True)
     add("# All EpiDoc elements in the corpus \u2014 crosswalk status & candidates\n")
     add(f"> **Generated** by `python py/main.py`. Every EpiDoc element tag found across the "
-        f"{n_files} input files, with its crosswalk status: **\u2705 mapped** (emitted now), "
+        f"{n_files} input files in `{source}`, with its crosswalk status: **\u2705 mapped** (emitted now), "
         f"**\U0001f527 candidate** (a sensible CIDOC CRM target we could add next), "
         f"**\u2461 axis 2** (doubt signal, handled in `tei--epidoc-amt`), or "
         f"**\u25ab structural** (TEI wrapper / record metadata).\n")
@@ -636,7 +706,6 @@ def enrich_wikidata(g: Graph, d: dict, cache: dict, online: bool, verify: bool, 
     g.bind("skos", SKOS)
     g.bind("wd", WD)
     g.bind("amt", AMT)
-    sid = _slug(d["ciic"])
     targets = []
     if d["material"]:
         targets.append(("material", d["material"], DATA_NS[f"material_{_slug(d['material'])}"]))
@@ -681,14 +750,14 @@ def process(input_path: Path, output_path: Path, cache=None, online: bool = True
     linked = enrich_wikidata(g, d, cache, online, verify, resolved if resolved is not None else set(), overrides or {}) if cache is not None else []
     output_path.parent.mkdir(parents=True, exist_ok=True)
     g.serialize(destination=str(output_path), format="turtle")
-    print(f"\n{d['title'] or '?'} (CIIC {d['ciic']}) -- {len(records)} elements -> "
+    print(f"\n{d['title'] or '?'} ({d['label_id']}) -- {len(records)} elements -> "
           f"{output_path.relative_to(ROOT)} ({len(g)} triples)")
     for el, val, klass, node in records:
         print(f"  {el:24} -> {klass:26} {(val or '')[:40]}")
     for kind, label, m in linked:
         print(f"  wikidata  {kind:10} {label:14} -> {m.qid} "
               f"({m.status}/{m.type_match or 'unknown'}, conf={m.confidence:.2f})")
-    return d["title"] or "?", d["ciic"], output_path.name, records
+    return d["title"] or "?", d["label_id"], output_path.name, records
 
 
 def main() -> None:
@@ -697,7 +766,52 @@ def main() -> None:
     ap.add_argument("--output", type=Path, help="output Turtle file (single-file mode only)")
     ap.add_argument("--offline", action="store_true", help="skip live Wikidata calls (cache only)")
     ap.add_argument("--no-verify", action="store_true", help="skip P31/P279 type verification")
+    ap.add_argument("--corpus", type=Path, default=None,
+                    help="corpus the place layer reads. Default: an OG(H)AM checkout found "
+                         "at data/origin/, corpus/, ../og-h-am/ or $OGHAM_CORPUS, else "
+                         "data/ (sample only)")
+    ap.add_argument("--fetch-corpus", action="store_true",
+                    help="fetch or update the OG(H)AM EpiDoc files (XML only, ~8 MB) in "
+                         "data/origin/, refresh data/corpus-manifest.yaml, and use them")
+    ap.add_argument("--places-only", action="store_true",
+                    help="run only the place layer, skip the per-stone crosswalk")
+    ap.add_argument("--no-places", action="store_true", help="skip the place layer")
+    ap.add_argument("--no-map", action="store_true", help="skip the docs/ map")
+    ap.add_argument("--no-fetch", action="store_true",
+                    help="do not fetch the editions even if data/origin/ is empty")
     args = ap.parse_args()
+
+    # The editions belong in data/origin/. If they are not there yet, fetch them --
+    # 8 MB and two seconds is a better default than silently mapping four stones.
+    if args.fetch_corpus or (args.corpus is None
+                             and not corpus.has_editions(CORPUS_DIR)
+                             and not (args.no_fetch or args.offline)):
+        corpus.fetch(CORPUS_DIR, CORPUS_MANIFEST, ROOT)
+        if args.corpus is None:
+            args.corpus = CORPUS_DIR
+
+    corpus_dir, why = corpus.resolve(args.corpus, CORPUS_DIR, DATA, ROOT)
+    prov = corpus.provenance(CORPUS_MANIFEST, corpus_dir)
+    if why == "fallback":
+        print(f"! data/origin/ holds no editions -- the place layer and the docs/ map\n"
+              f"! will cover only the {len(STONES)} sample stones in data/. To fix:\n"
+              "!     python py/main.py --fetch-corpus     (XML only, ~8 MB)")
+    else:
+        stamp = (f" · commit {prov['commit'][:7]}"
+                 + (f", {prov['commit_date'][:10]}" if prov.get("commit_date") else "")
+                 if prov.get("commit") else " · no commit recorded")
+        print(f"corpus: {corpus_dir} ({why}){stamp}")
+        if not prov:
+            print("  ! this checkout is not tracked, so the graph cannot record which\n"
+                  "  ! corpus state it came from. `--fetch-corpus` gives a tracked one.")
+
+    if args.places_only:
+        OUT.mkdir(parents=True, exist_ok=True)
+        summary = places.run(corpus_dir, OUT, root=ROOT, provenance=prov)
+        if not args.no_map:
+            webmap.build(summary["records"], DOCS, root=ROOT,
+                         provenance=summary.get("provenance"))
+        return
 
     cache = wikidata.load_cache(RECON_CACHE)
     online = not args.offline
@@ -712,15 +826,24 @@ def main() -> None:
     else:
         results = [process(DATA / f, OUT / f"{b}.crm.ttl", cache=cache, online=online, verify=verify, resolved=resolved, overrides=overrides)
                    for f, b in STONES]
-        write_out_readme(results)
+        places_summary = None if args.no_places else places.run(corpus_dir, OUT, root=ROOT, provenance=prov)
+        if places_summary and not args.no_map:
+            places_summary["map"] = webmap.build(
+                places_summary["records"], DOCS, root=ROOT,
+                provenance=places_summary.get("provenance"))
+        write_out_readme(results, places_summary)
         emit_and_validate_crosswalk()
         wikidata.save_cache(RECON_CACHE, cache)
         n_res = sum(1 for m in cache.values() if m.qid)
         print(f"  -> updated {RECON_CACHE.relative_to(ROOT)} "
               f"({n_res}/{len(cache)} terms resolved)")
-        total, presence, n_files = scan_tags()
-        write_data_readme(presence, n_files)
-        write_all_elements_readme(total, n_files)
+        total, presence, n_files = scan_tags(corpus_dir)
+        try:                       # inside the repo -> relative path, else the corpus name
+            label = f"../{corpus_dir.relative_to(ROOT)}/"
+        except ValueError:
+            label = f"{corpus_dir.name}/ (external corpus)"
+        write_data_readme(presence, n_files, label)
+        write_all_elements_readme(total, n_files, label)
 
 
 if __name__ == "__main__":

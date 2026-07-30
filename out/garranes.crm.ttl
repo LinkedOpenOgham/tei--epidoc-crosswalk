@@ -12,10 +12,10 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 data:match_material_Sandstone a rdf:Statement ;
-    amt:weight 0.90 ;
-    ogham:matchConfidence 0.90 ;
+    amt:weight 0.95 ;
+    ogham:matchConfidence 0.95 ;
     ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "unknown" ;
+    ogham:matchTypeCheck "ok" ;
     rdf:object wd:Q13085 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:material_Sandstone .
@@ -29,56 +29,56 @@ data:match_type_Pillar a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:type_Pillar .
 
-data:stone_81 a ogham:OghamStone,
+data:stone_I_COR_030 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Garrán | Garranes (CIIC 81)" ;
-    crm:P128_carries data:inscription_81 ;
-    crm:P1_is_identified_by data:id_81_CIIC,
-        data:id_81_CISP,
-        data:id_81_SMR ;
+    crm:P128_carries data:inscription_I_COR_030 ;
+    crm:P1_is_identified_by data:id_I_COR_030_CIIC,
+        data:id_I_COR_030_CISP,
+        data:id_I_COR_030_SMR ;
     crm:P2_has_type data:type_Pillar ;
     crm:P45_consists_of data:material_Sandstone ;
-    crm:P53_has_former_or_current_location data:place_81 ;
-    crm:P56_bears_feature data:surface_81 .
+    crm:P53_has_former_or_current_location data:place_I_COR_030 ;
+    crm:P56_bears_feature data:surface_I_COR_030 .
 
 data:agent_OGHAM_NW a prov:Agent ;
     rdfs:label "OG(H)AM edition (NW)" .
 
-data:id_81_CIIC a crm:E42_Identifier ;
+data:id_I_COR_030_CIIC a crm:E42_Identifier ;
     rdfs:label "81" ;
     crm:P2_has_type "CIIC" .
 
-data:id_81_CISP a crm:E42_Identifier ;
+data:id_I_COR_030_CISP a crm:E42_Identifier ;
     rdfs:label "GARES/1" ;
     crm:P2_has_type "CISP" .
 
-data:id_81_SMR a crm:E42_Identifier ;
+data:id_I_COR_030_SMR a crm:E42_Identifier ;
     rdfs:label "CO084-090002-" ;
     crm:P2_has_type "SMR" .
 
-data:inscription_81 a ogham:Inscription,
+data:inscription_I_COR_030 a ogham:Inscription,
         crmtex:TX1_Written_Text ;
     rdfs:label "CASSITTAS MAQI MUCOI CALLITI" ;
-    crm:P67_refers_to data:person_81_CALLITI,
-        data:person_81_CASSITTAS ;
-    crmtex:TXP4_has_segment data:reading_81_OGHAM_NW .
+    crm:P67_refers_to data:person_I_COR_030_CALLITI,
+        data:person_I_COR_030_CASSITTAS ;
+    crmtex:TXP4_has_segment data:reading_I_COR_030_OGHAM_NW .
 
-data:person_81_CALLITI a crm:E21_Person ;
+data:person_I_COR_030_CALLITI a crm:E21_Person ;
     rdfs:label "CALLITI" .
 
-data:person_81_CASSITTAS a crm:E21_Person ;
+data:person_I_COR_030_CASSITTAS a crm:E21_Person ;
     rdfs:label "CASSITTAS" .
 
-data:place_81 a crm:E53_Place ;
+data:place_I_COR_030 a crm:E53_Place ;
     rdfs:label "Garranes (An Garrán)" ;
     geo:asWKT "POINT(-8.765479 51.816848)"^^geo:wktLiteral .
 
-data:reading_81_OGHAM_NW a ogham:Reading,
+data:reading_I_COR_030_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "CASSITTAS MAQI MUCOI CALLITI" ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:surface_81 a crm:E25_Human-Made_Feature ;
+data:surface_I_COR_030 a crm:E25_Human-Made_Feature ;
     rdfs:label "inscribed surface" .
 
 data:material_Sandstone a crm:E57_Material ;
