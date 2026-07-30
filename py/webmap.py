@@ -117,6 +117,10 @@ nav a[aria-current]{background:var(--sc);border-color:var(--sc);color:#0f1918;fo
 .pop .rdg{font-family:var(--mono);font-size:11.5px;line-height:1.5;margin:0 0 8px}
 .pop .rdg em{color:var(--muted);font-style:normal}
 .pop mark{background:rgba(63,125,140,.45);color:#eef0ea;border-radius:2px;padding:0 1px}
+.pop .badge{display:inline-block;font-size:10px;padding:1px 6px;border-radius:2px;
+  margin-left:6px;font-family:var(--sans);letter-spacing:.02em}
+.pop .gain{color:#9aab3f;font-size:11px}
+.pop .loss{color:#b0413e;font-size:11px}
 
 /* landing page: one centred column, no map */
 body.landing{overflow:auto}
@@ -918,6 +922,361 @@ __NAV__
 
 """
 
+HEAD_READINGS = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — editorial disagreement</title>
+<meta name="description" content="Ogham stones carrying more than one reading, and how far the current edition sits from earlier ones.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body>
+"""
+
+WORDS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe (one stroke below the line) with the crossbar that softens it.
+           Feather marks open and close the inscription. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Formulaic words</h1>
+      <p class="sub">McManus's formulaic vocabulary matched against every reading
+      of every ogham inscription — not just the current one.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <div id="gloss" class="gloss"></div>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#3f7d8c;
+          border:1.6px solid rgba(19,28,27,.7)"></i> in the current edition</span>
+        <span><i class="pin vague" style="width:11px;height:11px;
+          border:1.6px dashed #b07d2b"></i> only in an older reading</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q">Filter the vocabulary</label>
+      <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
+
+      <div class="wordlist" id="wordlist"></div>
+
+      <p class="note">Word list from
+      <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">o3d-epidoc-extractor</a>
+      (Homburg &amp; Thiery, DHd 2020), after McManus 1991. <b>Name elements are
+      matched as substrings</b>, which is that project's semantics and is not
+      precise: short elements such as CON or VIR also fire inside unrelated names.
+      Each hit records which mode produced it.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="words.csv" download>Download matches (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+READINGS_JS = r"""
+const STONES = __STONES__;
+const BANDS  = __BANDS__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const BAND_COLOUR = {"identical":"#8d9a97", "close":"#9aab3f",
+                     "diverging":"#b07d2b", "far apart":"#b0413e"};
+const BAND_ORDER = ["far apart","diverging","close","identical"];
+
+const map = L.map("map", {zoomControl:false}).setView([53.6,-7.5], 6);
+L.control.zoom({position:"bottomright"}).addTo(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+
+function icon(colour){
+  const d = 13;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin" style="width:${d}px;height:${d}px;background:${colour};`
+       + `border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+// A token that one reading has and the other does not is what a reader is looking
+// for, so it is marked rather than left to be spotted.
+function tokens(text, missing){
+  const gone = new Set(missing);
+  return esc(text).split(/\s+/).map(t =>
+    gone.has(t) ? `<mark>${t}</mark>` : t).join(" ");
+}
+
+function popup(s){
+  const head = s.pairs[0];
+  const rows = s.pairs.map(p => `
+    <p class="rdg"><em>${esc(p.editor)}</em>
+      <span class="badge" style="background:${BAND_COLOUR[p.band]}22;color:${BAND_COLOUR[p.band]}">
+        ${esc(p.band)} · ${p.sim.toFixed(2)}</span><br>
+      ${tokens(p.oth, p.onlyOth)}
+      ${p.gained.length ? `<br><span class="gain">+ ${p.gained.map(esc).join(" ")}</span>` : ""}
+      ${p.lost.length ? `<br><span class="loss">\u2212 ${p.lost.map(esc).join(" ")}</span>` : ""}
+    </p>`).join("");
+  return `<div class="pop">
+    <h2>${esc(s.title || s.id)}</h2>
+    <div class="where">${esc([s.county, s.country].filter(Boolean).join(", "))}
+      ${s.ciic ? " · CIIC " + esc(s.ciic) : ""}</div>
+    <p class="rdg"><em>current OG(H)AM edition</em><br>${tokens(head.cur, head.onlyCur)}</p>
+    <hr style="border:0;border-top:1px solid #33433f;margin:9px 0">
+    ${rows}
+    <div class="links"><a href="findspots.html">on the findspot map</a>
+      <a href="words.html">formulaic words</a></div>
+  </div>`;
+}
+
+let bandFilter = null, editorFilter = null;
+
+function matches(s){
+  if (bandFilter && s.band !== bandFilter) return false;
+  if (editorFilter && !s.editors.includes(editorFilter)) return false;
+  if (document.getElementById("onlyFormula").checked && !s.formula) return false;
+  return true;
+}
+
+function draw(){
+  const keep = STONES.filter(matches);
+  scene.slug = "readings";
+  scene.title = [bandFilter, editorFilter].filter(Boolean).join(" ") || "";
+  scene.points = keep.map(s => ({lat:s.lat, lon:s.lon,
+                                 colour:BAND_COLOUR[s.band] || "#8d9a97", vague:false}));
+  const markers = keep.map(s =>
+    L.marker([s.lat, s.lon], {icon:icon(BAND_COLOUR[s.band]), title:s.title || s.id})
+     .bindPopup(() => popup(s), {maxWidth:360}));
+  showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length) map.fitBounds(L.latLngBounds(keep.map(s => [s.lat, s.lon])).pad(0.08));
+}
+
+function radioList(box, items, current, onPick, allLabel){
+  box.innerHTML = "";
+  const add = (value, label, gloss, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    l.innerHTML = `<input type="radio" name="${box.id}" ${checked ? "checked" : ""}>`
+                + (gloss === null ? `<b>${esc(label)}</b><span class="tr"></span>`
+                   : `<span class="dot" style="background:${gloss}"></span>`
+                     + `<b>${esc(label)}</b><span class="tr"></span>`)
+                + `<span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => { onPick(value); });
+    box.appendChild(l);
+  };
+  add(null, allLabel, null, items.reduce((a, i) => a + i.n, 0), current === null);
+  items.forEach(i => add(i.value, i.label, i.colour ?? null, i.n, current === i.value));
+}
+
+function buildLists(){
+  radioList(document.getElementById("bandlist"),
+    BAND_ORDER.filter(b => BANDS.bands[b]).map(b => ({
+      value:b, label:b, n:BANDS.bands[b], colour:BAND_COLOUR[b] })),
+    bandFilter, v => { bandFilter = v; draw(); buildLists(); }, "Any distance");
+  radioList(document.getElementById("editorlist"),
+    Object.keys(BANDS.editors).sort((a,b) => BANDS.editors[b] - BANDS.editors[a]
+      || a.localeCompare(b)).map(e => ({ value:e, label:e, n:BANDS.editors[e] })),
+    editorFilter, v => { editorFilter = v; draw(); buildLists(); }, "Any editor");
+}
+
+document.getElementById("formulaN").textContent = STONES.filter(s => s.formula).length;
+document.getElementById("onlyFormula").addEventListener("change", draw);
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildLists();
+draw();
+"""
+
+READINGS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe with the crossbar that softens it. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Where the editors disagree</h1>
+      <p class="sub">Stones whose inscription has been read more than one way, and how
+      far apart those readings are.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <p class="field">Distance from the current edition</p>
+      <div class="wordlist" id="bandlist"></div>
+
+      <fieldset>
+        <legend class="field">What is at stake</legend>
+        <label class="opt"><input type="checkbox" id="onlyFormula"> Only where a formulaic
+          word is gained or lost <span class="n" id="formulaN"></span></label>
+      </fieldset>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q" style="margin-top:22px">Editor</label>
+      <div class="wordlist" id="editorlist"></div>
+
+      <p class="note">The similarity is a character-level comparison of the two
+      readings after editorial marks are stripped, and it is an <b>ordering aid, not
+      a verdict</b>: two readings can score 0.83 and still differ over everything
+      that matters. Readings are only compared within one script, so an ogham
+      reading is never measured against a Roman-script one.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="readings.csv" download>Download comparisons (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
 WORDS_JS = r"""const WORDS = __WORDS__;
 const STONES = __STONES__;
 
@@ -1147,6 +1506,14 @@ PAGES = [
                  "inscription — so a word belongs to a reading and its editor, not to a "
                  "stone. Picks up the DHd 2020 extractor on the successor corpus.",
     },
+    {
+        "slug": "readings.html",
+        "nav": "Disagreement",
+        "title": "Where the editors disagree",
+        "blurb": "Stones that carry more than one reading, coloured by how far the "
+                 "current edition sits from what an earlier editor saw. Filterable by "
+                 "editor, and by whether a formulaic word is what is at stake.",
+    },
 ]
 
 
@@ -1201,6 +1568,50 @@ def _card(page: dict, figures: list[tuple[str, str]]) -> str:
             f'      <h2>{page["title"]}</h2>\n'
             f'      <p>{page["blurb"]}</p>\n'
             f'      <div class="figs">{figs}</div>\n    </a>')
+
+
+def build_readings(analysis: list[dict], place_records: list[dict], summary: dict,
+                   docs: Path, root: Path | None = None,
+                   provenance: dict | None = None) -> dict:
+    """docs/readings.html -- stones with competing readings, by how far apart."""
+    docs.mkdir(parents=True, exist_ok=True)
+    coords = {r["ogham_id"]: r for r in place_records if r.get("lat") is not None}
+
+    stones, editors, bands = [], {}, {}
+    for rec in analysis:
+        place = coords.get(rec["ogham_id"])
+        if place is None:
+            continue
+        stones.append({
+            "id": rec["ogham_id"], "title": rec["title"], "ciic": rec["ciic"],
+            "county": place.get("pn_county", ""), "country": place.get("pn_country", ""),
+            "lat": place["lat"], "lon": place["lon"],
+            "band": rec["band"], "sim": rec["min_similarity"],
+            "editors": rec["editors"], "formula": rec["formula_at_stake"],
+            "pairs": [{"editor": p["editor"], "sim": p["similarity"], "band": p["band"],
+                       "cur": p["current_norm"], "oth": p["other_norm"],
+                       "onlyCur": p["only_current"], "onlyOth": p["only_other"],
+                       "gained": p["formula_gained"], "lost": p["formula_lost"]}
+                      for p in rec["pairs"]],
+        })
+        bands[rec["band"]] = bands.get(rec["band"], 0) + 1
+        for e in rec["editors"]:
+            editors[e] = editors.get(e, 0) + 1
+
+    html = (_page(HEAD_READINGS, READINGS_BODY, READINGS_JS)
+            .replace("__NAV__", nav_html("readings.html"))
+            .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
+            .replace("__BANDS__", json.dumps({"bands": bands, "editors": editors},
+                                             ensure_ascii=False, separators=(",", ":")))
+            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__PROV__", _provenance_html(provenance or {})))
+    (docs / "readings.html").write_text(html, encoding="utf-8")
+
+    rel = (lambda x: x.relative_to(root)) if root else (lambda x: x)
+    size = (docs / "readings.html").stat().st_size / 1024
+    print(f"  -> wrote {rel(docs / 'readings.html')} ({len(stones)} stones, "
+          f"{len(editors)} editors, {size:.0f} KB)")
+    return {"stones": len(stones), "editors": len(editors)}
 
 
 def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],

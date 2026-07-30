@@ -148,22 +148,56 @@ def find(text: str, words: list[dict]) -> list[dict]:
 # --- reading extraction -------------------------------------------------------
 
 EDITOR_PREFIXES = {"RHY": "Rhys", "MAC": "Macalister", "DIA": "Diack",
-                   "JAC": "Jackson", "FOR": "Forsyth"}
+                   "JAC": "Jackson", "FOR": "Forsyth", "OKA": "O\u2019Kelly",
+                   "BRA": "Brash", "MCM": "McManus", "PAD": "Padel", "WES": "West",
+                   "BRO": "Broderick", "SHE": "Shee", "CLA": "Clarke",
+                   "FUL": "Fulford", "JOH": "Johnson"}
+
+# The apparatus attributes a reading in one of two ways: @source on the <rdg>, or
+# prose in the <app>'s <note> -- "Macalister (1945, 469) read:". Only 53% of
+# readings carry @source, so the note has to be parsed as well; otherwise half the
+# corpus's competing readings end up anonymous.
+ATTRIB_RE = re.compile(r"([A-Z][\w\u2019'\-]+(?:\s+[A-Z][\w\u2019'\-]+)*?)\s*\((\d{4})")
+# <rdg>Ogham: LA[TI]NI</rdg> -- the script of the reading, not part of the text
+SCRIPT_RE = re.compile(r"^\s*(Ogham|Roman|Latin)\s*:\s*", re.I)
 
 
 def editor_label(source_id: str) -> str:
+    """Human label for a @source id such as MAC1945. Empty for an unknown source --
+    an unattributed reading must not be mistaken for the current edition."""
     m = re.match(r"([A-Za-z]+)(\d{4})", source_id or "")
     if not m:
-        return source_id or "OG(H)AM edition"
+        return ""
     return f"{EDITOR_PREFIXES.get(m.group(1).upper(), m.group(1).title())} {m.group(2)}"
+
+
+def attribution_from_note(note_text: str) -> str:
+    """'Macalister (1945, 469) read:' -> 'Macalister 1945'."""
+    m = ATTRIB_RE.search(note_text or "")
+    if not m:
+        return ""
+    name = m.group(1).rstrip().removesuffix("\u2019s").removesuffix("'s").strip()
+    surname = name.split()[-1] if name else ""
+    return f"{surname} {m.group(2)}".strip()
 
 
 def _text(el) -> str:
     return re.sub(r"\s+", " ", "".join(el.itertext())).strip() if el is not None else ""
 
 
+def _split_script(text: str) -> tuple[str, str]:
+    m = SCRIPT_RE.match(text or "")
+    return (m.group(1).lower(), text[m.end():].strip()) if m else ("ogham", text)
+
+
 def readings_of(tree) -> list[dict]:
-    """Current edition plus every historical <rdg>, in that order."""
+    """Current edition plus every competing <rdg>, in that order.
+
+    Two things the encoding makes necessary. Most <app> elements (305 of 434) hold
+    only a <note> -- an editorial remark, not a rival reading -- and must not be
+    counted. And where a <rdg> has no @source, the attribution sits in that note,
+    so it is parsed from there.
+    """
     out = []
     div = tree.find(f".//{{{TEI}}}div[@type='edition'][@subtype='transliteration']")
     if div is None:
@@ -173,14 +207,35 @@ def readings_of(tree) -> list[dict]:
         text = _text(ab[-1]) if ab else _text(div)
         if text:
             resp = (div.get("resp") or "").lstrip("#") or "OGHAM"
+            script, text = _split_script(text)
             out.append({"id": f"OGHAM_{resp}", "editor": f"OG(H)AM edition ({resp})",
-                        "text": text, "current": True})
-    for rdg in tree.findall(f".//{{{TEI}}}rdg"):
+                        "text": text, "script": script, "current": True})
+
+    seen = set()
+    for app in tree.findall(f".//{{{TEI}}}app"):
+        note = app.find(f"{{{TEI}}}note")
+        from_note = attribution_from_note(_text(note)) if note is not None else ""
+        for rdg in app.findall(f"{{{TEI}}}rdg"):
+            seen.add(rdg)
+            src = (rdg.get("source") or rdg.get("resp") or "").lstrip("#")
+            text = _text(rdg)
+            if not text:
+                continue
+            script, text = _split_script(text)
+            out.append({"id": src or from_note or "unattributed",
+                        "editor": editor_label(src) or from_note or "unattributed reading",
+                        "text": text, "script": script, "current": False})
+    for rdg in tree.findall(f".//{{{TEI}}}rdg"):      # any <rdg> outside an <app>
+        if rdg in seen:
+            continue
         src = (rdg.get("source") or rdg.get("resp") or "").lstrip("#")
         text = _text(rdg)
-        if text:
-            out.append({"id": src or "rdg", "editor": editor_label(src),
-                        "text": text, "current": False})
+        if not text:
+            continue
+        script, text = _split_script(text)
+        out.append({"id": src or "unattributed",
+                    "editor": editor_label(src) or "unattributed reading",
+                    "text": text, "script": script, "current": False})
     return out
 
 
@@ -217,7 +272,7 @@ def scan(files, words: list[dict], parse_xml, stone_key, is_edition) -> list[dic
 
 # --- outputs ------------------------------------------------------------------
 
-CSV_FIELDS = ["ogham_id", "ciic", "title", "reading_id", "editor", "is_current_edition",
+CSV_FIELDS = ["ogham_id", "ciic", "title", "reading_id", "editor", "script", "is_current_edition",
               "word", "mode", "variant", "token", "translation", "wikidata",
               "reference", "reading_text"]
 
@@ -229,7 +284,7 @@ def write_csv(records: list[dict], path: Path) -> int:
             for m in r["matches"]:
                 rows.append({
                     "ogham_id": rec["ogham_id"], "ciic": rec["ciic"], "title": rec["title"],
-                    "reading_id": r["id"], "editor": r["editor"],
+                    "reading_id": r["id"], "editor": r["editor"], "script": r.get("script", ""),
                     "is_current_edition": "yes" if r["current"] else "no",
                     "word": m["word"], "mode": m["mode"], "variant": m["variant"],
                     "token": m["token"], "translation": m["translation"],

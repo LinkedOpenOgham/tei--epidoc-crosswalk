@@ -1,0 +1,139 @@
+ogham_id,ciic,title,script,editor,similarity,band,formula_gained,formula_lost,only_in_current_edition,only_in_this_reading,current_edition_text,this_reading_text
+E-CON-001,470,Worthyvale,ogham,Macalister 1945,0.444,far apart,,,GNI,LATINI,[---]GNI,LA[TI]NI
+E-CON-X03,473,St Clement,ogham,Macalister 1945,0.333,far apart,MAQI,,IGNIOC,VITALI MAQI TORICI,IGNIOC,VITALI MAQI TORICI
+E-CON-X04,478,St Endellion,ogham,Macalister 1945,0.364,far apart,,,IHCHIC IACIT NADOTTI FILIVS,,BROCAGNI IHCHIC IACIT NADOTTI FILIVS,BROCAGNI
+E-DEV-001,489,Fardel,ogham,Sims-Williams 2003,0.778,diverging,,,SVAQQUCI QICI,SVANNUCI RINI,SVAQQUCI MAQI QICI,SVA[NN]UCI MAQI [R]I[N]I
+E-DEV-001,489,Fardel,ogham,Macalister 1945,1.000,identical,,,,,SVAQQUCI MAQI QICI,SVAQQUCI MAQI QICI
+E-DEV-002,488,Roborough Down,ogham,Macalister 1945,0.933,close,,,ENABARRI,ENABARR,ENABARRI,ENABARR
+E-HAM-001,496,Silchester,ogham,unattributed reading,0.778,diverging,,MAQI MUCOI,TEBICATOS MAQI MUCOI,TEBICATOB HIMUCO,TEBICATOS MAQI MUCOI ...,TEBICATOḄ[.. ? ..]ḤIMUCO[---]
+E-HAM-001,496,Silchester,ogham,Fulford 2000,0.621,diverging,,MAQI MUCOI,MAQI MUCOI,,TEBICATOS MAQI MUCOI ...,TEBICATO[S]
+E-NFK-001,,Weeting-with-Broomhill,ogham,Clarke 1952,0.977,close,,,EVUTUSUDUO,EVUTUSUDU,EVUTUSUDUO GEDEVIMUTOS,EVUTUSUD(U) GEDEVI(MUTO)S
+E-NFK-001,,Weeting-with-Broomhill,ogham,Clarke 1952,0.233,far apart,,,EVUTUSUDUO GEDEVIMUTOS,ULUCUVUTE COVUMITELEG,EVUTUSUDUO GEDEVIMUTOS,(U)LUCUVUTE C(OVUM)ITELEG
+E-NFK-001,,Weeting-with-Broomhill,ogham,Johnson 2020,0.611,diverging,,,,OR ULUCUVUTE OR COVUMITELEG,EVUTUSUDUO GEDEVIMUTOS,EVUTUSUD(U/O) or (U)LUCUVUTE GEDEVI(MUTO)S or C(OVUM)ITELEG
+E-WRY-001,,Vale of York brooch fragment,ogham,Johnson 2020,0.909,close,,,ATFCA,ATFCAM,᚛ATFCA᚜,ATFC[A/M]
+I-ANT-001,309,Carn Coim | Carncome 1,ogham,unattributed reading,0.061,far apart,,MAQI MUCOI,TORAESCEUSAS MAQI MUCOI MEUTINI,UE,TORAESCEUSAS MAQI MUCOI MEUTINI,UE
+I-ANT-001,309,Carn Coim | Carncome 1,ogham,unattributed reading,0.121,far apart,,MAQI MUCOI,TORAESCEUSAS MAQI MUCOI MEUTINI,OI,TORAESCEUSAS MAQI MUCOI MEUTINI,OI
+I-ANT-001,309,Carn Coim | Carncome 1,ogham,unattributed reading,0.061,far apart,,MAQI MUCOI,TORAESCEUSAS MAQI MUCOI MEUTINI,IO,TORAESCEUSAS MAQI MUCOI MEUTINI,IO
+I-ANT-002,310,Carn Coim | Carncome 2,ogham,Macalister 1945,0.467,far apart,,MAQI,CAGINADI MAQI VOBARACI,CALINADI,CAGINADI MAQI VOBARACI,CALINADI
+I-ANT-003,,Gartree,ogham,McQuillan 2003,0.632,diverging,,,AUVDNOCMOS,AEF NOCMS,AUVDNOCMOS,AEF NOCMS
+I-ARM-001,311,Droim Conmhaoil | Drumconwell,ogham,Macalister 1945,0.895,close,,,DAENEGLO QETAI,DINEGLO QETAIS,DAENEGLO MAQI Q[E]TAI[---],DINEGLO MAQI QETAIS
+I-CAR-001,15,Cluain Mhór | Clonmore,ogham,Macalister 1945,0.000,far apart,,,GUSCU,RENI,GUSCU,RENI
+I-CLA-003,53,Inis | Ennis bead,ogham,Macalister 1945,0.143,far apart,,,DMVA VA,ATUCMLU,?DMVA?VA,ATUCMLU
+I-COR-001,55,An Com Liath Thoir | Coomleagh East,ogham,Macalister 1945,0.167,far apart,ANM MAQI MUCOI,,TETA,ANM SAINA MAQ OGALA MUCOI TEMOCA,.. ? ..TETA,ANM SAINA MAQ OGALA MUCOI TEMOCA
+I-COR-005,59,Baile na bPórtach | Ballynabortagh 1,ogham,Macalister 1945,0.480,far apart,,,U IAIBODAS RTAGNI,UIVAIBES,[---]U[---]IAIBODAS [---]RTAGNI,UIVAIBES
+I-COR-005,59,Baile na bPórtach | Ballynabortagh 1,ogham,Rhys 1908,0.519,diverging,,,U IAIBODAS RTAGNI,VINIOBODAS,[---]U[---]IAIBODAS [---]RTAGNI,VINIOBODAS
+I-COR-008,,Baile na bPórtach | Ballynabortagh 4,ogham,Ron 2009,0.800,close,,,DCA CIOT,LCACIOT,[---]DCA[---]CIOT,LCACIOT
+I-COR-012,64,Gleann an Mhuilinn | Glenawillin 2,ogham,Macalister 1945,0.875,close,,,LODIMANI,LODIMONI,LODIMANI,LODIMONI
+I-COR-012,64,Gleann an Mhuilinn | Glenawillin 2,ogham,Oke 1945,0.875,close,,,LODIMANI,LADIMANI,LODIMANI,LADIMANI
+I-COR-020,72,Alltach | Aultagh,ogham,Macalister 1945,0.483,far apart,,,I UHE VHO ADVAS,UBEDABO ALTASI,I᚛UHE VHO (vac.) ADVAS,UBEDABO ALTASI.
+I-COR-028,79,Gleann an Phúca | Glenaphuca 1,ogham,Bar 1897,0.833,close,MUCOI,,MUC COU,MUCOI,ILUNA MUC[---]COU,ILUNA MUC[OI...]
+I-COR-028,79,Gleann an Phúca | Glenaphuca 1,ogham,Macalister 1945,0.727,diverging,,,ILUNA COU,ELUNA,ILUNA MUC[---]COU,ELUNA MU[C ...
+I-COR-028,79,Gleann an Phúca | Glenaphuca 1,ogham,Macalister 1945,0.609,diverging,,,ILUNA COU,TULENA,ILUNA MUC[---]COU,TULENA MU[C--
+I-COR-031,82,Baile an Chamhaicigh Thuaidh | Ballyknock North 1,ogham,Bar 1891,0.762,diverging,,MAQI,MAQI VILEBU,MAQA AILILA,MAILAGURO MAQI [---]VILEBU,MAILAGURO MAQ[A AI]LILA
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,ogham,Macalister 1907,0.653,diverging,ANM,,LAMADULICCI MAC MAIC BROCC,ANM DULICCI MACI EBRASI,LAMADULICCI MAC MAIC BROCC,[A]NM DULICCI MACI EBR[A]S[I]
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,ogham,Macalister 1945,0.962,close,,,LAMADULICCI,LAMADILICCI,LAMADULICCI MAC MAIC BROCC,LAMADILICCI MAC MAIC BROCC
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,ogham,McManus 2004,0.851,close,,,LAMADULICCI MAIC BROCC,LAMADILICCI CBROC,LAMADULICCI MAC MAIC BROCC,L[A]MaDILICCi MAC[ ]CBROC
+I-COR-043,94,Baile an Chamhaicigh Thuaidh | Ballyknock North 13,ogham,Macalister 1945,0.919,close,,,D MM,DOMMO,D[---]MM[---] MACI VEDUCERI,DOMMO MACI VEDUCERI
+I-COR-045,96,Baile an Chamhaicigh Thuaidh | Ballyknock North 15,ogham,Macalister 1945,0.875,close,,,COVALUTI,COVALOTI,COVALUTI,COVALOTI
+I-COR-052,103,Barr an Chárthainn | Barrahaurin,ogham,Macalister 1945,0.936,close,,,MMAQI,GAQI,CARRTTACC MMAQI MU vac. CAGG[I(?)---],CARRTTACC GAQI MU CAGG[I]
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,ogham,Macalister 1945,1.000,identical,,,,,ANM NETACUNAS CELI VIDETTAS,ANM NETACUNAS CELI VIDETTAS
+I-COR-056,107,Gleann na gCloch Thuaidh | Glenaglogh,ogham,Macalister 1945,1.000,identical,,,,,CUNAGUSSOS MA[---],CUNAGUSSOS MA
+I-COR-067,117,Cnoc Seanmhaí | Knockshanawee 6,ogham,Macalister 1945,0.727,diverging,,,COLLI,COLLOS,COLLI,COLLOS
+I-COR-068,,Caisleán Chúirt an Bharraigh | Barryscourt Castle,ogham,Macalister 1932,1.000,identical,,,,,ILDIMECGMIRE,ILDIMECGMIRE
+I-COR-069,118,Móin an tSagairt | Monataggart 1,ogham,unattributed reading,0.652,diverging,,,VEQREQ MOQOI GLUNLEGGET,TENREN MONOI GDUQDEGGEV,VEQREQ (vac.) MOQOI GLUNLEGGET,TENREN (vac.) MONOI GDUQDEGGEV
+I-COR-079,127,An Tulaigh Mhór | Tullig More,ogham,McManus 2004,0.857,close,,,LASOG BMTTMACDE,LAS OG BM TTM CGE,MAQI LASOG BMTTMACDE,MAQI LAS?OG B/M[ ]TTM[ ]Cge
+I-COR-079,127,An Tulaigh Mhór | Tullig More,ogham,Macalister 1945,0.900,close,,MAQI,MAQI LASOG BMTTMACDE,MAQILASPOG B TTMACDE,MAQI LASOG BMTTMACDE,MAQILASPOG B TTMACDE
+I-COR-088,,Bun an Chnoic | Underhill 1,ogham,Oke 1968,1.000,identical,,,,,MOESAC,MOESAC (or SACEOM)
+I-COR-089,,Bun an Chnoic | Underhill 2,ogham,Shee 1968,1.000,identical,,,,,MOUNIN,MOUNIN
+I-COR-090,,Bun an Chnoic | Underhill 3,ogham,Shee 1968,0.919,close,,,ADARAGN,ADARUN,ADARAGN MACI COLALI,ADARUN MACI COLALI
+I-COR-093,,Bun Coille | Bunkilla,ogham,Lankford 1993,0.857,close,KOI,,MAQQILASIRE BIRRAC,LASIR KOI BIRRACIAS,ANM (vac.) MAQQILASIRE MAQQI BIRRAC,ANM MAQQI-LASIR K[O]I MA(Q)QI BIR(R)AC(I)AS
+I-COR-093,,Bun Coille | Bunkilla,ogham,Lankford 1993,0.903,close,,,MAQQILASIRE BIRRAC,LASIREON BIRRACIAS,ANM (vac.) MAQQILASIRE MAQQI BIRRAC,ANM MAQQI-LASIRE(O)N MAQQI BIR(R)ACIAS
+I-COR-094,,An Leaca Bhán | Lackabane,ogham,unattributed reading,0.250,far apart,,,QUTQ,NUVN,QUTQ,NUVN (ᚅᚒᚃᚅ)
+I-KER-009,142,An Eaglais | Aglish 2,ogham,Macalister 1945,0.957,close,,,VUD,VU,[---]CELI AVI VUḌ[---],...] CELI AVI VU[...
+I-KER-012,145,Airghleann | Arraglen,ogham,unattributed reading,0.476,far apart,,MAQI,QRIMITIR RONANN MAQ COMOGANN,Q MAN SOMOGAQQ,QRIMITIR (vac.) RONANN MAQ COMOGANN,Q MAN SOMOGAQQ
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,ogham,Macalister 1945,1.000,identical,,,,,GṚAVICAS MAQI MUCOI [DO(?)]VVỊṆỊẠṢ,GṚAVICAS MAQI MUCOI/ [DO(?)]VVỊṆỊẠṢ
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,ogham,Cuppage 1986,0.760,diverging,,,GRAVICAS DO VVINIAS,NAVICAS S,GṚAVICAS MAQI MUCOI [DO(?)]VVỊṆỊẠṢ,̣ ̣ ? ̣ ̣NAVICAS MAQI MUCO[I]/ ̣ ̣ ? ̣ ̣S
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,ogham,McManus 1991,0.750,diverging,,MUCOI,MUCOI DO VVINIAS,MUCO,GṚAVICAS MAQI MUCOI [DO(?)]VVỊṆỊẠṢ,G̣ṚAVICAS MAQI MUCO ̣ ̣ ? ̣ ̣/
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,ogham,McManus 1991,0.878,close,,,CUNAMAQQI,CUBMIMAQQI,CUṆẠMAQQ̣I AVI CỌRBBI,CUb/miMAQQI AVI CORBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,ogham,Macalister 1945,1.000,identical,,,,,CUṆẠMAQQ̣I AVI CỌRBBI,CUNAMAQQI AVI CORBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,ogham,O'Kelly 1986,0.850,close,MAQI,,CUNAMAQQI CORBBI,CULI MAQQI CORBI,CUṆẠMAQQ̣I AVI CỌRBBI,CULI MAQQI AVI CORBI
+I-KER-053,185,Inis Mhic Aoibhleáin | Inishvickillane,ogham,Macalister 1945,0.927,close,,,BB,COBBA,[---]BB[---] AVI VLATIAMI MAQ[---],[CO]BB[A?] AVI VLATIAMI MAQ[
+I-KER-053,185,Inis Mhic Aoibhleáin | Inishvickillane,ogham,Brash 1879,0.333,far apart,,AVI MAQI,BB AVI VLATIAMI MAQ,VNDIABIBO T,[---]BB[---] AVI VLATIAMI MAQ[---],ᚃᚅᚇᚔᚐᚁᚔᚁᚑ ᚈ (VNDIABIBO T)
+I-KER-078,209,Cill Chuallachta Thoir | Kilcoolaght East 4,ogham,Macalister 1945,0.966,close,,,AGGO,GGO,AGGO MAQI AGILL,[---]GGO MAQI AGILL[---̣]
+I-KER-135,1086,Cill Ghuilbin Thoir | Kilgulbin East,ogham,Macalister 1945,0.417,far apart,,,BLADNACH CUILEN BLADNACH COGRA CEDENA,COGRACETENA,᚛BLADNACH CUILEN ᚛BLADNACH COGRA.CEDENA,COGRACETENA
+I-KIK-008,34,An Liagán | Legan,ogham,Bar 1896,0.906,close,KOI,,OI RINI,KOI IREI,LOBBI OI MAQQI MUCCOI RINI,LOBB[I] KOI MAQQI MUCCỌỊ ỊRẸỊ
+I-KIK-008,34,An Liagán | Legan,ogham,Bar 1896,0.486,far apart,,MAQI,LOBBI OI MAQQI MUCCOI RINI,LL MAQQ M C,LOBBI OI MAQQI MUCCOI RINI,[..]LL[..][....]MAQQ[..]m[..]C[...]
+I-KIK-011,36,Lamóg | Lamoge 1,ogham,Macalister 1945,0.833,close,MUCOI,MAQI,MAQI,MAOI MUCOI,SEVERRIT [--- MAQI] [RO]TTAIS,SEVERRIT MAOI MUCOI ROTTAIS
+I-MAY-001,3,An tOileán | Island,ogham,unattributed reading,0.516,diverging,,AVI,CUNALEGI AVI CUNACANOS,CUNALEGEA,CUNALEGI (vac.) AVI CUNACANOS,CUNALEGEA
+I-MAY-004,6,An Baile Beag | Ballybeg,ogham,Macalister 1945,0.833,close,,,CASEGNI,QASIGNI,CASEGNI MAQI[---],QASIGNI MAQI
+I-MAY-005,7,Corr Odhar | Corrower,ogham,Macalister 1945,0.923,close,,,CERAN ADECETAIMIN,CERANI ATHECETAIMIN,MAQ CERAN AVI ADECETAIMIN,MAQ CERANI AVI ATHECETAIMIN
+I-MAY-006,8,Dumhach Mhic Eoghain | Dooghmakeon,ogham,Rhys 1898,0.250,far apart,,MAQI,OVI MAQI,CORBAGNI,[---]OVI MAQI,CORBAGNI
+I-MAY-007,9,Achadh Liag | Aghaleague,ogham,Macalister 1919,0.667,diverging,,,MAQACTO GAR,OTTACI GARA,MAQACTO MAQ GAR[---],OTTACI MAQ GARA
+I-TYR-001,317,Achadh Scríobach | Aghascrebagh,ogham,Macalister 1945,0.519,diverging,,MAQI,DOTETTO MAQI,,DOTETTO MAQỊ MAGLAN[I(?)],MAGLANI
+I-WAT-002,263,Aird Mhór | Ardmore 1,ogham,Macalister 1945,0.962,close,NIOTA,,NETASEGAMONAS DOLATIBIGAISGO,NETA SEGAMONAS DOLATI BIGAIS GOB,LUGUDECCAS MAQI[---] MUCOI NETASEGAMONAS DOLATIBIGAISGO[---],LUGUDECCAS MAQI MUCOI NETA-SEGAMONAS DOLATI BIGAIS-GOB
+I-WAT-006,267,An Drom Mór | Dromore 2 (Cill Tíre),ogham,Macalister 1945,0.875,close,,,MOCOI LUG,MUCOI LAQ,MEDUSI MACI LU MOCOI LUG,MEDUSI MACI LU MUCOI LAQ.
+I-WAT-048,307,Bearna na Gaoithe | Windgap,ogham,Macalister 1945,0.190,far apart,,MAQI MUCOI,MODDAGNI MAQI GATTAGNI MUCOI LUGUNI,GATIGNI,MODDAGNI MAQI GATTAGNI MUCOI LUGUNI,GATIGNI
+M-IOM-001,503,Ballaqueeney 1,ogham,unattributed reading,0.930,close,,,DROATA,DRUTA,DOVAIDONA MA QI DROATA,DOVAIDONA MA QI DRUTA
+M-IOM-005,,Kirk Michael,ogham,Sou 1887,0.588,diverging,AVI,,BLVSNHDTCQMGNGSTRAOUEI MUUCOMALLAFIUAMULLGUC,MUUCOMALL AVI UA MULLGUC,BLVSNHDTCQMGNGStRAOUEI MUUCOMALLAFIUAMULLGUC,MUUCOMALL AVI UA MULLGUC
+M-IOM-005,,Kirk Michael,ogham,West 2011,0.244,far apart,,,BLVSNHDTCQMGNGSTRAOUEI MUUCOMALLAFIUAMULLGUC,MAL LUMKUN RAISTI KRUS THENA EFTER MAL MURU FUSTRA SINE TOTIRTUFKALS KONA IS ATHISL ATI,BLVSNHDTCQMGNGStRAOUEI MUUCOMALLAFIUAMULLGUC,MAL: LUMKUN: RAISTI: KRUS: ThENA: EFTER: MAL: MURU: FUSTRA: SINE: TOTIRTUFKALS: KONA: IS: AThISL: ATI+
+M-IOM-005,,Kirk Michael,ogham,West 2011,0.241,far apart,,,BLVSNHDTCQMGNGSTRAOUEI MUUCOMALLAFIUAMULLGUC,BETRA ES LAIFA FUSTRA KU AN AN SON ILAN,BLVSNHDTCQMGNGStRAOUEI MUUCOMALLAFIUAMULLGUC,[B]ETRA : ES : LAIFA : FUSTRA : KUÞAN : ÞAN : SON : ILAN +
+M-IOM-006,,Maghal | Maughold 2,ogham,unattributed reading,0.068,far apart,,,BLVSNHDTCQ,IUAN BRIST RAISTI THISIR RUNUR FUTHORK HNIAS TBML,᚛BLVSNHDTCQ[---],[I]UAN : BRIST : RAISTI : THISIR : RUNUR FUTHORK HNIAS TBML
+M-IOM-007,500,Knoc y Doonee,ogham,Broderick 2021,0.909,close,,,AMBICATOS ROCATOS,IMBICATOS RICATOS,AMBICATOS MAQI ROCATOS,IMB[I]CATOS MAQI RICATOS
+M-IOM-007,500,Knoc y Doonee,ogham,Broderick 2021,0.444,far apart,,MAQI,AMBICATOS MAQI ROCATOS,AMMECATI FILIUS ROCATI HIC IACIT,AMBICATOS MAQI ROCATOS,AMMECAT[I] FILIUS ROCAT[I] HIC IACIT
+M-IOM-008,1068,Ballavarkish,ogham,unattributed reading,0.759,diverging,,,LOGGABGGGAGOGAML,LOGGABRROGAML,LOGGABGGGAGOGAML,LOGGABRROGAML
+M-IOM-008,1068,Ballavarkish,ogham,unattributed reading,0.765,diverging,,,LOGGABGGGAGOGAML,OTDDABGGRGAGAOGAML,LOGGABGGGAGOGAML,OTDDAB(GG/R)GAGAOGAML
+M-IOM-008,1068,Ballavarkish,ogham,Macalister 1945,0.250,far apart,,,LOGGABGGGAGOGAML,LAGUBERI,LOGGABGGGAGOGAML,LAGUBERI
+M-IOM-008,1068,Ballavarkish,ogham,Macalister 1945,0.222,far apart,,,LOGGABGGGAGOGAML,LAGUBE LOMO,LOGGABGGGAGOGAML,LAGUBEηLOMO (listed in footnote)
+M-IOM-009,,Speke Farm Keeill Stone,ogham,unattributed reading,1.000,identical,,,,,BAC OCOICAT IALL,BAC OCOICAT IALL
+M-IOM-009,,Speke Farm Keeill Stone,ogham,West 2011,0.703,diverging,MAQI MUCOI,,BAC OCOICAT IALL,A MACI MUCOI CATIALLI,BAC OCOICAT IALL,[--]A MACI MUCOI CATIALL[I]
+S-ABD-001,,Newton,ogham,Forsyth 1996,0.329,far apart,,KOI,IDDARRNNN VORRENNI KOI ROSRR,THREE PERSONAL NAMES WITH NO FORMULA WORDS IDARNON VORENN,IDDARRNNN VORRENNI KOI ROSRR,"1) three personal names with no formula words: 'Idarnon (, or :) Vorenn (and) [?]'"
+S-ABD-001,,Newton,ogham,Forsyth 1996,0.507,diverging,,,IDDARRNNN VORRENNI ROSRR,THREE NAMES PLUS IDARNON VORENN,IDDARRNNN VORRENNI KOI ROSRR,2) three names plus KOI: 'Idarnon Vorenn koi [?]'
+S-ABD-001,,Newton,ogham,Forsyth 1996,0.179,far apart,,KOI,IDDARRNNN VORRENNI KOI ROSRR,THREE NAMES PLUS IPE EITHER X Y IPE Z OR X Y IPE Z,IDDARRNNN VORRENNI KOI ROSRR,"3) three names plus ipe (reading X to right of the stem-line for 'P'): either 'X, Y ipe Z ', or 'X, Y, ipe-Z'."
+S-ABD-006,,Dyce,ogham,Forsyth 2001,0.583,diverging,,,EOTTASSARHETDDEDDTS,,EOTTASSARHETDDEDDTS MAQQ ROGODDADD,(eottassarrhetoddeddots) maqq Rogoddadd
+S-ARL-001,506,Gigha 1,ogham,Rhys 1899,0.600,diverging,,MAQI,MAQ COGIN,MAQICAGILEB,[---]MAQ[---]COGIN[---],MAQICAGILEB
+S-ARL-001,506,Gigha 1,ogham,Rhys 1901,0.462,far apart,,,MAQ COGIN,OGMA MAQI TIGERNI,[---]MAQ[---]COGIN[---],OGMA MAQI TIGERNI
+S-ARL-001,506,Gigha 1,ogham,Macalister 1902,0.667,diverging,,,COGIN,VICULA COMGINI,[---]MAQ[---]COGIN[---],VICULA MAQ COMGINI
+S-ARL-001,506,Gigha 1,ogham,Macalister 1945,0.615,diverging,,,COGIN,VICULA CUGINI,[---]MAQ[---]COGIN[---],VICULA MAQ CUGINI
+S-ARL-003,,Dún Ad | Dunadd,ogham,Jackson 1965,0.508,diverging,,,AESD VNA VIRRMONAI,UPPER HCSD V NLVH LOWER L VQRRIHMDNHQ,AESD[---]T[---]VNA[---]T VIRRMONAI,Upper: HCSD[.]t[..]v[.](N/LV)H[.]T Lower: L[....]VQR(R/I)HMDNHQ
+S-ARL-003,,Dún Ad | Dunadd,ogham,Padel 1972,0.635,diverging,,,VNA VIRRMONAI,UPPER V NLVA TV LOWER L VIRRHAMDNA,AESD[---]T[---]VNA[---]T VIRRMONAI,Upper: AESD[-]T[-]V[-](N/LV)A [-]T[V Lower: L [....]VIRR(H/A)MDNA
+S-ARL-004,,Lochgoilhead,ogham,Forsyth 1996,0.163,far apart,,,MUDMALIDM,FROM LEFT TO RIGHT THE TEXT READS MUD ALI IN THE OPPOSITE DIRECTION THE TEXT READS ID LUM,᚛MUDMALIDM,From left-to-right the text reads: (/h)MUD(?)ALI( /d) In the opposite direction the text reads: ( /1)ID(?)LUM( lb)
+S-BUT-001,,Blackwaterfoot 1,ogham,Jackson 1973,0.381,far apart,,,MEQE,EOMEDTE OR EOMEQE,[---]MEQE[---],EOMEDTE or EOMEQE
+S-BUT-001,,Blackwaterfoot 1,ogham,Jackson 1973,0.286,far apart,,,MEQE,EVLEMOE OR ENEMOE,[---]MEQE[---],EVLEMOE or ENEMOE
+S-BUT-001,,Blackwaterfoot 1,ogham,Forsyth 1996,0.600,diverging,,,MEQE,H OMEQ,[---]MEQE[---],H(i/e)OMEQ(i/e)[~]
+S-BUT-001,,Blackwaterfoot 1,ogham,Forsyth 1996,0.200,far apart,,,MEQE,ADLEUV,[---]MEQE[---],ADLEUV
+S-BUT-001,,Blackwaterfoot 1,ogham,Forsyth 1996,0.182,far apart,,,MEQE,BLUEDLA,[---]MEQE[---],BLUEDLA
+S-BUT-001,,Blackwaterfoot 1,ogham,Fis 2001,0.200,far apart,,,MEQE,LUEDBH,[---]MEQE[---],LUEDBH
+S-BUT-003,,Inchmarnock 2,ogham,unattributed reading,0.300,far apart,,,GEBAM EX,BAAOMAHBADMA,[---]GEBAM[..]EX,1) B(AA/O/MA)HBAD(M/A)
+S-BUT-003,,Inchmarnock 2,ogham,unattributed reading,0.316,far apart,,,GEBAM EX,MLAHBOAAAMH,[---]GEBAM[..]EX,2) MLAHB(O/AA/AM)H
+S-BUT-003,,Inchmarnock 2,ogham,unattributed reading,0.316,far apart,,,GEBAM EX,ALAHBOAAAMH,[---]GEBAM[..]EX,3) ALAHB(O/AA/AM)H
+S-BUT-004,,Inchmarnock 3,ogham,Low 2008,0.250,far apart,,,M C GGAIX,LEFT TO RIGHT IAGGH S B,᚛M[.]C[---]GGAIX,1) Left to right: IA[G]GH[-]S[-][B]
+S-BUT-004,,Inchmarnock 3,ogham,Tedeschi 2008,0.438,far apart,,,M GGAIX,RIGHT TO LEFT H BGGAI,᚛M[.]C[---]GGAIX,2) Right to left: [H][-]C[-]BGGAI
+S-CAI-001,,Ackergill,ogham,Forsyth 1996,0.824,close,,,NEHTETRI,NEHTETREB,NEHTETRI,NEHTETREB
+S-INV-002,,Bornais,ogham,Forsyth 2012,0.250,far apart,,,EQ BIK,RIGHT TO LEFT IHNE,[---]EQ BIK[---],Right to left: [---]ӾI͕HNE[---]
+S-KCD-002,,Fordoun,ogham,Macalister 1940,0.222,far apart,,,OVV QM C,VUNIMSETTOR BRE ENN,[---]OVV[---]QM[---]C[---],VUN[I]MSETTOR BRE[---EN]N
+S-ORK-002,,Gurness,ogham,Padel 1972,0.105,far apart,,,INEITTEMON MATS,CVAM,INEITTEMON MATS,CVAM
+S-ORK-004,,Birsay 2,ogham,Forsyth 1996,0.727,diverging,,MAQI,MAQI AB,QI A,MAQI:AB[---],-(b+/a+/m +)(a/ )QI(:/ )(t/ )A(b+/a+/m +)-
+S-ORK-005,,Buckquoy,ogham,Forsyth 1995,0.500,diverging,,,BNDCT ANIM L,ENDDACTANIM OR BENDDACTANIML,BNDCT ANIM L,ENDDACTANIM(v/lb) or bENDDACTANIMl.
+S-ORK-005,,Buckquoy,ogham,Rod 2017,0.667,diverging,,,BNDCT ANIM L,VENDDACTANIM,BNDCT ANIM L,VENDDACTANIM
+S-ORK-006,,Birsay 3,ogham,Forsyth 1996,1.000,identical,,,,,[---] MAQQ HOB[---],[---] MAQQ HOB[---]
+S-ORK-007,,Birsay 4,ogham,unattributed reading,1.000,identical,,,,,BAB,BAB
+S-PER-001,,Abernethy 1,ogham,Forsyth 1996,0.100,far apart,,,QMI,LEFT TO RIGHT IMN,[---]QMI[---],Left to right: IMN
+S-SHE-007,,Lunnasting,ogham,Forsyth 1996,1.000,identical,,,,,XTT?CUHXTTS: AHXHHTTANNN: HCCVVEVV: NEHHTON,XTT?CUHXTTS: AHXHHTTANNN: HCCVVEVV: NEHHTON
+S-SHE-007,,Lunnasting,ogham,Forsyth 1996,0.871,close,,,XTT CUHXTTS AHXHHTTANNN NEHHTON,EATT CUHEATTS AIHEAHHTTANNN NEHHTONN,XTT?CUHXTTS: AHXHHTTANNN: HCCVVEVV: NEHHTON,Eatt(o?)cuheatts Aiheahhttannn HCCVVEVV Nehhtonn
+S-SHE-009,,Cunningsburgh 4,ogham,Forsyth 1996,0.600,diverging,,,XTTECG VVR V DATTVB,ETTECO AFFR AF DATTUR,XTTECG[---] [---]VVR[---] [---]V: DATTVB[---],Etteco-[ ]-affr-[ ]-af : dattur
+S-SHE-009,,Cunningsburgh 4,ogham,Forsyth 1996,0.615,diverging,,,XTTECG VVR V DATTVB,ETTECO AW R AW DATTW,XTTECG[---] [---]VVR[---] [---]V: DATTVB[---],Etteco-[ ]-aw(w)r-[ ]-aw: dattw(w)
+S-SHE-009,,Cunningsburgh 4,ogham,Macalister 1940,0.513,diverging,,,XTTECG VVR V DATTVB,ETTECO A TVVALT RTTA,XTTECG[---] [---]VVR[---] [---]V: DATTVB[---],ETTEC[o+- a+]TVVALT- -RTTA-
+S-SHE-010,,Whiteness,ogham,Forsyth 1996,1.000,identical,,,,,[---]NNDAR[---],[---]NNDAR[---]
+S-SHE-010,,Whiteness,ogham,Forsyth 1996,0.200,far apart,,,NNDAR,RALQQ,[---]NNDAR[---],[---]RALQQ[---]
+S-SUT-002,,Latheron,ogham,Macalister 1940,0.800,close,,,B DUNNODNNAT MAQQ NA TU,DUNNODNATMAQQNETU,[---]B DUNNODNNAT MAQQ NA[.]TU[---],DUNNODNATMAQQNETU(or)-
+W-BRE-001,336,Llanddeti,ogham,Macalister 1945,0.235,far apart,,,MAQIDECEDA,Q T C D,MAQIDECEDA,Q-T-C-D
+W-BRE-002,329,Crai | Llywel,ogham,Macalister 1945,0.824,close,,,,BM,S[---]N[---]N[---]N,BM(?)-S-N-N-N
+W-BRE-003,345,Ystradfellte,ogham,Lewis 2007,0.800,close,,,GLUVOC,GLUVOCA I,GLUVOC[---],GLUVOCA [ ] I[ ]
+W-BRE-003,345,Ystradfellte,ogham,Macalister 1945,0.769,diverging,,,GLUVOC,GLUV CI,GLUVOC[---],GL(U)V(0)C(I)
+W-BRE-004,327,Crickhowell,ogham,Macalister 1945,0.588,diverging,,,TURILLI LUNI,TURPILI MOSAC TRALLONI,TURILLI LUNI,TURPILI MOSAC TRALLONI
+W-BRE-005,342,Trallwng,ogham,Macalister 1945,0.872,close,,,CUNACENNI AV,CVNACENNIVI,CUNACENNI AV[.] ILVVETO,CVNACENNIVI ILVVETO
+W-BRE-X02,343,Ystradfellte,ogham,Macalister 1945,0.500,diverging,,,SG,VASSOG,SG,VASSO(G?)
+W-BRE-X03,334,Llanfihangel Cwm Du,ogham,unattributed reading,0.795,diverging,,,CATACVS IACIT TEGERNACVS,CATXCVS IA CP PSSESE RHACVS,CATACVS HIC IACIT FILIVS TEGERNACVS,CATXCVS HIC IA. CP FILIVS PSSESE RHACVS
+W-CMN-001,372,Llangeler,ogham,Edw 2007,1.000,identical,,,,,[---]IBA[---],-IBA-
+W-CMN-001,372,Llangeler,ogham,Macalister 1936,0.194,far apart,MAQI,,IBA,DECCAIBARVALBI MAQI BROCAGNI,[---]IBA[---],[DECCA]IBARVALB(I) [MAQI B]RO[CAG]NI
+W-CMN-X01,364,Henllan Amgoed,ogham,Macalister 1922,0.595,diverging,,,QVENVENDANI FILI BARCVNI,NVENDANIM B R,QVENVENDANI FILI BARCVNI,--]NVENDANIM[--]B[-]R[--

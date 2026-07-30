@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — editorial disagreement</title>
+<meta name="description" content="Ogham stones carrying more than one reading, and how far the current edition sits from earlier ones.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#131c1b; --panel:#1b2725; --panel-2:#233130; --line:#33433f;
+  --text:#e9e5da; --muted:#93a29d; --stone:#b8b2a7;
+  --ie:#5b8c5a; --ni:#9aab3f; --sc:#3f7d8c; --wa:#b07d2b; --en:#7a5c8e; --im:#b0413e;
+  --sans:'IBM Plex Sans',system-ui,-apple-system,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --display:'Vollkorn',Georgia,serif;
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{font-family:var(--sans);background:var(--ink);color:var(--text);overflow:hidden}
+#app{display:flex;height:100vh}
+
+#side{width:342px;flex:0 0 342px;background:var(--panel);border-right:1px solid var(--line);
+  display:flex;flex-direction:column;overflow:hidden}
+header{padding:20px 20px 14px;border-bottom:1px solid var(--line)}
+.stem{display:block;width:100%;height:34px;margin-bottom:11px}
+h1{font-family:var(--display);font-weight:700;font-size:23px;line-height:1.15;margin:0 0 5px}
+.sub{font-size:12.5px;color:var(--muted);line-height:1.5;margin:0}
+.sub a{color:var(--stone)}
+
+.scroll{overflow-y:auto;padding:16px 20px 26px;flex:1}
+.scroll::-webkit-scrollbar{width:8px}
+.scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px}
+
+.tally{font-family:var(--mono);font-size:12px;color:var(--muted);
+  padding:2px 0 14px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tally b{color:var(--text);font-size:22px;font-weight:500;display:block;letter-spacing:-.02em}
+
+.field{display:block;font-size:11px;letter-spacing:.09em;text-transform:uppercase;
+  color:var(--muted);margin:0 0 7px;padding:0}
+input[type=search]{width:100%;padding:9px 11px;background:var(--panel-2);color:var(--text);
+  border:1px solid var(--line);border-radius:3px;font-family:var(--mono);font-size:13px}
+input[type=search]::placeholder{color:#6d7b77}
+input[type=search]:focus{outline:2px solid var(--sc);outline-offset:1px}
+
+fieldset{border:0;padding:0;margin:22px 0 0}
+.opt{display:flex;align-items:center;gap:9px;padding:5px 0;cursor:pointer;font-size:13.5px}
+.opt input{accent-color:var(--sc);margin:0;width:14px;height:14px;flex:0 0 14px}
+.opt .dot{width:11px;height:11px;border-radius:50%;flex:0 0 11px}
+.opt .n{margin-left:auto;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.opt:hover{color:#fff}
+.opt:focus-within{outline:1px solid var(--sc);outline-offset:3px}
+
+.note{font-size:12px;color:var(--muted);line-height:1.55;margin-top:22px;
+  padding-top:15px;border-top:1px solid var(--line)}
+.note code{color:var(--stone);font-size:11.5px}
+details{margin-top:12px}
+details summary{cursor:pointer;font-size:12.5px;color:var(--stone)}
+details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-left:16px;line-height:1.75;margin:8px 0 0}
+.dl{margin-top:16px;font-size:12px;line-height:1.9}
+.dl a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line)}
+.dl a:hover{color:#fff;border-color:var(--sc)}
+.btn{flex:1;padding:8px 6px;font-family:var(--sans);font-size:12px;cursor:pointer;
+  color:var(--text);background:var(--panel-2);border:1px solid var(--line);border-radius:3px}
+.btn:hover{border-color:var(--sc);color:#fff}
+.btn:active{background:var(--sc);color:#0f1918}
+.btn:disabled{opacity:.5;cursor:progress}
+
+nav{display:flex;gap:2px;margin-bottom:14px}
+nav a{flex:1;text-align:center;padding:7px 4px;font-size:12px;letter-spacing:.04em;
+  color:var(--muted);text-decoration:none;background:var(--panel-2);
+  border:1px solid var(--line);border-radius:3px}
+nav a:hover{color:var(--text)}
+nav a[aria-current]{background:var(--sc);border-color:var(--sc);color:#0f1918;font-weight:600}
+
+.wordlist{margin-top:6px}
+.wordgroup{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#6d7b77;
+  margin:16px 0 5px;padding-top:11px;border-top:1px solid var(--line)}
+.wordgroup:first-child{border-top:0;padding-top:0;margin-top:8px}
+.word{display:flex;align-items:baseline;gap:8px;padding:4px 0;cursor:pointer;font-size:13px}
+.word input{margin:0;accent-color:var(--sc);flex:0 0 13px}
+.word b{font-family:var(--mono);font-weight:500;font-size:12.5px}
+.word .tr{color:var(--muted);font-size:11.5px;flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.word .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.word:hover b{color:#fff}
+
+.gloss{background:var(--panel-2);border:1px solid var(--line);border-radius:3px;
+  padding:11px 12px;margin:14px 0 0;font-size:12.5px;line-height:1.55}
+.gloss h2{font-family:var(--display);font-size:19px;margin:0 0 2px;font-weight:600}
+.gloss .meta{color:var(--muted);font-size:11.5px;margin-bottom:7px}
+.gloss a{color:var(--stone)}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--muted);margin-top:11px;
+  align-items:center;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:6px}
+.pop .rdg{font-family:var(--mono);font-size:11.5px;line-height:1.5;margin:0 0 8px}
+.pop .rdg em{color:var(--muted);font-style:normal}
+.pop mark{background:rgba(63,125,140,.45);color:#eef0ea;border-radius:2px;padding:0 1px}
+.pop .badge{display:inline-block;font-size:10px;padding:1px 6px;border-radius:2px;
+  margin-left:6px;font-family:var(--sans);letter-spacing:.02em}
+.pop .gain{color:#9aab3f;font-size:11px}
+.pop .loss{color:#b0413e;font-size:11px}
+
+/* landing page: one centred column, no map */
+body.landing{overflow:auto}
+.wrap{max-width:760px;margin:0 auto;padding:56px 28px 72px}
+.wrap .stem{height:44px;margin-bottom:22px}
+.wrap h1{font-family:var(--display);font-size:38px;line-height:1.08;margin:0 0 12px;font-weight:700}
+.lede{font-size:15.5px;line-height:1.6;color:#c3ccc8;margin:0 0 8px;max-width:60ch}
+.lede code{font-size:13.5px;color:var(--stone)}
+.byline{font-size:12.5px;color:var(--muted);margin:0 0 40px}
+.byline a{color:var(--stone)}
+
+.cards{display:grid;gap:14px;margin-bottom:44px}
+.card{display:block;text-decoration:none;color:inherit;background:var(--panel);
+  border:1px solid var(--line);border-radius:4px;padding:20px 22px;
+  transition:border-color .15s ease,background .15s ease}
+.card:hover{border-color:var(--sc);background:var(--panel-2)}
+.card h2{font-family:var(--display);font-size:22px;margin:0 0 5px;font-weight:600}
+.card p{margin:0 0 13px;font-size:13.5px;line-height:1.55;color:#b9c2be;max-width:58ch}
+.figs{display:flex;gap:26px;flex-wrap:wrap}
+.fig{font-family:var(--mono);font-size:11px;color:var(--muted);line-height:1.35}
+.fig b{display:block;font-size:19px;font-weight:500;color:var(--text);letter-spacing:-.02em}
+.soon{border-style:dashed;opacity:.6}
+.soon:hover{border-color:var(--line);background:var(--panel)}
+
+.section{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  margin:0 0 12px;padding-top:26px;border-top:1px solid var(--line)}
+.files{display:grid;gap:9px;margin:0 0 34px;font-size:13px}
+.files a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line)}
+.files a:hover{color:#fff;border-color:var(--sc)}
+.files span{color:var(--muted);font-size:12px}
+.foot{font-size:12px;color:var(--muted);line-height:1.6}
+.foot a{color:var(--stone)}
+.foot code{font-size:11.5px}
+
+.hex-legend{background:rgba(27,39,37,.93);color:var(--text);padding:8px 11px;
+  border-radius:3px;font-family:var(--mono);font-size:11px;line-height:1.75;
+  box-shadow:0 1px 6px rgba(0,0,0,.3)}
+.hex-legend b{font-family:var(--sans);font-size:11px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);font-weight:500}
+.hex-legend .sw{display:inline-block;width:13px;height:13px;margin-right:7px;
+  vertical-align:-2px;border:1px solid rgba(0,0,0,.35)}
+
+.seg{display:flex;gap:2px;margin:0 0 10px}
+.seg label{flex:1;text-align:center;padding:6px 4px;font-size:12px;cursor:pointer;
+  color:var(--muted);background:var(--panel-2);border:1px solid var(--line);border-radius:3px}
+.seg label:hover{color:var(--text)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg input:checked + span{color:#0f1918}
+.seg label:has(input:checked){background:var(--sc);border-color:var(--sc);
+  color:#0f1918;font-weight:600}
+.seg label:focus-within{outline:2px solid var(--sc);outline-offset:2px}
+#hexsize,#hexscale{display:none}
+#hexsize.on,#hexscale.on{display:flex}
+
+#map{flex:1;background:#e8e6df}
+.leaflet-container{font-family:var(--sans);background:#e8e6df}
+.pin{border-radius:50%;border:1.6px solid rgba(19,28,27,.7);box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.pin.vague{border-style:dashed;background:transparent!important}
+
+/* clusters: drawn entirely in CSS, no sprite sheets, no default stylesheet */
+.ogham-cluster{background:rgba(51,67,63,.35);border-radius:50%;
+  transition:background .15s ease}
+.ogham-cluster:hover{background:rgba(63,125,140,.45)}
+.ogham-cluster div{width:30px;height:30px;margin:5px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  color:#eef0ea;font-family:var(--mono);font-size:12px;font-weight:500;
+  box-shadow:0 1px 4px rgba(0,0,0,.28)}
+.ogham-cluster.sm div{background:#4a635e}
+.ogham-cluster.md{background:rgba(51,74,70,.34)}
+.ogham-cluster.md div{background:#334a46;font-size:12.5px}
+.ogham-cluster.lg div{background:#1d2b28;font-size:13px}
+.ogham-cluster.lg{background:rgba(29,43,40,.32)}
+
+.leaflet-popup-content-wrapper{background:var(--panel);color:var(--text);border-radius:3px;
+  box-shadow:0 3px 16px rgba(0,0,0,.35)}
+.leaflet-popup-tip{background:var(--panel)}
+.leaflet-popup-content{margin:15px 17px;font-size:13px;line-height:1.5;max-width:290px}
+.leaflet-container a.leaflet-popup-close-button{color:var(--muted)}
+.pop h2{font-family:var(--display);font-size:17px;margin:0 0 2px;font-weight:600;line-height:1.2}
+.pop .where{color:var(--muted);font-size:12.5px;margin-bottom:10px}
+.pop .flag{display:inline-block;font-size:11px;padding:2px 7px;border-radius:2px;
+  background:rgba(176,125,43,.22);color:#e0bd77;margin-bottom:9px}
+.pop dl{display:grid;grid-template-columns:auto 1fr;gap:2px 11px;margin:0 0 10px;
+  font-family:var(--mono);font-size:11.5px}
+.pop dt{color:var(--muted)}
+.pop dd{margin:0;word-break:break-all}
+.pop .links a{color:var(--stone);font-size:12px;margin-right:11px}
+.leaflet-control-attribution{background:rgba(255,255,255,.82);font-size:10.5px}
+
+@media (max-width:760px){
+  #app{flex-direction:column}
+  #side{width:100%;flex:0 0 auto;max-height:48vh;border-right:0;border-bottom:1px solid var(--line)}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe with the crossbar that softens it. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Where the editors disagree</h1>
+      <p class="sub">Stones whose inscription has been read more than one way, and how
+      far apart those readings are.</p>
+    </header>
+    <div class="scroll">
+      <nav>
+        <a href="index.html">Overview</a>
+        <a href="findspots.html">Findspots</a>
+        <a href="words.html">Formulaic words</a>
+        <a href="readings.html" aria-current="page">Disagreement</a>
+      </nav>
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <p class="field">Distance from the current edition</p>
+      <div class="wordlist" id="bandlist"></div>
+
+      <fieldset>
+        <legend class="field">What is at stake</legend>
+        <label class="opt"><input type="checkbox" id="onlyFormula"> Only where a formulaic
+          word is gained or lost <span class="n" id="formulaN"></span></label>
+      </fieldset>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q" style="margin-top:22px">Editor</label>
+      <div class="wordlist" id="editorlist"></div>
+
+      <p class="note">The similarity is a character-level comparison of the two
+      readings after editorial marks are stripped, and it is an <b>ordering aid, not
+      a verdict</b>: two readings can score 0.83 and still differ over everything
+      that matters. Readings are only compared within one script, so an ogham
+      reading is never measured against a Roman-script one.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="readings.csv" download>Download comparisons (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">2026-07-30</span> by
+      <code>py/webmap.py</code> from OG(H)AM corpus <a href="https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML" target="_blank" rel="noopener"><code>bb62ccd</code></a> (2026-07-02). Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script>
+
+// --- hex-binned density -------------------------------------------------------
+// Ported from the holy-wells notebook of the SPARQLing Archaeology OER
+// (n4o-rse/oer-001-sparqling-archaeology): axial hex coordinates with cube
+// rounding, latitude corrected against the mean latitude of the points so cells
+// stay roughly equal-area over the corpus's 10 degrees of latitude. Binning runs
+// in the browser on whatever is currently filtered, not once at build time.
+const HEX = (function () {
+  const RAMP = ["#e7e6d4", "#bccbaa", "#84ae9a", "#4f8b8d", "#2b5f6b"];
+  let ky = 1;
+
+  function setLatitude(meanLat) { ky = 1 / Math.cos(meanLat * Math.PI / 180); }
+
+  function key(lon, lat, size) {
+    const x = lon, y = lat * ky;
+    const q = (2 / 3) * x / size;
+    const r = (-1 / 3) * x / size + (Math.sqrt(3) / 3) * y / size;
+    let cx = q, cz = r, cy = -cx - cz;
+    let rx = Math.round(cx), ry = Math.round(cy), rz = Math.round(cz);
+    const dx = Math.abs(rx - cx), dy = Math.abs(ry - cy), dz = Math.abs(rz - cz);
+    if (dx > dy && dx > dz) rx = -ry - rz;
+    else if (dy > dz) ry = -rx - rz;
+    else rz = -rx - ry;
+    return rx + "," + rz;
+  }
+
+  function polygon(q, r, size) {
+    const cx = size * 1.5 * q;
+    const cy = size * Math.sqrt(3) * (r + q / 2);
+    const out = [];
+    for (let i = 0; i < 6; i++) {
+      const a = 60 * i * Math.PI / 180;
+      out.push([(cy + size * Math.sin(a)) / ky, cx + size * Math.cos(a)]);
+    }
+    return out;
+  }
+
+  // Two ways of cutting the counts into five steps.
+  //
+  //   linear  the notebook's scheme: equal-width bands over 1..max
+  //   log     equal-ratio bands
+  //
+  // Linear is faithful to the original but unreadable on this corpus: the
+  // findspots are so concentrated in Kerry and Cork that ~91% of cells fall in
+  // the palest band and the map goes flat. Counts this skewed (median 1-2,
+  // maximum 25-81 depending on cell size) are what log binning is for, so that
+  // is the default here; linear stays available for comparison.
+  function edges(maxN, scale) {
+    const n = RAMP.length, out = [];
+    for (let i = 0; i < n; i++) {
+      out.push(scale === "log"
+        ? Math.max(1, Math.round(Math.pow(maxN, (i + 1) / n)))
+        : Math.ceil((i + 1) / n * maxN));
+    }
+    out[n - 1] = maxN;
+    return out;
+  }
+
+  function bandOf(count, maxN, scale) {
+    if (maxN <= 1) return 0;
+    const t = scale === "log"
+      ? Math.log(count) / Math.log(maxN)
+      : (count - 1) / maxN;
+    return Math.min(RAMP.length - 1, Math.floor(t * RAMP.length));
+  }
+
+  // Integer count ranges per ramp step, so the legend never claims a band the
+  // data cannot fill (max 3 stones must not read as "1-5").
+  function bands(maxN, scale) {
+    const out = [];
+    let prev = 1;
+    edges(maxN, scale).forEach((edge, i) => {
+      if (edge < prev) return;
+      out.push({ colour: RAMP[i], label: edge === prev ? String(prev) : prev + "\u2013" + edge });
+      prev = edge + 1;
+    });
+    return out;
+  }
+
+  function build(points, size, noun, scale) {
+    scale = scale || "log";
+    const counts = {};
+    for (const [lon, lat] of points) {
+      const k = key(lon, lat, size);
+      counts[k] = (counts[k] || 0) + 1;
+    }
+    const values = Object.values(counts);
+    const maxN = values.length ? Math.max.apply(null, values) : 1;
+    const layer = L.layerGroup();
+    for (const k in counts) {
+      const [q, r] = k.split(",").map(Number);
+      const n = counts[k];
+      L.polygon(polygon(q, r, size), {
+        color: "#2b3a37", weight: 0.7,
+        fillColor: RAMP[bandOf(n, maxN, scale)], fillOpacity: 0.75
+      }).bindTooltip("<b>" + n + "</b> " + noun + (n !== 1 ? "s" : ""), { sticky: true })
+        .addTo(layer);
+    }
+    return { layer, legend: bands(maxN, scale), cells: Object.keys(counts).length };
+  }
+
+  return { setLatitude, build };
+})();
+
+function makeLegend(map) {
+  const control = L.control({ position: "bottomright" });
+  control.onAdd = function () {
+    const div = L.DomUtil.create("div", "hex-legend");
+    div.innerHTML = control._html || "";
+    return div;
+  };
+  control.set = function (title, bands) {
+    control._html = "<b>" + title + "</b><br>" + bands.map(b =>
+      '<span class="sw" style="background:' + b.colour + '"></span>' + b.label).join("<br>");
+    if (control._container) control._container.innerHTML = control._html;
+  };
+  return control;
+}
+
+// --- export the current view --------------------------------------------------
+// Both formats are drawn from the same scene description that the display switch
+// keeps up to date, so an export shows what is on screen rather than a re-run of
+// the filters. Points are drawn individually even when the screen shows clusters:
+// a figure wants the distribution, not the bubbles.
+//
+// Basemap tiles are cross-origin. Rather than putting `crossOrigin` on the live
+// tile layer -- which would break the map outright if the server ever stopped
+// sending CORS headers -- the tiles are re-fetched with it only at export time,
+// and the export degrades to a vector-only file if that fails.
+let scene = { points: [], hexes: [], legend: null, title: "", noun: "stone" };
+
+function tileURLs(mapEl, rect) {
+  return [...mapEl.querySelectorAll("img.leaflet-tile")]
+    .filter(i => i.src && i.complete && i.naturalWidth)
+    .map(i => {
+      const r = i.getBoundingClientRect();
+      return { src: i.src, x: r.left - rect.left, y: r.top - rect.top,
+               w: r.width, h: r.height };
+    });
+}
+
+function loadCORS(src) {
+  return new Promise(resolve => {
+    const im = new Image();
+    im.crossOrigin = "anonymous";
+    im.onload = () => resolve(im);
+    im.onerror = () => resolve(null);
+    im.src = src;
+  });
+}
+
+async function basemapRaster(scale) {
+  const mapEl = document.getElementById("map");
+  const rect = mapEl.getBoundingClientRect();
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(rect.width * scale);
+  canvas.height = Math.round(rect.height * scale);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#e8e6df";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const tiles = tileURLs(mapEl, rect);
+  const images = await Promise.all(tiles.map(t => loadCORS(t.src)));
+  let drawn = 0;
+  images.forEach((im, i) => {
+    if (!im) return;
+    const t = tiles[i];
+    ctx.drawImage(im, t.x * scale, t.y * scale, t.w * scale, t.h * scale);
+    drawn++;
+  });
+  try {
+    return { canvas, ctx, dataURL: canvas.toDataURL("image/png"),
+             complete: drawn === tiles.length && drawn > 0 };
+  } catch (e) {                       // tainted despite the CORS attempt
+    ctx.fillStyle = "#e8e6df";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    return { canvas, ctx, dataURL: null, complete: false };
+  }
+}
+
+function projected() {
+  const pt = ll => map.latLngToContainerPoint(L.latLng(ll[0], ll[1]));
+  return {
+    hexes: scene.hexes.map(h => ({
+      fill: h.fill,
+      ring: h.ring.map(ll => { const p = pt(ll); return [p.x, p.y]; })
+    })),
+    points: scene.points.map(p0 => {
+      const p = pt([p0.lat, p0.lon]);
+      return { x: p.x, y: p.y, colour: p0.colour, vague: p0.vague };
+    })
+  };
+}
+
+const ATTRIB = "\u00a9 OpenStreetMap contributors \u00a9 CARTO \u00b7 editions: OG(H)AM (CC BY 4.0)";
+
+function download(blob, name) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function stamp(ext) {
+  const bits = ["ogham", scene.slug || "map",
+                (scene.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")];
+  return bits.filter(Boolean).join("-").slice(0, 70) + "-"
+       + new Date().toISOString().slice(0, 10) + "." + ext;
+}
+
+async function exportRaster() {
+  const rect = document.getElementById("map").getBoundingClientRect();
+  const scale = 2;
+  const { canvas, ctx, complete } = await basemapRaster(scale);
+  const geo = projected();
+  ctx.save();
+  ctx.scale(scale, scale);
+  for (const h of geo.hexes) {
+    ctx.beginPath();
+    h.ring.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+    ctx.closePath();
+    ctx.fillStyle = h.fill; ctx.globalAlpha = 0.75; ctx.fill();
+    ctx.globalAlpha = 1; ctx.strokeStyle = "#2b3a37"; ctx.lineWidth = 0.7; ctx.stroke();
+  }
+  for (const p of geo.points) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 6.5, 0, Math.PI * 2);
+    if (p.vague) {
+      ctx.strokeStyle = p.colour; ctx.lineWidth = 1.6; ctx.setLineDash([3, 2]);
+      ctx.stroke(); ctx.setLineDash([]);
+    } else {
+      ctx.fillStyle = p.colour; ctx.fill();
+      ctx.strokeStyle = "rgba(19,28,27,.7)"; ctx.lineWidth = 1.6; ctx.stroke();
+    }
+  }
+  ctx.font = "11px sans-serif";
+  const pad = 6, text = ATTRIB + (complete ? "" : " \u00b7 basemap incomplete");
+  const w = ctx.measureText(text).width;
+  ctx.fillStyle = "rgba(255,255,255,.82)";
+  ctx.fillRect(rect.width - w - pad * 2, rect.height - 18, w + pad * 2, 18);
+  ctx.fillStyle = "#333";
+  ctx.fillText(text, rect.width - w - pad, rect.height - 5);
+  ctx.restore();
+  canvas.toBlob(b => download(b, stamp("jpg")), "image/jpeg", 0.92);
+}
+
+async function exportVector() {
+  const rect = document.getElementById("map").getBoundingClientRect();
+  const w = Math.round(rect.width), h = Math.round(rect.height);
+  const { dataURL } = await basemapRaster(2);
+  const geo = projected();
+  const esc2 = t => String(t).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  const out = [];
+  out.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" `
+         + `width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`);
+  out.push(`<title>${esc2(scene.title || "Ogham map")}</title>`);
+  out.push(`<desc>${esc2(ATTRIB)}</desc>`);
+  out.push(`<rect width="${w}" height="${h}" fill="#e8e6df"/>`);
+  if (dataURL) {
+    out.push(`<g id="basemap"><image x="0" y="0" width="${w}" height="${h}" `
+           + `xlink:href="${dataURL}"/></g>`);
+  } else {
+    out.push(`<!-- basemap omitted: tiles could not be read cross-origin -->`);
+  }
+  out.push('<g id="data">');
+  for (const hx of geo.hexes) {
+    const d = hx.ring.map(([x, y], i) => (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1)).join(" ") + " Z";
+    out.push(`<path d="${d}" fill="${hx.fill}" fill-opacity="0.75" stroke="#2b3a37" stroke-width="0.7"/>`);
+  }
+  for (const p of geo.points) {
+    out.push(p.vague
+      ? `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6.5" fill="none" `
+        + `stroke="${p.colour}" stroke-width="1.6" stroke-dasharray="3 2"/>`
+      : `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6.5" fill="${p.colour}" `
+        + `stroke="rgba(19,28,27,.7)" stroke-width="1.6"/>`);
+  }
+  out.push("</g>");
+  if (scene.legend && scene.legend.length) {
+    const lh = 17, bw = 132, bh = scene.legend.length * lh + 24;
+    const bx = w - bw - 12, by = h - bh - 26;
+    out.push(`<g id="legend"><rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="3" `
+           + `fill="rgba(27,39,37,.93)"/>`);
+    out.push(`<text x="${bx + 10}" y="${by + 17}" font-family="sans-serif" font-size="10" `
+           + `fill="#93a29d" letter-spacing="0.6">${esc2((scene.legendTitle || "").toUpperCase())}</text>`);
+    scene.legend.forEach((b, i) => {
+      const y = by + 30 + i * lh;
+      out.push(`<rect x="${bx + 10}" y="${y}" width="12" height="12" fill="${b.colour}" `
+             + `stroke="rgba(0,0,0,.35)"/>`);
+      out.push(`<text x="${bx + 28}" y="${y + 10}" font-family="monospace" font-size="11" `
+             + `fill="#e9e5da">${esc2(b.label)}</text>`);
+    });
+    out.push("</g>");
+  }
+  out.push(`<text x="${w - 6}" y="${h - 6}" text-anchor="end" font-family="sans-serif" `
+         + `font-size="10" fill="#555">${esc2(ATTRIB)}</text>`);
+  out.push("</svg>");
+  download(new Blob([out.join("\n")], { type: "image/svg+xml" }), stamp("svg"));
+}
+
+function wireExport(id, fn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("click", async () => {
+    el.disabled = true;
+    try { await fn(); } finally { el.disabled = false; }
+  });
+}
+wireExport("dl-svg", exportVector);
+wireExport("dl-jpg", exportRaster);
+
+const STONES = [{"id":"E-CON-001","title":"Worthyvale","ciic":"470","county":"Cornwall","country":"England","lat":50.640058,"lon":-4.675453,"band":"far apart","sim":0.444,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.444,"band":"far apart","cur":"GNI","oth":"LATINI","onlyCur":["GNI"],"onlyOth":["LATINI"],"gained":[],"lost":[]}]},{"id":"E-CON-X03","title":"St Clement","ciic":"473","county":"Cornwall","country":"England","lat":50.255903,"lon":-5.016133,"band":"far apart","sim":0.333,"editors":["Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.333,"band":"far apart","cur":"IGNIOC","oth":"VITALI MAQI TORICI","onlyCur":["IGNIOC"],"onlyOth":["VITALI","MAQI","TORICI"],"gained":["MAQI"],"lost":[]}]},{"id":"E-CON-X04","title":"St Endellion","ciic":"478","county":"Cornwall","country":"England","lat":50.582325,"lon":-4.841989,"band":"far apart","sim":0.364,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.364,"band":"far apart","cur":"BROCAGNI IHCHIC IACIT NADOTTI FILIVS","oth":"BROCAGNI","onlyCur":["IHCHIC","IACIT","NADOTTI","FILIVS"],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"E-DEV-001","title":"Fardel","ciic":"489","county":"Devon","country":"England","lat":50.400019,"lon":-3.955761,"band":"diverging","sim":0.778,"editors":["Macalister 1945","Sims-Williams 2003"],"formula":false,"pairs":[{"editor":"Sims-Williams 2003","sim":0.778,"band":"diverging","cur":"SVAQQUCI MAQI QICI","oth":"SVANNUCI MAQI RINI","onlyCur":["SVAQQUCI","QICI"],"onlyOth":["SVANNUCI","RINI"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":1.0,"band":"identical","cur":"SVAQQUCI MAQI QICI","oth":"SVAQQUCI MAQI QICI","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"E-DEV-002","title":"Roborough Down","ciic":"488","county":"Devon","country":"England","lat":50.503978,"lon":-4.130694,"band":"close","sim":0.933,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.933,"band":"close","cur":"ENABARRI","oth":"ENABARR","onlyCur":["ENABARRI"],"onlyOth":["ENABARR"],"gained":[],"lost":[]}]},{"id":"E-HAM-001","title":"Silchester","ciic":"496","county":"Hampshire","country":"England","lat":51.357914,"lon":-1.019333,"band":"diverging","sim":0.621,"editors":["Fulford 2000","unattributed reading"],"formula":true,"pairs":[{"editor":"unattributed reading","sim":0.778,"band":"diverging","cur":"TEBICATOS MAQI MUCOI","oth":"TEBICATOB HIMUCO","onlyCur":["TEBICATOS","MAQI","MUCOI"],"onlyOth":["TEBICATOB","HIMUCO"],"gained":[],"lost":["MAQI","MUCOI"]},{"editor":"Fulford 2000","sim":0.621,"band":"diverging","cur":"TEBICATOS MAQI MUCOI","oth":"TEBICATOS","onlyCur":["MAQI","MUCOI"],"onlyOth":[],"gained":[],"lost":["MAQI","MUCOI"]}]},{"id":"E-NFK-001","title":"Weeting-with-Broomhill","ciic":"","county":"Norfolk","country":"England","lat":52.477039,"lon":0.581231,"band":"far apart","sim":0.233,"editors":["Clarke 1952","Johnson 2020"],"formula":false,"pairs":[{"editor":"Clarke 1952","sim":0.977,"band":"close","cur":"EVUTUSUDUO GEDEVIMUTOS","oth":"EVUTUSUDU GEDEVIMUTOS","onlyCur":["EVUTUSUDUO"],"onlyOth":["EVUTUSUDU"],"gained":[],"lost":[]},{"editor":"Clarke 1952","sim":0.233,"band":"far apart","cur":"EVUTUSUDUO GEDEVIMUTOS","oth":"ULUCUVUTE COVUMITELEG","onlyCur":["EVUTUSUDUO","GEDEVIMUTOS"],"onlyOth":["ULUCUVUTE","COVUMITELEG"],"gained":[],"lost":[]},{"editor":"Johnson 2020","sim":0.611,"band":"diverging","cur":"EVUTUSUDUO GEDEVIMUTOS","oth":"EVUTUSUDUO OR ULUCUVUTE GEDEVIMUTOS OR COVUMITELEG","onlyCur":[],"onlyOth":["OR","ULUCUVUTE","OR","COVUMITELEG"],"gained":[],"lost":[]}]},{"id":"E-WRY-001","title":"Vale of York brooch fragment","ciic":"","county":"West Riding of Yorkshire","country":"England","lat":53.989228,"lon":-1.530225,"band":"close","sim":0.909,"editors":["Johnson 2020"],"formula":false,"pairs":[{"editor":"Johnson 2020","sim":0.909,"band":"close","cur":"ATFCA","oth":"ATFCAM","onlyCur":["ATFCA"],"onlyOth":["ATFCAM"],"gained":[],"lost":[]}]},{"id":"I-ANT-001","title":"Carn Coim | Carncome 1","ciic":"309","county":"Co. Antrim","country":"Northern Ireland","lat":54.8045,"lon":-6.1961,"band":"far apart","sim":0.061,"editors":["unattributed reading"],"formula":true,"pairs":[{"editor":"unattributed reading","sim":0.061,"band":"far apart","cur":"TORAESCEUSAS MAQI MUCOI MEUTINI","oth":"UE","onlyCur":["TORAESCEUSAS","MAQI","MUCOI","MEUTINI"],"onlyOth":["UE"],"gained":[],"lost":["MAQI","MUCOI"]},{"editor":"unattributed reading","sim":0.121,"band":"far apart","cur":"TORAESCEUSAS MAQI MUCOI MEUTINI","oth":"OI","onlyCur":["TORAESCEUSAS","MAQI","MUCOI","MEUTINI"],"onlyOth":["OI"],"gained":[],"lost":["MAQI","MUCOI"]},{"editor":"unattributed reading","sim":0.061,"band":"far apart","cur":"TORAESCEUSAS MAQI MUCOI MEUTINI","oth":"IO","onlyCur":["TORAESCEUSAS","MAQI","MUCOI","MEUTINI"],"onlyOth":["IO"],"gained":[],"lost":["MAQI","MUCOI"]}]},{"id":"I-ANT-002","title":"Carn Coim | Carncome 2","ciic":"310","county":"Co. Antrim","country":"Northern Ireland","lat":54.8045,"lon":-6.1961,"band":"far apart","sim":0.467,"editors":["Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.467,"band":"far apart","cur":"CAGINADI MAQI VOBARACI","oth":"CALINADI","onlyCur":["CAGINADI","MAQI","VOBARACI"],"onlyOth":["CALINADI"],"gained":[],"lost":["MAQI"]}]},{"id":"I-ANT-003","title":"Gartree","ciic":"","county":"Co. Antrim","country":"Northern Ireland","lat":54.617977,"lon":-6.288513,"band":"diverging","sim":0.632,"editors":["McQuillan 2003"],"formula":false,"pairs":[{"editor":"McQuillan 2003","sim":0.632,"band":"diverging","cur":"AUVDNOCMOS","oth":"AEF NOCMS","onlyCur":["AUVDNOCMOS"],"onlyOth":["AEF","NOCMS"],"gained":[],"lost":[]}]},{"id":"I-ARM-001","title":"Droim Conmhaoil | Drumconwell","ciic":"311","county":"Co. Armagh","country":"Northern Ireland","lat":54.302925,"lon":-6.651108,"band":"close","sim":0.895,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.895,"band":"close","cur":"DAENEGLO MAQI QETAI","oth":"DINEGLO MAQI QETAIS","onlyCur":["DAENEGLO","QETAI"],"onlyOth":["DINEGLO","QETAIS"],"gained":[],"lost":[]}]},{"id":"I-CAR-001","title":"Cluain Mhór | Clonmore","ciic":"15","county":"Co. Carlow","country":"Ireland","lat":52.827268,"lon":-6.57009,"band":"far apart","sim":0.0,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.0,"band":"far apart","cur":"GUSCU","oth":"RENI","onlyCur":["GUSCU"],"onlyOth":["RENI"],"gained":[],"lost":[]}]},{"id":"I-CLA-003","title":"Inis | Ennis bead","ciic":"53","county":"Co. Clare","country":"Ireland","lat":52.840588,"lon":-8.978509,"band":"far apart","sim":0.143,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.143,"band":"far apart","cur":"DMVA VA","oth":"ATUCMLU","onlyCur":["DMVA","VA"],"onlyOth":["ATUCMLU"],"gained":[],"lost":[]}]},{"id":"I-COR-001","title":"An Com Liath Thoir | Coomleagh East","ciic":"55","county":"Co. Cork","country":"Ireland","lat":51.72827,"lon":-9.30337,"band":"far apart","sim":0.167,"editors":["Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.167,"band":"far apart","cur":"TETA","oth":"ANM SAINA MAQ OGALA MUCOI TEMOCA","onlyCur":["TETA"],"onlyOth":["ANM","SAINA","MAQ","OGALA","MUCOI","TEMOCA"],"gained":["ANM","MAQI","MUCOI"],"lost":[]}]},{"id":"I-COR-005","title":"Baile na bPórtach | Ballynabortagh 1","ciic":"59","county":"Co. Cork","country":"Ireland","lat":52.000015,"lon":-8.433359,"band":"far apart","sim":0.48,"editors":["Macalister 1945","Rhys 1908"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.48,"band":"far apart","cur":"U IAIBODAS RTAGNI","oth":"UIVAIBES","onlyCur":["U","IAIBODAS","RTAGNI"],"onlyOth":["UIVAIBES"],"gained":[],"lost":[]},{"editor":"Rhys 1908","sim":0.519,"band":"diverging","cur":"U IAIBODAS RTAGNI","oth":"VINIOBODAS","onlyCur":["U","IAIBODAS","RTAGNI"],"onlyOth":["VINIOBODAS"],"gained":[],"lost":[]}]},{"id":"I-COR-008","title":"Baile na bPórtach | Ballynabortagh 4","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.999912,"lon":-8.433859,"band":"close","sim":0.8,"editors":["Ron 2009"],"formula":false,"pairs":[{"editor":"Ron 2009","sim":0.8,"band":"close","cur":"DCA CIOT","oth":"LCACIOT","onlyCur":["DCA","CIOT"],"onlyOth":["LCACIOT"],"gained":[],"lost":[]}]},{"id":"I-COR-012","title":"Gleann an Mhuilinn | Glenawillin 2","ciic":"64","county":"Co. Cork","country":"Ireland","lat":51.969371,"lon":-8.179727,"band":"close","sim":0.875,"editors":["Macalister 1945","Oke 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.875,"band":"close","cur":"LODIMANI","oth":"LODIMONI","onlyCur":["LODIMANI"],"onlyOth":["LODIMONI"],"gained":[],"lost":[]},{"editor":"Oke 1945","sim":0.875,"band":"close","cur":"LODIMANI","oth":"LADIMANI","onlyCur":["LODIMANI"],"onlyOth":["LADIMANI"],"gained":[],"lost":[]}]},{"id":"I-COR-020","title":"Alltach | Aultagh","ciic":"72","county":"Co. Cork","country":"Ireland","lat":51.77003,"lon":-9.09023,"band":"far apart","sim":0.483,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.483,"band":"far apart","cur":"I UHE VHO ADVAS","oth":"UBEDABO ALTASI","onlyCur":["I","UHE","VHO","ADVAS"],"onlyOth":["UBEDABO","ALTASI"],"gained":[],"lost":[]}]},{"id":"I-COR-028","title":"Gleann an Phúca | Glenaphuca 1","ciic":"79","county":"Co. Cork","country":"Ireland","lat":51.96797,"lon":-8.07234,"band":"diverging","sim":0.609,"editors":["Bar 1897","Macalister 1945"],"formula":true,"pairs":[{"editor":"Bar 1897","sim":0.833,"band":"close","cur":"ILUNA MUC COU","oth":"ILUNA MUCOI","onlyCur":["MUC","COU"],"onlyOth":["MUCOI"],"gained":["MUCOI"],"lost":[]},{"editor":"Macalister 1945","sim":0.727,"band":"diverging","cur":"ILUNA MUC COU","oth":"ELUNA MUC","onlyCur":["ILUNA","COU"],"onlyOth":["ELUNA"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":0.609,"band":"diverging","cur":"ILUNA MUC COU","oth":"TULENA MUC","onlyCur":["ILUNA","COU"],"onlyOth":["TULENA"],"gained":[],"lost":[]}]},{"id":"I-COR-031","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 1","ciic":"82","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"band":"diverging","sim":0.762,"editors":["Bar 1891"],"formula":true,"pairs":[{"editor":"Bar 1891","sim":0.762,"band":"diverging","cur":"MAILAGURO MAQI VILEBU","oth":"MAILAGURO MAQA AILILA","onlyCur":["MAQI","VILEBU"],"onlyOth":["MAQA","AILILA"],"gained":[],"lost":["MAQI"]}]},{"id":"I-COR-032","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 2","ciic":"83","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"band":"diverging","sim":0.653,"editors":["Macalister 1907","Macalister 1945","McManus 2004"],"formula":true,"pairs":[{"editor":"Macalister 1907","sim":0.653,"band":"diverging","cur":"LAMADULICCI MAC MAIC BROCC","oth":"ANM DULICCI MACI EBRASI","onlyCur":["LAMADULICCI","MAC","MAIC","BROCC"],"onlyOth":["ANM","DULICCI","MACI","EBRASI"],"gained":["ANM"],"lost":[]},{"editor":"Macalister 1945","sim":0.962,"band":"close","cur":"LAMADULICCI MAC MAIC BROCC","oth":"LAMADILICCI MAC MAIC BROCC","onlyCur":["LAMADULICCI"],"onlyOth":["LAMADILICCI"],"gained":[],"lost":[]},{"editor":"McManus 2004","sim":0.851,"band":"close","cur":"LAMADULICCI MAC MAIC BROCC","oth":"LAMADILICCI MAC CBROC","onlyCur":["LAMADULICCI","MAIC","BROCC"],"onlyOth":["LAMADILICCI","CBROC"],"gained":[],"lost":[]}]},{"id":"I-COR-043","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 13","ciic":"94","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"band":"close","sim":0.919,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.919,"band":"close","cur":"D MM MACI VEDUCERI","oth":"DOMMO MACI VEDUCERI","onlyCur":["D","MM"],"onlyOth":["DOMMO"],"gained":[],"lost":[]}]},{"id":"I-COR-045","title":"Baile an Chamhaicigh Thuaidh | Ballyknock North 15","ciic":"96","county":"Co. Cork","country":"Ireland","lat":52.03462,"lon":-8.08237,"band":"close","sim":0.875,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.875,"band":"close","cur":"COVALUTI","oth":"COVALOTI","onlyCur":["COVALUTI"],"onlyOth":["COVALOTI"],"gained":[],"lost":[]}]},{"id":"I-COR-052","title":"Barr an Chárthainn | Barrahaurin","ciic":"103","county":"Co. Cork","country":"Ireland","lat":51.999993,"lon":-8.813893,"band":"close","sim":0.936,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.936,"band":"close","cur":"CARRTTACC MMAQI MU CAGGI","oth":"CARRTTACC GAQI MU CAGGI","onlyCur":["MMAQI"],"onlyOth":["GAQI"],"gained":[],"lost":[]}]},{"id":"I-COR-054","title":"Cúil an Fhéich | Coolineagh 2","ciic":"105","county":"Co. Cork","country":"Ireland","lat":51.95252,"lon":-8.81568,"band":"identical","sim":1.0,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":1.0,"band":"identical","cur":"ANM NETACUNAS CELI VIDETTAS","oth":"ANM NETACUNAS CELI VIDETTAS","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"I-COR-056","title":"Gleann na gCloch Thuaidh | Glenaglogh","ciic":"107","county":"Co. Cork","country":"Ireland","lat":51.9907,"lon":-8.8671,"band":"identical","sim":1.0,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":1.0,"band":"identical","cur":"CUNAGUSSOS MA","oth":"CUNAGUSSOS MA","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"I-COR-067","title":"Cnoc Seanmhaí | Knockshanawee 6","ciic":"117","county":"Co. Cork","country":"Ireland","lat":51.872673,"lon":-8.796211,"band":"diverging","sim":0.727,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.727,"band":"diverging","cur":"COLLI","oth":"COLLOS","onlyCur":["COLLI"],"onlyOth":["COLLOS"],"gained":[],"lost":[]}]},{"id":"I-COR-068","title":"Caisleán Chúirt an Bharraigh | Barryscourt Castle","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.90476,"lon":-8.25959,"band":"identical","sim":1.0,"editors":["Macalister 1932"],"formula":false,"pairs":[{"editor":"Macalister 1932","sim":1.0,"band":"identical","cur":"ILDIMECGMIRE","oth":"ILDIMECGMIRE","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"I-COR-069","title":"Móin an tSagairt | Monataggart 1","ciic":"118","county":"Co. Cork","country":"Ireland","lat":51.976513,"lon":-8.787796,"band":"diverging","sim":0.652,"editors":["unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":0.652,"band":"diverging","cur":"VEQREQ MOQOI GLUNLEGGET","oth":"TENREN MONOI GDUQDEGGEV","onlyCur":["VEQREQ","MOQOI","GLUNLEGGET"],"onlyOth":["TENREN","MONOI","GDUQDEGGEV"],"gained":[],"lost":[]}]},{"id":"I-COR-079","title":"An Tulaigh Mhór | Tullig More","ciic":"127","county":"Co. Cork","country":"Ireland","lat":51.947,"lon":-8.758,"band":"close","sim":0.857,"editors":["Macalister 1945","McManus 2004"],"formula":true,"pairs":[{"editor":"McManus 2004","sim":0.857,"band":"close","cur":"MAQI LASOG BMTTMACDE","oth":"MAQI LAS OG BM TTM CGE","onlyCur":["LASOG","BMTTMACDE"],"onlyOth":["LAS","OG","BM","TTM","CGE"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":0.9,"band":"close","cur":"MAQI LASOG BMTTMACDE","oth":"MAQILASPOG B TTMACDE","onlyCur":["MAQI","LASOG","BMTTMACDE"],"onlyOth":["MAQILASPOG","B","TTMACDE"],"gained":[],"lost":["MAQI"]}]},{"id":"I-COR-088","title":"Bun an Chnoic | Underhill 1","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.715236,"lon":-9.111685,"band":"identical","sim":1.0,"editors":["Oke 1968"],"formula":false,"pairs":[{"editor":"Oke 1968","sim":1.0,"band":"identical","cur":"MOESAC","oth":"MOESAC","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"I-COR-089","title":"Bun an Chnoic | Underhill 2","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.715236,"lon":-9.111685,"band":"identical","sim":1.0,"editors":["Shee 1968"],"formula":false,"pairs":[{"editor":"Shee 1968","sim":1.0,"band":"identical","cur":"MOUNIN","oth":"MOUNIN","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"I-COR-090","title":"Bun an Chnoic | Underhill 3","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.715236,"lon":-9.111685,"band":"close","sim":0.919,"editors":["Shee 1968"],"formula":false,"pairs":[{"editor":"Shee 1968","sim":0.919,"band":"close","cur":"ADARAGN MACI COLALI","oth":"ADARUN MACI COLALI","onlyCur":["ADARAGN"],"onlyOth":["ADARUN"],"gained":[],"lost":[]}]},{"id":"I-COR-093","title":"Bun Coille | Bunkilla","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.978115,"lon":-8.699242,"band":"close","sim":0.857,"editors":["Lankford 1993"],"formula":true,"pairs":[{"editor":"Lankford 1993","sim":0.857,"band":"close","cur":"ANM MAQQILASIRE MAQQI BIRRAC","oth":"ANM MAQQI LASIR KOI MAQQI BIRRACIAS","onlyCur":["MAQQILASIRE","BIRRAC"],"onlyOth":["LASIR","KOI","BIRRACIAS"],"gained":["KOI"],"lost":[]},{"editor":"Lankford 1993","sim":0.903,"band":"close","cur":"ANM MAQQILASIRE MAQQI BIRRAC","oth":"ANM MAQQI LASIREON MAQQI BIRRACIAS","onlyCur":["MAQQILASIRE","BIRRAC"],"onlyOth":["LASIREON","BIRRACIAS"],"gained":[],"lost":[]}]},{"id":"I-COR-094","title":"An Leaca Bhán | Lackabane","ciic":"","county":"Co. Cork","country":"Ireland","lat":51.995929,"lon":-8.741727,"band":"far apart","sim":0.25,"editors":["unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":0.25,"band":"far apart","cur":"QUTQ","oth":"NUVN","onlyCur":["QUTQ"],"onlyOth":["NUVN"],"gained":[],"lost":[]}]},{"id":"I-KER-009","title":"An Eaglais | Aglish 2","ciic":"142","county":"Co. Kerry","country":"Ireland","lat":52.13607,"lon":-10.13764,"band":"close","sim":0.957,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.957,"band":"close","cur":"CELI AVI VUD","oth":"CELI AVI VU","onlyCur":["VUD"],"onlyOth":["VU"],"gained":[],"lost":[]}]},{"id":"I-KER-012","title":"Airghleann | Arraglen","ciic":"145","county":"Co. Kerry","country":"Ireland","lat":52.257799,"lon":-10.248991,"band":"far apart","sim":0.476,"editors":["unattributed reading"],"formula":true,"pairs":[{"editor":"unattributed reading","sim":0.476,"band":"far apart","cur":"QRIMITIR RONANN MAQ COMOGANN","oth":"Q MAN SOMOGAQQ","onlyCur":["QRIMITIR","RONANN","MAQ","COMOGANN"],"onlyOth":["Q","MAN","SOMOGAQQ"],"gained":[],"lost":["MAQI"]}]},{"id":"I-KER-017","title":"Baile an Reannaigh | Ballinrannig 3","ciic":"150","county":"Co. Kerry","country":"Ireland","lat":52.1788,"lon":-10.3879,"band":"diverging","sim":0.75,"editors":["Cuppage 1986","Macalister 1945","McManus 1991"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":1.0,"band":"identical","cur":"GRAVICAS MAQI MUCOI DO VVINIAS","oth":"GRAVICAS MAQI MUCOI DO VVINIAS","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]},{"editor":"Cuppage 1986","sim":0.76,"band":"diverging","cur":"GRAVICAS MAQI MUCOI DO VVINIAS","oth":"NAVICAS MAQI MUCOI S","onlyCur":["GRAVICAS","DO","VVINIAS"],"onlyOth":["NAVICAS","S"],"gained":[],"lost":[]},{"editor":"McManus 1991","sim":0.75,"band":"diverging","cur":"GRAVICAS MAQI MUCOI DO VVINIAS","oth":"GRAVICAS MAQI MUCO","onlyCur":["MUCOI","DO","VVINIAS"],"onlyOth":["MUCO"],"gained":[],"lost":["MUCOI"]}]},{"id":"I-KER-029","title":"Baile an tSagairt | Ballintaggart 8","ciic":"162","county":"Co. Kerry","country":"Ireland","lat":52.12778,"lon":-10.24318,"band":"close","sim":0.85,"editors":["Macalister 1945","McManus 1991","O'Kelly 1986"],"formula":true,"pairs":[{"editor":"McManus 1991","sim":0.878,"band":"close","cur":"CUNAMAQQI AVI CORBBI","oth":"CUBMIMAQQI AVI CORBBI","onlyCur":["CUNAMAQQI"],"onlyOth":["CUBMIMAQQI"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":1.0,"band":"identical","cur":"CUNAMAQQI AVI CORBBI","oth":"CUNAMAQQI AVI CORBBI","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]},{"editor":"O'Kelly 1986","sim":0.85,"band":"close","cur":"CUNAMAQQI AVI CORBBI","oth":"CULI MAQQI AVI CORBI","onlyCur":["CUNAMAQQI","CORBBI"],"onlyOth":["CULI","MAQQI","CORBI"],"gained":["MAQI"],"lost":[]}]},{"id":"I-KER-053","title":"Inis Mhic Aoibhleáin | Inishvickillane","ciic":"185","county":"Co. Kerry","country":"Ireland","lat":52.044062,"lon":-10.606102,"band":"far apart","sim":0.333,"editors":["Brash 1879","Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.927,"band":"close","cur":"BB AVI VLATIAMI MAQ","oth":"COBBA AVI VLATIAMI MAQ","onlyCur":["BB"],"onlyOth":["COBBA"],"gained":[],"lost":[]},{"editor":"Brash 1879","sim":0.333,"band":"far apart","cur":"BB AVI VLATIAMI MAQ","oth":"VNDIABIBO T","onlyCur":["BB","AVI","VLATIAMI","MAQ"],"onlyOth":["VNDIABIBO","T"],"gained":[],"lost":["AVI","MAQI"]}]},{"id":"I-KER-078","title":"Cill Chuallachta Thoir | Kilcoolaght East 4","ciic":"209","county":"Co. Kerry","country":"Ireland","lat":52.07402,"lon":-9.7458,"band":"close","sim":0.966,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.966,"band":"close","cur":"AGGO MAQI AGILL","oth":"GGO MAQI AGILL","onlyCur":["AGGO"],"onlyOth":["GGO"],"gained":[],"lost":[]}]},{"id":"I-KER-135","title":"Cill Ghuilbin Thoir | Kilgulbin East","ciic":"1086","county":"Co. Kerry","country":"Ireland","lat":52.346,"lon":-9.712,"band":"far apart","sim":0.417,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.417,"band":"far apart","cur":"BLADNACH CUILEN BLADNACH COGRA CEDENA","oth":"COGRACETENA","onlyCur":["BLADNACH","CUILEN","BLADNACH","COGRA","CEDENA"],"onlyOth":["COGRACETENA"],"gained":[],"lost":[]}]},{"id":"I-KIK-008","title":"An Liagán | Legan","ciic":"34","county":"Co. Kilkenny","country":"Ireland","lat":52.534759,"lon":-7.163003,"band":"far apart","sim":0.486,"editors":["Bar 1896"],"formula":true,"pairs":[{"editor":"Bar 1896","sim":0.906,"band":"close","cur":"LOBBI OI MAQQI MUCCOI RINI","oth":"LOBBI KOI MAQQI MUCCOI IREI","onlyCur":["OI","RINI"],"onlyOth":["KOI","IREI"],"gained":["KOI"],"lost":[]},{"editor":"Bar 1896","sim":0.486,"band":"far apart","cur":"LOBBI OI MAQQI MUCCOI RINI","oth":"LL MAQQ M C","onlyCur":["LOBBI","OI","MAQQI","MUCCOI","RINI"],"onlyOth":["LL","MAQQ","M","C"],"gained":[],"lost":["MAQI"]}]},{"id":"I-KIK-011","title":"Lamóg | Lamoge 1","ciic":"36","county":"Co. Kilkenny","country":"Ireland","lat":52.44656,"lon":-7.36596,"band":"close","sim":0.833,"editors":["Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.833,"band":"close","cur":"SEVERRIT MAQI ROTTAIS","oth":"SEVERRIT MAOI MUCOI ROTTAIS","onlyCur":["MAQI"],"onlyOth":["MAOI","MUCOI"],"gained":["MUCOI"],"lost":["MAQI"]}]},{"id":"I-MAY-001","title":"An tOileán | Island","ciic":"3","county":"Co. Mayo","country":"Ireland","lat":53.773466,"lon":-8.799564,"band":"diverging","sim":0.516,"editors":["unattributed reading"],"formula":true,"pairs":[{"editor":"unattributed reading","sim":0.516,"band":"diverging","cur":"CUNALEGI AVI CUNACANOS","oth":"CUNALEGEA","onlyCur":["CUNALEGI","AVI","CUNACANOS"],"onlyOth":["CUNALEGEA"],"gained":[],"lost":["AVI"]}]},{"id":"I-MAY-004","title":"An Baile Beag | Ballybeg","ciic":"6","county":"Co. Mayo","country":"Ireland","lat":53.726342,"lon":-8.697455,"band":"close","sim":0.833,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.833,"band":"close","cur":"CASEGNI MAQI","oth":"QASIGNI MAQI","onlyCur":["CASEGNI"],"onlyOth":["QASIGNI"],"gained":[],"lost":[]}]},{"id":"I-MAY-005","title":"Corr Odhar | Corrower","ciic":"7","county":"Co. Mayo","country":"Ireland","lat":54.072257,"lon":-9.078265,"band":"close","sim":0.923,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.923,"band":"close","cur":"MAQ CERAN AVI ADECETAIMIN","oth":"MAQ CERANI AVI ATHECETAIMIN","onlyCur":["CERAN","ADECETAIMIN"],"onlyOth":["CERANI","ATHECETAIMIN"],"gained":[],"lost":[]}]},{"id":"I-MAY-006","title":"Dumhach Mhic Eoghain | Dooghmakeon","ciic":"8","county":"Co. Mayo","country":"Ireland","lat":53.742054,"lon":-9.89389,"band":"far apart","sim":0.25,"editors":["Rhys 1898"],"formula":true,"pairs":[{"editor":"Rhys 1898","sim":0.25,"band":"far apart","cur":"OVI MAQI","oth":"CORBAGNI","onlyCur":["OVI","MAQI"],"onlyOth":["CORBAGNI"],"gained":[],"lost":["MAQI"]}]},{"id":"I-MAY-007","title":"Achadh Liag | Aghaleague","ciic":"9","county":"Co. Mayo","country":"Ireland","lat":54.257414,"lon":-9.332316,"band":"diverging","sim":0.667,"editors":["Macalister 1919"],"formula":false,"pairs":[{"editor":"Macalister 1919","sim":0.667,"band":"diverging","cur":"MAQACTO MAQ GAR","oth":"OTTACI MAQ GARA","onlyCur":["MAQACTO","GAR"],"onlyOth":["OTTACI","GARA"],"gained":[],"lost":[]}]},{"id":"I-TYR-001","title":"Achadh Scríobach | Aghascrebagh","ciic":"317","county":"Co. Tyrone","country":"Northern Ireland","lat":54.699406,"lon":-7.042515,"band":"diverging","sim":0.519,"editors":["Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.519,"band":"diverging","cur":"DOTETTO MAQI MAGLANI","oth":"MAGLANI","onlyCur":["DOTETTO","MAQI"],"onlyOth":[],"gained":[],"lost":["MAQI"]}]},{"id":"I-WAT-002","title":"Aird Mhór | Ardmore 1","ciic":"263","county":"Co. Waterford","country":"Ireland","lat":51.948696,"lon":-7.725633,"band":"close","sim":0.962,"editors":["Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.962,"band":"close","cur":"LUGUDECCAS MAQI MUCOI NETASEGAMONAS DOLATIBIGAISGO","oth":"LUGUDECCAS MAQI MUCOI NETA SEGAMONAS DOLATI BIGAIS GOB","onlyCur":["NETASEGAMONAS","DOLATIBIGAISGO"],"onlyOth":["NETA","SEGAMONAS","DOLATI","BIGAIS","GOB"],"gained":["NIOTA"],"lost":[]}]},{"id":"I-WAT-006","title":"An Drom Mór | Dromore 2 (Cill Tíre)","ciic":"267","county":"Co. Waterford","country":"Ireland","lat":52.0743,"lon":-7.8477,"band":"close","sim":0.875,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.875,"band":"close","cur":"MEDUSI MACI LU MOCOI LUG","oth":"MEDUSI MACI LU MUCOI LAQ","onlyCur":["MOCOI","LUG"],"onlyOth":["MUCOI","LAQ"],"gained":[],"lost":[]}]},{"id":"I-WAT-048","title":"Bearna na Gaoithe | Windgap","ciic":"307","county":"Co. Waterford","country":"Ireland","lat":52.34163,"lon":-7.49245,"band":"far apart","sim":0.19,"editors":["Macalister 1945"],"formula":true,"pairs":[{"editor":"Macalister 1945","sim":0.19,"band":"far apart","cur":"MODDAGNI MAQI GATTAGNI MUCOI LUGUNI","oth":"GATIGNI","onlyCur":["MODDAGNI","MAQI","GATTAGNI","MUCOI","LUGUNI"],"onlyOth":["GATIGNI"],"gained":[],"lost":["MAQI","MUCOI"]}]},{"id":"M-IOM-001","title":"Ballaqueeney 1","ciic":"503","county":"","country":"Isle of Man","lat":54.076378,"lon":-4.752794,"band":"close","sim":0.93,"editors":["unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":0.93,"band":"close","cur":"DOVAIDONA MA QI DROATA","oth":"DOVAIDONA MA QI DRUTA","onlyCur":["DROATA"],"onlyOth":["DRUTA"],"gained":[],"lost":[]}]},{"id":"M-IOM-005","title":"Kirk Michael","ciic":"","county":"","country":"Isle of Man","lat":54.285039,"lon":-4.586922,"band":"far apart","sim":0.241,"editors":["Sou 1887","West 2011"],"formula":true,"pairs":[{"editor":"Sou 1887","sim":0.588,"band":"diverging","cur":"BLVSNHDTCQMGNGSTRAOUEI MUUCOMALLAFIUAMULLGUC","oth":"MUUCOMALL AVI UA MULLGUC","onlyCur":["BLVSNHDTCQMGNGSTRAOUEI","MUUCOMALLAFIUAMULLGUC"],"onlyOth":["MUUCOMALL","AVI","UA","MULLGUC"],"gained":["AVI"],"lost":[]},{"editor":"West 2011","sim":0.244,"band":"far apart","cur":"BLVSNHDTCQMGNGSTRAOUEI MUUCOMALLAFIUAMULLGUC","oth":"MAL LUMKUN RAISTI KRUS THENA EFTER MAL MURU FUSTRA SINE TOTIRTUFKALS KONA IS ATHISL ATI","onlyCur":["BLVSNHDTCQMGNGSTRAOUEI","MUUCOMALLAFIUAMULLGUC"],"onlyOth":["MAL","LUMKUN","RAISTI","KRUS","THENA","EFTER","MAL","MURU","FUSTRA","SINE","TOTIRTUFKALS","KONA","IS","ATHISL","ATI"],"gained":[],"lost":[]},{"editor":"West 2011","sim":0.241,"band":"far apart","cur":"BLVSNHDTCQMGNGSTRAOUEI MUUCOMALLAFIUAMULLGUC","oth":"BETRA ES LAIFA FUSTRA KU AN AN SON ILAN","onlyCur":["BLVSNHDTCQMGNGSTRAOUEI","MUUCOMALLAFIUAMULLGUC"],"onlyOth":["BETRA","ES","LAIFA","FUSTRA","KU","AN","AN","SON","ILAN"],"gained":[],"lost":[]}]},{"id":"M-IOM-006","title":"Maghal | Maughold 2","ciic":"","county":"","country":"Isle of Man","lat":54.297719,"lon":-4.317214,"band":"far apart","sim":0.068,"editors":["unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":0.068,"band":"far apart","cur":"BLVSNHDTCQ","oth":"IUAN BRIST RAISTI THISIR RUNUR FUTHORK HNIAS TBML","onlyCur":["BLVSNHDTCQ"],"onlyOth":["IUAN","BRIST","RAISTI","THISIR","RUNUR","FUTHORK","HNIAS","TBML"],"gained":[],"lost":[]}]},{"id":"M-IOM-007","title":"Knoc y Doonee","ciic":"500","county":"","country":"Isle of Man","lat":54.390192,"lon":-4.459517,"band":"far apart","sim":0.444,"editors":["Broderick 2021"],"formula":true,"pairs":[{"editor":"Broderick 2021","sim":0.909,"band":"close","cur":"AMBICATOS MAQI ROCATOS","oth":"IMBICATOS MAQI RICATOS","onlyCur":["AMBICATOS","ROCATOS"],"onlyOth":["IMBICATOS","RICATOS"],"gained":[],"lost":[]},{"editor":"Broderick 2021","sim":0.444,"band":"far apart","cur":"AMBICATOS MAQI ROCATOS","oth":"AMMECATI FILIUS ROCATI HIC IACIT","onlyCur":["AMBICATOS","MAQI","ROCATOS"],"onlyOth":["AMMECATI","FILIUS","ROCATI","HIC","IACIT"],"gained":[],"lost":["MAQI"]}]},{"id":"M-IOM-008","title":"Ballavarkish","ciic":"1068","county":"","country":"Isle of Man","lat":54.378889,"lon":-4.373056,"band":"far apart","sim":0.222,"editors":["Macalister 1945","unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":0.759,"band":"diverging","cur":"LOGGABGGGAGOGAML","oth":"LOGGABRROGAML","onlyCur":["LOGGABGGGAGOGAML"],"onlyOth":["LOGGABRROGAML"],"gained":[],"lost":[]},{"editor":"unattributed reading","sim":0.765,"band":"diverging","cur":"LOGGABGGGAGOGAML","oth":"OTDDABGGRGAGAOGAML","onlyCur":["LOGGABGGGAGOGAML"],"onlyOth":["OTDDABGGRGAGAOGAML"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":0.25,"band":"far apart","cur":"LOGGABGGGAGOGAML","oth":"LAGUBERI","onlyCur":["LOGGABGGGAGOGAML"],"onlyOth":["LAGUBERI"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":0.222,"band":"far apart","cur":"LOGGABGGGAGOGAML","oth":"LAGUBE LOMO","onlyCur":["LOGGABGGGAGOGAML"],"onlyOth":["LAGUBE","LOMO"],"gained":[],"lost":[]}]},{"id":"M-IOM-009","title":"Speke Farm Keeill Stone","ciic":"","county":"","country":"Isle of Man","lat":54.139086,"lon":-4.559436,"band":"diverging","sim":0.703,"editors":["West 2011","unattributed reading"],"formula":true,"pairs":[{"editor":"unattributed reading","sim":1.0,"band":"identical","cur":"BAC OCOICAT IALL","oth":"BAC OCOICAT IALL","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]},{"editor":"West 2011","sim":0.703,"band":"diverging","cur":"BAC OCOICAT IALL","oth":"A MACI MUCOI CATIALLI","onlyCur":["BAC","OCOICAT","IALL"],"onlyOth":["A","MACI","MUCOI","CATIALLI"],"gained":["MAQI","MUCOI"],"lost":[]}]},{"id":"S-ABD-001","title":"Newton","ciic":"","county":"Aberdeenshire","country":"Scotland","lat":57.356667,"lon":-2.562778,"band":"far apart","sim":0.179,"editors":["Forsyth 1996"],"formula":true,"pairs":[{"editor":"Forsyth 1996","sim":0.329,"band":"far apart","cur":"IDDARRNNN VORRENNI KOI ROSRR","oth":"THREE PERSONAL NAMES WITH NO FORMULA WORDS IDARNON VORENN","onlyCur":["IDDARRNNN","VORRENNI","KOI","ROSRR"],"onlyOth":["THREE","PERSONAL","NAMES","WITH","NO","FORMULA","WORDS","IDARNON","VORENN"],"gained":[],"lost":["KOI"]},{"editor":"Forsyth 1996","sim":0.507,"band":"diverging","cur":"IDDARRNNN VORRENNI KOI ROSRR","oth":"THREE NAMES PLUS KOI IDARNON VORENN KOI","onlyCur":["IDDARRNNN","VORRENNI","ROSRR"],"onlyOth":["THREE","NAMES","PLUS","IDARNON","VORENN"],"gained":[],"lost":[]},{"editor":"Forsyth 1996","sim":0.179,"band":"far apart","cur":"IDDARRNNN VORRENNI KOI ROSRR","oth":"THREE NAMES PLUS IPE EITHER X Y IPE Z OR X Y IPE Z","onlyCur":["IDDARRNNN","VORRENNI","KOI","ROSRR"],"onlyOth":["THREE","NAMES","PLUS","IPE","EITHER","X","Y","IPE","Z","OR","X","Y","IPE","Z"],"gained":[],"lost":["KOI"]}]},{"id":"S-ABD-006","title":"Dyce","ciic":"","county":"Aberdeenshire","country":"Scotland","lat":57.229167,"lon":-2.208333,"band":"diverging","sim":0.583,"editors":["Forsyth 2001"],"formula":false,"pairs":[{"editor":"Forsyth 2001","sim":0.583,"band":"diverging","cur":"EOTTASSARHETDDEDDTS MAQQ ROGODDADD","oth":"MAQQ ROGODDADD","onlyCur":["EOTTASSARHETDDEDDTS"],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"S-ARL-001","title":"Gigha 1","ciic":"506","county":"Argyll","country":"Scotland","lat":55.669722,"lon":-5.750278,"band":"far apart","sim":0.462,"editors":["Macalister 1902","Macalister 1945","Rhys 1899","Rhys 1901"],"formula":true,"pairs":[{"editor":"Rhys 1899","sim":0.6,"band":"diverging","cur":"MAQ COGIN","oth":"MAQICAGILEB","onlyCur":["MAQ","COGIN"],"onlyOth":["MAQICAGILEB"],"gained":[],"lost":["MAQI"]},{"editor":"Rhys 1901","sim":0.462,"band":"far apart","cur":"MAQ COGIN","oth":"OGMA MAQI TIGERNI","onlyCur":["MAQ","COGIN"],"onlyOth":["OGMA","MAQI","TIGERNI"],"gained":[],"lost":[]},{"editor":"Macalister 1902","sim":0.667,"band":"diverging","cur":"MAQ COGIN","oth":"VICULA MAQ COMGINI","onlyCur":["COGIN"],"onlyOth":["VICULA","COMGINI"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":0.615,"band":"diverging","cur":"MAQ COGIN","oth":"VICULA MAQ CUGINI","onlyCur":["COGIN"],"onlyOth":["VICULA","CUGINI"],"gained":[],"lost":[]}]},{"id":"S-ARL-003","title":"Dún Ad | Dunadd","ciic":"","county":"Argyll","country":"Scotland","lat":56.085833,"lon":-5.478889,"band":"diverging","sim":0.508,"editors":["Jackson 1965","Padel 1972"],"formula":false,"pairs":[{"editor":"Jackson 1965","sim":0.508,"band":"diverging","cur":"AESD T VNA T VIRRMONAI","oth":"UPPER HCSD T V NLVH T LOWER L VQRRIHMDNHQ","onlyCur":["AESD","VNA","VIRRMONAI"],"onlyOth":["UPPER","HCSD","V","NLVH","LOWER","L","VQRRIHMDNHQ"],"gained":[],"lost":[]},{"editor":"Padel 1972","sim":0.635,"band":"diverging","cur":"AESD T VNA T VIRRMONAI","oth":"UPPER AESD T V NLVA TV LOWER L VIRRHAMDNA","onlyCur":["VNA","VIRRMONAI"],"onlyOth":["UPPER","V","NLVA","TV","LOWER","L","VIRRHAMDNA"],"gained":[],"lost":[]}]},{"id":"S-ARL-004","title":"Lochgoilhead","ciic":"","county":"Argyll","country":"Scotland","lat":56.171667,"lon":-4.903333,"band":"far apart","sim":0.163,"editors":["Forsyth 1996"],"formula":false,"pairs":[{"editor":"Forsyth 1996","sim":0.163,"band":"far apart","cur":"MUDMALIDM","oth":"FROM LEFT TO RIGHT THE TEXT READS MUD ALI IN THE OPPOSITE DIRECTION THE TEXT READS ID LUM","onlyCur":["MUDMALIDM"],"onlyOth":["FROM","LEFT","TO","RIGHT","THE","TEXT","READS","MUD","ALI","IN","THE","OPPOSITE","DIRECTION","THE","TEXT","READS","ID","LUM"],"gained":[],"lost":[]}]},{"id":"S-BUT-001","title":"Blackwaterfoot 1","ciic":"","county":"Bute","country":"Scotland","lat":55.526111,"lon":-5.353333,"band":"far apart","sim":0.182,"editors":["Fis 2001","Forsyth 1996","Jackson 1973"],"formula":false,"pairs":[{"editor":"Jackson 1973","sim":0.381,"band":"far apart","cur":"MEQE","oth":"EOMEDTE OR EOMEQE","onlyCur":["MEQE"],"onlyOth":["EOMEDTE","OR","EOMEQE"],"gained":[],"lost":[]},{"editor":"Jackson 1973","sim":0.286,"band":"far apart","cur":"MEQE","oth":"EVLEMOE OR ENEMOE","onlyCur":["MEQE"],"onlyOth":["EVLEMOE","OR","ENEMOE"],"gained":[],"lost":[]},{"editor":"Forsyth 1996","sim":0.6,"band":"diverging","cur":"MEQE","oth":"H OMEQ","onlyCur":["MEQE"],"onlyOth":["H","OMEQ"],"gained":[],"lost":[]},{"editor":"Forsyth 1996","sim":0.2,"band":"far apart","cur":"MEQE","oth":"ADLEUV","onlyCur":["MEQE"],"onlyOth":["ADLEUV"],"gained":[],"lost":[]},{"editor":"Forsyth 1996","sim":0.182,"band":"far apart","cur":"MEQE","oth":"BLUEDLA","onlyCur":["MEQE"],"onlyOth":["BLUEDLA"],"gained":[],"lost":[]},{"editor":"Fis 2001","sim":0.2,"band":"far apart","cur":"MEQE","oth":"LUEDBH","onlyCur":["MEQE"],"onlyOth":["LUEDBH"],"gained":[],"lost":[]}]},{"id":"S-BUT-003","title":"Inchmarnock 2","ciic":"","county":"Bute","country":"Scotland","lat":55.789444,"lon":-5.153611,"band":"far apart","sim":0.3,"editors":["unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":0.3,"band":"far apart","cur":"GEBAM EX","oth":"BAAOMAHBADMA","onlyCur":["GEBAM","EX"],"onlyOth":["BAAOMAHBADMA"],"gained":[],"lost":[]},{"editor":"unattributed reading","sim":0.316,"band":"far apart","cur":"GEBAM EX","oth":"MLAHBOAAAMH","onlyCur":["GEBAM","EX"],"onlyOth":["MLAHBOAAAMH"],"gained":[],"lost":[]},{"editor":"unattributed reading","sim":0.316,"band":"far apart","cur":"GEBAM EX","oth":"ALAHBOAAAMH","onlyCur":["GEBAM","EX"],"onlyOth":["ALAHBOAAAMH"],"gained":[],"lost":[]}]},{"id":"S-BUT-004","title":"Inchmarnock 3","ciic":"","county":"Bute","country":"Scotland","lat":55.789444,"lon":-5.153611,"band":"far apart","sim":0.25,"editors":["Low 2008","Tedeschi 2008"],"formula":false,"pairs":[{"editor":"Low 2008","sim":0.25,"band":"far apart","cur":"M C GGAIX","oth":"LEFT TO RIGHT IAGGH S B","onlyCur":["M","C","GGAIX"],"onlyOth":["LEFT","TO","RIGHT","IAGGH","S","B"],"gained":[],"lost":[]},{"editor":"Tedeschi 2008","sim":0.438,"band":"far apart","cur":"M C GGAIX","oth":"RIGHT TO LEFT H C BGGAI","onlyCur":["M","GGAIX"],"onlyOth":["RIGHT","TO","LEFT","H","BGGAI"],"gained":[],"lost":[]}]},{"id":"S-CAI-001","title":"Ackergill","ciic":"","county":"Caithness","country":"Scotland","lat":58.478333,"lon":-3.119167,"band":"close","sim":0.824,"editors":["Forsyth 1996"],"formula":false,"pairs":[{"editor":"Forsyth 1996","sim":0.824,"band":"close","cur":"NEHTETRI","oth":"NEHTETREB","onlyCur":["NEHTETRI"],"onlyOth":["NEHTETREB"],"gained":[],"lost":[]}]},{"id":"S-INV-002","title":"Bornais","ciic":"","county":"Inverness-shire","country":"Scotland","lat":57.245,"lon":-7.425,"band":"far apart","sim":0.25,"editors":["Forsyth 2012"],"formula":false,"pairs":[{"editor":"Forsyth 2012","sim":0.25,"band":"far apart","cur":"EQ BIK","oth":"RIGHT TO LEFT IHNE","onlyCur":["EQ","BIK"],"onlyOth":["RIGHT","TO","LEFT","IHNE"],"gained":[],"lost":[]}]},{"id":"S-KCD-002","title":"Fordoun","ciic":"","county":"Kincardineshire","country":"Scotland","lat":56.896111,"lon":-2.451111,"band":"far apart","sim":0.222,"editors":["Macalister 1940"],"formula":false,"pairs":[{"editor":"Macalister 1940","sim":0.222,"band":"far apart","cur":"OVV QM C","oth":"VUNIMSETTOR BRE ENN","onlyCur":["OVV","QM","C"],"onlyOth":["VUNIMSETTOR","BRE","ENN"],"gained":[],"lost":[]}]},{"id":"S-ORK-002","title":"Gurness","ciic":"","county":"Orkney","country":"Scotland","lat":59.123889,"lon":-3.081111,"band":"far apart","sim":0.105,"editors":["Padel 1972"],"formula":false,"pairs":[{"editor":"Padel 1972","sim":0.105,"band":"far apart","cur":"INEITTEMON MATS","oth":"CVAM","onlyCur":["INEITTEMON","MATS"],"onlyOth":["CVAM"],"gained":[],"lost":[]}]},{"id":"S-ORK-004","title":"Birsay 2","ciic":"","county":"Orkney","country":"Scotland","lat":59.136389,"lon":-3.330278,"band":"diverging","sim":0.727,"editors":["Forsyth 1996"],"formula":true,"pairs":[{"editor":"Forsyth 1996","sim":0.727,"band":"diverging","cur":"MAQI AB","oth":"QI A","onlyCur":["MAQI","AB"],"onlyOth":["QI","A"],"gained":[],"lost":["MAQI"]}]},{"id":"S-ORK-005","title":"Buckquoy","ciic":"","county":"Orkney","country":"Scotland","lat":59.134167,"lon":-3.323333,"band":"diverging","sim":0.5,"editors":["Forsyth 1995","Rod 2017"],"formula":false,"pairs":[{"editor":"Forsyth 1995","sim":0.5,"band":"diverging","cur":"BNDCT ANIM L","oth":"ENDDACTANIM OR BENDDACTANIML","onlyCur":["BNDCT","ANIM","L"],"onlyOth":["ENDDACTANIM","OR","BENDDACTANIML"],"gained":[],"lost":[]},{"editor":"Rod 2017","sim":0.667,"band":"diverging","cur":"BNDCT ANIM L","oth":"VENDDACTANIM","onlyCur":["BNDCT","ANIM","L"],"onlyOth":["VENDDACTANIM"],"gained":[],"lost":[]}]},{"id":"S-ORK-006","title":"Birsay 3","ciic":"","county":"Orkney","country":"Scotland","lat":59.136389,"lon":-3.330278,"band":"identical","sim":1.0,"editors":["Forsyth 1996"],"formula":false,"pairs":[{"editor":"Forsyth 1996","sim":1.0,"band":"identical","cur":"MAQQ HOB","oth":"MAQQ HOB","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"S-ORK-007","title":"Birsay 4","ciic":"","county":"Orkney","country":"Scotland","lat":59.136389,"lon":-3.330278,"band":"identical","sim":1.0,"editors":["unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":1.0,"band":"identical","cur":"BAB","oth":"BAB","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]}]},{"id":"S-PER-001","title":"Abernethy 1","ciic":"","county":"Perthshire","country":"Scotland","lat":56.333056,"lon":-3.311667,"band":"far apart","sim":0.1,"editors":["Forsyth 1996"],"formula":false,"pairs":[{"editor":"Forsyth 1996","sim":0.1,"band":"far apart","cur":"QMI","oth":"LEFT TO RIGHT IMN","onlyCur":["QMI"],"onlyOth":["LEFT","TO","RIGHT","IMN"],"gained":[],"lost":[]}]},{"id":"S-SHE-007","title":"Lunnasting","ciic":"","county":"Shetland","country":"Scotland","lat":60.366389,"lon":-1.167778,"band":"close","sim":0.871,"editors":["Forsyth 1996"],"formula":false,"pairs":[{"editor":"Forsyth 1996","sim":1.0,"band":"identical","cur":"XTT CUHXTTS AHXHHTTANNN HCCVVEVV NEHHTON","oth":"XTT CUHXTTS AHXHHTTANNN HCCVVEVV NEHHTON","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]},{"editor":"Forsyth 1996","sim":0.871,"band":"close","cur":"XTT CUHXTTS AHXHHTTANNN HCCVVEVV NEHHTON","oth":"EATT CUHEATTS AIHEAHHTTANNN HCCVVEVV NEHHTONN","onlyCur":["XTT","CUHXTTS","AHXHHTTANNN","NEHHTON"],"onlyOth":["EATT","CUHEATTS","AIHEAHHTTANNN","NEHHTONN"],"gained":[],"lost":[]}]},{"id":"S-SHE-009","title":"Cunningsburgh 4","ciic":"","county":"Shetland","country":"Scotland","lat":60.033611,"lon":-1.224722,"band":"diverging","sim":0.513,"editors":["Forsyth 1996","Macalister 1940"],"formula":false,"pairs":[{"editor":"Forsyth 1996","sim":0.6,"band":"diverging","cur":"XTTECG VVR V DATTVB","oth":"ETTECO AFFR AF DATTUR","onlyCur":["XTTECG","VVR","V","DATTVB"],"onlyOth":["ETTECO","AFFR","AF","DATTUR"],"gained":[],"lost":[]},{"editor":"Forsyth 1996","sim":0.615,"band":"diverging","cur":"XTTECG VVR V DATTVB","oth":"ETTECO AW R AW DATTW","onlyCur":["XTTECG","VVR","V","DATTVB"],"onlyOth":["ETTECO","AW","R","AW","DATTW"],"gained":[],"lost":[]},{"editor":"Macalister 1940","sim":0.513,"band":"diverging","cur":"XTTECG VVR V DATTVB","oth":"ETTECO A TVVALT RTTA","onlyCur":["XTTECG","VVR","V","DATTVB"],"onlyOth":["ETTECO","A","TVVALT","RTTA"],"gained":[],"lost":[]}]},{"id":"S-SHE-010","title":"Whiteness","ciic":"","county":"Shetland","country":"Scotland","lat":60.1825,"lon":-1.304722,"band":"far apart","sim":0.2,"editors":["Forsyth 1996"],"formula":false,"pairs":[{"editor":"Forsyth 1996","sim":1.0,"band":"identical","cur":"NNDAR","oth":"NNDAR","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]},{"editor":"Forsyth 1996","sim":0.2,"band":"far apart","cur":"NNDAR","oth":"RALQQ","onlyCur":["NNDAR"],"onlyOth":["RALQQ"],"gained":[],"lost":[]}]},{"id":"S-SUT-002","title":"Latheron","ciic":"","county":"Sutherland","country":"Scotland","lat":58.279722,"lon":-3.369167,"band":"close","sim":0.8,"editors":["Macalister 1940"],"formula":false,"pairs":[{"editor":"Macalister 1940","sim":0.8,"band":"close","cur":"B DUNNODNNAT MAQQ NA TU","oth":"DUNNODNATMAQQNETU","onlyCur":["B","DUNNODNNAT","MAQQ","NA","TU"],"onlyOth":["DUNNODNATMAQQNETU"],"gained":[],"lost":[]}]},{"id":"W-BRE-001","title":"Llanddeti","ciic":"336","county":"Brecknockshire","country":"Wales","lat":51.809722,"lon":-3.346017,"band":"far apart","sim":0.235,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.235,"band":"far apart","cur":"MAQIDECEDA","oth":"Q T C D","onlyCur":["MAQIDECEDA"],"onlyOth":["Q","T","C","D"],"gained":[],"lost":[]}]},{"id":"W-BRE-002","title":"Crai | Llywel","ciic":"329","county":"Brecknockshire","country":"Wales","lat":51.898694,"lon":-3.63355,"band":"close","sim":0.824,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.824,"band":"close","cur":"S N N N","oth":"BM S N N N","onlyCur":[],"onlyOth":["BM"],"gained":[],"lost":[]}]},{"id":"W-BRE-003","title":"Ystradfellte","ciic":"345","county":"Brecknockshire","country":"Wales","lat":51.809528,"lon":-3.553209,"band":"diverging","sim":0.769,"editors":["Lewis 2007","Macalister 1945"],"formula":false,"pairs":[{"editor":"Lewis 2007","sim":0.8,"band":"close","cur":"GLUVOC","oth":"GLUVOCA I","onlyCur":["GLUVOC"],"onlyOth":["GLUVOCA","I"],"gained":[],"lost":[]},{"editor":"Macalister 1945","sim":0.769,"band":"diverging","cur":"GLUVOC","oth":"GLUV CI","onlyCur":["GLUVOC"],"onlyOth":["GLUV","CI"],"gained":[],"lost":[]}]},{"id":"W-BRE-004","title":"Crickhowell","ciic":"327","county":"Brecknockshire","country":"Wales","lat":51.866872,"lon":-3.126958,"band":"diverging","sim":0.588,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.588,"band":"diverging","cur":"TURILLI LUNI","oth":"TURPILI MOSAC TRALLONI","onlyCur":["TURILLI","LUNI"],"onlyOth":["TURPILI","MOSAC","TRALLONI"],"gained":[],"lost":[]}]},{"id":"W-BRE-005","title":"Trallwng","ciic":"342","county":"Brecknockshire","country":"Wales","lat":51.955282,"lon":-3.505871,"band":"close","sim":0.872,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.872,"band":"close","cur":"CUNACENNI AV ILVVETO","oth":"CVNACENNIVI ILVVETO","onlyCur":["CUNACENNI","AV"],"onlyOth":["CVNACENNIVI"],"gained":[],"lost":[]}]},{"id":"W-BRE-X02","title":"Ystradfellte","ciic":"343","county":"Brecknockshire","country":"Wales","lat":51.860975,"lon":-3.563928,"band":"diverging","sim":0.5,"editors":["Macalister 1945"],"formula":false,"pairs":[{"editor":"Macalister 1945","sim":0.5,"band":"diverging","cur":"SG","oth":"VASSOG","onlyCur":["SG"],"onlyOth":["VASSOG"],"gained":[],"lost":[]}]},{"id":"W-BRE-X03","title":"Llanfihangel Cwm Du","ciic":"334","county":"Brecknockshire","country":"Wales","lat":51.889481,"lon":-3.204539,"band":"diverging","sim":0.795,"editors":["unattributed reading"],"formula":false,"pairs":[{"editor":"unattributed reading","sim":0.795,"band":"diverging","cur":"CATACVS HIC IACIT FILIVS TEGERNACVS","oth":"CATXCVS HIC IA CP FILIVS PSSESE RHACVS","onlyCur":["CATACVS","IACIT","TEGERNACVS"],"onlyOth":["CATXCVS","IA","CP","PSSESE","RHACVS"],"gained":[],"lost":[]}]},{"id":"W-CMN-001","title":"Llangeler","ciic":"372","county":"Carmarthenshire","country":"Wales","lat":52.017378,"lon":-4.328672,"band":"far apart","sim":0.194,"editors":["Edw 2007","Macalister 1936"],"formula":true,"pairs":[{"editor":"Edw 2007","sim":1.0,"band":"identical","cur":"IBA","oth":"IBA","onlyCur":[],"onlyOth":[],"gained":[],"lost":[]},{"editor":"Macalister 1936","sim":0.194,"band":"far apart","cur":"IBA","oth":"DECCAIBARVALBI MAQI BROCAGNI","onlyCur":["IBA"],"onlyOth":["DECCAIBARVALBI","MAQI","BROCAGNI"],"gained":["MAQI"],"lost":[]}]},{"id":"W-CMN-X01","title":"Henllan Amgoed","ciic":"364","county":"Carmarthenshire","country":"Wales","lat":51.845989,"lon":-4.650858,"band":"diverging","sim":0.595,"editors":["Macalister 1922"],"formula":false,"pairs":[{"editor":"Macalister 1922","sim":0.595,"band":"diverging","cur":"QVENVENDANI FILI BARCVNI","oth":"NVENDANIM B R","onlyCur":["QVENVENDANI","FILI","BARCVNI"],"onlyOth":["NVENDANIM","B","R"],"gained":[],"lost":[]}]}];
+const BANDS  = {"bands":{"far apart":35,"diverging":23,"close":25,"identical":7},"editors":{"Macalister 1945":43,"Sims-Williams 2003":1,"Fulford 2000":1,"unattributed reading":13,"Clarke 1952":1,"Johnson 2020":2,"McQuillan 2003":1,"Rhys 1908":1,"Ron 2009":1,"Oke 1945":1,"Bar 1897":1,"Bar 1891":1,"Macalister 1907":1,"McManus 2004":2,"Macalister 1932":1,"Oke 1968":1,"Shee 1968":2,"Lankford 1993":1,"Cuppage 1986":1,"McManus 1991":2,"O'Kelly 1986":1,"Brash 1879":1,"Bar 1896":1,"Rhys 1898":1,"Macalister 1919":1,"Sou 1887":1,"West 2011":2,"Broderick 2021":1,"Forsyth 1996":10,"Forsyth 2001":1,"Macalister 1902":1,"Rhys 1899":1,"Rhys 1901":1,"Jackson 1965":1,"Padel 1972":2,"Fis 2001":1,"Jackson 1973":1,"Low 2008":1,"Tedeschi 2008":1,"Forsyth 2012":1,"Macalister 1940":3,"Forsyth 1995":1,"Rod 2017":1,"Lewis 2007":1,"Edw 2007":1,"Macalister 1936":1,"Macalister 1922":1}};
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const BAND_COLOUR = {"identical":"#8d9a97", "close":"#9aab3f",
+                     "diverging":"#b07d2b", "far apart":"#b0413e"};
+const BAND_ORDER = ["far apart","diverging","close","identical"];
+
+const map = L.map("map", {zoomControl:false}).setView([53.6,-7.5], 6);
+L.control.zoom({position:"bottomright"}).addTo(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+
+function icon(colour){
+  const d = 13;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin" style="width:${d}px;height:${d}px;background:${colour};`
+       + `border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+// A token that one reading has and the other does not is what a reader is looking
+// for, so it is marked rather than left to be spotted.
+function tokens(text, missing){
+  const gone = new Set(missing);
+  return esc(text).split(/\s+/).map(t =>
+    gone.has(t) ? `<mark>${t}</mark>` : t).join(" ");
+}
+
+function popup(s){
+  const head = s.pairs[0];
+  const rows = s.pairs.map(p => `
+    <p class="rdg"><em>${esc(p.editor)}</em>
+      <span class="badge" style="background:${BAND_COLOUR[p.band]}22;color:${BAND_COLOUR[p.band]}">
+        ${esc(p.band)} · ${p.sim.toFixed(2)}</span><br>
+      ${tokens(p.oth, p.onlyOth)}
+      ${p.gained.length ? `<br><span class="gain">+ ${p.gained.map(esc).join(" ")}</span>` : ""}
+      ${p.lost.length ? `<br><span class="loss">\u2212 ${p.lost.map(esc).join(" ")}</span>` : ""}
+    </p>`).join("");
+  return `<div class="pop">
+    <h2>${esc(s.title || s.id)}</h2>
+    <div class="where">${esc([s.county, s.country].filter(Boolean).join(", "))}
+      ${s.ciic ? " · CIIC " + esc(s.ciic) : ""}</div>
+    <p class="rdg"><em>current OG(H)AM edition</em><br>${tokens(head.cur, head.onlyCur)}</p>
+    <hr style="border:0;border-top:1px solid #33433f;margin:9px 0">
+    ${rows}
+    <div class="links"><a href="findspots.html">on the findspot map</a>
+      <a href="words.html">formulaic words</a></div>
+  </div>`;
+}
+
+let bandFilter = null, editorFilter = null;
+
+function matches(s){
+  if (bandFilter && s.band !== bandFilter) return false;
+  if (editorFilter && !s.editors.includes(editorFilter)) return false;
+  if (document.getElementById("onlyFormula").checked && !s.formula) return false;
+  return true;
+}
+
+function draw(){
+  const keep = STONES.filter(matches);
+  scene.slug = "readings";
+  scene.title = [bandFilter, editorFilter].filter(Boolean).join(" ") || "";
+  scene.points = keep.map(s => ({lat:s.lat, lon:s.lon,
+                                 colour:BAND_COLOUR[s.band] || "#8d9a97", vague:false}));
+  const markers = keep.map(s =>
+    L.marker([s.lat, s.lon], {icon:icon(BAND_COLOUR[s.band]), title:s.title || s.id})
+     .bindPopup(() => popup(s), {maxWidth:360}));
+  showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length) map.fitBounds(L.latLngBounds(keep.map(s => [s.lat, s.lon])).pad(0.08));
+}
+
+function radioList(box, items, current, onPick, allLabel){
+  box.innerHTML = "";
+  const add = (value, label, gloss, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    l.innerHTML = `<input type="radio" name="${box.id}" ${checked ? "checked" : ""}>`
+                + (gloss === null ? `<b>${esc(label)}</b><span class="tr"></span>`
+                   : `<span class="dot" style="background:${gloss}"></span>`
+                     + `<b>${esc(label)}</b><span class="tr"></span>`)
+                + `<span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => { onPick(value); });
+    box.appendChild(l);
+  };
+  add(null, allLabel, null, items.reduce((a, i) => a + i.n, 0), current === null);
+  items.forEach(i => add(i.value, i.label, i.colour ?? null, i.n, current === i.value));
+}
+
+function buildLists(){
+  radioList(document.getElementById("bandlist"),
+    BAND_ORDER.filter(b => BANDS.bands[b]).map(b => ({
+      value:b, label:b, n:BANDS.bands[b], colour:BAND_COLOUR[b] })),
+    bandFilter, v => { bandFilter = v; draw(); buildLists(); }, "Any distance");
+  radioList(document.getElementById("editorlist"),
+    Object.keys(BANDS.editors).sort((a,b) => BANDS.editors[b] - BANDS.editors[a]
+      || a.localeCompare(b)).map(e => ({ value:e, label:e, n:BANDS.editors[e] })),
+    editorFilter, v => { editorFilter = v; draw(); buildLists(); }, "Any editor");
+}
+
+document.getElementById("formulaN").textContent = STONES.filter(s => s.formula).length;
+document.getElementById("onlyFormula").addEventListener("change", draw);
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildLists();
+draw();
+</script>
+</body>
+</html>

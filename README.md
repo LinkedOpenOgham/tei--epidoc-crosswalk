@@ -134,6 +134,7 @@ drift apart:
 | `docs/index.html` | the landing page: what exists, with live figures |
 | `docs/findspots.html` | browsable Leaflet map of the findspots, points or hex density |
 | `docs/words.html` | the formulaic vocabulary, filterable by word, points or hex density |
+| `docs/readings.html` | stones with competing readings, by distance and editor |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
 Over the full corpus: **504 stones, 395 distinct places** across 12 administrative
@@ -147,6 +148,56 @@ a landing page and, at the moment, two views — the findspot map (filterable by
 country and by free text, with hedged findspots as dashed rings and the
 `data:findspot_*` node in every popup) and the formulaic-word map. Nothing in them
 re-parses the XML, so map, table and graph cannot drift apart.
+
+## Where the editors disagree (`docs/readings.html`)
+
+The third view asks what the earlier two cannot: **which stones have been read more
+than one way, and how far apart are those readings?**
+
+- **90 stones** carry a competing reading, **138 comparisons** in all, **47 editors**
+- by distance from the current edition: 35 far apart, 23 diverging, 25 close, 7 identical
+- on **28 stones a formulaic word is what is at stake** — one editor read MAQI or
+  MUCOI where the current edition does not, or the other way round
+
+Coomleagh East (I-COR-001) is the case in miniature. The current edition reads
+`TETA`; Macalister in 1945 read `ANM SAINA MAQ OGALA MUCOI TEMOCA`. Similarity 0.17,
+and three formula words hang on which reading you take.
+
+**This page adds no triples.** It is a view over structure the crosswalk already
+carries — every reading is a `crmtex:TX6_Transcription` `prov:wasAttributedTo` its
+editor — so the same question is one query away:
+
+```sparql
+SELECT ?stone (COUNT(DISTINCT ?reading) AS ?n) WHERE {
+  ?stone crm:P128_carries ?inscription .
+  ?inscription crmtex:TXP4_has_segment ?reading .
+  ?reading a crmtex:TX6_Transcription ; prov:wasAttributedTo ?editor .
+} GROUP BY ?stone HAVING (?n > 1)
+```
+
+What *is* computed is the degree of disagreement, and `out/readings.csv` labels it
+as such: a character-level similarity between the current edition and each earlier
+reading of the same script. It is an **ordering aid, not a verdict**. Two readings
+can score 0.83 and still differ over everything that matters (`MAQI` against
+`MAQI MUCOI`); another scores 0.5 only because one editor saw four more letters on a
+broken stone. Readings are compared **within one script only** — on a bilingual
+stone, measuring the ogham against the Roman-script reading would measure the
+distance between two languages, not between two editors.
+
+### Reading the apparatus correctly
+
+Getting this right meant fixing how readings are extracted, which also corrected the
+word layer:
+
+- **305 of 434 `<app>` elements hold only a `<note>`** — an editorial remark, not a
+  rival reading. Counting them as readings inflates the disagreement.
+- **Only 53% of `<rdg>` elements carry `@source`.** For the rest the attribution is
+  prose in the `<app>`'s note (*"Macalister (1945, 469) read:"*) and has to be parsed
+  from there. Before this, 68 readings were silently labelled as the OG(H)AM edition;
+  Macalister 1945 now accounts for 56 readings rather than 29.
+- **`<rdg>` texts carry a script prefix** (`Ogham: LA[TI]NI`, `Roman: LATINI IC
+  IACIT…`). Left in, the Roman-script readings normalised to an empty string and
+  scored 0.00 against everything.
 
 ### Exporting a view
 
@@ -242,6 +293,7 @@ Popups show each reading with the matched token highlighted.
 |---|---|
 | `out/words.csv` | one row per (stone, reading, word) with variant, token, gloss, QID |
 | `out/words.crm.ttl` | occurrences as `crmtex:TX7_Written_Text_Segment` of the `TX6` reading |
+| `out/readings.csv` | one row per competing reading, with its distance from the current edition |
 | `docs/words.html` | the filter map |
 
 In RDF each occurrence is a segment of the reading that carries it
@@ -329,6 +381,7 @@ tei--epidoc-crosswalk/
 │   ├── index.html             # landing page (generated)
 │   ├── findspots.html         # Leaflet map of the findspots (generated)
 │   ├── words.html             # formulaic-word filter map (generated)
+│   ├── readings.html          # editorial-disagreement map (generated)
 │   ├── places.geojson         # point layer beside the map (generated)
 │   └── .nojekyll
 ├── py/
@@ -336,6 +389,7 @@ tei--epidoc-crosswalk/
 │   ├── corpus.py              # fetch/update the editions + provenance manifest
 │   ├── places.py              # corpus-wide place layer (E53 + GeoSPARQL)
 │   ├── words.py               # formulaic vocabulary across all readings
+│   ├── dissent.py             # comparison of competing readings
 │   ├── webmap.py              # docs/ map builder
 │   └── wikidata.py             # Wikidata reconciliation module
 ├── .gitignore

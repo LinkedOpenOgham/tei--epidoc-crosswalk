@@ -650,6 +650,8 @@ data:stone_S_ORK_004 crm:P128_carries data:inscription_S_ORK_004 .
 
 data:stone_S_SHE_003 crm:P128_carries data:inscription_S_SHE_003 .
 
+data:stone_W_BRE_002 crm:P128_carries data:inscription_W_BRE_002 .
+
 data:stone_W_BRE_005 crm:P128_carries data:inscription_W_BRE_005 .
 
 data:stone_W_BRE_006 crm:P128_carries data:inscription_W_BRE_006 .
@@ -862,10 +864,19 @@ data:agent_BAR1897 a prov:Agent ;
     rdfs:label "Bar 1897" .
 
 data:agent_BRO2021 a prov:Agent ;
-    rdfs:label "Bro 2021" .
+    rdfs:label "Broderick 2021" .
+
+data:agent_Cuppage_1986 a prov:Agent ;
+    rdfs:label "Cuppage 1986" .
 
 data:agent_FUL2000 a prov:Agent ;
-    rdfs:label "Ful 2000" .
+    rdfs:label "Fulford 2000" .
+
+data:agent_Forsyth_1996 a prov:Agent ;
+    rdfs:label "Forsyth 1996" .
+
+data:agent_Lankford_1993 a prov:Agent ;
+    rdfs:label "Lankford 1993" .
 
 data:agent_MAC1902 a prov:Agent ;
     rdfs:label "Macalister 1902" .
@@ -882,8 +893,14 @@ data:agent_MAC1936 a prov:Agent ;
 data:agent_OGHAM_RHY1907a a prov:Agent ;
     rdfs:label "OG(H)AM edition (RHY1907a)" .
 
+data:agent_OKA1993 a prov:Agent ;
+    rdfs:label "O’Kelly 1993" .
+
+data:agent_O_Kelly_1986 a prov:Agent ;
+    rdfs:label "O'Kelly 1986" .
+
 data:agent_PAD1972 a prov:Agent ;
-    rdfs:label "Pad 1972" .
+    rdfs:label "Padel 1972" .
 
 data:agent_RHY1898 a prov:Agent ;
     rdfs:label "Rhys 1898" .
@@ -894,33 +911,45 @@ data:agent_RHY1901 a prov:Agent ;
 data:agent_SOU1887 a prov:Agent ;
     rdfs:label "Sou 1887" .
 
+data:agent_Shee_1968 a prov:Agent ;
+    rdfs:label "Shee 1968" .
+
+data:agent_Sims_Williams_2003 a prov:Agent ;
+    rdfs:label "Sims-Williams 2003" .
+
+data:agent_West_2011 a prov:Agent ;
+    rdfs:label "West 2011" .
+
 data:inscription_E_CON_002 crmtex:TXP4_has_segment data:reading_E_CON_002_OGHAM_NW .
 
 data:inscription_E_CON_003 crmtex:TXP4_has_segment data:reading_E_CON_003_OGHAM_NW .
 
-data:inscription_E_CON_X02 crmtex:TXP4_has_segment data:reading_E_CON_X02_OGHAM_NW .
+data:inscription_E_CON_X02 crmtex:TXP4_has_segment data:reading_E_CON_X02_MAC1945,
+        data:reading_E_CON_X02_OGHAM_NW,
+        data:reading_E_CON_X02_OKA1993 .
 
 data:inscription_E_CON_X03 crmtex:TXP4_has_segment data:reading_E_CON_X03_MAC1945 .
 
-data:inscription_E_CON_X04 crmtex:TXP4_has_segment data:reading_E_CON_X04_OGHAM_NW,
-        data:reading_E_CON_X04_rdg .
+data:inscription_E_CON_X04 crmtex:TXP4_has_segment data:reading_E_CON_X04_Macalister_1945,
+        data:reading_E_CON_X04_OGHAM_NW .
 
-data:inscription_E_DEV_001 crmtex:TXP4_has_segment data:reading_E_DEV_001_OGHAM_NW,
-        data:reading_E_DEV_001_rdg .
+data:inscription_E_DEV_001 crmtex:TXP4_has_segment data:reading_E_DEV_001_Macalister_1945,
+        data:reading_E_DEV_001_OGHAM_NW,
+        data:reading_E_DEV_001_Sims_Williams_2003 .
 
-data:inscription_E_DEV_002 crmtex:TXP4_has_segment data:reading_E_DEV_002_OGHAM_NW,
-        data:reading_E_DEV_002_rdg .
+data:inscription_E_DEV_002 crmtex:TXP4_has_segment data:reading_E_DEV_002_Macalister_1945,
+        data:reading_E_DEV_002_OGHAM_NW .
 
 data:inscription_E_HAM_001 crmtex:TXP4_has_segment data:reading_E_HAM_001_FUL2000,
         data:reading_E_HAM_001_OGHAM_NW,
-        data:reading_E_HAM_001_rdg .
+        data:reading_E_HAM_001_unattributed .
 
 data:inscription_I_ANT_001 crmtex:TXP4_has_segment data:reading_I_ANT_001_OGHAM_NW .
 
 data:inscription_I_ANT_002 crmtex:TXP4_has_segment data:reading_I_ANT_002_OGHAM_NW .
 
-data:inscription_I_ARM_001 crmtex:TXP4_has_segment data:reading_I_ARM_001_OGHAM_NW,
-        data:reading_I_ARM_001_rdg .
+data:inscription_I_ARM_001 crmtex:TXP4_has_segment data:reading_I_ARM_001_Macalister_1945,
+        data:reading_I_ARM_001_OGHAM_NW .
 
 data:inscription_I_CAR_002 crmtex:TXP4_has_segment data:reading_I_CAR_002_OGHAM_NW .
 
@@ -1064,14 +1093,14 @@ data:inscription_I_COR_086 crmtex:TXP4_has_segment data:reading_I_COR_086_OGHAM_
 data:inscription_I_COR_087 crmtex:TXP4_has_segment data:reading_I_COR_087_OGHAM_NW .
 
 data:inscription_I_COR_090 crmtex:TXP4_has_segment data:reading_I_COR_090_OGHAM_NW,
-        data:reading_I_COR_090_rdg .
+        data:reading_I_COR_090_Shee_1968 .
 
 data:inscription_I_COR_091 crmtex:TXP4_has_segment data:reading_I_COR_091_OGHAM_NW .
 
 data:inscription_I_COR_092 crmtex:TXP4_has_segment data:reading_I_COR_092_OGHAM_NW .
 
-data:inscription_I_COR_093 crmtex:TXP4_has_segment data:reading_I_COR_093_OGHAM_NW,
-        data:reading_I_COR_093_rdg .
+data:inscription_I_COR_093 crmtex:TXP4_has_segment data:reading_I_COR_093_Lankford_1993,
+        data:reading_I_COR_093_OGHAM_NW .
 
 data:inscription_I_COR_095 crmtex:TXP4_has_segment data:reading_I_COR_095_OGHAM_NW .
 
@@ -1087,8 +1116,8 @@ data:inscription_I_KER_007 crmtex:TXP4_has_segment data:reading_I_KER_007_OGHAM_
 
 data:inscription_I_KER_008 crmtex:TXP4_has_segment data:reading_I_KER_008_OGHAM_NW .
 
-data:inscription_I_KER_009 crmtex:TXP4_has_segment data:reading_I_KER_009_OGHAM_NW,
-        data:reading_I_KER_009_rdg .
+data:inscription_I_KER_009 crmtex:TXP4_has_segment data:reading_I_KER_009_Macalister_1945,
+        data:reading_I_KER_009_OGHAM_NW .
 
 data:inscription_I_KER_010 crmtex:TXP4_has_segment data:reading_I_KER_010_OGHAM_NW .
 
@@ -1102,8 +1131,10 @@ data:inscription_I_KER_015 crmtex:TXP4_has_segment data:reading_I_KER_015_OGHAM_
 
 data:inscription_I_KER_016 crmtex:TXP4_has_segment data:reading_I_KER_016_OGHAM_NW .
 
-data:inscription_I_KER_017 crmtex:TXP4_has_segment data:reading_I_KER_017_OGHAM_NW,
-        data:reading_I_KER_017_rdg .
+data:inscription_I_KER_017 crmtex:TXP4_has_segment data:reading_I_KER_017_Cuppage_1986,
+        data:reading_I_KER_017_Macalister_1945,
+        data:reading_I_KER_017_McManus_1991,
+        data:reading_I_KER_017_OGHAM_NW .
 
 data:inscription_I_KER_019 crmtex:TXP4_has_segment data:reading_I_KER_019_OGHAM_NW .
 
@@ -1119,8 +1150,10 @@ data:inscription_I_KER_025 crmtex:TXP4_has_segment data:reading_I_KER_025_OGHAM_
 
 data:inscription_I_KER_026 crmtex:TXP4_has_segment data:reading_I_KER_026_OGHAM_NW .
 
-data:inscription_I_KER_029 crmtex:TXP4_has_segment data:reading_I_KER_029_OGHAM_NW,
-        data:reading_I_KER_029_rdg .
+data:inscription_I_KER_029 crmtex:TXP4_has_segment data:reading_I_KER_029_Macalister_1945,
+        data:reading_I_KER_029_McManus_1991,
+        data:reading_I_KER_029_OGHAM_NW,
+        data:reading_I_KER_029_O_Kelly_1986 .
 
 data:inscription_I_KER_030 crmtex:TXP4_has_segment data:reading_I_KER_030_OGHAM_NW .
 
@@ -1193,8 +1226,8 @@ data:inscription_I_KER_075 crmtex:TXP4_has_segment data:reading_I_KER_075_OGHAM_
 
 data:inscription_I_KER_076 crmtex:TXP4_has_segment data:reading_I_KER_076_OGHAM_NW .
 
-data:inscription_I_KER_078 crmtex:TXP4_has_segment data:reading_I_KER_078_OGHAM_POC,
-        data:reading_I_KER_078_rdg .
+data:inscription_I_KER_078 crmtex:TXP4_has_segment data:reading_I_KER_078_Macalister_1945,
+        data:reading_I_KER_078_OGHAM_POC .
 
 data:inscription_I_KER_080 crmtex:TXP4_has_segment data:reading_I_KER_080_OGHAM_NW .
 
@@ -1325,7 +1358,7 @@ data:inscription_I_LDY_001 crmtex:TXP4_has_segment data:reading_I_LDY_001_OGHAM_
 data:inscription_I_LOU_002 crmtex:TXP4_has_segment data:reading_I_LOU_002_OGHAM_NW .
 
 data:inscription_I_MAY_001 crmtex:TXP4_has_segment data:reading_I_MAY_001_OGHAM_NW,
-        data:reading_I_MAY_001_rdg .
+        data:reading_I_MAY_001_unattributed .
 
 data:inscription_I_MAY_002 crmtex:TXP4_has_segment data:reading_I_MAY_002_OGHAM_NW .
 
@@ -1357,8 +1390,8 @@ data:inscription_I_ROS_003 crmtex:TXP4_has_segment data:reading_I_ROS_003_OGHAM_
 
 data:inscription_I_ROS_004 crmtex:TXP4_has_segment data:reading_I_ROS_004_OGHAM_POC .
 
-data:inscription_I_TYR_001 crmtex:TXP4_has_segment data:reading_I_TYR_001_OGHAM_NW,
-        data:reading_I_TYR_001_rdg .
+data:inscription_I_TYR_001 crmtex:TXP4_has_segment data:reading_I_TYR_001_Macalister_1945,
+        data:reading_I_TYR_001_OGHAM_NW .
 
 data:inscription_I_WAT_001 crmtex:TXP4_has_segment data:reading_I_WAT_001_OGHAM_NW .
 
@@ -1369,8 +1402,8 @@ data:inscription_I_WAT_003 crmtex:TXP4_has_segment data:reading_I_WAT_003_OGHAM_
 
 data:inscription_I_WAT_005 crmtex:TXP4_has_segment data:reading_I_WAT_005_OGHAM_NW .
 
-data:inscription_I_WAT_006 crmtex:TXP4_has_segment data:reading_I_WAT_006_OGHAM_NW,
-        data:reading_I_WAT_006_rdg .
+data:inscription_I_WAT_006 crmtex:TXP4_has_segment data:reading_I_WAT_006_Macalister_1945,
+        data:reading_I_WAT_006_OGHAM_NW .
 
 data:inscription_I_WAT_007 crmtex:TXP4_has_segment data:reading_I_WAT_007_OGHAM_NW .
 
@@ -1433,7 +1466,7 @@ data:inscription_I_WIC_003 crmtex:TXP4_has_segment data:reading_I_WIC_003_OGHAM_
 data:inscription_I_WIC_005 crmtex:TXP4_has_segment data:reading_I_WIC_005_OGHAM_POC .
 
 data:inscription_M_IOM_001 crmtex:TXP4_has_segment data:reading_M_IOM_001_OGHAM_POC,
-        data:reading_M_IOM_001_rdg .
+        data:reading_M_IOM_001_unattributed .
 
 data:inscription_M_IOM_002 crmtex:TXP4_has_segment data:reading_M_IOM_002_OGHAM_POC .
 
@@ -1447,10 +1480,11 @@ data:inscription_M_IOM_007 crmtex:TXP4_has_segment data:reading_M_IOM_007_BRO202
         data:reading_M_IOM_007_OGHAM_POC .
 
 data:inscription_M_IOM_009 crmtex:TXP4_has_segment data:reading_M_IOM_009_OGHAM_POC,
-        data:reading_M_IOM_009_rdg .
+        data:reading_M_IOM_009_West_2011,
+        data:reading_M_IOM_009_unattributed .
 
-data:inscription_S_ABD_001 crmtex:TXP4_has_segment data:reading_S_ABD_001_OGHAM_LH,
-        data:reading_S_ABD_001_rdg .
+data:inscription_S_ABD_001 crmtex:TXP4_has_segment data:reading_S_ABD_001_Forsyth_1996,
+        data:reading_S_ABD_001_OGHAM_LH .
 
 data:inscription_S_ARL_001 crmtex:TXP4_has_segment data:reading_S_ARL_001_MAC1902,
         data:reading_S_ARL_001_MAC1945,
@@ -1468,12 +1502,14 @@ data:inscription_S_ORK_004 crmtex:TXP4_has_segment data:reading_S_ORK_004_OGHAM_
 
 data:inscription_S_SHE_003 crmtex:TXP4_has_segment data:reading_S_SHE_003_OGHAM_POC .
 
+data:inscription_W_BRE_002 crmtex:TXP4_has_segment data:reading_W_BRE_002_Macalister_1945 .
+
 data:inscription_W_BRE_005 crmtex:TXP4_has_segment data:reading_W_BRE_005_OGHAM_RED2007 .
 
 data:inscription_W_BRE_006 crmtex:TXP4_has_segment data:reading_W_BRE_006_OGHAM_RED2007 .
 
 data:inscription_W_BRE_X03 crmtex:TXP4_has_segment data:reading_W_BRE_X03_OGHAM_OGHAM,
-        data:reading_W_BRE_X03_rdg .
+        data:reading_W_BRE_X03_unattributed .
 
 data:inscription_W_CAE_X01 crmtex:TXP4_has_segment data:reading_W_CAE_X01_OGHAM_RHY1907a .
 
@@ -1523,17 +1559,37 @@ data:reading_E_CON_003_OGHAM_NW a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_E_CON_003_OGHAM_NW_ULCAGNI_compound ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_E_CON_X02_MAC1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "DVNOCATI HIC IACIT FILI MERCAGNI" ;
+    crmtex:TXP4_has_segment data:word_occ_E_CON_X02_MAC1945_CATTU_element,
+        data:word_occ_E_CON_X02_MAC1945_ERC_element ;
+    prov:wasAttributedTo data:agent_MAC1945 .
+
 data:reading_E_CON_X02_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "DVNOCATI HIC IACIT FILI MESCAGNI" ;
     crmtex:TXP4_has_segment data:word_occ_E_CON_X02_OGHAM_NW_CATTU_element ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_E_CON_X02_OKA1993 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "DVNOCATI HIC IACIT FILI MESCAGNI" ;
+    crmtex:TXP4_has_segment data:word_occ_E_CON_X02_OKA1993_CATTU_element ;
+    prov:wasAttributedTo data:agent_OKA1993 .
+
 data:reading_E_CON_X03_MAC1945 a ogham:Reading,
         crmtex:TX6_Transcription ;
-    rdfs:label "Ogham: VITALI MAQI TORICI" ;
+    rdfs:label "VITALI MAQI TORICI" ;
     crmtex:TXP4_has_segment data:word_occ_E_CON_X03_MAC1945_MAQI_formula ;
     prov:wasAttributedTo data:agent_MAC1945 .
+
+data:reading_E_CON_X04_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "BROCAGNI",
+        "BROCAGNI IHC IACIT NADOTTI FILIVS" ;
+    crmtex:TXP4_has_segment data:word_occ_E_CON_X04_Macalister_1945_BROCAGNI_compound ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
 
 data:reading_E_CON_X04_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -1541,11 +1597,11 @@ data:reading_E_CON_X04_OGHAM_NW a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_E_CON_X04_OGHAM_NW_BROCAGNI_compound ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:reading_E_CON_X04_rdg a ogham:Reading,
+data:reading_E_DEV_001_Macalister_1945 a ogham:Reading,
         crmtex:TX6_Transcription ;
-    rdfs:label "Ogham: BROCAGNI" ;
-    crmtex:TXP4_has_segment data:word_occ_E_CON_X04_rdg_BROCAGNI_compound ;
-    prov:wasAttributedTo data:agent_rdg .
+    rdfs:label "SVAQQUCI MAQI QICI" ;
+    crmtex:TXP4_has_segment data:word_occ_E_DEV_001_Macalister_1945_MAQI_formula ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
 
 data:reading_E_DEV_001_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -1553,24 +1609,24 @@ data:reading_E_DEV_001_OGHAM_NW a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_E_DEV_001_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:reading_E_DEV_001_rdg a ogham:Reading,
+data:reading_E_DEV_001_Sims_Williams_2003 a ogham:Reading,
         crmtex:TX6_Transcription ;
-    rdfs:label "Ogham: SVAQQUCI MAQI QICI",
-        "Ogham: SVA[NN]UCI MAQI [R]I[N]I" ;
-    crmtex:TXP4_has_segment data:word_occ_E_DEV_001_rdg_MAQI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
+    rdfs:label "SVA[NN]UCI MAQI [R]I[N]I" ;
+    crmtex:TXP4_has_segment data:word_occ_E_DEV_001_Sims_Williams_2003_MAQI_formula ;
+    prov:wasAttributedTo data:agent_Sims_Williams_2003 .
+
+data:reading_E_DEV_002_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "DOBVNNI FABRI FILII ENABARRI",
+        "ENABARR" ;
+    crmtex:TXP4_has_segment data:word_occ_E_DEV_002_Macalister_1945_BARR_element ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
 
 data:reading_E_DEV_002_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "ENABARRI" ;
     crmtex:TXP4_has_segment data:word_occ_E_DEV_002_OGHAM_NW_BARR_element ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
-
-data:reading_E_DEV_002_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "Ogham: ENABARR" ;
-    crmtex:TXP4_has_segment data:word_occ_E_DEV_002_rdg_BARR_element ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_E_HAM_001_FUL2000 a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -1586,11 +1642,11 @@ data:reading_E_HAM_001_OGHAM_NW a ogham:Reading,
         data:word_occ_E_HAM_001_OGHAM_NW_MUCOI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:reading_E_HAM_001_rdg a ogham:Reading,
+data:reading_E_HAM_001_unattributed a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "TEBICATOḄ[.. ? ..]ḤIMUCO[---]" ;
-    crmtex:TXP4_has_segment data:word_occ_E_HAM_001_rdg_CATTU_element ;
-    prov:wasAttributedTo data:agent_rdg .
+    crmtex:TXP4_has_segment data:word_occ_E_HAM_001_unattributed_CATTU_element ;
+    prov:wasAttributedTo data:agent_unattributed .
 
 data:reading_I_ANT_001_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -1606,17 +1662,17 @@ data:reading_I_ANT_002_OGHAM_NW a ogham:Reading,
         data:word_occ_I_ANT_002_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_I_ARM_001_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "DINEGLO MAQI QETAIS" ;
+    crmtex:TXP4_has_segment data:word_occ_I_ARM_001_Macalister_1945_MAQI_formula ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
 data:reading_I_ARM_001_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "DAENEGLO MAQI Q[E]TAI[---]" ;
     crmtex:TXP4_has_segment data:word_occ_I_ARM_001_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
-
-data:reading_I_ARM_001_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "DINEGLO MAQI QETAIS" ;
-    crmtex:TXP4_has_segment data:word_occ_I_ARM_001_rdg_MAQI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_I_CAR_002_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -2128,11 +2184,11 @@ data:reading_I_COR_090_OGHAM_NW a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_I_COR_090_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:reading_I_COR_090_rdg a ogham:Reading,
+data:reading_I_COR_090_Shee_1968 a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "ADARUN MACI COLALI" ;
-    crmtex:TXP4_has_segment data:word_occ_I_COR_090_rdg_MAQI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
+    crmtex:TXP4_has_segment data:word_occ_I_COR_090_Shee_1968_MAQI_formula ;
+    prov:wasAttributedTo data:agent_Shee_1968 .
 
 data:reading_I_COR_091_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -2146,21 +2202,21 @@ data:reading_I_COR_092_OGHAM_NW a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_I_COR_092_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_I_COR_093_Lankford_1993 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "ANM MAQQI-LASIR K[O]I MA(Q)QI BIR(R)AC(I)AS",
+        "ANM MAQQI-LASIRE(O)N MAQQI BIR(R)ACIAS" ;
+    crmtex:TXP4_has_segment data:word_occ_I_COR_093_Lankford_1993_ANM_formula,
+        data:word_occ_I_COR_093_Lankford_1993_KOI_formula,
+        data:word_occ_I_COR_093_Lankford_1993_MAQI_formula ;
+    prov:wasAttributedTo data:agent_Lankford_1993 .
+
 data:reading_I_COR_093_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "ANM (vac.) MAQQILASIRE MAQQI BIRRAC" ;
     crmtex:TXP4_has_segment data:word_occ_I_COR_093_OGHAM_NW_ANM_formula,
         data:word_occ_I_COR_093_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
-
-data:reading_I_COR_093_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "ANM MAQQI-LASIR K[O]I MA(Q)QI BIR(R)AC(I)AS",
-        "ANM MAQQI-LASIRE(O)N MAQQI BIR(R)ACIAS" ;
-    crmtex:TXP4_has_segment data:word_occ_I_COR_093_rdg_ANM_formula,
-        data:word_occ_I_COR_093_rdg_KOI_formula,
-        data:word_occ_I_COR_093_rdg_MAQI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_I_COR_095_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -2209,19 +2265,19 @@ data:reading_I_KER_008_OGHAM_NW a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_I_KER_008_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_I_KER_009_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "...] CELI AVI VU[..." ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_009_Macalister_1945_AVI_formula,
+        data:word_occ_I_KER_009_Macalister_1945_CELI_formula ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
 data:reading_I_KER_009_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "[---]CELI AVI VUḌ[---]" ;
     crmtex:TXP4_has_segment data:word_occ_I_KER_009_OGHAM_NW_AVI_formula,
         data:word_occ_I_KER_009_OGHAM_NW_CELI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
-
-data:reading_I_KER_009_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "...] CELI AVI VU[..." ;
-    crmtex:TXP4_has_segment data:word_occ_I_KER_009_rdg_AVI_formula,
-        data:word_occ_I_KER_009_rdg_CELI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_I_KER_010_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -2262,21 +2318,32 @@ data:reading_I_KER_016_OGHAM_NW a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_I_KER_016_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_I_KER_017_Cuppage_1986 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "̣ ̣ ? ̣ ̣NAVICAS MAQI MUCO[I]/ ̣ ̣ ? ̣ ̣S" ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_017_Cuppage_1986_MAQI_formula,
+        data:word_occ_I_KER_017_Cuppage_1986_MUCOI_formula ;
+    prov:wasAttributedTo data:agent_Cuppage_1986 .
+
+data:reading_I_KER_017_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "GṚAVICAS MAQI MUCOI/ [DO(?)]VVỊṆỊẠṢ" ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_017_Macalister_1945_MAQI_formula,
+        data:word_occ_I_KER_017_Macalister_1945_MUCOI_formula ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
+data:reading_I_KER_017_McManus_1991 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "G̣ṚAVICAS MAQI MUCO ̣ ̣ ? ̣ ̣/" ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_017_McManus_1991_MAQI_formula ;
+    prov:wasAttributedTo data:agent_McManus_1991 .
+
 data:reading_I_KER_017_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "GṚAVICAS MAQI MUCOI [DO(?)]VVỊṆỊẠṢ" ;
     crmtex:TXP4_has_segment data:word_occ_I_KER_017_OGHAM_NW_MAQI_formula,
         data:word_occ_I_KER_017_OGHAM_NW_MUCOI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
-
-data:reading_I_KER_017_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "GṚAVICAS MAQI MUCOI/ [DO(?)]VVỊṆỊẠṢ",
-        "G̣ṚAVICAS MAQI MUCO ̣ ̣ ? ̣ ̣/",
-        "̣ ̣ ? ̣ ̣NAVICAS MAQI MUCO[I]/ ̣ ̣ ? ̣ ̣S" ;
-    crmtex:TXP4_has_segment data:word_occ_I_KER_017_rdg_MAQI_formula,
-        data:word_occ_I_KER_017_rdg_MUCOI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_I_KER_019_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -2330,6 +2397,21 @@ data:reading_I_KER_026_OGHAM_NW a ogham:Reading,
         data:word_occ_I_KER_026_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_I_KER_029_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "CUNAMAQQI AVI CORBBI" ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_029_Macalister_1945_AVI_formula,
+        data:word_occ_I_KER_029_Macalister_1945_CORBBI_compound,
+        data:word_occ_I_KER_029_Macalister_1945_CUNA_element ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
+data:reading_I_KER_029_McManus_1991 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "CUb/miMAQQI AVI CORBBI" ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_029_McManus_1991_AVI_formula,
+        data:word_occ_I_KER_029_McManus_1991_CORBBI_compound ;
+    prov:wasAttributedTo data:agent_McManus_1991 .
+
 data:reading_I_KER_029_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "CUṆẠMAQQ̣I AVI CỌRBBI" ;
@@ -2338,16 +2420,12 @@ data:reading_I_KER_029_OGHAM_NW a ogham:Reading,
         data:word_occ_I_KER_029_OGHAM_NW_CUNA_element ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:reading_I_KER_029_rdg a ogham:Reading,
+data:reading_I_KER_029_O_Kelly_1986 a ogham:Reading,
         crmtex:TX6_Transcription ;
-    rdfs:label "CULI MAQQI AVI CORBI",
-        "CUNAMAQQI AVI CORBBI",
-        "CUb/miMAQQI AVI CORBBI" ;
-    crmtex:TXP4_has_segment data:word_occ_I_KER_029_rdg_AVI_formula,
-        data:word_occ_I_KER_029_rdg_CORBBI_compound,
-        data:word_occ_I_KER_029_rdg_CUNA_element,
-        data:word_occ_I_KER_029_rdg_MAQI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
+    rdfs:label "CULI MAQQI AVI CORBI" ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_029_O_Kelly_1986_AVI_formula,
+        data:word_occ_I_KER_029_O_Kelly_1986_MAQI_formula ;
+    prov:wasAttributedTo data:agent_O_Kelly_1986 .
 
 data:reading_I_KER_030_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -2601,17 +2679,17 @@ data:reading_I_KER_076_OGHAM_NW a ogham:Reading,
         data:word_occ_I_KER_076_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_I_KER_078_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "[---]GGO MAQI AGILL[---̣]" ;
+    crmtex:TXP4_has_segment data:word_occ_I_KER_078_Macalister_1945_MAQI_formula ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
 data:reading_I_KER_078_OGHAM_POC a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "AGGO MAQI AGILL" ;
     crmtex:TXP4_has_segment data:word_occ_I_KER_078_OGHAM_POC_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_POC .
-
-data:reading_I_KER_078_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "[---]GGO MAQI AGILL[---̣]" ;
-    crmtex:TXP4_has_segment data:word_occ_I_KER_078_rdg_MAQI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_I_KER_080_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -3076,11 +3154,11 @@ data:reading_I_MAY_001_OGHAM_NW a ogham:Reading,
         data:word_occ_I_MAY_001_OGHAM_NW_CUNA_element ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:reading_I_MAY_001_rdg a ogham:Reading,
+data:reading_I_MAY_001_unattributed a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "CUNALEGEA" ;
-    crmtex:TXP4_has_segment data:word_occ_I_MAY_001_rdg_CUNA_element ;
-    prov:wasAttributedTo data:agent_rdg .
+    crmtex:TXP4_has_segment data:word_occ_I_MAY_001_unattributed_CUNA_element ;
+    prov:wasAttributedTo data:agent_unattributed .
 
 data:reading_I_MAY_002_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -3198,18 +3276,18 @@ data:reading_I_ROS_004_OGHAM_POC a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_I_ROS_004_OGHAM_POC_MUCOI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_POC .
 
+data:reading_I_TYR_001_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "MAGLANI" ;
+    crmtex:TXP4_has_segment data:word_occ_I_TYR_001_Macalister_1945_MAGL_element ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
 data:reading_I_TYR_001_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "DOTETTO MAQỊ MAGLAN[I(?)]" ;
     crmtex:TXP4_has_segment data:word_occ_I_TYR_001_OGHAM_NW_MAGL_element,
         data:word_occ_I_TYR_001_OGHAM_NW_MAQI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
-
-data:reading_I_TYR_001_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "MAGLANI" ;
-    crmtex:TXP4_has_segment data:word_occ_I_TYR_001_rdg_MAGL_element ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_I_WAT_001_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -3249,6 +3327,13 @@ data:reading_I_WAT_005_OGHAM_NW a ogham:Reading,
         data:word_occ_I_WAT_005_OGHAM_NW_MUCOI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
+data:reading_I_WAT_006_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "MEDUSI MACI LU MUCOI LAQ." ;
+    crmtex:TXP4_has_segment data:word_occ_I_WAT_006_Macalister_1945_MAQI_formula,
+        data:word_occ_I_WAT_006_Macalister_1945_MUCOI_formula ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
 data:reading_I_WAT_006_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "MEDUSI MACI LU MOCOI LUG" ;
@@ -3256,13 +3341,6 @@ data:reading_I_WAT_006_OGHAM_NW a ogham:Reading,
         data:word_occ_I_WAT_006_OGHAM_NW_MAQI_formula,
         data:word_occ_I_WAT_006_OGHAM_NW_MUCOI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
-
-data:reading_I_WAT_006_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "MEDUSI MACI LU MUCOI LAQ." ;
-    crmtex:TXP4_has_segment data:word_occ_I_WAT_006_rdg_MAQI_formula,
-        data:word_occ_I_WAT_006_rdg_MUCOI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_I_WAT_007_OGHAM_NW a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -3482,12 +3560,12 @@ data:reading_M_IOM_001_OGHAM_POC a ogham:Reading,
         data:word_occ_M_IOM_001_OGHAM_POC_DOV_element ;
     prov:wasAttributedTo data:agent_OGHAM_POC .
 
-data:reading_M_IOM_001_rdg a ogham:Reading,
+data:reading_M_IOM_001_unattributed a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "DOVAIDONA MA QI DRUTA" ;
-    crmtex:TXP4_has_segment data:word_occ_M_IOM_001_rdg_DOVAIDONA_compound,
-        data:word_occ_M_IOM_001_rdg_DOV_element ;
-    prov:wasAttributedTo data:agent_rdg .
+    crmtex:TXP4_has_segment data:word_occ_M_IOM_001_unattributed_DOVAIDONA_compound,
+        data:word_occ_M_IOM_001_unattributed_DOV_element ;
+    prov:wasAttributedTo data:agent_unattributed .
 
 data:reading_M_IOM_002_OGHAM_POC a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -3543,26 +3621,31 @@ data:reading_M_IOM_009_OGHAM_POC a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_M_IOM_009_OGHAM_POC_CATTU_element ;
     prov:wasAttributedTo data:agent_OGHAM_POC .
 
-data:reading_M_IOM_009_rdg a ogham:Reading,
+data:reading_M_IOM_009_West_2011 a ogham:Reading,
         crmtex:TX6_Transcription ;
-    rdfs:label "BAC OCOICAT IALL",
-        "[--]A MACI MUCOI CATIALL[I]" ;
-    crmtex:TXP4_has_segment data:word_occ_M_IOM_009_rdg_CATTU_element,
-        data:word_occ_M_IOM_009_rdg_MAQI_formula,
-        data:word_occ_M_IOM_009_rdg_MUCOI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
+    rdfs:label "[--]A MACI MUCOI CATIALL[I]" ;
+    crmtex:TXP4_has_segment data:word_occ_M_IOM_009_West_2011_CATTU_element,
+        data:word_occ_M_IOM_009_West_2011_MAQI_formula,
+        data:word_occ_M_IOM_009_West_2011_MUCOI_formula ;
+    prov:wasAttributedTo data:agent_West_2011 .
+
+data:reading_M_IOM_009_unattributed a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "BAC OCOICAT IALL" ;
+    crmtex:TXP4_has_segment data:word_occ_M_IOM_009_unattributed_CATTU_element ;
+    prov:wasAttributedTo data:agent_unattributed .
+
+data:reading_S_ABD_001_Forsyth_1996 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "2) three names plus KOI: 'Idarnon Vorenn koi [?]'" ;
+    crmtex:TXP4_has_segment data:word_occ_S_ABD_001_Forsyth_1996_KOI_formula ;
+    prov:wasAttributedTo data:agent_Forsyth_1996 .
 
 data:reading_S_ABD_001_OGHAM_LH a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "IDDARRNNN VORRENNI KOI ROSRR" ;
     crmtex:TXP4_has_segment data:word_occ_S_ABD_001_OGHAM_LH_KOI_formula ;
     prov:wasAttributedTo data:agent_OGHAM_LH .
-
-data:reading_S_ABD_001_rdg a ogham:Reading,
-        crmtex:TX6_Transcription ;
-    rdfs:label "2) three names plus KOI: 'Idarnon Vorenn koi [?]'" ;
-    crmtex:TXP4_has_segment data:word_occ_S_ABD_001_rdg_KOI_formula ;
-    prov:wasAttributedTo data:agent_rdg .
 
 data:reading_S_ARL_001_MAC1902 a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -3624,6 +3707,12 @@ data:reading_S_SHE_003_OGHAM_POC a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_S_SHE_003_OGHAM_POC_CUNA_element ;
     prov:wasAttributedTo data:agent_OGHAM_POC .
 
+data:reading_W_BRE_002_Macalister_1945 a ogham:Reading,
+        crmtex:TX6_Transcription ;
+    rdfs:label "CANNTIANI ET I PAE FILIVS MACCVTRENI HIC IACIT" ;
+    crmtex:TXP4_has_segment data:word_occ_W_BRE_002_Macalister_1945_TREN_element ;
+    prov:wasAttributedTo data:agent_Macalister_1945 .
+
 data:reading_W_BRE_005_OGHAM_RED2007 a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "CUNACENNI AV[.] ILVVETO" ;
@@ -3642,11 +3731,11 @@ data:reading_W_BRE_X03_OGHAM_OGHAM a ogham:Reading,
     crmtex:TXP4_has_segment data:word_occ_W_BRE_X03_OGHAM_OGHAM_CATTU_element ;
     prov:wasAttributedTo data:agent_OGHAM_OGHAM .
 
-data:reading_W_BRE_X03_rdg a ogham:Reading,
+data:reading_W_BRE_X03_unattributed a ogham:Reading,
         crmtex:TX6_Transcription ;
     rdfs:label "CATXCVS HIC IA. CP FILIVS PSSESE RHACVS" ;
-    crmtex:TXP4_has_segment data:word_occ_W_BRE_X03_rdg_CATTU_element ;
-    prov:wasAttributedTo data:agent_rdg .
+    crmtex:TXP4_has_segment data:word_occ_W_BRE_X03_unattributed_CATTU_element ;
+    prov:wasAttributedTo data:agent_unattributed .
 
 data:reading_W_CAE_X01_OGHAM_RHY1907a a ogham:Reading,
         crmtex:TX6_Transcription ;
@@ -4074,7 +4163,31 @@ data:word_occ_E_CON_003_OGHAM_NW_ULCAGNI_compound a ogham:Word,
     ogham:matchedVariant "ULCAGNI" ;
     crm:P2_has_type data:word_ULCAGNI_compound .
 
+data:word_occ_E_CON_X02_MAC1945_CATTU_element a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "DVNOCATI" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "CAT",
+        "CATI" ;
+    crm:P2_has_type data:word_CATTU_element .
+
+data:word_occ_E_CON_X02_MAC1945_ERC_element a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MERCAGNI" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "ERC",
+        "ERCA" ;
+    crm:P2_has_type data:word_ERC_element .
+
 data:word_occ_E_CON_X02_OGHAM_NW_CATTU_element a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "DVNOCATI" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "CAT",
+        "CATI" ;
+    crm:P2_has_type data:word_CATTU_element .
+
+data:word_occ_E_CON_X02_OKA1993_CATTU_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "DVNOCATI" ;
     ogham:matchMode "element" ;
@@ -4089,6 +4202,13 @@ data:word_occ_E_CON_X03_MAC1945_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
+data:word_occ_E_CON_X04_Macalister_1945_BROCAGNI_compound a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "BROCAGNI" ;
+    ogham:matchMode "compound" ;
+    ogham:matchedVariant "BROCAGNI" ;
+    crm:P2_has_type data:word_BROCAGNI_compound .
+
 data:word_occ_E_CON_X04_OGHAM_NW_BROCAGNI_compound a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "BROCAGNI" ;
@@ -4096,12 +4216,12 @@ data:word_occ_E_CON_X04_OGHAM_NW_BROCAGNI_compound a ogham:Word,
     ogham:matchedVariant "BROCAGNI" ;
     crm:P2_has_type data:word_BROCAGNI_compound .
 
-data:word_occ_E_CON_X04_rdg_BROCAGNI_compound a ogham:Word,
+data:word_occ_E_DEV_001_Macalister_1945_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "BROCAGNI" ;
-    ogham:matchMode "compound" ;
-    ogham:matchedVariant "BROCAGNI" ;
-    crm:P2_has_type data:word_BROCAGNI_compound .
+    rdfs:label "MAQI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MAQI" ;
+    crm:P2_has_type data:word_MAQI_formula .
 
 data:word_occ_E_DEV_001_OGHAM_NW_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
@@ -4110,24 +4230,25 @@ data:word_occ_E_DEV_001_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_E_DEV_001_rdg_MAQI_formula a ogham:Word,
+data:word_occ_E_DEV_001_Sims_Williams_2003_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_E_DEV_002_OGHAM_NW_BARR_element a ogham:Word,
+data:word_occ_E_DEV_002_Macalister_1945_BARR_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "ENABARRI" ;
+    rdfs:label "ENABARR",
+        "ENABARRI" ;
     ogham:matchMode "element" ;
     ogham:matchedVariant "BAR",
         "BARR" ;
     crm:P2_has_type data:word_BARR_element .
 
-data:word_occ_E_DEV_002_rdg_BARR_element a ogham:Word,
+data:word_occ_E_DEV_002_OGHAM_NW_BARR_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "ENABARR" ;
+    rdfs:label "ENABARRI" ;
     ogham:matchMode "element" ;
     ogham:matchedVariant "BAR",
         "BARR" ;
@@ -4163,7 +4284,7 @@ data:word_occ_E_HAM_001_OGHAM_NW_MUCOI_formula a ogham:Word,
     ogham:matchedVariant "MUCOI" ;
     crm:P2_has_type data:word_MUCOI_formula .
 
-data:word_occ_E_HAM_001_rdg_CATTU_element a ogham:Word,
+data:word_occ_E_HAM_001_unattributed_CATTU_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "TEBICATOB" ;
     ogham:matchMode "element" ;
@@ -4198,14 +4319,14 @@ data:word_occ_I_ANT_002_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_I_ARM_001_OGHAM_NW_MAQI_formula a ogham:Word,
+data:word_occ_I_ARM_001_Macalister_1945_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_I_ARM_001_rdg_MAQI_formula a ogham:Word,
+data:word_occ_I_ARM_001_OGHAM_NW_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQI" ;
     ogham:matchMode "formula" ;
@@ -5166,7 +5287,7 @@ data:word_occ_I_COR_090_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MACI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_I_COR_090_rdg_MAQI_formula a ogham:Word,
+data:word_occ_I_COR_090_Shee_1968_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MACI" ;
     ogham:matchMode "formula" ;
@@ -5187,6 +5308,27 @@ data:word_occ_I_COR_092_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
+data:word_occ_I_COR_093_Lankford_1993_ANM_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "ANM" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "ANM" ;
+    crm:P2_has_type data:word_ANM_formula .
+
+data:word_occ_I_COR_093_Lankford_1993_KOI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "KOI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "KOI" ;
+    crm:P2_has_type data:word_KOI_formula .
+
+data:word_occ_I_COR_093_Lankford_1993_MAQI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MAQQI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MAQQI" ;
+    crm:P2_has_type data:word_MAQI_formula .
+
 data:word_occ_I_COR_093_OGHAM_NW_ANM_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "ANM" ;
@@ -5195,27 +5337,6 @@ data:word_occ_I_COR_093_OGHAM_NW_ANM_formula a ogham:Word,
     crm:P2_has_type data:word_ANM_formula .
 
 data:word_occ_I_COR_093_OGHAM_NW_MAQI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "MAQQI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "MAQQI" ;
-    crm:P2_has_type data:word_MAQI_formula .
-
-data:word_occ_I_COR_093_rdg_ANM_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "ANM" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "ANM" ;
-    crm:P2_has_type data:word_ANM_formula .
-
-data:word_occ_I_COR_093_rdg_KOI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "KOI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "KOI" ;
-    crm:P2_has_type data:word_KOI_formula .
-
-data:word_occ_I_COR_093_rdg_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQQI" ;
     ogham:matchMode "formula" ;
@@ -5306,6 +5427,20 @@ data:word_occ_I_KER_008_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
+data:word_occ_I_KER_009_Macalister_1945_AVI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "AVI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "AVI" ;
+    crm:P2_has_type data:word_AVI_formula .
+
+data:word_occ_I_KER_009_Macalister_1945_CELI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "CELI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "CELI" ;
+    crm:P2_has_type data:word_CELI_formula .
+
 data:word_occ_I_KER_009_OGHAM_NW_AVI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "AVI" ;
@@ -5314,20 +5449,6 @@ data:word_occ_I_KER_009_OGHAM_NW_AVI_formula a ogham:Word,
     crm:P2_has_type data:word_AVI_formula .
 
 data:word_occ_I_KER_009_OGHAM_NW_CELI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "CELI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "CELI" ;
-    crm:P2_has_type data:word_CELI_formula .
-
-data:word_occ_I_KER_009_rdg_AVI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "AVI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "AVI" ;
-    crm:P2_has_type data:word_AVI_formula .
-
-data:word_occ_I_KER_009_rdg_CELI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "CELI" ;
     ogham:matchMode "formula" ;
@@ -5397,6 +5518,41 @@ data:word_occ_I_KER_016_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
+data:word_occ_I_KER_017_Cuppage_1986_MAQI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MAQI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MAQI" ;
+    crm:P2_has_type data:word_MAQI_formula .
+
+data:word_occ_I_KER_017_Cuppage_1986_MUCOI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MUCOI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MUCOI" ;
+    crm:P2_has_type data:word_MUCOI_formula .
+
+data:word_occ_I_KER_017_Macalister_1945_MAQI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MAQI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MAQI" ;
+    crm:P2_has_type data:word_MAQI_formula .
+
+data:word_occ_I_KER_017_Macalister_1945_MUCOI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MUCOI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MUCOI" ;
+    crm:P2_has_type data:word_MUCOI_formula .
+
+data:word_occ_I_KER_017_McManus_1991_MAQI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MAQI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MAQI" ;
+    crm:P2_has_type data:word_MAQI_formula .
+
 data:word_occ_I_KER_017_OGHAM_NW_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQI" ;
@@ -5405,20 +5561,6 @@ data:word_occ_I_KER_017_OGHAM_NW_MAQI_formula a ogham:Word,
     crm:P2_has_type data:word_MAQI_formula .
 
 data:word_occ_I_KER_017_OGHAM_NW_MUCOI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "MUCOI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "MUCOI" ;
-    crm:P2_has_type data:word_MUCOI_formula .
-
-data:word_occ_I_KER_017_rdg_MAQI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "MAQI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "MAQI" ;
-    crm:P2_has_type data:word_MAQI_formula .
-
-data:word_occ_I_KER_017_rdg_MUCOI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MUCOI" ;
     ogham:matchMode "formula" ;
@@ -5546,6 +5688,41 @@ data:word_occ_I_KER_026_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
+data:word_occ_I_KER_029_Macalister_1945_AVI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "AVI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "AVI" ;
+    crm:P2_has_type data:word_AVI_formula .
+
+data:word_occ_I_KER_029_Macalister_1945_CORBBI_compound a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "CORBBI" ;
+    ogham:matchMode "compound" ;
+    ogham:matchedVariant "CORBBI" ;
+    crm:P2_has_type data:word_CORBBI_compound .
+
+data:word_occ_I_KER_029_Macalister_1945_CUNA_element a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "CUNAMAQQI" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "CUNA" ;
+    crm:P2_has_type data:word_CUNA_element .
+
+data:word_occ_I_KER_029_McManus_1991_AVI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "AVI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "AVI" ;
+    crm:P2_has_type data:word_AVI_formula .
+
+data:word_occ_I_KER_029_McManus_1991_CORBBI_compound a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "CORBBI" ;
+    ogham:matchMode "compound" ;
+    ogham:matchedVariant "CORBBI" ;
+    crm:P2_has_type data:word_CORBBI_compound .
+
 data:word_occ_I_KER_029_OGHAM_NW_AVI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "AVI" ;
@@ -5567,28 +5744,14 @@ data:word_occ_I_KER_029_OGHAM_NW_CUNA_element a ogham:Word,
     ogham:matchedVariant "CUNA" ;
     crm:P2_has_type data:word_CUNA_element .
 
-data:word_occ_I_KER_029_rdg_AVI_formula a ogham:Word,
+data:word_occ_I_KER_029_O_Kelly_1986_AVI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "AVI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "AVI" ;
     crm:P2_has_type data:word_AVI_formula .
 
-data:word_occ_I_KER_029_rdg_CORBBI_compound a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "CORBBI" ;
-    ogham:matchMode "compound" ;
-    ogham:matchedVariant "CORBBI" ;
-    crm:P2_has_type data:word_CORBBI_compound .
-
-data:word_occ_I_KER_029_rdg_CUNA_element a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "CUNAMAQQI" ;
-    ogham:matchMode "element" ;
-    ogham:matchedVariant "CUNA" ;
-    crm:P2_has_type data:word_CUNA_element .
-
-data:word_occ_I_KER_029_rdg_MAQI_formula a ogham:Word,
+data:word_occ_I_KER_029_O_Kelly_1986_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQQI" ;
     ogham:matchMode "formula" ;
@@ -6107,14 +6270,14 @@ data:word_occ_I_KER_076_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_I_KER_078_OGHAM_POC_MAQI_formula a ogham:Word,
+data:word_occ_I_KER_078_Macalister_1945_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_I_KER_078_rdg_MAQI_formula a ogham:Word,
+data:word_occ_I_KER_078_OGHAM_POC_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAQI" ;
     ogham:matchMode "formula" ;
@@ -7059,7 +7222,7 @@ data:word_occ_I_MAY_001_OGHAM_NW_CUNA_element a ogham:Word,
     ogham:matchedVariant "CUNA" ;
     crm:P2_has_type data:word_CUNA_element .
 
-data:word_occ_I_MAY_001_rdg_CUNA_element a ogham:Word,
+data:word_occ_I_MAY_001_unattributed_CUNA_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "CUNALEGEA" ;
     ogham:matchMode "element" ;
@@ -7283,6 +7446,13 @@ data:word_occ_I_ROS_004_OGHAM_POC_MUCOI_formula a ogham:Word,
     ogham:matchedVariant "MUCOI" ;
     crm:P2_has_type data:word_MUCOI_formula .
 
+data:word_occ_I_TYR_001_Macalister_1945_MAGL_element a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MAGLANI" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "MAGL" ;
+    crm:P2_has_type data:word_MAGL_element .
+
 data:word_occ_I_TYR_001_OGHAM_NW_MAGL_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MAGLANI" ;
@@ -7296,13 +7466,6 @@ data:word_occ_I_TYR_001_OGHAM_NW_MAQI_formula a ogham:Word,
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
-
-data:word_occ_I_TYR_001_rdg_MAGL_element a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "MAGLANI" ;
-    ogham:matchMode "element" ;
-    ogham:matchedVariant "MAGL" ;
-    crm:P2_has_type data:word_MAGL_element .
 
 data:word_occ_I_WAT_001_OGHAM_NW_ERC_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
@@ -7397,6 +7560,20 @@ data:word_occ_I_WAT_005_OGHAM_NW_MUCOI_formula a ogham:Word,
     ogham:matchedVariant "MUCOI" ;
     crm:P2_has_type data:word_MUCOI_formula .
 
+data:word_occ_I_WAT_006_Macalister_1945_MAQI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MACI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MACI" ;
+    crm:P2_has_type data:word_MAQI_formula .
+
+data:word_occ_I_WAT_006_Macalister_1945_MUCOI_formula a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MUCOI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MUCOI" ;
+    crm:P2_has_type data:word_MUCOI_formula .
+
 data:word_occ_I_WAT_006_OGHAM_NW_LUG_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "LUG" ;
@@ -7416,20 +7593,6 @@ data:word_occ_I_WAT_006_OGHAM_NW_MUCOI_formula a ogham:Word,
     rdfs:label "MOCOI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MOCOI" ;
-    crm:P2_has_type data:word_MUCOI_formula .
-
-data:word_occ_I_WAT_006_rdg_MAQI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "MACI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "MACI" ;
-    crm:P2_has_type data:word_MAQI_formula .
-
-data:word_occ_I_WAT_006_rdg_MUCOI_formula a ogham:Word,
-        crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "MUCOI" ;
-    ogham:matchMode "formula" ;
-    ogham:matchedVariant "MUCOI" ;
     crm:P2_has_type data:word_MUCOI_formula .
 
 data:word_occ_I_WAT_007_OGHAM_NW_CATTU_element a ogham:Word,
@@ -7875,14 +8038,14 @@ data:word_occ_M_IOM_001_OGHAM_POC_DOV_element a ogham:Word,
     ogham:matchedVariant "DOV" ;
     crm:P2_has_type data:word_DOV_element .
 
-data:word_occ_M_IOM_001_rdg_DOVAIDONA_compound a ogham:Word,
+data:word_occ_M_IOM_001_unattributed_DOVAIDONA_compound a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "DOVAIDONA" ;
     ogham:matchMode "compound" ;
     ogham:matchedVariant "DOVAIDONA" ;
     crm:P2_has_type data:word_DOVAIDONA_compound .
 
-data:word_occ_M_IOM_001_rdg_DOV_element a ogham:Word,
+data:word_occ_M_IOM_001_unattributed_DOV_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "DOVAIDONA" ;
     ogham:matchMode "element" ;
@@ -8020,37 +8183,43 @@ data:word_occ_M_IOM_009_OGHAM_POC_CATTU_element a ogham:Word,
     ogham:matchedVariant "CAT" ;
     crm:P2_has_type data:word_CATTU_element .
 
-data:word_occ_M_IOM_009_rdg_CATTU_element a ogham:Word,
+data:word_occ_M_IOM_009_West_2011_CATTU_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
-    rdfs:label "CATIALLI",
-        "OCOICAT" ;
+    rdfs:label "CATIALLI" ;
     ogham:matchMode "element" ;
     ogham:matchedVariant "CAT",
         "CATI" ;
     crm:P2_has_type data:word_CATTU_element .
 
-data:word_occ_M_IOM_009_rdg_MAQI_formula a ogham:Word,
+data:word_occ_M_IOM_009_West_2011_MAQI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MACI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MACI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_M_IOM_009_rdg_MUCOI_formula a ogham:Word,
+data:word_occ_M_IOM_009_West_2011_MUCOI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "MUCOI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MUCOI" ;
     crm:P2_has_type data:word_MUCOI_formula .
 
-data:word_occ_S_ABD_001_OGHAM_LH_KOI_formula a ogham:Word,
+data:word_occ_M_IOM_009_unattributed_CATTU_element a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "OCOICAT" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "CAT" ;
+    crm:P2_has_type data:word_CATTU_element .
+
+data:word_occ_S_ABD_001_Forsyth_1996_KOI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "KOI" ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "KOI" ;
     crm:P2_has_type data:word_KOI_formula .
 
-data:word_occ_S_ABD_001_rdg_KOI_formula a ogham:Word,
+data:word_occ_S_ABD_001_OGHAM_LH_KOI_formula a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "KOI" ;
     ogham:matchMode "formula" ;
@@ -8127,6 +8296,13 @@ data:word_occ_S_SHE_003_OGHAM_POC_CUNA_element a ogham:Word,
     ogham:matchedVariant "CON" ;
     crm:P2_has_type data:word_CUNA_element .
 
+data:word_occ_W_BRE_002_Macalister_1945_TREN_element a ogham:Word,
+        crmtex:TX7_Written_Text_Segment ;
+    rdfs:label "MACCVTRENI" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "TREN" ;
+    crm:P2_has_type data:word_TREN_element .
+
 data:word_occ_W_BRE_005_OGHAM_RED2007_CUNA_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "CUNACENNI" ;
@@ -8149,7 +8325,7 @@ data:word_occ_W_BRE_X03_OGHAM_OGHAM_CATTU_element a ogham:Word,
         "CATA" ;
     crm:P2_has_type data:word_CATTU_element .
 
-data:word_occ_W_BRE_X03_rdg_CATTU_element a ogham:Word,
+data:word_occ_W_BRE_X03_unattributed_CATTU_element a ogham:Word,
         crmtex:TX7_Written_Text_Segment ;
     rdfs:label "CATXCVS" ;
     ogham:matchMode "element" ;
@@ -8370,7 +8546,10 @@ data:word_occ_W_PEM_X01_OGHAM_OGHAM_CUNA_element a ogham:Word,
     crm:P2_has_type data:word_CUNA_element .
 
 data:agent_MCM2004 a prov:Agent ;
-    rdfs:label "Mcm 2004" .
+    rdfs:label "McManus 2004" .
+
+data:agent_McManus_1991 a prov:Agent ;
+    rdfs:label "McManus 1991" .
 
 data:agent_OGHAM_KF a prov:Agent ;
     rdfs:label "OG(H)AM edition (KF)" .
@@ -8484,13 +8663,6 @@ data:word_CORBAGNI_compound a crm:E55_Type ;
     skos:altLabel "CORBAGNI" ;
     skos:definition "defiles"@en .
 
-data:word_CORBBI_compound a crm:E55_Type ;
-    rdfs:label "CORBBI" ;
-    ogham:wordClass "compound name" ;
-    crm:P3_has_note "McManus 1991,§6.11" ;
-    skos:altLabel "CORBBI" ;
-    skos:definition "defiles"@en .
-
 data:word_DALAGNI_compound a crm:E55_Type ;
     rdfs:label "DALAGNI" ;
     ogham:wordClass "compound name" ;
@@ -8524,6 +8696,13 @@ data:word_NIOTA_formula a crm:E55_Type ;
         "NIOTA" ;
     skos:definition "nephew, sister`s son"@en .
 
+data:word_CORBBI_compound a crm:E55_Type ;
+    rdfs:label "CORBBI" ;
+    ogham:wordClass "compound name" ;
+    crm:P3_has_note "McManus 1991,§6.11" ;
+    skos:altLabel "CORBBI" ;
+    skos:definition "defiles"@en .
+
 data:word_QENN_element a crm:E55_Type ;
     rdfs:label "QENN" ;
     ogham:wordClass "name element" ;
@@ -8533,6 +8712,9 @@ data:word_QENN_element a crm:E55_Type ;
         "QENN",
         "QVEN" ;
     skos:definition "head"@en .
+
+data:agent_unattributed a prov:Agent ;
+    rdfs:label "unattributed reading" .
 
 data:word_BRAN_element a crm:E55_Type ;
     rdfs:label "BRAN" ;
@@ -8590,14 +8772,6 @@ data:word_CELI_formula a crm:E55_Type ;
     skos:closeMatch wd:Q68000377 ;
     skos:definition "companions, client, fellow"@en .
 
-data:word_TREN_element a crm:E55_Type ;
-    rdfs:label "TREN" ;
-    ogham:wordClass "name element" ;
-    crm:P3_has_note "McManus 1991,§6.6" ;
-    skos:altLabel "TREN",
-        "TTREN" ;
-    skos:definition "strong"@en .
-
 data:word_VIR_element a crm:E55_Type ;
     rdfs:label "VIR" ;
     ogham:wordClass "name element" ;
@@ -8605,6 +8779,17 @@ data:word_VIR_element a crm:E55_Type ;
     skos:altLabel "VER",
         "VIR" ;
     skos:definition "man"@en .
+
+data:agent_Macalister_1945 a prov:Agent ;
+    rdfs:label "Macalister 1945" .
+
+data:word_TREN_element a crm:E55_Type ;
+    rdfs:label "TREN" ;
+    ogham:wordClass "name element" ;
+    crm:P3_has_note "McManus 1991,§6.6" ;
+    skos:altLabel "TREN",
+        "TTREN" ;
+    skos:definition "strong"@en .
 
 data:word_KOI_formula a crm:E55_Type ;
     rdfs:label "KOI" ;
@@ -8636,9 +8821,6 @@ data:word_DOV_element a crm:E55_Type ;
 data:agent_OGHAM_OGHAM a prov:Agent ;
     rdfs:label "OG(H)AM edition (OGHAM)" .
 
-data:agent_rdg a prov:Agent ;
-    rdfs:label "OG(H)AM edition" .
-
 data:word_LUG_element a crm:E55_Type ;
     rdfs:label "LUG" ;
     ogham:wordClass "name element" ;
@@ -8646,6 +8828,14 @@ data:word_LUG_element a crm:E55_Type ;
     skos:altLabel "LUG" ;
     skos:closeMatch wd:Q67383482 ;
     skos:definition "god"@en .
+
+data:word_ANM_formula a crm:E55_Type ;
+    rdfs:label "ANM" ;
+    ogham:wordClass "formula word" ;
+    crm:P3_has_note "McManus 1991,§6.27" ;
+    skos:altLabel "ANM" ;
+    skos:closeMatch wd:Q68000035 ;
+    skos:definition "name"@en .
 
 data:word_AVI_formula a crm:E55_Type ;
     rdfs:label "AVI" ;
@@ -8671,14 +8861,6 @@ data:word_CATTU_element a crm:E55_Type ;
         "CCATTO" ;
     skos:closeMatch wd:Q67383338 ;
     skos:definition "battle"@en .
-
-data:word_ANM_formula a crm:E55_Type ;
-    rdfs:label "ANM" ;
-    ogham:wordClass "formula word" ;
-    crm:P3_has_note "McManus 1991,§6.27" ;
-    skos:altLabel "ANM" ;
-    skos:closeMatch wd:Q68000035 ;
-    skos:definition "name"@en .
 
 data:word_CUNA_element a crm:E55_Type ;
     rdfs:label "CUNA" ;

@@ -35,6 +35,7 @@ import shutil
 from collections import Counter
 
 import corpus    # local module (py/corpus.py) -- fetch + provenance manifest
+import dissent   # local module (py/dissent.py) -- competing readings
 import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
 import words     # local module (py/words.py) -- formulaic-word extractor
@@ -780,11 +781,50 @@ def run_words(corpus_dir: Path, prov: dict, no_map: bool) -> dict | None:
     rows = words.write_csv(records, OUT / "words.csv")
     g, summary = words.build_graph(records, vocabulary)
     g.serialize(destination=str(OUT / "words.crm.ttl"), format="turtle")
+    # competing readings: an analysis over structure the graph already carries,
+    # so this adds a table and a view but no triples
+    analysis = dissent.analyse(records, words.normalise, words.find, vocabulary)
+    d = dissent.summarise(analysis)
+    rows_r = dissent.write_csv(analysis, OUT / "readings.csv")
+    print(f"  {d['stones']} stones carry competing readings "
+          f"({d['pairs']} comparisons, {d['editors']} editors, "
+          f"{d['formula_at_stake']} with a formulaic word at stake)")
+    print(f"  -> wrote {(OUT / 'readings.csv').relative_to(ROOT)} ({rows_r} rows)")
+    summary["analysis"] = analysis
+    summary["dissent"] = d
     print(f"  {summary['stones']} stones carry a match, "
           f"{summary['occurrences']} occurrences over all readings")
     print(f"  -> wrote {(OUT / 'words.csv').relative_to(ROOT)} ({rows} rows)")
     print(f"  -> wrote {(OUT / 'words.crm.ttl').relative_to(ROOT)} ({len(g)} triples)")
     return {"records": records, "vocabulary": vocabulary, **summary}
+
+
+
+def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
+    """Numbers shown on the landing-page cards, keyed by page slug."""
+    dash = [("\u2014", "")]
+    words_figs = dash if not word_summary else [
+        (str(word_summary["stones"]), "stones with a match"),
+        (str(word_summary["occurrences"]), "occurrences"),
+        (str(word_summary["words"]), "words searched"),
+    ]
+    dis = (word_summary or {}).get("dissent")
+    readings_figs = dash if not dis else [
+        (str(dis["stones"]), "stones contested"),
+        (str(dis["pairs"]), "comparisons"),
+        (str(dis["formula_at_stake"]), "with a formula word at stake"),
+    ]
+    status = place_summary.get("status", {})
+    return {
+        "findspots.html": [
+            (str(place_summary["mapped"]), "findspots mapped"),
+            (str(place_summary["places"]), "distinct places"),
+            (str(status.get("qualified", 0) + status.get("textual_only", 0)),
+             "hedged by the editors"),
+        ],
+        "words.html": words_figs,
+        "readings.html": readings_figs,
+    }
 
 
 def main() -> None:
@@ -845,13 +885,12 @@ def main() -> None:
                                    word_summary["vocabulary"], DOCS, root=ROOT,
                                    provenance=prov)
                 shutil.copyfile(OUT / "words.csv", DOCS / "words.csv")
-            webmap.build_landing(DOCS, {
-                "findspots.html": [(str(summary["mapped"]), "findspots mapped"),
-                                   (str(summary["places"]), "distinct places")],
-                "words.html": [(str(word_summary["stones"]), "stones with a match"),
-                               (str(word_summary["occurrences"]), "occurrences")]
-                if word_summary else [],
-            }, root=ROOT, provenance=prov)
+                webmap.build_readings(word_summary["analysis"], summary["records"],
+                                      word_summary["dissent"], DOCS, root=ROOT,
+                                      provenance=prov)
+                shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
+            webmap.build_landing(DOCS, landing_figures(summary, word_summary),
+                                 root=ROOT, provenance=prov)
         return
 
     cache = wikidata.load_cache(RECON_CACHE)
@@ -878,21 +917,13 @@ def main() -> None:
                     word_summary["records"], places_summary["records"],
                     word_summary["vocabulary"], DOCS, root=ROOT, provenance=prov)
                 shutil.copyfile(OUT / "words.csv", DOCS / "words.csv")
+                places_summary["readings"] = webmap.build_readings(
+                    word_summary["analysis"], places_summary["records"],
+                    word_summary["dissent"], DOCS, root=ROOT, provenance=prov)
+                shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
 
-            figures = {
-                "findspots.html": [
-                    (str(places_summary["mapped"]), "findspots mapped"),
-                    (str(places_summary["places"]), "distinct places"),
-                    (str(places_summary["status"].get("qualified", 0)
-                         + places_summary["status"].get("textual_only", 0)), "hedged by the editors"),
-                ],
-                "words.html": [
-                    (str(word_summary["stones"]) if word_summary else "—", "stones with a match"),
-                    (str(word_summary["occurrences"]) if word_summary else "—", "occurrences"),
-                    (str(word_summary["words"]) if word_summary else "—", "words searched"),
-                ],
-            }
-            webmap.build_landing(DOCS, figures, root=ROOT, provenance=prov)
+            webmap.build_landing(DOCS, landing_figures(places_summary, word_summary),
+                                 root=ROOT, provenance=prov)
         if word_summary and places_summary:
             places_summary["word_layer"] = {k: v for k, v in word_summary.items()
                                             if k not in ("records", "vocabulary")}
