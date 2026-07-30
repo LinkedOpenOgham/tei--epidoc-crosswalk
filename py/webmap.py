@@ -81,6 +81,11 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
 .dl{margin-top:16px;font-size:12px;line-height:1.9}
 .dl a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line)}
 .dl a:hover{color:#fff;border-color:var(--sc)}
+.btn{flex:1;padding:8px 6px;font-family:var(--sans);font-size:12px;cursor:pointer;
+  color:var(--text);background:var(--panel-2);border:1px solid var(--line);border-radius:3px}
+.btn:hover{border-color:var(--sc);color:#fff}
+.btn:active{background:var(--sc);color:#0f1918}
+.btn:disabled{opacity:.5;cursor:progress}
 
 nav{display:flex;gap:2px;margin-bottom:14px}
 nav a{flex:1;text-align:center;padding:7px 4px;font-size:12px;letter-spacing:.04em;
@@ -232,6 +237,199 @@ FOOT = r"""</script>
 SCRIPTS = r"""<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script>
+"""
+
+EXPORT_JS = r"""
+// --- export the current view --------------------------------------------------
+// Both formats are drawn from the same scene description that the display switch
+// keeps up to date, so an export shows what is on screen rather than a re-run of
+// the filters. Points are drawn individually even when the screen shows clusters:
+// a figure wants the distribution, not the bubbles.
+//
+// Basemap tiles are cross-origin. Rather than putting `crossOrigin` on the live
+// tile layer -- which would break the map outright if the server ever stopped
+// sending CORS headers -- the tiles are re-fetched with it only at export time,
+// and the export degrades to a vector-only file if that fails.
+let scene = { points: [], hexes: [], legend: null, title: "", noun: "stone" };
+
+function tileURLs(mapEl, rect) {
+  return [...mapEl.querySelectorAll("img.leaflet-tile")]
+    .filter(i => i.src && i.complete && i.naturalWidth)
+    .map(i => {
+      const r = i.getBoundingClientRect();
+      return { src: i.src, x: r.left - rect.left, y: r.top - rect.top,
+               w: r.width, h: r.height };
+    });
+}
+
+function loadCORS(src) {
+  return new Promise(resolve => {
+    const im = new Image();
+    im.crossOrigin = "anonymous";
+    im.onload = () => resolve(im);
+    im.onerror = () => resolve(null);
+    im.src = src;
+  });
+}
+
+async function basemapRaster(scale) {
+  const mapEl = document.getElementById("map");
+  const rect = mapEl.getBoundingClientRect();
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(rect.width * scale);
+  canvas.height = Math.round(rect.height * scale);
+  const ctx = canvas.getContext("2d");
+  ctx.fillStyle = "#e8e6df";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  const tiles = tileURLs(mapEl, rect);
+  const images = await Promise.all(tiles.map(t => loadCORS(t.src)));
+  let drawn = 0;
+  images.forEach((im, i) => {
+    if (!im) return;
+    const t = tiles[i];
+    ctx.drawImage(im, t.x * scale, t.y * scale, t.w * scale, t.h * scale);
+    drawn++;
+  });
+  try {
+    return { canvas, ctx, dataURL: canvas.toDataURL("image/png"),
+             complete: drawn === tiles.length && drawn > 0 };
+  } catch (e) {                       // tainted despite the CORS attempt
+    ctx.fillStyle = "#e8e6df";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    return { canvas, ctx, dataURL: null, complete: false };
+  }
+}
+
+function projected() {
+  const pt = ll => map.latLngToContainerPoint(L.latLng(ll[0], ll[1]));
+  return {
+    hexes: scene.hexes.map(h => ({
+      fill: h.fill,
+      ring: h.ring.map(ll => { const p = pt(ll); return [p.x, p.y]; })
+    })),
+    points: scene.points.map(p0 => {
+      const p = pt([p0.lat, p0.lon]);
+      return { x: p.x, y: p.y, colour: p0.colour, vague: p0.vague };
+    })
+  };
+}
+
+const ATTRIB = "\u00a9 OpenStreetMap contributors \u00a9 CARTO \u00b7 editions: OG(H)AM (CC BY 4.0)";
+
+function download(blob, name) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = name;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
+}
+
+function stamp(ext) {
+  const bits = ["ogham", scene.slug || "map",
+                (scene.title || "").toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")];
+  return bits.filter(Boolean).join("-").slice(0, 70) + "-"
+       + new Date().toISOString().slice(0, 10) + "." + ext;
+}
+
+async function exportRaster() {
+  const rect = document.getElementById("map").getBoundingClientRect();
+  const scale = 2;
+  const { canvas, ctx, complete } = await basemapRaster(scale);
+  const geo = projected();
+  ctx.save();
+  ctx.scale(scale, scale);
+  for (const h of geo.hexes) {
+    ctx.beginPath();
+    h.ring.forEach(([x, y], i) => i ? ctx.lineTo(x, y) : ctx.moveTo(x, y));
+    ctx.closePath();
+    ctx.fillStyle = h.fill; ctx.globalAlpha = 0.75; ctx.fill();
+    ctx.globalAlpha = 1; ctx.strokeStyle = "#2b3a37"; ctx.lineWidth = 0.7; ctx.stroke();
+  }
+  for (const p of geo.points) {
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 6.5, 0, Math.PI * 2);
+    if (p.vague) {
+      ctx.strokeStyle = p.colour; ctx.lineWidth = 1.6; ctx.setLineDash([3, 2]);
+      ctx.stroke(); ctx.setLineDash([]);
+    } else {
+      ctx.fillStyle = p.colour; ctx.fill();
+      ctx.strokeStyle = "rgba(19,28,27,.7)"; ctx.lineWidth = 1.6; ctx.stroke();
+    }
+  }
+  ctx.font = "11px sans-serif";
+  const pad = 6, text = ATTRIB + (complete ? "" : " \u00b7 basemap incomplete");
+  const w = ctx.measureText(text).width;
+  ctx.fillStyle = "rgba(255,255,255,.82)";
+  ctx.fillRect(rect.width - w - pad * 2, rect.height - 18, w + pad * 2, 18);
+  ctx.fillStyle = "#333";
+  ctx.fillText(text, rect.width - w - pad, rect.height - 5);
+  ctx.restore();
+  canvas.toBlob(b => download(b, stamp("jpg")), "image/jpeg", 0.92);
+}
+
+async function exportVector() {
+  const rect = document.getElementById("map").getBoundingClientRect();
+  const w = Math.round(rect.width), h = Math.round(rect.height);
+  const { dataURL } = await basemapRaster(2);
+  const geo = projected();
+  const esc2 = t => String(t).replace(/[&<>]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;" }[c]));
+  const out = [];
+  out.push(`<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" `
+         + `width="${w}" height="${h}" viewBox="0 0 ${w} ${h}">`);
+  out.push(`<title>${esc2(scene.title || "Ogham map")}</title>`);
+  out.push(`<desc>${esc2(ATTRIB)}</desc>`);
+  out.push(`<rect width="${w}" height="${h}" fill="#e8e6df"/>`);
+  if (dataURL) {
+    out.push(`<g id="basemap"><image x="0" y="0" width="${w}" height="${h}" `
+           + `xlink:href="${dataURL}"/></g>`);
+  } else {
+    out.push(`<!-- basemap omitted: tiles could not be read cross-origin -->`);
+  }
+  out.push('<g id="data">');
+  for (const hx of geo.hexes) {
+    const d = hx.ring.map(([x, y], i) => (i ? "L" : "M") + x.toFixed(1) + " " + y.toFixed(1)).join(" ") + " Z";
+    out.push(`<path d="${d}" fill="${hx.fill}" fill-opacity="0.75" stroke="#2b3a37" stroke-width="0.7"/>`);
+  }
+  for (const p of geo.points) {
+    out.push(p.vague
+      ? `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6.5" fill="none" `
+        + `stroke="${p.colour}" stroke-width="1.6" stroke-dasharray="3 2"/>`
+      : `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="6.5" fill="${p.colour}" `
+        + `stroke="rgba(19,28,27,.7)" stroke-width="1.6"/>`);
+  }
+  out.push("</g>");
+  if (scene.legend && scene.legend.length) {
+    const lh = 17, bw = 132, bh = scene.legend.length * lh + 24;
+    const bx = w - bw - 12, by = h - bh - 26;
+    out.push(`<g id="legend"><rect x="${bx}" y="${by}" width="${bw}" height="${bh}" rx="3" `
+           + `fill="rgba(27,39,37,.93)"/>`);
+    out.push(`<text x="${bx + 10}" y="${by + 17}" font-family="sans-serif" font-size="10" `
+           + `fill="#93a29d" letter-spacing="0.6">${esc2((scene.legendTitle || "").toUpperCase())}</text>`);
+    scene.legend.forEach((b, i) => {
+      const y = by + 30 + i * lh;
+      out.push(`<rect x="${bx + 10}" y="${y}" width="12" height="12" fill="${b.colour}" `
+             + `stroke="rgba(0,0,0,.35)"/>`);
+      out.push(`<text x="${bx + 28}" y="${y + 10}" font-family="monospace" font-size="11" `
+             + `fill="#e9e5da">${esc2(b.label)}</text>`);
+    });
+    out.push("</g>");
+  }
+  out.push(`<text x="${w - 6}" y="${h - 6}" text-anchor="end" font-family="sans-serif" `
+         + `font-size="10" fill="#555">${esc2(ATTRIB)}</text>`);
+  out.push("</svg>");
+  download(new Blob([out.join("\n")], { type: "image/svg+xml" }), stamp("svg"));
+}
+
+function wireExport(id, fn) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.addEventListener("click", async () => {
+    el.disabled = true;
+    try { await fn(); } finally { el.disabled = false; }
+  });
+}
+wireExport("dl-svg", exportVector);
+wireExport("dl-jpg", exportRaster);
 """
 
 HEX_JS = r"""
@@ -417,6 +615,10 @@ __NAV__
         <ul id="missingList"></ul>
       </details>
 
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
       <p class="dl">
         <a href="places.geojson" download>Download GeoJSON</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
@@ -522,6 +724,11 @@ function apply(){
     on.has(p.country || "unrecorded") &&
     (!onlyVague.checked || p.vague) &&
     (!term || p._hay.includes(term)));
+  scene.slug = "findspots";
+  scene.title = [...document.querySelectorAll(".cc:checked")].length === 6 && !q.value.trim()
+              ? "" : "filtered";
+  scene.points = keep.map(p => ({lat:p.lat, lon:p.lon,
+                                 colour:colourFor(p.country), vague:!!p.vague}));
   showOn(map, keep.map(p => [p.lon, p.lat]), keep.map(p => p._m),
          "stone", "Stones per cell");
   document.getElementById("count").textContent = keep.length;
@@ -537,12 +744,18 @@ let hexSize = 0.25;
 let hexScale = "log";
 
 function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
   if (displayMode === "points"){
     map.removeLayer(hexGroup);
     hexLegend.remove();
     if (!map.hasLayer(cluster)) map.addLayer(cluster);
     cluster.clearLayers();
     cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
   } else {
     map.removeLayer(cluster);
     hexGroup.clearLayers();
@@ -552,8 +765,15 @@ function showOn(map_, coords, markers, noun, title){
       built.layer.eachLayer(l => hexGroup.addLayer(l));
       hexLegend.set(title, built.legend);
       hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
     } else {
       hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
     }
     if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
   }
@@ -680,6 +900,10 @@ __NAV__
       precise: short elements such as CON or VIR also fire inside unrelated names.
       Each hit records which mode produced it.</p>
 
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
       <p class="dl">
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
@@ -776,6 +1000,11 @@ function draw(){
     m.bindPopup(() => popup(s, selected), {maxWidth:340});
     return m;
   });
+  scene.slug = "words";
+  scene.title = selected === null ? "all words" : WORDS[selected].word;
+  scene.points = keep.map(s => ({lat:s.lat, lon:s.lon,
+                                 colour:isCurrent(s, selected) ? CURRENT : OLDER,
+                                 vague:!isCurrent(s, selected)}));
   showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone",
          selected === null ? "Stones per cell" : WORDS[selected].word + " per cell");
   document.getElementById("count").textContent = keep.length;
@@ -840,12 +1069,18 @@ let hexSize = 0.25;
 let hexScale = "log";
 
 function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
   if (displayMode === "points"){
     map.removeLayer(hexGroup);
     hexLegend.remove();
     if (!map.hasLayer(cluster)) map.addLayer(cluster);
     cluster.clearLayers();
     cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
   } else {
     map.removeLayer(cluster);
     hexGroup.clearLayers();
@@ -855,8 +1090,15 @@ function showOn(map_, coords, markers, noun, title){
       built.layer.eachLayer(l => hexGroup.addLayer(l));
       hexLegend.set(title, built.legend);
       hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
     } else {
       hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
     }
     if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
   }
@@ -1004,7 +1246,9 @@ def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],
 def _page(head: str, body: str, js: str) -> str:
     """Assemble a page from the shared shell. Empty js means no map libraries."""
     shell = head.replace("__CSS__", CSS) + body
-    return shell + SCRIPTS + HEX_JS + js + FOOT if js else shell + "</body>\n</html>\n"
+    # EXPORT_JS declares `scene`, which the page scripts write to as soon as they
+    # first draw, so it has to be in scope before them.
+    return shell + SCRIPTS + HEX_JS + EXPORT_JS + js + FOOT if js else shell + "</body>\n</html>\n"
 
 
 def _slim(rec: dict) -> dict:

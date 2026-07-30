@@ -148,6 +148,28 @@ country and by free text, with hedged findspots as dashed rings and the
 `data:findspot_*` node in every popup) and the formulaic-word map. Nothing in them
 re-parses the XML, so map, table and graph cannot drift apart.
 
+### Exporting a view
+
+Both maps carry **Download SVG** and **Download JPG**, which write out the view as
+it currently stands — filters, display mode, cell size and zoom included. The
+filename records what it is: `ogham-words-mucoi-2026-07-30.svg`.
+
+- **SVG** keeps the data layer as real vectors (circles for stones, paths for hex
+  cells) over the basemap embedded as a single raster, so the figure opens
+  correctly in Inkscape or Illustrator and the data can still be restyled.
+- **JPG** is a flat composite at 2× the on-screen size.
+
+Both carry the legend and the OpenStreetMap/CARTO/OG(H)AM attribution, so an
+exported figure stays properly credited without anyone having to remember.
+
+Two details worth knowing. **Points are always drawn individually**, even when the
+screen shows clusters — a figure wants the distribution, not the bubbles. And the
+basemap tiles are cross-origin, so they are re-fetched with CORS *at export time
+only*: putting `crossOrigin` on the live tile layer would break the map outright if
+the tile server ever stopped sending those headers. If the re-fetch fails the export
+still succeeds, with the data layer over a plain background and the fact noted in
+the file.
+
 ### Points or density
 
 Both maps have two displays. **Points** is the clustered marker view. **Density**
