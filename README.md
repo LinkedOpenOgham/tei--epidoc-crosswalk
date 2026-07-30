@@ -210,8 +210,10 @@ filename records what it is: `ogham-words-mucoi-2026-07-30.svg`.
   correctly in Inkscape or Illustrator and the data can still be restyled.
 - **JPG** is a flat composite at 2× the on-screen size.
 
-Both carry the legend and the OpenStreetMap/CARTO/OG(H)AM attribution, so an
-exported figure stays properly credited without anyone having to remember.
+Both carry the density legend (bottom right, where it sits on screen) and the
+OpenStreetMap/CARTO/OG(H)AM attribution, so an exported figure stays properly
+credited without anyone having to remember. The zoom and full-screen controls sit
+top left and are never part of the export.
 
 Two details worth knowing. **Points are always drawn individually**, even when the
 screen shows clusters — a figure wants the distribution, not the bubbles. And the
@@ -220,6 +222,14 @@ only*: putting `crossOrigin` on the live tile layer would break the map outright
 the tile server ever stopped sending those headers. If the re-fetch fails the export
 still succeeds, with the data layer over a plain background and the fact noted in
 the file.
+
+### Map controls
+
+Zoom and full screen sit **top left**, which keeps the bottom-right corner free for
+the density legend — and that is where the legend also lands in an exported figure.
+Full screen uses the browser's own Fullscreen API on the map pane rather than a
+Leaflet plugin: one dependency fewer, and the sidebar gets out of the way while
+inspecting a cluster.
 
 ### Points or density
 

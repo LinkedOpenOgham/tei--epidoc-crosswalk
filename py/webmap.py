@@ -162,6 +162,10 @@ body.landing{overflow:auto}
   text-transform:uppercase;color:var(--muted);font-weight:500}
 .hex-legend .sw{display:inline-block;width:13px;height:13px;margin-right:7px;
   vertical-align:-2px;border:1px solid rgba(0,0,0,.35)}
+.leaflet-bar a.ogham-fs{display:flex;align-items:center;justify-content:center;
+  color:#3b4a46}
+.leaflet-bar a.ogham-fs:hover{color:#131c1b}
+#map:fullscreen{width:100vw;height:100vh}
 
 .seg{display:flex;gap:2px;margin:0 0 10px}
 .seg label{flex:1;text-align:center;padding:6px 4px;font-size:12px;cursor:pointer;
@@ -335,6 +339,32 @@ function stamp(ext) {
        + new Date().toISOString().slice(0, 10) + "." + ext;
 }
 
+// Bottom-right, matching where the legend sits on screen and leaving the top-left
+// corner -- now the zoom and full-screen controls -- out of the figure.
+function drawLegendOnCanvas(ctx, rect) {
+  if (!scene.legend || !scene.legend.length) return;
+  const rows = scene.legend.length, lh = 17, bw = 132;
+  const bh = rows * lh + 24, bx = rect.width - bw - 12, by = rect.height - bh - 26;
+  ctx.fillStyle = "rgba(27,39,37,.93)";
+  ctx.beginPath();
+  ctx.roundRect ? ctx.roundRect(bx, by, bw, bh, 3) : ctx.rect(bx, by, bw, bh);
+  ctx.fill();
+  ctx.fillStyle = "#93a29d";
+  ctx.font = "10px sans-serif";
+  ctx.fillText((scene.legendTitle || "").toUpperCase(), bx + 10, by + 17);
+  ctx.font = "11px monospace";
+  scene.legend.forEach((b, i) => {
+    const y = by + 30 + i * lh;
+    ctx.fillStyle = b.colour;
+    ctx.fillRect(bx + 10, y, 12, 12);
+    ctx.strokeStyle = "rgba(0,0,0,.35)";
+    ctx.lineWidth = 1;
+    ctx.strokeRect(bx + 10.5, y + 0.5, 11, 11);
+    ctx.fillStyle = "#e9e5da";
+    ctx.fillText(b.label, bx + 28, y + 10);
+  });
+}
+
 async function exportRaster() {
   const rect = document.getElementById("map").getBoundingClientRect();
   const scale = 2;
@@ -360,6 +390,7 @@ async function exportRaster() {
       ctx.strokeStyle = "rgba(19,28,27,.7)"; ctx.lineWidth = 1.6; ctx.stroke();
     }
   }
+  drawLegendOnCanvas(ctx, rect);
   ctx.font = "11px sans-serif";
   const pad = 6, text = ATTRIB + (complete ? "" : " \u00b7 basemap incomplete");
   const w = ctx.measureText(text).width;
@@ -434,6 +465,61 @@ function wireExport(id, fn) {
 }
 wireExport("dl-svg", exportVector);
 wireExport("dl-jpg", exportRaster);
+"""
+
+MAPUI_JS = r"""
+// --- map controls -------------------------------------------------------------
+// Zoom sits top-left so the bottom-right corner is free for the density legend,
+// which is where the legend also lands in an exported figure. Full screen uses the
+// browser's own Fullscreen API on the map pane rather than a plugin: one less
+// dependency, and the sidebar gets out of the way while inspecting a cluster.
+function addMapControls(map) {
+  L.control.zoom({ position: "topleft" }).addTo(map);
+
+  const ICON_IN =
+    '<svg viewBox="0 0 18 18" width="14" height="14" aria-hidden="true">' +
+    '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">' +
+    '<path d="M2 6V2h4M16 6V2h-4M2 12v4h4M16 12v4h-4"/></g></svg>';
+  const ICON_OUT =
+    '<svg viewBox="0 0 18 18" width="14" height="14" aria-hidden="true">' +
+    '<g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="square">' +
+    '<path d="M6 2v4H2M12 2v4h4M6 16v-4H2M12 16v-4h4"/></g></svg>';
+
+  const Fullscreen = L.Control.extend({
+    options: { position: "topleft" },
+    onAdd: function () {
+      const wrap = L.DomUtil.create("div", "leaflet-bar leaflet-control");
+      const link = L.DomUtil.create("a", "ogham-fs", wrap);
+      link.href = "#";
+      link.title = "Full screen";
+      link.setAttribute("role", "button");
+      link.innerHTML = ICON_IN;
+      L.DomEvent.on(link, "click", L.DomEvent.stopPropagation)
+                .on(link, "click", L.DomEvent.preventDefault)
+                .on(link, "click", () => {
+        const el = document.getElementById("map");
+        const on = document.fullscreenElement || document.webkitFullscreenElement;
+        if (on) (document.exitFullscreen || document.webkitExitFullscreen).call(document);
+        else (el.requestFullscreen || el.webkitRequestFullscreen).call(el);
+      });
+      this._link = link;
+      return wrap;
+    }
+  });
+  const control = new Fullscreen();
+  map.addControl(control);
+
+  const sync = () => {
+    const on = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (control._link) {
+      control._link.innerHTML = on ? ICON_OUT : ICON_IN;
+      control._link.title = on ? "Leave full screen" : "Full screen";
+    }
+    setTimeout(() => map.invalidateSize(), 120);
+  };
+  document.addEventListener("fullscreenchange", sync);
+  document.addEventListener("webkitfullscreenchange", sync);
+}
 """
 
 HEX_JS = r"""
@@ -648,7 +734,7 @@ const colourFor = c => COLOURS[c] || "#8d9a97";
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
 const map = L.map("map", {zoomControl:false}).setView([54.2,-6.5], 6);
-L.control.zoom({position:"bottomright"}).addTo(map);
+addMapControls(map);
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
   subdomains:"abcd", maxZoom:19
@@ -1028,7 +1114,7 @@ const BAND_COLOUR = {"identical":"#8d9a97", "close":"#9aab3f",
 const BAND_ORDER = ["far apart","diverging","close","identical"];
 
 const map = L.map("map", {zoomControl:false}).setView([53.6,-7.5], 6);
-L.control.zoom({position:"bottomright"}).addTo(map);
+addMapControls(map);
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
   subdomains:"abcd", maxZoom:19
@@ -1285,7 +1371,7 @@ const CURRENT = "#3f7d8c", OLDER = "#b07d2b";
 const GROUPS = [["formula","Formula words"],["element","Name elements"],["compound","Compound names"]];
 
 const map = L.map("map", {zoomControl:false}).setView([53.6,-7.5], 6);
-L.control.zoom({position:"bottomright"}).addTo(map);
+addMapControls(map);
 L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
   attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
   subdomains:"abcd", maxZoom:19
@@ -1659,7 +1745,7 @@ def _page(head: str, body: str, js: str) -> str:
     shell = head.replace("__CSS__", CSS) + body
     # EXPORT_JS declares `scene`, which the page scripts write to as soon as they
     # first draw, so it has to be in scope before them.
-    return shell + SCRIPTS + HEX_JS + EXPORT_JS + js + FOOT if js else shell + "</body>\n</html>\n"
+    return shell + SCRIPTS + MAPUI_JS + HEX_JS + EXPORT_JS + js + FOOT if js else shell + "</body>\n</html>\n"
 
 
 def _slim(rec: dict) -> dict:
