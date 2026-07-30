@@ -60,6 +60,7 @@ TYPE_KEYWORDS = {
 @dataclass
 class Keeper:
     repository: str = ""
+    alias_of: str = ""        # another repository string naming the same place
     qid: str = ""
     wd_label: str = ""
     lat: str = ""
@@ -94,8 +95,10 @@ def name_variants(name: str) -> list[str]:
     for candidate in (name,
                       re.sub(r"\s*\([^)]*\)", "", name),
                       re.split(r"\s*[|,]", name)[0],
-                      re.sub(r"\s*\([^)]*\)", "", re.split(r"\s*[|,]", name)[0]),
-                      (re.search(r"\(([^)]*)\)", name).group(1) if "(" in name else "")):
+                      re.sub(r"\s*\([^)]*\)", "", re.split(r"\s*[|,]", name)[0])):
+        # The parenthetical alone is deliberately NOT tried: "Llansaint Chapel
+        # (All Saints' Church)" fell through to the dedication and matched a
+        # church in Ireland, 317 km from a Carmarthenshire stone.
         candidate = candidate.strip(" ,|")
         if len(candidate) > 3 and candidate.lower() not in seen:
             seen.add(candidate.lower())
@@ -111,14 +114,42 @@ IN_SITU_WORDS = {"church", "chapel", "graveyard", "cemetery", "abbey", "cathedra
                  "eaglais", "capel", "llan"}
 IN_SITU_MAX_KM = 25.0
 
+# An institution is looked for in the country its stones come from -- but as a
+# *preference*, never a filter. Stones really do cross borders: nine Irish stones
+# are in the British Museum and three in the Pitt Rivers, and a hard country test
+# would throw out exactly the cases this map exists to show. So each lookup runs
+# twice: in-country first, then unrestricted.
+COUNTRY_BOX = {
+    "Ireland": (51.3, 55.5, -10.8, -5.9),
+    "Northern Ireland": (53.9, 55.4, -8.3, -5.3),
+    "Scotland": (54.5, 61.0, -8.7, -0.7),
+    "Wales": (51.3, 53.5, -5.4, -2.6),
+    "England": (49.8, 55.9, -6.5, 1.9),
+    "Isle of Man": (54.0, 54.5, -4.9, -4.2),
+}
+COUNTRY_CODE = {"Ireland": "ie", "Northern Ireland": "gb", "Scotland": "gb",
+                "Wales": "gb", "England": "gb", "Isle of Man": "im"}
+
+
+def in_country(lat: float, lon: float, country: str) -> bool:
+    box = COUNTRY_BOX.get(country or "")
+    if not box:
+        return True
+    a, b, c, d = box
+    return a <= lat <= b and c <= lon <= d
+
 
 def looks_in_situ(name: str) -> bool:
     lowered = name.lower()
     return any(w in lowered for w in IN_SITU_WORDS)
 
 
-def _wikidata(name: str) -> tuple[str, str, str, str]:
-    """(qid, label, lat, lon) from Wikidata, or empty strings."""
+def _wikidata(name: str, country: str = "") -> tuple[str, str, str, str]:
+    """(qid, label, lat, lon) from Wikidata, or empty strings.
+
+    ``country`` is the country the institution's stones were found in; a candidate
+    whose coordinate falls outside it is passed over.
+    """
     hits = _get(WD_API, {"action": "wbsearchentities", "search": name, "language": "en",
                          "uselang": "en", "format": "json", "limit": 7, "type": "item"})
     ids = [h["id"] for h in (hits or {}).get("search", [])]
@@ -140,30 +171,39 @@ def _wikidata(name: str) -> tuple[str, str, str, str]:
         labels = {k: (v.get("labels", {}).get("en", {}).get("value") or "").lower()
                   for k, v in (info or {}).get("entities", {}).items()}
 
-    for qid in ids:                       # search order is Wikidata's relevance order
-        entity = entities.get(qid)
-        if not entity:
-            continue
-        types = [labels.get(c["mainsnak"]["datavalue"]["value"]["id"], "")
-                 for c in entity.get("claims", {}).get("P31", [])
-                 if c.get("mainsnak", {}).get("datavalue")]
-        if not any(k in t for t in types for k in TYPE_KEYWORDS):
-            continue
-        for claim in entity.get("claims", {}).get("P625", []):
-            value = claim.get("mainsnak", {}).get("datavalue", {}).get("value")
-            if value:
-                label = entity.get("labels", {}).get("en", {}).get("value", "")
-                return qid, label, f"{value['latitude']:.6f}", f"{value['longitude']:.6f}"
-        # right kind of thing but no coordinate: keep the QID, geocode elsewhere
-        return qid, entity.get("labels", {}).get("en", {}).get("value", ""), "", ""
-    return "", "", "", ""
+    fallback = ("", "", "", "")
+    for restrict in (True, False):        # in-country first, then anywhere
+        for qid in ids:                   # search order is Wikidata's relevance order
+            entity = entities.get(qid)
+            if not entity:
+                continue
+            types = [labels.get(c["mainsnak"]["datavalue"]["value"]["id"], "")
+                     for c in entity.get("claims", {}).get("P31", [])
+                     if c.get("mainsnak", {}).get("datavalue")]
+            if not any(k in t for t in types for k in TYPE_KEYWORDS):
+                continue
+            label = entity.get("labels", {}).get("en", {}).get("value", "")
+            for claim in entity.get("claims", {}).get("P625", []):
+                value = claim.get("mainsnak", {}).get("datavalue", {}).get("value")
+                if not value:
+                    continue
+                lat, lon = float(value["latitude"]), float(value["longitude"])
+                if restrict and country and not in_country(lat, lon, country):
+                    continue
+                return qid, label, f"{lat:.6f}", f"{lon:.6f}"
+            if not fallback[0]:           # right kind of thing but no coordinate
+                fallback = (qid, label, "", "")
+    return fallback
 
 
-def _nominatim(name: str) -> tuple[str, str]:
-    data = _get(NOMINATIM, {"q": name, "format": "json", "limit": 1})
-    time.sleep(1.1)                       # Nominatim asks for at most one call a second
-    if data:
-        return f"{float(data[0]['lat']):.6f}", f"{float(data[0]['lon']):.6f}"
+def _nominatim(name: str, country: str = "") -> tuple[str, str]:
+    code = COUNTRY_CODE.get(country or "")
+    for params in ([{"q": name, "format": "json", "limit": 1, "countrycodes": code}] if code else []) \
+                  + [{"q": name, "format": "json", "limit": 1}]:
+        data = _get(NOMINATIM, params)
+        time.sleep(1.1)                   # Nominatim asks for at most one call a second
+        if data:
+            return f"{float(data[0]['lat']):.6f}", f"{float(data[0]['lon']):.6f}"
     return "", ""
 
 
@@ -185,8 +225,10 @@ def save_cache(path: Path, cache: dict[str, Keeper]) -> None:
             w.writerow(asdict(cache[key]))
 
 
-def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True) -> dict:
+def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
+            countries: dict[str, str] | None = None) -> dict:
     """Fill in whatever is missing. Verified entries are never touched."""
+    countries = countries or {}
     fetched = 0
     for name in names:
         entry = cache.setdefault(name, Keeper(repository=name))
@@ -194,15 +236,16 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True) -> 
             continue
         if not online:
             continue
+        country = countries.get(name, "")
         qid = label = lat = lon = source = ""
         for variant in name_variants(name):
-            qid, label, lat, lon = _wikidata(variant)
+            qid, label, lat, lon = _wikidata(variant, country)
             if lat:
                 source = "wikidata"
                 break
         if not lat:
             for variant in name_variants(name):
-                lat, lon = _nominatim(variant)
+                lat, lon = _nominatim(variant, country)
                 if lat:
                     source = "osm"
                     break
@@ -247,11 +290,28 @@ def check(links: list[dict]) -> list[dict]:
             if looks_in_situ(r["keeper"]) and r["km"] > IN_SITU_MAX_KM]
 
 
+def canonical(name: str, cache: dict[str, Keeper]) -> str:
+    """Follow ``alias_of`` to the string that stands for the place.
+
+    The corpus names an institution at two granularities -- "National Museums of
+    Scotland" (the body) and "National Museum of Scotland" (the building on
+    Chambers Street). Wikidata rightly gives them different QIDs; on a map of
+    *places* they are one point, so the alias merges them.
+    """
+    seen = set()
+    while True:
+        entry = cache.get(name)
+        if not entry or not entry.alias_of or name in seen:
+            return name
+        seen.add(name)
+        name = entry.alias_of
+
+
 def link(place_records: list[dict], cache: dict[str, Keeper]) -> list[dict]:
     """One record per stone that has both a findspot and a located keeper."""
     out = []
     for rec in place_records:
-        name = (rec.get("repository") or "").strip()
+        name = canonical((rec.get("repository") or "").strip(), cache)
         if not name or rec.get("lat") is None:
             continue
         keeper = cache.get(name)

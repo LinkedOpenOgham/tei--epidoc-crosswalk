@@ -803,6 +803,9 @@ def run_words(corpus_dir: Path, prov: dict, no_map: bool) -> dict | None:
 
 
 
+REGEOCODE = [False]      # set from the command line; keeps run_keepers' signature stable
+
+
 def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | None:
     """Geocode the institutions named in <repository> and link findspot to keeper."""
     names = sorted({(r.get("repository") or "").strip() for r in place_records
@@ -810,11 +813,26 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
     if not names:
         return None
     cache = keepers.load_cache(KEEPER_CACHE)
+    if REGEOCODE[0]:
+        cleared = 0
+        for entry in cache.values():
+            if entry.status != "verified":
+                entry.lat = entry.lon = entry.source = ""
+                entry.status = "pending"
+                cleared += 1
+        print(f"  cleared {cleared} non-verified coordinate(s) for re-lookup")
+    # look for each institution in the country its stones come from
+    countries: dict[str, list[str]] = {}
+    for r in place_records:
+        rep = (r.get("repository") or "").strip()
+        if rep and r.get("lat") is not None and r.get("pn_country"):
+            countries.setdefault(rep, []).append(r["pn_country"])
+    modal = {k: max(set(v), key=v.count) for k, v in countries.items()}
     print(f"\nkeeper layer -- {len(names)} institutions named in <repository>")
     pending = [n for n in names if not (cache.get(n) and cache[n].located)]
     if pending and online:
         print(f"  geocoding {len(pending)} (Wikidata, then OpenStreetMap)")
-    summary = keepers.resolve(names, cache, online=online)
+    summary = keepers.resolve(names, cache, online=online, countries=modal)
     keepers.save_cache(KEEPER_CACHE, cache)
     links = keepers.link(place_records, cache)
     rows = keepers.write_csv(links, OUT / "keepers.csv")
@@ -889,12 +907,15 @@ def main() -> None:
     ap.add_argument("--no-map", action="store_true", help="skip the docs/ map")
     ap.add_argument("--no-words", action="store_true",
                     help="skip the formulaic-word layer and docs/words.html")
+    ap.add_argument("--regeocode", action="store_true",
+                    help="clear every non-verified keeper coordinate and look it up again")
     ap.add_argument("--no-fetch", action="store_true",
                     help="do not fetch the editions even if data/origin/ is empty")
     args = ap.parse_args()
 
     # The editions belong in data/origin/. If they are not there yet, fetch them --
     # 8 MB and two seconds is a better default than silently mapping four stones.
+    REGEOCODE[0] = args.regeocode
     if args.fetch_corpus or (args.corpus is None
                              and not corpus.has_editions(CORPUS_DIR)
                              and not (args.no_fetch or args.offline)):

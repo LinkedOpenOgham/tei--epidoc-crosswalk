@@ -205,12 +205,41 @@ Distance on its own is deliberately **not** a warning: Shetland to Edinburgh is
 genuinely 460 km and Cork to the British Museum 600, and flagging those would bury
 the one real error under eighteen false alarms.
 
-The seven that did not resolve all carry a qualifier the search chokes on —
+**A second run found a second error of the same kind.** `Llansaint Chapel (All
+Saints' Church)` resolved to a church in Ireland, 317 km from its Carmarthenshire
+stone. The cause was the resolver's own fallback: having failed on the full string
+and on `Llansaint Chapel`, it tried the parenthetical alone — and a bare dedication
+matches anywhere. That variant is gone. The lookup now also **prefers** the country
+the institution's stones come from, and asks Nominatim for that country directly.
+
+A preference, not a filter: nine Irish stones really are in the British Museum and
+three in the Pitt Rivers, and a hard country test would discard exactly the cases
+this map exists to show. Each lookup therefore runs twice, in-country first, then
+unrestricted.
+
+`--regeocode` clears every non-verified coordinate and looks it up again, so a
+resolver improvement can be applied without hand-editing the cache. Rows marked
+`verified` are never touched.
+
+### Two names, one place
+
+The corpus names some institutions at two granularities — *National Museums of
+Scotland* (the body) and *National Museum of Scotland* (the building on Chambers
+Street); *National Museum Wales* and *National Museum Cardiff*. Wikidata rightly
+gives each its own QID, but on a map of places they are one point. An `alias_of`
+column in the cache merges them: 35 institutions become 33, and Scotland's count
+goes from 23 + 2 to 25.
+
+Merging is a curatorial decision, so it lives in the reviewable CSV rather than in
+code. Pairs that sit metres apart but are genuinely distinct — Trinity College Dublin
+498 m from the National Museum of Ireland, University College Cork 367 m from Cork
+Public Museum — are deliberately left alone.
+
+The remaining names that did not resolve carry a qualifier the search chokes on —
 `Carmarthen Museum, Abergwili`, `Armagh Robinson library (No 5 Vicars' Hill Museum)`,
-`Museum nan Eilean in Steòrnabhagh | Stornoway`. The resolver now retries with the
-name progressively simplified (parenthetical dropped, then everything after a comma
-or pipe, then the parenthetical alone), most specific first. `Mount Mellary Abbey
-Heritage Center` will still need a hand: the corpus spells Melleray with an A.
+`Museum nan Eilean in Steòrnabhagh | Stornoway`. The resolver retries with the name
+progressively simplified — parenthetical dropped, then everything after a comma or
+pipe — most specific first. That recovered three of the seven on the next run.
 
 ### The modelling, and an ambiguity it resolves
 

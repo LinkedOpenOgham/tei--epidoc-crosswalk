@@ -133,8 +133,8 @@ S-ANS-001,,St Vigeans,Angus,Scotland,56.576944,-2.590278,St Vigeans Museum,,56.5
 S-ANS-003,,Monifieth,Angus,Scotland,56.480556,-2.821111,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,63.5
 S-ARL-002,507,Poltalloch,Argyll and Bute,Scotland,56.1175,-5.507222,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,145.3
 S-BUT-002,,Inchmarnock 1,Bute,Scotland,55.789444,-5.153611,Bute Museum,Q17775932,55.8359,-5.05489,wikidata,8.0
-S-BUT-003,,Inchmarnock 2,Bute,Scotland,55.789444,-5.153611,National Museum of Scotland,Q1633842,55.946944,-3.19,wikidata,123.8
-S-BUT-004,,Inchmarnock 3,Bute,Scotland,55.789444,-5.153611,National Museum of Scotland,Q1633842,55.946944,-3.19,wikidata,123.8
+S-BUT-003,,Inchmarnock 2,Bute,Scotland,55.789444,-5.153611,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,123.8
+S-BUT-004,,Inchmarnock 3,Bute,Scotland,55.789444,-5.153611,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,123.8
 S-CAI-001,,Ackergill,Caithness,Scotland,58.478333,-3.119167,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,281.5
 S-DGY-001,,Lochnaw,Dumfries and Galloway,Scotland,54.912222,-5.137222,Dumfries Museum,Q5313798,55.0652,-3.6146,wikidata,98.6
 S-FIF-001,,Scoonie,Fife,Scotland,56.203611,-2.994444,National Museums of Scotland,Q1967502,55.947,-3.189,wikidata,31.0
@@ -166,13 +166,12 @@ S-SUT-002,,Latheron,Sutherland,Scotland,58.279722,-3.369167,National Museums of 
 W-BRE-003,345,Ystradfellte,Brecknockshire,Wales,51.809528,-3.553209,Cyfarthfa Museum,,51.756656,-3.389848,osm,12.7
 W-BRE-004,327,Crickhowell,Brecknockshire,Wales,51.866872,-3.126958,Brecknock Museum,Q15204378,51.9462,-3.3893,wikidata,20.0
 W-BRE-006,341,Pentre Poeth | Llywel,Brecknockshire,Wales,51.925325,-3.625936,British Museum,Q6373,51.519444,-0.126944,wikidata,245.2
-W-CGN-001,353,Llanwenog,Cardiganshire,Wales,52.059325,-4.209772,National Museum Wales,Q2046319,51.486309,-3.176869,osm,95.4
+W-CGN-001,353,Llanwenog,Cardiganshire,Wales,52.059325,-4.209772,National Museum Wales,Q1321874,51.485577,-3.177128,wikidata,95.5
 W-CMN-002,378,Llanwinio,Carmarthenshire,Wales,51.909456,-4.52955,"Carmarthen Museum, Abergwili",,51.865495,-4.265748,osm,18.8
 W-CMN-005,358,Castell Dwyran,Carmarthenshire,Wales,51.831406,-4.695,"Carmarthen Museum, Abergwili",,51.865495,-4.265748,osm,29.7
-W-CMN-X02,376,St Ishmaels,Carmarthenshire,Wales,51.747706,-4.341428,Llansaint Chapel (All Saints' Church),Q55027722,54.07546,-7.07916,wikidata,317.3
-W-DEN-001,399,Clocaenog,Denbighshire,Wales,53.067967,-3.415525,National Museum Wales,Q2046319,51.486309,-3.176869,osm,176.6
+W-DEN-001,399,Clocaenog,Denbighshire,Wales,53.067967,-3.415525,National Museum Wales,Q1321874,51.485577,-3.177128,wikidata,176.7
 W-GLA-001,409,Egylwys Nynnid | Margam,Glamorgan,Wales,51.545939,-3.727606,Margam Stones Museum,Q6759082,51.56327,-3.73057,wikidata,1.9
 W-GLA-002,405,Loughor,Glamorgan,Wales,51.664108,-4.06135,Swansea Museum,Q7653706,51.6178,-3.9381,wikidata,9.9
-W-GLA-X01,404,Gelli-Gaer,Glamorgan,Wales,51.715653,-3.249856,National Museum Cardiff,Q1321874,51.485577,-3.177128,wikidata,26.1
+W-GLA-X01,404,Gelli-Gaer,Glamorgan,Wales,51.715653,-3.249856,National Museum Wales,Q1321874,51.485577,-3.177128,wikidata,26.1
 W-GLA-X02,408,Margam,Glamorgan,Wales,51.585703,-3.689275,Margam Stones Museum,Q6759082,51.56327,-3.73057,wikidata,3.8
 W-PEM-014,446,Nevern 1,Pembrokeshire,Wales,52.025392,-4.795144,St. Brynach's Church,Q26236358,51.922953,-3.346175,wikidata,99.9

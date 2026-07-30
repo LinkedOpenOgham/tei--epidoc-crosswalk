@@ -81,14 +81,6 @@ data:match_keeper_Kerry_County_Museum a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Kerry_County_Museum .
 
-data:match_keeper_Llansaint_Chapel_All_Saints_Church a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
-    rdf:object wd:Q55027722 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:keeper_Llansaint_Chapel_All_Saints_Church .
-
 data:match_keeper_M_saem_Chorca_Dhuibhne a rdf:Statement ;
     amt:weight 0.70 ;
     ogham:matchConfidence 0.70 ;
@@ -113,19 +105,11 @@ data:match_keeper_Margam_Stones_Museum a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Margam_Stones_Museum .
 
-data:match_keeper_National_Museum_Cardiff a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
-    rdf:object wd:Q1321874 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:keeper_National_Museum_Cardiff .
-
 data:match_keeper_National_Museum_Wales a rdf:Statement ;
     amt:weight 0.70 ;
     ogham:matchConfidence 0.70 ;
     ogham:matchStatus "auto" ;
-    rdf:object wd:Q2046319 ;
+    rdf:object wd:Q1321874 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_National_Museum_Wales .
 
@@ -136,14 +120,6 @@ data:match_keeper_National_Museum_of_Ireland a rdf:Statement ;
     rdf:object wd:Q1672840 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_National_Museum_of_Ireland .
-
-data:match_keeper_National_Museum_of_Scotland a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
-    rdf:object wd:Q1633842 ;
-    rdf:predicate skos:closeMatch ;
-    rdf:subject data:keeper_National_Museum_of_Scotland .
 
 data:match_keeper_National_Museums_of_Scotland a rdf:Statement ;
     amt:weight 0.70 ;
@@ -659,11 +635,11 @@ data:stone_S_ARL_002 crm:P50_has_current_keeper data:keeper_National_Museums_of_
 data:stone_S_BUT_002 crm:P50_has_current_keeper data:keeper_Bute_Museum ;
     crm:P55_has_current_location data:place_keeper_Bute_Museum .
 
-data:stone_S_BUT_003 crm:P50_has_current_keeper data:keeper_National_Museum_of_Scotland ;
-    crm:P55_has_current_location data:place_keeper_National_Museum_of_Scotland .
+data:stone_S_BUT_003 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
 
-data:stone_S_BUT_004 crm:P50_has_current_keeper data:keeper_National_Museum_of_Scotland ;
-    crm:P55_has_current_location data:place_keeper_National_Museum_of_Scotland .
+data:stone_S_BUT_004 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
+    crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
 
 data:stone_S_CAI_001 crm:P50_has_current_keeper data:keeper_National_Museums_of_Scotland ;
     crm:P55_has_current_location data:place_keeper_National_Museums_of_Scotland .
@@ -767,9 +743,6 @@ data:stone_W_CMN_002 crm:P50_has_current_keeper data:keeper_Carmarthen_Museum_Ab
 data:stone_W_CMN_005 crm:P50_has_current_keeper data:keeper_Carmarthen_Museum_Abergwili ;
     crm:P55_has_current_location data:place_keeper_Carmarthen_Museum_Abergwili .
 
-data:stone_W_CMN_X02 crm:P50_has_current_keeper data:keeper_Llansaint_Chapel_All_Saints_Church ;
-    crm:P55_has_current_location data:place_keeper_Llansaint_Chapel_All_Saints_Church .
-
 data:stone_W_DEN_001 crm:P50_has_current_keeper data:keeper_National_Museum_Wales ;
     crm:P55_has_current_location data:place_keeper_National_Museum_Wales .
 
@@ -779,8 +752,8 @@ data:stone_W_GLA_001 crm:P50_has_current_keeper data:keeper_Margam_Stones_Museum
 data:stone_W_GLA_002 crm:P50_has_current_keeper data:keeper_Swansea_Museum ;
     crm:P55_has_current_location data:place_keeper_Swansea_Museum .
 
-data:stone_W_GLA_X01 crm:P50_has_current_keeper data:keeper_National_Museum_Cardiff ;
-    crm:P55_has_current_location data:place_keeper_National_Museum_Cardiff .
+data:stone_W_GLA_X01 crm:P50_has_current_keeper data:keeper_National_Museum_Wales ;
+    crm:P55_has_current_location data:place_keeper_National_Museum_Wales .
 
 data:stone_W_GLA_X02 crm:P50_has_current_keeper data:keeper_Margam_Stones_Museum ;
     crm:P55_has_current_location data:place_keeper_Margam_Stones_Museum .
@@ -830,19 +803,9 @@ data:keeper_Herbert_Art_Gallery_and_Museum a crm:E40_Legal_Body ;
     crm:P74_has_current_or_former_residence data:place_keeper_Herbert_Art_Gallery_and_Museum ;
     skos:closeMatch wd:Q917262 .
 
-data:keeper_Llansaint_Chapel_All_Saints_Church a crm:E40_Legal_Body ;
-    rdfs:label "Llansaint Chapel (All Saints' Church)" ;
-    crm:P74_has_current_or_former_residence data:place_keeper_Llansaint_Chapel_All_Saints_Church ;
-    skos:closeMatch wd:Q55027722 .
-
 data:keeper_Millstreet_Museum a crm:E40_Legal_Body ;
     rdfs:label "Millstreet Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Millstreet_Museum .
-
-data:keeper_National_Museum_Cardiff a crm:E40_Legal_Body ;
-    rdfs:label "National Museum Cardiff" ;
-    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_Cardiff ;
-    skos:closeMatch wd:Q1321874 .
 
 data:keeper_Norwich_Castle_Museum a crm:E40_Legal_Body ;
     rdfs:label "Norwich Castle Museum" ;
@@ -924,16 +887,6 @@ data:place_keeper_Herbert_Art_Gallery_and_Museum a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-1.506222 52.407222)"^^geo:wktLiteral .
 
-data:place_keeper_Llansaint_Chapel_All_Saints_Church a crm:E53_Place ;
-    rdfs:label "Llansaint Chapel (All Saints' Church) (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
-    geo:asWKT "POINT(-7.07916 54.07546)"^^geo:wktLiteral .
-
-data:place_keeper_National_Museum_Cardiff a crm:E53_Place ;
-    rdfs:label "National Museum Cardiff (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
-    geo:asWKT "POINT(-3.177128 51.485577)"^^geo:wktLiteral .
-
 data:place_keeper_Norwich_Castle_Museum a crm:E53_Place ;
     rdfs:label "Norwich Castle Museum (present location)" ;
     ogham:geocodedFrom "wikidata" ;
@@ -989,16 +942,6 @@ data:keeper_Margam_Stones_Museum a crm:E40_Legal_Body ;
     crm:P74_has_current_or_former_residence data:place_keeper_Margam_Stones_Museum ;
     skos:closeMatch wd:Q6759082 .
 
-data:keeper_National_Museum_Wales a crm:E40_Legal_Body ;
-    rdfs:label "National Museum Wales" ;
-    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_Wales ;
-    skos:closeMatch wd:Q2046319 .
-
-data:keeper_National_Museum_of_Scotland a crm:E40_Legal_Body ;
-    rdfs:label "National Museum of Scotland" ;
-    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_of_Scotland ;
-    skos:closeMatch wd:Q1633842 .
-
 data:keeper_Trinity_College_Dublin a crm:E40_Legal_Body ;
     rdfs:label "Trinity College Dublin" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Trinity_College_Dublin ;
@@ -1019,16 +962,6 @@ data:place_keeper_Millstreet_Museum a crm:E53_Place ;
     ogham:geocodedFrom "osm" ;
     geo:asWKT "POINT(-9.06717 52.059744)"^^geo:wktLiteral .
 
-data:place_keeper_National_Museum_Wales a crm:E53_Place ;
-    rdfs:label "National Museum Wales (present location)" ;
-    ogham:geocodedFrom "osm" ;
-    geo:asWKT "POINT(-3.176869 51.486309)"^^geo:wktLiteral .
-
-data:place_keeper_National_Museum_of_Scotland a crm:E53_Place ;
-    rdfs:label "National Museum of Scotland (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
-    geo:asWKT "POINT(-3.19 55.946944)"^^geo:wktLiteral .
-
 data:place_keeper_Trinity_College_Dublin a crm:E53_Place ;
     rdfs:label "Trinity College Dublin (present location)" ;
     ogham:geocodedFrom "wikidata" ;
@@ -1038,6 +971,11 @@ data:keeper_Kerry_County_Museum a crm:E40_Legal_Body ;
     rdfs:label "Kerry County Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Kerry_County_Museum ;
     skos:closeMatch wd:Q6394504 .
+
+data:keeper_National_Museum_Wales a crm:E40_Legal_Body ;
+    rdfs:label "National Museum Wales" ;
+    crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_Wales ;
+    skos:closeMatch wd:Q1321874 .
 
 data:keeper_Orkney_Museum a crm:E40_Legal_Body ;
     rdfs:label "Orkney Museum" ;
@@ -1053,6 +991,11 @@ data:place_keeper_Kerry_County_Museum a crm:E53_Place ;
     rdfs:label "Kerry County Museum (present location)" ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-9.7059 52.2669)"^^geo:wktLiteral .
+
+data:place_keeper_National_Museum_Wales a crm:E53_Place ;
+    rdfs:label "National Museum Wales (present location)" ;
+    ogham:geocodedFrom "wikidata" ;
+    geo:asWKT "POINT(-3.177128 51.485577)"^^geo:wktLiteral .
 
 data:place_keeper_Orkney_Museum a crm:E53_Place ;
     rdfs:label "Orkney Museum (present location)" ;
