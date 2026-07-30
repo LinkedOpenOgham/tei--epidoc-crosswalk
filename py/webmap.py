@@ -27,18 +27,7 @@ FIELDS = {
     "repo": "repository",
 }
 
-TEMPLATE = r"""<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Linked Open Ogham — findspots</title>
-<meta name="description" content="Findspots of the OG(H)AM ogham corpus, crosswalked to CIDOC CRM.">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
+CSS = r"""
 :root{
   --ink:#131c1b; --panel:#1b2725; --panel-2:#233130; --line:#33433f;
   --text:#e9e5da; --muted:#93a29d; --stone:#b8b2a7;
@@ -93,6 +82,37 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
 .dl a{color:var(--stone);text-decoration:none;border-bottom:1px solid var(--line)}
 .dl a:hover{color:#fff;border-color:var(--sc)}
 
+nav{display:flex;gap:2px;margin-bottom:14px}
+nav a{flex:1;text-align:center;padding:7px 4px;font-size:12px;letter-spacing:.04em;
+  color:var(--muted);text-decoration:none;background:var(--panel-2);
+  border:1px solid var(--line);border-radius:3px}
+nav a:hover{color:var(--text)}
+nav a[aria-current]{background:var(--sc);border-color:var(--sc);color:#0f1918;font-weight:600}
+
+.wordlist{margin-top:6px}
+.wordgroup{font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:#6d7b77;
+  margin:16px 0 5px;padding-top:11px;border-top:1px solid var(--line)}
+.wordgroup:first-child{border-top:0;padding-top:0;margin-top:8px}
+.word{display:flex;align-items:baseline;gap:8px;padding:4px 0;cursor:pointer;font-size:13px}
+.word input{margin:0;accent-color:var(--sc);flex:0 0 13px}
+.word b{font-family:var(--mono);font-weight:500;font-size:12.5px}
+.word .tr{color:var(--muted);font-size:11.5px;flex:1;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.word .n{font-family:var(--mono);font-size:11px;color:var(--muted)}
+.word:hover b{color:#fff}
+
+.gloss{background:var(--panel-2);border:1px solid var(--line);border-radius:3px;
+  padding:11px 12px;margin:14px 0 0;font-size:12.5px;line-height:1.55}
+.gloss h2{font-family:var(--display);font-size:19px;margin:0 0 2px;font-weight:600}
+.gloss .meta{color:var(--muted);font-size:11.5px;margin-bottom:7px}
+.gloss a{color:var(--stone)}
+.legend{display:flex;gap:14px;font-size:11.5px;color:var(--muted);margin-top:11px;
+  align-items:center;flex-wrap:wrap}
+.legend span{display:flex;align-items:center;gap:6px}
+.pop .rdg{font-family:var(--mono);font-size:11.5px;line-height:1.5;margin:0 0 8px}
+.pop .rdg em{color:var(--muted);font-style:normal}
+.pop mark{background:rgba(63,125,140,.45);color:#eef0ea;border-radius:2px;padding:0 1px}
+
 #map{flex:1;background:#e8e6df}
 .leaflet-container{font-family:var(--sans);background:#e8e6df}
 .pin{border-radius:50%;border:1.6px solid rgba(19,28,27,.7);box-shadow:0 1px 3px rgba(0,0,0,.3)}
@@ -133,10 +153,35 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
   #side{width:100%;flex:0 0 auto;max-height:48vh;border-right:0;border-bottom:1px solid var(--line)}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
-</style>
+"""
+
+HEAD = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — findspots</title>
+<meta name="description" content="Findspots of the OG(H)AM ogham corpus, crosswalked to CIDOC CRM.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
 </head>
 <body>
-<div id="app">
+"""
+
+FOOT = r"""</script>
+</body>
+</html>
+"""
+
+SCRIPTS = r"""<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script>
+"""
+
+BODY = r"""<div id="app">
   <aside id="side">
     <header>
       <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
@@ -160,6 +205,10 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
       <code>E53_Place</code>.</p>
     </header>
     <div class="scroll">
+      <nav>
+        <a href="index.html" aria-current="page">Findspots</a>
+        <a href="words.html">Formulaic words</a>
+      </nav>
       <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
 
       <label class="field" for="q">Search name or identifier</label>
@@ -195,10 +244,9 @@ details ul{font-family:var(--mono);font-size:11px;color:var(--muted);padding-lef
   <div id="map"></div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
-<script>
-const DATA = __DATA__;
+"""
+
+JS = r"""const DATA = __DATA__;
 const MISSING = __MISSING__;
 
 const COLOURS = {
@@ -304,10 +352,232 @@ document.getElementById("missingSummary").textContent =
   `${MISSING.length} records without usable coordinates`;
 document.getElementById("missingList").innerHTML =
   MISSING.map(m => `<li>${esc(m.id)} — ${esc(m.reason)}</li>`).join("");
-</script>
-</body>
-</html>
 """
+
+HEAD_WORDS = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — formulaic words</title>
+<meta name="description" content="Formulaic words and name elements across the readings of the OG(H)AM ogham corpus.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body>
+"""
+
+WORDS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe (one stroke below the line) with the crossbar that softens it.
+           Feather marks open and close the inscription. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Formulaic words</h1>
+      <p class="sub">McManus's formulaic vocabulary matched against every reading
+      of every ogham inscription — not just the current one.</p>
+    </header>
+    <div class="scroll">
+      <nav>
+        <a href="index.html">Findspots</a>
+        <a href="words.html" aria-current="page">Formulaic words</a>
+      </nav>
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <div id="gloss" class="gloss"></div>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#3f7d8c;
+          border:1.6px solid rgba(19,28,27,.7)"></i> in the current edition</span>
+        <span><i class="pin vague" style="width:11px;height:11px;
+          border:1.6px dashed #b07d2b"></i> only in an older reading</span>
+      </div>
+
+      <label class="field" for="q" style="margin-top:22px">Filter the vocabulary</label>
+      <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
+
+      <div class="wordlist" id="wordlist"></div>
+
+      <p class="note">Word list from
+      <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">o3d-epidoc-extractor</a>
+      (Homburg &amp; Thiery, DHd 2020), after McManus 1991. <b>Name elements are
+      matched as substrings</b>, which is that project's semantics and is not
+      precise: short elements such as CON or VIR also fire inside unrelated names.
+      Each hit records which mode produced it.</p>
+
+      <p class="dl">
+        <a href="words.csv" download>Download matches (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+WORDS_JS = r"""const WORDS = __WORDS__;
+const STONES = __STONES__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const CURRENT = "#3f7d8c", OLDER = "#b07d2b";
+const GROUPS = [["formula","Formula words"],["element","Name elements"],["compound","Compound names"]];
+
+const map = L.map("map", {zoomControl:false}).setView([53.6,-7.5], 6);
+L.control.zoom({position:"bottomright"}).addTo(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+
+function icon(current){
+  const d = 13, colour = current ? CURRENT : OLDER;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin${current?"":" vague"}" style="width:${d}px;height:${d}px;`
+       + `background:${current?colour:"transparent"};border-color:${current?"rgba(19,28,27,.7)":colour}"></div>`});
+}
+
+// highlight the matched token inside the reading it was found in
+function markup(text, token){
+  if (!token) return esc(text);
+  const i = text.toUpperCase().indexOf(token.toUpperCase());
+  if (i < 0) return esc(text);
+  return esc(text.slice(0,i)) + "<mark>" + esc(text.slice(i, i+token.length))
+       + "</mark>" + esc(text.slice(i+token.length));
+}
+
+function popup(stone, key){
+  const hits = stone.hits[key] || [];
+  const rows = hits.map(h => {
+    const r = stone.readings[h.r];
+    return `<p class="rdg"><em>${esc(r.e)}</em><br>${markup(r.t, h.tk)}</p>`;
+  }).join("");
+  const w = key ? WORDS[key] : null;
+  return `<div class="pop">
+    <h2>${esc(stone.title || stone.id)}</h2>
+    <div class="where">${esc([stone.county, stone.country].filter(Boolean).join(", "))}
+      ${stone.ciic ? " · CIIC " + esc(stone.ciic) : ""}</div>
+    ${w ? `<span class="flag">${esc(w.word)}${w.tr ? " — " + esc(w.tr) : ""}</span>` : ""}
+    ${rows}
+    <div class="links">
+      <a href="index.html">on the findspot map</a>
+      ${w && w.wd ? `<a href="${esc(w.wd)}" target="_blank" rel="noopener">Wikidata</a>` : ""}
+    </div>
+  </div>`;
+}
+
+STONES.forEach(s => { s._m = {}; });
+
+let selected = null;   // null = every word
+
+function stonesFor(key){
+  return key === null ? STONES.filter(s => Object.keys(s.hits).length)
+                      : STONES.filter(s => s.hits[key]);
+}
+function isCurrent(stone, key){
+  const hits = key === null ? Object.values(stone.hits).flat() : stone.hits[key];
+  return hits.some(h => stone.readings[h.r].c);
+}
+
+function draw(){
+  const keep = stonesFor(selected);
+  cluster.clearLayers();
+  cluster.addLayers(keep.map(s => {
+    const cur = isCurrent(s, selected);
+    const m = L.marker([s.lat, s.lon], {icon:icon(cur), title:s.title || s.id});
+    m.bindPopup(() => popup(s, selected), {maxWidth:340});
+    return m;
+  }));
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length) map.fitBounds(L.latLngBounds(keep.map(s => [s.lat, s.lon])).pad(0.08));
+
+  const g = document.getElementById("gloss");
+  if (selected === null){
+    g.innerHTML = `<h2>All words</h2><div class="meta">every stone with at least one match</div>`;
+    return;
+  }
+  const w = WORDS[selected];
+  g.innerHTML = `<h2>${esc(w.word)}</h2>
+    <div class="meta">${esc(w.modeLabel)}${w.tr ? " · " + esc(w.tr) : ""}</div>
+    <div>Variants: <code>${w.variants.map(esc).join(", ")}</code></div>
+    ${w.ref ? `<div class="meta" style="margin:6px 0 0">${esc(w.ref)}</div>` : ""}
+    ${w.wd ? `<div style="margin-top:6px"><a href="${esc(w.wd)}" target="_blank" rel="noopener">Wikidata</a></div>` : ""}`;
+}
+
+function buildList(){
+  const box = document.getElementById("wordlist");
+  const term = document.getElementById("q").value.trim().toLowerCase();
+  box.innerHTML = "";
+  const all = document.createElement("label");
+  all.className = "word";
+  all.innerHTML = `<input type="radio" name="w" value="" ${selected===null?"checked":""}>`
+                + `<b>All words</b><span class="tr"></span>`
+                + `<span class="n">${STONES.filter(s=>Object.keys(s.hits).length).length}</span>`;
+  box.appendChild(all);
+  GROUPS.forEach(([mode, label]) => {
+    const keys = Object.keys(WORDS)
+      .filter(k => WORDS[k].mode === mode && WORDS[k].n > 0)
+      .filter(k => !term || (WORDS[k].word + " " + WORDS[k].tr).toLowerCase().includes(term))
+      .sort((a,b) => WORDS[b].n - WORDS[a].n || WORDS[a].word.localeCompare(WORDS[b].word));
+    if (!keys.length) return;
+    const h = document.createElement("div");
+    h.className = "wordgroup";
+    h.textContent = `${label} · ${keys.length}`;
+    box.appendChild(h);
+    keys.forEach(k => {
+      const w = WORDS[k];
+      const l = document.createElement("label");
+      l.className = "word";
+      l.innerHTML = `<input type="radio" name="w" value="${esc(k)}" ${selected===k?"checked":""}>`
+                  + `<b>${esc(w.word)}</b><span class="tr">${esc(w.tr)}</span>`
+                  + `<span class="n">${w.n}</span>`;
+      box.appendChild(l);
+    });
+  });
+  box.querySelectorAll("input[name=w]").forEach(i =>
+    i.addEventListener("change", () => { selected = i.value || null; draw(); }));
+}
+
+document.getElementById("q").addEventListener("input", buildList);
+buildList();
+draw();
+"""
+
+
+def _page(head: str, body: str, js: str) -> str:
+    """Assemble a page from the shared shell."""
+    return head.replace("__CSS__", CSS) + body + SCRIPTS + js + FOOT
 
 
 def _slim(rec: dict) -> dict:
@@ -348,7 +618,7 @@ def build(records: list[dict], docs: Path, root: Path | None = None,
                 "reason": (r.get("geo_raw") or "").strip() or "empty <geo>"}
                for r in records if r.get("lat") is None]
 
-    html = (TEMPLATE
+    html = (_page(HEAD, BODY, JS)
             .replace("__DATA__", json.dumps(mapped, ensure_ascii=False, separators=(",", ":")))
             .replace("__MISSING__", json.dumps(missing, ensure_ascii=False, separators=(",", ":")))
             .replace("__BUILT__", dt.date.today().isoformat())
@@ -372,3 +642,64 @@ def build(records: list[dict], docs: Path, root: Path | None = None,
     print(f"  -> wrote {rel(docs / 'index.html')} ({len(mapped)} points, {size:.0f} KB)")
     print(f"  -> wrote {rel(docs / 'places.geojson')}")
     return {"mapped": len(mapped), "missing": len(missing)}
+
+
+def build_words(word_records: list[dict], place_records: list[dict],
+                vocabulary: list[dict], docs: Path, root: Path | None = None,
+                provenance: dict | None = None) -> dict:
+    """Write docs/words.html: the formulaic vocabulary on the map.
+
+    Joined to the findspots by OG(H)AM id, so a word only appears where the place
+    layer resolved a coordinate. Words with no occurrence in the corpus are kept
+    out of the picker rather than shown as empty options.
+    """
+    docs.mkdir(parents=True, exist_ok=True)
+    coords = {r["ogham_id"]: r for r in place_records if r.get("lat") is not None}
+
+    vocab: dict[str, dict] = {}
+    for entry in vocabulary:
+        key = f"{entry['word']}|{entry['mode']}"
+        vocab[key] = {"word": entry["word"], "mode": entry["mode"],
+                      "modeLabel": entry["mode_label"], "tr": entry["translation"],
+                      "ref": entry["reference"], "wd": entry["wikidata"],
+                      "variants": entry["variants"], "n": 0}
+
+    stones = []
+    for rec in word_records:
+        place = coords.get(rec["ogham_id"])
+        if place is None:
+            continue
+        readings, hits = [], {}
+        for r in rec["readings"]:
+            if not r["matches"]:
+                continue
+            idx = len(readings)
+            readings.append({"e": r["editor"], "t": r["text"], "c": bool(r["current"])})
+            for m in r["matches"]:
+                key = f"{m['word']}|{m['mode']}"
+                hits.setdefault(key, []).append({"r": idx, "tk": m["token"]})
+        if not hits:
+            continue
+        for key in hits:
+            if key in vocab:
+                vocab[key]["n"] += 1
+        stones.append({
+            "id": rec["ogham_id"], "title": rec["title"], "ciic": rec["ciic"],
+            "county": place.get("pn_county", ""), "country": place.get("pn_country", ""),
+            "lat": place["lat"], "lon": place["lon"],
+            "readings": readings, "hits": hits,
+        })
+
+    html = (_page(HEAD_WORDS, WORDS_BODY, WORDS_JS)
+            .replace("__WORDS__", json.dumps(vocab, ensure_ascii=False, separators=(",", ":")))
+            .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
+            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__PROV__", _provenance_html(provenance or {})))
+    (docs / "words.html").write_text(html, encoding="utf-8")
+
+    rel = (lambda p: p.relative_to(root)) if root else (lambda p: p)
+    size = (docs / "words.html").stat().st_size / 1024
+    used = sum(1 for v in vocab.values() if v["n"])
+    print(f"  -> wrote {rel(docs / 'words.html')} ({len(stones)} stones, "
+          f"{used} words attested, {size:.0f} KB)")
+    return {"stones": len(stones), "words_attested": used}

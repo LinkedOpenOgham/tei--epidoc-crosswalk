@@ -31,11 +31,13 @@ from __future__ import annotations
 
 import argparse
 import re
+import shutil
 from collections import Counter
 
 import corpus    # local module (py/corpus.py) -- fetch + provenance manifest
 import places    # local module (py/places.py) -- corpus-wide place layer
-import webmap    # local module (py/webmap.py) -- docs/ map for GitHub Pages
+import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
+import words     # local module (py/words.py) -- formulaic-word extractor
 import wikidata  # local module (py/wikidata.py)
 from pathlib import Path
 
@@ -62,6 +64,7 @@ DOCS = ROOT / "docs"                               # generated GitHub Pages site
 # data/ (four sample stones) is only the last resort.
 CORPUS_DIR = DATA / "origin"                       # fetched editions (gitignored)
 CORPUS_MANIFEST = DATA / "corpus-manifest.yaml"    # provenance record (committed)
+WORD_LIST = DATA / "words.csv"                     # McManus vocabulary (committed)
 # data/origin/ is the only location discovered automatically -- see corpus.resolve
 
 STONES = [
@@ -760,6 +763,30 @@ def process(input_path: Path, output_path: Path, cache=None, online: bool = True
     return d["title"] or "?", d["label_id"], output_path.name, records
 
 
+
+def run_words(corpus_dir: Path, prov: dict, no_map: bool) -> dict | None:
+    """Formulaic vocabulary across every reading -> out/words.{csv,crm.ttl}."""
+    try:
+        words.fetch_word_list(WORD_LIST)
+    except OSError as exc:
+        print(f"\nword layer -- {WORD_LIST.relative_to(ROOT)} missing and "
+              f"unreachable ({exc}); skipping")
+        return None
+    vocabulary = words.load_words(WORD_LIST)
+    files = places.collect_files(corpus_dir)
+    print(f"\nword layer -- {len(vocabulary)} words against {len(files)} editions")
+    records = words.scan(files, vocabulary, places.parse_xml,
+                         places.stone_key, places.is_edition)
+    rows = words.write_csv(records, OUT / "words.csv")
+    g, summary = words.build_graph(records, vocabulary)
+    g.serialize(destination=str(OUT / "words.crm.ttl"), format="turtle")
+    print(f"  {summary['stones']} stones carry a match, "
+          f"{summary['occurrences']} occurrences over all readings")
+    print(f"  -> wrote {(OUT / 'words.csv').relative_to(ROOT)} ({rows} rows)")
+    print(f"  -> wrote {(OUT / 'words.crm.ttl').relative_to(ROOT)} ({len(g)} triples)")
+    return {"records": records, "vocabulary": vocabulary, **summary}
+
+
 def main() -> None:
     ap = argparse.ArgumentParser(description="EpiDoc -> CIDOC CRM (Linked Open Ogham, axis 1)")
     ap.add_argument("--input", type=Path, help="single EpiDoc file (default: all stones)")
@@ -777,6 +804,8 @@ def main() -> None:
                     help="run only the place layer, skip the per-stone crosswalk")
     ap.add_argument("--no-places", action="store_true", help="skip the place layer")
     ap.add_argument("--no-map", action="store_true", help="skip the docs/ map")
+    ap.add_argument("--no-words", action="store_true",
+                    help="skip the formulaic-word layer and docs/words.html")
     ap.add_argument("--no-fetch", action="store_true",
                     help="do not fetch the editions even if data/origin/ is empty")
     args = ap.parse_args()
@@ -808,9 +837,14 @@ def main() -> None:
     if args.places_only:
         OUT.mkdir(parents=True, exist_ok=True)
         summary = places.run(corpus_dir, OUT, root=ROOT, provenance=prov)
+        word_summary = None if args.no_words else run_words(corpus_dir, prov, args.no_map)
         if not args.no_map:
-            webmap.build(summary["records"], DOCS, root=ROOT,
-                         provenance=summary.get("provenance"))
+            webmap.build(summary["records"], DOCS, root=ROOT, provenance=prov)
+            if word_summary:
+                webmap.build_words(word_summary["records"], summary["records"],
+                                   word_summary["vocabulary"], DOCS, root=ROOT,
+                                   provenance=prov)
+                shutil.copyfile(OUT / "words.csv", DOCS / "words.csv")
         return
 
     cache = wikidata.load_cache(RECON_CACHE)
@@ -827,10 +861,19 @@ def main() -> None:
         results = [process(DATA / f, OUT / f"{b}.crm.ttl", cache=cache, online=online, verify=verify, resolved=resolved, overrides=overrides)
                    for f, b in STONES]
         places_summary = None if args.no_places else places.run(corpus_dir, OUT, root=ROOT, provenance=prov)
+        word_summary = (None if (args.no_words or not places_summary)
+                        else run_words(corpus_dir, prov, args.no_map))
         if places_summary and not args.no_map:
             places_summary["map"] = webmap.build(
-                places_summary["records"], DOCS, root=ROOT,
-                provenance=places_summary.get("provenance"))
+                places_summary["records"], DOCS, root=ROOT, provenance=prov)
+            if word_summary:
+                places_summary["words"] = webmap.build_words(
+                    word_summary["records"], places_summary["records"],
+                    word_summary["vocabulary"], DOCS, root=ROOT, provenance=prov)
+                shutil.copyfile(OUT / "words.csv", DOCS / "words.csv")
+        if word_summary and places_summary:
+            places_summary["word_layer"] = {k: v for k, v in word_summary.items()
+                                            if k not in ("records", "vocabulary")}
         write_out_readme(results, places_summary)
         emit_and_validate_crosswalk()
         wikidata.save_cache(RECON_CACHE, cache)

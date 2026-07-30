@@ -1,0 +1,664 @@
+ogham_id,ciic,title,reading_id,editor,is_current_edition,word,mode,variant,token,translation,wikidata,reference,reading_text
+E-CON-002,466,Lannwenek | Lewannick 1,OGHAM_NW,OG(H)AM edition (NW),yes,MEMOR,formula,MEMOR,MEMOR,"memorial, tombstone",,"McManus 1991,§6.27",IGENAVI MEMOR
+E-CON-003,467,Lannwenek | Lewannick 2,OGHAM_NW,OG(H)AM edition (NW),yes,ULCAGNI,compound,ULCAGNI,ULCAGNI,evil,,"McManus 1991,§6.12",UDSAGQI ULCAGNI
+E-CON-X02,457,Lancarffe,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CATI,DVNOCATI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",DVNOCATI HIC IACIT FILI MESCAGNI
+E-CON-X02,457,Lancarffe,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,DVNOCATI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",DVNOCATI HIC IACIT FILI MESCAGNI
+E-CON-X03,473,St Clement,MAC1945,Macalister 1945,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",Ogham: VITALI MAQI TORICI
+E-CON-X04,478,St Endellion,OGHAM_NW,OG(H)AM edition (NW),yes,BROCAGNI,compound,BROCAGNI,BROCAGNI,badger,,"McManus 1991,§6.12",BROCAGNI IHCHIC IACIT NADOTTI FILIVS
+E-CON-X04,478,St Endellion,rdg,OG(H)AM edition,no,BROCAGNI,compound,BROCAGNI,BROCAGNI,badger,,"McManus 1991,§6.12",Ogham: BROCAGNI
+E-DEV-001,489,Fardel,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",SVAQQUCI MAQI QICI
+E-DEV-001,489,Fardel,rdg,OG(H)AM edition,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",Ogham: SVA[NN]UCI MAQI [R]I[N]I
+E-DEV-001,489,Fardel,rdg,OG(H)AM edition,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",Ogham: SVAQQUCI MAQI QICI
+E-DEV-002,488,Roborough Down,OGHAM_NW,OG(H)AM edition (NW),yes,BARR,element,BARR,ENABARRI,"top, head, hear of the head",,"McManus 1991,§6.4",ENABARRI
+E-DEV-002,488,Roborough Down,OGHAM_NW,OG(H)AM edition (NW),yes,BARR,element,BAR,ENABARRI,"top, head, hear of the head",,"McManus 1991,§6.4",ENABARRI
+E-DEV-002,488,Roborough Down,rdg,OG(H)AM edition,no,BARR,element,BARR,ENABARR,"top, head, hear of the head",,"McManus 1991,§6.4",Ogham: ENABARR
+E-DEV-002,488,Roborough Down,rdg,OG(H)AM edition,no,BARR,element,BAR,ENABARR,"top, head, hear of the head",,"McManus 1991,§6.4",Ogham: ENABARR
+E-HAM-001,496,Silchester,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TEBICATOS MAQI MUCOI ...
+E-HAM-001,496,Silchester,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",TEBICATOS MAQI MUCOI ...
+E-HAM-001,496,Silchester,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CATOS,TEBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",TEBICATOS MAQI MUCOI ...
+E-HAM-001,496,Silchester,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,TEBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",TEBICATOS MAQI MUCOI ...
+E-HAM-001,496,Silchester,rdg,OG(H)AM edition,no,CATTU,element,CAT,TEBICATOB,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",TEBICATOḄ[.. ? ..]ḤIMUCO[---]
+E-HAM-001,496,Silchester,FUL2000,Ful 2000,no,CATTU,element,CATOS,TEBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",TEBICATO[S]
+E-HAM-001,496,Silchester,FUL2000,Ful 2000,no,CATTU,element,CAT,TEBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",TEBICATO[S]
+I-ANT-001,309,Carn Coim | Carncome 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TORAESCEUSAS MAQI MUCOI MEUTINI
+I-ANT-001,309,Carn Coim | Carncome 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",TORAESCEUSAS MAQI MUCOI MEUTINI
+I-ANT-002,310,Carn Coim | Carncome 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CAGINADI MAQI VOBARACI
+I-ANT-002,310,Carn Coim | Carncome 2,OGHAM_NW,OG(H)AM edition (NW),yes,BARR,element,BAR,VOBARACI,"top, head, hear of the head",,"McManus 1991,§6.4",CAGINADI MAQI VOBARACI
+I-ARM-001,311,Droim Conmhaoil | Drumconwell,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DAENEGLO MAQI Q[E]TAI[---]
+I-ARM-001,311,Droim Conmhaoil | Drumconwell,rdg,OG(H)AM edition,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DINEGLO MAQI QETAIS
+I-CAR-002,,Tobar Phádraig | Patrickswell,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI
+I-CAR-003,16,An Ráth Ghlas | Rathglass,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DUNAIDONAS MAQI MARIANI
+I-CAR-004,17,Tuca Mín | Tuckamine,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MUCOI MUCCU
+I-COR-001,55,An Com Liath Thoir | Coomleagh East,MAC1945,Macalister 1945,no,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM SAINA MAQ OGALA MUCOI TEMOCA
+I-COR-001,55,An Com Liath Thoir | Coomleagh East,MAC1945,Macalister 1945,no,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM SAINA MAQ OGALA MUCOI TEMOCA
+I-COR-001,55,An Com Liath Thoir | Coomleagh East,MAC1945,Macalister 1945,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",ANM SAINA MAQ OGALA MUCOI TEMOCA
+I-COR-003,57,Plácas | Greenhill 1,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TRENU MAQI MUCOI QRITTI
+I-COR-003,57,Plácas | Greenhill 1,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",TRENU MAQI MUCOI QRITTI
+I-COR-003,57,Plácas | Greenhill 1,OGHAM_POC,OG(H)AM edition (POC),yes,TREN,element,TREN,TRENU,strong,,"McManus 1991,§6.6",TRENU MAQI MUCOI QRITTI
+I-COR-003,57,Plácas | Greenhill 1,OGHAM_POC,OG(H)AM edition (POC),yes,TRENU,compound,TRENU,TRENU,strong/Trian,,"McManus 1991,§6.11",TRENU MAQI MUCOI QRITTI
+I-COR-004,58,Plácas | Greenhill 2,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CATTUBUTTAS MAQI
+I-COR-004,58,Plácas | Greenhill 2,OGHAM_POC,OG(H)AM edition (POC),yes,CATTU,element,CATTU,CATTUBUTTAS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATTUBUTTAS MAQI
+I-COR-004,58,Plácas | Greenhill 2,OGHAM_POC,OG(H)AM edition (POC),yes,CATTU,element,CAT,CATTUBUTTAS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATTUBUTTAS MAQI
+I-COR-005,59,Baile na bPórtach | Ballynabortagh 1,MAC1945,Macalister 1945,no,IVA,element,IVA,UIVAIBES,"tree, yew tree",,"McManus 1991,§6.6",UIVAIBES
+I-COR-007,,Baile na bPórtach | Ballynabortagh 3,OGHAM_POC,OG(H)AM edition (POC),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",MAQITRENI AVI T[---]
+I-COR-007,,Baile na bPórtach | Ballynabortagh 3,OGHAM_POC,OG(H)AM edition (POC),yes,TREN,element,TREN,MAQITRENI,strong,,"McManus 1991,§6.6",MAQITRENI AVI T[---]
+I-COR-009,61,Oileán an Easpaig | Bishop’s Island,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",OLAGNI MAQI[---]
+I-COR-011,63,Gleann an Mhuilinn | Glenawillin 1,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",COLOMAGNI AVI DUCURI
+I-COR-011,63,Gleann an Mhuilinn | Glenawillin 1,OGHAM_NW,OG(H)AM edition (NW),yes,COLOMAGNI,compound,COLOMAGNI,COLOMAGNI,dove,,"McManus 1991,§6.12",COLOMAGNI AVI DUCURI
+I-COR-013,65,Ráth Ghobáin | Rathcobane,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LOGA MAQI SDANBI
+I-COR-014,66,Fánchoill agus Na Coillte | Faunkill and the Woods,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",MAQIDECCEDDAS AVI TURANIAS
+I-COR-015,67,Gamhair | Gour,OGHAM_NW,OG(H)AM edition (NW),yes,CARI,compound,CARI,CARI,loves,,"McManus 1991,§6.11",CARI
+I-COR-016,68,Chill Cháscann | Kilcaskan,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LUGUQRIT[TI MAQI ADDI]LONAS
+I-COR-016,68,Chill Cháscann | Kilcaskan,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUQRITTI,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGUQRIT[TI MAQI ADDI]LONAS
+I-COR-017,69,Achadh Loiscthe | Ahalisky 1,OGHAM_NW,OG(H)AM edition (NW),yes,GIRAGNI,compound,GIRAGNI,GIRAGNI,short (-haired),,"McManus 1991,§6.12",GIRAGNI
+I-COR-018,70,Achadh Loiscthe | Ahalisky 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CUNAGUSOS MAQI MUCOI VIRAGNI
+I-COR-018,70,Achadh Loiscthe | Ahalisky 2,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CUNAGUSOS MAQI MUCOI VIRAGNI
+I-COR-018,70,Achadh Loiscthe | Ahalisky 2,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNAGUSOS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNAGUSOS MAQI MUCOI VIRAGNI
+I-COR-018,70,Achadh Loiscthe | Ahalisky 2,OGHAM_NW,OG(H)AM edition (NW),yes,VIR,element,VIR,VIRAGNI,man,,"McManus 1991,§6.4",CUNAGUSOS MAQI MUCOI VIRAGNI
+I-COR-018,70,Achadh Loiscthe | Ahalisky 2,OGHAM_NW,OG(H)AM edition (NW),yes,VIRAGNI,compound,VIRAGNI,VIRAGNI,man/true,,"McManus 1991,§6.12",CUNAGUSOS MAQI MUCOI VIRAGNI
+I-COR-019,71,Achadh Loiscthe | Ahalisky 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",COIMAGNI MAQI MOCOI G[---]
+I-COR-019,71,Achadh Loiscthe | Ahalisky 3,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MOCOI,MOCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",COIMAGNI MAQI MOCOI G[---]
+I-COR-019,71,Achadh Loiscthe | Ahalisky 3,OGHAM_NW,OG(H)AM edition (NW),yes,COIMAGNI,compound,COIMAGNI,COIMAGNI,"dear,precious",,"McManus 1991,§6.12",COIMAGNI MAQI MOCOI G[---]
+I-COR-021,73,Ceathrú Bhaldair | Carhoovauler 1,OGHAM_NW,OG(H)AM edition (NW),yes,DOMNGEN,compound,DOMNGEN,DOMNGEN,world + son,,"McManus 1991,§6.9",DOMNGEN
+I-COR-022,74,Ceathrú Bhaldair | Carhoovauler 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CONANN MAQI S[---]
+I-COR-022,74,Ceathrú Bhaldair | Carhoovauler 2,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONA,CONANN,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CONANN MAQI S[---]
+I-COR-022,74,Ceathrú Bhaldair | Carhoovauler 2,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,CONANN,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CONANN MAQI S[---]
+I-COR-022,74,Ceathrú Bhaldair | Carhoovauler 2,OGHAM_NW,OG(H)AM edition (NW),yes,CONANN,compound,CONANN,CONANN,"hound,wolf",,"McManus 1991,§6.12",CONANN MAQI S[---]
+I-COR-024,75,Caoinráth | Keenrath,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM CASONI MAQI RODAGNI
+I-COR-024,75,Caoinráth | Keenrath,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM CASONI MAQI RODAGNI
+I-COR-024,75,Caoinráth | Keenrath,OGHAM_NW,OG(H)AM edition (NW),yes,CASONI,compound,CASONI,CASONI,curly,,"McManus 1991,§6.12",ANM CASONI MAQI RODAGNI
+I-COR-025,76,Teampall Brianaid Thuaidh | Templebryan North,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM TENAS MACI V[---]
+I-COR-025,76,Teampall Brianaid Thuaidh | Templebryan North,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM TENAS MACI V[---]
+I-COR-028,79,Gleann an Phúca | Glenaphuca 1,BAR1897,Bar 1897,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",ILUNA MUC[OI...]
+I-COR-030,81,An Garrán | Garranes,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CASSITTAS MAQI MUCOI CALLITI
+I-COR-030,81,An Garrán | Garranes,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CASSITTAS MAQI MUCOI CALLITI
+I-COR-031,82,Baile an Chamhaicigh Thuaidh | Ballyknock North 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAILAGURO MAQI [---]VILEBU
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LAMADULICCI MAC MAIC BROCC
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,OGHAM_NW,OG(H)AM edition (NW),yes,BROCI,compound,BROCC,BROCC,badger,,"McManus 1991,§6.11",LAMADULICCI MAC MAIC BROCC
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,MAC1907,Macalister 1907,no,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",[A]NM DULICCI MACI EBR[A]S[I]
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,MAC1907,Macalister 1907,no,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[A]NM DULICCI MACI EBR[A]S[I]
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,MAC1945,Macalister 1945,no,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LAMADILICCI MAC MAIC BROCC
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,MAC1945,Macalister 1945,no,BROCI,compound,BROCC,BROCC,badger,,"McManus 1991,§6.11",LAMADILICCI MAC MAIC BROCC
+I-COR-032,83,Baile an Chamhaicigh Thuaidh | Ballyknock North 2,MCM2004,Mcm 2004,no,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",L[A]MaDILICCi MAC[ ]CBROC
+I-COR-033,84,Baile an Chamhaicigh Thuaidh | Ballyknock North 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ERACOBI MAQI ERAQETAI
+I-COR-034,85,Baile an Chamhaicigh Thuaidh | Ballyknock North 4,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",GRILAGNI MAQI SCILAGNI
+I-COR-035,86,Baile an Chamhaicigh Thuaidh | Ballyknock North 5,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CLIUCOANAS MAQI MAQITRENI
+I-COR-035,86,Baile an Chamhaicigh Thuaidh | Ballyknock North 5,OGHAM_NW,OG(H)AM edition (NW),yes,TREN,element,TREN,MAQITRENI,strong,,"McManus 1991,§6.6",CLIUCOANAS MAQI MAQITRENI
+I-COR-036,87,Baile an Chamhaicigh Thuaidh | Ballyknock North 6,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DRUTIQULI MAQI MAQI RRODAGNI
+I-COR-037,88,Baile an Chamhaicigh Thuaidh | Ballyknock North 7,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BRANAN MAQI OQOLI
+I-COR-037,88,Baile an Chamhaicigh Thuaidh | Ballyknock North 7,OGHAM_NW,OG(H)AM edition (NW),yes,BRAN,element,BRAN,BRANAN,raven,,"McManus 1991,§6.6",BRANAN MAQI OQOLI
+I-COR-038,89,Baile an Chamhaicigh Thuaidh | Ballyknock North 8,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BOGAI MAQI BIRACO
+I-COR-039,90,Baile an Chamhaicigh Thuaidh | Ballyknock North 9,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CRONUN MAC BAIT
+I-COR-039,90,Baile an Chamhaicigh Thuaidh | Ballyknock North 9,OGHAM_NW,OG(H)AM edition (NW),yes,BAIT,compound,BAIT,BAIT,foolish,,"McManus 1991,§6.11",CRONUN MAC BAIT
+I-COR-039,90,Baile an Chamhaicigh Thuaidh | Ballyknock North 9,OGHAM_NW,OG(H)AM edition (NW),yes,CRONUN,compound,CRONUN,CRONUN,brown,,"McManus 1991,§6.12",CRONUN MAC BAIT
+I-COR-041,92,Baile an Chamhaicigh Thuaidh | Ballyknock North 11,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ACTO MAQI [---]MAGO
+I-COR-041,92,Baile an Chamhaicigh Thuaidh | Ballyknock North 11,OGHAM_NW,OG(H)AM edition (NW),yes,ACTO,compound,ACTO,ACTO,drives,,"McManus 1991,§6.11",ACTO MAQI [---]MAGO
+I-COR-042,93,Baile an Chamhaicigh Thuaidh | Ballyknock North 12,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERCA,ERCAIDANA,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ERCAIDANA
+I-COR-042,93,Baile an Chamhaicigh Thuaidh | Ballyknock North 12,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,ERCAIDANA,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ERCAIDANA
+I-COR-043,94,Baile an Chamhaicigh Thuaidh | Ballyknock North 13,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",D[---]MM[---] MACI VEDUCERI
+I-COR-043,94,Baile an Chamhaicigh Thuaidh | Ballyknock North 13,MAC1945,Macalister 1945,no,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DOMMO MACI VEDUCERI
+I-COR-043,94,Baile an Chamhaicigh Thuaidh | Ballyknock North 13,MAC1945,Macalister 1945,no,DOMMO,compound,DOMMO,DOMMO,Domma,,"McManus 1991,§6.11",DOMMO MACI VEDUCERI
+I-COR-044,95,Baile an Chamhaicigh Thuaidh | Ballyknock North 14,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM MEDDOGENI
+I-COR-046,97,Baile Sheanc | Ballyhank 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]ALLA MAQI VORRTIGURN
+I-COR-047,98,Baile Sheanc | Ballyhank 2,OGHAM_NW,OG(H)AM edition (NW),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",CORBAGNI KOI MAQI MOCCOI COROTANI
+I-COR-047,98,Baile Sheanc | Ballyhank 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CORBAGNI KOI MAQI MOCCOI COROTANI
+I-COR-047,98,Baile Sheanc | Ballyhank 2,OGHAM_NW,OG(H)AM edition (NW),yes,CORBAGNI,compound,CORBAGNI,CORBAGNI,defiles,,"McManus 1991,§6.12",CORBAGNI KOI MAQI MOCCOI COROTANI
+I-COR-048,99,Baile Sheanc | Ballyhank 3,OGHAM_POC,OG(H)AM edition (POC),yes,CATTU,element,CAT,SACATTINI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",SACATTINI
+I-COR-050,101,Baile Sheanc | Ballyhank 5,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIESEA MAQI DOMANEQI
+I-COR-053,104,Cúil an Fhéich | Coolineagh 1,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM CORRE MAQVI UDDGLOMETT
+I-COR-053,104,Cúil an Fhéich | Coolineagh 1,OGHAM_NW,OG(H)AM edition (NW),yes,CORRE,compound,CORRE,CORRE,heron,,"McManus 1991,§6.11",ANM CORRE MAQVI UDDGLOMETT
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM NETACUNAS CELI VIDETTAS
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,OGHAM_NW,OG(H)AM edition (NW),yes,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",ANM NETACUNAS CELI VIDETTAS
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNAS,NETACUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ANM NETACUNAS CELI VIDETTAS
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,NETACUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ANM NETACUNAS CELI VIDETTAS
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,MAC1945,Macalister 1945,no,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM NETACUNAS CELI VIDETTAS
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,MAC1945,Macalister 1945,no,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",ANM NETACUNAS CELI VIDETTAS
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,MAC1945,Macalister 1945,no,CUNA,element,CUNAS,NETACUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ANM NETACUNAS CELI VIDETTAS
+I-COR-054,105,Cúil an Fhéich | Coolineagh 2,MAC1945,Macalister 1945,no,CUNA,element,CUNA,NETACUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ANM NETACUNAS CELI VIDETTAS
+I-COR-055,106,Duílis | Deelish,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",COLABOT (vac.) MAQI MAQIRITE MAQI MUCOI CORIBIRI
+I-COR-055,106,Duílis | Deelish,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",COLABOT (vac.) MAQI MAQIRITE MAQI MUCOI CORIBIRI
+I-COR-056,107,Gleann na gCloch Thuaidh | Glenaglogh,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNAGUSSOS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNAGUSSOS MA[---]
+I-COR-056,107,Gleann na gCloch Thuaidh | Glenaglogh,OGHAM_NW,OG(H)AM edition (NW),yes,CUNAGUSSOS,compound,CUNAGUSSOS,CUNAGUSSOS,(he who has) the strengh of a wolf,,"McManus 1991,§6.10",CUNAGUSSOS MA[---]
+I-COR-056,107,Gleann na gCloch Thuaidh | Glenaglogh,MAC1945,Macalister 1945,no,CUNA,element,CUNA,CUNAGUSSOS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNAGUSSOS MA
+I-COR-056,107,Gleann na gCloch Thuaidh | Glenaglogh,MAC1945,Macalister 1945,no,CUNAGUSSOS,compound,CUNAGUSSOS,CUNAGUSSOS,(he who has) the strengh of a wolf,,"McManus 1991,§6.10",CUNAGUSSOS MA
+I-COR-057,108,Cill Chuilinn Theas | Kilcullen South,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LUGUDUC MAQI MAQI OC[---]CI
+I-COR-057,108,Cill Chuilinn Theas | Kilcullen South,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUDUC,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGUDUC MAQI MAQI OC[---]CI
+I-COR-058,109,Cill Martan Íochtarach | Kilmartin Lower,OGHAM_NW,OG(H)AM edition (NW),yes,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",UDDMENSA CELI NETTA SLOGI
+I-COR-058,109,Cill Martan Íochtarach | Kilmartin Lower,OGHAM_NW,OG(H)AM edition (NW),yes,NIOTA,formula,NETTA,NETTA,"nephew, sister`s son",,"McManus 1991,§6.27",UDDMENSA CELI NETTA SLOGI
+I-COR-060,111,An Cnoc Ramhar | Knockrour 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]I MAQI [---]C[---]
+I-COR-061,,An Cnoc Ramhar | Knockrour 3,MAC1945,Macalister 1945,no,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",FAANN MAC COLLUM
+I-COR-062,112,Cnoc Seanmhaí | Knockshanawee 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MICANAVVI MAQ LUGUNI
+I-COR-062,112,Cnoc Seanmhaí | Knockshanawee 1,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUNI,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",MICANAVVI MAQ LUGUNI
+I-COR-063,113,Cnoc Seanmhaí | Knockshanawee 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VEQIKAMI MAQI LUGUNI
+I-COR-063,113,Cnoc Seanmhaí | Knockshanawee 2,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUNI,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",VEQIKAMI MAQI LUGUNI
+I-COR-064,114,Cnoc Seanmhaí | Knockshanawee 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",GRIMIGGNI MAQI CERCC[..]
+I-COR-064,114,Cnoc Seanmhaí | Knockshanawee 3,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,CERCC,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",GRIMIGGNI MAQI CERCC[..]
+I-COR-065,115,Cnoc Seanmhaí | Knockshanawee 4,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CULRIGAI MAQI MENUMAQI
+I-COR-066,116,Cnoc Seanmhaí | Knockshanawee 5,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BRANI MAQQI MUCC[OI..]
+I-COR-066,116,Cnoc Seanmhaí | Knockshanawee 5,OGHAM_NW,OG(H)AM edition (NW),yes,BRAN,element,BRAN,BRANI,raven,,"McManus 1991,§6.6",BRANI MAQQI MUCC[OI..]
+I-COR-070,119,Móin an tSagairt | Monataggart 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DALAGNI MAQI DALI
+I-COR-070,119,Móin an tSagairt | Monataggart 2,OGHAM_NW,OG(H)AM edition (NW),yes,DALI,compound,DALI,DALI,blind,,"McManus 1991,§6.11",DALAGNI MAQI DALI
+I-COR-070,119,Móin an tSagairt | Monataggart 2,OGHAM_NW,OG(H)AM edition (NW),yes,DALAGNI,compound,DALAGNI,DALAGNI,blind,http://www.wikidata.org/entity/Q68001812,"McManus 1991,§6.12",DALAGNI MAQI DALI
+I-COR-071,120,Móin an tSagairt | Monataggart 3,OGHAM_NW,OG(H)AM edition (NW),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",BROINIENAS KOI NETTATTRENALUGOS
+I-COR-071,120,Móin an tSagairt | Monataggart 3,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,NETTATTRENALUGOS,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",BROINIENAS KOI NETTATTRENALUGOS
+I-COR-071,120,Móin an tSagairt | Monataggart 3,OGHAM_NW,OG(H)AM edition (NW),yes,TREN,element,TTREN,NETTATTRENALUGOS,strong,,"McManus 1991,§6.6",BROINIENAS KOI NETTATTRENALUGOS
+I-COR-071,120,Móin an tSagairt | Monataggart 3,OGHAM_NW,OG(H)AM edition (NW),yes,TREN,element,TREN,NETTATTRENALUGOS,strong,,"McManus 1991,§6.6",BROINIENAS KOI NETTATTRENALUGOS
+I-COR-072,121,Móin an tSagairt | Monataggart 4,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VERGOSO MACI LLOMINACCA
+I-COR-072,121,Móin an tSagairt | Monataggart 4,OGHAM_NW,OG(H)AM edition (NW),yes,VIR,element,VER,VERGOSO,man,,"McManus 1991,§6.4",VERGOSO MACI LLOMINACCA
+I-COR-072,121,Móin an tSagairt | Monataggart 4,OGHAM_NW,OG(H)AM edition (NW),yes,VERGOSO,compound,VERGOSO,VERGOSO,(he who has) the strengh of a man,,"McManus 1991,§6.10",VERGOSO MACI LLOMINACCA
+I-COR-073,122,Cnoc idir Dhá Abhainn | Mountrivers 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MADORA MAQI DEGO
+I-COR-073,122,Cnoc idir Dhá Abhainn | Mountrivers 1,OGHAM_NW,OG(H)AM edition (NW),yes,DEGOS,compound,DEGO,DEGO,"flame,blaze",,"McManus 1991,§6.11",MADORA MAQI DEGO
+I-COR-074,123,Cnoc idir Dhá Abhainn | Mountrivers 2,OGHAM_NW,OG(H)AM edition (NW),yes,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",MAQI-BRI[---]CELI ALACA[---]
+I-COR-074,123,Cnoc idir Dhá Abhainn | Mountrivers 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI-BRI[---]CELI ALACA[---]
+I-COR-076,124,An Rú Mór | Rooves More 1,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",ANAVLAMATTIAS MUCOI NOELURI AVI AKERAS
+I-COR-076,124,An Rú Mór | Rooves More 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",ANAVLAMATTIAS MUCOI NOELURI AVI AKERAS
+I-COR-077,125,An Rú Mór | Rooves More 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIERCIAS MAQI VALAMNI
+I-COR-077,125,An Rú Mór | Rooves More 2,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,MAQIERCIAS,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",MAQIERCIAS MAQI VALAMNI
+I-COR-078,126,An Rú Mór | Rooves More 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VEDACUNA MAQI TOBIRA MUCOI SOGINI
+I-COR-078,126,An Rú Mór | Rooves More 3,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",VEDACUNA MAQI TOBIRA MUCOI SOGINI
+I-COR-078,126,An Rú Mór | Rooves More 3,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,VEDACUNA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",VEDACUNA MAQI TOBIRA MUCOI SOGINI
+I-COR-079,127,An Tulaigh Mhór | Tullig More,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI LASOG BMTTMACDE
+I-COR-079,127,An Tulaigh Mhór | Tullig More,MCM2004,Mcm 2004,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI LAS?OG B/M[ ]TTM[ ]Cge
+I-COR-080,128,Carraig an Ghiolla | Carrigagulla,OGHAM_NW,OG(H)AM edition (NW),yes,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",DOVETI MACI LOCARENAS CELI MAQI CULIDOVI
+I-COR-080,128,Carraig an Ghiolla | Carrigagulla,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DOVETI MACI LOCARENAS CELI MAQI CULIDOVI
+I-COR-080,128,Carraig an Ghiolla | Carrigagulla,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DOVETI MACI LOCARENAS CELI MAQI CULIDOVI
+I-COR-080,128,Carraig an Ghiolla | Carrigagulla,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVETI,black,,"McManus 1991,§6.4",DOVETI MACI LOCARENAS CELI MAQI CULIDOVI
+I-COR-081,129,An Chúil Dorcha | Cooldorragha,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VEQOANAI MAQI EQOD[---]
+I-COR-083,131,An tSeanchluain | Shanacloon 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LITUBIRI MAQI QECIA
+I-COR-086,134,Caolmhagh Mór | Kealvaugh More,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONA,ASSICONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ASSICONA
+I-COR-086,134,Caolmhagh Mór | Kealvaugh More,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,ASSICONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ASSICONA
+I-COR-087,135,Cnoc Amhráin | Mountmusic,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MINNACCANNI MAQI AILLUATTAN
+I-COR-090,,Bun an Chnoic | Underhill 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ADARAGN MACI COLALI
+I-COR-090,,Bun an Chnoic | Underhill 3,rdg,OG(H)AM edition,no,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ADARUN MACI COLALI
+I-COR-091,,Lios Catháin | Liscahane 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",COLMANN MACI COMGGANN
+I-COR-092,,Lios Catháin | Liscahane 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CROCCAN MAQI DOMONIGART
+I-COR-093,,Bun Coille | Bunkilla,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM (vac.) MAQQILASIRE MAQQI BIRRAC
+I-COR-093,,Bun Coille | Bunkilla,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM (vac.) MAQQILASIRE MAQQI BIRRAC
+I-COR-093,,Bun Coille | Bunkilla,rdg,OG(H)AM edition,no,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM MAQQI-LASIR K[O]I MA(Q)QI BIR(R)AC(I)AS
+I-COR-093,,Bun Coille | Bunkilla,rdg,OG(H)AM edition,no,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",ANM MAQQI-LASIR K[O]I MA(Q)QI BIR(R)AC(I)AS
+I-COR-093,,Bun Coille | Bunkilla,rdg,OG(H)AM edition,no,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM MAQQI-LASIR K[O]I MA(Q)QI BIR(R)AC(I)AS
+I-COR-093,,Bun Coille | Bunkilla,rdg,OG(H)AM edition,no,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM MAQQI-LASIRE(O)N MAQQI BIR(R)ACIAS
+I-COR-093,,Bun Coille | Bunkilla,rdg,OG(H)AM edition,no,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM MAQQI-LASIRE(O)N MAQQI BIR(R)ACIAS
+I-COR-095,,Na Barraí | Barrees,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DIMAI MAQ CCAQTTAUCC
+I-KER-003,,An Deirc | Derk,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIAIRAL MAQ MAQTRENN
+I-KER-003,,An Deirc | Derk,OGHAM_NW,OG(H)AM edition (NW),yes,TREN,element,TREN,MAQTRENN,strong,,"McManus 1991,§6.6",MAQIAIRAL MAQ MAQTRENN
+I-KER-004,137,Clochán Ruairc | Fortwilliam,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM VEDLLOIGGOI MACI SEDDOINI
+I-KER-004,137,Clochán Ruairc | Fortwilliam,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM VEDLLOIGGOI MACI SEDDOINI
+I-KER-005,138,Áth an Charbaill | Aghacarrible 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LADDIGNI MAQQI MUCCOI AN[---]
+I-KER-005,138,Áth an Charbaill | Aghacarrible 1,OGHAM_NW,OG(H)AM edition (NW),yes,LAIDANN,compound,LADDIGNI,LADDIGNI,poem,,"McManus 1991,§6.12",LADDIGNI MAQQI MUCCOI AN[---]
+I-KER-006,139,Áth an Charbaill | Aghacarrible 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LAIDANN MAQI MACORBO
+I-KER-006,139,Áth an Charbaill | Aghacarrible 2,OGHAM_NW,OG(H)AM edition (NW),yes,LAIDANN,compound,LAIDANN,LAIDANN,poem,,"McManus 1991,§6.12",LAIDANN MAQI MACORBO
+I-KER-007,140,Áth an Charbaill | Aghacarrible 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LUGUVVECCA MAQI [---]
+I-KER-007,140,Áth an Charbaill | Aghacarrible 3,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUVVECCA,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGUVVECCA MAQI [---]
+I-KER-008,141,An Eaglais | Aglish 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]MAQI MAQ[I---] OG̣GODIK[A]
+I-KER-009,142,An Eaglais | Aglish 2,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",[---]CELI AVI VUḌ[---]
+I-KER-009,142,An Eaglais | Aglish 2,OGHAM_NW,OG(H)AM edition (NW),yes,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",[---]CELI AVI VUḌ[---]
+I-KER-009,142,An Eaglais | Aglish 2,rdg,OG(H)AM edition,no,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",...] CELI AVI VU[...
+I-KER-009,142,An Eaglais | Aglish 2,rdg,OG(H)AM edition,no,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",...] CELI AVI VU[...
+I-KER-010,143,Áth na gCeap | Annagap,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]TAQ MAQỊ[---]
+I-KER-012,145,Airghleann | Arraglen,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",QRIMITIR (vac.) RONANN MAQ COMOGANN
+I-KER-012,145,Airghleann | Arraglen,OGHAM_NW,OG(H)AM edition (NW),yes,RONANN,compound,RONANN,RONANN,seal,,"McManus 1991,§6.12",QRIMITIR (vac.) RONANN MAQ COMOGANN
+I-KER-013,146,An Riasc | Reask (Ballineanig),OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LUGUQRIT MAQI QRITTI
+I-KER-013,146,An Riasc | Reask (Ballineanig),OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUQRIT,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGUQRIT MAQI QRITTI
+I-KER-014,147,Baile an Ístínigh | Ballineesteenig,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MOINENA MAQI OLACON
+I-KER-014,147,Baile an Ístínigh | Ballineesteenig,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,OLACON,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",MOINENA MAQI OLACON
+I-KER-015,148,Baile an Reannaigh | Ballinrannig 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DUBONIRRAS MAQQI TENAC[I]
+I-KER-016,149,Baile an Reannaigh | Ballinrannig 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQQI QETTI MAQQI CUNITTI
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",GṚAVICAS MAQI MUCOI [DO(?)]VVỊṆỊẠṢ
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",GṚAVICAS MAQI MUCOI [DO(?)]VVỊṆỊẠṢ
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,rdg,OG(H)AM edition,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",GṚAVICAS MAQI MUCOI/ [DO(?)]VVỊṆỊẠṢ
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,rdg,OG(H)AM edition,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",GṚAVICAS MAQI MUCOI/ [DO(?)]VVỊṆỊẠṢ
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,rdg,OG(H)AM edition,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",̣ ̣ ? ̣ ̣NAVICAS MAQI MUCO[I]/ ̣ ̣ ? ̣ ̣S
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,rdg,OG(H)AM edition,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",̣ ̣ ? ̣ ̣NAVICAS MAQI MUCO[I]/ ̣ ̣ ? ̣ ̣S
+I-KER-017,150,Baile an Reannaigh | Ballinrannig 3,rdg,OG(H)AM edition,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",G̣ṚAVICAS MAQI MUCO ̣ ̣ ? ̣ ̣/
+I-KER-019,152,Baile an Reannaigh | Ballinrannig 5,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",G̣/̣Ḷ[U]BB[IA]S MAQQ[I] [D(?)]N/ỊẠ?̣S
+I-KER-020,153,Baile an Reannaigh | Ballinrannig 6,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CCICAMINIvac. MAQQ[/I] C[A]TTINI
+I-KER-020,153,Baile an Reannaigh | Ballinrannig 6,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,CATTINI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CCICAMINIvac. MAQQ[/I] C[A]TTINI
+I-KER-021,154,Baile an Reannaigh | Ballinrannig 7,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CUNAMAQQI COR[vac.]B[vac.]BI MAQQ[I MUCCOI DOVVINIA]S
+I-KER-021,154,Baile an Reannaigh | Ballinrannig 7,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNAMAQQI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNAMAQQI COR[vac.]B[vac.]BI MAQQ[I MUCCOI DOVVINIA]S
+I-KER-021,154,Baile an Reannaigh | Ballinrannig 7,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVVINIAS,black,,"McManus 1991,§6.4",CUNAMAQQI COR[vac.]B[vac.]BI MAQQ[I MUCCOI DOVVINIA]S
+I-KER-023,156,Baile an tSagairt | Ballintaggart 2,OGHAM_NW,OG(H)AM edition (NW),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",MAQQI-IARI KOỊ MAQQI MUCCOI DOVVINIAS
+I-KER-023,156,Baile an tSagairt | Ballintaggart 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQQI-IARI KOỊ MAQQI MUCCOI DOVVINIAS
+I-KER-023,156,Baile an tSagairt | Ballintaggart 2,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVVINIAS,black,,"McManus 1991,§6.4",MAQQI-IARI KOỊ MAQQI MUCCOI DOVVINIAS
+I-KER-024,157,Baile an tSagairt | Ballintaggart 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DOVETI MAQQI CATTINI
+I-KER-024,157,Baile an tSagairt | Ballintaggart 3,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,CATTINI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",DOVETI MAQQI CATTINI
+I-KER-024,157,Baile an tSagairt | Ballintaggart 3,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVETI,black,,"McManus 1991,§6.4",DOVETI MAQQI CATTINI
+I-KER-025,158,Baile an tSagairt | Ballintaggart 4,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",SUVALLOS MAQQI DUCOVAROS
+I-KER-026,159,Baile an tSagairt | Ballintaggart 5,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ṂẠQI-DECC[E]DẠ ṂQ̣Ị GLASICONAS
+I-KER-026,159,Baile an tSagairt | Ballintaggart 5,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONAS,GLASICONAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ṂẠQI-DECC[E]DẠ ṂQ̣Ị GLASICONAS
+I-KER-026,159,Baile an tSagairt | Ballintaggart 5,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONA,GLASICONAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ṂẠQI-DECC[E]DẠ ṂQ̣Ị GLASICONAS
+I-KER-026,159,Baile an tSagairt | Ballintaggart 5,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,GLASICONAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",ṂẠQI-DECC[E]DẠ ṂQ̣Ị GLASICONAS
+I-KER-026,159,Baile an tSagairt | Ballintaggart 5,OGHAM_NW,OG(H)AM edition (NW),yes,GLAS,element,GLAS,GLASICONAS,light green,,"McManus 1991,§6.4",ṂẠQI-DECC[E]DẠ ṂQ̣Ị GLASICONAS
+I-KER-026,159,Baile an tSagairt | Ballintaggart 5,OGHAM_NW,OG(H)AM edition (NW),yes,GLASICONAS,compound,GLASICONAS,GLASICONAS,grey + wolf,,"McManus 1991,§6.9",ṂẠQI-DECC[E]DẠ ṂQ̣Ị GLASICONAS
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",CUṆẠMAQQ̣I AVI CỌRBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNAMAQQI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUṆẠMAQQ̣I AVI CỌRBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,OGHAM_NW,OG(H)AM edition (NW),yes,CORBBI,compound,CORBBI,CORBBI,defiles,,"McManus 1991,§6.11",CUṆẠMAQQ̣I AVI CỌRBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,rdg,OG(H)AM edition,no,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",CUb/miMAQQI AVI CORBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,rdg,OG(H)AM edition,no,CORBBI,compound,CORBBI,CORBBI,defiles,,"McManus 1991,§6.11",CUb/miMAQQI AVI CORBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,rdg,OG(H)AM edition,no,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",CUNAMAQQI AVI CORBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,rdg,OG(H)AM edition,no,CUNA,element,CUNA,CUNAMAQQI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNAMAQQI AVI CORBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,rdg,OG(H)AM edition,no,CORBBI,compound,CORBBI,CORBBI,defiles,,"McManus 1991,§6.11",CUNAMAQQI AVI CORBBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,rdg,OG(H)AM edition,no,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",CULI MAQQI AVI CORBI
+I-KER-029,162,Baile an tSagairt | Ballintaggart 8,rdg,OG(H)AM edition,no,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CULI MAQQI AVI CORBI
+I-KER-030,163,Baile an tSagairt | Ballintaggart 9,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",NETTA LAMINACCA OI MAQQI MUCOI DOVINIAS
+I-KER-030,163,Baile an tSagairt | Ballintaggart 9,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",NETTA LAMINACCA OI MAQQI MUCOI DOVINIAS
+I-KER-030,163,Baile an tSagairt | Ballintaggart 9,OGHAM_NW,OG(H)AM edition (NW),yes,NIOTA,formula,NETTA,NETTA,"nephew, sister`s son",,"McManus 1991,§6.27",NETTA LAMINACCA OI MAQQI MUCOI DOVINIAS
+I-KER-030,163,Baile an tSagairt | Ballintaggart 9,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVINIAS,black,,"McManus 1991,§6.4",NETTA LAMINACCA OI MAQQI MUCOI DOVINIAS
+I-KER-032,164,Baile an Tearmainn | Ballintermon 1,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNAS,VOENACUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",VOE[NA]CUṆAṢ [...]
+I-KER-032,164,Baile an Tearmainn | Ballintermon 1,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,VOENACUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",VOE[NA]CUṆAṢ [...]
+I-KER-033,165,Baile an Tearmainn | Ballintermon 2,OGHAM_NW,OG(H)AM edition (NW),yes,DRUGNO,compound,DROGNO,DROGNO,dróna,,"McManus 1991,§6.11",[D]ROGNO
+I-KER-034,166,Baile an Bhóthair | Ballinvoher,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",COIMAGNI MAQI VITALIN
+I-KER-034,166,Baile an Bhóthair | Ballinvoher,OGHAM_NW,OG(H)AM edition (NW),yes,COIMAGNI,compound,COIMAGNI,COIMAGNI,"dear,precious",,"McManus 1991,§6.12",COIMAGNI MAQI VITALIN
+I-KER-035,167,Baile Aindrín | Ballyandreen 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[MAQI] DROGNO MU[COI]
+I-KER-035,167,Baile Aindrín | Ballyandreen 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[MAQI] DROGNO MU[COI]
+I-KER-035,167,Baile Aindrín | Ballyandreen 1,OGHAM_NW,OG(H)AM edition (NW),yes,DRUGNO,compound,DROGNO,DROGNO,dróna,,"McManus 1991,§6.11",[MAQI] DROGNO MU[COI]
+I-KER-037,169,An Baile Íochtarach | Ballyeightragh,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI-LIAG MAQI ERCA
+I-KER-037,169,An Baile Íochtarach | Ballyeightragh,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERCA,ERCA,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",MAQI-LIAG MAQI ERCA
+I-KER-037,169,An Baile Íochtarach | Ballyeightragh,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,ERCA,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",MAQI-LIAG MAQI ERCA
+I-KER-038,170,An Baile Riabhach | Ballymorereagh,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",QENỊLOCI MAQI MAQI-AINIA MUC̣[OI]
+I-KER-038,170,An Baile Riabhach | Ballymorereagh,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",QENỊLOCI MAQI MAQI-AINIA MUC̣[OI]
+I-KER-038,170,An Baile Riabhach | Ballymorereagh,OGHAM_NW,OG(H)AM edition (NW),yes,QENN,element,QENI,QENILOCI,head,,"McManus 1991,§6.6",QENỊLOCI MAQI MAQI-AINIA MUC̣[OI]
+I-KER-038,170,An Baile Riabhach | Ballymorereagh,OGHAM_NW,OG(H)AM edition (NW),yes,QENN,element,QEN,QENILOCI,head,,"McManus 1991,§6.6",QENỊLOCI MAQI MAQI-AINIA MUC̣[OI]
+I-KER-039,171,Baile na Hunta | Ballynahunt,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DUGẸNNGG[I MA]QỊ RỌDỌS
+I-KER-040,172,Baile Uí Bhaoithín | Ballywiheen,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TOGITTACC MAQI SAG{A}RET[TOS]
+I-KER-041,173,An Bhreac-chluain | Brackloon,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[MAQ]QI MUCC[OI]
+I-KER-043,175,Baile an Ghóilín | Burnham,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQQIERCCIA MAQQI MUCOI DOVINIA
+I-KER-043,175,Baile an Ghóilín | Burnham,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MAQQIERCCIA MAQQI MUCOI DOVINIA
+I-KER-043,175,Baile an Ghóilín | Burnham,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVINIA,black,,"McManus 1991,§6.4",MAQQIERCCIA MAQQI MUCOI DOVINIA
+I-KER-043,175,Baile an Ghóilín | Burnham,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,MAQQIERCCIA,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",MAQQIERCCIA MAQQI MUCOI DOVINIA
+I-KER-044,176,An Com | Camp 1,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONU,CONUNETT,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",⸢C⸣O⸢N⸣U⸢N⸣ETT MO⸢Q⸣I ⸢C⸣O⸢N⸣URI; Roman: FECṬ cuNuRI
+I-KER-044,176,An Com | Camp 1,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,CONUNETT,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",⸢C⸣O⸢N⸣U⸢N⸣ETT MO⸢Q⸣I ⸢C⸣O⸢N⸣URI; Roman: FECṬ cuNuRI
+I-KER-045,177,An Com | Camp 2,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",CCILARI AV[I]...COI VAG...
+I-KER-046,178,Com Dhíneol Thuaidh | Coumeenoole North,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ERC MAQI MAQI-ERCIAṢ ṂỤ DOVIṆIẠ
+I-KER-046,178,Com Dhíneol Thuaidh | Coumeenoole North,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVINIA,black,,"McManus 1991,§6.4",ERC MAQI MAQI-ERCIAṢ ṂỤ DOVIṆIẠ
+I-KER-046,178,Com Dhíneol Thuaidh | Coumeenoole North,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,ERC,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ERC MAQI MAQI-ERCIAṢ ṂỤ DOVIṆIẠ
+I-KER-046,178,Com Dhíneol Thuaidh | Coumeenoole North,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,compound,ERC,ERC,"heaven,cow",,"McManus 1991,§6.11",ERC MAQI MAQI-ERCIAṢ ṂỤ DOVIṆIẠ
+I-KER-048,180,Imleach Dhún Séann | Emlagh East,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BRUSCCOS MAQQI CALIACI
+I-KER-048,180,Imleach Dhún Séann | Emlagh East,OGHAM_NW,OG(H)AM edition (NW),yes,BRUSCCOS,compound,BRUSCCOS,BRUSCCOS,thunder,,"McManus 1991,§6.11",BRUSCCOS MAQQI CALIACI
+I-KER-049,181,Imleach an Daingin | Emlagh West,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TALAGNI MAQ̣[I ... ]
+I-KER-052,184,Gort na gCuileannach | Gortnagullanagh,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQQIDECEDDA MAQQI CATUVỤC̣Ẹ
+I-KER-052,184,Gort na gCuileannach | Gortnagullanagh,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CATU,CATUVUCE,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",MAQQIDECEDDA MAQQI CATUVỤC̣Ẹ
+I-KER-052,184,Gort na gCuileannach | Gortnagullanagh,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,CATUVUCE,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",MAQQIDECEDDA MAQQI CATUVỤC̣Ẹ
+I-KER-053,185,Inis Mhic Aoibhleáin | Inishvickillane,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",[---]BB[---] AVI VLATIAMI MAQ[---]
+I-KER-053,185,Inis Mhic Aoibhleáin | Inishvickillane,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]BB[---] AVI VLATIAMI MAQ[---]
+I-KER-053,185,Inis Mhic Aoibhleáin | Inishvickillane,MAC1945,Macalister 1945,no,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",[CO]BB[A?] AVI VLATIAMI MAQ[
+I-KER-053,185,Inis Mhic Aoibhleáin | Inishvickillane,MAC1945,Macalister 1945,no,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[CO]BB[A?] AVI VLATIAMI MAQ[
+I-KER-055,187,Cill Maoilchéadair | Kilmalkedar,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM MAILEINBIR MACI BROCANN
+I-KER-055,187,Cill Maoilchéadair | Kilmalkedar,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM MAILEINBIR MACI BROCANN
+I-KER-055,187,Cill Maoilchéadair | Kilmalkedar,OGHAM_NW,OG(H)AM edition (NW),yes,BROCAGNI,compound,BROCANN,BROCANN,badger,,"McManus 1991,§6.12",ANM MAILEINBIR MACI BROCANN
+I-KER-059,191,Log na gCapall | Lugnagappul 2,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNAS,GAMICUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",GAMICUNAS
+I-KER-059,191,Log na gCapall | Lugnagappul 2,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,GAMICUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",GAMICUNAS
+I-KER-059,191,Log na gCapall | Lugnagappul 2,OGHAM_NW,OG(H)AM edition (NW),yes,GAMICUNAS,compound,GAMICUNAS,GAMICUNAS,winter + wolf,,"McManus 1991,§6.9",GAMICUNAS
+I-KER-060,192,Martromán | Martramane,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",QENILOCAGNI MAQI D[...
+I-KER-060,192,Martromán | Martramane,OGHAM_NW,OG(H)AM edition (NW),yes,QENN,element,QENI,QENILOCAGNI,head,,"McManus 1991,§6.6",QENILOCAGNI MAQI D[...
+I-KER-060,192,Martromán | Martramane,OGHAM_NW,OG(H)AM edition (NW),yes,QENN,element,QEN,QENILOCAGNI,head,,"McManus 1991,§6.6",QENILOCAGNI MAQI D[...
+I-KER-061,193,Mám an Óraigh | Maumanorig,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM COLOLOLN ALILTIR
+I-KER-062,194,An Ráth Dubh | Rathduff 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",S[I]Ḍ[A]N[I] MAQỊ ḌAL[O]
+I-KER-064,195,Ráth Málóid | Rathmalode 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CURCI MAQI MU(COI) (VỌ)
+I-KER-064,195,Ráth Málóid | Rathmalode 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CURCI MAQI MU(COI) (VỌ)
+I-KER-064,195,Ráth Málóid | Rathmalode 1,OGHAM_NW,OG(H)AM edition (NW),yes,CURCI,compound,CURCI,CURCI,"heart or reddens, burns",,"McManus 1991,§6.11",CURCI MAQI MU(COI) (VỌ)
+I-KER-065,196,Ráth Málóid | Rathmalode 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ERCAVICCAS MAQI CẠ[
+I-KER-065,196,Ráth Málóid | Rathmalode 2,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERCA,ERCAVICCAS,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ERCAVICCAS MAQI CẠ[
+I-KER-065,196,Ráth Málóid | Rathmalode 2,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,ERCAVICCAS,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ERCAVICCAS MAQI CẠ[
+I-KER-066,197,Cúil Má Gort | Coolmagort 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DEGOS MAQI MOCOI TOICAI
+I-KER-066,197,Cúil Má Gort | Coolmagort 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MOCOI,MOCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",DEGOS MAQI MOCOI TOICAI
+I-KER-066,197,Cúil Má Gort | Coolmagort 1,OGHAM_NW,OG(H)AM edition (NW),yes,DEGOS,compound,DEGOS,DEGOS,"flame,blaze",,"McManus 1991,§6.11",DEGOS MAQI MOCOI TOICAI
+I-KER-067,198,Cúil Má Gort | Coolmagort 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIRITE〚〛A〚〛S MAQI MAQIDDUMILEAS MUCOI TOICACI
+I-KER-067,198,Cúil Má Gort | Coolmagort 2,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MAQIRITE〚〛A〚〛S MAQI MAQIDDUMILEAS MUCOI TOICACI
+I-KER-068,199,Cúil Má Gort | Coolmagort 3,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNACENA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNACENA
+I-KER-069,200,Cúil Má Gort | Coolmagort 4,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQITTAL MAQI VORGOS MAQI MUCOI TOICAC
+I-KER-069,200,Cúil Má Gort | Coolmagort 4,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MAQITTAL MAQI VORGOS MAQI MUCOI TOICAC
+I-KER-069,200,Cúil Má Gort | Coolmagort 4,OGHAM_NW,OG(H)AM edition (NW),yes,VORGOS,compound,VORGOS,VORGOS,Forgo,,"McManus 1991,§6.11",MAQITTAL MAQI VORGOS MAQI MUCOI TOICAC
+I-KER-071,202,Cúil Má Gort | Coolmagort 6,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",NỊỌTTVRẸCC MAQỊ [ ... ]G̣NỊ
+I-KER-072,203,Cúil Má Gort | Coolmagort 7,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIDECEDA MAQ̣[I]
+I-KER-073,204,An Currach Mór Thoir | Curraghmore East,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM MAGANN MAQI N?DAṬ
+I-KER-073,204,An Currach Mór Thoir | Curraghmore East,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM MAGANN MAQI N?DAṬ
+I-KER-074,205,"""Derrygarriv"" Doire Coinche | Derryquin 1",OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",S[M] BNAG MA[Q]QI ER[C]IA
+I-KER-074,205,"""Derrygarriv"" Doire Coinche | Derryquin 1",OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,ERCIA,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",S[M] BNAG MA[Q]QI ER[C]IA
+I-KER-075,206,Cill Chuallachta Thoir | Kilcoolaght East 1,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",1. [AN]M VIRR[ACC(?)]ANNI TIGIR[N] |2. C̣/̣ṬẸDATTOQA MAQI | TELEDMEVV[O(?)]
+I-KER-075,206,Cill Chuallachta Thoir | Kilcoolaght East 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",1. [AN]M VIRR[ACC(?)]ANNI TIGIR[N] |2. C̣/̣ṬẸDATTOQA MAQI | TELEDMEVV[O(?)]
+I-KER-075,206,Cill Chuallachta Thoir | Kilcoolaght East 1,OGHAM_NW,OG(H)AM edition (NW),yes,VIR,element,VIR,VIRRACC,man,,"McManus 1991,§6.4",1. [AN]M VIRR[ACC(?)]ANNI TIGIR[N] |2. C̣/̣ṬẸDATTOQA MAQI | TELEDMEVV[O(?)]
+I-KER-076,207,Cill Chuallachta Thoir | Kilcoolaght East 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",. . .]ẸCC MAQI L[UGUQ]RRIT
+I-KER-076,207,Cill Chuallachta Thoir | Kilcoolaght East 2,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUQRRIT,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",. . .]ẸCC MAQI L[UGUQ]RRIT
+I-KER-078,209,Cill Chuallachta Thoir | Kilcoolaght East 4,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",AGGO MAQI AGILL
+I-KER-078,209,Cill Chuallachta Thoir | Kilcoolaght East 4,rdg,OG(H)AM edition,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]GGO MAQI AGILL[---̣]
+I-KER-080,211,Cill Chuallachta Thoir | Kilcoolaght East 6,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[RI]TTẠVV[E]CC MAQ[I] V[E]DDONỌS
+I-KER-080,211,Cill Chuallachta Thoir | Kilcoolaght East 6,OGHAM_NW,OG(H)AM edition (NW),yes,RITTA,element,RITTA,RITTAVVECC,god,,"McManus 1991,§6.5",[RI]TTẠVV[E]CC MAQ[I] V[E]DDONỌS
+I-KER-083,214,Cill Ghobnait |Kilgobnet,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUQQRITTAS,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGUQQRITTAS
+I-KER-083,214,Cill Ghobnait |Kilgobnet,OGHAM_NW,OG(H)AM edition (NW),yes,RITTA,element,RITTA,LUGUQQRITTAS,god,,"McManus 1991,§6.5",LUGUQQRITTAS
+I-KER-085,215,Bánchluain | Whitefield 1,OGHAM_NW,OG(H)AM edition (NW),yes,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",ALATTO vac. CELI BATTIG⸢N⸣Ị
+I-KER-085,215,Bánchluain | Whitefield 1,OGHAM_NW,OG(H)AM edition (NW),yes,ALATTOS,compound,ALATTO,ALATTO,wild,,"McManus 1991,§6.11",ALATTO vac. CELI BATTIG⸢N⸣Ị
+I-KER-085,215,Bánchluain | Whitefield 1,OGHAM_NW,OG(H)AM edition (NW),yes,BATTIGNI,compound,BATTIGNI,BATTIGNI,foolish,,"McManus 1991,§6.12",ALATTO vac. CELI BATTIG⸢N⸣Ị
+I-KER-087,217,Bánchluain | Whitefield 3,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",NOCATI MAQI MAQI-REṬ[ ̣ ̣ ? ̣ ̣]|MAQI MUCOI UDDAMI
+I-KER-087,217,Bánchluain | Whitefield 3,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",NOCATI MAQI MAQI-REṬ[ ̣ ̣ ? ̣ ̣]|MAQI MUCOI UDDAMI
+I-KER-087,217,Bánchluain | Whitefield 3,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CATI,NOCATI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",NOCATI MAQI MAQI-REṬ[ ̣ ̣ ? ̣ ̣]|MAQI MUCOI UDDAMI
+I-KER-087,217,Bánchluain | Whitefield 3,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,NOCATI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",NOCATI MAQI MAQI-REṬ[ ̣ ̣ ? ̣ ̣]|MAQI MUCOI UDDAMI
+I-KER-090,219,Doire Ghearráin Theas | Derrygarrane South,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM CRUNAN MAQ LUQIN
+I-KER-090,219,Doire Ghearráin Theas | Derrygarrane South,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM CRUNAN MAQ LUQIN
+I-KER-091,220,Doire Fhíonáin Beag |Darrynane Beg,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM ḶḶATỊG̣[NI] Ṃ[A]Q [MINE]ṚC | Ṃ[UCOI Q ̣ ̣ ? ̣ ̣CI?]
+I-KER-091,220,Doire Fhíonáin Beag |Darrynane Beg,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM ḶḶATỊG̣[NI] Ṃ[A]Q [MINE]ṚC | Ṃ[UCOI Q ̣ ̣ ? ̣ ̣CI?]
+I-KER-091,220,Doire Fhíonáin Beag |Darrynane Beg,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",ANM ḶḶATỊG̣[NI] Ṃ[A]Q [MINE]ṚC | Ṃ[UCOI Q ̣ ̣ ? ̣ ̣CI?]
+I-KER-091,220,Doire Fhíonáin Beag |Darrynane Beg,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,MINERC,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ANM ḶḶATỊG̣[NI] Ṃ[A]Q [MINE]ṚC | Ṃ[UCOI Q ̣ ̣ ? ̣ ̣CI?]
+I-KER-092,221,Drom Loiscthe | Dromlusk,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CATVVIRR MAQI LUGUVVEC
+I-KER-092,221,Drom Loiscthe | Dromlusk,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,CATVVIRR,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATVVIRR MAQI LUGUVVEC
+I-KER-092,221,Drom Loiscthe | Dromlusk,OGHAM_NW,OG(H)AM edition (NW),yes,VIR,element,VIR,CATVVIRR,man,,"McManus 1991,§6.4",CATVVIRR MAQI LUGUVVEC
+I-KER-092,221,Drom Loiscthe | Dromlusk,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUVVEC,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",CATVVIRR MAQI LUGUVVEC
+I-KER-094,223,"""Parknasilla"" Doire Coinche | Derryquin 2""",OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM VINNAGỊṬḶXṬ[ ... ]
+I-KER-095,224,Drom an tSeabhaic | Dromatouk,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MONGUNILOCID MAQI ALOTTO
+I-KER-096,225,"""""""Gortmaccree"""" (Gurteenmacree, later Gurteen, parish of Kilgarvan)""",OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",NOARRA MAQI VORUDRAN
+I-KER-098,227,An Lománach | Lomanagh,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",…..OTTINN MAQI VEC(R)…
+I-KER-099,228,Na Ceathrúna | Carhoona,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",M[A]Q[I] BROCI
+I-KER-099,228,Na Ceathrúna | Carhoona,OGHAM_NW,OG(H)AM edition (NW),yes,BROCI,compound,BROCI,BROCI,badger,,"McManus 1991,§6.11",M[A]Q[I] BROCI
+I-KER-100,229,Ceann Boirinn | Canburrin,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",[A]NM CALUMANN MAC[. . .
+I-KER-100,229,Ceann Boirinn | Canburrin,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[A]NM CALUMANN MAC[. . .
+I-KER-101,230,Clochán Cárthainn | Cloghanecarhan,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",EQQ[X]GGNỊ [MA]Q̣[I] ṂẠQICAṚATTỊNN
+I-KER-102,231,An Chúil Thoir | Cool East 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[LOGI]ṬTI MAQI ERPENN
+I-KER-103,232,An Chúil Thoir | Cool East 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",...D-Q?]EṚṚLONṆA M[A]QI R[U]Ṭ[E]N[I]
+I-KER-104,233,Drom Caor | Dromkeare,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TIDONN[A] MAQ DOMNGINN
+I-KER-105,234,Cill Choimhtheach | Kilkeehagh,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI R[.....
+I-KER-106,235,Cill Ó gCróin | Killogrone,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM MᚖLXGᚖMRID MACI VXCUMXN
+I-KER-106,235,Cill Ó gCróin | Killogrone,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM MᚖLXGᚖMRID MACI VXCUMXN
+I-KER-107,236,Cill Urlaí | Killurly 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",...]OTANI M[A]QI LOSAGN[I]
+I-KER-109,239,Leitir Thiar | Letter West,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM GATTXGLAN
+I-KER-110,240,Tír Ó Maoil | Teeromoyle,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MOCU[RRUTI] [MAQI] VLISAC[E]S[U]CMIR
+I-KER-111,241,Cill Bheanáin | Kilbonane,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",1. B[AID]AGNI MAQI ADDILONA 2. NAGUNI MUCO BAIDANI 3. NIR * * * MN[I]DAGNIESSICONIDDALA AMIT BAIDAGNI
+I-KER-111,241,Cill Bheanáin | Kilbonane,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,MNIDAGNIESSICONIDDALA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",1. B[AID]AGNI MAQI ADDILONA 2. NAGUNI MUCO BAIDANI 3. NIR * * * MN[I]DAGNIESSICONIDDALA AMIT BAIDAGNI
+I-KER-111,241,Cill Bheanáin | Kilbonane,OGHAM_NW,OG(H)AM edition (NW),yes,BAIDAGNI,compound,BAIDAGNI,BAIDAGNI,Báetán,,"McManus 1991,§6.12",1. B[AID]AGNI MAQI ADDILONA 2. NAGUNI MUCO BAIDANI 3. NIR * * * MN[I]DAGNIESSICONIDDALA AMIT BAIDAGNI
+I-KER-113,243,Gort na Cloiche Meánach | Rockfield Middle 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI-RITTE MAQI COLABOT MAQI MOCO QERAI
+I-KER-113,243,Gort na Cloiche Meánach | Rockfield Middle 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MOCO,MOCO,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MAQI-RITTE MAQI COLABOT MAQI MOCO QERAI
+I-KER-113,243,Gort na Cloiche Meánach | Rockfield Middle 1,OGHAM_NW,OG(H)AM edition (NW),yes,RITTA,element,RITTE,RITTE,god,,"McManus 1991,§6.5",MAQI-RITTE MAQI COLABOT MAQI MOCO QERAI
+I-KER-114,244,Gort na Cloiche Meánach | Rockfield Middle 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",COILLABBOTAS MAQI CORBBI MAQI MOCOI QERAI
+I-KER-114,244,Gort na Cloiche Meánach | Rockfield Middle 2,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MOCOI,MOCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",COILLABBOTAS MAQI CORBBI MAQI MOCOI QERAI
+I-KER-114,244,Gort na Cloiche Meánach | Rockfield Middle 2,OGHAM_NW,OG(H)AM edition (NW),yes,CORBBI,compound,CORBBI,CORBBI,defiles,,"McManus 1991,§6.11",COILLABBOTAS MAQI CORBBI MAQI MOCOI QERAI
+I-KER-116,246,Gort na Cloiche Meánach | Rockfield Middle 4,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CORBAGNI MAQI BIVITI
+I-KER-116,246,Gort na Cloiche Meánach | Rockfield Middle 4,OGHAM_NW,OG(H)AM edition (NW),yes,CORBAGNI,compound,CORBAGNI,CORBAGNI,defiles,,"McManus 1991,§6.12",CORBAGNI MAQI BIVITI
+I-KER-117,246A,Aird Chánachta | Ardcanaght 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",. . .]V MAQI[. . .
+I-KER-120,248,Bán an Ghleanna | Bawnaglanna,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[...]QET[IA]S M[A]Q TRENIL[U...]
+I-KER-120,248,Bán an Ghleanna | Bawnaglanna,OGHAM_NW,OG(H)AM edition (NW),yes,TREN,element,TREN,TRENILU,strong,,"McManus 1991,§6.6",[...]QET[IA]S M[A]Q TRENIL[U...]
+I-KER-122,250,Corcaigh Bhuí | Corkaboy,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[CATT]UWIRR MAQI RITTAWECAS MỤCOI ALLATO
+I-KER-122,250,Corcaigh Bhuí | Corkaboy,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[CATT]UWIRR MAQI RITTAWECAS MỤCOI ALLATO
+I-KER-122,250,Corcaigh Bhuí | Corkaboy,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CATTU,CATTUWIRR,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",[CATT]UWIRR MAQI RITTAWECAS MỤCOI ALLATO
+I-KER-122,250,Corcaigh Bhuí | Corkaboy,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,CATTUWIRR,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",[CATT]UWIRR MAQI RITTAWECAS MỤCOI ALLATO
+I-KER-122,250,Corcaigh Bhuí | Corkaboy,OGHAM_NW,OG(H)AM edition (NW),yes,RITTA,element,RITTA,RITTAWECAS,god,,"McManus 1991,§6.5",[CATT]UWIRR MAQI RITTAWECAS MỤCOI ALLATO
+I-KER-123,251,An Chraig | Crag,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUTTI,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",VELITAS LUGUTTI
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DUMELI MAQI GLASICONAS NIOTTA COBRANỌRẠ
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONAS,GLASICONAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",DUMELI MAQI GLASICONAS NIOTTA COBRANỌRẠ
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONA,GLASICONAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",DUMELI MAQI GLASICONAS NIOTTA COBRANỌRẠ
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,GLASICONAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",DUMELI MAQI GLASICONAS NIOTTA COBRANỌRẠ
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),OGHAM_NW,OG(H)AM edition (NW),yes,GLAS,element,GLAS,GLASICONAS,light green,,"McManus 1991,§6.4",DUMELI MAQI GLASICONAS NIOTTA COBRANỌRẠ
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),OGHAM_NW,OG(H)AM edition (NW),yes,BRAN,element,BRAN,COBRANORA,raven,,"McManus 1991,§6.6",DUMELI MAQI GLASICONAS NIOTTA COBRANỌRẠ
+I-KER-124,252,An Garrán Darach | Garraundarragh ('Gurrane'),OGHAM_NW,OG(H)AM edition (NW),yes,GLASICONAS,compound,GLASICONAS,GLASICONAS,grey + wolf,,"McManus 1991,§6.9",DUMELI MAQI GLASICONAS NIOTTA COBRANỌRẠ
+I-KER-126,254,Fearann na gCat | Churchtown,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI RECTA
+I-KER-127,255,Tigh na hAille | Tinnahally 1,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM VURUDDRANN MAQ[I] DOLIGENN
+I-KER-127,255,Tigh na hAille | Tinnahally 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM VURUDDRANN MAQ[I] DOLIGENN
+I-KER-128,256,Tigh na hAille | Tinnahally 2,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM TEGANN MAC DEGLANN
+I-KER-128,256,Tigh na hAille | Tinnahally 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ANM TEGANN MAC DEGLANN
+I-KER-130,1082,Baile Bhromáin | Ballybroman,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",GL?ANNANI MAQI BBRANNAD or [...]MMANNANI MAQI BBRANN[A...]
+I-KER-130,1082,Baile Bhromáin | Ballybroman,OGHAM_NW,OG(H)AM edition (NW),yes,BRAN,element,BRAN,BBRANNAD,raven,,"McManus 1991,§6.6",GL?ANNANI MAQI BBRANNAD or [...]MMANNANI MAQI BBRANN[A...]
+I-KER-131,1083,Ráth Cionaoith | Rathkenny 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",COMMAGGAGNI MỤ[COI] ISAMMNN
+I-KER-131,1083,Ráth Cionaoith | Rathkenny 1,OGHAM_NW,OG(H)AM edition (NW),yes,COMMAGGAGNI,compound,COMMAGGAGNI,COMMAGGAGNI,leads,,"McManus 1991,§6.12",COMMAGGAGNI MỤ[COI] ISAMMNN
+I-KER-136,,Oileán an Teampaill | Church Island,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BECCDINN MACI RIVVOESS (for RITTECC?)
+I-KER-137,,An Gaorthadh Theas | Gearha South,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BRANADDOV MA[QI] MAQIQOLI MUCOI DOVI[NIAS]
+I-KER-137,,An Gaorthadh Theas | Gearha South,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",BRANADDOV MA[QI] MAQIQOLI MUCOI DOVI[NIAS]
+I-KER-137,,An Gaorthadh Theas | Gearha South,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,BRANADDOV,black,,"McManus 1991,§6.4",BRANADDOV MA[QI] MAQIQOLI MUCOI DOVI[NIAS]
+I-KER-137,,An Gaorthadh Theas | Gearha South,OGHAM_NW,OG(H)AM edition (NW),yes,BRAN,element,BRAN,BRANADDOV,raven,,"McManus 1991,§6.6",BRANADDOV MA[QI] MAQIQOLI MUCOI DOVI[NIAS]
+I-KER-137,,An Gaorthadh Theas | Gearha South,OGHAM_NW,OG(H)AM edition (NW),yes,BRANADDOV,compound,BRANADDOV,BRANADDOV,raven + black,,"McManus 1991,§6.9",BRANADDOV MA[QI] MAQIQOLI MUCOI DOVI[NIAS]
+I-KER-138,,Caol na bhFuarán | Brookhill,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[...]A MAQ LUG[...]
+I-KER-138,,Caol na bhFuarán | Brookhill,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUG,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",[...]A MAQ LUG[...]
+I-KER-139,,Ráth Teas | Ratass,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",[A]NM SILLANN MAQ VATTILLOGG
+I-KER-139,,Ráth Teas | Ratass,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[A]NM SILLANN MAQ VATTILLOGG
+I-KER-141,,Com an Lóndraigh | Coumlanders,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",RETAGIN MAQI DOVỤ [ ... ]
+I-KER-141,,Com an Lóndraigh | Coumlanders,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVU,black,,"McManus 1991,§6.4",RETAGIN MAQI DOVỤ [ ... ]
+I-KER-141,,Com an Lóndraigh | Coumlanders,OGHAM_NW,OG(H)AM edition (NW),yes,RITTA,element,RETA,RETAGIN,god,,"McManus 1991,§6.5",RETAGIN MAQI DOVỤ [ ... ]
+I-KER-144,,Bun Binne | Bunbinnia,OGHAM_NW,OG(H)AM edition (NW),yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27","ANM BERAQ MACI UN(D)….. [U, I or E] Q(ILL)"
+I-KER-144,,Bun Binne | Bunbinnia,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27","ANM BERAQ MACI UN(D)….. [U, I or E] Q(ILL)"
+I-KER-148,,An Cnoc Breac | Knockbrack,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAC,MAC,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",SE..MAC..QENIAECE....A.......S
+I-KER-148,,An Cnoc Breac | Knockbrack,OGHAM_NW,OG(H)AM edition (NW),yes,QENN,element,QENI,QENIAECE,head,,"McManus 1991,§6.6",SE..MAC..QENIAECE....A.......S
+I-KER-148,,An Cnoc Breac | Knockbrack,OGHAM_NW,OG(H)AM edition (NW),yes,QENN,element,QEN,QENIAECE,head,,"McManus 1991,§6.6",SE..MAC..QENIAECE....A.......S
+I-KER-154,,An Chillín Liath | Killeenleagh,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",DOVATTAC AVI ILEH
+I-KER-154,,An Chillín Liath | Killeenleagh,OGHAM_NW,OG(H)AM edition (NW),yes,DOV,element,DOV,DOVATTAC,black,,"McManus 1991,§6.4",DOVATTAC AVI ILEH
+I-KER-L08,,Gort na Cloiche Meánach | Rockfield Middle 5,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CORBAGN MAQI MUCOI C[
+I-KER-L08,,Gort na Cloiche Meánach | Rockfield Middle 5,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CORBAGN MAQI MUCOI C[
+I-KID-001,19,Baile Choilbín | Colbinstown 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",OVANOS AVI IVACATTOS
+I-KID-001,19,Baile Choilbín | Colbinstown 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CATTU,element,CATTOS,IVACATTOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",OVANOS AVI IVACATTOS
+I-KID-001,19,Baile Choilbín | Colbinstown 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CATTU,element,CATTO,IVACATTOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",OVANOS AVI IVACATTOS
+I-KID-001,19,Baile Choilbín | Colbinstown 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CATTU,element,CAT,IVACATTOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",OVANOS AVI IVACATTOS
+I-KID-001,19,Baile Choilbín | Colbinstown 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,IVA,element,IVA,IVACATTOS,"tree, yew tree",,"McManus 1991,§6.6",OVANOS AVI IVACATTOS
+I-KID-001,19,Baile Choilbín | Colbinstown 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,IVACATTOS,compound,IVACATTOS,IVACATTOS,yew + battle,,"McManus 1991,§6.9",OVANOS AVI IVACATTOS
+I-KID-002,20,Baile Choilbín | Colbinstown 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIDDECCEDA MAQI MARIN
+I-KID-004,22,Baile Choilbín | Colbinstown 4,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",EGNI OI MAQI MUCOI AI
+I-KID-004,22,Baile Choilbín | Colbinstown 4,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",EGNI OI MAQI MUCOI AI
+I-KID-005,23,Baile Choilbín | Colbinstown 5,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",AV[---]S[---]S[---]MAQ[---]VS
+I-KID-008,26,Domhnach Mór | Donaghmore,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",NETTAVROICC MAQI MUCCOI TRENALUGGO
+I-KID-008,26,Domhnach Mór | Donaghmore,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,TRENALUGGO,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",NETTAVROICC MAQI MUCCOI TRENALUGGO
+I-KID-008,26,Domhnach Mór | Donaghmore,OGHAM_NW,OG(H)AM edition (NW),yes,TREN,element,TREN,TRENALUGGO,strong,,"McManus 1991,§6.6",NETTAVROICC MAQI MUCCOI TRENALUGGO
+I-KIK-002,28,Clárach an Teampaill | Churchclara 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TAṢ[EGA]GN[I] [MAQ(?)]Ị MUC[O]Ị MAC̣[O]Ṛ[BO]
+I-KIK-002,28,Clárach an Teampaill | Churchclara 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",TAṢ[EGA]GN[I] [MAQ(?)]Ị MUC[O]Ị MAC̣[O]Ṛ[BO]
+I-KIK-003,,Clárach an Teampaill | Churchclara 2,OGHAM_POC,OG(H)AM edition (POC),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",G[E]LAGN[I A]V[I ---̣]
+I-KIK-006,31,An Feadán Uachtarach | Fiddaun Upper,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DRUG[NO] MAQ[I] M[U]COI [---]NAMI
+I-KIK-006,31,An Feadán Uachtarach | Fiddaun Upper,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",DRUG[NO] MAQ[I] M[U]COI [---]NAMI
+I-KIK-006,31,An Feadán Uachtarach | Fiddaun Upper,OGHAM_POC,OG(H)AM edition (POC),yes,DRUGNO,compound,DRUGNO,DRUGNO,dróna,,"McManus 1991,§6.11",DRUG[NO] MAQ[I] M[U]COI [---]NAMI
+I-KIK-007,32,Gabhrán | Gowran,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[MAQ]I ERACIAS [MA]QI DIMAQA MUCO[I]
+I-KIK-007,32,Gabhrán | Gowran,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[MAQ]I ERACIAS [MA]QI DIMAQA MUCO[I]
+I-KIK-008,34,An Liagán | Legan,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LOBBI OI MAQQI MUCCOI RINI
+I-KIK-008,34,An Liagán | Legan,BAR1896,Bar 1896,no,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",LOBB[I] KOI MAQQI MUCCỌỊ ỊRẸỊ
+I-KIK-008,34,An Liagán | Legan,BAR1896,Bar 1896,no,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LOBB[I] KOI MAQQI MUCCỌỊ ỊRẸỊ
+I-KIK-009,35,An Tulaigh Thirim | Tullaherin 1,OGHAM_POC,OG(H)AM edition (POC),yes,VIR,element,VIR,VIR,man,,"McManus 1991,§6.4",VI[R---]
+I-KIK-010,,An Tulaigh Thirim | Tullaherin 2,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",D[---]T M[U]C[OI ---]R[---]G[---]N
+I-KIK-011,36,Lamóg | Lamoge 1,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",SEVERRIT [--- MAQI] [RO]TTAIS
+I-KIK-011,36,Lamóg | Lamoge 1,OGHAM_POC,OG(H)AM edition (POC),yes,VIR,element,VER,SEVERRIT,man,,"McManus 1991,§6.4",SEVERRIT [--- MAQI] [RO]TTAIS
+I-KIK-011,36,Lamóg | Lamoge 1,MAC1945,Macalister 1945,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",SEVERRIT MAOI MUCOI ROTTAIS
+I-KIK-011,36,Lamóg | Lamoge 1,MAC1945,Macalister 1945,no,VIR,element,VER,SEVERRIT,man,,"McManus 1991,§6.4",SEVERRIT MAOI MUCOI ROTTAIS
+I-KIK-012,37,Lamóg | Lamoge 2,OGHAM_POC,OG(H)AM edition (POC),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",DOVATUCQI [A]VI TULOTANAGIA
+I-KIK-012,37,Lamóg | Lamoge 2,OGHAM_POC,OG(H)AM edition (POC),yes,DOV,element,DOV,DOVATUCQI,black,,"McManus 1991,§6.4",DOVATUCQI [A]VI TULOTANAGIA
+I-KIK-013,38,Baile Mhuadáin | Ballyboodan,OGHAM_POC,OG(H)AM edition (POC),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",CORBI KOI MAQI LABRID[---]
+I-KIK-013,38,Baile Mhuadáin | Ballyboodan,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CORBI KOI MAQI LABRID[---]
+I-KIK-014,,An tSeanchill |Shankill,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQICUNALIGEAS MAQI COILLI MUCOI COSCIEAS
+I-KIK-014,,An tSeanchill |Shankill,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MAQICUNALIGEAS MAQI COILLI MUCOI COSCIEAS
+I-KIK-014,,An tSeanchill |Shankill,OGHAM_POC,OG(H)AM edition (POC),yes,CUNA,element,CUNA,MAQICUNALIGEAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",MAQICUNALIGEAS MAQI COILLI MUCOI COSCIEAS
+I-LDY-001,316,Dún Oilí Uachtarach | Dunalis Upper,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BROCAGNI MAQI MU
+I-LDY-001,316,Dún Oilí Uachtarach | Dunalis Upper,OGHAM_NW,OG(H)AM edition (NW),yes,BROCAGNI,compound,BROCAGNI,BROCAGNI,badger,,"McManus 1991,§6.12",BROCAGNI MAQI MU
+I-LOU-002,,Baile Bhalraic | Ballybarrack,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQICORABIR MAQI TANB NETASALAGIA MAQI MUCOI
+I-LOU-002,,Baile Bhalraic | Ballybarrack,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MAQICORABIR MAQI TANB NETASALAGIA MAQI MUCOI
+I-MAY-001,3,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",CUNALEGI (vac.) AVI CUNACANOS
+I-MAY-001,3,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNALEGI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNALEGI (vac.) AVI CUNACANOS
+I-MAY-001,3,An tOileán | Island,rdg,OG(H)AM edition,no,CUNA,element,CUNA,CUNALEGEA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNALEGEA
+I-MAY-002,4,Cill Mhainín | Kilmannin,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LUGADDON MAQI LUGUDEC
+I-MAY-002,4,Cill Mhainín | Kilmannin,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGADDON,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGADDON MAQI LUGUDEC
+I-MAY-003,5,An Roisín Thiar | Rusheens West,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",ALATTOS MAQI BR[---]
+I-MAY-003,5,An Roisín Thiar | Rusheens West,OGHAM_NW,OG(H)AM edition (NW),yes,ALATTOS,compound,ALATTOS,ALATTOS,wild,,"McManus 1991,§6.11",ALATTOS MAQI BR[---]
+I-MAY-004,6,An Baile Beag | Ballybeg,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CASEGNI MAQI[---]
+I-MAY-004,6,An Baile Beag | Ballybeg,MAC1945,Macalister 1945,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",QASIGNI MAQI
+I-MAY-004,6,An Baile Beag | Ballybeg,MAC1945,Macalister 1945,no,QASIGNI,compound,QASIGNI,QASIGNI,curly,,"McManus 1991,§6.12",QASIGNI MAQI
+I-MAY-005,7,Corr Odhar | Corrower,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",MAQ CERAN AVI ADECETAIMIN
+I-MAY-005,7,Corr Odhar | Corrower,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQ CERAN AVI ADECETAIMIN
+I-MAY-005,7,Corr Odhar | Corrower,OGHAM_NW,OG(H)AM edition (NW),yes,CERANI,compound,CERAN,CERAN,dark,,"McManus 1991,§6.12",MAQ CERAN AVI ADECETAIMIN
+I-MAY-005,7,Corr Odhar | Corrower,MAC1945,Macalister 1945,no,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",MAQ CERANI AVI ATHECETAIMIN
+I-MAY-005,7,Corr Odhar | Corrower,MAC1945,Macalister 1945,no,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQ CERANI AVI ATHECETAIMIN
+I-MAY-005,7,Corr Odhar | Corrower,MAC1945,Macalister 1945,no,CERANI,compound,CERANI,CERANI,dark,,"McManus 1991,§6.12",MAQ CERANI AVI ATHECETAIMIN
+I-MAY-006,8,Dumhach Mhic Eoghain | Dooghmakeon,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]OVI MAQI
+I-MAY-006,8,Dumhach Mhic Eoghain | Dooghmakeon,RHY1898,Rhys 1898,no,CORBAGNI,compound,CORBAGNI,CORBAGNI,defiles,,"McManus 1991,§6.12",CORBAGNI
+I-MAY-007,9,Achadh Liag | Aghaleague,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQACTO MAQ GAR[---]
+I-MAY-007,9,Achadh Liag | Aghaleague,MAC1919,Macalister 1919,no,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",OTTACI MAQ GARA
+I-MAY-008,10,Bréisteach | Breastagh,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LEGG[---]SDULEGʷESCAD MAQ CORRBRI MAQ AMMLLOGITT
+I-MEA-001,40,Baile Phaghain | Painestown,OGHAM_POC,OG(H)AM edition (POC),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",MAQICAIRATINI AVI INEQAGLAS
+I-MEA-001,40,Baile Phaghain | Painestown,OGHAM_POC,OG(H)AM edition (POC),yes,GLAS,element,GLAS,INEQAGLAS,light green,,"McManus 1991,§6.4",MAQICAIRATINI AVI INEQAGLAS
+I-MEA-001,40,Baile Phaghain | Painestown,OGHAM_POC,OG(H)AM edition (POC),yes,INEQAGLAS,compound,INEQAGLAS,INEQAGLAS,having a grey face,,"McManus 1991,§6.10",MAQICAIRATINI AVI INEQAGLAS
+I-MEA-004,,Sí an Bhrú | Newgrange,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",[---M]AQI AVI KOLUI KOI[.. ? ..]Ḍ[---]
+I-MEA-004,,Sí an Bhrú | Newgrange,OGHAM_NW,OG(H)AM edition (NW),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",[---M]AQI AVI KOLUI KOI[.. ? ..]Ḍ[---]
+I-MEA-004,,Sí an Bhrú | Newgrange,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---M]AQI AVI KOLUI KOI[.. ? ..]Ḍ[---]
+I-ROS-001,11,An Dromainn | Drummin 1,OGHAM_POC,OG(H)AM edition (POC),yes,CUNA,element,CUNO,CUNOVATO,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUN[OV]ATO
+I-ROS-002,,An Dromainn | Drummin 2,OGHAM_POC,OG(H)AM edition (POC),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",RAVASA KOI MAQQI DT[---]L SENN
+I-ROS-002,,An Dromainn | Drummin 2,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQQI,MAQQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",RAVASA KOI MAQQI DT[---]L SENN
+I-ROS-003,12,Ráth Cruachan | Rathcroghan 1,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VRAICCI MAQI MEDVVI
+I-ROS-003,12,Ráth Cruachan | Rathcroghan 1,OGHAM_POC,OG(H)AM edition (POC),yes,MEDVVI,compound,MEDVVI,MEDVVI,mead,,"McManus 1991,§6.11",VRAICCI MAQI MEDVVI
+I-ROS-003,12,Ráth Cruachan | Rathcroghan 1,OGHAM_POC,OG(H)AM edition (POC),yes,VRAICCI,compound,VRAICCI,VRAICCI,heather,,"McManus 1991,§6.11",VRAICCI MAQI MEDVVI
+I-ROS-004,13,Ráth Cruachan | Rathcroghan 2,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[---MA(?)]Q REG[A]S MU[COI ---]
+I-TYR-001,317,Achadh Scríobach | Aghascrebagh,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DOTETTO MAQỊ MAGLAN[I(?)]
+I-TYR-001,317,Achadh Scríobach | Aghascrebagh,OGHAM_NW,OG(H)AM edition (NW),yes,MAGL,element,MAGL,MAGLANI,prince,,"McManus 1991,§6.4",DOTETTO MAQỊ MAGLAN[I(?)]
+I-TYR-001,317,Achadh Scríobach | Aghascrebagh,rdg,OG(H)AM edition,no,MAGL,element,MAGL,MAGLANI,prince,,"McManus 1991,§6.4",MAGLANI
+I-WAT-001,262,Suí Mochuda | Seemochuda,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERCA,ERCAGNI,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ERCAGNI MAQIERCIAS
+I-WAT-001,262,Suí Mochuda | Seemochuda,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,ERCAGNI,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",ERCAGNI MAQIERCIAS
+I-WAT-002,263,Aird Mhór | Ardmore 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LUGUDECCAS MAQI[---] MUCOI NETASEGAMONAS DOLATIBIGAISGO[---]
+I-WAT-002,263,Aird Mhór | Ardmore 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",LUGUDECCAS MAQI[---] MUCOI NETASEGAMONAS DOLATIBIGAISGO[---]
+I-WAT-002,263,Aird Mhór | Ardmore 1,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUDECCAS,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGUDECCAS MAQI[---] MUCOI NETASEGAMONAS DOLATIBIGAISGO[---]
+I-WAT-002,263,Aird Mhór | Ardmore 1,MAC1945,Macalister 1945,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",LUGUDECCAS MAQI MUCOI NETA-SEGAMONAS DOLATI BIGAIS-GOB
+I-WAT-002,263,Aird Mhór | Ardmore 1,MAC1945,Macalister 1945,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",LUGUDECCAS MAQI MUCOI NETA-SEGAMONAS DOLATI BIGAIS-GOB
+I-WAT-002,263,Aird Mhór | Ardmore 1,MAC1945,Macalister 1945,no,NIOTA,formula,NETA,NETA,"nephew, sister`s son",,"McManus 1991,§6.27",LUGUDECCAS MAQI MUCOI NETA-SEGAMONAS DOLATI BIGAIS-GOB
+I-WAT-002,263,Aird Mhór | Ardmore 1,MAC1945,Macalister 1945,no,LUG,element,LUG,LUGUDECCAS,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",LUGUDECCAS MAQI MUCOI NETA-SEGAMONAS DOLATI BIGAIS-GOB
+I-WAT-003,264,Aird Mhór | Ardmore 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]ANACI MAQI[---]
+I-WAT-005,266,An Drom Mór | Dromore 1 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",COLLABOT MUCOI LUG MAQI LOBACCONA
+I-WAT-005,266,An Drom Mór | Dromore 1 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",COLLABOT MUCOI LUG MAQI LOBACCONA
+I-WAT-005,266,An Drom Mór | Dromore 1 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONA,LOBACCONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",COLLABOT MUCOI LUG MAQI LOBACCONA
+I-WAT-005,266,An Drom Mór | Dromore 1 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,LOBACCONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",COLLABOT MUCOI LUG MAQI LOBACCONA
+I-WAT-005,266,An Drom Mór | Dromore 1 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUG,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",COLLABOT MUCOI LUG MAQI LOBACCONA
+I-WAT-006,267,An Drom Mór | Dromore 2 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MEDUSI MACI LU MOCOI LUG
+I-WAT-006,267,An Drom Mór | Dromore 2 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MOCOI,MOCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MEDUSI MACI LU MOCOI LUG
+I-WAT-006,267,An Drom Mór | Dromore 2 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUG,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",MEDUSI MACI LU MOCOI LUG
+I-WAT-006,267,An Drom Mór | Dromore 2 (Cill Tíre),rdg,OG(H)AM edition,no,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MEDUSI MACI LU MUCOI LAQ.
+I-WAT-006,267,An Drom Mór | Dromore 2 (Cill Tíre),rdg,OG(H)AM edition,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MEDUSI MACI LU MUCOI LAQ.
+I-WAT-007,268,An Drom Mór | Dromore 3 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CATTU,CATTUVIR,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATTUVIR
+I-WAT-007,268,An Drom Mór | Dromore 3 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,CATTUVIR,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATTUVIR
+I-WAT-007,268,An Drom Mór | Dromore 3 (Cill Tíre),OGHAM_NW,OG(H)AM edition (NW),yes,VIR,element,VIR,CATTUVIR,man,,"McManus 1991,§6.4",CATTUVIR
+I-WAT-008,269,Ceathrú an Teampaill | Mill and Churchquarter (Grange),OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---] MAQI MUCOI IVODACCA
+I-WAT-008,269,Ceathrú an Teampaill | Mill and Churchquarter (Grange),OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[---] MAQI MUCOI IVODACCA
+I-WAT-008,269,Ceathrú an Teampaill | Mill and Churchquarter (Grange),OGHAM_POC,OG(H)AM edition (POC),yes,IVA,element,IVO,IVODACCA,"tree, yew tree",,"McManus 1991,§6.6",[---] MAQI MUCOI IVODACCA
+I-WAT-009,270,An tSráidbhaile Mór | Stradbally More 1,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",QRITE MAQI LOBACONA AVI NEAGRACOLINEA
+I-WAT-009,270,An tSráidbhaile Mór | Stradbally More 1,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",QRITE MAQI LOBACONA AVI NEAGRACOLINEA
+I-WAT-009,270,An tSráidbhaile Mór | Stradbally More 1,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CONA,LOBACONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",QRITE MAQI LOBACONA AVI NEAGRACOLINEA
+I-WAT-009,270,An tSráidbhaile Mór | Stradbally More 1,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CON,LOBACONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",QRITE MAQI LOBACONA AVI NEAGRACOLINEA
+I-WAT-010,271,An tSráidbhaile Mór | Stradbally More 2,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",NETAVROQI MAQI QIC[I]
+I-WAT-011,272,Drom Lócháin | Drumlohan 1,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MOCOI,MOCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MANU MAGUNO GATI MOCOI MACORBO
+I-WAT-012,273,Drom Lócháin | Drumlohan 2,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CALUNOVICA MAQI MUCOI LITENI
+I-WAT-012,273,Drom Lócháin | Drumlohan 2,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CALUNOVICA MAQI MUCOI LITENI
+I-WAT-013,274,Drom Lócháin | Drumlohan 3,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI INI[---? ---MAQI(?) QE(?)]TTEAS
+I-WAT-014,275,Drom Lócháin | Drumlohan 4,OGHAM_POC,OG(H)AM edition (POC),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",CUNALEGEA MAQI C[---]SALAR CELI AVI QVECI
+I-WAT-014,275,Drom Lócháin | Drumlohan 4,OGHAM_POC,OG(H)AM edition (POC),yes,CELI,formula,CELI,CELI,"companions, client, fellow",http://www.wikidata.org/entity/Q68000377,"McManus 1991,§6.27",CUNALEGEA MAQI C[---]SALAR CELI AVI QVECI
+I-WAT-014,275,Drom Lócháin | Drumlohan 4,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CUNALEGEA MAQI C[---]SALAR CELI AVI QVECI
+I-WAT-014,275,Drom Lócháin | Drumlohan 4,OGHAM_POC,OG(H)AM edition (POC),yes,CUNA,element,CUNA,CUNALEGEA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNALEGEA MAQI C[---]SALAR CELI AVI QVECI
+I-WAT-015,276,Drom Lócháin | Drumlohan 5,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BIGU MAQI LAG[---?---̣]
+I-WAT-016,277,Drom Lócháin | Drumlohan 6,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BIR MAQI MUCOI ROTTAIS
+I-WAT-016,277,Drom Lócháin | Drumlohan 6,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",BIR MAQI MUCOI ROTTAIS
+I-WAT-016,277,Drom Lócháin | Drumlohan 6,OGHAM_POC,OG(H)AM edition (POC),yes,BIR,compound,BIR,BIR,short heared,,"McManus 1991,§6.11",BIR MAQI MUCOI ROTTAIS
+I-WAT-017,278,Drom Lócháin | Drumlohan 7,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---] MAQI NE[T ---]AS
+I-WAT-018,279,Drom Lócháin | Drumlohan 8,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",DENAVECA MUCOI MEDALO
+I-WAT-020,281,Drom Lócháin | Drumlohan 10,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",DEAGOS MAQI MUCO[I ---]NAI
+I-WAT-020,281,Drom Lócháin | Drumlohan 10,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",DEAGOS MAQI MUCO[I ---]NAI
+I-WAT-021,282,An Baile Beag | Fox’s Castle,OGHAM_NW,OG(H)AM edition (NW),yes,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",[--A]V[I] DAIMAGNI
+I-WAT-021,282,An Baile Beag | Fox’s Castle,OGHAM_NW,OG(H)AM edition (NW),yes,DALAGNI,compound,DAIMAGNI,DAIMAGNI,blind,http://www.wikidata.org/entity/Q68001812,"McManus 1991,§6.12",[--A]V[I] DAIMAGNI
+I-WAT-024,285,An Chill Bheag | Kilbeg,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",BIVODON MUCOI ATAR
+I-WAT-024,285,An Chill Bheag | Kilbeg,OGHAM_NW,OG(H)AM edition (NW),yes,IVA,element,IVO,BIVODON,"tree, yew tree",,"McManus 1991,§6.6",BIVODON MUCOI ATAR
+I-WAT-025,286,Cill Ghruabháin | Kilgrovan 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CUNAMAQI LUGUDECA MUCOI CUNEA
+I-WAT-025,286,Cill Ghruabháin | Kilgrovan 1,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNAMAQI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNAMAQI LUGUDECA MUCOI CUNEA
+I-WAT-025,286,Cill Ghruabháin | Kilgrovan 1,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUDECA,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",CUNAMAQI LUGUDECA MUCOI CUNEA
+I-WAT-030,,Cill Ghruabháin | Kilgrovan 6,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]U MAQI CUMUGODUU MUCOI[---]
+I-WAT-030,,Cill Ghruabháin | Kilgrovan 6,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[---]U MAQI CUMUGODUU MUCOI[---]
+I-WAT-033,292,An Cnoc Buí | Knockboy 1,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[-?-̣]ER[O]T[I] M[U]C[OI] NETAS[EGAM]ONAS
+I-WAT-036,295,An Cnoc Buí | Knockboy 4,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",Q[E]CC[IAS] M[U]C[OI B]R[O]E[NIONAS]
+I-WAT-037,296,An Cnoc Buí | Knockboy 5,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CIR MAQI MUC[---]
+I-WAT-039,298,An Cnoc Buí | Knockboy 7,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VEDABAR MAQI LSM MOCOI ODR REA
+I-WAT-039,298,An Cnoc Buí | Knockboy 7,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MOCOI,MOCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",VEDABAR MAQI LSM MOCOI ODR REA
+I-WAT-039,298,An Cnoc Buí | Knockboy 7,OGHAM_POC,OG(H)AM edition (POC),yes,BARR,element,BAR,VEDABAR,"top, head, hear of the head",,"McManus 1991,§6.4",VEDABAR MAQI LSM MOCOI ODR REA
+I-WAT-040,299,An Cnoc Buí | Knockboy 8,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIMOGʷEDIAS MAQI MUIBITI
+I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CUNANETAS MAQI MUCOI NETASEGAMONAS
+I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CUNANETAS MAQI MUCOI NETASEGAMONAS
+I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),yes,CUNA,element,CUNA,CUNANETAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNANETAS MAQI MUCOI NETASEGAMONAS
+I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),yes,CUNANETAS,compound,CUNANETAS,CUNANETAS,champion of the wolves,https://www.wikidata.org/wiki/Q101349712,"McManus 1991,§6.10",CUNANETAS MAQI MUCOI NETASEGAMONAS
+I-WAT-048,307,Bearna na Gaoithe | Windgap,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MODDAGNI MAQI GATTAGNI MUCOI LUGUNI
+I-WAT-048,307,Bearna na Gaoithe | Windgap,OGHAM_NW,OG(H)AM edition (NW),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MODDAGNI MAQI GATTAGNI MUCOI LUGUNI
+I-WAT-048,307,Bearna na Gaoithe | Windgap,OGHAM_NW,OG(H)AM edition (NW),yes,LUG,element,LUG,LUGUNI,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",MODDAGNI MAQI GATTAGNI MUCOI LUGUNI
+I-WAT-048,307,Bearna na Gaoithe | Windgap,OGHAM_NW,OG(H)AM edition (NW),yes,MODDAGNI,compound,MODDAGNI,MODDAGNI,noble,,"McManus 1991,§6.12",MODDAGNI MAQI GATTAGNI MUCOI LUGUNI
+I-WAT-049,,Cnocán Machan | Knockmahon 1,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",SENAQ MAQI MUCOI ENA
+I-WAT-049,,Cnocán Machan | Knockmahon 1,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",SENAQ MAQI MUCOI ENA
+I-WAT-050,,Cnocán Machan | Knockmahon 2,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VEDILIMETO MAQI TOQITAQ
+I-WEX-003,46,Geata an Phóirtéaraigh | Portersgate,OGHAM_NW,OG(H)AM edition (NW),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",SEDANI MAQI CATTABBOTT AVVI DERCMASOC
+I-WEX-003,46,Geata an Phóirtéaraigh | Portersgate,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,CATTABBOTT,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",SEDANI MAQI CATTABBOTT AVVI DERCMASOC
+I-WEX-003,46,Geata an Phóirtéaraigh | Portersgate,OGHAM_NW,OG(H)AM edition (NW),yes,ERC,element,ERC,DERCMASOC,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",SEDANI MAQI CATTABBOTT AVVI DERCMASOC
+I-WEX-003,46,Geata an Phóirtéaraigh | Portersgate,OGHAM_NW,OG(H)AM edition (NW),yes,DERCMASOC,compound,DERCMASOC,DERCMASOC,(he who has) an elegant /filthy eye,http://www.wikidata.org/entity/Q68001907,"McManus 1991,§6.10",SEDANI MAQI CATTABBOTT AVVI DERCMASOC
+I-WIC-002,48,Dún Ard | Donard,OGHAM_POC,OG(H)AM edition (POC),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",IAQINI KOI MAQI MUC[OI]
+I-WIC-002,48,Dún Ard | Donard,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",IAQINI KOI MAQI MUC[OI]
+I-WIC-002,48,Dún Ard | Donard,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",IAQINI KOI MAQI MUC[OI]
+I-WIC-003,49,Bealach Conglais | Baltinglass,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[...]CCI MAQ[...] [...]INI[...]
+I-WIC-005,51,An Cnoicín | Knickeen,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI NILI
+M-IOM-001,503,Ballaqueeney 1,OGHAM_POC,OG(H)AM edition (POC),yes,DOV,element,DOV,DOVAIDONA,black,,"McManus 1991,§6.4",DOVAIDONA MA QI DROATA
+M-IOM-001,503,Ballaqueeney 1,OGHAM_POC,OG(H)AM edition (POC),yes,DOVAIDONA,compound,DOVAIDONA,DOVAIDONA,black + fire,,"McManus 1991,§6.9",DOVAIDONA MA QI DROATA
+M-IOM-001,503,Ballaqueeney 1,rdg,OG(H)AM edition,no,DOV,element,DOV,DOVAIDONA,black,,"McManus 1991,§6.4",DOVAIDONA MA QI DRUTA
+M-IOM-001,503,Ballaqueeney 1,rdg,OG(H)AM edition,no,DOVAIDONA,compound,DOVAIDONA,DOVAIDONA,black + fire,,"McManus 1991,§6.9",DOVAIDONA MA QI DRUTA
+M-IOM-002,504,Ballaqueeney 2,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BIVAIDONAS MAQI MUCOI CUNAVA[LI]
+M-IOM-002,504,Ballaqueeney 2,OGHAM_POC,OG(H)AM edition (POC),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",BIVAIDONAS MAQI MUCOI CUNAVA[LI]
+M-IOM-002,504,Ballaqueeney 2,OGHAM_POC,OG(H)AM edition (POC),yes,CUNA,element,CUNA,CUNAVALI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",BIVAIDONAS MAQI MUCOI CUNAVA[LI]
+M-IOM-002,504,Ballaqueeney 2,OGHAM_POC,OG(H)AM edition (POC),yes,IVA,element,IVA,BIVAIDONAS,"tree, yew tree",,"McManus 1991,§6.6",BIVAIDONAS MAQI MUCOI CUNAVA[LI]
+M-IOM-002,504,Ballaqueeney 2,OGHAM_POC,OG(H)AM edition (POC),yes,BIVAIDONAS,compound,BIVAIDONAS,BIVAIDONAS,alive + fire,,"McManus 1991,§6.9",BIVAIDONAS MAQI MUCOI CUNAVA[LI]
+M-IOM-003,501,Bimaken Friary 1,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CUNAMAGLI MAQ[---]
+M-IOM-003,501,Bimaken Friary 1,OGHAM_POC,OG(H)AM edition (POC),yes,CUNA,element,CUNA,CUNAMAGLI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNAMAGLI MAQ[---]
+M-IOM-003,501,Bimaken Friary 1,OGHAM_POC,OG(H)AM edition (POC),yes,MAGL,element,MAGLI,CUNAMAGLI,prince,,"McManus 1991,§6.4",CUNAMAGLI MAQ[---]
+M-IOM-003,501,Bimaken Friary 1,OGHAM_POC,OG(H)AM edition (POC),yes,MAGL,element,MAGL,CUNAMAGLI,prince,,"McManus 1991,§6.4",CUNAMAGLI MAQ[---]
+M-IOM-003,501,Bimaken Friary 1,OGHAM_POC,OG(H)AM edition (POC),yes,CUNAMAGLI,compound,CUNAMAGLI,CUNAMAGLI,prince of wolves,,"McManus 1991,§6.10",CUNAMAGLI MAQ[---]
+M-IOM-004,502,Bimaken Friary 2,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]MAQ LEOG[---]
+M-IOM-005,,Kirk Michael,SOU1887,Sou 1887,no,AVI,formula,AVI,AVI,"grandson, descendant",http://www.wikidata.org/entity/Q68000199,"McManus 1991,§6.27",MUUCOMALL AVI UA MULLGUC
+M-IOM-007,500,Knoc y Doonee,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",AMBICATOS MAQI ROCATOS
+M-IOM-007,500,Knoc y Doonee,OGHAM_POC,OG(H)AM edition (POC),yes,CATTU,element,CATOS,AMBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",AMBICATOS MAQI ROCATOS
+M-IOM-007,500,Knoc y Doonee,OGHAM_POC,OG(H)AM edition (POC),yes,CATTU,element,CAT,AMBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",AMBICATOS MAQI ROCATOS
+M-IOM-007,500,Knoc y Doonee,OGHAM_POC,OG(H)AM edition (POC),yes,AMMECATI,compound,AMBICATOS,AMBICATOS,arround + battle,,"McManus 1991,§6.9",AMBICATOS MAQI ROCATOS
+M-IOM-007,500,Knoc y Doonee,BRO2021,Bro 2021,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",IMB[I]CATOS MAQI RICATOS
+M-IOM-007,500,Knoc y Doonee,BRO2021,Bro 2021,no,CATTU,element,CATOS,IMBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",IMB[I]CATOS MAQI RICATOS
+M-IOM-007,500,Knoc y Doonee,BRO2021,Bro 2021,no,CATTU,element,CAT,IMBICATOS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",IMB[I]CATOS MAQI RICATOS
+M-IOM-007,500,Knoc y Doonee,BRO2021,Bro 2021,no,CATTU,element,CATI,AMMECATI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",AMMECAT[I] FILIUS ROCAT[I] HIC IACIT
+M-IOM-007,500,Knoc y Doonee,BRO2021,Bro 2021,no,CATTU,element,CAT,AMMECATI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",AMMECAT[I] FILIUS ROCAT[I] HIC IACIT
+M-IOM-007,500,Knoc y Doonee,BRO2021,Bro 2021,no,AMMECATI,compound,AMMECATI,AMMECATI,arround + battle,,"McManus 1991,§6.9",AMMECAT[I] FILIUS ROCAT[I] HIC IACIT
+M-IOM-009,,Speke Farm Keeill Stone,OGHAM_POC,OG(H)AM edition (POC),yes,CATTU,element,CAT,OCOICAT,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",BAC OCOICAT IALL
+M-IOM-009,,Speke Farm Keeill Stone,rdg,OG(H)AM edition,no,CATTU,element,CAT,OCOICAT,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",BAC OCOICAT IALL
+M-IOM-009,,Speke Farm Keeill Stone,rdg,OG(H)AM edition,no,MAQI,formula,MACI,MACI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[--]A MACI MUCOI CATIALL[I]
+M-IOM-009,,Speke Farm Keeill Stone,rdg,OG(H)AM edition,no,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",[--]A MACI MUCOI CATIALL[I]
+M-IOM-009,,Speke Farm Keeill Stone,rdg,OG(H)AM edition,no,CATTU,element,CATI,CATIALLI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",[--]A MACI MUCOI CATIALL[I]
+M-IOM-009,,Speke Farm Keeill Stone,rdg,OG(H)AM edition,no,CATTU,element,CAT,CATIALLI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",[--]A MACI MUCOI CATIALL[I]
+S-ABD-001,,Newton,OGHAM_LH,OG(H)AM edition (LH),yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",IDDARRNNN VORRENNI KOI ROSRR
+S-ABD-001,,Newton,rdg,OG(H)AM edition,no,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",2) three names plus KOI: 'Idarnon Vorenn koi [?]'
+S-ARL-001,506,Gigha 1,OGHAM_KF,OG(H)AM edition (KF),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]MAQ[---]COGIN[---]
+S-ARL-001,506,Gigha 1,RHY1901,Rhys 1901,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",OGMA MAQI TIGERNI
+S-ARL-001,506,Gigha 1,MAC1902,Macalister 1902,no,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VICULA MAQ COMGINI
+S-ARL-001,506,Gigha 1,MAC1945,Macalister 1945,no,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VICULA MAQ CUGINI
+S-ARL-003,,Dún Ad | Dunadd,OGHAM_KF,OG(H)AM edition (KF),yes,VIR,element,VIR,VIRRMONAI,man,,"McManus 1991,§6.4",AESD[---]T[---]VNA[---]T VIRRMONAI
+S-ARL-003,,Dún Ad | Dunadd,PAD1972,Pad 1972,no,VIR,element,VIR,VIRRHAMDNA,man,,"McManus 1991,§6.4",Upper: AESD[-]T[-]V[-](N/LV)A [-]T[V Lower: L [....]VIRR(H/A)MDNA
+S-INV-001,,Bac Mhic Connain,OGHAM_LH,OG(H)AM edition (LH),yes,CATTU,element,CAT,NTENCAT,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",MOQU NTENCAT
+S-KCD-001,,Auquhollie,OGHAM_LH,OG(H)AM edition (LH),yes,DOV,element,DOV,VUENONIETEDOVURI,black,,"McManus 1991,§6.4",VUENONIETEDOVURI
+S-ORK-004,,Birsay 2,OGHAM_POC,OG(H)AM edition (POC),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQI:AB[---]
+S-SHE-003,,Cunningsburgh 2,OGHAM_POC,OG(H)AM edition (POC),yes,CUNA,element,CON,EHTECONMOR,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",[---]EHTECONMOR S[---] [---]DUV[.]DDRS[.][---]
+W-BRE-005,342,Trallwng,OGHAM_RED2007,OG(H)AM edition (RED2007),yes,CUNA,element,CUNA,CUNACENNI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNACENNI AV[.] ILVVETO
+W-BRE-006,341,Pentre Poeth | Llywel,OGHAM_RED2007,OG(H)AM edition (RED2007),yes,TREN,element,TREN,MAQITRENI,strong,,"McManus 1991,§6.6",MAQITRENI SALICIDUNI
+W-BRE-X03,334,Llanfihangel Cwm Du,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CATTU,element,CATA,CATACVS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATACVS HIC IACIT FILIVS TEGERNACVS
+W-BRE-X03,334,Llanfihangel Cwm Du,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CATTU,element,CAT,CATACVS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATACVS HIC IACIT FILIVS TEGERNACVS
+W-BRE-X03,334,Llanfihangel Cwm Du,rdg,OG(H)AM edition,no,CATTU,element,CAT,CATXCVS,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",CATXCVS HIC IA. CP FILIVS PSSESE RHACVS
+W-CAE-X01,398,Treflys,OGHAM_RHY1907a,OG(H)AM edition (RHY1907a),yes,CUNA,element,CON,IACONI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",IACONI
+W-CGN-001,353,Llanwenog,OGHAM_NW,OG(H)AM edition (NW),yes,CATTU,element,CAT,TRENACCATLO,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",TRENACCATLO
+W-CGN-001,353,Llanwenog,OGHAM_NW,OG(H)AM edition (NW),yes,TREN,element,TREN,TRENACCATLO,strong,,"McManus 1991,§6.6",TRENACCATLO
+W-CGN-001,353,Llanwenog,OGHAM_NW,OG(H)AM edition (NW),yes,TRENACCATLO,compound,TRENACCATLO,TRENACCATLO,strong + battle,,"McManus 1991,§6.9",TRENACCATLO
+W-CMN-001,372,Llangeler,MAC1936,Macalister 1936,no,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[DECCA]IBARVALB(I) [MAQI B]RO[CAG]NI
+W-CMN-001,372,Llangeler,MAC1936,Macalister 1936,no,BARR,element,BAR,DECCAIBARVALBI,"top, head, hear of the head",,"McManus 1991,§6.4",[DECCA]IBARVALB(I) [MAQI B]RO[CAG]NI
+W-CMN-001,372,Llangeler,MAC1936,Macalister 1936,no,BROCAGNI,compound,BROCAGNI,BROCAGNI,badger,,"McManus 1991,§6.12",[DECCA]IBARVALB(I) [MAQI B]RO[CAG]NI
+W-CMN-003,368,Llandawke,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",[---]MAQI M[---] DUMELEDONAS
+W-CMN-004,362,Eglwys Gymyn,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,INIGENA,formula,INIGENA,INIGENA,daughter,,"McManus 1991,§6.27",AVITTORIGES INIGENA CUNIGNI
+W-CMN-X01,364,Henllan Amgoed,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CUNA,element,CVNI,BARCVNI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",QVENVENDANI FILI BARCVNI
+W-CMN-X01,364,Henllan Amgoed,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,BARR,element,BAR,BARCVNI,"top, head, hear of the head",,"McManus 1991,§6.4",QVENVENDANI FILI BARCVNI
+W-CMN-X01,364,Henllan Amgoed,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,QENN,element,QVEN,QVENVENDANI,head,,"McManus 1991,§6.6",QVENVENDANI FILI BARCVNI
+W-CMN-X02,376,St Ishmaels,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,ERC,element,ERCA,FILIVSERCAGNI,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",VENNISETLI FILIVSERCAGNI
+W-CMN-X02,376,St Ishmaels,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,ERC,element,ERC,FILIVSERCAGNI,god,http://www.wikidata.org/entity/Q67382360,"McManus 1991,§6.5",VENNISETLI FILIVSERCAGNI
+W-GLA-X02,408,Margam,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CATTU,element,CAT,CATOTIGIRNI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",BODVOCI HIC IACIT FILIVS CATOTIGIRNI PRONEPVS ETERNALI VEDOMAVI
+W-PEM-001,449,St Dogmaels,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",SAGRANI MAQI CUNATAMI
+W-PEM-001,449,St Dogmaels,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CUNA,element,CUNA,CUNATAMI,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",SAGRANI MAQI CUNATAMI
+W-PEM-002,431,Clydai 3,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,DOV,element,DOV,DOVATUCIS,black,,"McManus 1991,§6.4",DOVATUCIS
+W-PEM-004,428,Cilgerran,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",TRENAGUS[.] MAQI MAQITRENI
+W-PEM-004,428,Cilgerran,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,TREN,element,TREN,TRENAGUS,strong,,"McManus 1991,§6.6",TRENAGUS[.] MAQI MAQITRENI
+W-PEM-006,426,Bridell,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",NETTASAGRI MAQI MUCOI BRIACI
+W-PEM-006,426,Bridell,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",NETTASAGRI MAQI MUCOI BRIACI
+W-PEM-007,427,Caldy Island,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAGL,element,MAGL,MAGL,prince,,"McManus 1991,§6.4",MAGL[---]DUBR[---] [---]QI[---]
+W-PEM-012,422,Brawdy 3,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,VENDOGNI,compound,VENDOGNI,VENDOGNI,fair,,"McManus 1991,§6.12",VENDOGNI
+W-PEM-013,432,Jordanston,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,DOV,element,DOV,DOVAGNI,black,,"McManus 1991,§6.4",DOVAGNI
+W-PEM-013,432,Jordanston,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,DOVAGNI,compound,DOVAGNI,DOVAGNI,black,,"McManus 1991,§6.12",DOVAGNI
+W-PEM-014,446,Nevern 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAGLICUNAS MAQI CLUTA R[---]
+W-PEM-014,446,Nevern 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CUNA,element,CUNAS,MAGLICUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",MAGLICUNAS MAQI CLUTA R[---]
+W-PEM-014,446,Nevern 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CUNA,element,CUNA,MAGLICUNAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",MAGLICUNAS MAQI CLUTA R[---]
+W-PEM-014,446,Nevern 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAGL,element,MAGLI,MAGLICUNAS,prince,,"McManus 1991,§6.4",MAGLICUNAS MAQI CLUTA R[---]
+W-PEM-014,446,Nevern 1,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAGL,element,MAGL,MAGLICUNAS,prince,,"McManus 1991,§6.4",MAGLICUNAS MAQI CLUTA R[---]
+W-PEM-016,442,Mathry,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,MAQI,formula,MAQ,MAQ,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQ[.]D[---]
+W-PEM-X01,402,Spittal,OGHAM_OGHAM,OG(H)AM edition (OGHAM),yes,CUNA,element,CVNI,CVNIOVENDE,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",EVALI FILI DENOVI CVNIOVENDE MATEREIVS

@@ -1,4 +1,4 @@
-# TEI/Epidoc Crosswalk - Ogham Prototype
+# tei--epidoc-crosswalk
 
 Crosswalk TEI/EpiDoc editions of ogham stones to **CIDOC CRM 7.1.3** and its text
 extension **CRMtex**, producing FAIR RDF per stone.
@@ -132,6 +132,7 @@ drift apart:
 | `out/places.csv` | one row per inscription, all `<placeName>` levels as columns |
 | `out/places.geojson` | WGS84 point layer; each feature carries its `data:findspot_*` URI |
 | `docs/index.html` | browsable Leaflet map of the findspots (GitHub Pages) |
+| `docs/words.html` | the formulaic vocabulary, filterable by word |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
 Over the full corpus: **504 stones, 395 distinct places** across 12 administrative
@@ -150,6 +151,52 @@ To publish: **Settings → Pages → Source: Deploy from a branch → `main` / `
 A `.nojekyll` file is written alongside so Pages serves the directory as-is. The
 page also opens straight from disk (`open docs/index.html`); only the basemap
 tiles and the two Leaflet libraries come off the network.
+
+## The formulaic vocabulary (`docs/words.html`)
+
+A second page picks up the DHd 2020 poster
+[`o3d-epidoc-extractor`](https://github.com/LinkedOpenOgham/o3d-epidoc-extractor)
+(Homburg & Thiery, *Linked Ogham Stones*). That extractor matched McManus's
+formulaic vocabulary against the *Ogham in 3D* database and mapped the hits; this
+one runs the same vocabulary against the TEI/EpiDoc editions of **OG(H)AM**, the
+successor project — and against **every reading, not just the current one**.
+
+That is the part the earlier version could not do. Its source held one reading per
+stone; EpiDoc holds the current edition *and* the historical `<rdg>`s, so a word is
+no longer a property of a stone but of a reading:
+
+- 104 words, of which **78 are attested** in the corpus
+- **286 stones** carry at least one match, **663 occurrences** across all readings
+- **22 stone/word pairs occur only in a historical reading** — six of them MAQI,
+  four MUCOI. On seven stones the entire formulaic reading belongs to an editor
+  who has since been superseded.
+
+The map draws that distinction directly: a filled dot means the word is in the
+current OG(H)AM edition, a dashed ring means only an older editor read it there.
+Popups show each reading with the matched token highlighted.
+
+| file | what |
+|---|---|
+| `out/words.csv` | one row per (stone, reading, word) with variant, token, gloss, QID |
+| `out/words.crm.ttl` | occurrences as `crmtex:TX7_Written_Text_Segment` of the `TX6` reading |
+| `docs/words.html` | the filter map |
+
+In RDF each occurrence is a segment of the reading that carries it
+(`TXP4_has_segment`), typed by an `E55_Type` for the word, which carries the
+McManus reference, the variants as `skos:altLabel` and the Wikidata QID as a
+weighted `skos:closeMatch` — the same AMT-conformant shape the rest of the
+repository uses. Because the reading is `prov:wasAttributedTo` its editor, "who
+read MUCOI here" is a single SPARQL query.
+
+**Matching modes.** Formula words (`ANM`, `MAQI`, `MUCOI`, …) and compound names
+match whole tokens; name elements (`CUNA`, `ERC`, `LUG`, …) match as substrings,
+which is the earlier project's semantics and is deliberately kept — but it is not
+precise, and short elements such as `CON` or `VIR` also fire inside unrelated
+names. Every hit records its mode so the two kinds of claim stay distinguishable.
+
+The word list lives at `data/words.csv`, taken unchanged from the earlier
+repository (MIT, © Timo Homburg and Florian Thiery) and fetched automatically if
+absent.
 
 ### Coordinate status — the hand-over to axis 2
 
@@ -193,6 +240,7 @@ tei--epidoc-crosswalk/
 ├── data/                      # inputs only (EpiDoc XML)
 │   ├── origin/                # OG(H)AM editions, fetched on demand (gitignored)
 │   ├── corpus-manifest.yaml   # which upstream state that is (generated, committed)
+│   ├── words.csv              # McManus vocabulary, from o3d-epidoc-extractor
 │   ├── S-ARL-001.xml          # Gigha 1 (CIIC 506)
 │   ├── I-COR-001.xml          # Coomleagh East (CIIC 55)
 │   ├── I-COR-030.xml          # Garranes (CIIC 81)
@@ -216,12 +264,14 @@ tei--epidoc-crosswalk/
 │   └── crosswalk-shapes.ttl   # every TEI class → CRM superclass + NFDI link
 ├── docs/                      # generated GitHub Pages site
 │   ├── index.html             # Leaflet map of the findspots (generated)
+│   ├── words.html             # formulaic-word filter map (generated)
 │   ├── places.geojson         # point layer beside the map (generated)
 │   └── .nojekyll
 ├── py/
 │   ├── main.py                # single entry point:  python py/main.py
 │   ├── corpus.py              # fetch/update the editions + provenance manifest
 │   ├── places.py              # corpus-wide place layer (E53 + GeoSPARQL)
+│   ├── words.py               # formulaic vocabulary across all readings
 │   ├── webmap.py              # docs/ map builder
 │   └── wikidata.py             # Wikidata reconciliation module
 ├── .gitignore
@@ -262,7 +312,8 @@ python py/main.py --corpus ../og-h-am        # place layer over the whole corpus
 python py/main.py --places-only               # place layer + map only
 python py/main.py --corpus /path/to/og-h-am   # explicit corpus location
 python py/main.py --no-places                # per-stone crosswalk only
-python py/main.py --no-map                   # skip the docs/ map
+python py/main.py --no-map                   # skip the docs/ pages
+python py/main.py --no-words                # skip the formulaic-word layer
 ```
 
 ## Resolved modelling decisions
