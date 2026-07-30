@@ -147,6 +147,26 @@ def looks_in_situ(name: str) -> bool:
     return any(w in lowered for w in IN_SITU_WORDS)
 
 
+def _wikidata_by_qid(qid: str) -> tuple[str, str, str]:
+    """(label, lat, lon) for one named entity -- no searching involved.
+
+    A QID written into the cache by hand is a decision, not a guess, so it is
+    resolved directly. Searching by name would only re-open the question the QID
+    was put there to close.
+    """
+    data = _get(WD_API, {"action": "wbgetentities", "ids": qid,
+                         "props": "claims|labels", "languages": "en", "format": "json"})
+    entity = (data or {}).get("entities", {}).get(qid)
+    if not entity:
+        return "", "", ""
+    label = entity.get("labels", {}).get("en", {}).get("value", "")
+    for claim in entity.get("claims", {}).get("P625", []):
+        value = claim.get("mainsnak", {}).get("datavalue", {}).get("value")
+        if value:
+            return label, f"{float(value['latitude']):.6f}", f"{float(value['longitude']):.6f}"
+    return label, "", ""
+
+
 def _wikidata(name: str, country: str = "") -> tuple[str, str, str, str]:
     """(qid, label, lat, lon) from Wikidata, or empty strings.
 
@@ -285,13 +305,31 @@ def resolve(names: list[str], cache: dict[str, Keeper], online: bool = True,
         # An editor-supplied OSM id outranks whatever a search previously found:
         # adding one is how a wrong `auto` coordinate gets corrected, so it must
         # not be skipped just because the row already holds a coordinate.
-        needs_osm = entry.osm_id and entry.source != "osm-id"
-        if entry.located and not needs_osm:
+        pinned = ((entry.qid and entry.source != "wikidata-qid")
+                  or (entry.osm_id and entry.source != "osm-id"))
+        if entry.located and not pinned:
             continue
         if not online:
             continue
         country = countries.get(name, "")
         qid = label = lat = lon = source = ""
+
+        # Order of precedence: a QID set by hand, then an OSM id set by hand, then a
+        # search. Both identifiers are human decisions; the QID wins because it is
+        # what ends up in the graph as the close match anyway.
+        if entry.qid and entry.source != "wikidata-qid":
+            label, lat, lon = _wikidata_by_qid(entry.qid)
+            if lat:
+                entry.lat, entry.lon = lat, lon
+                entry.wd_label = label or entry.wd_label
+                entry.source, entry.status = "wikidata-qid", "verified"
+                fetched += 1
+                print(f"    {name[:44]:46} wd-qid   {entry.qid} {lat}, {lon}")
+                continue
+            print(f"    {name[:44]:46} {entry.qid} has no coordinate (P625); "
+                  f"leaving it unset rather than searching")
+            entry.note = f"{entry.note} || {entry.qid} carries no P625".strip(" |")
+            continue
 
         if entry.osm_id:                  # an editor already identified the object
             lat, lon = _osm_lookup(entry.osm_id)

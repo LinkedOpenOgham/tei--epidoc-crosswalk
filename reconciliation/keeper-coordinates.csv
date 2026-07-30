@@ -10,7 +10,7 @@ Dumfries Museum,,,Q5313798,Dumfries Museum,55.065200,-3.614600,wikidata,auto,1 s
 Dunrobin Castle Museum,,,Q72011449,Dunrobin Castle Museum,57.982333,-3.942489,wikidata,auto,1 stone(s); awaiting geocode
 Herbert Art Gallery and Museum,,,Q917262,Herbert Art Gallery and Museum,52.407222,-1.506222,wikidata,auto,1 stone(s); awaiting geocode
 Kerry County Museum,,,Q6394504,Kerry County Museum,52.266900,-9.705900,wikidata,auto,3 stone(s); awaiting geocode
-"Live Borders Library HQ, Selkirk",,way/1001969300,,,55.548299,-2.842340,osm-id,verified,Selkirk Library; identified by the editor
+"Live Borders Library HQ, Selkirk",,,Q140775537,Selkirk Library,55.548299,-2.842415,wikidata-qid,verified,"Selkirk Library. Mapped to Wikidata Q140775537 by the editor; the coordinate is taken from that item's P625. Previously resolved from OSM way/1001969300, which is kept here only as a record."
 Llansaint Chapel (All Saints' Church),,way/1060152504,,,51.747810,-4.341421,osm-id,verified,"Llansaint, Carmarthenshire -- NOT the Irish church the search found"
 Manx Museum,,,Q11988082,Manx Museum,54.154450,-4.481870,wikidata,auto,6 stone(s); awaiting geocode
 Margam Stones Museum,,,Q6759082,Margam Stones Museum,51.563270,-3.730570,wikidata,auto,2 stone(s); awaiting geocode

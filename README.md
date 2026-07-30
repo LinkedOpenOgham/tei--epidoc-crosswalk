@@ -274,6 +274,24 @@ unrestricted.
 resolver improvement can be applied without hand-editing the cache. Rows marked
 `verified` are never touched.
 
+### A hand-set identifier beats a search
+
+The cache takes two kinds of identifier, and either one closes the question a search
+would re-open. Precedence: **a QID set by hand, then an OSM id set by hand, then a
+search.** The QID wins where both are present, because it is what ends up in the
+graph as the close match anyway.
+
+```
+repository                         qid            osm_id
+Live Borders Library HQ, Selkirk   Q140775537
+Meffan Museum and Gallery, Forfar                 way/407744946
+```
+
+A pinned QID is resolved **directly** — one `wbgetentities` call for that item's
+`P625`, no searching. If the item carries no coordinate the row is left unset and
+says so, rather than quietly falling back to a name search; an identifier is put
+there to settle the matter, and a silent fallback would unsettle it again.
+
 ### An OSM id beats a search
 
 The cache carries an **`osm_id`** column (`way/404085430`). Where one is present the
@@ -325,7 +343,7 @@ The six that needed human eyes now carry one:
 | repository string | OSM object | what it fixes |
 |---|---|---|
 | `Museum nan Eilean in Steòrnabhagh \| Stornoway` | `way/382540720` | never resolved (pipe in the name) |
-| `Live Borders Library HQ, Selkirk` | `way/1001969300` | never resolved |
+| `Live Borders Library HQ, Selkirk` | `way/1001969300` | never resolved — since remapped to Wikidata `Q140775537` |
 | `Meffan Museum and Gallery, Forfar` | `way/407744946` | never resolved |
 | `Mount Mellary Abbey Heritage Center` | `way/226430858` | corpus spells Melleray with an A |
 | `St. Brynach's Church` | `way/404085430` | search found Llanfrynach, 100 km from Nevern |
