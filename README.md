@@ -306,6 +306,42 @@ The remaining names that did not resolve carry a qualifier the search chokes on 
 progressively simplified — parenthetical dropped, then everything after a comma or
 pipe — most specific first. That recovered three of the seven on the next run.
 
+### When a count disagrees with the corpus
+
+University College Cork holds **28** stones by the corpus's own reckoning, but only
+27 arcs were drawn. The missing one is I-COR-087, *Mount Music*: it names a keeper
+but its edition carries an **empty `<geo/>`**, so there is no findspot to draw from.
+
+A sidebar count that quietly disagrees with the corpus is worse than a stated gap,
+so the page now lists what it cannot draw, and the run says so:
+
+```
+  1 stone(s) name a keeper but have no findspot coordinate:
+    I-COR-087   CIIC  135  University College Cork
+```
+
+### Supplying a findspot the edition lacks
+
+Twenty editions carry an empty `<geo/>`. Where the findspot is known from elsewhere
+it can be supplied through `reconciliation/findspot-overrides.csv` — committed,
+provenanced, and applied only where the edition says nothing. An override that would
+replace an existing coordinate is **refused and reported**, not applied.
+
+For Mount Music the findspot comes from CISP (`MUSIC/1`), Macalister 1945, 131, and
+Wikidata `Q85394128`, with the history that explains the displacement: Windele found
+the stone prostrate in a field in 1845, set it up, later moved it to his own house,
+and it was acquired from his representatives for the college. The coordinate is the
+field, not the college — 40.7 km apart, which is now an arc rather than a silence.
+
+A supplied coordinate must never pass for the edition's own claim, so it is legible
+as different everywhere it appears: `ogham:geoStatus "supplied"` rather than
+`asserted`, an `ogham:coordinateSource` and a `P3_has_note` recording where it came
+from, a weighted `skos:closeMatch` to the QID, and a dashed ring on the map. The
+sidebar filter is accordingly no longer "only hedged findspots" but **"only
+findspots not plainly asserted"** — the editors' hedges and our supplements are
+different things, but they share the property that the edition does not simply state
+them.
+
 ### The modelling, and an ambiguity it resolves
 
 ```turtle

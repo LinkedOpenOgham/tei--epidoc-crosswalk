@@ -3480,6 +3480,39 @@
   },
   {
    "type": "Feature",
+   "id": "I-COR-087",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -9.083889,
+     51.926111
+    ]
+   },
+   "properties": {
+    "file": "I-COR-087.xml",
+    "stone_key": "I-COR-087",
+    "ogham_id": "I-COR-087",
+    "title": "Cnoc Amhráin | Mountmusic",
+    "ciic": "135",
+    "cisp": "MUSIC/1",
+    "cisp_url": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/music_1.html",
+    "smr": "CO082-095----",
+    "repository": "University College Cork",
+    "origplace_text": "Mountmusic (Cnoc Amhráin), Co. Cork, Ireland Coordinates unknown",
+    "pn_townland": "Mountmusic",
+    "pn_county": "Co. Cork",
+    "pn_country": "Ireland",
+    "pn_vernacular": "Cnoc Amhráin (ga)",
+    "geo_status": "supplied",
+    "gazetteer_uris": "https://www.logainm.ie/ga/9946",
+    "geo_source": "CISP MUSIC/1; Macalister 1945, 131; Wikidata Q85394128",
+    "geo_note": "Mount Music / Knockoran, West Muskerry, Co. Cork. The edition carries an empty <geo/>. Macalister 1945, 131: Windele found the stone prostrate in a field in 1845, set it up again, later moved it to his own house; acquired from his representatives and now in University College Cork. The coordinate is the field, i.e. the findspot, not the college.",
+    "geo_qid": "Q85394128",
+    "uri": "http://data.ogham.link/crm/findspot_I_COR_087"
+   }
+  },
+  {
+   "type": "Feature",
    "id": "I-COR-088",
    "geometry": {
     "type": "Point",

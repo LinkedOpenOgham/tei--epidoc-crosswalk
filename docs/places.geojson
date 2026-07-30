@@ -2694,6 +2694,33 @@
   },
   {
    "type": "Feature",
+   "id": "I-COR-087",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -9.083889,
+     51.926111
+    ]
+   },
+   "properties": {
+    "id": "I-COR-087",
+    "title": "Cnoc Amhráin | Mountmusic",
+    "ciic": "135",
+    "cisp": "MUSIC/1",
+    "smr": "CO082-095----",
+    "townland": "Mountmusic",
+    "county": "Co. Cork",
+    "country": "Ireland",
+    "vern": "Cnoc Amhráin (ga)",
+    "repo": "University College Cork",
+    "cispUrl": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/music_1.html",
+    "logainm": "https://www.logainm.ie/ga/9946",
+    "vague": true,
+    "vagueWhy": "supplied from CISP MUSIC/1; Macalister 1945, 131; Wikidata Q85394128"
+   }
+  },
+  {
+   "type": "Feature",
    "id": "I-COR-088",
    "geometry": {
     "type": "Point",

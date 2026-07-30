@@ -158,7 +158,7 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 
 ## 8. The place layer across the whole corpus (`places.crm.ttl`)
 
-`main.py` crosswalks a few stones in full; the place layer crosswalks **one aspect across every EpiDoc file it is given** (`--corpus`, default `data/`). This run read **506 files** (504 editions, 2 template/test files skipped) and produced **391 distinct places** over 12 administrative levels, 146 gazetteer links and 10037 triples.
+`main.py` crosswalks a few stones in full; the place layer crosswalks **one aspect across every EpiDoc file it is given** (`--corpus`, default `data/`). This run read **506 files** (504 editions, 2 template/test files skipped) and produced **391 distinct places** over 12 administrative levels, 146 gazetteer links and 10047 triples.
 
 | EpiDoc | Linked Open Ogham class | CIDOC CRM | property |
 |---|---|---|---|
@@ -180,13 +180,14 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 | `asserted` | 475 | bare coordinate pair, no hedge |
 | `qualified` | 6 | coordinates plus `@cert` or a textual hedge |
 | `textual_only` | 3 | prose in `<geo>`, no numbers |
-| `missing` | 20 | empty `<geo/>` |
+| `supplied` | 1 | empty in the edition, filled from an outside source |
+| `missing` | 19 | empty `<geo/>` |
 
 This is the **hand-over point to axis 2**: `tei--epidoc-amt` turns `geoStatus`/`geoCertainty` and the note into an `amt:weight`-bearing reified statement over `geo:asWKT`, bridged to `crminf:I2_Belief`. Axis 1 stays structural and only records that the editors hedged, and how.
 
 ### Side outputs
 
-`places.csv` (504 rows) and `places.geojson` (481 points, WGS84) are written from the same parse, so the table, the map layer and the graph cannot drift apart. Each GeoJSON feature carries the URI of its `data:findspot_*` node, which is how a map click gets back into the graph.
+`places.csv` (504 rows) and `places.geojson` (482 points, WGS84) are written from the same parse, so the table, the map layer and the graph cannot drift apart. Each GeoJSON feature carries the URI of its `data:findspot_*` node, which is how a map click gets back into the graph.
 
 ### Which corpus state this is
 
@@ -199,5 +200,5 @@ The editions are a living repository, so the graph records what it was built fro
 | editions | 504 |
 | tree | <https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML> |
 
-`py/webmap.py` publishes the same records as a Leaflet map in `docs/` (481 points), which is what GitHub Pages serves. Nothing there re-parses the XML, so map, table and graph cannot disagree.
+`py/webmap.py` publishes the same records as a Leaflet map in `docs/` (482 points), which is what GitHub Pages serves. Nothing there re-parses the XML, so map, table and graph cannot disagree.
 

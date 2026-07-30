@@ -68,6 +68,7 @@ CORPUS_DIR = DATA / "origin"                       # fetched editions (gitignore
 CORPUS_MANIFEST = DATA / "corpus-manifest.yaml"    # provenance record (committed)
 WORD_LIST = DATA / "words.csv"                     # McManus vocabulary (committed)
 KEEPER_CACHE = RECON / "keeper-coordinates.csv"    # geocoded institutions (committed)
+FINDSPOT_OVERRIDES = RECON / "findspot-overrides.csv"   # coordinates the editions lack
 # data/origin/ is the only location discovered automatically -- see corpus.resolve
 
 STONES = [
@@ -846,6 +847,14 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
         print(f"  {summary['total'] - summary['located']} still without coordinates -- see "
               f"{KEEPER_CACHE.relative_to(ROOT)}"
               + ("" if online else " (run without --offline to geocode)"))
+    unlinked = keepers.undrawable(place_records, cache)
+    # "not geocoded yet" is already reported above as a count; only a missing
+    # findspot is a separate fact, and there are few enough to name.
+    no_geo = [u for u in unlinked if "findspot" in u["why"]]
+    if no_geo:
+        print(f"  {len(no_geo)} stone(s) name a keeper but have no findspot coordinate:")
+        for u in no_geo:
+            print(f"    {u['ogham_id']:11} CIIC {u['ciic'] or '—':>4}  {u['keeper'][:34]}")
     flagged = keepers.check(links)
     if flagged:
         print(f"  {len(flagged)} geocode(s) worth checking:")
@@ -853,7 +862,7 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
             print(f"    {f['ogham_id']:11} {f['keeper'][:34]:36} {f['why']}")
     print(f"  -> wrote {(OUT / 'keepers.csv').relative_to(ROOT)} ({rows} rows)")
     print(f"  -> wrote {(OUT / 'keepers.crm.ttl').relative_to(ROOT)} ({len(g)} triples)")
-    return {"links": links, **gs, **summary}
+    return {"links": links, "undrawn": unlinked, **gs, **summary}
 
 
 def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
@@ -881,8 +890,8 @@ def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
         "findspots.html": [
             (str(place_summary["mapped"]), "findspots mapped"),
             (str(place_summary["places"]), "distinct places"),
-            (str(status.get("qualified", 0) + status.get("textual_only", 0)),
-             "hedged by the editors"),
+            (str(status.get("qualified", 0) + status.get("textual_only", 0)
+                 + status.get("supplied", 0)), "not plainly asserted"),
         ],
         "words.html": words_figs,
         "readings.html": readings_figs,
@@ -942,7 +951,8 @@ def main() -> None:
 
     if args.places_only:
         OUT.mkdir(parents=True, exist_ok=True)
-        summary = places.run(corpus_dir, OUT, root=ROOT, provenance=prov)
+        summary = places.run(corpus_dir, OUT, root=ROOT, provenance=prov,
+                             overrides=FINDSPOT_OVERRIDES)
         word_summary = None if args.no_words else run_words(corpus_dir, prov, args.no_map)
         if not args.no_map:
             webmap.build(summary["records"], DOCS, root=ROOT, provenance=prov)
@@ -957,7 +967,8 @@ def main() -> None:
                 shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
             ks = run_keepers(summary["records"], not args.offline, prov)
             summary["keeper_layer"] = ks
-            webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT, provenance=prov)
+            webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT,
+                                 provenance=prov, undrawn=ks["undrawn"] if ks else [])
             if ks:
                 shutil.copyfile(OUT / "keepers.csv", DOCS / "keepers.csv")
             webmap.build_landing(DOCS, landing_figures(summary, word_summary),
@@ -977,7 +988,8 @@ def main() -> None:
     else:
         results = [process(DATA / f, OUT / f"{b}.crm.ttl", cache=cache, online=online, verify=verify, resolved=resolved, overrides=overrides)
                    for f, b in STONES]
-        places_summary = None if args.no_places else places.run(corpus_dir, OUT, root=ROOT, provenance=prov)
+        places_summary = None if args.no_places else places.run(corpus_dir, OUT, root=ROOT, provenance=prov,
+                             overrides=FINDSPOT_OVERRIDES)
         word_summary = (None if (args.no_words or not places_summary)
                         else run_words(corpus_dir, prov, args.no_map))
         if places_summary and not args.no_map:
@@ -994,7 +1006,8 @@ def main() -> None:
                 shutil.copyfile(OUT / "readings.csv", DOCS / "readings.csv")
             ks = run_keepers(places_summary["records"], online, prov)
             places_summary["keeper_layer"] = ks
-            webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT, provenance=prov)
+            webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT,
+                                 provenance=prov, undrawn=ks["undrawn"] if ks else [])
             if ks:
                 shutil.copyfile(OUT / "keepers.csv", DOCS / "keepers.csv")
 

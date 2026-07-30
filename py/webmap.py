@@ -680,8 +680,8 @@ __NAV__
 
       <fieldset>
         <legend class="field">Certainty</legend>
-        <label class="opt"><input type="checkbox" id="onlyVague"> Only hedged findspots
-          <span class="n" id="vagueN"></span></label>
+        <label class="opt"><input type="checkbox" id="onlyVague"> Only findspots not
+          plainly asserted <span class="n" id="vagueN"></span></label>
       </fieldset>
 
       <p class="field" style="margin-top:20px">Display</p>
@@ -699,10 +699,12 @@ __NAV__
         <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
       </div>
 
-      <p class="note">Dashed rings mark findspots the editors hedged — either
-      <code>@cert="low"</code> on <code>&lt;geo&gt;</code> or a qualifier such as
-      “approximate” written into the coordinate string. In the graph these carry
-      <code>ogham:geoStatus</code>; the weight over them is added in axis 2.</p>
+      <p class="note">Dashed rings mark findspots the edition does not plainly
+      assert — either the editors hedged (<code>@cert="low"</code>, or a qualifier
+      such as “approximate” written into the coordinate string), or the coordinate was
+      supplied from an outside source because the edition leaves <code>&lt;geo&gt;</code>
+      empty. Both carry <code>ogham:geoStatus</code> in the graph; a supplied one also
+      records where it came from.</p>
 
       <details>
         <summary id="missingSummary">Records without coordinates</summary>
@@ -1206,6 +1208,7 @@ __NAV__
 
 KEEPERS_JS = r"""
 const LINKS = __LINKS__;
+const UNDRAWN = __UNDRAWN__;
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const STAY = "#5b8c5a", CROSS = "#b0413e", KEEPER_COLOUR = "#3f7d8c";
@@ -1333,6 +1336,17 @@ function buildList(){
 }
 
 document.getElementById("crossN").textContent = LINKS.filter(r => r.cross).length;
+// A stone can name a keeper and still have no arc -- say so rather than let the
+// per-keeper counts quietly disagree with the corpus.
+if (UNDRAWN.length){
+  const box = document.getElementById("undrawn");
+  box.style.display = "block";
+  document.getElementById("undrawnSummary").textContent =
+    `${UNDRAWN.length} stone${UNDRAWN.length === 1 ? "" : "s"} named a keeper but cannot be drawn`;
+  document.getElementById("undrawnList").innerHTML = UNDRAWN.map(u =>
+    `<li>${esc(u.id)} — ${esc(u.keeper)}<br><span style="color:#6d7b77">${esc(u.why)}</span></li>`
+  ).join("");
+}
 document.getElementById("onlyCross").addEventListener("change", draw);
 if (!LINKS.length) document.getElementById("empty").style.display = "block";
 const redraw = draw;
@@ -1427,6 +1441,11 @@ __NAV__
       </div>
 
       <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <details id="undrawn" style="display:none;margin-bottom:14px">
+        <summary id="undrawnSummary"></summary>
+        <ul id="undrawnList"></ul>
+      </details>
 
       <fieldset>
         <legend class="field">Distance</legend>
@@ -1486,6 +1505,7 @@ __NAV__
 
 KEEPERS_JS = r"""
 const LINKS = __LINKS__;
+const UNDRAWN = __UNDRAWN__;
 
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const STAY = "#5b8c5a", CROSS = "#b0413e", KEEPER_COLOUR = "#3f7d8c";
@@ -1613,6 +1633,17 @@ function buildList(){
 }
 
 document.getElementById("crossN").textContent = LINKS.filter(r => r.cross).length;
+// A stone can name a keeper and still have no arc -- say so rather than let the
+// per-keeper counts quietly disagree with the corpus.
+if (UNDRAWN.length){
+  const box = document.getElementById("undrawn");
+  box.style.display = "block";
+  document.getElementById("undrawnSummary").textContent =
+    `${UNDRAWN.length} stone${UNDRAWN.length === 1 ? "" : "s"} named a keeper but cannot be drawn`;
+  document.getElementById("undrawnList").innerHTML = UNDRAWN.map(u =>
+    `<li>${esc(u.id)} — ${esc(u.keeper)}<br><span style="color:#6d7b77">${esc(u.why)}</span></li>`
+  ).join("");
+}
 document.getElementById("onlyCross").addEventListener("change", draw);
 if (!LINKS.length) document.getElementById("empty").style.display = "block";
 const redraw = draw;
@@ -1707,6 +1738,11 @@ __NAV__
       </div>
 
       <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <details id="undrawn" style="display:none;margin-bottom:14px">
+        <summary id="undrawnSummary"></summary>
+        <ul id="undrawnList"></ul>
+      </details>
 
       <fieldset>
         <legend class="field">Distance</legend>
@@ -2369,7 +2405,8 @@ def build_readings(analysis: list[dict], place_records: list[dict], summary: dic
 
 
 def build_keepers(links: list[dict], docs: Path, root: Path | None = None,
-                  provenance: dict | None = None) -> dict:
+                  provenance: dict | None = None,
+                  undrawn: list[dict] | None = None) -> dict:
     """docs/keepers.html -- findspot to present keeper, as arcs.
 
     Written even when nothing is geocoded yet: the page then says so and gives the
@@ -2388,6 +2425,9 @@ def build_keepers(links: list[dict], docs: Path, root: Path | None = None,
     html = (_page(HEAD_KEEPERS, KEEPERS_BODY, KEEPERS_JS)
             .replace("__NAV__", nav_html("keepers.html"))
             .replace("__LINKS__", json.dumps(payload, ensure_ascii=False, separators=(",", ":")))
+            .replace("__UNDRAWN__", json.dumps(
+                [{"id": u["ogham_id"], "keeper": u["keeper"], "why": u["why"]}
+                 for u in (undrawn or [])], ensure_ascii=False, separators=(",", ":")))
             .replace("__BUILT__", dt.date.today().isoformat())
             .replace("__PROV__", _provenance_html(provenance or {})))
     (docs / "keepers.html").write_text(html, encoding="utf-8")
@@ -2481,10 +2521,16 @@ def _slim(rec: dict) -> dict:
     gaz = (rec.get("gazetteer_uris") or "").split(" | ")[0]
     if gaz:
         out["logainm"] = gaz
-    why = rec.get("geo_hedge") or ('cert="low"' if rec.get("geo_cert") else "")
-    if why:
+    # A dashed ring means "the edition does not plainly assert this point": either
+    # the editors hedged, or the coordinate came from somewhere else entirely.
+    if rec.get("geo_status") == "supplied":
         out["vague"] = True
-        out["vagueWhy"] = why
+        out["vagueWhy"] = "supplied from " + (rec.get("geo_source") or "an outside source")
+    else:
+        why = rec.get("geo_hedge") or ('cert="low"' if rec.get("geo_cert") else "")
+        if why:
+            out["vague"] = True
+            out["vagueWhy"] = why
     return out
 
 

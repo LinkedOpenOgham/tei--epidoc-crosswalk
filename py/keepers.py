@@ -409,6 +409,31 @@ def link(place_records: list[dict], cache: dict[str, Keeper]) -> list[dict]:
     return out
 
 
+def undrawable(place_records: list[dict], cache: dict[str, Keeper]) -> list[dict]:
+    """Stones that name a keeper but cannot be drawn, and why.
+
+    A count in the sidebar that quietly disagrees with the corpus is worse than a
+    gap that is stated: University College Cork holds 28 stones, but one of them
+    (I-COR-087, Mountmusic) has an empty <geo/>, so only 27 arcs exist.
+    """
+    out = []
+    for rec in place_records:
+        raw = (rec.get("repository") or "").strip()
+        if not raw:
+            continue
+        name = canonical(raw, cache)
+        keeper = cache.get(name)
+        if rec.get("lat") is None:
+            why = "no findspot coordinate in the edition"
+        elif not keeper or not keeper.located:
+            why = "the institution is not geocoded yet"
+        else:
+            continue
+        out.append({"ogham_id": rec.get("ogham_id", ""), "ciic": rec.get("ciic", ""),
+                    "title": rec.get("title", ""), "keeper": raw, "why": why})
+    return out
+
+
 CSV_FIELDS = ["ogham_id", "ciic", "title", "findspot_county", "findspot_country",
               "findspot_lat", "findspot_lon", "keeper", "keeper_qid",
               "keeper_lat", "keeper_lon", "keeper_source", "distance_km"]

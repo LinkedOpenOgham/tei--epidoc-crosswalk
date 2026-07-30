@@ -8,6 +8,9 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix teiapp: <http://ontology.ogham.link/tei-application/> .
 
+ogham:coordinateSource a owl:AnnotationProperty ;
+    rdfs:label "where a supplied findspot coordinate came from" .
+
 ogham:corpusCommit a owl:AnnotationProperty ;
     rdfs:label "upstream OG(H)AM commit the graph was derived from" .
 

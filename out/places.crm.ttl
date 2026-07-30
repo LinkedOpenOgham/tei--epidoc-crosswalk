@@ -9,6 +9,13 @@
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
+data:match_findspot_I_COR_087 a rdf:Statement ;
+    amt:weight 1.00 ;
+    ogham:matchStatus "verified" ;
+    rdf:object <http://www.wikidata.org/entity/Q85394128> ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:findspot_I_COR_087 .
+
 data:match_place_Ireland_Co_Carlow_Glebe_Clonmore_3008 a rdf:Statement ;
     amt:weight 1.00 ;
     ogham:matchConfidence 1.00 ;
@@ -1465,7 +1472,7 @@ data:places-graph a prov:Entity ;
     ogham:corpusCommit "bb62ccd146cc34e75c1304e60204744e742e3109" ;
     ogham:corpusCommitDate "2026-07-02T12:07:30+01:00" ;
     ogham:corpusEditionCount 504 ;
-    prov:generatedAtTime "2026-07-30T17:05:13+00:00"^^xsd:dateTime ;
+    prov:generatedAtTime "2026-07-30T17:13:28+00:00"^^xsd:dateTime ;
     prov:wasDerivedFrom <https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML> .
 
 data:stone_E_CON_001 a ogham:OghamStone,
@@ -5503,13 +5510,6 @@ data:findspot_I_COR_086 a ogham:Place,
     crm:P3_has_note "national grid: 514843, 564927" ;
     crm:P89_falls_within data:place_Ireland_Co_Cork_Kealvaugh_More ;
     geo:asWKT "POINT(-9.2355 51.83004)"^^geo:wktLiteral .
-
-data:findspot_I_COR_087 a ogham:Place,
-        crm:E53_Place ;
-    rdfs:label "findspot of I-COR-087 (Mountmusic, Co. Cork, Ireland)" ;
-    ogham:geoStatus "missing" ;
-    crm:P2_has_type data:placetype_findspot ;
-    crm:P89_falls_within data:place_Ireland_Co_Cork_Mountmusic .
 
 data:findspot_I_COR_088 a ogham:Place,
         crm:E53_Place ;
@@ -9990,6 +9990,17 @@ data:placetype_graveyard a crm:E55_Type ;
 
 data:placetype_lake a crm:E55_Type ;
     rdfs:label "lake"@en .
+
+data:findspot_I_COR_087 a ogham:Place,
+        crm:E53_Place ;
+    rdfs:label "findspot of I-COR-087 (Mountmusic, Co. Cork, Ireland)" ;
+    ogham:coordinateSource "CISP MUSIC/1; Macalister 1945, 131; Wikidata Q85394128" ;
+    ogham:geoStatus "supplied" ;
+    crm:P2_has_type data:placetype_findspot ;
+    crm:P3_has_note "Mount Music / Knockoran, West Muskerry, Co. Cork. The edition carries an empty <geo/>. Macalister 1945, 131: Windele found the stone prostrate in a field in 1845, set it up again, later moved it to his own house; acquired from his representatives and now in University College Cork. The coordinate is the field, i.e. the findspot, not the college." ;
+    crm:P89_falls_within data:place_Ireland_Co_Cork_Mountmusic ;
+    geo:asWKT "POINT(-9.083889 51.926111)"^^geo:wktLiteral ;
+    skos:closeMatch <http://www.wikidata.org/entity/Q85394128> .
 
 data:place_Ireland_Co_Carlow_Glebe_Clonmore a ogham:Place,
         crm:E53_Place ;

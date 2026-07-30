@@ -422,6 +422,23 @@ def build_place_graph(records: list[dict], prov: dict | None = None) -> tuple[Gr
             g.add((findspot, GEO.asWKT,
                    Literal(f"POINT({rec['lon']} {rec['lat']})", datatype=GEO.wktLiteral)))
         g.add((findspot, OGHAM.geoStatus, Literal(rec.get("geo_status", "missing"))))
+        if rec.get("geo_status") == "supplied":
+            # not the edition's claim: record where it came from and how far it is trusted
+            if rec.get("geo_source"):
+                g.add((findspot, OGHAM.coordinateSource, Literal(rec["geo_source"])))
+            if rec.get("geo_note"):
+                g.add((findspot, CRM["P3_has_note"], Literal(rec["geo_note"])))
+            if rec.get("geo_qid"):
+                target = URIRef("http://www.wikidata.org/entity/" + rec["geo_qid"])
+                g.add((findspot, SKOS.closeMatch, target))
+                st = DATA_NS[f"match_findspot_{sid}"]
+                g.add((st, RDF.type, RDF.Statement))
+                g.add((st, RDF.subject, findspot))
+                g.add((st, RDF.predicate, SKOS.closeMatch))
+                g.add((st, RDF.object, target))
+                weight = "1.00" if rec.get("geo_supplied_status") == "verified" else "0.70"
+                g.add((st, AMT.weight, Literal(weight, datatype=XSD.decimal)))
+                g.add((st, OGHAM.matchStatus, Literal(rec.get("geo_supplied_status", "auto"))))
         # the axis-2 hook: the editors' own hedge, verbatim
         if rec.get("geo_hedge"):
             g.add((findspot, CRM["P3_has_note"], Literal(rec["geo_hedge"])))
@@ -451,9 +468,46 @@ def add_ontology_terms(g: Graph) -> None:
         ("corpusCommit", "upstream OG(H)AM commit the graph was derived from"),
         ("corpusCommitDate", "date of that upstream commit"),
         ("corpusEditionCount", "number of editions in that corpus state"),
+        ("coordinateSource", "where a supplied findspot coordinate came from"),
     ):
         g.add((OGHAM[prop], RDF.type, OWL.AnnotationProperty))
         g.add((OGHAM[prop], RDFS.label, Literal(lbl)))
+
+
+# --- coordinates supplied from outside the edition ----------------------------
+# Twenty editions carry an empty <geo/>. Where the findspot is known from CISP,
+# Macalister or Wikidata it can be supplied here rather than left blank -- but it
+# must never look like something the edition asserts, so it gets its own
+# geoStatus, keeps its source in a note, and is drawn like a hedged findspot.
+OVERRIDE_FIELDS = ["ogham_id", "lat", "lon", "qid", "source", "status", "note"]
+
+
+def load_overrides(path: Path) -> dict[str, dict]:
+    if not path.exists():
+        return {}
+    with path.open(encoding="utf-8-sig", newline="") as fh:
+        return {row["ogham_id"]: row for row in csv.DictReader(fh)
+                if row.get("ogham_id") and row.get("lat") and row.get("lon")}
+
+
+def apply_overrides(records: list[dict], overrides: dict[str, dict]) -> dict:
+    """Fill in findspots the edition leaves empty. Never silently replaces one."""
+    applied, refused = [], []
+    for rec in records:
+        row = overrides.get(rec.get("ogham_id", ""))
+        if not row:
+            continue
+        if rec.get("lat") is not None:
+            refused.append(rec["ogham_id"])      # the edition has its own coordinate
+            continue
+        rec["lat"], rec["lon"] = float(row["lat"]), float(row["lon"])
+        rec["geo_status"] = "supplied"
+        rec["geo_source"] = row.get("source", "")
+        rec["geo_note"] = row.get("note", "")
+        rec["geo_qid"] = row.get("qid", "")
+        rec["geo_supplied_status"] = row.get("status", "auto")
+        applied.append(rec["ogham_id"])
+    return {"applied": applied, "refused": refused}
 
 
 # --- tabular / spatial exports ------------------------------------------------
@@ -461,7 +515,7 @@ def add_ontology_terms(g: Graph) -> None:
 CSV_FIELDS = (
     ["file", "ogham_id", "stone_key", "title", "ciic", "cisp", "cisp_url", "tm", "smr", "repository"]
     + [f"pn_{lvl}" for lvl in PLACE_LEVELS]
-    + ["pn_vernacular", "gazetteer_uris", "geo_raw", "geo_cert", "geo_hedge",
+    + ["pn_vernacular", "geo_source", "geo_note", "geo_qid", "gazetteer_uris", "geo_raw", "geo_cert", "geo_hedge",
        "geo_status", "lat", "lon", "grid_raw", "origplace_text"]
 )
 
@@ -517,7 +571,7 @@ def collect_files(corpus: Path) -> list[Path]:
 
 
 def run(corpus: Path, out_dir: Path, root: Path | None = None,
-        provenance: dict | None = None) -> dict:
+        provenance: dict | None = None, overrides: Path | None = None) -> dict:
     """Parse the corpus, emit places.crm.ttl / places.csv / places.geojson."""
     files = collect_files(corpus)
     RECOVERED.clear()
@@ -532,6 +586,13 @@ def run(corpus: Path, out_dir: Path, root: Path | None = None,
               f"(kept, content intact):")
         for line in RECOVERED:
             print(f"    {line}")
+
+    ov = apply_overrides(records, load_overrides(overrides)) if overrides else {"applied": [], "refused": []}
+    if ov["applied"]:
+        print(f"  supplied {len(ov['applied'])} findspot(s) the edition leaves empty: "
+              f"{', '.join(ov['applied'])}")
+    for oid in ov["refused"]:
+        print(f"  ! override for {oid} ignored: the edition already gives a coordinate")
 
     g, summary = build_place_graph(records, provenance)
     ttl = out_dir / "places.crm.ttl"
@@ -594,6 +655,7 @@ def readme_section(summary: dict) -> list[str]:
     for key, meaning in (("asserted", "bare coordinate pair, no hedge"),
                          ("qualified", "coordinates plus `@cert` or a textual hedge"),
                          ("textual_only", "prose in `<geo>`, no numbers"),
+                         ("supplied", "empty in the edition, filled from an outside source"),
                          ("missing", "empty `<geo/>`"),
                          ("no_origplace", "no `<origPlace>` in the file")):
         if st.get(key):

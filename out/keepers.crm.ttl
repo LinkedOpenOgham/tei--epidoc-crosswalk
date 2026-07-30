@@ -404,6 +404,9 @@ data:stone_I_COR_079 crm:P50_has_current_keeper data:keeper_University_College_C
 data:stone_I_COR_080 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
     crm:P55_has_current_location data:place_keeper_University_College_Cork .
 
+data:stone_I_COR_087 crm:P50_has_current_keeper data:keeper_University_College_Cork ;
+    crm:P55_has_current_location data:place_keeper_University_College_Cork .
+
 data:stone_I_COR_088 crm:P50_has_current_keeper data:keeper_National_Museum_of_Ireland ;
     crm:P55_has_current_location data:place_keeper_National_Museum_of_Ireland .
 
