@@ -54,9 +54,51 @@ findspots:
   I-COR-087:
     lat: 51.926111
     lon: -9.083889
-    note: 'Mount Music / Knockoran, West Muskerry, Co. Cork. The edition carries an empty <geo/>.
-      Macalister 1945, 131: Windele found the stone prostrate in a field in 1845, set it up
-      again, later moved it to his own house; acquired from his representatives and now in University
-      College Cork. The coordinate is the field, i.e. the findspot, not the college.'
+    note: 'Mount Music / Knockoran, West Muskerry, Co. Cork. The edition carries an empty
+      <geo/>. Macalister 1945, 131: Windele found the stone prostrate in a field in 1845,
+      set it up again, later moved it to his own house; acquired from his representatives
+      and now in University College Cork. The coordinate is the field, i.e. the findspot,
+      not the college.'
     qid: Q85394128
     source: CISP MUSIC/1; Macalister 1945, 131; Wikidata Q85394128
+  I-KER-042:
+    note: 'Brandon Mountain, Co. Kerry. Recorded on the Literagh side of Brandon Point by
+      Windele and by Hitchcock, neither of whom could examine it: it stood on the extreme
+      verge of a cliff. A landslide in the winter of 1849 made it inaccessible, and Macalister
+      understood a second slide to have carried it into the sea. The NMS record states outright
+      that the precise location has not been identified. Checked; not recoverable.'
+    source: NMS SMR KE026-025----; Macalister 1945, 167; Brash 1879, 196 and 226; Cuppage
+      1986, no. 798
+    status: not-recoverable
+  I-KER-043:
+    note: 'Burnham, Co. Kerry. The edition records "(original provenance is unrecorded)" in
+      the <geo> field. The stone now stands at Burnham East, which belongs in the keeper layer,
+      not here: supplying that as a findspot would assert exactly what the editors marked
+      as unknown. Checked; not recoverable.'
+    source: the edition itself; CISP BRHAM/1
+    status: not-recoverable
+  I-KER-083:
+    lat: 52.063851
+    lon: -9.720612
+    note: Kilgobnet, Dunkerron North, Co. Kerry. Casey found it in 1850 "standing in the middle
+      of a field ... about eight miles west of Killarney and south of the river Laune". Macalister
+      argued it was a confusion with a Kilcoolaght stone; O'Sullivan and Sheehan 1996, 242-243,
+      treat it as genuine. The converted grid reference falls 140 m from I-KER-084, the other
+      stone of this site, which is the expected separation and cross-checks the conversion.
+      NOT the NMS viewer value 46.488181, -15.817314, which is a default lying 764 km out
+      in the Atlantic.
+    source: CISP KLGOB/2, Grid Ref V 820 915 (Irish Grid, converted); Macalister 1945, 205-208
+  I-KER-151:
+    lat: 52.122077
+    lon: -10.328706
+    note: Baile Mor Thiar, Co. Kerry. Found in 2013 while digging a pit beside a mobile home;
+      a sandstone fragment 0.25 m long with a scholastic inscription reading perhaps SIGA...
+      Currently in private possession. Compiled by Fionnbarr Moore.
+    source: NMS SMR KE053-099----, ITM 440544 599247 (converted; matches the published lat/lon
+      exactly)
+  I-KER-153:
+    note: '"Unknown (Dunraven Collection)", Co. Kerry. No CIIC, no CISP, no SMR and no townland:
+      the stone is known through the collection of the Earl of Dunraven and its origin was
+      already unrecorded when it entered it. Checked; not recoverable.'
+    source: the edition itself
+    status: not-recoverable

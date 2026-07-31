@@ -87,6 +87,7 @@ def _row(rec: dict) -> dict:
         "geo_raw": (rec.get("geo_raw") or "").strip(),
         "gazetteer": rec.get("gazetteer_uris", ""),
         "status": rec.get("geo_status", ""),
+        "settled": rec.get("geo_settled", ""),
     }
 
 
@@ -117,7 +118,10 @@ def build(place_records: list[dict], word_records: list[dict], path: Path) -> di
     rows = [_row(r) for r in place_records]
     by_id = {r["id"]: r for r in rows}
 
-    no_geo = [r for r in rows if r["status"] in ("missing", "textual_only")]
+    # A stone someone has already searched for and closed is not an open task.
+    settled = [r for r in rows if r["settled"]]
+    no_geo = [r for r in rows
+              if r["status"] in ("missing", "textual_only") and not r["settled"]]
     numbered = [r for r in no_geo if r["series"] == ""]
     lost = [r for r in no_geo if r["series"] == "L"]
     doubtful = [r for r in no_geo if r["series"] == "X"]
@@ -180,7 +184,24 @@ def build(place_records: list[dict], word_records: list[dict], path: Path) -> di
     by_state = {}
     for r in broken:
         by_state.setdefault(r["cisp_url_state"], []).append(r)
-    add(f"## 6. CISP links that do not resolve — {len(broken)}\n")
+    add(f"## 6. Already searched for, and closed \u2014 {len(settled)}\n")
+    add("Findspots someone has looked for and concluded cannot be recovered. They are "
+        "listed so the next person does not spend the same afternoon, and so the "
+        "reasoning that closed them is not lost. Recorded in "
+        "`reconciliation/identifiers.yaml` with `status: not-recoverable`.\n")
+    if settled:
+        add("| stone | why it is closed |")
+        add("|---|---|")
+        for r in sorted(settled, key=lambda x: x["id"]):
+            why = r["settled"].replace("|", "\\|")
+            if len(why) > 260:
+                why = why[:257].rsplit(" ", 1)[0] + "\u2026"
+            add(f"| `{r['id']}` | {why} |")
+        add("")
+    else:
+        add("_none yet_\n")
+
+    add(f"## 7. CISP links that do not resolve — {len(broken)}\n")
     add("Not a research task but a corpus fix. CISP publishes a stone at "
         "`.../stone/wvale_1.html`; the `corresp` on `<idno type=\"CISP\">` often carries "
         "the *identifier* form instead, or nothing at all.\n")
@@ -203,6 +224,7 @@ def build(place_records: list[dict], word_records: list[dict], path: Path) -> di
         "lost_without_findspot": len(lost),
         "doubtful_without_findspot": len(doubtful),
         "without_edition_text": len(no_text),
+        "closed_as_not_recoverable": len(settled),
         "broken_cisp_links": len(broken),
     }
     add("## Summary\n")

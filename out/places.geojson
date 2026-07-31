@@ -6438,6 +6438,36 @@
   },
   {
    "type": "Feature",
+   "id": "I-KER-083",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -9.720612,
+     52.063851
+    ]
+   },
+   "properties": {
+    "file": "I-KER-083.xml",
+    "stone_key": "I-KER-083",
+    "ogham_id": "I-KER-083",
+    "title": "Cill Ghobnait |Kilgobnet",
+    "ciic": "214",
+    "cisp": "KLGOB/2",
+    "cisp_url": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/KLGOB/2.html",
+    "tm": "www.trismegistos.org/text/172618",
+    "smr": "KE065-116----",
+    "origplace_text": "Kilgobnet (Cill Ghobnait https://www.logainm.ie/en/23483) Co. Kerry Ireland ITM coordinates:",
+    "pn_townland": "Kilgobnet (Cill Ghobnait)",
+    "pn_county": "Co. Kerry",
+    "pn_country": "Ireland",
+    "geo_status": "supplied",
+    "geo_source": "CISP KLGOB/2, Grid Ref V 820 915 (Irish Grid, converted); Macalister 1945, 205-208",
+    "geo_note": "Kilgobnet, Dunkerron North, Co. Kerry. Casey found it in 1850 \"standing in the middle of a field ... about eight miles west of Killarney and south of the river Laune\". Macalister argued it was a confusion with a Kilcoolaght stone; O'Sullivan and Sheehan 1996, 242-243, treat it as genuine. The converted grid reference falls 140 m from I-KER-084, the other stone of this site, which is the expected separation and cross-checks the conversion. NOT the NMS viewer value 46.488181, -15.817314, which is a default lying 764 km out in the Atlantic.",
+    "uri": "http://data.ogham.link/crm/findspot_I_KER_083"
+   }
+  },
+  {
+   "type": "Feature",
    "id": "I-KER-084",
    "geometry": {
     "type": "Point",
@@ -8404,6 +8434,33 @@
     "geo_status": "asserted",
     "gazetteer_uris": "https://www.logainm.ie/en/22772",
     "uri": "http://data.ogham.link/crm/findspot_I_KER_150"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "I-KER-151",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -10.328706,
+     52.122077
+    ]
+   },
+   "properties": {
+    "file": "I-KER-151.xml",
+    "stone_key": "I-KER-151",
+    "ogham_id": "I-KER-151",
+    "title": "BAILE MÓR THIAR",
+    "cisp_url": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/.html",
+    "smr": "KE053-099----",
+    "origplace_text": "BAILE MÓR THIAR Co. Kerry Ireland ITM coordinates:",
+    "pn_townland": "BAILE MÓR THIAR",
+    "pn_county": "Co. Kerry",
+    "pn_country": "Ireland",
+    "geo_status": "supplied",
+    "geo_source": "NMS SMR KE053-099----, ITM 440544 599247 (converted; matches the published lat/lon exactly)",
+    "geo_note": "Baile Mor Thiar, Co. Kerry. Found in 2013 while digging a pit beside a mobile home; a sandstone fragment 0.25 m long with a scholastic inscription reading perhaps SIGA... Currently in private possession. Compiled by Fionnbarr Moore.",
+    "uri": "http://data.ogham.link/crm/findspot_I_KER_151"
    }
   },
   {

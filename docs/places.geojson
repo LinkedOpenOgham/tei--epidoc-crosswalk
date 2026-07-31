@@ -4993,6 +4993,31 @@
   },
   {
    "type": "Feature",
+   "id": "I-KER-083",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -9.720612,
+     52.063851
+    ]
+   },
+   "properties": {
+    "id": "I-KER-083",
+    "title": "Cill Ghobnait |Kilgobnet",
+    "ciic": "214",
+    "cisp": "KLGOB/2",
+    "tm": "www.trismegistos.org/text/172618",
+    "smr": "KE065-116----",
+    "townland": "Kilgobnet (Cill Ghobnait)",
+    "county": "Co. Kerry",
+    "country": "Ireland",
+    "cispUrl": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/KLGOB/2.html",
+    "vague": true,
+    "vagueWhy": "supplied from CISP KLGOB/2, Grid Ref V 820 915 (Irish Grid, converted); Macalister 1945, 205-208"
+   }
+  },
+  {
+   "type": "Feature",
    "id": "I-KER-084",
    "geometry": {
     "type": "Point",
@@ -6511,6 +6536,28 @@
     "repo": "Kerry County Museum",
     "cispUrl": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/.html",
     "logainm": "https://www.logainm.ie/en/22772"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "I-KER-151",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -10.328706,
+     52.122077
+    ]
+   },
+   "properties": {
+    "id": "I-KER-151",
+    "title": "BAILE MÓR THIAR",
+    "smr": "KE053-099----",
+    "townland": "BAILE MÓR THIAR",
+    "county": "Co. Kerry",
+    "country": "Ireland",
+    "cispUrl": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/.html",
+    "vague": true,
+    "vagueWhy": "supplied from NMS SMR KE053-099----, ITM 440544 599247 (converted; matches the published lat/lon exactly)"
    }
   },
   {

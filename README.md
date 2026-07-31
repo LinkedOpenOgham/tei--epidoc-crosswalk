@@ -529,7 +529,7 @@ opposite of the point. So the tiers run:
 
 | tier | stones | |
 |---|---|---|
-| extant, no findspot | 5 | the real gaps — all but one in Co. Kerry |
+| extant, no findspot | 0 | *cleared* — two supplied, three closed as not recoverable |
 | coordinates the editors hedged | 6 | a better source may firm them up, or confirm the hedge |
 | lost stones, no findspot | 7 | the stone is gone; the field may still be recorded |
 | doubtful stones, no findspot | 10 | lowest priority, and sometimes the right answer is to leave it |
@@ -538,6 +538,41 @@ opposite of the point. So the tiers run:
 Where the edition says the provenance is *unrecorded* — I-KER-043 does — the row is
 marked **stated as not recoverable**, because that is a finding rather than an
 omission and should not cost anyone an afternoon.
+
+### Grid references, and one coordinate that was not one
+
+CISP publishes a *Grid Ref* on the **Irish Grid** (`V 820 915`); the NMS Historic
+Environment Viewer publishes **ITM** (`440544, 599247`). Neither is WGS84, and the
+Irish Grid needs a datum shift as well as a projection inverse — skip it and you are
+50 to 100 m out. `py/grid.py` does both and **checks itself on import** against a
+point where the source publishes the answer as well as the input, so a silent
+regression in the formulae cannot pass.
+
+The check that mattered was independent, though. `V 820 915` for I-KER-083 converts
+to `52.063851, -9.720612` — **140 m from I-KER-084**, the other stone of the same
+Kilgobnet site, whose coordinate the corpus already carried. That is the separation
+two stones at one site should have, and it is within the 100 m a six-figure grid
+reference resolves to.
+
+It also caught a bad datum. Three of the NMS extracts carried the same value,
+`46.488181, -15.817314` — a viewer default lying **764 km out in the Atlantic**,
+west of Biscay. Identical values repeated across unrelated records are the tell.
+
+### A negative result is a result
+
+Three of the five could not be recovered, and each for a different and documented
+reason: Brandon Mountain went over a cliff in the landslide of 1849 and the NMS
+record states outright that the location has not been identified; Burnham's edition
+says the original provenance is unrecorded, so supplying one would assert exactly
+what the editors marked unknown; the Dunraven stone had no recorded origin when it
+entered the collection.
+
+Those are recorded in `identifiers.yaml` with `status: not-recoverable` and the
+reasoning attached, and the worklist retires them into their own section. Without
+somewhere to put a negative result, the same five stones would be offered to the
+next person and the afternoon that closed them would live nowhere.
+
+**Tier 1 of the worklist is now empty.**
 
 ### A corpus fix that is not research
 
@@ -801,6 +836,7 @@ tei--epidoc-crosswalk/
 │   ├── places.py              # corpus-wide place layer (E53 + GeoSPARQL)
 │   ├── words.py               # formulaic vocabulary across all readings
 │   ├── dissent.py             # comparison of competing readings
+│   ├── grid.py                # Irish Grid and ITM to WGS84, self-checking
 │   ├── worklist.py            # what is still missing, by priority
 │   ├── keepers.py             # geocoding of the holding institutions
 │   ├── setting.py             # present setting, read from the observed provenance

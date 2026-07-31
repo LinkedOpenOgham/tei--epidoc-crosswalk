@@ -494,6 +494,18 @@ def load_overrides(entries: dict) -> dict[str, dict]:
             and row.get("lon") is not None}
 
 
+def load_settled(entries: dict) -> dict[str, dict]:
+    """Findspots someone has looked for and concluded cannot be recovered.
+
+    A negative result is a result. Without somewhere to record it, the worklist
+    would keep offering the same five stones to the next person, and the reasoning
+    that closed them -- a landslide in 1849, an edition that says the provenance is
+    unrecorded -- would live nowhere.
+    """
+    return {oid: row for oid, row in (entries or {}).items()
+            if isinstance(row, dict) and row.get("status") == "not-recoverable"}
+
+
 def apply_overrides(records: list[dict], overrides: dict[str, dict]) -> dict:
     """Fill in findspots the edition leaves empty. Never silently replaces one."""
     applied, refused = [], []
@@ -519,7 +531,8 @@ def apply_overrides(records: list[dict], overrides: dict[str, dict]) -> dict:
 CSV_FIELDS = (
     ["file", "ogham_id", "stone_key", "title", "ciic", "cisp", "cisp_url", "tm", "smr", "repository"]
     + [f"pn_{lvl}" for lvl in PLACE_LEVELS]
-    + ["pn_vernacular", "geo_source", "geo_note", "geo_qid", "gazetteer_uris", "geo_raw", "geo_cert", "geo_hedge",
+    + ["pn_vernacular", "geo_source", "geo_note", "geo_qid", "geo_settled",
+       "gazetteer_uris", "geo_raw", "geo_cert", "geo_hedge",
        "geo_status", "lat", "lon", "grid_raw", "origplace_text"]
 )
 
@@ -592,9 +605,18 @@ def run(corpus: Path, out_dir: Path, root: Path | None = None,
             print(f"    {line}")
 
     ov = apply_overrides(records, load_overrides(overrides))
+    settled = load_settled(overrides)
+    for rec in records:
+        row = settled.get(rec.get("ogham_id", ""))
+        if row and rec.get("lat") is None:
+            rec["geo_settled"] = row.get("note", "checked; not recoverable")
+            rec["geo_settled_source"] = row.get("source", "")
     if ov["applied"]:
         print(f"  supplied {len(ov['applied'])} findspot(s) the edition leaves empty: "
               f"{', '.join(ov['applied'])}")
+    if settled:
+        print(f"  {len(settled)} findspot(s) recorded as not recoverable: "
+              f"{', '.join(sorted(settled))}")
     for oid in ov["refused"]:
         print(f"  ! override for {oid} ignored: the edition already gives a coordinate")
 

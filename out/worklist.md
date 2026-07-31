@@ -14,17 +14,11 @@ OG(H)AM's numbering carries a distinction worth keeping:
 
 Supplying a coordinate for a numbered stone completes a record. Supplying one for an `X` stone may assert a precision the evidence does not carry, which is the opposite of the point. The tiers below follow that.
 
-## 1. Extant stones with no findspot — 5
+## 1. Extant stones with no findspot — 0
 
 The highest-value gaps: catalogued, in the ground or in a museum, and simply missing a coordinate. CISP records a grid reference for many of them.
 
-| stone | CIIC | CISP | townland / parish | county | held by | what the edition says |
-|---|---|---|---|---|---|---|
-| `I-KER-042` | 174 | — | — | Co. Kerry | — | _empty_ |
-| `I-KER-043` | 175 | [BRHAM/1](https://www.ucl.ac.uk/archaeology/cisp/database/stone/brham_1.html) | Burnham East | Co. Kerry | — | `(original provenance is unrecorded)` — **stated as not recoverable** |
-| `I-KER-083` | 214 | [KLGOB/2](https://www.ucl.ac.uk/archaeology/cisp/database/stone/klgob_2.html) | Kilgobnet (Cill Ghobnait) | Co. Kerry | — | _empty_ |
-| `I-KER-151` | — | — | BAILE MÓR THIAR | Co. Kerry | — | _empty_ |
-| `I-KER-153` | — | — | — | Co. Kerry | — | _empty_ |
+_none_
 
 ## 2. Coordinates the editors hedged — 6
 
@@ -115,7 +109,17 @@ No transcription in any reading, so these stones are invisible to the formulaic-
 | `S-SHE-006` | — | [STNIN/3](http://www.ucl.ac.uk/archaeology/cisp/database/stone/stnin_3.html) | Dunrossness | Shetland | National Museums of Scotland |
 | `S-SHE-008` | — | [CBURG/3](http://www.ucl.ac.uk/archaeology/cisp/database/stone/cburg_3.html) | Dunrossness | Shetland | — |
 
-## 6. CISP links that do not resolve — 200
+## 6. Already searched for, and closed — 3
+
+Findspots someone has looked for and concluded cannot be recovered. They are listed so the next person does not spend the same afternoon, and so the reasoning that closed them is not lost. Recorded in `reconciliation/identifiers.yaml` with `status: not-recoverable`.
+
+| stone | why it is closed |
+|---|---|
+| `I-KER-042` | Brandon Mountain, Co. Kerry. Recorded on the Literagh side of Brandon Point by Windele and by Hitchcock, neither of whom could examine it: it stood on the extreme verge of a cliff. A landslide in the winter of 1849 made it inaccessible, and Macalister… |
+| `I-KER-043` | Burnham, Co. Kerry. The edition records "(original provenance is unrecorded)" in the <geo> field. The stone now stands at Burnham East, which belongs in the keeper layer, not here: supplying that as a findspot would assert exactly what the editors marked… |
+| `I-KER-153` | "Unknown (Dunraven Collection)", Co. Kerry. No CIIC, no CISP, no SMR and no townland: the stone is known through the collection of the Earl of Dunraven and its origin was already unrecorded when it entered it. Checked; not recoverable. |
+
+## 7. CISP links that do not resolve — 200
 
 Not a research task but a corpus fix. CISP publishes a stone at `.../stone/wvale_1.html`; the `corresp` on `<idno type="CISP">` often carries the *identifier* form instead, or nothing at all.
 
@@ -130,10 +134,11 @@ The identifier-form ones convert mechanically — lowercase, and `/` becomes `_`
 
 | gap | stones |
 |---|---|
-| numbered without findspot | 5 |
+| numbered without findspot | 0 |
 | hedged | 6 |
 | lost without findspot | 7 |
 | doubtful without findspot | 10 |
 | without edition text | 38 |
+| closed as not recoverable | 3 |
 | broken cisp links | 200 |
 

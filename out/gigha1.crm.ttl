@@ -12,19 +12,19 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 data:match_agent_MAC1902 a rdf:Statement ;
-    amt:weight 0.75 ;
-    ogham:matchConfidence 0.75 ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
     ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "ok" ;
+    ogham:matchTypeCheck "unknown" ;
     rdf:object wd:Q983129 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:agent_MAC1902 .
 
 data:match_agent_MAC1945 a rdf:Statement ;
-    amt:weight 0.75 ;
-    ogham:matchConfidence 0.75 ;
+    amt:weight 0.70 ;
+    ogham:matchConfidence 0.70 ;
     ogham:matchStatus "auto" ;
-    ogham:matchTypeCheck "ok" ;
+    ogham:matchTypeCheck "unknown" ;
     rdf:object wd:Q983129 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:agent_MAC1945 .
