@@ -10,7 +10,7 @@
 | `<material>` | 505/506 | `ogham:Material` | `crm:E57_Material` | `P45_consists_of` |
 | `inscribed surface / <layout>` | 504/506 | `—` | `crm:E25_Human-Made_Feature` | `P56_bears_feature` |
 | `<div type=edition>` | 505/506 | `ogham:Inscription` | `crmtex:TX1_Written_Text` | `P128_carries` |
-| `<div type=edition> / <rdg>` | 92/506 | `ogham:Reading` | `crmtex:TX6_Transcription` | `TXP4_has_segment + prov:wasAttributedTo` |
+| `<div type=edition> / <rdg>` | 92/506 | `ogham:Reading` | `ogham:Reading` | `TXP4_has_segment + prov:wasAttributedTo` |
 | `<origPlace> + <geo>` | 505/506 | `ogham:Place` | `crm:E53_Place` | `P53_has_former_or_current_location` |
 | `<placeName type=townland\|parish\|county\|…>` | 505/506 | `ogham:Place` | `crm:E53_Place` | `P89_falls_within (chained)` |
 | `<ref target=logainm\|rcahmw\|coflein>` | 505/506 | `ogham:Place` | `crm:E53_Place` | `skos:closeMatch (weighted)` |

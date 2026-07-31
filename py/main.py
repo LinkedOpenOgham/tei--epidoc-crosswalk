@@ -42,6 +42,7 @@ import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
 import words     # local module (py/words.py) -- formulaic-word extractor
 import setting   # local module (py/setting.py) -- present setting of each stone
+import validate  # local module (py/validate.py) -- A-box check against the ontologies
 import worklist  # local module (py/worklist.py) -- what is still missing
 import wikidata  # local module (py/wikidata.py)
 from pathlib import Path
@@ -60,6 +61,7 @@ RECON_CACHE = RECON / "wikidata-links.csv"
 ALLOWLISTS = {"material": RECON / "material-allowlist.csv",
               "editor": RECON / "editor-allowlist.csv",
               "objectType": RECON / "objecttype-allowlist.csv"}
+ONTOLOGIES = ROOT / "ontologies"                    # local copies of the reference ontologies
 ELEMENT_DOCS = ROOT / "element-docs"               # generated element documentation
 DOCS = ROOT / "docs"                               # generated GitHub Pages site (the map)
 
@@ -90,7 +92,9 @@ EDITOR_PREFIXES = {"RHY": "Rhys", "MAC": "Macalister", "DIA": "Diack",
 # --- namespaces (aligned with the ogham.link ontology) ------------------------
 TEI = "http://www.tei-c.org/ns/1.0"
 CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
-CRMTEX = Namespace("http://www.cidoc-crm.org/cidoc-crm/crmtex/")
+# CRMtex lives under /extensions/, not under /cidoc-crm/. With the wrong base
+# every TX URI in the graph pointed at nothing that exists.
+CRMTEX = Namespace("http://www.cidoc-crm.org/extensions/crmtex/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
 PROV = Namespace("http://www.w3.org/ns/prov#")
 OGHAM = Namespace("http://ontology.ogham.link/")
@@ -111,7 +115,7 @@ CROSSWALK_EXTRA = {
     "crm:E57_Material": ("Material", "schema:material"),
     "crm:E25_Human-Made_Feature": ("Layout", "schema:Thing"),
     "crmtex:TX1_Written_Text": ("EditionText", "schema:CreativeWork"),
-    "crmtex:TX6_Transcription": ("Reading", "schema:CreativeWork"),
+    "ogham:Reading": ("Reading", "schema:CreativeWork"),
     "crm:E53_Place": ("OrigPlace", "schema:Place"),
     "crm:E52_Time-Span": ("OrigDate", "schema:Date"),
     "crm:E21_Person": ("PersName", "schema:Person"),
@@ -135,7 +139,7 @@ MAPPING = [
     dict(el="<div type=edition>", role="inscription text", ogham="ogham:Inscription",
          crm="crmtex:TX1_Written_Text", prop="P128_carries", vocab="CRMtex"),
     dict(el="<div type=edition> / <rdg>", role="readings", ogham="ogham:Reading",
-         crm="crmtex:TX6_Transcription", prop="TXP4_has_segment + prov:wasAttributedTo",
+         crm="ogham:Reading", prop="TXP4_has_segment + prov:wasAttributedTo",
          vocab="CRMtex, PROV-O"),
     dict(el="<origPlace> + <geo>", role="place of origin", ogham="ogham:Place",
          crm="crm:E53_Place", prop="P53_has_former_or_current_location", vocab="GeoSPARQL"),
@@ -151,6 +155,15 @@ MAPPING = [
     dict(el="<name nymRef> / <persName>", role="referenced name", ogham="ogham:Person",
          crm="crm:E21_Person", prop="P67_refers_to", vocab="—"),
 ]
+
+
+
+def _check_lookup_tables() -> None:
+    """Every MAPPING row must resolve. A duplicate key in CROSSWALK_EXTRA shadows
+    silently in a dict literal, which is how ogham:Material lost its entry."""
+    missing = sorted({r["crm"] for r in MAPPING if r["crm"] not in CROSSWALK_EXTRA})
+    if missing:
+        raise SystemExit(f"CROSSWALK_EXTRA has no entry for: {', '.join(missing)}")
 
 
 def crosswalk_extra(row: dict) -> tuple[str, str]:
@@ -281,24 +294,24 @@ def build_graph(d: dict):
     g.add((inscr, RDF.type, OGHAM.Inscription))
     if d["edition"]:
         g.add((inscr, RDFS.label, Literal(d["edition"])))
-    g.add((stone, CRM["P128_carries"], inscr))
+    g.add((stone, OGHAM["carries"], inscr))
     records.append(("<div type=edition>", d["edition"], "crmtex:TX1_Written_Text", f"data:inscription_{sid}"))
 
     # competing readings (TX6 Transcription), segments of the TX1, per editor ----
     # (structural only -- the amt:weight belief layer is added in tei--epidoc-amt)
     for r in d["readings"]:
         rd = DATA_NS[f"reading_{sid}_{_slug(r['id'] or r['text'])}"]
-        g.add((rd, RDF.type, CRMTEX["TX6_Transcription"]))
+        g.add((rd, RDF.type, OGHAM["Reading"]))
         g.add((rd, RDF.type, OGHAM.Reading))
         g.add((rd, RDFS.label, Literal(r["text"])))
-        g.add((inscr, CRMTEX["TXP4_has_segment"], rd))     # ontology: ogham:identifiedAs
+        g.add((inscr, OGHAM["identifiedAs"], rd))     # ontology: ogham:identifiedAs
         agent = DATA_NS[f"agent_{_slug(r['id'])}"]
         g.add((agent, RDF.type, PROV.Agent))
         g.add((agent, RDFS.label, Literal(r["editor"])))
         g.add((rd, PROV.wasAttributedTo, agent))
         kind = "edition" if r["edition"] else "historical"
         records.append((f"<rdg> ({kind})", f"{r['editor']}: {r['text']}",
-                        "crmtex:TX6_Transcription", f"data:reading_{sid}_{_slug(r['id'] or r['text'])}"))
+                        "ogham:Reading", f"data:reading_{sid}_{_slug(r['id'] or r['text'])}"))
 
     # place of origin (E53 + GeoSPARQL) -----------------------------------------
     if d["place"] or d["latlon"]:
@@ -320,7 +333,11 @@ def build_graph(d: dict):
         person = DATA_NS[f"person_{sid}_{_slug(name)}"]
         g.add((person, RDF.type, CRM["E21_Person"]))
         g.add((person, RDFS.label, Literal(name)))
-        g.add((inscr, CRM["P67_refers_to"], person))
+        # ogham:shows is declared with domain ogham:OghamStone, so it hangs off the
+        # stone rather than the inscription. Its range is declared twice, as Person
+        # AND Word, which in RDFS is an intersection no instance can satisfy -- an
+        # ontology bug, reported by the validator rather than worked around here.
+        g.add((stone, OGHAM["shows"], person))
         records.append(("<name nymRef>", name, "E21_Person", f"data:person_{sid}_{_slug(name)}"))
 
     return g, records
@@ -363,7 +380,7 @@ def write_out_readme(results: list[tuple], places_summary: dict | None = None) -
         "vocabularies for the aspects CRM deliberately leaves to specialised standards:\n")
     add("| vocabulary | prefix | used for | in this graph |")
     add("|---|---|---|---|")
-    add("| **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TX6_Transcription`, `TXP4_has_segment` |")
+    add("| **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TXP4_has_segment` (via `ogham:identifiedAs`) |")
     add("| **GeoSPARQL** (OGC) | `geo:` | geometry of places | `geo:asWKT` on `E53_Place` |")
     add("| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |")
     add("| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |")
@@ -380,7 +397,8 @@ def write_out_readme(results: list[tuple], places_summary: dict | None = None) -
         "class for the substance an object is made of and is itself `rdfs:subClassOf E55_Type`; "
         "the ontology's `Material ⊑ E55` should be tightened to `⊑ E57` so `P45` is "
         "type-consistent.")
-    add("- **Readings → `crmtex:TX6_Transcription`, `TXP4_has_segment` from the `TX1`, "
+    add("- **Readings → `ogham:Reading`, linked by `ogham:identifiedAs` (a sub-property "
+        "of `crmtex:TXP4_has_segment`) from the `TX1`, "
         "`prov:wasAttributedTo` the editor.** This follows the ontology "
         "(`Reading ⊑ TX6`, `identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2.")
     add("- **Place → `P53_has_former_or_current_location`** (the recorded `<geo>` is the "
@@ -449,6 +467,24 @@ def _term(qname: str):
     return ns[local]
 
 
+
+_ONTOLOGY_CLASSES: set[str] = set()
+
+
+def _ontology_classes() -> set[str]:
+    """Class URIs ogham.owl defines, so the crosswalk can reference rather than
+    redefine them. Empty if the ontology is not present, in which case the crosswalk
+    falls back to declaring its own hierarchy as before."""
+    if not _ONTOLOGY_CLASSES:
+        path = ONTOLOGIES / "ogham.owl"
+        if path.exists():
+            ref = Graph()
+            ref.parse(str(path))
+            _ONTOLOGY_CLASSES.update(
+                str(x) for x in ref.subjects(RDFS.subClassOf, None) if isinstance(x, URIRef))
+    return _ONTOLOGY_CLASSES
+
+
 def build_crosswalk_ontology() -> Graph:
     """Model the crosswalk as an OWL class hierarchy:
     teiapp:<tag> rdfs:subClassOf ogham:<class> rdfs:subClassOf crm:<class>
@@ -500,7 +536,15 @@ def build_crosswalk_ontology() -> Graph:
         if r["ogham"] != "\u2014":
             og = _term(r["ogham"])
             g.add((og, RDF.type, OWL.Class))
-            g.add((og, RDFS.subClassOf, crm_uri))          # anchor from the Linked Ogham ontology
+            # The crosswalk states its own alignment, which is what keeps
+            # teiapp:X -> ogham:Y -> crm:Z -> E1_CRM_Entity a real chain and what the
+            # SHACL shape checks. Where ogham.owl defines the class differently --
+            # ogham:Material under E55_Type rather than E57_Material, ogham:Person
+            # under foaf:Person rather than E21 -- py/validate.py reports the
+            # divergence rather than either side silently winning.
+            g.add((og, RDFS.subClassOf, crm_uri))
+            if str(og) in _ontology_classes():
+                g.add((og, RDFS.isDefinedBy, URIRef("http://ontology.ogham.link/")))
             parent = og
         tc = TEIAPP[tei]
         g.add((tc, RDF.type, OWL.Class))
@@ -537,7 +581,7 @@ PRIMARY_TAG = {
     "crm:E22_Human-Made_Object": "support", "crm:E42_Identifier": "idno",
     "crm:E55_Type": "objectType", "crm:E57_Material": "material",
     "crm:E25_Human-Made_Feature": "layout", "crmtex:TX1_Written_Text": "div",
-    "crmtex:TX6_Transcription": "rdg", "crm:E53_Place": "origPlace",
+    "ogham:Reading": "rdg", "crm:E53_Place": "origPlace",
     "crm:E52_Time-Span": "origDate", "crm:E21_Person": "name",
 }
 ALSO_MAPPED = {
@@ -562,7 +606,7 @@ CANDIDATE = {
     "lb": "crmtex:TX7_Written_Text_Segment",
     "w": "crm:E36_Visual_Item / ogham:Word",
     "term": "crm:E55_Type (e.g. type_of_inscription)",
-    "repository": "crm:E40_Legal_Body / E39_Actor (P50_has_current_keeper)",
+    "repository": "crm:E74_Group / E39_Actor (P50_has_current_keeper)",
     "keywords": "crm:E55_Type (classification)",
     "rs": "crm:E55_Type (e.g. execution technique)",
     "date": "crm:E52_Time-Span (P4_has_time-span)",
@@ -959,6 +1003,7 @@ def main() -> None:
     ap.add_argument("--no-fetch", action="store_true",
                     help="do not fetch the editions even if data/origin/ is empty")
     args = ap.parse_args()
+    _check_lookup_tables()
 
     # The editions belong in data/origin/. If they are not there yet, fetch them --
     # 8 MB and two seconds is a better default than silently mapping four stones.
@@ -1096,6 +1141,9 @@ def main() -> None:
                                             if k not in ("records", "vocabulary")}
         write_out_readme(results, places_summary)
         emit_and_validate_crosswalk()
+        # after everything is written: the A-box check reads out/*.crm.ttl and
+        # out/crosswalk.ttl, so running it earlier would grade the previous run
+        validate.run(OUT, ONTOLOGIES, root=ROOT)
         wikidata.save_cache(RECON_CACHE, cache)
         n_res = sum(1 for m in cache.values() if m.qid)
         print(f"  -> updated {RECON_CACHE.relative_to(ROOT)} "

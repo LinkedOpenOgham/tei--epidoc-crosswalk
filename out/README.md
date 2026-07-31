@@ -18,7 +18,7 @@ The crosswalk runs through an **intermediate domain layer**: each EpiDoc element
 | `<material>` | `ogham:Material` | `crm:E57_Material` | `P45_consists_of` | — |
 | `inscribed surface / <layout>` | `—` | `crm:E25_Human-Made_Feature` | `P56_bears_feature` | — |
 | `<div type=edition>` | `ogham:Inscription` | `crmtex:TX1_Written_Text` | `P128_carries` | CRMtex |
-| `<div type=edition> / <rdg>` | `ogham:Reading` | `crmtex:TX6_Transcription` | `TXP4_has_segment + prov:wasAttributedTo` | CRMtex, PROV-O |
+| `<div type=edition> / <rdg>` | `ogham:Reading` | `ogham:Reading` | `TXP4_has_segment + prov:wasAttributedTo` | CRMtex, PROV-O |
 | `<origPlace> + <geo>` | `ogham:Place` | `crm:E53_Place` | `P53_has_former_or_current_location` | GeoSPARQL |
 | `<placeName type=townland\|parish\|county\|…>` | `ogham:Place` | `crm:E53_Place` | `P89_falls_within (chained)` | — |
 | `<ref target=logainm\|rcahmw\|coflein>` | `ogham:Place` | `crm:E53_Place` | `skos:closeMatch (weighted)` | SKOS, AMT |
@@ -33,7 +33,7 @@ Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC vocabulari
 
 | vocabulary | prefix | used for | in this graph |
 |---|---|---|---|
-| **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TX6_Transcription`, `TXP4_has_segment` |
+| **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TXP4_has_segment` (via `ogham:identifiedAs`) |
 | **GeoSPARQL** (OGC) | `geo:` | geometry of places | `geo:asWKT` on `E53_Place` |
 | **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |
 | **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |
@@ -44,7 +44,7 @@ Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC vocabulari
 ## 4. Resolved modelling decisions
 
 - **Material → `E57_Material` via `P45_consists_of`.** `E57_Material` is the CRM class for the substance an object is made of and is itself `rdfs:subClassOf E55_Type`; the ontology's `Material ⊑ E55` should be tightened to `⊑ E57` so `P45` is type-consistent.
-- **Readings → `crmtex:TX6_Transcription`, `TXP4_has_segment` from the `TX1`, `prov:wasAttributedTo` the editor.** This follows the ontology (`Reading ⊑ TX6`, `identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2.
+- **Readings → `ogham:Reading`, linked by `ogham:identifiedAs` (a sub-property of `crmtex:TXP4_has_segment`) from the `TX1`, `prov:wasAttributedTo` the editor.** This follows the ontology (`Reading ⊑ TX6`, `identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2.
 - **Place → `P53_has_former_or_current_location`** (the recorded `<geo>` is the site/findspot), matching the ontology's `disclosedAt ⊑ P53`; a reconstructed origin would use `E12_Production` / `P7_took_place_at` instead.
 
 ## 5. Where CIDOC CRM sits in the NFDI reference stack
@@ -91,11 +91,11 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 | `<material>` | Granite | `E57_Material` | `data:material_Granite` |
 | `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_S_ARL_001` |
 | `<div type=edition>` | [---]MAQ[---]COGIN[---] | `crmtex:TX1_Written_Text` | `data:inscription_S_ARL_001` |
-| `<rdg> (edition)` | OG(H)AM edition (KF): [---]MAQ[---]COGIN[… | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_OGHAM_KF` |
-| `<rdg> (historical)` | Rhys 1899: MAQICAGILEB | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_RHY1899` |
-| `<rdg> (historical)` | Rhys 1901: OGMA MAQI TIGERNI | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_RHY1901` |
-| `<rdg> (historical)` | Macalister 1902: VICULA MAQ COMGINI | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_MAC1902` |
-| `<rdg> (historical)` | Macalister 1945: VICULA MAQ CUGINI | `crmtex:TX6_Transcription` | `data:reading_S_ARL_001_MAC1945` |
+| `<rdg> (edition)` | OG(H)AM edition (KF): [---]MAQ[---]COGIN[… | `ogham:Reading` | `data:reading_S_ARL_001_OGHAM_KF` |
+| `<rdg> (historical)` | Rhys 1899: MAQICAGILEB | `ogham:Reading` | `data:reading_S_ARL_001_RHY1899` |
+| `<rdg> (historical)` | Rhys 1901: OGMA MAQI TIGERNI | `ogham:Reading` | `data:reading_S_ARL_001_RHY1901` |
+| `<rdg> (historical)` | Macalister 1902: VICULA MAQ COMGINI | `ogham:Reading` | `data:reading_S_ARL_001_MAC1902` |
+| `<rdg> (historical)` | Macalister 1945: VICULA MAQ CUGINI | `ogham:Reading` | `data:reading_S_ARL_001_MAC1945` |
 | `<origPlace> + <geo>` | Gigha and Cara · POINT(-5.750278 55.669722) | `E53_Place` | `data:place_S_ARL_001` |
 
 ### An Com Liath Thoir | Coomleagh East (CIIC 55)
@@ -112,8 +112,8 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 | `<objectType>` | Pillar | `E55_Type` | `data:type_Pillar` |
 | `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_I_COR_001` |
 | `<div type=edition>` | .. ? ..TETA | `crmtex:TX1_Written_Text` | `data:inscription_I_COR_001` |
-| `<rdg> (edition)` | OG(H)AM edition (NW): .. ? ..TETA | `crmtex:TX6_Transcription` | `data:reading_I_COR_001_OGHAM_NW` |
-| `<rdg> (historical)` | Macalister 1945: ANM SAINA MAQ OGALA MUCO… | `crmtex:TX6_Transcription` | `data:reading_I_COR_001_MAC1945` |
+| `<rdg> (edition)` | OG(H)AM edition (NW): .. ? ..TETA | `ogham:Reading` | `data:reading_I_COR_001_OGHAM_NW` |
+| `<rdg> (historical)` | Macalister 1945: ANM SAINA MAQ OGALA MUCO… | `ogham:Reading` | `data:reading_I_COR_001_MAC1945` |
 | `<origPlace> + <geo>` | Coomleagh East (An Com Liath Thoir) · POI… | `E53_Place` | `data:place_I_COR_001` |
 | `<name nymRef>` | SAINA | `E21_Person` | `data:person_I_COR_001_SAINA` |
 | `<name nymRef>` | OGALA | `E21_Person` | `data:person_I_COR_001_OGALA` |
@@ -133,7 +133,7 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 | `<material>` | Sandstone | `E57_Material` | `data:material_Sandstone` |
 | `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_I_COR_030` |
 | `<div type=edition>` | CASSITTAS MAQI MUCOI CALLITI | `crmtex:TX1_Written_Text` | `data:inscription_I_COR_030` |
-| `<rdg> (edition)` | OG(H)AM edition (NW): CASSITTAS MAQI MUCO… | `crmtex:TX6_Transcription` | `data:reading_I_COR_030_OGHAM_NW` |
+| `<rdg> (edition)` | OG(H)AM edition (NW): CASSITTAS MAQI MUCO… | `ogham:Reading` | `data:reading_I_COR_030_OGHAM_NW` |
 | `<origPlace> + <geo>` | Garranes (An Garrán) · POINT(-8.765479 51… | `E53_Place` | `data:place_I_COR_030` |
 | `<name nymRef>` | CASSITTAS | `E21_Person` | `data:person_I_COR_030_CASSITTAS` |
 | `<name nymRef>` | CALLITI | `E21_Person` | `data:person_I_COR_030_CALLITI` |
@@ -153,7 +153,7 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 | `<material>` | Sandstone | `E57_Material` | `data:material_Sandstone` |
 | `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_I_KER_020` |
 | `<div type=edition>` | CCICAMINIvac. MAQQ[/I] C[A]TTINI | `crmtex:TX1_Written_Text` | `data:inscription_I_KER_020` |
-| `<rdg> (edition)` | OG(H)AM edition (NW): CCICAMINIvac. MAQQ[… | `crmtex:TX6_Transcription` | `data:reading_I_KER_020_OGHAM_NW` |
+| `<rdg> (edition)` | OG(H)AM edition (NW): CCICAMINIvac. MAQQ[… | `ogham:Reading` | `data:reading_I_KER_020_OGHAM_NW` |
 | `<origPlace> + <geo>` | Ballinrannig (Baile an Reannaigh) · POINT… | `E53_Place` | `data:place_I_KER_020` |
 
 ## 8. The place layer across the whole corpus (`places.crm.ttl`)

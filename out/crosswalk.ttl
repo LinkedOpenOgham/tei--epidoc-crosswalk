@@ -1,6 +1,6 @@
 @prefix amt: <http://academic-meta-tool.xyz/vocab#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
-@prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
+@prefix crmtex: <http://www.cidoc-crm.org/extensions/crmtex/> .
 @prefix ogham: <http://ontology.ogham.link/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
@@ -122,19 +122,20 @@ skos:closeMatch a amt:Role ;
     rdfs:comment "Used as an AMT role: each reconciliation quadruple carries amt:weight (the match confidence), so links are weighted beliefs, aligned with axis 2." .
 
 ogham:Inscription a owl:Class ;
+    rdfs:isDefinedBy ogham: ;
     rdfs:subClassOf crmtex:TX1_Written_Text .
 
 ogham:Material a owl:Class ;
+    rdfs:isDefinedBy ogham: ;
     rdfs:subClassOf crm:E57_Material .
 
 ogham:OghamStone a owl:Class ;
+    rdfs:isDefinedBy ogham: ;
     rdfs:subClassOf crm:E22_Human-Made_Object .
 
 ogham:Person a owl:Class ;
+    rdfs:isDefinedBy ogham: ;
     rdfs:subClassOf crm:E21_Person .
-
-ogham:Reading a owl:Class ;
-    rdfs:subClassOf crmtex:TX6_Transcription .
 
 crm:E21_Person a owl:Class ;
     ogham:nfdiCoreMatch schema1:Person ;
@@ -172,11 +173,14 @@ crmtex:TX1_Written_Text a owl:Class ;
     ogham:nfdiCoreMatch schema1:CreativeWork ;
     rdfs:subClassOf crm:E1_CRM_Entity .
 
-crmtex:TX6_Transcription a owl:Class ;
+ogham:Reading a owl:Class ;
     ogham:nfdiCoreMatch schema1:CreativeWork ;
-    rdfs:subClassOf crm:E1_CRM_Entity .
+    rdfs:isDefinedBy ogham: ;
+    rdfs:subClassOf ogham:Reading,
+        crm:E1_CRM_Entity .
 
 ogham:Place a owl:Class ;
+    rdfs:isDefinedBy ogham: ;
     rdfs:subClassOf crm:E53_Place .
 
 crm:E1_CRM_Entity a owl:Class ;

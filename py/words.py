@@ -40,7 +40,9 @@ from rdflib.namespace import RDF, RDFS, XSD
 
 TEI = "http://www.tei-c.org/ns/1.0"
 CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
-CRMTEX = Namespace("http://www.cidoc-crm.org/cidoc-crm/crmtex/")
+# CRMtex lives under /extensions/, not under /cidoc-crm/. With the wrong base
+# every TX URI in the graph pointed at nothing that exists.
+CRMTEX = Namespace("http://www.cidoc-crm.org/extensions/crmtex/")
 OGHAM = Namespace("http://ontology.ogham.link/")
 DATA_NS = Namespace("http://data.ogham.link/crm/")
 SKOS = Namespace("http://www.w3.org/2004/02/skos/core#")
@@ -315,12 +317,16 @@ def build_graph(records: list[dict], words: list[dict]) -> tuple[Graph, dict]:
     for entry in words:
         node = DATA_NS[f"word_{_slug(entry['word'])}_{entry['mode']}"]
         g.add((node, RDF.type, CRM["E55_Type"]))
+        g.add((node, RDF.type, {"formula": OGHAM.FormulaWord,
+                                "element": OGHAM.NomenclatureWord}.get(
+                                   entry["mode"], OGHAM.Word)))
         g.add((node, RDFS.label, Literal(entry["word"])))
         g.add((node, OGHAM.wordClass, Literal(entry["mode_label"])))
         if entry["translation"]:
+            g.add((node, OGHAM.translation, Literal(entry["translation"])))
             g.add((node, SKOS.definition, Literal(entry["translation"], lang="en")))
         if entry["reference"]:
-            g.add((node, CRM["P3_has_note"], Literal(entry["reference"])))
+            g.add((node, OGHAM.reference, Literal(entry["reference"])))
         for variant in entry["variants"]:
             g.add((node, SKOS.altLabel, Literal(variant)))
         if entry["wikidata"].startswith("http"):
@@ -345,25 +351,35 @@ def build_graph(records: list[dict], words: list[dict]) -> tuple[Graph, dict]:
             if not r["matches"]:
                 continue
             reading = DATA_NS[f"reading_{sid}_{_slug(r['id'] or r['text'])}"]
-            g.add((reading, RDF.type, CRMTEX["TX6_Transcription"]))
+            # Only the ontology's own class. It declares ogham:Reading a subclass of
+            # crmtex TX6_Transcription -- a class CRMtex 2.0 does not define, under a
+            # namespace that is not CRMtex's -- but that axiom is ogham.owl's to fix.
+            # Asserting a CRMtex type here would either duplicate it or contradict it.
             g.add((reading, RDF.type, OGHAM.Reading))
             g.add((reading, RDFS.label, Literal(r["text"])))
-            g.add((inscription, CRMTEX["TXP4_has_segment"], reading))
-            g.add((stone, CRM["P128_carries"], inscription))
+            if r.get("script"):
+                g.add((reading, OGHAM.script, Literal(r["script"])))
+            # ogham:identifiedAs is declared a sub-property of TXP4_has_segment with
+            # exactly this domain and range, so the ontology has already made the call
+            g.add((inscription, OGHAM.identifiedAs, reading))
+            g.add((stone, OGHAM.carries, inscription))
             agent = DATA_NS[f"agent_{_slug(r['id'])}"]
             g.add((agent, RDF.type, PROV.Agent))
             g.add((agent, RDFS.label, Literal(r["editor"])))
             g.add((reading, PROV.wasAttributedTo, agent))
             for m in r["matches"]:
                 occ = DATA_NS[f"word_occ_{sid}_{_slug(r['id'])}_{_slug(m['word'])}_{m['mode']}"]
-                g.add((occ, RDF.type, CRMTEX["TX7_Written_Text_Segment"]))
-                g.add((occ, RDF.type, OGHAM.Word))
+                # the ontology subclasses Word into exactly the two kinds the word
+                # list distinguishes, so the mode becomes a class rather than a label
+                g.add((occ, RDF.type, {"formula": OGHAM.FormulaWord,
+                                       "element": OGHAM.NomenclatureWord}.get(
+                                          m["mode"], OGHAM.Word)))
                 g.add((occ, RDFS.label, Literal(m["token"])))
                 g.add((occ, CRM["P2_has_type"],
                        DATA_NS[f"word_{_slug(m['word'])}_{m['mode']}"]))
                 g.add((occ, OGHAM.matchedVariant, Literal(m["variant"])))
                 g.add((occ, OGHAM.matchMode, Literal(m["mode"])))
-                g.add((reading, CRMTEX["TXP4_has_segment"], occ))
+                g.add((stone, OGHAM.shows, occ))
                 occurrences += 1
 
     return g, {"words": len(words), "occurrences": occurrences,

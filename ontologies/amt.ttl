@@ -1,0 +1,340 @@
+@prefix amt:  <http://academic-meta-tool.xyz/vocab#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix dct:  <http://purl.org/dc/terms/> .
+
+# =============================================================================
+# Academic Meta Tool (AMT) Ontology
+# Version: Leonard Edition (extended)
+# =============================================================================
+#
+# This ontology formalises the AMT vocabulary including all classes, properties,
+# axiom structures and fuzzy logic operators. It is designed to be self-
+# describing: any tool that wants to consume or produce AMT-compliant data can
+# rely on this file alone, without needing to read implementation source code.
+#
+# The original AMT ontology defined only the class hierarchy; this version adds:
+#   - formal property definitions with domain/range
+#   - n-ary role chain axioms (in addition to the legacy 2-ary form)
+#   - fuzzy logic operators with mathematical formulae
+#   - reasoning rule descriptions for each axiom type
+#
+# =============================================================================
+
+<http://academic-meta-tool.xyz/vocab> a owl:Ontology ;
+    dct:title       "Academic Meta Tool Ontology"@en ;
+    rdfs:label      "AMT"@en ;
+    dct:description "Vocabulary and reasoning rules for fuzzy semantic networks."@en ;
+    owl:versionInfo "Leonard Edition (extended)"@en ;
+    rdfs:seeAlso    <http://academic-meta-tool.xyz/ontology/> .
+
+
+# =============================================================================
+# 1. Core classes
+# =============================================================================
+
+amt:Concept a rdfs:Class ;
+    rdfs:subClassOf rdfs:Class ;
+    rdfs:label   "Concept"@en ;
+    rdfs:comment "A class of entities in the modelled domain (e.g. Person, Place)."@en .
+
+amt:Role a rdfs:Class ;
+    rdfs:subClassOf rdf:Property ;
+    rdfs:label   "Role"@en ;
+    rdfs:comment "A typed relation between Concepts (e.g. connectedWith, partOf)."@en .
+
+amt:Axiom a rdfs:Class ;
+    rdfs:subClassOf rdfs:Class ;
+    rdfs:label   "Axiom"@en ;
+    rdfs:comment "Abstract base class for all AMT axioms."@en .
+
+amt:InferenceAxiom a rdfs:Class ;
+    rdfs:subClassOf amt:Axiom ;
+    rdfs:label   "Inference Axiom"@en ;
+    rdfs:comment "Axiom that derives new edges from existing ones."@en .
+
+amt:IntegrityAxiom a rdfs:Class ;
+    rdfs:subClassOf amt:Axiom ;
+    rdfs:label   "Integrity Axiom"@en ;
+    rdfs:comment "Axiom that constrains which edge configurations are valid."@en .
+
+amt:RoleChainAxiom a rdfs:Class ;
+    rdfs:subClassOf amt:InferenceAxiom ;
+    rdfs:label   "Role Chain Axiom"@en ;
+    rdfs:comment "Asserts that a chain of roles implies a consequent role; supports both legacy 2-ary form (antecedent1/antecedent2) and n-ary form (antecedents as RDF list)."@en ;
+    skos:note    "Reasoning rule: if edges (a -r1-> b) and (b -r2-> c) exist with weights w1 and w2, infer (a -consequent-> c) with weight = logic(w1, w2). Generalises to n antecedents." .
+
+amt:InverseAxiom a rdfs:Class ;
+    rdfs:subClassOf amt:InferenceAxiom ;
+    rdfs:label   "Inverse Axiom"@en ;
+    rdfs:comment "Asserts that two roles are inverses of each other."@en ;
+    skos:note    "Reasoning rule: if edge (a -antecedent-> b) exists with weight w, infer (b -inverse-> a) with weight w." .
+
+amt:DisjointAxiom a rdfs:Class ;
+    rdfs:subClassOf amt:IntegrityAxiom ;
+    rdfs:label   "Disjoint Axiom"@en ;
+    rdfs:comment "Asserts that two roles cannot simultaneously hold between the same pair of nodes."@en ;
+    skos:note    "Consistency check: violated if both (a -role1-> b) and (a -role2-> b) exist." .
+
+amt:SelfDisjointAxiom a rdfs:Class ;
+    rdfs:subClassOf amt:IntegrityAxiom ;
+    rdfs:label   "Self-Disjoint Axiom"@en ;
+    rdfs:comment "Asserts that a role cannot hold between a node and itself."@en ;
+    skos:note    "Consistency check: violated if any edge (a -role-> a) exists." .
+
+
+# =============================================================================
+# 2. Properties for Concepts and Roles
+# =============================================================================
+
+amt:placeholder a rdf:Property ;
+    rdfs:label   "placeholder"@en ;
+    rdfs:comment "Hint for the expected label format of instances of a Concept."@en ;
+    rdfs:domain  amt:Concept ;
+    rdfs:range   rdfs:Literal .
+
+amt:instanceOf a rdf:Property ;
+    rdfs:label   "instance of"@en ;
+    rdfs:comment "Links an individual node to its Concept."@en ;
+    rdfs:range   amt:Concept .
+
+
+# =============================================================================
+# 3. Properties for RoleChainAxiom
+# =============================================================================
+
+amt:antecedent1 a rdf:Property ;
+    rdfs:label   "antecedent 1"@en ;
+    rdfs:comment "First role in a 2-step role chain (legacy form). Use amt:antecedents for chains of length n != 2."@en ;
+    rdfs:domain  amt:RoleChainAxiom ;
+    rdfs:range   amt:Role .
+
+amt:antecedent2 a rdf:Property ;
+    rdfs:label   "antecedent 2"@en ;
+    rdfs:comment "Second role in a 2-step role chain (legacy form)."@en ;
+    rdfs:domain  amt:RoleChainAxiom ;
+    rdfs:range   amt:Role .
+
+amt:antecedents a rdf:Property ;
+    rdfs:label   "antecedents"@en ;
+    rdfs:comment "Ordered RDF list of n roles forming the chain. Generalises antecedent1/antecedent2 to arbitrary chain length."@en ;
+    rdfs:domain  amt:RoleChainAxiom ;
+    rdfs:range   rdf:List .
+
+amt:consequent a rdf:Property ;
+    rdfs:label   "consequent"@en ;
+    rdfs:comment "Role inferred between the first and last node of the chain."@en ;
+    rdfs:domain  amt:RoleChainAxiom ;
+    rdfs:range   amt:Role .
+
+amt:logic a rdf:Property ;
+    rdfs:label   "logic"@en ;
+    rdfs:comment "Fuzzy logic operator used to combine weights along the inference chain."@en ;
+    rdfs:domain  amt:InferenceAxiom ;
+    rdfs:range   amt:Logic .
+
+amt:logicParameter a rdf:Property ;
+    rdfs:label   "logic parameter"@en ;
+    rdfs:comment "Numeric parameter for parametrised logics (e.g. gamma for Hamacher product)."@en ;
+    rdfs:domain  amt:InferenceAxiom ;
+    rdfs:range   xsd:decimal .
+
+
+# =============================================================================
+# 4. Properties for InverseAxiom
+# =============================================================================
+
+amt:antecedent a rdf:Property ;
+    rdfs:label   "antecedent"@en ;
+    rdfs:comment "Role whose inverse is being declared."@en ;
+    rdfs:domain  amt:InverseAxiom ;
+    rdfs:range   amt:Role .
+
+amt:inverse a rdf:Property ;
+    rdfs:label   "inverse"@en ;
+    rdfs:comment "Inverse role of the antecedent."@en ;
+    rdfs:domain  amt:InverseAxiom ;
+    rdfs:range   amt:Role .
+
+
+# =============================================================================
+# 5. Properties for DisjointAxiom and SelfDisjointAxiom
+# =============================================================================
+
+amt:role1 a rdf:Property ;
+    rdfs:label   "role 1"@en ;
+    rdfs:comment "First role in a disjointness assertion."@en ;
+    rdfs:domain  amt:DisjointAxiom ;
+    rdfs:range   amt:Role .
+
+amt:role2 a rdf:Property ;
+    rdfs:label   "role 2"@en ;
+    rdfs:comment "Second role in a disjointness assertion."@en ;
+    rdfs:domain  amt:DisjointAxiom ;
+    rdfs:range   amt:Role .
+
+amt:role a rdf:Property ;
+    rdfs:label   "role"@en ;
+    rdfs:comment "Role declared as self-disjoint (irreflexive)."@en ;
+    rdfs:domain  amt:SelfDisjointAxiom ;
+    rdfs:range   amt:Role .
+
+
+# =============================================================================
+# 6. Properties for Quadruples (weighted edges)
+# =============================================================================
+
+amt:weight a rdf:Property ;
+    rdfs:label   "weight"@en ;
+    rdfs:comment "Fuzzy truth value in the closed interval [0, 1] attached to a quadruple."@en ;
+    rdfs:range   xsd:decimal .
+
+
+# =============================================================================
+# 7. Logic class and operators
+# =============================================================================
+
+amt:Logic a rdfs:Class ;
+    rdfs:subClassOf rdfs:Class ;
+    rdfs:label   "Logic"@en ;
+    rdfs:comment "A fuzzy logic operator used to combine weights in inference chains."@en .
+
+amt:formula a rdf:Property ;
+    rdfs:label   "formula"@en ;
+    rdfs:comment "Mathematical formula of the operator in plain notation (variables x, y for binary; x_1..x_n for n-ary)."@en ;
+    rdfs:domain  amt:Logic ;
+    rdfs:range   xsd:string .
+
+amt:arity a rdf:Property ;
+    rdfs:label   "arity"@en ;
+    rdfs:comment "Either 'binary' (associative, can be applied pairwise) or 'n-ary' (must receive the full weight list at once)."@en ;
+    rdfs:domain  amt:Logic ;
+    rdfs:range   xsd:string .
+
+amt:isParametrised a rdf:Property ;
+    rdfs:label   "is parametrised"@en ;
+    rdfs:comment "True if the operator requires an additional numeric parameter (provided via amt:logicParameter on the axiom)."@en ;
+    rdfs:domain  amt:Logic ;
+    rdfs:range   xsd:boolean .
+
+amt:recommendedFor a rdf:Property ;
+    rdfs:label   "recommended for"@en ;
+    rdfs:comment "Free-text hint about typical use cases of the operator."@en ;
+    rdfs:domain  amt:Logic ;
+    rdfs:range   xsd:string .
+
+
+# --- Operator instances ------------------------------------------------------
+
+amt:GoedelLogic a amt:Logic ;
+    rdfs:label    "Gödel logic"@en ;
+    rdfs:comment  "Bottleneck semantics: the chain is as strong as its weakest link. Path length is ignored."@en ;
+    amt:formula        "min(x, y)" ;
+    amt:arity          "binary" ;
+    amt:isParametrised false ;
+    amt:recommendedFor "Curated mappings; chains where path length should not penalise the result. Good default for n=2 and n=3." .
+
+amt:ProductLogic a amt:Logic ;
+    rdfs:label    "Product logic"@en ;
+    rdfs:comment  "Probabilistic conjunction: weights multiply along the chain. Penalises path length exponentially."@en ;
+    amt:formula        "x * y" ;
+    amt:arity          "binary" ;
+    amt:isParametrised false ;
+    amt:recommendedFor "Independent-evidence semantics. Best for n=2; can be too aggressive for chains with n >= 4." .
+
+amt:LukasiewiczLogic a amt:Logic ;
+    rdfs:label    "Łukasiewicz logic"@en ;
+    rdfs:comment  "Bounded sum: max(x + y - 1, 0). Hard cutoff that collapses long chains to 0."@en ;
+    amt:formula        "max(x + y - 1, 0)" ;
+    amt:arity          "binary" ;
+    amt:isParametrised false ;
+    amt:recommendedFor "Strict reasoning at n=2. Practically unusable for n >= 4 because the result almost always becomes 0." .
+
+amt:EinsteinProduct a amt:Logic ;
+    rdfs:label    "Einstein product"@en ;
+    rdfs:comment  "Soft multiplication, lying between Gödel and Product. Stricter than Gödel, gentler than Product."@en ;
+    amt:formula        "(x * y) / (2 - (x + y - x * y))" ;
+    amt:arity          "binary" ;
+    amt:isParametrised false ;
+    amt:recommendedFor "Automatically generated mappings of medium confidence. Good middle ground for n=3 and n=4." .
+
+amt:GeometricMean a amt:Logic ;
+    rdfs:label    "Geometric mean"@en ;
+    rdfs:comment  "Aggregation operator: n-th root of the product. Path-length neutral; expresses average link quality."@en ;
+    amt:formula        "(x_1 * x_2 * ... * x_n)^(1/n)" ;
+    amt:arity          "n-ary" ;
+    amt:isParametrised false ;
+    amt:recommendedFor "Comparing inferences across different chain lengths. Recommended default for n >= 4. Note: not a t-norm in the strict sense." .
+
+amt:HamacherProduct a amt:Logic ;
+    rdfs:label    "Hamacher product"@en ;
+    rdfs:comment  "Parametrised t-norm family. Sensitivity to path length is controlled by a gamma parameter."@en ;
+    amt:formula        "(x * y) / (gamma + (1 - gamma) * (x + y - x * y))" ;
+    amt:arity          "binary" ;
+    amt:isParametrised true ;
+    amt:recommendedFor "Research applications where path-length sensitivity should be tuned empirically. gamma = 1 equals Product; gamma < 1 stricter; gamma > 1 softer." .
+
+
+# =============================================================================
+# 8. Reasoning rules (informal but machine-readable description)
+# =============================================================================
+#
+# These are not OWL/RDFS axioms (RDFS cannot express arithmetic). They are
+# annotations that document what an AMT-compliant reasoner must do, so that
+# implementations in other languages can be derived from this file.
+#
+# =============================================================================
+
+amt:ReasoningRule a rdfs:Class ;
+    rdfs:label   "Reasoning Rule"@en ;
+    rdfs:comment "Informal but normative description of an inference or consistency rule."@en .
+
+amt:appliesTo a rdf:Property ;
+    rdfs:label   "applies to"@en ;
+    rdfs:domain  amt:ReasoningRule ;
+    rdfs:range   rdfs:Class .
+
+amt:precondition a rdf:Property ;
+    rdfs:label   "precondition"@en ;
+    rdfs:domain  amt:ReasoningRule ;
+    rdfs:range   xsd:string .
+
+amt:effect a rdf:Property ;
+    rdfs:label   "effect"@en ;
+    rdfs:domain  amt:ReasoningRule ;
+    rdfs:range   xsd:string .
+
+amt:RoleChainRule a amt:ReasoningRule ;
+    rdfs:label    "Role Chain Inference Rule"@en ;
+    amt:appliesTo amt:RoleChainAxiom ;
+    amt:precondition
+        "There exists a sequence of edges e_1, ..., e_n such that e_i has role antecedents[i] and the target of e_i equals the source of e_{i+1}." ;
+    amt:effect
+        "Add a new edge from source of e_1 to target of e_n with role = consequent and weight = logic(weight(e_1), ..., weight(e_n)). Mark the edge as inferred. Iterate to fixpoint." .
+
+amt:InverseRule a amt:ReasoningRule ;
+    rdfs:label    "Inverse Inference Rule"@en ;
+    amt:appliesTo amt:InverseAxiom ;
+    amt:precondition
+        "There exists an edge (a -antecedent-> b) with weight w." ;
+    amt:effect
+        "Add an edge (b -inverse-> a) with weight w. Mark the edge as inferred. Iterate to fixpoint." .
+
+amt:DisjointRule a amt:ReasoningRule ;
+    rdfs:label    "Disjoint Consistency Rule"@en ;
+    amt:appliesTo amt:DisjointAxiom ;
+    amt:precondition
+        "There exist edges (a -role1-> b) and (a -role2-> b) with weights > 0." ;
+    amt:effect
+        "Report a consistency violation. Both edges contradict the disjointness assertion." .
+
+amt:SelfDisjointRule a amt:ReasoningRule ;
+    rdfs:label    "Self-Disjoint Consistency Rule"@en ;
+    amt:appliesTo amt:SelfDisjointAxiom ;
+    amt:precondition
+        "There exists an edge (a -role-> a) with weight > 0." ;
+    amt:effect
+        "Report a consistency violation. The role is asserted to be irreflexive." .

@@ -75,7 +75,7 @@ Summary: ② axis 2 (AMT) 15 · ▫ structural 42 · ✅ mapped 17 · 🔧 candi
 | `include` | 504 | ▫ structural | — (TEI structure / record metadata) |
 | `layoutDesc` | 504 | ▫ structural | — (TEI structure / record metadata) |
 | `msContents` | 504 | ▫ structural | — (TEI structure / record metadata) |
-| `repository` | 504 | 🔧 candidate | crm:E40_Legal_Body / E39_Actor (P50_has_current_keeper) |
+| `repository` | 504 | 🔧 candidate | crm:E74_Group / E39_Actor (P50_has_current_keeper) |
 | `textClass` | 502 | ▫ structural | — (TEI structure / record metadata) |
 | `dimensions` | 500 | 🔧 candidate | crm:E54_Dimension (P43_has_dimension) |
 | `listBibl` | 500 | 🔧 candidate | crm:E31_Document |
@@ -94,7 +94,7 @@ Summary: ② axis 2 (AMT) 15 · ▫ structural 42 · ✅ mapped 17 · 🔧 candi
 | `altIdentifier` | 331 | ▫ structural | — (TEI structure / record metadata) |
 | `listApp` | 246 | ② axis 2 (AMT) | apparatus → axis 2 |
 | `dim` | 195 | 🔧 candidate | crm:E54_Dimension |
-| `rdg` | 156 | ✅ mapped | crmtex:TX6_Transcription |
+| `rdg` | 156 | ✅ mapped | ogham:Reading |
 | `media` | 104 | 🔧 candidate | crmdig:D1_Digital_Object (3D/photo) |
 | `hi` | 99 | ▫ structural | — (TEI structure / record metadata) |
 | `choice` | 93 | ② axis 2 (AMT) | editorial alternative → axis 2 |

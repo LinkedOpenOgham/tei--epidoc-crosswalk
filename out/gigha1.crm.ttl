@@ -1,6 +1,6 @@
 @prefix amt: <http://academic-meta-tool.xyz/vocab#> .
 @prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
-@prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
+@prefix crmtex: <http://www.cidoc-crm.org/extensions/crmtex/> .
 @prefix data: <http://data.ogham.link/crm/> .
 @prefix geo: <http://www.opengis.net/ont/geosparql#> .
 @prefix ogham: <http://ontology.ogham.link/> .
@@ -68,7 +68,7 @@ data:match_type_Pillar a rdf:Statement ;
 data:stone_S_ARL_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gigha 1 (CIIC 506)" ;
-    crm:P128_carries data:inscription_S_ARL_001 ;
+    ogham:carries data:inscription_S_ARL_001 ;
     crm:P1_is_identified_by data:id_S_ARL_001_CIIC,
         data:id_S_ARL_001_CISP,
         data:id_S_ARL_001_Trove ;
@@ -95,7 +95,7 @@ data:id_S_ARL_001_Trove a crm:E42_Identifier ;
 data:inscription_S_ARL_001 a ogham:Inscription,
         crmtex:TX1_Written_Text ;
     rdfs:label "[---]MAQ[---]COGIN[---]" ;
-    crmtex:TXP4_has_segment data:reading_S_ARL_001_MAC1902,
+    ogham:identifiedAs data:reading_S_ARL_001_MAC1902,
         data:reading_S_ARL_001_MAC1945,
         data:reading_S_ARL_001_OGHAM_KF,
         data:reading_S_ARL_001_RHY1899,
@@ -105,28 +105,23 @@ data:place_S_ARL_001 a crm:E53_Place ;
     rdfs:label "Gigha and Cara" ;
     geo:asWKT "POINT(-5.750278 55.669722)"^^geo:wktLiteral .
 
-data:reading_S_ARL_001_MAC1902 a ogham:Reading,
-        crmtex:TX6_Transcription ;
+data:reading_S_ARL_001_MAC1902 a ogham:Reading ;
     rdfs:label "VICULA MAQ COMGINI" ;
     prov:wasAttributedTo data:agent_MAC1902 .
 
-data:reading_S_ARL_001_MAC1945 a ogham:Reading,
-        crmtex:TX6_Transcription ;
+data:reading_S_ARL_001_MAC1945 a ogham:Reading ;
     rdfs:label "VICULA MAQ CUGINI" ;
     prov:wasAttributedTo data:agent_MAC1945 .
 
-data:reading_S_ARL_001_OGHAM_KF a ogham:Reading,
-        crmtex:TX6_Transcription ;
+data:reading_S_ARL_001_OGHAM_KF a ogham:Reading ;
     rdfs:label "[---]MAQ[---]COGIN[---]" ;
     prov:wasAttributedTo data:agent_OGHAM_KF .
 
-data:reading_S_ARL_001_RHY1899 a ogham:Reading,
-        crmtex:TX6_Transcription ;
+data:reading_S_ARL_001_RHY1899 a ogham:Reading ;
     rdfs:label "MAQICAGILEB" ;
     prov:wasAttributedTo data:agent_RHY1899 .
 
-data:reading_S_ARL_001_RHY1901 a ogham:Reading,
-        crmtex:TX6_Transcription ;
+data:reading_S_ARL_001_RHY1901 a ogham:Reading ;
     rdfs:label "OGMA MAQI TIGERNI" ;
     prov:wasAttributedTo data:agent_RHY1901 .
 

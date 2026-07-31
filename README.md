@@ -776,6 +776,87 @@ Axis 1 records **that** the editors hedged and **how**; turning that into an
 `amt:weight`-bearing statement over `geo:asWKT`, bridged to `crminf:I2_Belief`, is
 axis 2's job in `tei--epidoc-amt`.
 
+## Checking the graph against the ontologies (`py/validate.py`)
+
+`ontologies/` holds local copies of `ogham.owl`, CIDOC CRM 7.1.3, CRMtex 2.0 and the
+AMT vocabulary, so the pipeline can check what it emits without a network call.
+
+Until this existed, a run reported `crosswalk SHACL: VALID` and meant that twelve
+class declarations were well formed. The **17 000 triples in `out/*.crm.ttl` — the
+actual graph — were checked against nothing.** Three things it found immediately:
+
+**The CRMtex namespace was wrong.** The crosswalk used
+`http://www.cidoc-crm.org/cidoc-crm/crmtex/`; CRMtex 2.0 is published at
+`http://www.cidoc-crm.org/extensions/crmtex/`. Every `TX` URI in the graph — 960 of
+them — pointed at nothing that exists.
+
+**`crm:E40_Legal_Body` was removed in CIDOC CRM 7.x.** Holding institutions were
+typed with a class the declared version does not define, which also broke
+`P50_has_current_keeper` and `P74`, both of which require an `E39_Actor`. They are
+now `E74_Group`, which *is* an Actor.
+
+**`crmtex:TX6_Transcription` does not exist.** CRMtex has `TX6_Transliteration` (an
+`E65_Creation` activity) and `TX14_Reading` (an `I1_Argumentation`) — neither is a
+text. This one is not the crosswalk's invention: **`ogham.owl` itself declares
+`ogham:Reading ⊑ crm:crmtex/TX6_Transcription`**, a class that does not exist, under
+a namespace that is not CRMtex's. The crosswalk was faithfully following it.
+
+### The ontology had already made most of the decisions
+
+Reading `ogham.owl` properly turned out to matter more than adding to it. Several
+terms invented here already existed, and three subclass assumptions were wrong:
+
+| the crosswalk assumed | the ontology says |
+|---|---|
+| `ogham:Material ⊑ crm:E57_Material` | `⊑ crm:E55_Type` |
+| `ogham:Person ⊑ crm:E21_Person` | `⊑ foaf:Person` |
+| `ogham:Place ⊑ crm:E53_Place` | `⊑ pleiades:Place` |
+
+And there were purpose-built properties where generic CRM had been used:
+`ogham:carries` (⊑ `P56_bears_feature`) for stone→inscription, **`ogham:identifiedAs`
+(⊑ `TXP4_has_segment`, domain Inscription, range Reading)** for inscription→reading,
+`ogham:shows` for what a stone displays, and `ogham:translation`, `ogham:context`,
+`ogham:reference` for exactly the columns the word list carries. `ogham:FormulaWord`
+and `ogham:NomenclatureWord` are the two classes the word matcher distinguishes, so
+the match mode is now a class rather than a string.
+
+Violations went from **969 to 5**, and unknown terms from 2 to none.
+
+### Where the crosswalk and the ontology disagree
+
+Four classes are declared differently on the two sides:
+
+| class | the crosswalk says | `ogham.owl` says |
+|---|---|---|
+| `ogham:Material` | `⊑ crm:E57_Material` | `⊑ crm:E55_Type` |
+| `ogham:Person` | `⊑ crm:E21_Person` | `⊑ foaf:Person` |
+| `ogham:Inscription` | `⊑ crmtex:TX1_Written_Text` | the same class, wrong namespace |
+| `ogham:Reading` | `⊑ crmtex:TX6_Transcription` | the same, and the class does not exist |
+
+The crosswalk keeps stating its own alignment rather than importing the ontology's,
+for a concrete reason: the chain `teiapp:X ⊑ ogham:Y ⊑ crm:Z ⊑ E1_CRM_Entity` is what
+the SHACL shape checks, and two of the ontology's parents do not reach `E1` at all —
+they point into a namespace where nothing is defined. Importing them would trade a
+reported disagreement for a broken graph.
+
+So both sides say what they mean and `py/validate.py` reports the gap on every run.
+Neither silently wins, and the four rows above are a decision for whoever owns the
+ontology rather than something a script should settle.
+
+### What is left, and why it is left
+
+Five uses of `ogham:shows` fail a range check because the ontology declares that
+range **twice**, as `ogham:Person` *and* `ogham:Word`. In RDFS that is an
+intersection no instance can satisfy; it wants `owl:unionOf`. That is a bug in
+`ogham.owl`, so the validator reports it rather than the crosswalk working around it.
+
+Fourteen properties are still minted here and are not in `ogham.owl`:
+`geoStatus`, `geoCertainty`, `coordinateSource`, `corpusCommit`, `corpusCommitDate`,
+`corpusEditionCount`, `geocodedFrom`, `matchMode`, `matchedVariant`, `matchSource`,
+plus the four `match*` ones the repository already used. They carry uncertainty and
+provenance, which the ontology does not currently model. They are listed on every
+run so they are a decision, not a drift.
+
 ## Crosswalk ontology & SHACL validation
 
 Two kinds of RDF are produced. The per-stone `*.crm.ttl` files are **instances**
@@ -821,6 +902,7 @@ tei--epidoc-crosswalk/
 │   └── all-epidoc-elements.md # full element inventory + candidates (generated)
 ├── shapes/                    # committed SHACL validation rules (not generated)
 │   └── crosswalk-shapes.ttl   # every TEI class → CRM superclass + NFDI link
+├── ontologies/                # local copies: ogham.owl, CIDOC CRM, CRMtex, AMT
 ├── docs/                      # generated GitHub Pages site
 │   ├── index.html             # landing page (generated)
 │   ├── findspots.html         # Leaflet map of the findspots (generated)
@@ -837,6 +919,7 @@ tei--epidoc-crosswalk/
 │   ├── words.py               # formulaic vocabulary across all readings
 │   ├── dissent.py             # comparison of competing readings
 │   ├── grid.py                # Irish Grid and ITM to WGS84, self-checking
+│   ├── validate.py            # A-box check against the reference ontologies
 │   ├── worklist.py            # what is still missing, by priority
 │   ├── keepers.py             # geocoding of the holding institutions
 │   ├── setting.py             # present setting, read from the observed provenance

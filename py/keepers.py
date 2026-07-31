@@ -542,7 +542,10 @@ def build_graph(links: list[dict], cache: dict[str, Keeper]) -> tuple[Graph, dic
 
         if kid not in seen:
             seen.add(kid)
-            g.add((keeper, RDF.type, CRM["E40_Legal_Body"]))
+            # E40_Legal_Body was removed in CIDOC CRM 7.x. A holding institution is
+            # an E74_Group, which is an E39_Actor -- and being an Actor is what
+            # P50_has_current_keeper and P74 require of it.
+            g.add((keeper, RDF.type, CRM["E74_Group"]))
             g.add((keeper, RDFS.label, Literal(r["keeper"])))
             g.add((place, RDF.type, CRM["E53_Place"]))
             g.add((place, RDFS.label, Literal(f"{r['keeper']} (present location)")))

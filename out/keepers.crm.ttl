@@ -787,114 +787,114 @@ data:stone_W_GLA_X02 crm:P50_has_current_keeper data:keeper_Margam_Stones_Museum
 data:stone_W_PEM_014 crm:P50_has_current_keeper data:keeper_St_Brynach_s_Church ;
     crm:P55_has_current_location data:place_keeper_St_Brynach_s_Church .
 
-data:keeper_Cyfarthfa_Museum a crm:E40_Legal_Body ;
+data:keeper_Cyfarthfa_Museum a crm:E74_Group ;
     rdfs:label "Cyfarthfa Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Cyfarthfa_Museum .
 
-data:keeper_Llansaint_Chapel_All_Saints_Church a crm:E40_Legal_Body ;
+data:keeper_Llansaint_Chapel_All_Saints_Church a crm:E74_Group ;
     rdfs:label "Llansaint Chapel (All Saints' Church)" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Llansaint_Chapel_All_Saints_Church .
 
-data:keeper_Meffan_Museum_and_Gallery_Forfar a crm:E40_Legal_Body ;
+data:keeper_Meffan_Museum_and_Gallery_Forfar a crm:E74_Group ;
     rdfs:label "Meffan Museum and Gallery, Forfar" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Meffan_Museum_and_Gallery_Forfar .
 
-data:keeper_Mount_Mellary_Abbey_Heritage_Center a crm:E40_Legal_Body ;
+data:keeper_Mount_Mellary_Abbey_Heritage_Center a crm:E74_Group ;
     rdfs:label "Mount Mellary Abbey Heritage Center" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Mount_Mellary_Abbey_Heritage_Center .
 
-data:keeper_St_Brynach_s_Church a crm:E40_Legal_Body ;
+data:keeper_St_Brynach_s_Church a crm:E74_Group ;
     rdfs:label "St. Brynach's Church" ;
     crm:P74_has_current_or_former_residence data:place_keeper_St_Brynach_s_Church .
 
-data:keeper_St_Vigeans_Museum a crm:E40_Legal_Body ;
+data:keeper_St_Vigeans_Museum a crm:E74_Group ;
     rdfs:label "St Vigeans Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_St_Vigeans_Museum .
 
-data:keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum a crm:E40_Legal_Body ;
+data:keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum a crm:E74_Group ;
     rdfs:label "Armagh Robinson library (No 5 Vicars’ Hill Museum)" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum ;
     skos:closeMatch wd:Q17779528 .
 
-data:keeper_Brecknock_Museum a crm:E40_Legal_Body ;
+data:keeper_Brecknock_Museum a crm:E74_Group ;
     rdfs:label "Brecknock Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Brecknock_Museum ;
     skos:closeMatch wd:Q15204378 .
 
-data:keeper_Bute_Museum a crm:E40_Legal_Body ;
+data:keeper_Bute_Museum a crm:E74_Group ;
     rdfs:label "Bute Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Bute_Museum ;
     skos:closeMatch wd:Q17775932 .
 
-data:keeper_Carmarthen_Museum_Abergwili a crm:E40_Legal_Body ;
+data:keeper_Carmarthen_Museum_Abergwili a crm:E74_Group ;
     rdfs:label "Carmarthen Museum, Abergwili" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Carmarthen_Museum_Abergwili .
 
-data:keeper_Dumfries_Museum a crm:E40_Legal_Body ;
+data:keeper_Dumfries_Museum a crm:E74_Group ;
     rdfs:label "Dumfries Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Dumfries_Museum ;
     skos:closeMatch wd:Q5313798 .
 
-data:keeper_Dunrobin_Castle_Museum a crm:E40_Legal_Body ;
+data:keeper_Dunrobin_Castle_Museum a crm:E74_Group ;
     rdfs:label "Dunrobin Castle Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Dunrobin_Castle_Museum ;
     skos:closeMatch wd:Q72011449 .
 
-data:keeper_Herbert_Art_Gallery_and_Museum a crm:E40_Legal_Body ;
+data:keeper_Herbert_Art_Gallery_and_Museum a crm:E74_Group ;
     rdfs:label "Herbert Art Gallery and Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Herbert_Art_Gallery_and_Museum ;
     skos:closeMatch wd:Q917262 .
 
-data:keeper_Live_Borders_Library_HQ_Selkirk a crm:E40_Legal_Body ;
+data:keeper_Live_Borders_Library_HQ_Selkirk a crm:E74_Group ;
     rdfs:label "Live Borders Library HQ, Selkirk" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Live_Borders_Library_HQ_Selkirk ;
     skos:closeMatch wd:Q140775537 .
 
-data:keeper_Millstreet_Museum a crm:E40_Legal_Body ;
+data:keeper_Millstreet_Museum a crm:E74_Group ;
     rdfs:label "Millstreet Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Millstreet_Museum .
 
-data:keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway a crm:E40_Legal_Body ;
+data:keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway a crm:E74_Group ;
     rdfs:label "Museum nan Eilean in Steòrnabhagh | Stornoway" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway ;
     skos:closeMatch wd:Q113363735 .
 
-data:keeper_Norwich_Castle_Museum a crm:E40_Legal_Body ;
+data:keeper_Norwich_Castle_Museum a crm:E74_Group ;
     rdfs:label "Norwich Castle Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Norwich_Castle_Museum ;
     skos:closeMatch wd:Q55361621 .
 
-data:keeper_Perth_Museum a crm:E40_Legal_Body ;
+data:keeper_Perth_Museum a crm:E74_Group ;
     rdfs:label "Perth Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Perth_Museum ;
     skos:closeMatch wd:Q122199223 .
 
-data:keeper_Reading_Museum a crm:E40_Legal_Body ;
+data:keeper_Reading_Museum a crm:E74_Group ;
     rdfs:label "Reading Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Reading_Museum ;
     skos:closeMatch wd:Q6941004 .
 
-data:keeper_Rothe_House_Museum a crm:E40_Legal_Body ;
+data:keeper_Rothe_House_Museum a crm:E74_Group ;
     rdfs:label "Rothe House Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Rothe_House_Museum ;
     skos:closeMatch wd:Q3752845 .
 
-data:keeper_Royal_Cornwall_Museum a crm:E40_Legal_Body ;
+data:keeper_Royal_Cornwall_Museum a crm:E74_Group ;
     rdfs:label "Royal Cornwall Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Royal_Cornwall_Museum ;
     skos:closeMatch wd:Q1251321 .
 
-data:keeper_Shetland_Museum a crm:E40_Legal_Body ;
+data:keeper_Shetland_Museum a crm:E74_Group ;
     rdfs:label "Shetland Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Shetland_Museum ;
     skos:closeMatch wd:Q2278527 .
 
-data:keeper_Swansea_Museum a crm:E40_Legal_Body ;
+data:keeper_Swansea_Museum a crm:E74_Group ;
     rdfs:label "Swansea Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Swansea_Museum ;
     skos:closeMatch wd:Q7653706 .
 
-data:keeper_Ulster_Museum_Belfast a crm:E40_Legal_Body ;
+data:keeper_Ulster_Museum_Belfast a crm:E74_Group ;
     rdfs:label "Ulster Museum, Belfast" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Ulster_Museum_Belfast ;
     skos:closeMatch wd:Q3547979 .
@@ -1009,12 +1009,12 @@ data:place_keeper_Ulster_Museum_Belfast a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-5.935 54.582)"^^geo:wktLiteral .
 
-data:keeper_Margam_Stones_Museum a crm:E40_Legal_Body ;
+data:keeper_Margam_Stones_Museum a crm:E74_Group ;
     rdfs:label "Margam Stones Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Margam_Stones_Museum ;
     skos:closeMatch wd:Q6759082 .
 
-data:keeper_Trinity_College_Dublin a crm:E40_Legal_Body ;
+data:keeper_Trinity_College_Dublin a crm:E74_Group ;
     rdfs:label "Trinity College Dublin" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Trinity_College_Dublin ;
     skos:closeMatch wd:Q258464 .
@@ -1039,22 +1039,22 @@ data:place_keeper_Trinity_College_Dublin a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-6.2577 53.3444)"^^geo:wktLiteral .
 
-data:keeper_Kerry_County_Museum a crm:E40_Legal_Body ;
+data:keeper_Kerry_County_Museum a crm:E74_Group ;
     rdfs:label "Kerry County Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Kerry_County_Museum ;
     skos:closeMatch wd:Q6394504 .
 
-data:keeper_National_Museum_Wales a crm:E40_Legal_Body ;
+data:keeper_National_Museum_Wales a crm:E74_Group ;
     rdfs:label "National Museum Wales" ;
     crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_Wales ;
     skos:closeMatch wd:Q1321874 .
 
-data:keeper_Orkney_Museum a crm:E40_Legal_Body ;
+data:keeper_Orkney_Museum a crm:E74_Group ;
     rdfs:label "Orkney Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Orkney_Museum ;
     skos:closeMatch wd:Q2383929 .
 
-data:keeper_Pitt_Rivers_Museum_Oxford a crm:E40_Legal_Body ;
+data:keeper_Pitt_Rivers_Museum_Oxford a crm:E74_Group ;
     rdfs:label "Pitt-Rivers Museum, Oxford" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Pitt_Rivers_Museum_Oxford ;
     skos:closeMatch wd:Q1456119 .
@@ -1079,12 +1079,12 @@ data:place_keeper_Pitt_Rivers_Museum_Oxford a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-1.255 51.758611)"^^geo:wktLiteral .
 
-data:keeper_Cork_Public_Museum a crm:E40_Legal_Body ;
+data:keeper_Cork_Public_Museum a crm:E74_Group ;
     rdfs:label "Cork Public Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Cork_Public_Museum ;
     skos:closeMatch wd:Q24041450 .
 
-data:keeper_M_saem_Chorca_Dhuibhne a crm:E40_Legal_Body ;
+data:keeper_M_saem_Chorca_Dhuibhne a crm:E74_Group ;
     rdfs:label "Músaem Chorca Dhuibhne" ;
     crm:P74_has_current_or_former_residence data:place_keeper_M_saem_Chorca_Dhuibhne ;
     skos:closeMatch wd:Q56379441 .
@@ -1099,7 +1099,7 @@ data:place_keeper_M_saem_Chorca_Dhuibhne a crm:E53_Place ;
     ogham:geocodedFrom "osm" ;
     geo:asWKT "POINT(-10.406074 52.166535)"^^geo:wktLiteral .
 
-data:keeper_Manx_Museum a crm:E40_Legal_Body ;
+data:keeper_Manx_Museum a crm:E74_Group ;
     rdfs:label "Manx Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_Manx_Museum ;
     skos:closeMatch wd:Q11988082 .
@@ -1109,7 +1109,7 @@ data:place_keeper_Manx_Museum a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-4.48187 54.15445)"^^geo:wktLiteral .
 
-data:keeper_British_Museum a crm:E40_Legal_Body ;
+data:keeper_British_Museum a crm:E74_Group ;
     rdfs:label "British Museum" ;
     crm:P74_has_current_or_former_residence data:place_keeper_British_Museum ;
     skos:closeMatch wd:Q6373 .
@@ -1119,7 +1119,7 @@ data:place_keeper_British_Museum a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-0.126944 51.519444)"^^geo:wktLiteral .
 
-data:keeper_National_Museums_of_Scotland a crm:E40_Legal_Body ;
+data:keeper_National_Museums_of_Scotland a crm:E74_Group ;
     rdfs:label "National Museums of Scotland" ;
     crm:P74_has_current_or_former_residence data:place_keeper_National_Museums_of_Scotland ;
     skos:closeMatch wd:Q1967502 .
@@ -1129,7 +1129,7 @@ data:place_keeper_National_Museums_of_Scotland a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-3.189 55.947)"^^geo:wktLiteral .
 
-data:keeper_University_College_Cork a crm:E40_Legal_Body ;
+data:keeper_University_College_Cork a crm:E74_Group ;
     rdfs:label "University College Cork" ;
     crm:P74_has_current_or_former_residence data:place_keeper_University_College_Cork ;
     skos:closeMatch wd:Q1574185 .
@@ -1139,7 +1139,7 @@ data:place_keeper_University_College_Cork a crm:E53_Place ;
     ogham:geocodedFrom "wikidata" ;
     geo:asWKT "POINT(-8.49289 51.89291)"^^geo:wktLiteral .
 
-data:keeper_National_Museum_of_Ireland a crm:E40_Legal_Body ;
+data:keeper_National_Museum_of_Ireland a crm:E74_Group ;
     rdfs:label "National Museum of Ireland" ;
     crm:P74_has_current_or_former_residence data:place_keeper_National_Museum_of_Ireland ;
     skos:closeMatch wd:Q1672840 .
