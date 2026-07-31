@@ -125,6 +125,14 @@ nav a[aria-current]{background:var(--sc);border-color:var(--sc);color:#0f1918;fo
 .pop .gain{color:#9aab3f;font-size:11px}
 .pop .loss{color:#b0413e;font-size:11px}
 .pin.keeper{border-radius:2px}
+.kin{margin:6px 0 2px;display:block}
+.kin .kn{font-family:var(--mono);font-size:11.5px;fill:#e9e5da}
+.kin .kn.kin-grp{fill:#9aab3f}
+.kin .ke{stroke:#5b6f6a;stroke-width:1}
+.kin .ke-h{fill:#5b6f6a}
+.kin .kl{font-family:var(--sans);font-size:10px;fill:#93a29d}
+.pop ul.bl{margin:5px 0 0;padding-left:16px;font-size:11.5px;line-height:1.6}
+.pop ul.bl code{color:var(--stone)}
 
 /* landing page: one centred column, no map */
 body.landing{overflow:auto}
@@ -1690,6 +1698,400 @@ buildLists();
 draw();
 """
 
+HEAD_PERSONS = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — who the stones name</title>
+<meta name="description" content="Which ogham stones still stand in the landscape and which are in museums, read from what the editors observed.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body>
+"""
+
+WORDS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe (one stroke below the line) with the crossbar that softens it.
+           Feather marks open and close the inscription. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Formulaic words</h1>
+      <p class="sub">McManus's formulaic vocabulary matched against every reading
+      of every ogham inscription — not just the current one.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <div id="gloss" class="gloss"></div>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#3f7d8c;
+          border:1.6px solid rgba(19,28,27,.7)"></i> in the current edition</span>
+        <span><i class="pin vague" style="width:11px;height:11px;
+          border:1.6px dashed #b07d2b"></i> only in an older reading</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q">Filter the vocabulary</label>
+      <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
+
+      <div class="wordlist" id="wordlist"></div>
+
+      <p class="note">Word list from
+      <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">o3d-epidoc-extractor</a>
+      (Homburg &amp; Thiery, DHd 2020), after McManus 1991. <b>Name elements are
+      matched as substrings</b>, which is that project's semantics and is not
+      precise: short elements such as CON or VIR also fire inside unrelated names.
+      Each hit records which mode produced it.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="words.csv" download>Download matches (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+PERSONS_JS = r"""
+const STONES = __STONES__;
+const BRIDGES = __BRIDGES__;
+const RELATIONS = __RELATIONS__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const BRIDGED = "#b07d2b", LOCAL = "#5b8c5a";
+
+const map = L.map("map", {zoomControl:false}).setView([53.4,-7.5], 6);
+addMapControls(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+const links = L.layerGroup().addTo(map);
+
+function icon(colour){
+  const d = 13;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin" style="width:${d}px;height:${d}px;background:${colour};`
+       + `border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+function arc(a, b, bend){
+  const pts = [], steps = 24;
+  const mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2;
+  const dx = b[0]-a[0], dy = b[1]-a[1];
+  const cx = mx - dy*bend, cy = my + dx*bend;
+  for (let i = 0; i <= steps; i++){
+    const t = i/steps, u = 1-t;
+    pts.push([u*u*a[0] + 2*u*t*cx + t*t*b[0], u*u*a[1] + 2*u*t*cy + t*t*b[1]]);
+  }
+  return pts;
+}
+
+// The kinship of one stone, drawn small. A force layout would be the wrong tool:
+// the largest group here has four people, and 82 of 97 are a single pair.
+function diagram(s){
+  if (!s.edges.length) return "";
+  const rows = s.edges.length, W = 300, H = rows * 46 + 8;
+  const out = [`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" class="kin">`];
+  s.edges.forEach((e, i) => {
+    const y = i * 46 + 22;
+    const from = esc(e.f), to = esc(e.t);
+    out.push(`<text x="4" y="${y}" class="kn">${from}</text>`);
+    out.push(`<text x="${W-4}" y="${y}" text-anchor="end" class="kn${e.kin ? " kin-grp" : ""}">${to}</text>`);
+    out.push(`<line x1="4" y1="${y+8}" x2="${W-4}" y2="${y+8}" class="ke"/>`);
+    out.push(`<polygon points="${W-4},${y+8} ${W-12},${y+4} ${W-12},${y+12}" class="ke-h"/>`);
+    out.push(`<text x="${W/2}" y="${y+22}" text-anchor="middle" class="kl">`
+           + `${esc(e.surface)} \u2014 ${esc(e.gloss)}${e.uncertain ? " (uncertain)" : ""}</text>`);
+  });
+  out.push("</svg>");
+  return out.join("");
+}
+
+function popup(s){
+  const bridges = (s.bridges || []).map(n =>
+    `<li><code>${esc(n.name)}</code> also on ${n.stones.map(esc).join(", ")}</li>`).join("");
+  return `<div class="pop">
+    <h2>${esc(s.title || s.id)}</h2>
+    <div class="where">${esc([s.county, s.country].filter(Boolean).join(", "))}
+      ${s.ciic ? " \u00b7 CIIC " + esc(s.ciic) : ""}</div>
+    ${s.reading ? `<p class="rdg">${esc(s.reading)}</p>` : ""}
+    ${diagram(s)}
+    ${bridges ? `<p class="rdg"><em>the same name elsewhere \u2014 a hypothesis, not a
+      person</em><ul class="bl">${bridges}</ul></p>` : ""}
+    <div class="links">
+      <a href="findspots.html">on the findspot map</a>
+      <a href="readings.html">its readings</a>
+    </div>
+  </div>`;
+}
+
+let relFilter = null;
+
+function matches(s){
+  if (document.getElementById("onlyBridge").checked && !(s.bridges || []).length) return false;
+  if (relFilter && !s.edges.some(e => e.lemmas.includes(relFilter))) return false;
+  return true;
+}
+
+function draw(){
+  const keep = STONES.filter(matches);
+  const shown = new Set(keep.map(s => s.id));
+  scene.slug = "persons";
+  scene.title = relFilter || "";
+  scene.points = keep.map(s => ({lat:s.lat, lon:s.lon,
+                                 colour:(s.bridges||[]).length ? BRIDGED : LOCAL, vague:false}));
+  links.clearLayers();
+  if (displayMode === "points"){
+    const drawn = new Set();
+    keep.forEach(s => (s.bridges || []).forEach(b => b.stones.forEach(other => {
+      const o = STONES.find(x => x.id === other);
+      if (!o || !shown.has(other)) return;
+      const key = [s.id, other].sort().join("|") + b.name;
+      if (drawn.has(key)) return;
+      drawn.add(key);
+      L.polyline(arc([s.lat, s.lon], [o.lat, o.lon], 0.15), {
+        color: BRIDGED, weight: 1.1, opacity: 0.5, dashArray: "4 4"
+      }).bindTooltip(`both name <b>${esc(b.name)}</b> \u2014 a shared name, not a shared person`)
+        .addTo(links);
+    })));
+  }
+  const markers = keep.map(s =>
+    L.marker([s.lat, s.lon], {icon:icon((s.bridges||[]).length ? BRIDGED : LOCAL),
+                              title:s.title || s.id})
+     .bindPopup(() => popup(s), {maxWidth:360}));
+  showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length) map.fitBounds(L.latLngBounds(keep.map(s => [s.lat, s.lon])).pad(0.08));
+}
+
+function buildLists(){
+  const box = document.getElementById("rellist");
+  box.innerHTML = "";
+  const counts = {};
+  STONES.forEach(s => s.edges.forEach(e => e.lemmas.forEach(l => {
+    counts[l] = (counts[l] || 0) + 1; })));
+  const add = (value, label, gloss, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    l.innerHTML = `<input type="radio" name="rel" ${checked ? "checked" : ""}>`
+                + `<b>${esc(label)}</b><span class="tr">${esc(gloss)}</span>`
+                + `<span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => {
+      relFilter = value; draw(); buildLists(); });
+    box.appendChild(l);
+  };
+  add(null, "Any relation", "", Object.values(counts).reduce((a, b) => a + b, 0),
+      relFilter === null);
+  Object.keys(counts).sort((a, b) => counts[b] - counts[a]).forEach(l =>
+    add(l, l, RELATIONS[l] || "", counts[l], relFilter === l));
+
+  const bl = document.getElementById("bridgelist");
+  bl.innerHTML = BRIDGES.map(b =>
+    `<div class="word"><b>${esc(b.name)}</b><span class="tr">${esc(b.stones.join(", "))}</span>`
+    + `<span class="n">${b.stones.length}</span></div>`).join("");
+}
+
+document.getElementById("bridgeN").textContent = STONES.filter(s => (s.bridges||[]).length).length;
+document.getElementById("onlyBridge").addEventListener("change", draw);
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildLists();
+draw();
+"""
+
+PERSONS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Who the stones name</h1>
+      <p class="sub">The people named in the inscriptions and how they are related,
+      read out of <code>&lt;persName&gt;</code> and the lemmatised formula words.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <p class="field">Relation</p>
+      <div class="wordlist" id="rellist"></div>
+
+      <fieldset>
+        <legend class="field">Across stones</legend>
+        <label class="opt"><input type="checkbox" id="onlyBridge"> Only stones a name
+          links to another <span class="n" id="bridgeN"></span></label>
+      </fieldset>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#b07d2b;
+          border:1.6px solid rgba(19,28,27,.7)"></i> a name links it to another stone</span>
+        <span><i class="pin" style="width:11px;height:11px;background:#5b8c5a;
+          border:1.6px solid rgba(19,28,27,.7)"></i> names appear here only</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <p class="field" style="margin-top:20px">Names on more than one stone</p>
+      <div class="wordlist" id="bridgelist"></div>
+
+      <p class="note"><b>An edge inside one inscription is what the text says.</b>
+      A dashed arc between two stones is not: it means the same normalised name was
+      written on both, and a shared name is a hypothesis, not a person. Several are
+      patronymics &mdash; <code>maqqas_treni</code> is &ldquo;son of Trenus&rdquo; &mdash;
+      which two unrelated men can carry. Every <code>#?</code> is its own unknown
+      person, never merged with another.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="persons.csv" download>Download relations (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
 SETTING_BODY = r"""<div id="app">
   <aside id="side">
     <header>
@@ -2329,6 +2731,400 @@ document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("ch
 
 buildLists();
 draw();
+"""
+
+HEAD_PERSONS = r"""<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Linked Open Ogham — who the stones name</title>
+<meta name="description" content="Which ogham stones still stand in the landscape and which are in museums, read from what the editors observed.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vollkorn:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>__CSS__</style>
+</head>
+<body>
+"""
+
+WORDS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <!-- MAP on a stemline. M = aicme Muine 1, one stroke crossing the stemline
+           diagonally. A = aicme Ailme 1, one stroke crossing it perpendicularly.
+           P has no orthodox letter: this is the forfid peith (U+169A), drawn as
+           beithe (one stroke below the line) with the crossbar that softens it.
+           Feather marks open and close the inscription. -->
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Formulaic words</h1>
+      <p class="sub">McManus's formulaic vocabulary matched against every reading
+      of every ogham inscription — not just the current one.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <div id="gloss" class="gloss"></div>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#3f7d8c;
+          border:1.6px solid rgba(19,28,27,.7)"></i> in the current edition</span>
+        <span><i class="pin vague" style="width:11px;height:11px;
+          border:1.6px dashed #b07d2b"></i> only in an older reading</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <label class="field" for="q">Filter the vocabulary</label>
+      <input type="search" id="q" placeholder="maqi, son, hound…" autocomplete="off">
+
+      <div class="wordlist" id="wordlist"></div>
+
+      <p class="note">Word list from
+      <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">o3d-epidoc-extractor</a>
+      (Homburg &amp; Thiery, DHd 2020), after McManus 1991. <b>Name elements are
+      matched as substrings</b>, which is that project's semantics and is not
+      precise: short elements such as CON or VIR also fire inside unrelated names.
+      Each hit records which mode produced it.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="words.csv" download>Download matches (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
+"""
+
+PERSONS_JS = r"""
+const STONES = __STONES__;
+const BRIDGES = __BRIDGES__;
+const RELATIONS = __RELATIONS__;
+
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const BRIDGED = "#b07d2b", LOCAL = "#5b8c5a";
+
+const map = L.map("map", {zoomControl:false}).setView([53.4,-7.5], 6);
+addMapControls(map);
+L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
+  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
+  subdomains:"abcd", maxZoom:19
+}).addTo(map);
+
+const cluster = L.markerClusterGroup({
+  maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
+  iconCreateFunction: c => {
+    const n = c.getChildCount();
+    const tier = n < 10 ? "sm" : n < 50 ? "md" : "lg";
+    return L.divIcon({html:`<div><span>${n}</span></div>`,
+                      className:`ogham-cluster ${tier}`, iconSize:L.point(40,40)});
+  }
+});
+map.addLayer(cluster);
+const links = L.layerGroup().addTo(map);
+
+function icon(colour){
+  const d = 13;
+  return L.divIcon({className:"", iconSize:[d,d], iconAnchor:[d/2,d/2],
+    html:`<div class="pin" style="width:${d}px;height:${d}px;background:${colour};`
+       + `border-color:rgba(19,28,27,.7)"></div>`});
+}
+
+function arc(a, b, bend){
+  const pts = [], steps = 24;
+  const mx = (a[0]+b[0])/2, my = (a[1]+b[1])/2;
+  const dx = b[0]-a[0], dy = b[1]-a[1];
+  const cx = mx - dy*bend, cy = my + dx*bend;
+  for (let i = 0; i <= steps; i++){
+    const t = i/steps, u = 1-t;
+    pts.push([u*u*a[0] + 2*u*t*cx + t*t*b[0], u*u*a[1] + 2*u*t*cy + t*t*b[1]]);
+  }
+  return pts;
+}
+
+// The kinship of one stone, drawn small. A force layout would be the wrong tool:
+// the largest group here has four people, and 82 of 97 are a single pair.
+function diagram(s){
+  if (!s.edges.length) return "";
+  const rows = s.edges.length, W = 300, H = rows * 46 + 8;
+  const out = [`<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" class="kin">`];
+  s.edges.forEach((e, i) => {
+    const y = i * 46 + 22;
+    const from = esc(e.f), to = esc(e.t);
+    out.push(`<text x="4" y="${y}" class="kn">${from}</text>`);
+    out.push(`<text x="${W-4}" y="${y}" text-anchor="end" class="kn${e.kin ? " kin-grp" : ""}">${to}</text>`);
+    out.push(`<line x1="4" y1="${y+8}" x2="${W-4}" y2="${y+8}" class="ke"/>`);
+    out.push(`<polygon points="${W-4},${y+8} ${W-12},${y+4} ${W-12},${y+12}" class="ke-h"/>`);
+    out.push(`<text x="${W/2}" y="${y+22}" text-anchor="middle" class="kl">`
+           + `${esc(e.surface)} \u2014 ${esc(e.gloss)}${e.uncertain ? " (uncertain)" : ""}</text>`);
+  });
+  out.push("</svg>");
+  return out.join("");
+}
+
+function popup(s){
+  const bridges = (s.bridges || []).map(n =>
+    `<li><code>${esc(n.name)}</code> also on ${n.stones.map(esc).join(", ")}</li>`).join("");
+  return `<div class="pop">
+    <h2>${esc(s.title || s.id)}</h2>
+    <div class="where">${esc([s.county, s.country].filter(Boolean).join(", "))}
+      ${s.ciic ? " \u00b7 CIIC " + esc(s.ciic) : ""}</div>
+    ${s.reading ? `<p class="rdg">${esc(s.reading)}</p>` : ""}
+    ${diagram(s)}
+    ${bridges ? `<p class="rdg"><em>the same name elsewhere \u2014 a hypothesis, not a
+      person</em><ul class="bl">${bridges}</ul></p>` : ""}
+    <div class="links">
+      <a href="findspots.html">on the findspot map</a>
+      <a href="readings.html">its readings</a>
+    </div>
+  </div>`;
+}
+
+let relFilter = null;
+
+function matches(s){
+  if (document.getElementById("onlyBridge").checked && !(s.bridges || []).length) return false;
+  if (relFilter && !s.edges.some(e => e.lemmas.includes(relFilter))) return false;
+  return true;
+}
+
+function draw(){
+  const keep = STONES.filter(matches);
+  const shown = new Set(keep.map(s => s.id));
+  scene.slug = "persons";
+  scene.title = relFilter || "";
+  scene.points = keep.map(s => ({lat:s.lat, lon:s.lon,
+                                 colour:(s.bridges||[]).length ? BRIDGED : LOCAL, vague:false}));
+  links.clearLayers();
+  if (displayMode === "points"){
+    const drawn = new Set();
+    keep.forEach(s => (s.bridges || []).forEach(b => b.stones.forEach(other => {
+      const o = STONES.find(x => x.id === other);
+      if (!o || !shown.has(other)) return;
+      const key = [s.id, other].sort().join("|") + b.name;
+      if (drawn.has(key)) return;
+      drawn.add(key);
+      L.polyline(arc([s.lat, s.lon], [o.lat, o.lon], 0.15), {
+        color: BRIDGED, weight: 1.1, opacity: 0.5, dashArray: "4 4"
+      }).bindTooltip(`both name <b>${esc(b.name)}</b> \u2014 a shared name, not a shared person`)
+        .addTo(links);
+    })));
+  }
+  const markers = keep.map(s =>
+    L.marker([s.lat, s.lon], {icon:icon((s.bridges||[]).length ? BRIDGED : LOCAL),
+                              title:s.title || s.id})
+     .bindPopup(() => popup(s), {maxWidth:360}));
+  showOn(map, keep.map(s => [s.lon, s.lat]), markers, "stone", "Stones per cell");
+  document.getElementById("count").textContent = keep.length;
+  document.getElementById("countLabel").textContent =
+    keep.length === 1 ? "stone shown" : "stones shown";
+  if (keep.length) map.fitBounds(L.latLngBounds(keep.map(s => [s.lat, s.lon])).pad(0.08));
+}
+
+function buildLists(){
+  const box = document.getElementById("rellist");
+  box.innerHTML = "";
+  const counts = {};
+  STONES.forEach(s => s.edges.forEach(e => e.lemmas.forEach(l => {
+    counts[l] = (counts[l] || 0) + 1; })));
+  const add = (value, label, gloss, n, checked) => {
+    const l = document.createElement("label");
+    l.className = "word";
+    l.innerHTML = `<input type="radio" name="rel" ${checked ? "checked" : ""}>`
+                + `<b>${esc(label)}</b><span class="tr">${esc(gloss)}</span>`
+                + `<span class="n">${n}</span>`;
+    l.querySelector("input").addEventListener("change", () => {
+      relFilter = value; draw(); buildLists(); });
+    box.appendChild(l);
+  };
+  add(null, "Any relation", "", Object.values(counts).reduce((a, b) => a + b, 0),
+      relFilter === null);
+  Object.keys(counts).sort((a, b) => counts[b] - counts[a]).forEach(l =>
+    add(l, l, RELATIONS[l] || "", counts[l], relFilter === l));
+
+  const bl = document.getElementById("bridgelist");
+  bl.innerHTML = BRIDGES.map(b =>
+    `<div class="word"><b>${esc(b.name)}</b><span class="tr">${esc(b.stones.join(", "))}</span>`
+    + `<span class="n">${b.stones.length}</span></div>`).join("");
+}
+
+document.getElementById("bridgeN").textContent = STONES.filter(s => (s.bridges||[]).length).length;
+document.getElementById("onlyBridge").addEventListener("change", draw);
+const redraw = draw;
+
+// --- points vs. density -------------------------------------------------------
+const hexGroup = L.layerGroup();
+const hexLegend = makeLegend(map);
+let displayMode = "points";
+let hexSize = 0.25;
+let hexScale = "log";
+
+function showOn(map_, coords, markers, noun, title){
+  scene.noun = noun;
+  scene.legendTitle = title;
+  // the export draws the scene, so it must hold only what is actually displayed
+  if (displayMode !== "points") scene.points = [];
+  if (displayMode === "points"){
+    map.removeLayer(hexGroup);
+    hexLegend.remove();
+    if (!map.hasLayer(cluster)) map.addLayer(cluster);
+    cluster.clearLayers();
+    cluster.addLayers(markers);
+    scene.hexes = [];
+    scene.legend = null;
+  } else {
+    map.removeLayer(cluster);
+    hexGroup.clearLayers();
+    if (coords.length){
+      HEX.setLatitude(coords.reduce((a,c) => a + c[1], 0) / coords.length);
+      const built = HEX.build(coords, hexSize, noun, hexScale);
+      built.layer.eachLayer(l => hexGroup.addLayer(l));
+      hexLegend.set(title, built.legend);
+      hexLegend.addTo(map);
+      scene.hexes = built.layer.getLayers().map(l => ({
+        ring: l.getLatLngs()[0].map(p => [p.lat, p.lng]),
+        fill: l.options.fillColor
+      }));
+      scene.legend = built.legend;
+    } else {
+      hexLegend.remove();
+      scene.hexes = [];
+      scene.legend = null;
+    }
+    if (!map.hasLayer(hexGroup)) map.addLayer(hexGroup);
+  }
+}
+
+document.querySelectorAll("#mode input").forEach(i => i.addEventListener("change", () => {
+  displayMode = i.value;
+  ["hexsize", "hexscale"].forEach(id =>
+    document.getElementById(id).classList.toggle("on", displayMode === "density"));
+  redraw();
+}));
+document.querySelectorAll("#hexsize input").forEach(i => i.addEventListener("change", () => {
+  hexSize = parseFloat(i.value);
+  if (displayMode === "density") redraw();
+}));
+document.querySelectorAll("#hexscale input").forEach(i => i.addEventListener("change", () => {
+  hexScale = i.value;
+  if (displayMode === "density") redraw();
+}));
+
+buildLists();
+draw();
+"""
+
+PERSONS_BODY = r"""<div id="app">
+  <aside id="side">
+    <header>
+      <svg class="stem" viewBox="0 0 300 34" role="img" aria-label="map, written in ogham">
+        <g stroke="#b8b2a7" stroke-width="1.6" fill="none" stroke-linecap="square">
+          <path d="M4 17 h292" stroke-width="1.1"/>
+          <path d="M4 17 l7 -7 M4 17 l7 7"/>
+          <path d="M82 27 l15 -20"/>
+          <path d="M150 6 v22"/>
+          <path d="M210 17 v11 M203 23 h14"/>
+          <path d="M296 17 l-7 -7 M296 17 l-7 7"/>
+        </g>
+      </svg>
+      <h1>Who the stones name</h1>
+      <p class="sub">The people named in the inscriptions and how they are related,
+      read out of <code>&lt;persName&gt;</code> and the lemmatised formula words.</p>
+    </header>
+    <div class="scroll">
+__NAV__
+      <div class="tally"><b id="count">0</b><span id="countLabel">stones shown</span></div>
+
+      <p class="field">Relation</p>
+      <div class="wordlist" id="rellist"></div>
+
+      <fieldset>
+        <legend class="field">Across stones</legend>
+        <label class="opt"><input type="checkbox" id="onlyBridge"> Only stones a name
+          links to another <span class="n" id="bridgeN"></span></label>
+      </fieldset>
+
+      <div class="legend">
+        <span><i class="pin" style="width:11px;height:11px;background:#b07d2b;
+          border:1.6px solid rgba(19,28,27,.7)"></i> a name links it to another stone</span>
+        <span><i class="pin" style="width:11px;height:11px;background:#5b8c5a;
+          border:1.6px solid rgba(19,28,27,.7)"></i> names appear here only</span>
+      </div>
+
+      <p class="field" style="margin-top:20px">Display</p>
+      <div class="seg" id="mode">
+        <label><input type="radio" name="mode" value="points" checked><span>Points</span></label>
+        <label><input type="radio" name="mode" value="density"><span>Density</span></label>
+      </div>
+      <div class="seg" id="hexsize">
+        <label><input type="radio" name="hex" value="0.5"><span>Coarse</span></label>
+        <label><input type="radio" name="hex" value="0.25" checked><span>Medium</span></label>
+        <label><input type="radio" name="hex" value="0.12"><span>Fine</span></label>
+      </div>
+      <div class="seg" id="hexscale">
+        <label><input type="radio" name="scale" value="log" checked><span>Log</span></label>
+        <label><input type="radio" name="scale" value="linear"><span>Linear</span></label>
+      </div>
+
+      <p class="field" style="margin-top:20px">Names on more than one stone</p>
+      <div class="wordlist" id="bridgelist"></div>
+
+      <p class="note"><b>An edge inside one inscription is what the text says.</b>
+      A dashed arc between two stones is not: it means the same normalised name was
+      written on both, and a shared name is a hypothesis, not a person. Several are
+      patronymics &mdash; <code>maqqas_treni</code> is &ldquo;son of Trenus&rdquo; &mdash;
+      which two unrelated men can carry. Every <code>#?</code> is its own unknown
+      person, never merged with another.</p>
+
+      <p class="dl" style="display:flex;gap:8px;margin-bottom:6px">
+        <button class="btn" id="dl-svg" type="button">Download SVG</button>
+        <button class="btn" id="dl-jpg" type="button">Download JPG</button>
+      </p>
+      <p class="dl">
+        <a href="persons.csv" download>Download relations (CSV)</a><br>
+        <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
+      </p>
+      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
+      CC BY 4.0.</p>
+    </div>
+  </aside>
+  <div id="map"></div>
+</div>
+
 """
 
 SETTING_BODY = r"""<div id="app">
@@ -3000,6 +3796,14 @@ PAGES = [
                  "sit in a museum. Read out of what the editors observed on site, "
                  "with the sentence behind every verdict.",
     },
+    {
+        "slug": "persons.html",
+        "nav": "People",
+        "title": "Who the stones name",
+        "blurb": "The people named in the inscriptions and how they are related — son "
+                 "of, of the kin of, grandson of — read from the lemmatised formula "
+                 "words rather than guessed from word order.",
+    },
 ]
 
 
@@ -3199,6 +4003,27 @@ def build_setting(place_records: list[dict], docs: Path, root: Path | None = Non
     print(f"  -> wrote {rel(docs / 'setting.html')} ({len(stones)} stones, "
           f"{wild} in the landscape, {size:.0f} KB)")
     return {"stones": len(stones), "landscape": wild}
+
+
+def build_persons(stones: list[dict], bridges: list[dict], relations: dict,
+                  docs: Path, root: Path | None = None,
+                  provenance: dict | None = None) -> dict:
+    """docs/persons.html -- who is named, and how they are related."""
+    docs.mkdir(parents=True, exist_ok=True)
+    html = (_page(HEAD_PERSONS, PERSONS_BODY, PERSONS_JS)
+            .replace("__NAV__", nav_html("persons.html"))
+            .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
+            .replace("__BRIDGES__", json.dumps(bridges, ensure_ascii=False, separators=(",", ":")))
+            .replace("__RELATIONS__", json.dumps(relations, ensure_ascii=False, separators=(",", ":")))
+            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__PROV__", _provenance_html(provenance or {})))
+    (docs / "persons.html").write_text(html, encoding="utf-8")
+    rel = (lambda x: x.relative_to(root)) if root else (lambda x: x)
+    size = (docs / "persons.html").stat().st_size / 1024
+    bridged = sum(1 for s in stones if s.get("bridges"))
+    print(f"  -> wrote {rel(docs / 'persons.html')} ({len(stones)} stones, "
+          f"{bridged} linked by a shared name, {size:.0f} KB)")
+    return {"stones": len(stones), "bridged": bridged}
 
 
 def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],

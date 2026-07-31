@@ -137,6 +137,7 @@ drift apart:
 | `docs/readings.html` | stones with competing readings, by distance and editor |
 | `docs/keepers.html` | findspot-to-museum arcs, filterable by institution |
 | `docs/setting.html` | how each stone stands today, in the landscape or under a roof |
+| `docs/persons.html` | who is named, how they are related, and where names recur |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
 Over the full corpus: **504 stones, 395 distinct places** across 12 administrative
@@ -150,6 +151,68 @@ a landing page and, at the moment, two views — the findspot map (filterable by
 country and by free text, with hedged findspots as dashed rings and the
 `data:findspot_*` node in every popup) and the formulaic-word map. Nothing in them
 re-parses the XML, so map, table and graph cannot drift apart.
+
+## Who the stones name (`docs/persons.html`)
+
+The relationship does not have to be inferred from word order — the corpus marks it:
+
+```xml
+<persName>
+  <name nymRef="#cassittas">CASSITTAS</name>
+  <w type="formula" lemma="maqqas">MAQI</w>
+  <w type="formula" lemma="muccoviias">MUCOI</w>
+  <name nymRef="#calliti">CALLITI</name>
+</persName>
+```
+
+**360 people and 34 kin groups**, **116 relations** the inscriptions assert, in **97
+groups** — of which 82 are a single pair, 11 a triple, and four have four members.
+No force-directed layout: this is not a hairball, so each stone's kinship is drawn
+as a small diagram in its popup instead.
+
+### Three distinctions the extractor keeps
+
+**Two formula words in a row are one relation.** *MAQI MUCOI X* is "son of the kin of
+X". Splitting it would assert both that CASSITTAS is CALLITI's son and that he is of
+CALLITI's kin, where the inscription says one thing.
+
+**A shared name is a hypothesis, not a person.** Within one inscription an edge is
+what the text says; across inscriptions, two occurrences of a name are the same
+string. `maqqas_treni` is "son of Trenus" — a patronymic two unrelated men can carry,
+and it appears in Cork and in Pembrokeshire. Those links are drawn as **dashed arcs**
+and the popup names them as hypotheses. Twelve names bridge stones this way.
+
+**Every `#?` is its own unknown person.** 144 name slots are anonymous. Merging them
+would produce one extremely well-connected stranger who is an artefact of the
+notation.
+
+A kin group also gets its own node: a *túath* is named after an ancestor but is not
+that ancestor. Getting this wrong was caught by the validator, which found a name
+typed as a tribe everywhere because it was a tribe somewhere.
+
+### OG(H)AM is the authority; CISP is supplementary
+
+Stated as a principle because it settles more than one question. Where the two
+disagree, OG(H)AM has brought Macalister's and CISP's readings up to current
+scholarship, and OG(H)AM wins.
+
+It explains a reconciliation that looks broken and is not. Only 37 of 217 `nymRef`
+values match the CISP name index by string, and the reason is systematic rather than
+noisy: **OG(H)AM normalises to the reconstructed nominative, CISP indexes the
+inscribed genitive.**
+
+| OG(H)AM | CISP |
+|---|---|
+| `caras` | `cari` |
+| `olagnas?` | `olagni` |
+| `dunaidu`, `marianus` | `dunaidonas`, `mariani` |
+| `tebicatus` | `ebicato` |
+
+On 75 stones the two sources name the same number of people, so a positional
+alignment is available — and it is deliberately **not** shipped. A link at that
+confidence would contradict the caution this page is built on: name identity is not
+person identity. Doing it properly is a morphological correspondence, and worth
+doing as its own task.
 
 ## Where the stones stand today (`docs/setting.html`)
 
@@ -958,6 +1021,7 @@ tei--epidoc-crosswalk/
 │   ├── readings.html          # editorial-disagreement map (generated)
 │   ├── keepers.html           # findspot-to-museum map (generated)
 │   ├── setting.html           # present-setting map (generated)
+│   ├── persons.html           # person and kinship map (generated)
 │   ├── places.geojson         # point layer beside the map (generated)
 │   └── .nojekyll
 ├── py/
@@ -972,6 +1036,7 @@ tei--epidoc-crosswalk/
 │   ├── worklist.py            # what is still missing, by priority
 │   ├── keepers.py             # geocoding of the holding institutions
 │   ├── setting.py             # present setting, read from the observed provenance
+│   ├── persons.py             # people named on the stones and their relations
 │   ├── webmap.py              # docs/ map builder
 │   └── wikidata.py             # Wikidata reconciliation module
 ├── .gitignore

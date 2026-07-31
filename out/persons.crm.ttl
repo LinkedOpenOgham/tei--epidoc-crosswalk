@@ -1,0 +1,3736 @@
+@prefix amt: <http://academic-meta-tool.xyz/vocab#> .
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix data: <http://data.ogham.link/crm/> .
+@prefix lod: <http://lod.ogham.link/data/> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+data:relation_E_DEV_001_0 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_qicus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_savaqqucus ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_ANT_002_1 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_vobarracas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_ANT_002_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_ARM_001_2 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_ARM_001_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_ARM_001_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_CAR_003_3 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_marianus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_dunaidu ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_003_4 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_qritias ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_trenas ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_COR_011_5 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_I_COR_011_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_colomagnas ;
+    rdfs:comment "AVI" .
+
+data:relation_I_COR_013_6 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_013_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_lug ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_014_7 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_name_turania ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqqas_deceddas ;
+    rdfs:comment "AVI" .
+
+data:relation_I_COR_016_8 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_016_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_luguqritias ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_018_9 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_viragnas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_cunagussus ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_COR_019_10 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_COR_019_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_coimagnas ;
+    rdfs:comment "MAQI MOCOI" .
+
+data:relation_I_COR_024_11 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_024_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_024_anon0_1 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_030_12 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_calliti ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_cassittas ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_COR_032_13 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_032_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_032_anon0_0 ;
+    rdfs:comment "MAC" .
+
+data:relation_I_COR_033_14 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_033_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_033_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_034_15 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_scilagnas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_grilagnas ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_035_16 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_maqqas_treni ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_cliucu ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_036_17 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_036_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_036_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_037_18 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_037_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_branagnas ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_038_19 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_038_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_038_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_039_20 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_039_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_cronagnas ;
+    rdfs:comment "MAC" .
+
+data:relation_I_COR_043_21 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_043_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_043_anon0_0 ;
+    rdfs:comment "MACI" .
+
+data:relation_I_COR_046_22 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_vortigernas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_046_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_047_23 a rdf:Statement ;
+    rdfs:label "here (lies) and son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "koi+maqqas+muccoviias" ;
+    rdf:object data:tribe_I_COR_047_anon0_4 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_corbagnas ;
+    rdfs:comment "OI MAQI MOCCOI" .
+
+data:relation_I_COR_050_24 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_050_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqqas_esea ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_052_25 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_COR_052_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_Carthach ;
+    rdfs:comment "MMAQI MU" .
+
+data:relation_I_COR_053_26 a rdf:Statement ;
+    rdfs:label "" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "" ;
+    rdf:object data:person_I_COR_053_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_053_anon0_1 ;
+    rdfs:comment "MAQVI" .
+
+data:relation_I_COR_054_27 a rdf:Statement ;
+    rdfs:label "client or follower of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "celi" ;
+    rdf:object data:person_I_COR_054_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_054_anon0_1 ;
+    rdfs:comment "CELI" .
+
+data:relation_I_COR_055_28 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_maqqas_riteas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_coelabuts ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_055_29 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_corberias ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqqas_riteas ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_COR_057_30 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_maqqas_oc_ci ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_lugudiks ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_058_31 a rdf:Statement ;
+    rdfs:label "client or follower of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "celias" ;
+    rdf:object data:person_name_netta_slogi ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_uddmensa ;
+    rdfs:comment "CELI" .
+
+data:relation_I_COR_062_32 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_062_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_062_anon0_0 ;
+    rdfs:comment "MAQ" .
+
+data:relation_I_COR_063_33 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_063_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_063_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_064_34 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_064_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_064_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_065_35 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_065_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_COR_065_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_069_36 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_glunlegget ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_vecreg ;
+    rdfs:comment "MONQOI" .
+
+data:relation_I_COR_070_37 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_dali ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_dalagni ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_071_38 a rdf:Statement ;
+    rdfs:label "here (lies)" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "koi" ;
+    rdf:object data:person_name_netta_ttrenalugos ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_broinienas ;
+    rdfs:comment "OI" .
+
+data:relation_I_COR_072_39 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_llominacca ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_vergoso ;
+    rdfs:comment "MACI" .
+
+data:relation_I_COR_073_40 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_dego ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_madora ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_074_41 a rdf:Statement ;
+    rdfs:label "client or follower of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "celi" ;
+    rdf:object data:person_I_COR_074_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqi_bri ;
+    rdfs:comment "CELI" .
+
+data:relation_I_COR_076_42 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_noeluri ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_anavlamattias ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_COR_076_43 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_name_akeras ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_noeluri ;
+    rdfs:comment "AVI" .
+
+data:relation_I_COR_077_44 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_valamni ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqiercias ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_078_45 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_tobira ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_vedacuna ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_078_46 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_sogini ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_tobira ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_COR_080_47 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_l ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_dovet_i_as ;
+    rdfs:comment "MACI" .
+
+data:relation_I_COR_080_48 a rdf:Statement ;
+    rdfs:label "client or follower of and son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "celias+maqqas" ;
+    rdf:object data:person_name_culidovas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_l ;
+    rdfs:comment "CELI MAQI" .
+
+data:relation_I_COR_081_49 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_eqod ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_veqoanai ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_083_50 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_qecia ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_litubiri ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_087_51 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_ailluattan ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_minnaccanni ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_090_52 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_COR_090_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_odaragnas ;
+    rdfs:comment "MACI" .
+
+data:relation_I_COR_091_53 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_comogagnas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_colomagnas ;
+    rdfs:comment "MACI" .
+
+data:relation_I_COR_092_54 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_domongartas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_croccagni ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_COR_093_55 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_birracias ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqqas_lasire ;
+    rdfs:comment "MAQQI" .
+
+data:relation_I_COR_095_56 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_ccaqttaucc ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_dimai ;
+    rdfs:comment "MAQ" .
+
+data:relation_I_KER_003_57 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_maqqas_treni ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqqas ;
+    rdfs:comment "MAQ" .
+
+data:relation_I_KER_004_58 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_sedanias ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KER_004_anon0_0 ;
+    rdfs:comment "MACI" .
+
+data:relation_I_KER_005_59 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_KER_005_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_laddignias ;
+    rdfs:comment "MAQQI MUCCOI" .
+
+data:relation_I_KER_006_60 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_KER_006_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_laidagnas ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_KER_012_61 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_comogagnas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_ronagnas ;
+    rdfs:comment "MA NQ" .
+
+data:relation_I_KER_013_62 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_qritias ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_luguqritias ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_KER_030_63 a rdf:Statement ;
+    rdfs:label "here (lies) and son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "koi+maqqas+muccoviias" ;
+    rdf:object data:tribe_I_KER_030_anon0_4 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KER_030_anon0_0 ;
+    rdfs:comment "OI MAQQI MUCOI" .
+
+data:relation_I_KER_048_64 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_caliacas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_bruscus ;
+    rdfs:comment "MAQQI" .
+
+data:relation_I_KER_055_65 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_broccagnas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maila_andiberi ;
+    rdfs:comment "MACI" .
+
+data:relation_I_KER_066_66 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_toicacas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_degis ;
+    rdfs:comment "MAQI MOCOI" .
+
+data:relation_I_KID_001_67 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_name_ivacatus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_jovanis ;
+    rdfs:comment "AVI" .
+
+data:relation_I_KID_002_68 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_marinus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqqas_deceddas ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_KID_004_69 a rdf:Statement ;
+    rdfs:label "here (lies) and son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "koi+maqqas+muccoviias" ;
+    rdf:object data:tribe_name_a ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_ignias ;
+    rdfs:comment "OI MAQI MUCOI" .
+
+data:relation_I_KID_008_70 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_trenalugus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_neta_vraicas ;
+    rdfs:comment "MAQI MUCCOI" .
+
+data:relation_I_KIK_006_71 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_KIK_006_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_006_anon0_0 ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_KIK_007_72 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_KIK_007_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_007_anon0_1 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_KIK_008_73 a rdf:Statement ;
+    rdfs:label "here (lies) and son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "koi+maqqas+muccoviias" ;
+    rdf:object data:tribe_name_rinas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_lobas ;
+    rdfs:comment "OI MAQQI MUCCOI" .
+
+data:relation_I_KIK_011_74 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_KIK_011_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_011_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_KIK_012_75 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_I_KIK_012_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_012_anon0_0 ;
+    rdfs:comment "AVI" .
+
+data:relation_I_KIK_013_76 a rdf:Statement ;
+    rdfs:label "here (lies) and son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "koi+maqqas" ;
+    rdf:object data:person_I_KIK_013_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_013_anon0_0 ;
+    rdfs:comment "OI MAQI" .
+
+data:relation_I_KIK_014_77 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_KIK_014_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_014_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_KIK_014_78 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_I_KIK_014_anon0_4 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_014_anon0_2 ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_LOU_002_79 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_tan ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_MAY_003_80 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_MAY_003_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_allatis ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_MAY_005_81 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_I_MAY_005_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_ceragnas ;
+    rdfs:comment "AVI" .
+
+data:relation_I_MEA_001_82 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_name_ineqaglasas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maqqas_cairatini ;
+    rdfs:comment "AVI" .
+
+data:relation_I_WAT_002_83 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_neta_Segam ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_lugudics ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_WAT_005_84 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_lugus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_coilabuts ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_WAT_005_85 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_lobacu ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_lugus ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_WAT_006_86 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_WAT_006_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_medusias ;
+    rdfs:comment "MACI" .
+
+data:relation_I_WAT_006_87 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_lugus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_006_anon0_2 ;
+    rdfs:comment "MOCOI" .
+
+data:relation_I_WAT_011_88 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_I_WAT_011_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_011_anon0_1 ;
+    rdfs:comment "MOCOI" .
+
+data:relation_I_WAT_012_89 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_WAT_012_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_012_anon0_0 ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_WAT_014_90 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_WAT_014_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_014_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_WAT_014_91 a rdf:Statement ;
+    rdfs:label "client or follower of and grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "cēlias+avias" ;
+    rdf:object data:person_I_WAT_014_anon0_5 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_014_anon0_2 ;
+    rdfs:comment "CELI AVI" .
+
+data:relation_I_WAT_015_92 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_WAT_015_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_015_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_WAT_016_93 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_WAT_016_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_016_anon0_0 ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_WAT_018_94 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_I_WAT_018_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_018_anon0_0 ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_WAT_024_95 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_at_r ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_bivaid ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_WAT_025_96 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_I_WAT_025_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_lugudics ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_WAT_033_97 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_neta_Segam ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_033_anon0_0 ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_WAT_036_98 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_I_WAT_036_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_036_anon0_0 ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_WAT_039_99 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_WAT_039_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_039_anon0_0 ;
+    rdfs:comment "MAQI MOCOI" .
+
+data:relation_I_WAT_040_100 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_WAT_040_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_040_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_WAT_042_101 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_WAT_042_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_042_anon0_0 ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_WAT_048_102 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_gattagnas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_moddagnas ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_WAT_048_103 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_name_lugunias ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_gattagnas ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_WAT_049_104 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_I_WAT_049_anon0_3 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_049_anon0_0 ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_I_WAT_050_105 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_I_WAT_050_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_WAT_050_anon0_0 ;
+    rdfs:comment "MAQI" .
+
+data:relation_M_IOM_001_106 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_M_IOM_001_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_dovaid ;
+    rdfs:comment "MA QI" .
+
+data:relation_M_IOM_002_107 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 0.90 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_cunavalas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_bivaid ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_M_IOM_007_108 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_rocatus ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_ambicatus ;
+    rdfs:comment "MAQI" .
+
+data:relation_S_SHE_001_109 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_S_SHE_001_anon0_4 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_S_SHE_001_anon0_2 ;
+    rdfs:comment "ME" .
+
+data:relation_W_CMN_002_110 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_name_bodibivas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_bivadias ;
+    rdfs:comment "AVVI" .
+
+data:relation_W_PEM_001_111 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_kunatamas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_sagragnas ;
+    rdfs:comment "MAQI" .
+
+data:relation_W_PEM_003_112 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_cavetas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_andegellas ;
+    rdfs:comment "MACU" .
+
+data:relation_W_PEM_004_113 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_maqqas_treni ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_trenagussus ;
+    rdfs:comment "MAQI" .
+
+data:relation_W_PEM_006_114 a rdf:Statement ;
+    rdfs:label "son of and of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas+muccoviias" ;
+    rdf:object data:tribe_name_brigacas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_nets_sagri ;
+    rdfs:comment "MAQI MUCOI" .
+
+data:relation_W_PEM_014_115 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_klutarigs ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_maglacu ;
+    rdfs:comment "MAQI" .
+
+data:stone_E_CON_002 ogham:shows data:person_E_CON_002_anon0_0 .
+
+data:stone_E_CON_003 ogham:shows data:person_E_CON_003_anon0_0,
+        data:person_name_ulcagnas .
+
+data:stone_E_CON_004 ogham:shows data:person_name_iusti .
+
+data:stone_E_DEV_001 ogham:shows data:person_name_qicus,
+        data:person_name_savaqqucus .
+
+data:stone_E_DEV_002 ogham:shows data:person_name_enabarras .
+
+data:stone_E_HAM_001 ogham:shows data:person_name_tebicatus .
+
+data:stone_E_WAR_001 ogham:shows data:person_name_maeldumcail .
+
+data:stone_I_ANT_001 ogham:shows data:person_I_ANT_001_anon0_0,
+        data:person_I_ANT_001_anon0_1 .
+
+data:stone_I_ANT_002 ogham:shows data:person_I_ANT_002_anon0_0,
+        data:person_name_vobarracas .
+
+data:stone_I_ARM_001 ogham:shows data:person_I_ARM_001_anon0_0,
+        data:person_I_ARM_001_anon0_2 .
+
+data:stone_I_CAR_003 ogham:shows data:person_name_dunaidu,
+        data:person_name_marianus .
+
+data:stone_I_CAR_004 ogham:shows data:person_name_mucc .
+
+data:stone_I_COR_002 ogham:shows data:person_I_COR_002_anon0_0 .
+
+data:stone_I_COR_003 ogham:shows data:person_name_qritias,
+        data:person_name_trenas .
+
+data:stone_I_COR_004 ogham:shows data:person_I_COR_004_anon0_0 .
+
+data:stone_I_COR_007 ogham:shows data:person_name_maqqas_treni .
+
+data:stone_I_COR_009 ogham:shows data:person_name_olagnas .
+
+data:stone_I_COR_010 ogham:shows data:person_I_COR_010_anon0_0 .
+
+data:stone_I_COR_011 ogham:shows data:person_I_COR_011_anon0_2,
+        data:person_name_colomagnas .
+
+data:stone_I_COR_012 ogham:shows data:person_I_COR_012_anon0_0 .
+
+data:stone_I_COR_013 ogham:shows data:person_I_COR_013_anon0_2,
+        data:person_name_lug .
+
+data:stone_I_COR_014 ogham:shows data:person_name_maqqas_deceddas,
+        data:person_name_turania .
+
+data:stone_I_COR_015 ogham:shows data:person_name_caras .
+
+data:stone_I_COR_016 ogham:shows data:person_I_COR_016_anon0_2,
+        data:person_name_luguqritias .
+
+data:stone_I_COR_017 ogham:shows data:person_name_girragnas .
+
+data:stone_I_COR_018 ogham:shows data:person_name_cunagussus,
+        data:person_name_viragnas .
+
+data:stone_I_COR_019 ogham:shows data:person_I_COR_019_anon0_3,
+        data:person_name_coimagnas .
+
+data:stone_I_COR_021 ogham:shows data:person_name_dumnagenas .
+
+data:stone_I_COR_022 ogham:shows data:person_name_cunagnas .
+
+data:stone_I_COR_023 ogham:shows data:person_name_scamagnas .
+
+data:stone_I_COR_024 ogham:shows data:person_I_COR_024_anon0_1,
+        data:person_I_COR_024_anon0_3 .
+
+data:stone_I_COR_025 ogham:shows data:person_I_COR_025_anon0_0 .
+
+data:stone_I_COR_027 ogham:shows data:person_I_COR_027_anon0_0 .
+
+data:stone_I_COR_028 ogham:shows data:person_I_COR_028_anon0_0 .
+
+data:stone_I_COR_030 ogham:shows data:person_name_calliti,
+        data:person_name_cassittas .
+
+data:stone_I_COR_031 ogham:shows data:person_I_COR_031_anon0_0 .
+
+data:stone_I_COR_032 ogham:shows data:person_I_COR_032_anon0_0,
+        data:person_I_COR_032_anon0_2,
+        data:person_I_COR_032_anon0_3 .
+
+data:stone_I_COR_033 ogham:shows data:person_I_COR_033_anon0_0,
+        data:person_I_COR_033_anon0_2 .
+
+data:stone_I_COR_034 ogham:shows data:person_name_grilagnas,
+        data:person_name_scilagnas .
+
+data:stone_I_COR_035 ogham:shows data:person_name_cliucu .
+
+data:stone_I_COR_036 ogham:shows data:person_I_COR_036_anon0_0,
+        data:person_I_COR_036_anon0_2 .
+
+data:stone_I_COR_037 ogham:shows data:person_I_COR_037_anon0_2,
+        data:person_name_branagnas .
+
+data:stone_I_COR_038 ogham:shows data:person_I_COR_038_anon0_0,
+        data:person_I_COR_038_anon0_2 .
+
+data:stone_I_COR_039 ogham:shows data:person_I_COR_039_anon0_2,
+        data:person_name_cronagnas .
+
+data:stone_I_COR_040 ogham:shows data:person_I_COR_040_anon0_0 .
+
+data:stone_I_COR_041 ogham:shows data:person_name_actos .
+
+data:stone_I_COR_042 ogham:shows data:person_name_ercaidu .
+
+data:stone_I_COR_043 ogham:shows data:person_I_COR_043_anon0_0,
+        data:person_I_COR_043_anon0_2 .
+
+data:stone_I_COR_044 ogham:shows data:person_name_medugenas .
+
+data:stone_I_COR_045 ogham:shows data:person_I_COR_045_anon0_0 .
+
+data:stone_I_COR_046 ogham:shows data:person_I_COR_046_anon0_0,
+        data:person_name_vortigernas .
+
+data:stone_I_COR_047 ogham:shows data:person_I_COR_047_anon0_4,
+        data:person_name_corbagnas .
+
+data:stone_I_COR_048 ogham:shows data:person_I_COR_048_anon0_0 .
+
+data:stone_I_COR_050 ogham:shows data:person_I_COR_050_anon0_2,
+        data:person_name_maqqas_esea .
+
+data:stone_I_COR_051 ogham:shows data:person_I_COR_051_anon0_0 .
+
+data:stone_I_COR_052 ogham:shows data:person_I_COR_052_anon0_3,
+        data:person_name_Carthach .
+
+data:stone_I_COR_053 ogham:shows data:person_I_COR_053_anon0_1,
+        data:person_I_COR_053_anon0_3 .
+
+data:stone_I_COR_054 ogham:shows data:person_I_COR_054_anon0_1,
+        data:person_I_COR_054_anon0_3 .
+
+data:stone_I_COR_055 ogham:shows data:person_name_coelabuts,
+        data:person_name_corberias,
+        data:person_name_maqqas_riteas .
+
+data:stone_I_COR_056 ogham:shows data:person_I_COR_056_anon0_0 .
+
+data:stone_I_COR_057 ogham:shows data:person_name_lugudiks,
+        data:person_name_maqqas_oc_ci .
+
+data:stone_I_COR_058 ogham:shows data:person_name_netta_slogi,
+        data:person_name_uddmensa .
+
+data:stone_I_COR_062 ogham:shows data:person_I_COR_062_anon0_0,
+        data:person_I_COR_062_anon0_2 .
+
+data:stone_I_COR_063 ogham:shows data:person_I_COR_063_anon0_0,
+        data:person_I_COR_063_anon0_2 .
+
+data:stone_I_COR_064 ogham:shows data:person_I_COR_064_anon0_0,
+        data:person_I_COR_064_anon0_2 .
+
+data:stone_I_COR_065 ogham:shows data:person_I_COR_065_anon0_0,
+        data:person_I_COR_065_anon0_2 .
+
+data:stone_I_COR_066 ogham:shows data:person_name_branas .
+
+data:stone_I_COR_067 ogham:shows data:person_name_colli .
+
+data:stone_I_COR_069 ogham:shows data:person_name_glunlegget,
+        data:person_name_vecreg .
+
+data:stone_I_COR_070 ogham:shows data:person_name_dalagni,
+        data:person_name_dali .
+
+data:stone_I_COR_071 ogham:shows data:person_name_broinienas,
+        data:person_name_netta_ttrenalugos .
+
+data:stone_I_COR_072 ogham:shows data:person_name_llominacca,
+        data:person_name_vergoso .
+
+data:stone_I_COR_073 ogham:shows data:person_name_dego,
+        data:person_name_madora .
+
+data:stone_I_COR_074 ogham:shows data:person_I_COR_074_anon0_2,
+        data:person_name_maqi_bri .
+
+data:stone_I_COR_076 ogham:shows data:person_name_akeras,
+        data:person_name_anavlamattias,
+        data:person_name_noeluri .
+
+data:stone_I_COR_077 ogham:shows data:person_name_maqiercias,
+        data:person_name_valamni .
+
+data:stone_I_COR_078 ogham:shows data:person_name_sogini,
+        data:person_name_tobira,
+        data:person_name_vedacuna .
+
+data:stone_I_COR_079 ogham:shows data:person_I_COR_079_anon0_1 .
+
+data:stone_I_COR_080 ogham:shows data:person_name_culidovas,
+        data:person_name_dovet_i_as,
+        data:person_name_l .
+
+data:stone_I_COR_081 ogham:shows data:person_name_eqod,
+        data:person_name_veqoanai .
+
+data:stone_I_COR_082 ogham:shows data:person_name_secidari .
+
+data:stone_I_COR_083 ogham:shows data:person_name_litubiri,
+        data:person_name_qecia .
+
+data:stone_I_COR_084 ogham:shows data:person_name_lacavagni .
+
+data:stone_I_COR_085 ogham:shows data:person_name_vaitevia .
+
+data:stone_I_COR_086 ogham:shows data:person_name_assicona .
+
+data:stone_I_COR_087 ogham:shows data:person_name_ailluattan,
+        data:person_name_minnaccanni .
+
+data:stone_I_COR_089 ogham:shows data:person_I_COR_089_anon0_0 .
+
+data:stone_I_COR_090 ogham:shows data:person_I_COR_090_anon0_2,
+        data:person_name_odaragnas .
+
+data:stone_I_COR_091 ogham:shows data:person_name_comogagnas .
+
+data:stone_I_COR_092 ogham:shows data:person_name_croccagni,
+        data:person_name_domongartas .
+
+data:stone_I_COR_093 ogham:shows data:person_name_birracias,
+        data:person_name_maqqas_lasire .
+
+data:stone_I_COR_095 ogham:shows data:person_name_ccaqttaucc,
+        data:person_name_dimai .
+
+data:stone_I_FER_001 ogham:shows data:person_name_netas_cunas .
+
+data:stone_I_KER_003 ogham:shows data:person_name_maqqas .
+
+data:stone_I_KER_004 ogham:shows data:person_I_KER_004_anon0_0,
+        data:person_name_sedanias .
+
+data:stone_I_KER_005 ogham:shows data:person_I_KER_005_anon0_3,
+        data:person_name_laddignias .
+
+data:stone_I_KER_006 ogham:shows data:person_I_KER_006_anon0_2,
+        data:person_name_laidagnas .
+
+data:stone_I_KER_007 ogham:shows data:person_name_luguvics .
+
+data:stone_I_KER_012 ogham:shows data:person_name_ronagnas .
+
+data:stone_I_KER_030 ogham:shows data:person_I_KER_030_anon0_0,
+        data:person_I_KER_030_anon0_4 .
+
+data:stone_I_KER_048 ogham:shows data:person_name_bruscus,
+        data:person_name_caliacas .
+
+data:stone_I_KER_055 ogham:shows data:person_name_broccagnas,
+        data:person_name_maila_andiberi .
+
+data:stone_I_KER_066 ogham:shows data:person_name_degis,
+        data:person_name_toicacas .
+
+data:stone_I_KER_135 ogham:shows data:person_I_KER_135_anon0_0,
+        data:person_I_KER_135_anon1_0,
+        data:person_I_KER_135_anon2_0,
+        data:person_I_KER_135_anon3_0 .
+
+data:stone_I_KER_154 ogham:shows data:person_name_dovatucas .
+
+data:stone_I_KID_001 ogham:shows data:person_name_ivacatus,
+        data:person_name_jovanis .
+
+data:stone_I_KID_002 ogham:shows data:person_name_marinus .
+
+data:stone_I_KID_004 ogham:shows data:person_name_a,
+        data:person_name_ignias .
+
+data:stone_I_KID_008 ogham:shows data:person_name_neta_vraicas,
+        data:person_name_trenalugus .
+
+data:stone_I_KIK_001 ogham:shows data:person_name_M_el_Maire,
+        data:person_name_M_el_adach,
+        data:person_name_Minodor,
+        data:person_name_Muad,
+        data:person_name_cellach,
+        data:person_name_cn_imsech .
+
+data:stone_I_KIK_003 ogham:shows data:person_I_KIK_003_anon0_0 .
+
+data:stone_I_KIK_006 ogham:shows data:person_I_KIK_006_anon0_0,
+        data:person_I_KIK_006_anon0_3 .
+
+data:stone_I_KIK_007 ogham:shows data:person_I_KIK_007_anon0_1,
+        data:person_I_KIK_007_anon0_3 .
+
+data:stone_I_KIK_008 ogham:shows data:person_name_lobas,
+        data:person_name_rinas .
+
+data:stone_I_KIK_011 ogham:shows data:person_I_KIK_011_anon0_0,
+        data:person_I_KIK_011_anon0_2 .
+
+data:stone_I_KIK_012 ogham:shows data:person_I_KIK_012_anon0_0,
+        data:person_I_KIK_012_anon0_2 .
+
+data:stone_I_KIK_013 ogham:shows data:person_I_KIK_013_anon0_0,
+        data:person_I_KIK_013_anon0_3 .
+
+data:stone_I_KIK_014 ogham:shows data:person_I_KIK_014_anon0_0,
+        data:person_I_KIK_014_anon0_2,
+        data:person_I_KIK_014_anon0_4 .
+
+data:stone_I_LDY_001 ogham:shows data:person_name_brocagnas .
+
+data:stone_I_LOU_002 ogham:shows data:person_I_LOU_002_anon1_0,
+        data:person_name,
+        data:person_name_tan .
+
+data:stone_I_MAY_001 ogham:shows data:person_name_cunacanis,
+        data:person_name_cunalenga .
+
+data:stone_I_MAY_002 ogham:shows data:person_name_lugaidu .
+
+data:stone_I_MAY_003 ogham:shows data:person_I_MAY_003_anon0_2,
+        data:person_name_allatis .
+
+data:stone_I_MAY_004 ogham:shows data:person_name_casignias .
+
+data:stone_I_MAY_005 ogham:shows data:person_I_MAY_005_anon0_2,
+        data:person_name_ceragnas .
+
+data:stone_I_MAY_007 ogham:shows data:person_name_gar,
+        data:person_name_maqqas_actos .
+
+data:stone_I_MAY_008 ogham:shows data:person_I_MAY_008_anon0_1,
+        data:person_name_corberias .
+
+data:stone_I_MAY_010 ogham:shows data:person_name_dotagnas .
+
+data:stone_I_MEA_001 ogham:shows data:person_name_ineqaglasas,
+        data:person_name_maqqas_cairatini .
+
+data:stone_I_MEA_004 ogham:shows data:person_I_MEA_004_anon0_2 .
+
+data:stone_I_ROS_001 ogham:shows data:person_I_ROS_001_anon0_0 .
+
+data:stone_I_ROS_002 ogham:shows data:person_I_ROS_002_anon0_0 .
+
+data:stone_I_ROS_004 ogham:shows data:person_I_ROS_004_anon0_1 .
+
+data:stone_I_TYR_001 ogham:shows data:person_I_TYR_001_anon0_0,
+        data:person_I_TYR_001_anon0_1 .
+
+data:stone_I_WAT_001 ogham:shows data:person_name_ercagnas,
+        data:person_name_maqqas_erci_s .
+
+data:stone_I_WAT_002 ogham:shows data:person_name_lugudics,
+        data:person_name_neta_Segam .
+
+data:stone_I_WAT_003 ogham:shows data:person_name_nacas .
+
+data:stone_I_WAT_004 ogham:shows data:person_name_amadas .
+
+data:stone_I_WAT_005 ogham:shows data:person_name_coilabuts,
+        data:person_name_lobacu,
+        data:person_name_lugus .
+
+data:stone_I_WAT_006 ogham:shows data:person_I_WAT_006_anon0_2,
+        data:person_name_lugus,
+        data:person_name_medusias .
+
+data:stone_I_WAT_007 ogham:shows data:person_name_catuviras .
+
+data:stone_I_WAT_008 ogham:shows data:person_I_WAT_008_anon0_2 .
+
+data:stone_I_WAT_009 ogham:shows data:person_name_qrittos .
+
+data:stone_I_WAT_011 ogham:shows data:person_I_WAT_011_anon0_0,
+        data:person_I_WAT_011_anon0_1,
+        data:person_I_WAT_011_anon0_3 .
+
+data:stone_I_WAT_012 ogham:shows data:person_I_WAT_012_anon0_0,
+        data:person_I_WAT_012_anon0_3 .
+
+data:stone_I_WAT_013 ogham:shows data:person_I_WAT_013_anon0_0,
+        data:person_I_WAT_013_anon0_1 .
+
+data:stone_I_WAT_014 ogham:shows data:person_I_WAT_014_anon0_0,
+        data:person_I_WAT_014_anon0_2,
+        data:person_I_WAT_014_anon0_5 .
+
+data:stone_I_WAT_015 ogham:shows data:person_I_WAT_015_anon0_0,
+        data:person_I_WAT_015_anon0_2 .
+
+data:stone_I_WAT_016 ogham:shows data:person_I_WAT_016_anon0_0,
+        data:person_I_WAT_016_anon0_3 .
+
+data:stone_I_WAT_017 ogham:shows data:person_I_WAT_017_anon0_1 .
+
+data:stone_I_WAT_018 ogham:shows data:person_I_WAT_018_anon0_0,
+        data:person_I_WAT_018_anon0_2 .
+
+data:stone_I_WAT_019 ogham:shows data:person_I_WAT_019_anon0_0 .
+
+data:stone_I_WAT_020 ogham:shows data:person_I_WAT_020_anon0_0 .
+
+data:stone_I_WAT_024 ogham:shows data:person_name_at_r,
+        data:person_name_bivaid .
+
+data:stone_I_WAT_025 ogham:shows data:person_I_WAT_025_anon0_3,
+        data:person_name_cunamaqqas .
+
+data:stone_I_WAT_030 ogham:shows data:person_name_comiggodias .
+
+data:stone_I_WAT_033 ogham:shows data:person_I_WAT_033_anon0_0 .
+
+data:stone_I_WAT_035 ogham:shows data:person_I_WAT_035_anon0_0 .
+
+data:stone_I_WAT_036 ogham:shows data:person_I_WAT_036_anon0_0,
+        data:person_I_WAT_036_anon0_2 .
+
+data:stone_I_WAT_037 ogham:shows data:person_I_WAT_037_anon0_0 .
+
+data:stone_I_WAT_038 ogham:shows data:person_I_WAT_038_anon0_0 .
+
+data:stone_I_WAT_039 ogham:shows data:person_I_WAT_039_anon0_0,
+        data:person_I_WAT_039_anon0_3 .
+
+data:stone_I_WAT_040 ogham:shows data:person_I_WAT_040_anon0_0,
+        data:person_I_WAT_040_anon0_2 .
+
+data:stone_I_WAT_042 ogham:shows data:person_I_WAT_042_anon0_0,
+        data:person_I_WAT_042_anon0_3 .
+
+data:stone_I_WAT_048 ogham:shows data:person_name_gattagnas,
+        data:person_name_lugunias,
+        data:person_name_moddagnas .
+
+data:stone_I_WAT_049 ogham:shows data:person_I_WAT_049_anon0_0,
+        data:person_I_WAT_049_anon0_3 .
+
+data:stone_I_WAT_050 ogham:shows data:person_I_WAT_050_anon0_0,
+        data:person_I_WAT_050_anon0_2 .
+
+data:stone_I_WEX_003 ogham:shows data:person_name_catubuts,
+        data:person_name_dercamuss_cas,
+        data:person_name_s_ddani_as .
+
+data:stone_I_WIC_001 ogham:shows data:person_I_WIC_001_anon0_0,
+        data:person_I_WIC_001_anon0_1 .
+
+data:stone_I_WIC_002 ogham:shows data:person_I_WIC_002_anon0_0 .
+
+data:stone_I_WIC_004 ogham:shows data:person_I_WIC_004_anon0_0 .
+
+data:stone_I_WIC_005 ogham:shows data:person_I_WIC_005_anon0_1 .
+
+data:stone_M_IOM_001 ogham:shows data:person_M_IOM_001_anon0_2,
+        data:person_name_dovaid .
+
+data:stone_M_IOM_002 ogham:shows data:person_name_cunavalas .
+
+data:stone_M_IOM_003 ogham:shows data:person_name_cunamaglas .
+
+data:stone_M_IOM_004 ogham:shows data:person_name_leog .
+
+data:stone_M_IOM_007 ogham:shows data:person_name_ambicatus,
+        data:person_name_rocatus .
+
+data:stone_M_IOM_008 ogham:shows data:person_M_IOM_008_anon0_0 .
+
+data:stone_S_ABD_001 ogham:shows data:person_name_iddarrnnn,
+        data:person_name_vorrenni .
+
+data:stone_S_ABD_003 ogham:shows data:person_name_nehht,
+        data:person_name_talorc .
+
+data:stone_S_ABD_004 ogham:shows data:person_name_addoaren .
+
+data:stone_S_ABD_005 ogham:shows data:person_name_necton .
+
+data:stone_S_ABD_006 ogham:shows data:person_name_rogoddad .
+
+data:stone_S_ARL_004 ogham:shows data:person_name_mud_mali .
+
+data:stone_S_CAI_001 ogham:shows data:person_name_nehtetreb .
+
+data:stone_S_FIF_001 ogham:shows data:person_name_eddarrnonn .
+
+data:stone_S_SHE_001 ogham:shows data:person_S_SHE_001_anon0_0,
+        data:person_S_SHE_001_anon0_1,
+        data:person_S_SHE_001_anon0_2,
+        data:person_S_SHE_001_anon0_4 .
+
+data:stone_S_SUT_002 ogham:shows data:person_name_dunnodnnat,
+        data:person_name_natu .
+
+data:stone_W_AGY_001 ogham:shows data:person_name_maila_isu .
+
+data:stone_W_BRE_003 ogham:shows data:person_name_gluvocas .
+
+data:stone_W_BRE_004 ogham:shows data:person_name_turpilius .
+
+data:stone_W_BRE_005 ogham:shows data:person_name_cunacenas,
+        data:person_name_eluvetus .
+
+data:stone_W_BRE_006 ogham:shows data:person_name_salicadunas .
+
+data:stone_W_BRE_008 ogham:shows data:person_name_taricoras .
+
+data:stone_W_CAE_001 ogham:shows data:person_name_icarics .
+
+data:stone_W_CGN_001 ogham:shows data:person_name_trenacatus .
+
+data:stone_W_CMN_001 ogham:shows data:person_name_decabarrabalvas .
+
+data:stone_W_CMN_002 ogham:shows data:person_name_bivadias,
+        data:person_name_bodibivas .
+
+data:stone_W_CMN_003 ogham:shows data:person_name_dumelaidu .
+
+data:stone_W_CMN_004 ogham:shows data:person_name_avitoria,
+        data:person_name_cunignas .
+
+data:stone_W_CMN_005 ogham:shows data:person_name_voteqarigis .
+
+data:stone_W_DEN_001 ogham:shows data:person_name_sibilinus,
+        data:person_name_tovissacas .
+
+data:stone_W_GLA_001 ogham:shows data:person_name_ilu,
+        data:person_name_pompius,
+        data:person_name_rolacu .
+
+data:stone_W_GLA_002 ogham:shows data:person_name_gravics .
+
+data:stone_W_GLA_X01 ogham:shows data:person_W_GLA_X01_anon0_0 .
+
+data:stone_W_PEM_001 ogham:shows data:person_name_kunatamas,
+        data:person_name_sagragnas .
+
+data:stone_W_PEM_002 ogham:shows data:person_name_duvvatucas .
+
+data:stone_W_PEM_003 ogham:shows data:person_name_andegellas,
+        data:person_name_cavetas .
+
+data:stone_W_PEM_004 ogham:shows data:person_name_trenagussus .
+
+data:stone_W_PEM_005 ogham:shows data:person_name_aeternus,
+        data:person_name_victor .
+
+data:stone_W_PEM_006 ogham:shows data:person_name_brigacas,
+        data:person_name_nets_sagri .
+
+data:stone_W_PEM_007 ogham:shows data:person_name_magladubracu .
+
+data:stone_W_PEM_008 ogham:shows data:person_name_vitalis .
+
+data:stone_W_PEM_009 ogham:shows data:person_name_octu .
+
+data:stone_W_PEM_010 ogham:shows data:person_name_gentilis .
+
+data:stone_W_PEM_011 ogham:shows data:person_name_cacht .
+
+data:stone_W_PEM_012 ogham:shows data:person_name_vindagnas .
+
+data:stone_W_PEM_013 ogham:shows data:person_name_duvvagnas .
+
+data:stone_W_PEM_014 ogham:shows data:person_name_klutarigs,
+        data:person_name_maglacu .
+
+data:stone_W_PEM_015 ogham:shows data:person_W_PEM_015_anon0_0 .
+
+data:person_E_CON_002_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "IGENAVI" ;
+    ogham:anonymousInEdition true .
+
+data:person_E_CON_003_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "UDSAGQI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_ANT_001_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TORAESCEUSAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_ANT_001_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MEUTINI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_002_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SAGITTARI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_004_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CATTUBUTTAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_010_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOCRANORI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_012_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LODIMANI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_019_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "G" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_025_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TENAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_027_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DINIS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_028_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ILUNA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_031_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAILAGURO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_032_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BROCC" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_040_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BLOATEGSI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_045_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COVALUTI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_047_anon0_4 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COROTANI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_048_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SACATTINI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_051_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DLOGONN" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_052_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CAGGI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_056_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNAGUSSOS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_079_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LASOG" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_089_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MOUNIN" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KER_005_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AN" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KER_030_anon0_4 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOVINIAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KER_135_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BLADNACH" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KER_135_anon1_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUILN" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KER_135_anon2_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BLADNACH" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KER_135_anon3_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COGRACDNA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_003_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GELAGNI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_006_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NAMI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_014_anon0_4 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COSCIEAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_LOU_002_anon1_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETASALAGIA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_MAY_008_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AMMLLOGITT" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_MEA_004_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "OLUI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_ROS_001_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNOVATO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_ROS_002_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "RAVASA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_ROS_004_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "REAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_TYR_001_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOTETTO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_TYR_001_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAGLANI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_008_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "IVODACCA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_011_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MANU" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_011_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MACORBO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_012_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LITENI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_013_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQI INI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_013_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QETTEAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_016_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ROTTAIS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_017_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_018_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MEDALO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_019_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BROINIONAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_020_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DEAGOS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_025_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNEA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_035_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CORB" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_036_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BROENIONAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_037_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CIR" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_038_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VORTIGURN" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_039_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ODR" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_042_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETASEGAMONAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_049_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ENA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WIC_001_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETACARI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WIC_001_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETACAGI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WIC_002_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "IAQINI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WIC_004_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VOTI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WIC_005_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NILI" ;
+    ogham:anonymousInEdition true .
+
+data:person_M_IOM_008_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LOGGABGGRGAGROGAML" ;
+    ogham:anonymousInEdition true .
+
+data:person_S_SHE_001_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AHHTA" ;
+    ogham:anonymousInEdition true .
+
+data:person_S_SHE_001_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "unnamed" ;
+    ogham:anonymousInEdition true .
+
+data:person_W_GLA_X01_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TEGE" ;
+    ogham:anonymousInEdition true .
+
+data:person_W_PEM_015_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GʷASUGN" ;
+    ogham:anonymousInEdition true .
+
+data:person_name_M_el_Maire a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MALMAIR" ;
+    ogham:nymReference "Máel_Maire" .
+
+data:person_name_M_el_adach a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MALUADAIG" ;
+    ogham:nymReference "Máel_Úadach" .
+
+data:person_name_Minodor a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MINODOR" ;
+    ogham:nymReference "Minodor" .
+
+data:person_name_Muad a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MUAD" ;
+    ogham:nymReference "Muad" .
+
+data:person_name_a a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AI" ;
+    ogham:nymReference "a" .
+
+data:person_name_actos a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ACTO" ;
+    ogham:nymReference "actos" .
+
+data:person_name_addoaren a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ADDOAREN" ;
+    ogham:nymReference "addoaren" .
+
+data:person_name_aeternus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ETTERN" ;
+    ogham:nymReference "aeternus" .
+
+data:person_name_amadas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AMADU" ;
+    ogham:nymReference "amadas" .
+
+data:person_name_assicona a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ASSICONA" ;
+    ogham:nymReference "assicona" ;
+    skos:closeMatch lod:OP400019 .
+
+data:person_name_at_r a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ATAR" ;
+    ogham:nymReference "atīr?" .
+
+data:person_name_avitoria a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AVITTORIGES" ;
+    ogham:nymReference "avitoria" .
+
+data:person_name_branas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BRANI" ;
+    ogham:nymReference "branas" .
+
+data:person_name_brigacas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BRIACI" ;
+    ogham:nymReference "brigacas" .
+
+data:person_name_brocagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BROCAGNI" ;
+    ogham:nymReference "brocagnas" .
+
+data:person_name_cacht a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QAGTE" ;
+    ogham:nymReference "cacht" .
+
+data:person_name_calliti a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CALLITI" ;
+    ogham:nymReference "calliti" ;
+    skos:closeMatch lod:OP400061 .
+
+data:person_name_caras a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CARI" ;
+    ogham:nymReference "caras" .
+
+data:person_name_casignias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CASEGNI" ;
+    ogham:nymReference "casignias?" .
+
+data:person_name_catubuts a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CATTABBOTT" ;
+    ogham:nymReference "catubuts" .
+
+data:person_name_catuviras a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CATTUVIR" ;
+    ogham:nymReference "catuviras" .
+
+data:person_name_cellach a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CLLACH" ;
+    ogham:nymReference "cellach" .
+
+data:person_name_cn_imsech a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CNAEMSCH" ;
+    ogham:nymReference "cnáimsech" .
+
+data:person_name_colli a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COLLI" ;
+    ogham:nymReference "colli" ;
+    skos:closeMatch lod:OP400094 .
+
+data:person_name_comiggodias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUMUGODUU" ;
+    ogham:nymReference "*comiggodias?" .
+
+data:person_name_cunacanis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CQUNACANOS" ;
+    ogham:nymReference "cunacanis" .
+
+data:person_name_cunacenas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNACENNI" ;
+    ogham:nymReference "cunacenas" .
+
+data:person_name_cunagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CONANN" ;
+    ogham:nymReference "cunagnas" .
+
+data:person_name_cunalenga a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNALEGIEA" ;
+    ogham:nymReference "cunalenga" .
+
+data:person_name_cunamaglas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNAMAGLI" ;
+    ogham:nymReference "cunamaglas" .
+
+data:person_name_cunamaqqas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNAMAQI" ;
+    ogham:nymReference "cunamaqqas" .
+
+data:person_name_cunavalas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNAVALI" ;
+    ogham:nymReference "cunavalas?" .
+
+data:person_name_cunignas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNIGNI" ;
+    ogham:nymReference "cunignas" .
+
+data:person_name_decabarrabalvas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "IBA" ;
+    ogham:nymReference "decabarrabalvas" .
+
+data:person_name_dercamuss_cas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DERCMASOC" ;
+    ogham:nymReference "dercamussācas" .
+
+data:person_name_dotagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOTAGNI" ;
+    ogham:nymReference "dotagnas?" .
+
+data:person_name_dovatucas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOVATTAC" ;
+    ogham:nymReference "dovatucas" .
+
+data:person_name_dumelaidu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DUMELEDONAS" ;
+    ogham:nymReference "dumelaidu" .
+
+data:person_name_dumnagenas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOMNGEN" ;
+    ogham:nymReference "dumnagenas" .
+
+data:person_name_dunnodnnat a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DUNNODNNT" ;
+    ogham:nymReference "dunnodnnat" .
+
+data:person_name_duvvagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOVAGNI" ;
+    ogham:nymReference "duvvagnas" .
+
+data:person_name_duvvatucas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOVATUCIEAS" ;
+    ogham:nymReference "duvvatucas" .
+
+data:person_name_eddarrnonn a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "EDDARRNONN" ;
+    ogham:nymReference "eddarrnonn" .
+
+data:person_name_eluvetus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ILVVETO" ;
+    ogham:nymReference "eluvetus" .
+
+data:person_name_enabarras a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ENABARRI" ;
+    ogham:nymReference "enabarras" .
+
+data:person_name_ercagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ERCAGNI" ;
+    ogham:nymReference "ercagnas" .
+
+data:person_name_ercaidu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ERCAIDANA" ;
+    ogham:nymReference "ercaidu?" .
+
+data:person_name_gar a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GAR" ;
+    ogham:nymReference "gar?" .
+
+data:person_name_gentilis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GENDILI" ;
+    ogham:nymReference "gentilis" .
+
+data:person_name_girragnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GIRAGNI" ;
+    ogham:nymReference "girragnas" .
+
+data:person_name_glunlegget a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GDLUQNDLEGGEVT" ;
+    ogham:nymReference "glunlegget?" ;
+    skos:closeMatch lod:OP400230 .
+
+data:person_name_gluvocas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GLUVSOC" ;
+    ogham:nymReference "gluvocas?" .
+
+data:person_name_gravics a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "L V L ICA" ;
+    ogham:nymReference "gravics" .
+
+data:person_name_icarics a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ICORIGAS" ;
+    ogham:nymReference "icarics" .
+
+data:person_name_iddarrnnn a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "IDDARRNNN" ;
+    ogham:nymReference "iddarrnnn" .
+
+data:person_name_ilu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LLNA" ;
+    ogham:nymReference "ilu" .
+
+data:person_name_iusti a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "IUSTI" ;
+    ogham:nymReference "iusti" .
+
+data:person_name_lacavagni a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LACAVAGNI" ;
+    ogham:nymReference "lacavagni" ;
+    skos:closeMatch lod:OP400250 .
+
+data:person_name_leog a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LEOG" ;
+    ogham:nymReference "leog" .
+
+data:person_name_lugaidu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGADDON" ;
+    ogham:nymReference "lugaidu" .
+
+data:person_name_lugunias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGUNI" ;
+    ogham:nymReference "lugunias?" .
+
+data:person_name_luguvics a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGUVVECCA" ;
+    ogham:nymReference "luguvics" .
+
+data:person_name_maeldumcail a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAELDUMCAIL" ;
+    ogham:nymReference "maeldumcail" .
+
+data:person_name_magladubracu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAGLDUBR" ;
+    ogham:nymReference "magladubracu" .
+
+data:person_name_maila_isu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAILISU" ;
+    ogham:nymReference "maila_isu" .
+
+data:person_name_maqqas_actos a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQACTO" ;
+    ogham:nymReference "maqqas_actos?" .
+
+data:person_name_maqqas_erci_s a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQIERCIAS" ;
+    ogham:nymReference "maqqas_erciās" .
+
+data:person_name_medugenas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MEDDOGENI" ;
+    ogham:nymReference "medugenas" .
+
+data:person_name_mucc a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MUCCU" ;
+    ogham:nymReference "mucc_?" .
+
+data:person_name_mud_mali a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MUDALI" ;
+    ogham:nymReference "mud_mali" .
+
+data:person_name_nacas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ANACI" ;
+    ogham:nymReference "*…nacas" .
+
+data:person_name_natu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NATU" ;
+    ogham:nymReference "natu" .
+
+data:person_name_necton a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NECTON" ;
+    ogham:nymReference "necton" .
+
+data:person_name_nehht a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NHHT" ;
+    ogham:nymReference "nehht" .
+
+data:person_name_nehtetreb a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NEERIEB" ;
+    ogham:nymReference "nehtetreb" .
+
+data:person_name_neta_Segam a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETASEGAMONAS" ;
+    ogham:nymReference "neta_Segamū" .
+
+data:person_name_netas_cunas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETTACUNAS" ;
+    ogham:nymReference "netas_cunas" .
+
+data:person_name_octu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "OGTENAS" ;
+    ogham:nymReference "octu" .
+
+data:person_name_olagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "OLAGNI" ;
+    ogham:nymReference "olagnas?" .
+
+data:person_name_pompius a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "OIAS" ;
+    ogham:nymReference "pompius?" .
+
+data:person_name_qrittos a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QRITE" ;
+    ogham:nymReference "qrittos_?" .
+
+data:person_name_rinas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "RINI" ;
+    ogham:nymReference "rinas?" .
+
+data:person_name_rogoddad a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "rogoddad" ;
+    ogham:nymReference "rogoddad" .
+
+data:person_name_rolacu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ROALN" ;
+    ogham:nymReference "rolacu" .
+
+data:person_name_s_ddani_as a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SEDANI" ;
+    ogham:nymReference "sēddani̯as" .
+
+data:person_name_salicadunas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SALICIDUNI" ;
+    ogham:nymReference "salicadunas" .
+
+data:person_name_scamagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SCAMAGNI" ;
+    ogham:nymReference "scamagnas" .
+
+data:person_name_secidari a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SECIDARI" ;
+    ogham:nymReference "secidari" ;
+    skos:closeMatch lod:OP400452 .
+
+data:person_name_sibilinus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SUIBILIN" ;
+    ogham:nymReference "sibilinus" .
+
+data:person_name_sogini a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SOGINI" ;
+    ogham:nymReference "sogini" ;
+    skos:closeMatch lod:OP400459 .
+
+data:person_name_talorc a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TAUORR" ;
+    ogham:nymReference "talorc?" .
+
+data:person_name_taricoras a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TARICOROA" ;
+    ogham:nymReference "taricoras?" .
+
+data:person_name_tebicatus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TEBICATOS" ;
+    ogham:nymReference "tebicatus" .
+
+data:person_name_toicacas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TOICAI" ;
+    ogham:nymReference "toicacas" .
+
+data:person_name_tovissacas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VISACI" ;
+    ogham:nymReference "tovissacas" .
+
+data:person_name_trenacatus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TRENACCATLO" ;
+    ogham:nymReference "trenacatus" .
+
+data:person_name_trenalugus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TRENALUGGO" ;
+    ogham:nymReference "trenalugus" .
+
+data:person_name_turpilius a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TURILLI" ;
+    ogham:nymReference "turpilius" .
+
+data:person_name_ulcagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ULCAGNI" ;
+    ogham:nymReference "ulcagnas" .
+
+data:person_name_vaitevia a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VAITEVIA" ;
+    ogham:nymReference "vaitevia" ;
+    skos:closeMatch lod:OP400501 .
+
+data:person_name_victor a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TOR" ;
+    ogham:nymReference "victor" .
+
+data:person_name_vindagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VENDOGNI" ;
+    ogham:nymReference "vindagnas" .
+
+data:person_name_viragnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VIRAGNI" ;
+    ogham:nymReference "viragnas" .
+
+data:person_name_vitalis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VITALIANI" ;
+    ogham:nymReference "vitalis" .
+
+data:person_name_vorrenni a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VORRENNI" ;
+    ogham:nymReference "vorrenni" .
+
+data:person_name_voteqarigis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VOTECORIGAS" ;
+    ogham:nymReference "voteqarigis" .
+
+data:tribe_I_COR_019_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of G" ;
+    ogham:nymReference "" .
+
+data:tribe_I_COR_047_anon0_4 a ogham:OghamTribe ;
+    rdfs:label "kin of COROTANI" ;
+    ogham:nymReference "" .
+
+data:tribe_I_COR_052_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of CAGGI" ;
+    ogham:nymReference "" .
+
+data:tribe_I_KER_005_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of AN" ;
+    ogham:nymReference "" .
+
+data:tribe_I_KER_030_anon0_4 a ogham:OghamTribe ;
+    rdfs:label "kin of DOVINIAS" ;
+    ogham:nymReference "" .
+
+data:tribe_I_KIK_006_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of NAMI" ;
+    ogham:nymReference "" .
+
+data:tribe_I_KIK_014_anon0_4 a ogham:OghamTribe ;
+    rdfs:label "kin of COSCIEAS" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_011_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of MACORBO" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_012_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of LITENI" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_016_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of ROTTAIS" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_018_anon0_2 a ogham:OghamTribe ;
+    rdfs:label "kin of MEDALO" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_025_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of CUNEA" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_036_anon0_2 a ogham:OghamTribe ;
+    rdfs:label "kin of BROENIONAS" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_039_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of ODR" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_042_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of NETASEGAMONAS" ;
+    ogham:nymReference "" .
+
+data:tribe_I_WAT_049_anon0_3 a ogham:OghamTribe ;
+    rdfs:label "kin of ENA" ;
+    ogham:nymReference "" .
+
+data:tribe_name_a a ogham:OghamTribe ;
+    rdfs:label "kin of AI" ;
+    ogham:nymReference "a" .
+
+data:tribe_name_at_r a ogham:OghamTribe ;
+    rdfs:label "kin of ATAR" ;
+    ogham:nymReference "atīr?" .
+
+data:tribe_name_brigacas a ogham:OghamTribe ;
+    rdfs:label "kin of BRIACI" ;
+    ogham:nymReference "brigacas" .
+
+data:tribe_name_calliti a ogham:OghamTribe ;
+    rdfs:label "kin of CALLITI" ;
+    ogham:nymReference "calliti" .
+
+data:tribe_name_corberias a ogham:OghamTribe ;
+    rdfs:label "kin of CORIBIRI" ;
+    ogham:nymReference "corberias" .
+
+data:tribe_name_cunavalas a ogham:OghamTribe ;
+    rdfs:label "kin of CUNAVALI" ;
+    ogham:nymReference "cunavalas?" .
+
+data:tribe_name_glunlegget a ogham:OghamTribe ;
+    rdfs:label "kin of GDLUQNDLEGGEVT" ;
+    ogham:nymReference "glunlegget?" .
+
+data:tribe_name_lugunias a ogham:OghamTribe ;
+    rdfs:label "kin of LUGUNI" ;
+    ogham:nymReference "lugunias?" .
+
+data:tribe_name_noeluri a ogham:OghamTribe ;
+    rdfs:label "kin of NOELURI" ;
+    ogham:nymReference "noeluri" .
+
+data:tribe_name_qritias a ogham:OghamTribe ;
+    rdfs:label "kin of QRITTI" ;
+    ogham:nymReference "qritias?" .
+
+data:tribe_name_rinas a ogham:OghamTribe ;
+    rdfs:label "kin of RINI" ;
+    ogham:nymReference "rinas?" .
+
+data:tribe_name_sogini a ogham:OghamTribe ;
+    rdfs:label "kin of SOGINI" ;
+    ogham:nymReference "sogini" .
+
+data:tribe_name_toicacas a ogham:OghamTribe ;
+    rdfs:label "kin of TOICAI" ;
+    ogham:nymReference "toicacas" .
+
+data:tribe_name_trenalugus a ogham:OghamTribe ;
+    rdfs:label "kin of TRENALUGGO" ;
+    ogham:nymReference "trenalugus" .
+
+data:tribe_name_viragnas a ogham:OghamTribe ;
+    rdfs:label "kin of VIRAGNI" ;
+    ogham:nymReference "viragnas" .
+
+data:person_I_ANT_002_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CAGINADITE" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_name_vobarracas ;
+    crm:P152_has_parent data:person_name_vobarracas .
+
+data:person_I_ARM_001_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DAENEGLO" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_ARM_001_anon0_2 ;
+    crm:P152_has_parent data:person_I_ARM_001_anon0_2 .
+
+data:person_I_COR_024_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CASONI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_024_anon0_3 ;
+    crm:P152_has_parent data:person_I_COR_024_anon0_3 .
+
+data:person_I_COR_032_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LAMADULICCI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_032_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_032_anon0_2 .
+
+data:person_I_COR_033_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ERACOBI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_033_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_033_anon0_2 .
+
+data:person_I_COR_036_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DRUTIQULI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_036_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_036_anon0_2 .
+
+data:person_I_COR_038_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BOGAI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_038_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_038_anon0_2 .
+
+data:person_I_COR_043_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DMM" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_043_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_043_anon0_2 .
+
+data:person_I_COR_046_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ALLA" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_name_vortigernas ;
+    crm:P152_has_parent data:person_name_vortigernas .
+
+data:person_I_COR_053_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CORRE" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_053_anon0_3 .
+
+data:person_I_COR_054_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETACUNAS" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_054_anon0_3 .
+
+data:person_I_COR_062_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MICANAVVI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_062_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_062_anon0_2 .
+
+data:person_I_COR_063_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEQIKAMI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_063_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_063_anon0_2 .
+
+data:person_I_COR_064_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GRIMIGGNI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_064_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_064_anon0_2 .
+
+data:person_I_COR_065_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CULRIGAI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_COR_065_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_065_anon0_2 .
+
+data:person_I_KER_004_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEDLLOIGGOI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_name_sedanias ;
+    crm:P152_has_parent data:person_name_sedanias .
+
+data:person_I_KER_030_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETTA LAMINACCA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_006_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DRUGNO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_007_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ERACIAS" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_KIK_007_anon0_3 ;
+    crm:P152_has_parent data:person_I_KIK_007_anon0_3 .
+
+data:person_I_KIK_011_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SEVERRIT" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_KIK_011_anon0_2 ;
+    crm:P152_has_parent data:person_I_KIK_011_anon0_2 .
+
+data:person_I_KIK_012_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOVATUCQI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_KIK_012_anon0_2 .
+
+data:person_I_KIK_013_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CORBI" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_KIK_013_anon0_3 ;
+    crm:P152_has_parent data:person_I_KIK_013_anon0_3 .
+
+data:person_I_KIK_014_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQICUNALIGEAS" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_KIK_014_anon0_2 ;
+    crm:P152_has_parent data:person_I_KIK_014_anon0_2 .
+
+data:person_I_WAT_011_anon0_1 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GATI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_012_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CALUNOVICA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_014_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNALEGEA" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_WAT_014_anon0_2 ;
+    crm:P152_has_parent data:person_I_WAT_014_anon0_2 .
+
+data:person_I_WAT_015_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BIGU" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_WAT_015_anon0_2 ;
+    crm:P152_has_parent data:person_I_WAT_015_anon0_2 .
+
+data:person_I_WAT_016_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BIR" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_018_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DENAVECA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_033_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "EROTI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_036_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QECCIAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_039_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEDABAR" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_040_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQIMOGʷEDIAS" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_WAT_040_anon0_2 ;
+    crm:P152_has_parent data:person_I_WAT_040_anon0_2 .
+
+data:person_I_WAT_042_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNANETAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_049_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SENAQ" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_050_anon0_0 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEDILIMETO" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_WAT_050_anon0_2 ;
+    crm:P152_has_parent data:person_I_WAT_050_anon0_2 .
+
+data:person_S_SHE_001_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "EE" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_S_SHE_001_anon0_4 ;
+    crm:P152_has_parent data:person_S_SHE_001_anon0_4 .
+
+data:person_name a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQICORABIR" ;
+    ogham:nymReference "/" ;
+    ogham:relatedTo data:person_name_tan ;
+    crm:P152_has_parent data:person_name_tan .
+
+data:person_name_Carthach a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CARRTTACC" ;
+    ogham:nymReference "Carthach" .
+
+data:person_name_allatis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ALATTOS" ;
+    ogham:nymReference "allatis" ;
+    ogham:relatedTo data:person_I_MAY_003_anon0_2 ;
+    crm:P152_has_parent data:person_I_MAY_003_anon0_2 .
+
+data:person_name_ambicatus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AMBICATOS" ;
+    ogham:nymReference "ambicatus" ;
+    ogham:relatedTo data:person_name_rocatus ;
+    crm:P152_has_parent data:person_name_rocatus .
+
+data:person_name_anavlamattias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ANAVLAMATTIAS" ;
+    ogham:nymReference "anavlamattias" ;
+    skos:closeMatch lod:OP400018 .
+
+data:person_name_andegellas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ANDAGELLI" ;
+    ogham:nymReference "andegellas" ;
+    ogham:relatedTo data:person_name_cavetas ;
+    crm:P152_has_parent data:person_name_cavetas .
+
+data:person_name_bivadias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BIVV" ;
+    ogham:nymReference "bivadias" ;
+    ogham:relatedTo data:person_name_bodibivas .
+
+data:person_name_branagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BRANAN" ;
+    ogham:nymReference "branagnas" ;
+    ogham:relatedTo data:person_I_COR_037_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_037_anon0_2 .
+
+data:person_name_broinienas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BROINIENAS" ;
+    ogham:nymReference "broinienas" ;
+    ogham:relatedTo data:person_name_netta_ttrenalugos ;
+    skos:closeMatch lod:OP400052 .
+
+data:person_name_bruscus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BRUSCCOS" ;
+    ogham:nymReference "bruscus" ;
+    ogham:relatedTo data:person_name_caliacas ;
+    crm:P152_has_parent data:person_name_caliacas .
+
+data:person_name_cassittas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CASSITTAS" ;
+    ogham:nymReference "cassittas" ;
+    skos:closeMatch lod:OP400067 .
+
+data:person_name_ceragnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CERAN" ;
+    ogham:nymReference "ceragnas" ;
+    ogham:relatedTo data:person_I_MAY_005_anon0_2 .
+
+data:person_name_cliucu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CLIUCOANAS" ;
+    ogham:nymReference "cliucu?" ;
+    ogham:relatedTo data:person_name_maqqas_treni ;
+    crm:P152_has_parent data:person_name_maqqas_treni .
+
+data:person_name_coelabuts a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COLABOT" ;
+    ogham:nymReference "coelabuts" ;
+    ogham:relatedTo data:person_name_maqqas_riteas ;
+    crm:P152_has_parent data:person_name_maqqas_riteas .
+
+data:person_name_coilabuts a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COLLABOT" ;
+    ogham:nymReference "coilabuts" .
+
+data:person_name_coimagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COIMAGNI" ;
+    ogham:nymReference "coimagnas" .
+
+data:person_name_corbagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CORBAGNI" ;
+    ogham:nymReference "corbagnas" .
+
+data:person_name_corberias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CORIBIRI",
+        "CORRBRI" ;
+    ogham:nymReference "corberias",
+        "corberias?" .
+
+data:person_name_croccagni a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CROCCAN" ;
+    ogham:nymReference "croccagni" ;
+    ogham:relatedTo data:person_name_domongartas ;
+    crm:P152_has_parent data:person_name_domongartas .
+
+data:person_name_cronagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CRONUN" ;
+    ogham:nymReference "cronagnas" ;
+    ogham:relatedTo data:person_I_COR_039_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_039_anon0_2 .
+
+data:person_name_cunagussus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNAGUSOS" ;
+    ogham:nymReference "cunagussus" .
+
+data:person_name_dalagni a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DALAGNI" ;
+    ogham:nymReference "dalagni" ;
+    ogham:relatedTo data:person_name_dali ;
+    crm:P152_has_parent data:person_name_dali ;
+    skos:closeMatch lod:OP400145 .
+
+data:person_name_degis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DEGOS" ;
+    ogham:nymReference "degis?" .
+
+data:person_name_dimai a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DIMAI" ;
+    ogham:nymReference "dimai" ;
+    ogham:relatedTo data:person_name_ccaqttaucc ;
+    crm:P152_has_parent data:person_name_ccaqttaucc .
+
+data:person_name_dovaid a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOVAIDONA" ;
+    ogham:nymReference "dovaidū" ;
+    ogham:relatedTo data:person_M_IOM_001_anon0_2 ;
+    crm:P152_has_parent data:person_M_IOM_001_anon0_2 .
+
+data:person_name_dovet_i_as a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOVETI" ;
+    ogham:nymReference "dovet(i)as" ;
+    ogham:relatedTo data:person_name_l ;
+    crm:P152_has_parent data:person_name_l .
+
+data:person_name_dunaidu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DUNAIDONAS" ;
+    ogham:nymReference "dunaidu" ;
+    ogham:relatedTo data:person_name_marianus ;
+    crm:P152_has_parent data:person_name_marianus .
+
+data:person_name_grilagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GRILAGNI" ;
+    ogham:nymReference "grilagnas" ;
+    ogham:relatedTo data:person_name_scilagnas ;
+    crm:P152_has_parent data:person_name_scilagnas .
+
+data:person_name_ignias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "EGNI" ;
+    ogham:nymReference "...ignias?" .
+
+data:person_name_jovanis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "OVANOS" ;
+    ogham:nymReference "jovanis?" ;
+    ogham:relatedTo data:person_name_ivacatus .
+
+data:person_name_laddignias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LADDIGNI" ;
+    ogham:nymReference "laddignias?" .
+
+data:person_name_laidagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LAIDANN" ;
+    ogham:nymReference "laidagnas?" ;
+    ogham:relatedTo data:person_I_KER_006_anon0_2 ;
+    crm:P152_has_parent data:person_I_KER_006_anon0_2 .
+
+data:person_name_litubiri a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LITUBIRI" ;
+    ogham:nymReference "litubiri" ;
+    ogham:relatedTo data:person_name_qecia ;
+    crm:P152_has_parent data:person_name_qecia ;
+    skos:closeMatch lod:OP400259 .
+
+data:person_name_lobas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LOBBI" ;
+    ogham:nymReference "lobas?" .
+
+data:person_name_lug a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LOGA" ;
+    ogham:nymReference "lug?" ;
+    ogham:relatedTo data:person_I_COR_013_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_013_anon0_2 .
+
+data:person_name_lugudiks a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGUDUC" ;
+    ogham:nymReference "lugudiks" ;
+    ogham:relatedTo data:person_name_maqqas_oc_ci ;
+    crm:P152_has_parent data:person_name_maqqas_oc_ci .
+
+data:person_name_madora a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MADORA" ;
+    ogham:nymReference "madora" ;
+    ogham:relatedTo data:person_name_dego ;
+    crm:P152_has_parent data:person_name_dego ;
+    skos:closeMatch lod:OP400296 .
+
+data:person_name_maglacu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAGLICUNAS" ;
+    ogham:nymReference "maglacu" ;
+    ogham:relatedTo data:person_name_klutarigs ;
+    crm:P152_has_parent data:person_name_klutarigs .
+
+data:person_name_maila_andiberi a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAILINBIR" ;
+    ogham:nymReference "maila_andiberi" ;
+    ogham:relatedTo data:person_name_broccagnas ;
+    crm:P152_has_parent data:person_name_broccagnas .
+
+data:person_name_maqi_bri a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQI-BRI" ;
+    ogham:nymReference "maqi_bri" ;
+    ogham:relatedTo data:person_I_COR_074_anon0_2 .
+
+data:person_name_maqiercias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQIERCIAS" ;
+    ogham:nymReference "maqiercias" ;
+    ogham:relatedTo data:person_name_valamni ;
+    crm:P152_has_parent data:person_name_valamni ;
+    skos:closeMatch lod:OP400321 .
+
+data:person_name_maqqas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQIAIRAL" ;
+    ogham:nymReference "maqqas_?" ;
+    ogham:relatedTo data:person_name_maqqas_treni ;
+    crm:P152_has_parent data:person_name_maqqas_treni .
+
+data:person_name_maqqas_cairatini a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQICAIRATINI" ;
+    ogham:nymReference "maqqas_cairatini" ;
+    ogham:relatedTo data:person_name_ineqaglasas .
+
+data:person_name_maqqas_esea a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQIESEA" ;
+    ogham:nymReference "maqqas_esea?" ;
+    ogham:relatedTo data:person_I_COR_050_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_050_anon0_2 .
+
+data:person_name_maqqas_lasire a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQQILASIR" ;
+    ogham:nymReference "maqqas_lasire" ;
+    ogham:relatedTo data:person_name_birracias ;
+    crm:P152_has_parent data:person_name_birracias .
+
+data:person_name_medusias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MEDUSI" ;
+    ogham:nymReference "medusias?" ;
+    ogham:relatedTo data:person_I_WAT_006_anon0_2 ;
+    crm:P152_has_parent data:person_I_WAT_006_anon0_2 .
+
+data:person_name_minnaccanni a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MINNACCANNI" ;
+    ogham:nymReference "minnaccanni" ;
+    ogham:relatedTo data:person_name_ailluattan ;
+    crm:P152_has_parent data:person_name_ailluattan ;
+    skos:closeMatch lod:OP400353 .
+
+data:person_name_moddagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MODDAGNI" ;
+    ogham:nymReference "moddagnas" ;
+    ogham:relatedTo data:person_name_gattagnas ;
+    crm:P152_has_parent data:person_name_gattagnas .
+
+data:person_name_neta_vraicas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETTAVROICC" ;
+    ogham:nymReference "neta_vraicas" .
+
+data:person_name_nets_sagri a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETTASAGRI" ;
+    ogham:nymReference "nets_sagri" .
+
+data:person_name_noeluri a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NOELURI" ;
+    ogham:nymReference "noeluri" ;
+    ogham:relatedTo data:person_name_akeras .
+
+data:person_name_odaragnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ADARAGN" ;
+    ogham:nymReference "odaragnas" ;
+    ogham:relatedTo data:person_I_COR_090_anon0_2 ;
+    crm:P152_has_parent data:person_I_COR_090_anon0_2 .
+
+data:person_name_ronagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "RONANQN" ;
+    ogham:nymReference "ronagnas" ;
+    ogham:relatedTo data:person_name_comogagnas ;
+    crm:P152_has_parent data:person_name_comogagnas .
+
+data:person_name_sagragnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SAGRANI" ;
+    ogham:nymReference "sagragnas" ;
+    ogham:relatedTo data:person_name_kunatamas ;
+    crm:P152_has_parent data:person_name_kunatamas .
+
+data:person_name_savaqqucus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SVAQQUCI" ;
+    ogham:nymReference "savaqqucus?" ;
+    ogham:relatedTo data:person_name_qicus ;
+    crm:P152_has_parent data:person_name_qicus .
+
+data:person_name_trenagussus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TRENAGUS" ;
+    ogham:nymReference "trenagussus" ;
+    ogham:relatedTo data:person_name_maqqas_treni ;
+    crm:P152_has_parent data:person_name_maqqas_treni .
+
+data:person_name_trenas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TRENU" ;
+    ogham:nymReference "trenas" .
+
+data:person_name_uddmensa a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "UDDMENSA" ;
+    ogham:nymReference "uddmensa?" ;
+    ogham:relatedTo data:person_name_netta_slogi ;
+    skos:closeMatch lod:OP400496 .
+
+data:person_name_vecreg a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TVENQREN Q" ;
+    ogham:nymReference "vecreg?" .
+
+data:person_name_vedacuna a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEDACUNA" ;
+    ogham:nymReference "vedacuna" ;
+    ogham:relatedTo data:person_name_tobira ;
+    crm:P152_has_parent data:person_name_tobira ;
+    skos:closeMatch lod:OP400508 .
+
+data:person_name_veqoanai a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEQOANAI" ;
+    ogham:nymReference "veqoanai" ;
+    ogham:relatedTo data:person_name_eqod ;
+    crm:P152_has_parent data:person_name_eqod ;
+    skos:closeMatch lod:OP400517 .
+
+data:person_name_vergoso a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VERGOSO" ;
+    ogham:nymReference "vergoso" ;
+    ogham:relatedTo data:person_name_llominacca ;
+    crm:P152_has_parent data:person_name_llominacca ;
+    skos:closeMatch lod:OP400519 .
+
+data:tribe_name_lugus a ogham:OghamTribe ;
+    rdfs:label "kin of LUG" ;
+    ogham:nymReference "lugus",
+        "lugus?" .
+
+data:tribe_name_neta_Segam a ogham:OghamTribe ;
+    rdfs:label "kin of NETASEGAMONAS" ;
+    ogham:nymReference "neta_Segamū" .
+
+data:person_I_COR_011_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DUCURI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_053_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "UDDGLOMETT" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_054_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VIDETTAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_074_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ALACA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_012_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TULOTANAGIA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_MAY_005_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ADECETAIMIN" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_014_anon0_5 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QVECI" ;
+    ogham:anonymousInEdition true .
+
+data:person_name_akeras a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AKERAS" ;
+    ogham:nymReference "akeras" ;
+    skos:closeMatch lod:OP400007 .
+
+data:person_name_bivaid a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BIVODON" ;
+    ogham:nymReference "bivaidū" .
+
+data:person_name_bodibivas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BODDI" ;
+    ogham:nymReference "bodibivas" .
+
+data:person_name_colomagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COLOMAGNI" ;
+    ogham:nymReference "colomagnas" ;
+    ogham:relatedTo data:person_I_COR_011_anon0_2,
+        data:person_name_comogagnas ;
+    crm:P152_has_parent data:person_name_comogagnas .
+
+data:person_name_ineqaglasas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "INEQAGLAS" ;
+    ogham:nymReference "ineqaglasas" .
+
+data:person_name_ivacatus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "IVACATTOS" ;
+    ogham:nymReference "ivacatus" .
+
+data:person_name_lugudics a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGUDECCAS" ;
+    ogham:nymReference "lugudics" .
+
+data:person_name_luguqritias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGUQRITTI" ;
+    ogham:nymReference "luguqritias?" ;
+    ogham:relatedTo data:person_I_COR_016_anon0_2,
+        data:person_name_qritias ;
+    crm:P152_has_parent data:person_I_COR_016_anon0_2,
+        data:person_name_qritias .
+
+data:person_name_lugus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUG" ;
+    ogham:nymReference "lugus",
+        "lugus?" ;
+    ogham:relatedTo data:person_name_lobacu ;
+    crm:P152_has_parent data:person_name_lobacu .
+
+data:person_name_maqqas_deceddas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQIDECCEDDAS" ;
+    ogham:nymReference "maqqas_deceddas" ;
+    ogham:relatedTo data:person_name_marinus,
+        data:person_name_turania ;
+    crm:P152_has_parent data:person_name_marinus .
+
+data:person_name_netta_slogi a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETTA SLOGI" ;
+    ogham:nymReference "netta_slogi?" .
+
+data:person_name_netta_ttrenalugos a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "NETTATTRENALUGOS" ;
+    ogham:nymReference "netta_ttrenalugos" .
+
+data:person_name_turania a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TURANIAS" ;
+    ogham:nymReference "turania" .
+
+data:person_I_ARM_001_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QETAI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_013_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SDANBI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_016_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ADDILONAS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_024_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "RODAGNI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_032_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAIC" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_033_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ERAQETAI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_036_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQI RRODAGNI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_037_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "OQOLI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_038_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BIRACO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_039_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BAIT" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_043_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEDUCERI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_050_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOMANEQI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_062_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGUNI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_063_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LUGUNI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_064_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CERCC" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_065_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MENUMAQI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_COR_090_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COLALI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KER_006_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MACORBO" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_007_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DIMAQA" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_011_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ROTTAIS" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_KIK_013_anon0_3 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LABRID" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_MAY_003_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BR" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_015_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LAG" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_040_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MUIBITI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_050_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TOQITAQ" ;
+    ogham:anonymousInEdition true .
+
+data:person_M_IOM_001_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DROATA" ;
+    ogham:anonymousInEdition true .
+
+data:person_S_SHE_001_anon0_4 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "A" ;
+    ogham:anonymousInEdition true .
+
+data:person_name_ailluattan a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "AILLUATTAN" ;
+    ogham:nymReference "ailluattan" .
+
+data:person_name_birracias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BIRRAC" ;
+    ogham:nymReference "birracias" .
+
+data:person_name_broccagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "BROCANN" ;
+    ogham:nymReference "broccagnas" .
+
+data:person_name_caliacas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CALIACI" ;
+    ogham:nymReference "caliacas" .
+
+data:person_name_cavetas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CAVETI" ;
+    ogham:nymReference "cavetas" .
+
+data:person_name_ccaqttaucc a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CCAQTTAUCC" ;
+    ogham:nymReference "ccaqttaucc" .
+
+data:person_name_culidovas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CULIDOVI" ;
+    ogham:nymReference "culidovas" .
+
+data:person_name_dali a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DALI" ;
+    ogham:nymReference "dali" ;
+    skos:closeMatch lod:OP400146 .
+
+data:person_name_dego a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DEGO" ;
+    ogham:nymReference "dego" ;
+    skos:closeMatch lod:OP400152 .
+
+data:person_name_domongartas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "DOMONIGART" ;
+    ogham:nymReference "domongartas" .
+
+data:person_name_eqod a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "EQOD" ;
+    ogham:nymReference "eqod" ;
+    skos:closeMatch lod:OP400196 .
+
+data:person_name_klutarigs a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CLUTAR" ;
+    ogham:nymReference "klutarigs" .
+
+data:person_name_kunatamas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CUNATAMI" ;
+    ogham:nymReference "kunatamas" .
+
+data:person_name_llominacca a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LLOMINACCA" ;
+    ogham:nymReference "llominacca" ;
+    skos:closeMatch lod:OP400262 .
+
+data:person_name_lobacu a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LOBACCONA" ;
+    ogham:nymReference "lobacu" .
+
+data:person_name_maqqas_oc_ci a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQI OCCI" ;
+    ogham:nymReference "maqqas_oc...ci?" .
+
+data:person_name_marianus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MARIANI" ;
+    ogham:nymReference "marianus" .
+
+data:person_name_marinus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MARIN" ;
+    ogham:nymReference "marinus" .
+
+data:person_name_qecia a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QECIA" ;
+    ogham:nymReference "qecia" ;
+    skos:closeMatch lod:OP400410 .
+
+data:person_name_qicus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QICI" ;
+    ogham:nymReference "qicus?" .
+
+data:person_name_qritias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "QRITTI" ;
+    ogham:nymReference "qritias?" .
+
+data:person_name_rocatus a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "ROCATOS" ;
+    ogham:nymReference "rocatus" .
+
+data:person_name_scilagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SCILAGNI" ;
+    ogham:nymReference "scilagnas" .
+
+data:person_name_sedanias a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "SEDDOINI" ;
+    ogham:nymReference "sedanias" .
+
+data:person_name_tan a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TANB" ;
+    ogham:nymReference "tan...?" .
+
+data:person_name_valamni a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VALAMNI" ;
+    ogham:nymReference "valamni" ;
+    skos:closeMatch lod:OP400502 .
+
+data:person_name_vobarracas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VOBARACI" ;
+    ogham:nymReference "vobarracas" .
+
+data:person_name_vortigernas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VORRTIGURN" ;
+    ogham:nymReference "vortigernas" .
+
+data:person_I_KIK_014_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COILLI" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_006_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LU" ;
+    ogham:anonymousInEdition true .
+
+data:person_I_WAT_014_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CSALAR" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_I_WAT_014_anon0_5 .
+
+data:person_name_gattagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "GATTAGNI" ;
+    ogham:nymReference "gattagnas" .
+
+data:person_name_l a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LOCARENAS" ;
+    ogham:nymReference "l?" ;
+    ogham:relatedTo data:person_name_culidovas ;
+    crm:P152_has_parent data:person_name_culidovas .
+
+data:person_name_maqqas_riteas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQIRITE" ;
+    ogham:nymReference "maqqas_riteas" .
+
+data:person_name_tobira a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "TOBIRA" ;
+    ogham:nymReference "tobira" ;
+    skos:closeMatch lod:OP400477 .
+
+data:person_name_comogagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "COMGGANN" ;
+    ogham:nymReference "comogagnas" .
+
+data:person_name_maqqas_treni a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MAQITRENI" ;
+    ogham:nymReference "maqqas_treni" .
+

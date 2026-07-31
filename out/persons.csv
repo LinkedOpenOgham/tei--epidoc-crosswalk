@@ -1,0 +1,117 @@
+stone,from_name,relation_lemma,relation_surface,relation_gloss,to_name,object_is_kin_group,uncertain,from_anonymous,to_anonymous
+E-DEV-001,SVAQQUCI,maqqas,MAQI,son of,QICI,no,no,no,no
+I-ANT-002,CAGINADITE,maqqas,MAQI,son of,VOBARACI,no,no,yes,no
+I-ARM-001,DAENEGLO,maqqas,MAQI,son of,QETAI,no,no,yes,yes
+I-CAR-003,DUNAIDONAS,maqqas,MAQI,son of,MARIANI,no,no,no,no
+I-COR-003,TRENU,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,QRITTI,yes,yes,no,no
+I-COR-011,COLMANN,avias,AVI,grandson or descendant of,DUCURI,no,no,no,yes
+I-COR-013,LOGA,maqqas,MAQI,son of,SDANBI,no,no,no,yes
+I-COR-014,MAQIDECEDA,avias,AVI,grandson or descendant of,TURANIAS,no,no,no,no
+I-COR-016,LUGUQRIT,maqqas,MAQI,son of,ADDILONAS,no,no,no,yes
+I-COR-018,CUNAGUSOS,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,VIRAGNI,yes,yes,no,no
+I-COR-019,COIMAGNI,maqqas+muccoviias,MAQI MOCOI,son of and of the kin of,G,yes,yes,no,yes
+I-COR-024,CASONI,maqqas,MAQI,son of,RODAGNI,no,no,yes,yes
+I-COR-030,CASSITTAS,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,CALLITI,yes,no,no,no
+I-COR-032,LAMADULICCI,maqqas,MAC,son of,MAIC,no,no,yes,yes
+I-COR-033,ERACOBI,maqqas,MAQI,son of,ERAQETAI,no,no,yes,yes
+I-COR-034,GRILAGNI,maqqas,MAQI,son of,SCILAGNI,no,no,no,no
+I-COR-035,CLIUCOANAS,maqqas,MAQI,son of,MAQITRENI,no,no,no,no
+I-COR-036,DRUTIQULI,maqqas,MAQI,son of,MAQI RRODAGNI,no,no,yes,yes
+I-COR-037,BRANAN,maqqas,MAQI,son of,OQOLI,no,no,no,yes
+I-COR-038,BOGAI,maqqas,MAQI,son of,BIRACO,no,no,yes,yes
+I-COR-039,CRONUN,maqqas,MAC,son of,BAIT,no,no,no,yes
+I-COR-043,DMM,maqqas,MACI,son of,VEDUCERI,no,no,yes,yes
+I-COR-046,ALLA,maqqas,MAQI,son of,VORRTIGURN,no,no,yes,no
+I-COR-047,CORBAGNI,koi+maqqas+muccoviias,OI MAQI MOCCOI,here (lies) and son of and of the kin of,COROTANI,yes,yes,no,yes
+I-COR-050,MAQIESEA,maqqas,MAQI,son of,DOMANEQI,no,no,no,yes
+I-COR-052,CARRTTACC,maqqas+muccoviias,MMAQI MU,son of and of the kin of,CAGGI,yes,yes,no,yes
+I-COR-053,CORRE,,MAQVI,,UDDGLOMETT,no,yes,yes,yes
+I-COR-054,NETACUNAS,celi,CELI,client or follower of,VIDETTAS,no,no,yes,yes
+I-COR-055,COLABOT,maqqas,MAQI,son of,MAQIRITE,no,no,no,no
+I-COR-055,MAQIRITE,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,CORIBIRI,yes,yes,no,no
+I-COR-057,LUGUDEC,maqqas,MAQI,son of,MAQI OCCI,no,no,no,no
+I-COR-058,UDDMENSA,celias,CELI,client or follower of,NETTA SLOGI,no,yes,no,no
+I-COR-062,MICANAVVI,maqqas,MAQ,son of,LUGUNI,no,no,yes,yes
+I-COR-063,VEQIKAMI,maqqas,MAQI,son of,LUGUNI,no,no,yes,yes
+I-COR-064,GRIMIGGNI,maqqas,MAQI,son of,CERCC,no,no,yes,yes
+I-COR-065,CULRIGAI,maqqas,MAQI,son of,MENUMAQI,no,no,yes,yes
+I-COR-069,TVENQREN Q,muccoviias,MONQOI,of the kin of,GDLUQNDLEGGEVT,yes,no,no,no
+I-COR-070,DALAGNI,maqqas,MAQI,son of,DALI,no,no,no,no
+I-COR-071,BROINIENAS,koi,OI,here (lies),NETTATTRENALUGOS,no,no,no,no
+I-COR-072,VERGOSO,maqqas,MACI,son of,LLOMINACCA,no,no,no,no
+I-COR-073,MADORA,maqqas,MAQI,son of,DEGO,no,no,no,no
+I-COR-074,MAQI-BRI,celi,CELI,client or follower of,ALACA,no,no,no,yes
+I-COR-076,ANAVLAMATTIAS,muccoviias,MUCOI,of the kin of,NOELURI,yes,yes,no,no
+I-COR-076,NOELURI,avias,AVI,grandson or descendant of,AKERAS,no,no,no,no
+I-COR-077,MAQIERCIAS,maqqas,MAQI,son of,VALAMNI,no,no,no,no
+I-COR-078,VEDACUNA,maqqas,MAQI,son of,TOBIRA,no,no,no,no
+I-COR-078,TOBIRA,muccoviias,MUCOI,of the kin of,SOGINI,yes,no,no,no
+I-COR-080,DOVETI,maqqas,MACI,son of,LOCARENAS,no,no,no,no
+I-COR-080,LOCARENAS,celias+maqqas,CELI MAQI,client or follower of and son of,CULIDOVI,no,no,no,no
+I-COR-081,VEQOANAI,maqqas,MAQI,son of,EQOD,no,no,no,no
+I-COR-083,LITUBIRI,maqqas,MAQI,son of,QECIA,no,no,no,no
+I-COR-087,MINNACCANNI,maqqas,MAQI,son of,AILLUATTAN,no,no,no,no
+I-COR-090,ADARAGN,maqqas,MACI,son of,COLALI,no,no,no,yes
+I-COR-091,COLMANN,maqqas,MACI,son of,SCOMOGAQQNN,no,no,no,no
+I-COR-092,CROCCAN,maqqas,MAQI,son of,DOMONIGART,no,no,no,no
+I-COR-093,MAQQILASIR,maqqas,MAQQI,son of,BIRRAC,no,no,no,no
+I-COR-095,DIMAI,maqqas,MAQ,son of,CCAQTTAUCC,no,no,no,no
+I-KER-003,MAQIAIRAL,maqqas,MAQ,son of,MAQITRENI,no,no,no,no
+I-KER-004,VEDLLOIGGOI,maqqas,MACI,son of,SEDDOINI,no,no,yes,no
+I-KER-005,LADDIGNI,maqqas+muccoviias,MAQQI MUCCOI,son of and of the kin of,AN,yes,no,no,yes
+I-KER-006,LAIDANN,maqqas,MAQI,son of,MACORBO,no,no,no,yes
+I-KER-012,RONANQN,maqqas,MA NQ,son of,SCOMOGAQQNN,no,no,no,no
+I-KER-013,LUGUQRIT,maqqas,MAQI,son of,QRITTI,no,no,no,no
+I-KER-030,NETTA LAMINACCA,koi+maqqas+muccoviias,OI MAQQI MUCOI,here (lies) and son of and of the kin of,DOVINIAS,yes,no,yes,yes
+I-KER-048,BRUSCCOS,maqqas,MAQQI,son of,CALIACI,no,no,no,no
+I-KER-055,MAILINBIR,maqqas,MACI,son of,BROCANN,no,no,no,no
+I-KER-066,DEGOS,maqqas+muccoviias,MAQI MOCOI,son of and of the kin of,TOICAI,yes,yes,no,no
+I-KID-001,OVANOS,avias,AVI,grandson or descendant of,IVACATTOS,no,no,no,no
+I-KID-002,MAQIDECEDA,maqqas,MAQI,son of,MARIN,no,no,no,no
+I-KID-004,EGNI,koi+maqqas+muccoviias,OI MAQI MUCOI,here (lies) and son of and of the kin of,AI,yes,yes,no,no
+I-KID-008,NETTAVROICC,maqqas+muccoviias,MAQI MUCCOI,son of and of the kin of,TRENALUGGO,yes,yes,no,no
+I-KIK-006,DRUGNO,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,NAMI,yes,no,yes,yes
+I-KIK-007,ERACIAS,maqqas,MAQI,son of,DIMAQA,no,no,yes,yes
+I-KIK-008,LOBBI,koi+maqqas+muccoviias,OI MAQQI MUCCOI,here (lies) and son of and of the kin of,RINI,yes,yes,no,no
+I-KIK-011,SEVERRIT,maqqas,MAQI,son of,ROTTAIS,no,no,yes,yes
+I-KIK-012,DOVATUCQI,avias,AVI,grandson or descendant of,TULOTANAGIA,no,no,yes,yes
+I-KIK-013,CORBI,koi+maqqas,OI MAQI,here (lies) and son of,LABRID,no,no,yes,yes
+I-KIK-014,MAQICUNALIGEAS,maqqas,MAQI,son of,COILLI,no,no,yes,yes
+I-KIK-014,COILLI,muccoviias,MUCOI,of the kin of,COSCIEAS,yes,no,yes,yes
+I-LOU-002,MAQICORABIR,maqqas,MAQI,son of,TANB,no,no,no,no
+I-MAY-003,ALATTOS,maqqas,MAQI,son of,BR,no,no,no,yes
+I-MAY-005,CERAN,avias,AVI,grandson or descendant of,ADECETAIMIN,no,no,no,yes
+I-MEA-001,MAQICAIRATINI,avias,AVI,grandson or descendant of,INEQAGLAS,no,no,no,no
+I-WAT-002,LUGUDECA,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,NETASEGAMONAS,yes,yes,no,no
+I-WAT-005,COLLABOT,muccoviias,MUCOI,of the kin of,LUG,yes,yes,no,no
+I-WAT-005,LUG,maqqas,MAQI,son of,LOBACCONA,no,no,no,no
+I-WAT-006,MEDUSI,maqqas,MACI,son of,LU,no,no,no,yes
+I-WAT-006,LU,muccoviias,MOCOI,of the kin of,LUG,yes,yes,yes,no
+I-WAT-011,GATI,muccoviias,MOCOI,of the kin of,MACORBO,yes,no,yes,yes
+I-WAT-012,CALUNOVICA,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,LITENI,yes,no,yes,yes
+I-WAT-014,CUNALEGEA,maqqas,MAQI,son of,CSALAR,no,no,yes,yes
+I-WAT-014,CSALAR,cēlias+avias,CELI AVI,client or follower of and grandson or descendant of,QVECI,no,no,yes,yes
+I-WAT-015,BIGU,maqqas,MAQI,son of,LAG,no,no,yes,yes
+I-WAT-016,BIR,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,ROTTAIS,yes,no,yes,yes
+I-WAT-018,DENAVECA,muccoviias,MUCOI,of the kin of,MEDALO,yes,no,yes,yes
+I-WAT-024,BIVAIDONAS,muccoviias,MUCOI,of the kin of,ATAR,yes,yes,no,no
+I-WAT-025,LUGUDECA,muccoviias,MUCOI,of the kin of,CUNEA,yes,yes,no,yes
+I-WAT-033,EROTI,muccoviias,MUCOI,of the kin of,NETASEGAMONAS,yes,no,yes,no
+I-WAT-036,QECCIAS,muccoviias,MUCOI,of the kin of,BROENIONAS,yes,no,yes,yes
+I-WAT-039,VEDABAR,maqqas+muccoviias,MAQI MOCOI,son of and of the kin of,ODR,yes,no,yes,yes
+I-WAT-040,MAQIMOGʷEDIAS,maqqas,MAQI,son of,MUIBITI,no,no,yes,yes
+I-WAT-042,CUNANETAS,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,NETASEGAMONAS,yes,yes,yes,yes
+I-WAT-048,MODDAGNI,maqqas,MAQI,son of,GATTAGNI,no,no,no,no
+I-WAT-048,GATTAGNI,muccoviias,MUCOI,of the kin of,LUGUNI,yes,no,no,no
+I-WAT-049,SENAQ,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,ENA,yes,no,yes,yes
+I-WAT-050,VEDILIMETO,maqqas,MAQI,son of,TOQITAQ,no,no,yes,yes
+M-IOM-001,DOVAIDONA,maqqas,MA QI,son of,DROATA,no,no,no,yes
+M-IOM-002,BIVAIDONAS,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,CUNAVALI,yes,yes,no,no
+M-IOM-007,AMBICATOS,maqqas,MAQI,son of,ROCATOS,no,no,no,no
+S-SHE-001,EE,maqqas,ME,son of,A,no,no,yes,yes
+W-CMN-002,BIVV,avias,AVVI,grandson or descendant of,BODDI,no,no,no,no
+W-PEM-001,SAGRANI,maqqas,MAQI,son of,CUNATAMI,no,no,no,no
+W-PEM-003,ANDAGELLI,maqqas,MACU,son of,CAVETI,no,no,no,no
+W-PEM-004,TRENAGUS,maqqas,MAQI,son of,MAQITRENI,no,no,no,no
+W-PEM-006,NETTASAGRI,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,BRIACI,yes,no,no,no
+W-PEM-014,MAGLICUNAS,maqqas,MAQI,son of,CLUTAR,no,no,no,no

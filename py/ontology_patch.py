@@ -113,6 +113,27 @@ ADDITIONS = [
      "type check on a Wikidata match",
      "Result of checking a candidate's P31/P279 against what was expected: ok, "
      "mismatch, or unknown."),
+    ("nymReference", OWL.DatatypeProperty, (OG["Person"], OG["OghamTribe"]), XSD.string,
+     "normalised name form from the edition",
+     "The value of @nymRef on a TEI <name>: the editors' normalised form of an "
+     "inscribed name, carried by a person or by the kin group named after one. "
+     "These are reconstructed nominatives; CISP indexes the inscribed genitive, so "
+     "the two do not match on the string, and where they differ OG(H)AM is the "
+     "authority and CISP is supplementary."),
+    ("anonymousInEdition", OWL.DatatypeProperty, OG["Person"], XSD.boolean,
+     "the edition does not name this person",
+     "True where @nymRef is '#?'. Each such slot is its own person: the inscription "
+     "asserts that someone stood in that relation, not that all of them were one."),
+    ("relatedTo", OWL.ObjectProperty, OG["Person"], None,
+     "related to, as the inscription says",
+     "A relation one inscription asserts between two named slots. The kind is on the "
+     "reified statement as ogham:relationLemma, because the formula word is what "
+     "carries it; where that is a direct parent relation, crm:P152_has_parent is "
+     "emitted as well."),
+    ("relationLemma", OWL.AnnotationProperty, None, XSD.string,
+     "formula word carrying the relation",
+     "The lemma of the formula word, e.g. maqqas, or maqqas+muccoviias where two "
+     "formula words stand together and assert one thing."),
     ("wordClass", OWL.AnnotationProperty, OG["Word"], XSD.string,
      "class of formulaic word",
      "Label for the kind of word, mirroring the ogham:FormulaWord and "
@@ -193,7 +214,14 @@ def patch(upstream: Path, out: Path, changes_path: Path) -> dict:
         g.add((u, RDF.type, kind))
         g.add((u, RDFS.label, Literal(label)))
         g.add((u, RDFS.comment, Literal(comment)))
-        if domain is not None:
+        if isinstance(domain, tuple):
+            # a kin group carries a normalised name form just as a person does
+            union, members = BNode(), BNode()
+            Collection(g, members, list(domain))
+            g.add((union, RDF.type, OWL.Class))
+            g.add((union, OWL.unionOf, members))
+            g.add((u, RDFS.domain, union))
+        elif domain is not None:
             g.add((u, RDFS.domain, domain))
         if rng is not None:
             g.add((u, RDFS.range, rng))

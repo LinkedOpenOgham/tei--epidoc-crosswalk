@@ -38,6 +38,7 @@ import corpus    # local module (py/corpus.py) -- fetch + provenance manifest
 import dissent   # local module (py/dissent.py) -- competing readings
 import identifiers  # local module (py/identifiers.py) -- the hand-edited file
 import keepers   # local module (py/keepers.py) -- present location of the stones
+import persons   # local module (py/persons.py) -- who the stones name
 import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
 import words     # local module (py/words.py) -- formulaic-word extractor
@@ -958,6 +959,66 @@ def run_keepers(place_records: list[dict], online: bool, prov: dict) -> dict | N
     return {"links": links, "undrawn": unlinked, **gs, **summary}
 
 
+
+def run_persons(corpus_dir: Path, place_records: list[dict], prov: dict) -> dict | None:
+    """People named on the stones and how the inscriptions relate them."""
+    files = places.collect_files(corpus_dir)
+    res = persons.scan(files, places.parse_xml, places.is_edition)
+    if not res["edges"]:
+        return None
+    comps = persons.components(res["slots"], res["edges"])
+    links = persons.reconcile(res["slots"], ONTOLOGIES / "upstream" / "og_persons_1.ttl")
+    rows = persons.write_csv(res["slots"], res["edges"], OUT / "persons.csv")
+    g, gs = persons.build_graph(res["slots"], res["edges"], links, None)
+    g.serialize(destination=str(OUT / "persons.crm.ttl"), format="turtle")
+
+    bridging = [c for c in comps if len(c["stones"]) > 1]
+    print(f"\nperson layer -- {gs['persons']} people and {gs['tribes']} kin groups "
+          f"named on the stones")
+    print(f"  {gs['relations']} relations asserted by the inscriptions, "
+          f"{len(comps)} groups ({len(bridging)} spanning more than one stone)")
+    print(f"  {len(res['shared_names'])} name(s) attested on more than one stone "
+          f"-- a hypothesis, drawn dashed")
+    print(f"  {gs['linked']} name(s) reconciled to lod.ogham.link")
+    print(f"  -> wrote {(OUT / 'persons.csv').relative_to(ROOT)} ({rows} rows)")
+    print(f"  -> wrote {(OUT / 'persons.crm.ttl').relative_to(ROOT)} ({len(g)} triples)")
+
+    # page payload
+    by_id = {s["id"]: s for s in res["slots"]}
+    coords = {r["ogham_id"]: r for r in place_records if r.get("lat") is not None}
+    edges_by_stone: dict[str, list] = {}
+    for e in res["edges"]:
+        edges_by_stone.setdefault(e["stone"], []).append(e)
+    names_by_stone: dict[str, set] = {}
+    for slot in res["slots"]:
+        if slot["nym"]:
+            names_by_stone.setdefault(slot["stone"], set()).add(slot["nym"])
+
+    stones = []
+    for oid, edges in sorted(edges_by_stone.items()):
+        place = coords.get(oid)
+        if place is None:
+            continue
+        bridges = [{"name": n, "stones": [x for x in res["shared_names"][n] if x != oid]}
+                   for n in sorted(names_by_stone.get(oid, ()))
+                   if n in res["shared_names"]]
+        stones.append({
+            "id": oid, "title": place.get("title", ""), "ciic": place.get("ciic", ""),
+            "county": place.get("pn_county", ""), "country": place.get("pn_country", ""),
+            "lat": place["lat"], "lon": place["lon"],
+            "reading": (place.get("origplace_text") or "")[:0] or "",
+            "edges": [{"f": by_id[e["from"]]["surface"] or "\u2014",
+                       "t": by_id[e["to"]]["surface"] or "\u2014",
+                       "surface": e["surface"], "gloss": e["gloss"],
+                       "lemmas": e["lemma"].split("+"), "kin": e["object_is_kin"],
+                       "uncertain": e["uncertain"]} for e in edges],
+            "bridges": bridges,
+        })
+    bridge_list = [{"name": n, "stones": v} for n, v in sorted(res["shared_names"].items())]
+    glosses = {k: v[0] for k, v in persons.RELATIONS.items()}
+    return {"stones": stones, "bridges": bridge_list, "relations": glosses, **gs}
+
+
 def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
     """Numbers shown on the landing-page cards, keyed by page slug."""
     dash = [("\u2014", "")]
@@ -990,6 +1051,11 @@ def landing_figures(place_summary: dict, word_summary: dict | None) -> dict:
         "readings.html": readings_figs,
         "keepers.html": keeper_figs,
         "setting.html": place_summary.get("setting_figs", dash),
+        "persons.html": ([
+            (str(pl["persons"]), "people named"),
+            (str(pl["relations"]), "relations asserted"),
+            (str(len(pl["bridges"])), "names on more than one stone"),
+        ] if (pl := place_summary.get("person_layer")) else dash),
     }
 
 
@@ -1136,6 +1202,12 @@ def main() -> None:
                       f"{counts['without_edition_text']} without edition text")
                 print(f"  -> wrote {(OUT / 'worklist.md').relative_to(ROOT)} "
                       f"and worklist.csv ({n} rows)")
+            ps = run_persons(corpus_dir, places_summary["records"], prov)
+            if ps:
+                places_summary["person_layer"] = ps
+                webmap.build_persons(ps["stones"], ps["bridges"], ps["relations"],
+                                     DOCS, root=ROOT, provenance=prov)
+                shutil.copyfile(OUT / "persons.csv", DOCS / "persons.csv")
             ks = run_keepers(places_summary["records"], online, prov)
             places_summary["keeper_layer"] = ks
             webmap.build_keepers(ks["links"] if ks else [], DOCS, root=ROOT,

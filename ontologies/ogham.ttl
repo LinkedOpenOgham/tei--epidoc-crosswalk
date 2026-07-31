@@ -99,10 +99,6 @@ ogham:OghamStone_O3D a owl:Class ;
     rdfs:label "Ogham Stone Concept (Ogham in 3D Project)"@en ;
     rdfs:subClassOf ogham:OghamStone .
 
-ogham:OghamTribe a owl:Class ;
-    rdfs:label "Ogham Tribe"@en ;
-    rdfs:subClassOf foaf:Group .
-
 ogham:OpenStreetMapMatch a owl:ObjectProperty ;
     rdfs:label "Open Street Map Match"@en ;
     rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
@@ -141,6 +137,13 @@ ogham:TownlandsIEMatch a owl:ObjectProperty ;
 ogham:alias a owl:AnnotationProperty ;
     rdfs:label "alias"@de,
         "alias"@en .
+
+ogham:anonymousInEdition a owl:DatatypeProperty ;
+    rdfs:label "the edition does not name this person" ;
+    rdfs:comment "True where @nymRef is '#?'. Each such slot is its own person: the inscription asserts that someone stood in that relation, not that all of them were one." ;
+    rdfs:domain ontology:Person ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:boolean .
 
 ogham:brash_1879 a ogham:Book,
         owl:NamedIndividual ;
@@ -443,6 +446,14 @@ ogham:mcmanus_1991 a ogham:Book,
     rdfs:label "McManus (1991)"@en ;
     rdfs:isDefinedBy "McManus, D. (1991) A Guide to Ogam Maynooth Monographs 4. Maynooth: An Sagart."@en .
 
+ogham:nymReference a owl:DatatypeProperty ;
+    rdfs:label "normalised name form from the edition" ;
+    rdfs:comment "The value of @nymRef on a TEI <name>: the editors' normalised form of an inscribed name, carried by a person or by the kin group named after one. These are reconstructed nominatives; CISP indexes the inscribed genitive, so the two do not match on the string, and where they differ OG(H)AM is the authority and CISP is supplementary." ;
+    rdfs:domain [ a owl:Class ;
+            owl:unionOf ( ontology:Person ogham:OghamTribe ) ] ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
 ogham:okasha_forsyth_2001 a ogham:Book,
         owl:NamedIndividual ;
     rdfs:label "Okasha / Forsyth (2001)"@en ;
@@ -505,6 +516,18 @@ ogham:references a owl:ObjectProperty ;
     rdfs:domain crm:E22_Human-Made_Object ;
     rdfs:range ogham:Book,
         ogham:Repository .
+
+ogham:relatedTo a owl:ObjectProperty ;
+    rdfs:label "related to, as the inscription says" ;
+    rdfs:comment "A relation one inscription asserts between two named slots. The kind is on the reified statement as ogham:relationLemma, because the formula word is what carries it; where that is a direct parent relation, crm:P152_has_parent is emitted as well." ;
+    rdfs:domain ontology:Person ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> .
+
+ogham:relationLemma a owl:AnnotationProperty ;
+    rdfs:label "formula word carrying the relation" ;
+    rdfs:comment "The lemma of the formula word, e.g. maqqas, or maqqas+muccoviias where two formula words stand together and assert one thing." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
 
 ogham:representativePoint a owl:ObjectProperty ;
     rdfs:label "representative point"@en ;
@@ -803,6 +826,10 @@ ogham:OghamStone_Squirrel a owl:Class ;
     rdfs:label "Ogham Stone Concept (Research Squirrel Ogham Project)"@en ;
     rdfs:subClassOf ogham:OghamStone .
 
+ogham:OghamTribe a owl:Class ;
+    rdfs:label "Ogham Tribe"@en ;
+    rdfs:subClassOf foaf:Group .
+
 ogham:PlaceCollection a owl:Class ;
     rdfs:label "Place Collection"@en ;
     rdfs:subClassOf ogham:GeographicLocation .
@@ -959,10 +986,6 @@ ontology:Inscription a owl:Class ;
     rdfs:label "Inscription"@en ;
     rdfs:subClassOf crmtex1:TX1_Written_Text .
 
-ontology:Person a owl:Class ;
-    rdfs:label "Ogham Person"@en ;
-    rdfs:subClassOf foaf:Person .
-
 crm:E24_Physical_Man-Made_Thing a owl:Class ;
     rdfs:label "Hergestelltes"@de,
         "Ανθρωπογενές Υλικό Πράγμα"@el,
@@ -1086,6 +1109,10 @@ All Geometry classes described in this specification are defined so that instanc
 prov:Agent a owl:Class ;
     rdfs:label "Agent"@en ;
     rdfs:subClassOf ogham:ActorEntity .
+
+ontology:Person a owl:Class ;
+    rdfs:label "Ogham Person"@en ;
+    rdfs:subClassOf foaf:Person .
 
 ogham:Reading a owl:Class ;
     rdfs:label "Reading"@en ;
