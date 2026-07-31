@@ -1472,7 +1472,7 @@ data:places-graph a prov:Entity ;
     ogham:corpusCommit "bb62ccd146cc34e75c1304e60204744e742e3109" ;
     ogham:corpusCommitDate "2026-07-02T12:07:30+01:00" ;
     ogham:corpusEditionCount 504 ;
-    prov:generatedAtTime "2026-07-31T08:42:31+00:00"^^xsd:dateTime ;
+    prov:generatedAtTime "2026-07-31T08:55:17+00:00"^^xsd:dateTime ;
     prov:wasDerivedFrom <https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML> .
 
 data:stone_E_CON_001 a ogham:OghamStone,

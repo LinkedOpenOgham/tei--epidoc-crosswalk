@@ -42,6 +42,7 @@ import places    # local module (py/places.py) -- corpus-wide place layer
 import webmap    # local module (py/webmap.py) -- docs/ pages for GitHub Pages
 import words     # local module (py/words.py) -- formulaic-word extractor
 import setting   # local module (py/setting.py) -- present setting of each stone
+import ontology_patch  # local module -- corrects and extends ogham.owl
 import validate  # local module (py/validate.py) -- A-box check against the ontologies
 import worklist  # local module (py/worklist.py) -- what is still missing
 import wikidata  # local module (py/wikidata.py)
@@ -138,8 +139,12 @@ MAPPING = [
          crm="crm:E25_Human-Made_Feature", prop="P56_bears_feature", vocab="—"),
     dict(el="<div type=edition>", role="inscription text", ogham="ogham:Inscription",
          crm="crmtex:TX1_Written_Text", prop="P128_carries", vocab="CRMtex"),
-    dict(el="<div type=edition> / <rdg>", role="readings", ogham="ogham:Reading",
-         crm="ogham:Reading", prop="TXP4_has_segment + prov:wasAttributedTo",
+    # CRMtex has no class for a reading *text*: TX6 is Transliteration (an activity)
+    # and TX14_Reading is an argumentation. ogham:Reading is therefore the anchor
+    # class itself, and the ogham column has nothing further to add -- filling both
+    # would make the class its own superclass.
+    dict(el="<div type=edition> / <rdg>", role="readings", ogham="\u2014",
+         crm="ogham:Reading", prop="ogham:identifiedAs (\u2291 TXP4) + prov:wasAttributedTo",
          vocab="CRMtex, PROV-O"),
     dict(el="<origPlace> + <geo>", role="place of origin", ogham="ogham:Place",
          crm="crm:E53_Place", prop="P53_has_former_or_current_location", vocab="GeoSPARQL"),
@@ -164,6 +169,12 @@ def _check_lookup_tables() -> None:
     missing = sorted({r["crm"] for r in MAPPING if r["crm"] not in CROSSWALK_EXTRA})
     if missing:
         raise SystemExit(f"CROSSWALK_EXTRA has no entry for: {', '.join(missing)}")
+    self_parents = sorted({r["crm"] for r in MAPPING
+                           if r.get("ogham") not in ("\u2014", None) and r["ogham"] == r["crm"]})
+    if self_parents:
+        raise SystemExit("MAPPING makes a class its own superclass: "
+                         + ", ".join(self_parents))
+
 
 
 def crosswalk_extra(row: dict) -> tuple[str, str]:
@@ -332,6 +343,9 @@ def build_graph(d: dict):
     for name in d["names"]:
         person = DATA_NS[f"person_{sid}_{_slug(name)}"]
         g.add((person, RDF.type, CRM["E21_Person"]))
+        # ogham:shows is declared with range Person or Word, so the node has to be
+        # the ontology's Person as well as the CRM one
+        g.add((person, RDF.type, OGHAM["Person"]))
         g.add((person, RDFS.label, Literal(name)))
         # ogham:shows is declared with domain ogham:OghamStone, so it hangs off the
         # stone rather than the inscription. Its range is declared twice, as Person
@@ -476,7 +490,7 @@ def _ontology_classes() -> set[str]:
     redefine them. Empty if the ontology is not present, in which case the crosswalk
     falls back to declaring its own hierarchy as before."""
     if not _ONTOLOGY_CLASSES:
-        path = ONTOLOGIES / "ogham.owl"
+        path = ONTOLOGIES / "ogham.ttl"
         if path.exists():
             ref = Graph()
             ref.parse(str(path))
@@ -1141,6 +1155,17 @@ def main() -> None:
                                             if k not in ("records", "vocabulary")}
         write_out_readme(results, places_summary)
         emit_and_validate_crosswalk()
+        up = ONTOLOGIES / "upstream" / "ogham.owl"
+        if up.exists():
+            patched = ontology_patch.patch(up, ONTOLOGIES / "ogham.ttl",
+                                           ONTOLOGIES / "CHANGES.md")
+            print(f"\nontology -- patched {up.relative_to(ROOT)} "
+                  f"({patched['before']} -> {patched['after']} triples): "
+                  f"{len(patched['dropped'])} axiom(s) dropped, "
+                  f"{len(patched['retyped'])} retyped, "
+                  f"{len(patched['added'])} propert(ies) added")
+            print(f"  -> wrote {(ONTOLOGIES / 'ogham.ttl').relative_to(ROOT)} "
+                  f"and {(ONTOLOGIES / 'CHANGES.md').relative_to(ROOT)}")
         # after everything is written: the A-box check reads out/*.crm.ttl and
         # out/crosswalk.ttl, so running it earlier would grade the previous run
         validate.run(OUT, ONTOLOGIES, root=ROOT)

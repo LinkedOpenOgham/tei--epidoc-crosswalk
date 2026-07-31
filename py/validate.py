@@ -33,7 +33,8 @@ from __future__ import annotations
 from collections import defaultdict
 from pathlib import Path
 
-from rdflib import Graph, RDF, RDFS, URIRef
+from rdflib import BNode, Graph, RDF, RDFS, URIRef
+from rdflib.collection import Collection
 from rdflib.namespace import OWL
 
 WATCHED = {
@@ -58,7 +59,7 @@ def short(uri: str) -> str:
 
 def load_reference(directory: Path) -> Graph:
     g = Graph()
-    for name in ("ogham.owl", "CIDOC_CRM_v7.1.3.rdf", "CRMtex_v2.0.rdf", "amt.ttl"):
+    for name in ("ogham.ttl", "CIDOC_CRM_v7.1.3.rdf", "CRMtex_v2.0.rdf", "amt.ttl"):
         path = directory / name
         if path.exists():
             g.parse(str(path))
@@ -81,17 +82,28 @@ class Reference:
     def __init__(self, g: Graph):
         self.g = g
         self.known = {str(s) for s in g.subjects() if isinstance(s, URIRef)}
-        self.domain = {str(s): str(o) for s, o in g.subject_objects(RDFS.domain)}
-        self.range = {str(s): str(o) for s, o in g.subject_objects(RDFS.range)}
+        self.domain = {str(s): self._expand(o) for s, o in g.subject_objects(RDFS.domain)}
+        self.range = {str(s): self._expand(o) for s, o in g.subject_objects(RDFS.range)}
         self._super = {}
+
+    def _expand(self, node) -> tuple[str, ...]:
+        """A class, or the members of an owl:unionOf. A union range is satisfied by
+        any one member; treating the blank node itself as the expected class is how
+        a perfectly good union came out as a violation 626 times."""
+        if isinstance(node, BNode):
+            for lst in self.g.objects(node, OWL.unionOf):
+                return tuple(str(m) for m in Collection(self.g, lst))
+            return ()
+        return (str(node),)
 
     def supers(self, cls: str) -> set:
         if cls not in self._super:
             self._super[cls] = {str(x) for x in _closure(self.g, URIRef(cls), RDFS.subClassOf)}
         return self._super[cls]
 
-    def is_a(self, types: set[str], expected: str) -> bool:
-        return any(expected in self.supers(t) for t in types)
+    def is_a(self, types: set[str], expected) -> bool:
+        options = expected if isinstance(expected, tuple) else (expected,)
+        return any(opt in self.supers(t) for t in types for opt in options)
 
 
 def check(data: Graph, ref: Reference) -> dict:
@@ -124,13 +136,15 @@ def check(data: Graph, ref: Reference) -> dict:
         if expected_dom and isinstance(s, URIRef):
             have = types.get(str(s), set())
             if have and not ref.is_a(have, expected_dom):
-                violations[f"{short(pu)} domain should be {short(expected_dom)}"].append(
+                violations[f"{short(pu)} domain should be "
+                           f"{' or '.join(short(x) for x in expected_dom)}"].append(
                     f"{short(str(s))} is {', '.join(sorted(short(t) for t in have))}")
         expected_rng = ref.range.get(pu)
         if expected_rng and isinstance(o, URIRef):
             have = types.get(str(o), set())
             if have and not ref.is_a(have, expected_rng):
-                violations[f"{short(pu)} range should be {short(expected_rng)}"].append(
+                violations[f"{short(pu)} range should be "
+                           f"{' or '.join(short(x) for x in expected_rng)}"].append(
                     f"{short(str(o))} is {', '.join(sorted(short(t) for t in have))}")
 
     return {"unknown": dict(unknown_terms), "new_local": dict(new_local),
@@ -148,11 +162,21 @@ def subclass_claims(crosswalk: Graph, ref: Reference) -> list[str]:
             continue
         if str(s) not in ref.known:
             continue
-        actual = ref.supers(str(s)) - {str(s)}
-        if str(o) not in actual:
-            declared = ", ".join(sorted(short(a) for a in actual)) or "nothing"
-            out.append(f"{short(str(s))}: crosswalk says it is under {short(str(o))}, "
-                       f"the ontology says {declared}")
+        if str(o) in ref.supers(str(s)) - {str(s)}:
+            continue
+        # the direct parents are what a reader needs; the transitive closure of a
+        # CRM class runs to twenty lines and buries the point
+        direct = sorted(str(x) for x in ref.g.objects(URIRef(str(s)), RDFS.subClassOf)
+                        if isinstance(x, URIRef))
+        claimed_name = str(o).rsplit("/", 1)[-1]
+        same_name = [a for a in direct if a.rsplit("/", 1)[-1] == claimed_name]
+        if same_name:
+            out.append(f"{short(str(s))}: both say {claimed_name}, but the ontology "
+                       f"writes it as {same_name[0]} -- a namespace that defines nothing")
+        else:
+            declared = ", ".join(short(a) for a in direct) or "nothing"
+            out.append(f"{short(str(s))}: crosswalk says {short(str(o))}, "
+                       f"ontology says {declared}")
     return out
 
 
@@ -196,8 +220,10 @@ def run(out_dir: Path, ontologies: Path, root: Path | None = None) -> dict:
         for line in result["subclass"]:
             print(f"    {line}")
     if result["new_local"]:
-        print(f"  {len(result['new_local'])} term(s) minted by the crosswalk itself "
-              f"(not in ogham.owl -- add them there or rename):")
+        # These should now be empty: py/ontology_patch.py declares them. If one
+        # appears, a property was added to the crosswalk and not to the ontology.
+        print(f"  ! {len(result['new_local'])} term(s) emitted but declared nowhere -- "
+              f"add them to ADDITIONS in py/ontology_patch.py:")
         for term, n in sorted(result["new_local"].items()):
             print(f"    {term:52} {n} use(s)")
     if not (result["unknown"] or result["violations"] or result["subclass"]):

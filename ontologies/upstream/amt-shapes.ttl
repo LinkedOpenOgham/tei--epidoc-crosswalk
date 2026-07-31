@@ -1,0 +1,218 @@
+@prefix amt:  <http://academic-meta-tool.xyz/vocab#> .
+@prefix sh:   <http://www.w3.org/ns/shacl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+
+# =============================================================================
+# AMT SHACL Shapes
+# =============================================================================
+#
+# Validation rules for AMT data files. Run before loading a file into the
+# reasoner to catch malformed axioms, missing properties, or invalid weights.
+#
+# Usage (Python with pyshacl):
+#
+#   from pyshacl import validate
+#   ok, report_graph, report_text = validate(
+#       data_graph='my-data.ttl',
+#       shacl_graph='ontology/amt-shapes.ttl',
+#       ont_graph='ontology/amt.ttl',
+#       inference='rdfs',
+#   )
+#
+# =============================================================================
+
+
+# -----------------------------------------------------------------------------
+# Concept and Role: minimal structure
+# -----------------------------------------------------------------------------
+
+amt:ConceptShape a sh:NodeShape ;
+    sh:targetClass amt:Concept ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Each Concept must have at least one rdfs:label." ;
+    ] .
+
+amt:RoleShape a sh:NodeShape ;
+    sh:targetClass amt:Role ;
+    sh:property [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:message "Each Role must have at least one rdfs:label." ;
+    ] ;
+    sh:property [
+        sh:path rdfs:domain ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each Role must have exactly one rdfs:domain." ;
+    ] ;
+    sh:property [
+        sh:path rdfs:range ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "Each Role must have exactly one rdfs:range." ;
+    ] .
+
+
+# -----------------------------------------------------------------------------
+# RoleChainAxiom: either legacy (antecedent1 + antecedent2) or modern
+# (antecedents as RDF list). Always exactly one consequent and one logic.
+# -----------------------------------------------------------------------------
+
+amt:RoleChainAxiomShape a sh:NodeShape ;
+    sh:targetClass amt:RoleChainAxiom ;
+
+    # Exactly one consequent
+    sh:property [
+        sh:path amt:consequent ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class amt:Role ;
+        sh:message "RoleChainAxiom must have exactly one amt:consequent of type amt:Role." ;
+    ] ;
+
+    # Exactly one logic
+    sh:property [
+        sh:path amt:logic ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class amt:Logic ;
+        sh:message "RoleChainAxiom must have exactly one amt:logic of type amt:Logic." ;
+    ] ;
+
+    # Either antecedents (modern) OR antecedent1+antecedent2 (legacy)
+    sh:xone (
+        # Branch 1: modern n-ary form
+        [
+            sh:property [
+                sh:path amt:antecedents ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+            ] ;
+            sh:property [
+                sh:path amt:antecedent1 ;
+                sh:maxCount 0 ;
+            ] ;
+            sh:property [
+                sh:path amt:antecedent2 ;
+                sh:maxCount 0 ;
+            ] ;
+        ]
+        # Branch 2: legacy 2-ary form
+        [
+            sh:property [
+                sh:path amt:antecedent1 ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:class amt:Role ;
+            ] ;
+            sh:property [
+                sh:path amt:antecedent2 ;
+                sh:minCount 1 ;
+                sh:maxCount 1 ;
+                sh:class amt:Role ;
+            ] ;
+            sh:property [
+                sh:path amt:antecedents ;
+                sh:maxCount 0 ;
+            ] ;
+        ]
+    ) ;
+    sh:message "RoleChainAxiom must use either amt:antecedents (n-ary) or both amt:antecedent1/amt:antecedent2 (legacy), not both at once." .
+
+
+# Hamacher-specific: requires logicParameter
+amt:HamacherParameterShape a sh:NodeShape ;
+    sh:targetClass amt:RoleChainAxiom ;
+    sh:sparql [
+        sh:message "RoleChainAxiom using amt:HamacherProduct must specify amt:logicParameter (gamma)." ;
+        sh:prefixes [
+            sh:declare [ sh:prefix "amt" ; sh:namespace "http://academic-meta-tool.xyz/vocab#"^^xsd:anyURI ] ;
+        ] ;
+        sh:select """
+            SELECT $this WHERE {
+              $this <http://academic-meta-tool.xyz/vocab#logic> <http://academic-meta-tool.xyz/vocab#HamacherProduct> .
+              FILTER NOT EXISTS { $this <http://academic-meta-tool.xyz/vocab#logicParameter> ?p }
+            }
+        """ ;
+    ] .
+
+
+# -----------------------------------------------------------------------------
+# InverseAxiom: exactly one antecedent and one inverse
+# -----------------------------------------------------------------------------
+
+amt:InverseAxiomShape a sh:NodeShape ;
+    sh:targetClass amt:InverseAxiom ;
+    sh:property [
+        sh:path amt:antecedent ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class amt:Role ;
+        sh:message "InverseAxiom must have exactly one amt:antecedent of type amt:Role." ;
+    ] ;
+    sh:property [
+        sh:path amt:inverse ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class amt:Role ;
+        sh:message "InverseAxiom must have exactly one amt:inverse of type amt:Role." ;
+    ] .
+
+
+# -----------------------------------------------------------------------------
+# DisjointAxiom: exactly two roles
+# -----------------------------------------------------------------------------
+
+amt:DisjointAxiomShape a sh:NodeShape ;
+    sh:targetClass amt:DisjointAxiom ;
+    sh:property [
+        sh:path amt:role1 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class amt:Role ;
+        sh:message "DisjointAxiom must have exactly one amt:role1 of type amt:Role." ;
+    ] ;
+    sh:property [
+        sh:path amt:role2 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class amt:Role ;
+        sh:message "DisjointAxiom must have exactly one amt:role2 of type amt:Role." ;
+    ] .
+
+
+# -----------------------------------------------------------------------------
+# SelfDisjointAxiom: exactly one role
+# -----------------------------------------------------------------------------
+
+amt:SelfDisjointAxiomShape a sh:NodeShape ;
+    sh:targetClass amt:SelfDisjointAxiom ;
+    sh:property [
+        sh:path amt:role ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class amt:Role ;
+        sh:message "SelfDisjointAxiom must have exactly one amt:role of type amt:Role." ;
+    ] .
+
+
+# -----------------------------------------------------------------------------
+# Quadruples (weighted edges): weight in [0, 1]
+# -----------------------------------------------------------------------------
+
+amt:WeightShape a sh:NodeShape ;
+    sh:targetSubjectsOf amt:weight ;
+    sh:property [
+        sh:path amt:weight ;
+        sh:datatype xsd:decimal ;
+        sh:minInclusive 0.0 ;
+        sh:maxInclusive 1.0 ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:message "amt:weight must be a single xsd:decimal in the closed interval [0, 1]." ;
+    ] .

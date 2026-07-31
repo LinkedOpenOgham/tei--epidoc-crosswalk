@@ -69,13 +69,16 @@ data:inscription_I_COR_001 a ogham:Inscription,
     ogham:identifiedAs data:reading_I_COR_001_MAC1945,
         data:reading_I_COR_001_OGHAM_NW .
 
-data:person_I_COR_001_OGALA a crm:E21_Person ;
+data:person_I_COR_001_OGALA a ogham:Person,
+        crm:E21_Person ;
     rdfs:label "OGALA" .
 
-data:person_I_COR_001_SAINA a crm:E21_Person ;
+data:person_I_COR_001_SAINA a ogham:Person,
+        crm:E21_Person ;
     rdfs:label "SAINA" .
 
-data:person_I_COR_001_TEMOCA a crm:E21_Person ;
+data:person_I_COR_001_TEMOCA a ogham:Person,
+        crm:E21_Person ;
     rdfs:label "TEMOCA" .
 
 data:place_I_COR_001 a crm:E53_Place ;

@@ -1,0 +1,1150 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmtex: <http://www.cidoc-crm.org/cidoc-crm/crmtex/> .
+@prefix crmtex1: <http://www.cidoc-crm.org/extensions/crmtex/> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcmitype: <http://purl.org/dc/dcmitype/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix ontology: <http://ontology.ogham.link/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pleiades: <https://pleiades.stoa.org/places/vocab#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sf: <http://www.opengis.net/ont/sf#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix wd: <http://www.wikidata.org/entity/> .
+@prefix wdt: <http://www.wikidata.org/prop/direct/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<http://academic-meta-tool.xyz/vocab#Concept> a owl:Class ;
+    rdfs:label "Concept"@en ;
+    rdfs:comment "A node which is part of a triple with a vague edge."@en ;
+    rdfs:subClassOf rdfs:Class .
+
+<http://academic-meta-tool.xyz/vocab#Role> a owl:Class ;
+    rdfs:label "Role"@en ;
+    rdfs:comment "A vague edge which is part of a triple."@en ;
+    rdfs:subClassOf rdf:Property .
+
+<http://lod.ogham.link/data/PythonStonesCIIC> a owl:NamedIndividual,
+        prov:SoftwareAgent ;
+    rdfs:label "Python Create Script for Ogi Ogham Data"@en ;
+    dc:identifier "_run_py3.py" ;
+    dcterms:creator <http://lod.ogham.link/data/FlorianThiery> ;
+    dcterms:license <https://github.com/FellowsFreiesWissen/Ogham/blob/main/LICENSE> ;
+    dcterms:source "python"@en ;
+    dcterms:type dcmitype:Software ;
+    prov:actedOnBehalfOf <http://lod.ogham.link/data/FlorianThiery> .
+
+ogham: a owl:Ontology ;
+    rdfs:label "Ogham Ontology"@en ;
+    dc:contributor "Florian Thiery" ;
+    dc:creator "Florian Thiery" ;
+    dc:description "This ontology contains classes to describe data from Linked Ogham Data."@en ;
+    dc:publisher "Florian Thiery" ;
+    dc:rights "CC BY 4.0" ;
+    dc:subject "ogham" ;
+    dc:title "Ogham Ontology"@en ;
+    owl:versionInfo "1.1.1",
+        "21/08/2024" ;
+    skos:definition "This ontology contains classes to describe data from Linked Ogham Data."@en .
+
+ogham:CISP a ogham:Repository,
+        owl:NamedIndividual ;
+    rdfs:label "Celtic Inscribed Stones Project (CISP)"@en .
+
+ogham:FormulaWord a owl:Class ;
+    rdfs:label "Formula Word"@en ;
+    rdfs:subClassOf ontology:Word .
+
+ogham:Island a owl:Class ;
+    rdfs:label "Island"@en ;
+    rdfs:subClassOf ogham:GeographicLocation .
+
+ogham:LogainmMatch a owl:ObjectProperty ;
+    rdfs:label "Logainm Match"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:subPropertyOf ogham:exactMatch .
+
+ogham:NomenclatureWord a owl:Class ;
+    rdfs:label "Nomenclature Word"@en ;
+    rdfs:subClassOf ontology:Word .
+
+ogham:OghamAlphabet a crmtex1:TX3_Writing_System,
+        owl:NamedIndividual ;
+    rdfs:label "Ogham Alphabet"@en ;
+    crmtex:TXP7_has_item ogham:OghamChar .
+
+ogham:OghamIn3D a ogham:Repository,
+        owl:NamedIndividual ;
+    rdfs:label "Ogham in 3D Project"@en .
+
+ogham:OghamName a owl:Class ;
+    rdfs:label "Ogham Name"@en ;
+    rdfs:subClassOf ontology:Word .
+
+ogham:OghamStone_CIIC a owl:Class ;
+    rdfs:label "Ogham Stone Concept (RAS Macalister)"@en ;
+    rdfs:subClassOf ogham:OghamStone .
+
+ogham:OghamStone_CISP a owl:Class ;
+    rdfs:label "Ogham Stone Concept (CISP Database)"@en ;
+    rdfs:subClassOf ogham:OghamStone .
+
+ogham:OghamStone_O3D a owl:Class ;
+    rdfs:label "Ogham Stone Concept (Ogham in 3D Project)"@en ;
+    rdfs:subClassOf ogham:OghamStone .
+
+ogham:OghamTribe a owl:Class ;
+    rdfs:label "Ogham Tribe"@en ;
+    rdfs:subClassOf foaf:Group .
+
+ogham:OpenStreetMapMatch a owl:ObjectProperty ;
+    rdfs:label "Open Street Map Match"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:subPropertyOf ogham:exactMatch .
+
+ogham:PlaceOfInterest a owl:ObjectProperty ;
+    rdfs:label "place of interest (POI)"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf geo:hasGeometry ;
+    skos:definition "c.f. https://www.ogc.org/standards/geosparql, 1.0, OGC GeoSPARQL - A Geographic Query Language for RDF Data, 11-052r4, Annex B, B.1"@en .
+
+ogham:ResearchSoftwareEngineer a owl:Class ;
+    rdfs:label "Research Software Engineer"@en ;
+    rdfs:subClassOf foaf:Person .
+
+ogham:Sandstone a owl:Class ;
+    rdfs:label "Sandstone"@en ;
+    rdfs:subClassOf ogham:Stone_Material .
+
+ogham:SquirrelOgham a ogham:Repository,
+        owl:NamedIndividual ;
+    rdfs:label "Ogham Squirrel Project"@en .
+
+ogham:Townland a owl:Class ;
+    rdfs:label "Townland"@en ;
+    rdfs:subClassOf ogham:ElectoralDevision .
+
+ogham:TownlandsIEMatch a owl:ObjectProperty ;
+    rdfs:label "townlands.ie Match"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:subPropertyOf ogham:exactMatch .
+
+ogham:alias a owl:AnnotationProperty ;
+    rdfs:label "alias"@de,
+        "alias"@en .
+
+ogham:brash_1879 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Brash (1879)"@en ;
+    rdfs:isDefinedBy "Brash, R. R. (1879) The Ogam Inscribed Monuments of the Gaedhil in the British Isles. London."@en .
+
+ogham:brikil_1993 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Brindley / Kilfeather (1993)"@en ;
+    rdfs:isDefinedBy "Brindley, A, Kilfeather, A. (1993), An Archaeological Inventory of County Carlow, Dublin: Stationery Office."@en .
+
+ogham:carries a owl:ObjectProperty ;
+    rdfs:label "carries"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range ontology:Inscription ;
+    rdfs:subPropertyOf crm:P56_bears_feature .
+
+ogham:centroid a owl:ObjectProperty ;
+    rdfs:label "has centroid geometry"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf ogham:hasPointGeometry .
+
+ogham:clusteredArea a owl:ObjectProperty ;
+    rdfs:label "has clustered area"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf ogham:hasExactGeometry .
+
+ogham:completeness a owl:DatatypeProperty ;
+    rdfs:label "completeness"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:context a owl:DatatypeProperty ;
+    rdfs:label "context"@en ;
+    rdfs:domain ontology:Word ;
+    rdfs:range xsd:string .
+
+ogham:coordinateSource a owl:DatatypeProperty ;
+    rdfs:label "source of a supplied coordinate" ;
+    rdfs:comment "Where a coordinate came from when the edition gives none: a CISP grid reference, a national monuments record, a Wikidata item." ;
+    rdfs:domain ogham:Place ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:corpusCommit a owl:DatatypeProperty ;
+    rdfs:label "upstream corpus commit" ;
+    rdfs:comment "The commit of the EpiDoc corpus a derived graph was built from. The corpus is a living repository, so a graph that does not name its commit cannot be reproduced." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:corpusCommitDate a owl:DatatypeProperty ;
+    rdfs:label "date of the upstream commit" ;
+    rdfs:comment "Date of the commit named by ogham:corpusCommit." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:corpusEditionCount a owl:DatatypeProperty ;
+    rdfs:label "editions in that corpus state" ;
+    rdfs:comment "How many EpiDoc editions the corpus held at that commit." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:integer .
+
+ogham:cuppage_1986 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Cuppage (1986)"@en ;
+    rdfs:isDefinedBy "Cuppage, J. et al (1986) Archaeological Survey of the Dingle Peninsula. Ballyferrier: Oidrheacht Chorca Dhuibhne."@en .
+
+ogham:currentlocation a owl:DatatypeProperty ;
+    rdfs:label "current location"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:currentsetting a owl:DatatypeProperty ;
+    rdfs:label "current setting"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:depth a owl:DatatypeProperty ;
+    rdfs:label "depth"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:double ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+ogham:discovery_who a owl:DatatypeProperty ;
+    rdfs:label "discovery scientist"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:discovery_year a owl:DatatypeProperty ;
+    rdfs:label "discovery year"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:equals a owl:ObjectProperty,
+        owl:SymmetricProperty ;
+    rdfs:label "equals"@en ;
+    rdfs:domain crm:E22_Human-Made_Object ;
+    rdfs:range crm:E22_Human-Made_Object ;
+    owl:equivalentProperty owl:sameAs .
+
+ogham:ferguson_1887 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Ferguson (1887)"@en ;
+    rdfs:isDefinedBy "Ferguson, S. (1887) Ogham Inscriptions in Ireland, Wales and Scotland: Edinburgh."@en .
+
+ogham:form a owl:DatatypeProperty ;
+    rdfs:label "form"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://www.ucl.ac.uk/archaeology/cisp/database/manual/node3.html#SECTION00335000000000000000> ;
+    rdfs:range xsd:string .
+
+ogham:geoCertainty a owl:DatatypeProperty ;
+    rdfs:label "editorial certainty on the coordinate" ;
+    rdfs:comment "The value of @cert on the TEI <geo> element, kept verbatim." ;
+    rdfs:domain ogham:Place ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:geoStatus a owl:DatatypeProperty ;
+    rdfs:label "findspot coordinate status" ;
+    rdfs:comment "How the coordinate of a findspot stands in the edition: asserted (a plain pair), qualified (hedged with @cert or a phrase such as “approximate”), textual_only (prose instead of numbers), supplied (empty in the edition and filled from an outside source), or missing." ;
+    rdfs:domain ogham:Place ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:geocodedFrom a owl:DatatypeProperty ;
+    rdfs:label "how a place was geocoded" ;
+    rdfs:comment "Which service or identifier produced a coordinate for a named place: wikidata, wikidata-qid, osm, osm-id, or manual." ;
+    rdfs:domain crm:E53_Place ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:h_status a owl:DatatypeProperty ;
+    rdfs:label "height status"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:hasAMT a owl:ObjectProperty ;
+    rdfs:label "has AMT node"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> .
+
+ogham:hasCollection a owl:ObjectProperty ;
+    rdfs:label "has collection"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range ogham:OghamStone_Squirrel .
+
+ogham:hasEPSG a owl:ObjectProperty ;
+    rdfs:label "has EPSG code"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "a geometry in a EPSG code"@en .
+
+ogham:hasLocation a owl:ObjectProperty ;
+    rdfs:label "has location"@en ;
+    rdfs:domain ogham:OghamSite ;
+    rdfs:range ogham:GeographicLocation .
+
+ogham:hasType a owl:ObjectProperty ;
+    rdfs:label "has type"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range crm:E55_Type .
+
+ogham:height a owl:DatatypeProperty ;
+    rdfs:label "height"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:double .
+
+ogham:identifiedAs a owl:ObjectProperty ;
+    rdfs:label "identified as"@en ;
+    rdfs:domain ontology:Inscription ;
+    rdfs:range ogham:Reading ;
+    rdfs:subPropertyOf crmtex1:TXP4_has_segment .
+
+ogham:irishGrid a owl:DatatypeProperty ;
+    rdfs:label "irish grid reference"@en ;
+    rdfs:domain ogham:GeographicLocation ;
+    rdfs:range xsd:string .
+
+ogham:label_barony a owl:DatatypeProperty ;
+    rdfs:label "label barony"@en ;
+    rdfs:domain ogham:OghamSite ;
+    rdfs:range xsd:string ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+ogham:label_country a owl:DatatypeProperty ;
+    rdfs:label "label country"@en ;
+    rdfs:domain ogham:OghamSite ;
+    rdfs:range xsd:string .
+
+ogham:label_county a owl:DatatypeProperty ;
+    rdfs:label "label county"@en ;
+    rdfs:domain ogham:OghamSite ;
+    rdfs:range xsd:string .
+
+ogham:label_province a owl:DatatypeProperty ;
+    rdfs:label "label province"@en ;
+    rdfs:domain ogham:OghamSite ;
+    rdfs:range xsd:string .
+
+ogham:label_townland a owl:DatatypeProperty ;
+    rdfs:label "label townland"@en ;
+    rdfs:domain ogham:OghamSite ;
+    rdfs:range xsd:string .
+
+ogham:label_upper a owl:DatatypeProperty ;
+    rdfs:label "label (uppercase)"@en ;
+    rdfs:domain ontology:Person ;
+    rdfs:range xsd:string .
+
+ogham:language a owl:DatatypeProperty ;
+    rdfs:label "language"@en ;
+    rdfs:domain ogham:Reading ;
+    rdfs:range xsd:string .
+
+ogham:lastRecorded a owl:ObjectProperty ;
+    rdfs:label "last recored"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf ogham:hasPointGeometry .
+
+ogham:locatedAt a owl:ObjectProperty ;
+    rdfs:label "is located at"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf ogham:hasPointGeometry .
+
+ogham:macalister_1897 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Macalister (1897)"@en ;
+    rdfs:isDefinedBy "Macalister, R. A. S. (1897) Studies in Irish Epigraphy. A Collection of Revised Readings of the Ancient Inscriptions of Ireland, with Introduction and Notes. Part I. London: David Nutt."@en .
+
+ogham:macalister_1902 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Macalister (1902)"@en ;
+    rdfs:isDefinedBy "Macalister, R. A. S. (1902) Studies in Irish Epigraphy. A Collection of Revised Readings of the Ancient Inscriptions of Ireland, with Introduction and Notes. Part II. London: David Nutt."@en .
+
+ogham:macalister_1907 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Macalister (1907)"@en ;
+    rdfs:isDefinedBy "Macalister, R. A. S. (1907) Studies in Irish Epigraphy. A Collection of Revised Readings of the Ancient Inscriptions of Ireland, with Introduction and Notes Part III. London: David Nutt."@en .
+
+ogham:macalister_1909 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Macalister (1909)"@en ;
+    rdfs:isDefinedBy "Macalister, R.A.S. (1909) The Memorial Slabs of Clonmacnois, King's County. Dublin."@en .
+
+ogham:macalister_1945 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Macalister (1945)"@en ;
+    rdfs:isDefinedBy "Macalister, R. A. S. (1945) Corpus Inscriptionum Insularum Celticarum Vol. I. Dublin: Stationery Office."@en .
+
+ogham:macalister_1949 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Macalister (1949)"@en ;
+    rdfs:isDefinedBy "Macalister, R. A. S. (1949) Corpus Inscriptionum Insularum Celticarum Vol. II. Dublin: Stationery Office."@en .
+
+ogham:matchConfidence a owl:AnnotationProperty ;
+    rdfs:label "reconciliation confidence" ;
+    rdfs:comment "Confidence in a reconciliation link, in [0,1]. Carried on the reified statement alongside amt:weight." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:decimal .
+
+ogham:matchMode a owl:DatatypeProperty ;
+    rdfs:label "how the word was matched" ;
+    rdfs:comment "Whether a word was matched as a whole token (formula words, compound names) or as a substring (name elements). The two carry different confidence and should not be read alike." ;
+    rdfs:domain ontology:Word ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:matchSource a owl:AnnotationProperty ;
+    rdfs:label "gazetteer a close match points into" ;
+    rdfs:comment "Which authority a weighted skos:closeMatch was drawn from, e.g. Logainm or the RCAHMW Historic Place Names of Wales." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:matchStatus a owl:AnnotationProperty ;
+    rdfs:label "reconciliation status" ;
+    rdfs:comment "Whether a link was found automatically (auto), asserted by the source (source-asserted), or checked by a person (verified)." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:matchTypeCheck a owl:AnnotationProperty ;
+    rdfs:label "type check on a Wikidata match" ;
+    rdfs:comment "Result of checking a candidate's P31/P279 against what was expected: ok, mismatch, or unknown." ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:matchedVariant a owl:DatatypeProperty ;
+    rdfs:label "spelling that matched" ;
+    rdfs:comment "The spelling of a formulaic word that was actually found, where the word has several: MAQQI, MAC and MACCI all match MAQI." ;
+    rdfs:domain ontology:Word ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+ogham:mcmanus_1991 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "McManus (1991)"@en ;
+    rdfs:isDefinedBy "McManus, D. (1991) A Guide to Ogam Maynooth Monographs 4. Maynooth: An Sagart."@en .
+
+ogham:okasha_forsyth_2001 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Okasha / Forsyth (2001)"@en ;
+    rdfs:isDefinedBy "Okasha, E. and Forsyth, K. (2001) Early Christian Inscriptions of Munster. A Corpus of the Inscribed Stones. Cork: Cork University Press."@en .
+
+ogham:origGeom a owl:ObjectProperty ;
+    rdfs:label "orig geometry"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf ogham:hasPointGeometry .
+
+ogham:osullivan_1996 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "O'Sullivan (1996)"@en ;
+    rdfs:isDefinedBy "O'Sullivan, A., Sheehan, J. (1996) The Iveragh Peninsula. An Archaeological Survey of South Kerry. Cork: Cork University Press."@en .
+
+ogham:petrie_1872 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Petrie (1872)"@en ;
+    rdfs:isDefinedBy "Petrie, G. (1872) Christian Inscriptions in the Irish Language, M. Stokes (ed.), Vol. 1. Dublin: Royal Historical and Archaeological Association."@en .
+
+ogham:power_1992 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Power / Byrne / Egan / Lane / Sleeman (1992)"@en ;
+    rdfs:isDefinedBy "Power, D, E. Byrne, U. Egan, S. Lane and M.Sleeman (1992) Archaeological Inventory of County Cork Volume 1: West Cork. Dublin: Stationery Office."@en .
+
+ogham:power_1997 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Power / Byrne / Egan / Lane / Sleeman (1997)"@en ;
+    rdfs:isDefinedBy "Power, D., E. Byrne, U. Egan, S. Lane and M.Sleeman (1997) Archaeological Inventory of County Cork Volume 3: Mid Cork. Dublin: Stationery Office."@en .
+
+ogham:preservation a owl:DatatypeProperty ;
+    rdfs:label "preservation"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:preservation_note a owl:DatatypeProperty ;
+    rdfs:label "preservation (note)"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:raftery_1960 a ogham:Book,
+        owl:NamedIndividual ;
+    rdfs:label "Raftery (1960)"@en ;
+    rdfs:isDefinedBy "Raftery, B. (1960) `National Museum of Ireland, Arch. acquisitions 1958' Journal of the Royal Society of Antiquaries of Ireland 90: 1--40."@en .
+
+ogham:reference a owl:DatatypeProperty ;
+    rdfs:label "reference work"@en ;
+    rdfs:domain ontology:Word ;
+    rdfs:range xsd:string .
+
+ogham:referenceList a owl:DatatypeProperty ;
+    rdfs:label "reference list"@en ;
+    rdfs:comment "example: ['ogham:Y10000007', 'ogham:Y20000125', 'ogham:macalister_1945:104', 'ogham:cisp:COOGH/1']"@en ;
+    rdfs:domain ogham:ReferenceChain ;
+    rdfs:range xsd:string .
+
+ogham:references a owl:ObjectProperty ;
+    rdfs:label "references"@en ;
+    rdfs:domain crm:E22_Human-Made_Object ;
+    rdfs:range ogham:Book,
+        ogham:Repository .
+
+ogham:representativePoint a owl:ObjectProperty ;
+    rdfs:label "representative point"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf ogham:hasPointGeometry .
+
+ogham:scientist a owl:DatatypeProperty ;
+    rdfs:label "scientist"@en ;
+    rdfs:domain ogham:Reading ;
+    rdfs:range xsd:string .
+
+ogham:scientist_year a owl:DatatypeProperty ;
+    rdfs:label "scientist year"@en ;
+    rdfs:domain ogham:Reading ;
+    rdfs:range xsd:string .
+
+ogham:script a owl:DatatypeProperty ;
+    rdfs:label "script"@en ;
+    rdfs:domain ogham:Reading ;
+    rdfs:range xsd:string .
+
+ogham:shows a owl:ObjectProperty ;
+    rdfs:label "shows"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range [ a owl:Class ;
+            owl:unionOf ( ontology:Person ontology:Word ) ] ;
+    rdfs:subPropertyOf crm:P138i_has_representation .
+
+ogham:sitecode a owl:DatatypeProperty ;
+    rdfs:label "site code"@en ;
+    rdfs:domain ogham:GeographicLocation ;
+    rdfs:range xsd:string .
+
+ogham:sitetype a owl:DatatypeProperty ;
+    rdfs:label "site type"@en ;
+    rdfs:domain ogham:GeographicLocation ;
+    rdfs:range xsd:string .
+
+ogham:smr_no a owl:DatatypeProperty ;
+    rdfs:label "SMR number"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:t_status a owl:DatatypeProperty ;
+    rdfs:label "thickness staus"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:thickness a owl:DatatypeProperty ;
+    rdfs:label "thickness"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:double .
+
+ogham:translation a owl:DatatypeProperty ;
+    rdfs:label "translation"@en ;
+    rdfs:domain ontology:Word ;
+    rdfs:range xsd:string .
+
+ogham:w_status a owl:DatatypeProperty ;
+    rdfs:label "width status"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:string .
+
+ogham:width a owl:DatatypeProperty ;
+    rdfs:label "width"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range xsd:double ;
+    rdfs:subPropertyOf owl:topDataProperty .
+
+ogham:within a owl:ObjectProperty ;
+    rdfs:label "st_within()"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf crm:P89_falls_within .
+
+ogham:wordClass a owl:AnnotationProperty ;
+    rdfs:label "class of formulaic word" ;
+    rdfs:comment "Label for the kind of word, mirroring the ogham:FormulaWord and ogham:NomenclatureWord subclasses." ;
+    rdfs:domain ontology:Word ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
+dc:contributor a owl:AnnotationProperty .
+
+dc:creator a owl:AnnotationProperty .
+
+dc:description a owl:AnnotationProperty .
+
+dc:identifier a owl:AnnotationProperty ;
+    rdfs:label "Identifier"@en ;
+    rdfs:comment "Recommended best practice is to identify the resource by means of a string conforming to a formal identification system."@en .
+
+dc:publisher a owl:AnnotationProperty .
+
+dc:rights a owl:AnnotationProperty .
+
+dc:subject a owl:AnnotationProperty .
+
+dc:title a owl:AnnotationProperty .
+
+dcterms:contributor a owl:AnnotationProperty .
+
+dcterms:creator a owl:AnnotationProperty .
+
+dcterms:license a owl:AnnotationProperty .
+
+dcterms:source a owl:AnnotationProperty .
+
+dcterms:type a owl:AnnotationProperty .
+
+crm:E25_Human-Made_Feature a owl:Class ;
+    rdfs:label "Human-Made Feature"@en ;
+    rdfs:comment "This class comprises physical features that are purposely created by human activity, such as scratches, artificial caves, artificial water channels, etc. In particular, it includes the information encoding features on mechanical or digital carriers."@en ;
+    rdfs:subClassOf crm:E24_Physical_Man-Made_Thing .
+
+geo:Feature a owl:Class ;
+    rdfs:label "Feature"@en ;
+    rdfs:subClassOf geo:SpatialObject .
+
+geo:asGeoJSON a owl:DatatypeProperty ;
+    rdfs:label "als GeoJSON"@de,
+        "as GeoJSON"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range rdfs:Literal .
+
+geo:asWKT a owl:DatatypeProperty ;
+    rdfs:label "als well-known-text"@de,
+        "as well-known-text"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range rdfs:Literal .
+
+sf:MultiLineString a owl:Class ;
+    rdfs:label "Multi Line String"@en ;
+    rdfs:comment "A MultiLineString is a MultiCurve whose elements are LineStrings."@en ;
+    rdfs:subClassOf sf:Geometry .
+
+sf:MultiPoint a owl:Class ;
+    rdfs:label "Mulit Point"@en ;
+    rdfs:comment """A MultiPoint is a 0-dimensional GeometryCollection. The elements of a MultiPoint are restricted to Points. ThePoints are not connected or ordered in any semantically important way.
+A MultiPoint is simple if no two Points in the MultiPoint are equal (have identical coordinate values in X and Y).
+Every MultiPoint is spatially equal to a simple Multipoint.
+The boundary of a MultiPoint is the empty set."""@en ;
+    rdfs:subClassOf sf:Geometry .
+
+sf:MultiPolygon a owl:Class ;
+    rdfs:label "Multi Polygon"@en ;
+    rdfs:comment """A MultiPolygon is a MultiSurface whose elements are Polygons.
+The assertions for MultiPolygons are as follows.
+a) The interiors of 2 Polygons that are elements of a MultiPolygon may not intersect.
+b) The boundaries of any 2 Polygons that are elements of a MultiPolygon may not cross and may touch at only a finite number of Points.
+c) A MultiPolygon is defined as topologically closed.
+d) A MultiPolygon may not have cut lines, spikes or punctures, a MultiPolygon is a regular closed Point set,
+e) The interior of a MultiPolygon with more than 1 Polygon is not connected; the number of connected components of the interior of a MultiPolygon is equal to the number of Polygons in the MultiPolygon. 
+The boundary of a MultiPolygon is a set of closed Curves (LineStrings) corresponding to the boundaries of its element Polygons. Each Curve in the boundary of the MultiPolygon is in the boundary of exactly 1 element Polygon, and every Curve in the boundary of an element Polygon is in the boundary of the MultiPolygon."""@en ;
+    rdfs:subClassOf sf:Geometry .
+
+sf:Point a owl:Class ;
+    rdfs:label "Point"@en ;
+    rdfs:comment """A Point is a 0-dimensional geometric object and represents a single location in coordinate space. 
+A Point has an x-coordinate value, a y-coordinate value. If called for by the associated Spatial Reference System, it may also have coordinate values for z and m.
+The boundary of a Point is the empty set."""@en ;
+    rdfs:subClassOf sf:Geometry .
+
+rdfs:Resource a rdfs:Datatype .
+
+rdfs:label rdfs:label "label"@en ;
+    rdfs:comment "A human-readable name for the subject."@en .
+
+skos:definition a owl:AnnotationProperty .
+
+prov:Activity a owl:Class ;
+    rdfs:label "Activity"@en ;
+    rdfs:subClassOf crm:E5_Event .
+
+prov:Organization a owl:Class ;
+    rdfs:label "Organisation"@en ;
+    rdfs:subClassOf foaf:Organization .
+
+prov:actedOnBehalfOf a owl:ObjectProperty ;
+    rdfs:label "acted on behalf of"@en ;
+    rdfs:domain prov:Entity ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "Delegation is the assignment of authority and responsibility to an agent (by itself or by another agent) to carry out a specific activity as a delegate or representative, while the agent it acts on behalf of retains some responsibility for the outcome of the delegated work."@en .
+
+prov:endedAtTime a owl:DatatypeProperty ;
+    rdfs:label "ended at time"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range rdfs:Literal ;
+    skos:definition "End is when an activity is deemed to have been ended by an entity, known as trigger. The activity no longer exists after its end. Any usage, generation, or invalidation involving an activity precedes the activity's end. An end may refer to a trigger entity that terminated the activity, or to an activity, known as ender that generated the trigger."@en .
+
+prov:startedAtTime a owl:DatatypeProperty ;
+    rdfs:label "started at time"@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range rdfs:Literal ;
+    skos:definition "Start is when an activity is deemed to have been started by an entity, known as trigger. The activity did not exist before its start. Any usage, generation, or invalidation involving an activity follows the activity's start. A start may refer to a trigger entity that set off the activity, or to an activity, known as starter, that generated the trigger."@en .
+
+prov:used a owl:ObjectProperty ;
+    rdfs:label "used"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "Usage is the beginning of utilizing an entity by an activity. Before usage, the activity had not begun to utilize this entity and could not have been affected by the entity."@en .
+
+prov:wasAssociatedWith a owl:ObjectProperty ;
+    rdfs:label "was associated with"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "An activity association is an assignment of responsibility to an agent for an activity, indicating that the agent had a role in the activity. It further allows for a plan to be specified, which is the plan intended by the agent to achieve some goals in the context of this activity."@en .
+
+prov:wasAttributedTo a owl:ObjectProperty ;
+    rdfs:label "was attributed to"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "Attribution is the ascribing of an entity to an agent."@en .
+
+prov:wasDerivedFrom a owl:ObjectProperty ;
+    rdfs:label "was derived from"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "A derivation is a transformation of an entity into another, an update of an entity resulting in a new one, or the construction of a new entity based on a pre-existing entity."@en .
+
+prov:wasGeneratedBy a owl:ObjectProperty ;
+    rdfs:label "was generated by"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "Generation is the completion of production of a new entity by an activity. This entity did not exist before generation and becomes available for usage after this generation."@en .
+
+prov:wasInformedBy a owl:ObjectProperty ;
+    rdfs:label "was informed by"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "Communication is the exchange of some unspecified entity by two activities, one activity using some entity generated by the other."@en .
+
+wd:Q106628017 a owl:NamedIndividual,
+        foaf:Project ;
+    rdfs:label "Celtic Inscribed Stones Project (Wikidata)"@en .
+
+wd:Q106674066 a owl:NamedIndividual,
+        foaf:Project ;
+    rdfs:label "Ogham in 3D Project (Wikidata)"@en .
+
+wd:Q70256237 a owl:NamedIndividual,
+        wd:Q7725634 ;
+    rdfs:label "Corpus Inscriptionum Insularum Celticarum Vol.1 (Wikidata)"@en .
+
+<http://lod.ogham.link/data/ResearchSquirrelEngineers> a owl:NamedIndividual,
+        foaf:Group ;
+    rdfs:label "Research Squirrel Engineers"@en .
+
+ogham:Actor a owl:Class ;
+    rdfs:label "Actor"@en ;
+    rdfs:subClassOf crm:E39_Actor .
+
+ogham:ActorEntity a owl:Class ;
+    rdfs:label "Actor Entity"@en ;
+    rdfs:subClassOf ogham:Actor .
+
+ogham:Barony a owl:Class ;
+    rdfs:label "Barony"@en ;
+    rdfs:subClassOf ogham:County .
+
+ogham:CivilParish a owl:Class ;
+    rdfs:label "Civil Parish"@en ;
+    rdfs:subClassOf ogham:Barony .
+
+ogham:County a owl:Class ;
+    rdfs:label "County"@en ;
+    rdfs:subClassOf ogham:Province .
+
+ogham:ElectoralDevision a owl:Class ;
+    rdfs:label "Electoral Devision"@en ;
+    rdfs:subClassOf ogham:CivilParish .
+
+ogham:InformationCarrier a owl:Class ;
+    rdfs:label "Information Carrier"@en ;
+    rdfs:subClassOf crm:E22_Human-Made_Object .
+
+ogham:Material a owl:Class ;
+    rdfs:label "Material"@en ;
+    rdfs:subClassOf crm:E55_Type .
+
+ogham:OghamChar a crmtex1:TX8_Grapheme,
+        owl:NamedIndividual ;
+    rdfs:label "Ogham Char"@en .
+
+ogham:OghamClusterRegion a owl:Class ;
+    rdfs:label "Ogham Cluster Region"@en ;
+    rdfs:subClassOf ogham:PlaceCollection .
+
+ogham:OghamCollection a owl:Class ;
+    rdfs:label "Ogham Collection"@en ;
+    rdfs:subClassOf ogham:InformationCarrier .
+
+ogham:OghamStone_Squirrel a owl:Class ;
+    rdfs:label "Ogham Stone Concept (Research Squirrel Ogham Project)"@en ;
+    rdfs:subClassOf ogham:OghamStone .
+
+ogham:PlaceCollection a owl:Class ;
+    rdfs:label "Place Collection"@en ;
+    rdfs:subClassOf ogham:GeographicLocation .
+
+ogham:Province a owl:Class ;
+    rdfs:label "Province"@en ;
+    rdfs:subClassOf ogham:State .
+
+ogham:ReferenceChain a owl:Class ;
+    rdfs:label "Reference Chain"@en ;
+    rdfs:subClassOf crm:E55_Type .
+
+ogham:State a owl:Class ;
+    rdfs:label "State"@en ;
+    rdfs:subClassOf ogham:GeographicLocation .
+
+ogham:Stone_Material a owl:Class ;
+    rdfs:label "Stone (Material)"@en ;
+    rdfs:subClassOf ogham:Material .
+
+ogham:hasExactGeometry a owl:ObjectProperty ;
+    rdfs:label "hast exact geometry"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf geo:hasGeometry ;
+    skos:definition "c.f. https://www.ogc.org/standards/geosparql, 1.0, OGC GeoSPARQL - A Geographic Query Language for RDF Data, 11-052r4, Annex B, B.1"@en .
+
+ogham:isSiteOf a owl:ObjectProperty ;
+    rdfs:label "is site of"@en ;
+    rdfs:domain ogham:OghamSite ;
+    rdfs:range ogham:OghamStone ;
+    rdfs:subPropertyOf <http://archaeology.link/ontology#disclosedAt> ;
+    owl:inverseOf ogham:isSiteOf .
+
+crm:E39_Actor a owl:Class ;
+    rdfs:label "Akteur"@de,
+        "Δράστης"@el,
+        "Actor"@en,
+        "Agent"@fr,
+        "Agente"@pt,
+        "Агент"@ru,
+        "角色"@zh ;
+    rdfs:comment """This class comprises people, either individually or in groups, who have the potential to perform intentional actions of kinds for which someone may be held responsible.
+        The CRM does not attempt to model the inadvertent actions of such actors. Individual people should be documented as instances of E21 Person, whereas groups should be documented as instances of either E74 Group or its subclass E40 Legal Body.
+        """ ;
+    rdfs:subClassOf crm:E36_Visual_Item .
+
+crm:P138i_has_representation a owl:ObjectProperty ;
+    rdfs:label "has representation"@en .
+
+crm:P53_has_former_or_current_location a owl:ObjectProperty ;
+    rdfs:label "has former or current location"@en ;
+    rdfs:comment """This property identifies an instance of E53 Place as the former or current location of an instance of E18 Physical Thing.
+In the case of instances of E19 Physical Object, the property does not allow any indication of the Time-Span during which the instance of E19 Physical Object was located at this instance of E53 Place, nor if this is the current location.
+In the case of immobile objects, the Place would normally correspond to the Place of creation.
+This property is a shortcut. A more detailed representation can make use of the fully developed (i.e. indirect) path from E19 Physical Object, though, P25i moved by, E9 Move, P26 moved to or P27 moved from to E53 Place."""@en .
+
+crm:P56_bears_feature a owl:ObjectProperty ;
+    rdfs:label "bears feature"@en ;
+    rdfs:comment """This property links an instance of E19 Physical Object to an instance of E26 Physical Feature that it bears.
+An instance of E26 Physical Feature can only exist on one object. One object may bear more than one E26 Physical Feature. An instance of E27 Site should be considered as an instance of E26 Physical Feature on the surface of the Earth.
+An instance B of E26 Physical Feature being a detail of the structure of another instance A of E26 Physical Feature can be linked to B by use of the property P46 is composed of (forms part of). This implies that the subfeature B is P56i is found on the same E19 Physical Object as A.
+This property is a shortcut. A more detailed representation can make use of the fully developed (i.e. indirect) path E19 Physical Object, through, P59 has section, E53 Place, P53i is former or current location of to E26 Physical Feature."""@en .
+
+crm:P89_falls_within a owl:ObjectProperty ;
+    rdfs:label "falls within"@en ;
+    rdfs:comment """This property identifies an instance of E53 Place that falls wholly within the extent of another instance of E53 Place.
+It addresses spatial containment only and does not imply any relationship between things or phenomena occupying these places.
+This property is transitive and reflexive."""@en .
+
+crmtex1:TXP4_has_segment a owl:ObjectProperty ;
+    rdfs:label "has segment"@en ;
+    rdfs:comment "This property is intended to correlate a text and the different parts of it which a scholar can identify, such as: letters, words, lines, columns, pages, or any other scan that can be made by scholars because it is considered to have a particular relevance for the investigation of the text itself."@en .
+
+<http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object> a owl:Class ;
+    rdfs:label "Digital Object (D1)"@en ;
+    rdfs:comment "This class comprises identifiable immaterial items that can be represented as sets of bit sequences, such as data sets, e-texts, images, audio or video items, software, etc., and are documented as single units. Any aggregation of instances of D1 Digital Object into a whole treated as single unit is also regarded as an instance of D1 Digital Object. This means that for instance, the content of a DVD, an XML file on it, and an element of this file, are regarded as distinct instances of D1 Digital Object, mutually related by the P106 is composed of (forms part of) property. A D1 Digital Object does not depend on a specific physical carrier, and it can exist on one or more carriers simultaneously."@en ;
+    rdfs:subClassOf crm:E22_Human-Made_Object .
+
+geo:Geometry a owl:Class ;
+    rdfs:label "Geometry"@en ;
+    rdfs:subClassOf geo:SpatialObject ;
+    skos:definition "The class represents the top-level geometry type. This class is equivalent to the UML class GM_Object defined in ISO 19107, and it is superclass of all geometry types."@en .
+
+rdf:Property a owl:Class ;
+    rdfs:label "Property"@en ;
+    rdfs:subClassOf ogham:AMT_Entity .
+
+rdfs:Class a owl:Class ;
+    rdfs:label "Class"@en ;
+    rdfs:subClassOf ogham:AMT_Entity .
+
+skos:exactMatch a owl:ObjectProperty ;
+    rdfs:label "has exact match"@en ;
+    rdfs:domain skos:Concept ;
+    rdfs:range skos:Concept ;
+    rdfs:subPropertyOf owl:sameAs .
+
+prov:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:subClassOf foaf:Person .
+
+prov:SoftwareAgent a owl:Class ;
+    rdfs:label "Software Agent"@en ;
+    rdfs:subClassOf prov:Agent .
+
+wd:Q3133368 a owl:Class ;
+    rdfs:label "Repository"@en ;
+    rdfs:subClassOf crm:E55_Type .
+
+wd:Q7725634 a owl:Class ;
+    rdfs:label "literary work"@en ;
+    rdfs:subClassOf wd:Q3133368 .
+
+wdt:P2888 a owl:ObjectProperty ;
+    rdfs:label "exact match"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:subPropertyOf skos:exactMatch ;
+    skos:definition "(URLs only) used to link two items, indicating a high degree of confidence that the concepts can be used interchangeably"@en .
+
+foaf:Organization a owl:Class ;
+    rdfs:label "Organisation"@en ;
+    rdfs:subClassOf prov:Agent .
+
+<https://orcid.org/0000-0002-3246-3531> a owl:NamedIndividual,
+        foaf:Person ;
+    rdfs:label "Florian Thiery (ORCID)"@en .
+
+pleiades:Place a owl:Class ;
+    rdfs:label "Pleiades Place"@en ;
+    dc:description "Places are instances of skos:Concept as well as contexts for Locations and Names."@en ;
+    rdfs:subClassOf geo:SpatialObject .
+
+<http://archaeology.link/ontology#disclosedAt> a owl:ObjectProperty ;
+    rdfs:label "disclosed at"@en ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:range ogham:OghamSite ;
+    rdfs:subPropertyOf crm:P53_has_former_or_current_location ;
+    owl:inverseOf <http://archaeology.link/ontology#disclosedAt> .
+
+<http://lod.ogham.link/data/FlorianThiery> a owl:NamedIndividual,
+        prov:Person,
+        foaf:Person ;
+    rdfs:label "Florian Thiery"@en ;
+    owl:sameAs <https://orcid.org/0000-0002-3246-3531> ;
+    prov:actedOnBehalfOf <http://lod.ogham.link/data/ResearchSquirrelEngineers> .
+
+ogham:AMT_Entity a owl:Class ;
+    rdfs:label "Academic Meta Tool Entity"@en ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+ontology:Inscription a owl:Class ;
+    rdfs:label "Inscription"@en ;
+    rdfs:subClassOf crmtex1:TX1_Written_Text .
+
+ontology:Person a owl:Class ;
+    rdfs:label "Ogham Person"@en ;
+    rdfs:subClassOf foaf:Person .
+
+crm:E24_Physical_Man-Made_Thing a owl:Class ;
+    rdfs:label "Hergestelltes"@de,
+        "Ανθρωπογενές Υλικό Πράγμα"@el,
+        "Physical Man-Made Thing"@en,
+        "Chose matérielle fabriquée"@fr,
+        "Coisa Material Fabricada"@pt,
+        "Физическая Рукотворная Вещь"@ru,
+        "人造实体物"@zh ;
+    rdfs:comment """This class comprises all persistent physical items that are purposely created by human activity.
+      This class comprises man-made objects, such as a swords, and man-made features, such as rock art. No assumptions are made as to the extent of modification required to justify regarding an object as man-made. For example, a “cup and ring” carving on bedrock is regarded as instance of E24 Physical Man-Made Thing.
+      """ ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+crm:E36_Visual_Item a owl:Class ;
+    rdfs:label "Visual Item"@en ;
+    rdfs:comment """This class comprises the intellectual or conceptual aspects of recognisable marks and images.
+This class does not intend to describe the idiosyncratic characteristics of an individual physical embodiment of a visual item, but the underlying prototype. For example, a mark such as the ICOM logo is generally considered to be the same logo when used on any number of publications. The size, orientation, and colour may change, but the logo remains uniquely identifiable. The same is true of images that are reproduced many times. This means that visual items are independent of their physical support.
+The E36 Visual Item class provides a means of identifying and linking together instances of E24 Physical Human-Made Thing that carry the same visual symbols, marks, or images, etc. The property P62 depicts (is depicted by) between E24 Physical Human-Made Thing and the depicted subjects (E1 CRM Entity) can be regarded as a shortcut of the more fully developed path from E24 Physical Human-Made Thing through P65 shows visual item (is shown by), E36 Visual Item, P138 represents (has representation) to E1 CRM Entity, which in addition captures the optical features of the depiction."""@en ;
+    rdfs:subClassOf skos:Concept .
+
+crm:E53_Place a owl:Class ;
+    rdfs:label "Ort"@de,
+        "Τόπος"@el,
+        "Place"@en,
+        "Lieu"@fr,
+        "Local"@pt,
+        "Место"@ru,
+        "地点"@zh ;
+    rdfs:comment """This class comprises extents in space, in particular on the surface of the earth, in the pure sense of physics: independent from temporal phenomena and matter.
+        The instances of E53 Place are usually determined by reference to the position of “immobile” objects such as buildings, cities, mountains, rivers, or dedicated geodetic marks. A Place can be determined by combining a frame of reference and a location with respect to this frame. It may be identified by one or more instances of E44 Place Appellation.
+         It is sometimes argued that instances of E53 Place are best identified by global coordinates or absolute reference systems. However, relative references are often more relevant in the context of cultural documentation and tend to be more precise. In particular, we are often interested in position in relation to large, mobile objects, such as ships. For example, the Place at which Nelson died is known with reference to a large mobile object – H.M.S Victory. A resolution of this Place in terms of absolute coordinates would require knowledge of the movements of the vessel and the precise time of death, either of which may be revised, and the result would lack historical and cultural relevance.
+        Any object can serve as a frame of reference for E53 Place determination. The model foresees the notion of a "section" of an E19 Physical Object as a valid E53 Place determination.""" ;
+    rdfs:subClassOf skos:Concept .
+
+crm:E5_Event a owl:Class ;
+    rdfs:label "Event"@en ;
+    rdfs:subClassOf skos:Concept .
+
+owl:sameAs a owl:ObjectProperty ;
+    rdfs:label "same as"@en ;
+    rdfs:domain owl:Thing ;
+    rdfs:range owl:Thing ;
+    rdfs:subPropertyOf owl:topObjectProperty ;
+    skos:definition "The property that determines that two given individuals are equal."@en .
+
+prov:Entity a owl:Class ;
+    rdfs:label "Entity"@en ;
+    rdfs:subClassOf <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    skos:definition "An entity is a physical, digital, conceptual, or other kind of thing with some fixed aspects; entities may be real or imaginary."@en .
+
+foaf:Group a owl:Class ;
+    rdfs:label "Group"@en ;
+    rdfs:comment "The Group class represents a collection of individual agents (and may itself play the role of a Agent, ie. something that can perform actions)."@en ;
+    rdfs:subClassOf prov:Agent .
+
+foaf:Project a owl:Class ;
+    rdfs:label "Project"@en ;
+    rdfs:subClassOf crm:E5_Event .
+
+ogham:exactMatch a owl:ObjectProperty ;
+    rdfs:label "exact match"@en ;
+    rdfs:domain <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:range <https://www.w3.org/2000/01/rdf-schema#Resource> ;
+    rdfs:subPropertyOf wdt:P2888 .
+
+crm:E1_CRM_Entity a owl:Class ;
+    rdfs:label "CRM Entität"@de,
+        "Οντότητα CIDOC CRM"@el,
+        "CRM Entity"@en,
+        "Entité CRM"@fr,
+        "Entidade CRM"@pt,
+        "CRM Сущность"@ru,
+        "CRM实体"@zh ;
+    rdfs:comment """This class comprises all things in the universe of discourse of the CIDOC Conceptual Reference Model.
+    It is an abstract concept providing for three general properties:
+    1.	Identification by name or appellation, and in particular by a preferred identifier
+    2.	Classification by type, allowing further refinement of the specific subclass an instance belongs to
+    3.	Attachment of free text for the expression of anything not captured by formal properties
+    With the exception of E59 Primitive Value, all other classes within the CRM are directly or indirectly specialisations of E1 CRM Entity.
+    """ ;
+    rdfs:subClassOf prov:Entity .
+
+geo:hasGeometry a owl:ObjectProperty ;
+    rdfs:label "hat Geometrie"@de,
+        "has geometry"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject .
+
+owl:Thing rdfs:label "Thing"@en ;
+    skos:definition "The class of OWL individuals."@en .
+
+ogham:Place a owl:Class ;
+    rdfs:label "Place"@de ;
+    rdfs:subClassOf pleiades:Place .
+
+ogham:Repository a owl:Class ;
+    rdfs:label "Repository"@en ;
+    rdfs:subClassOf <http://www.ics.forth.gr/isl/CRMdig/D1_Digital_Object> .
+
+crm:E55_Type a owl:Class ;
+    rdfs:label "Typus"@de,
+        "Τύπος"@el,
+        "Type"@en,
+        "Type"@fr,
+        "Tipo"@pt,
+        "Тип"@ru,
+        "类型"@zh ;
+    rdfs:comment """This class comprises concepts denoted by terms from thesauri and controlled vocabularies used to characterize and classify instances of CRM classes. Instances of E55 Type represent concepts  in contrast to instances of E41 Appellation which are used to name instances of CRM classes.
+        E55 Type is the CRM’s interface to domain specific ontologies and thesauri. These can be represented in the CRM as subclasses of E55 Type, forming hierarchies of terms, i.e. instances of E55 Type linked via P127 has broader  term (has narrower term). Such hierarchies may be extended with additional properties.
+        """ ;
+    rdfs:subClassOf skos:Concept .
+
+sf:Geometry a owl:Class ;
+    rdfs:label "Geometry"@en ;
+    rdfs:comment """Geometry is the root class of the hierarchy.
+The instantiable subclasses of Geometry are restricted to 0, 1 and 2-dimensional geometric objects that exist in 2, 3 or 4-dimensional coordinate space (R2, R3 or R4). Geometry values in R2 have points with coordinate values for x and y. Geometry values in R3 have points with coordinate values for x, y and z or for x, y and m. Geometry values in R4 have points with coordinate values for x, y, z and m.
+The interpretation of the coordinates is subject to the coordinate reference systems associated to the point. All coordinates within a geometry object should be in the same coordinate reference systems. Each coordinate shall be unambiguously associated to a coordinate reference system either directly or through its containing geometry. The z coordinate of a point is typically, but not necessarily, represents altitude or elevation. The m coordinate represents a measurement.
+All Geometry classes described in this specification are defined so that instances of Geometry are topologically closed, i.e. all represented geometries include their boundary as point sets. This does not affect their representation, and open version of the same classes may be used in other circumstances, such as topological representations."""@en ;
+    rdfs:subClassOf geo:Geometry .
+
+prov:Agent a owl:Class ;
+    rdfs:label "Agent"@en ;
+    rdfs:subClassOf ogham:ActorEntity .
+
+ogham:Reading a owl:Class ;
+    rdfs:label "Reading"@en ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:subClassOf crmtex1:TX7_Written_Text_Segment .
+
+ogham:hasPointGeometry a owl:ObjectProperty ;
+    rdfs:label "has point geometry"@en ;
+    rdfs:domain geo:SpatialObject ;
+    rdfs:range geo:SpatialObject ;
+    rdfs:subPropertyOf geo:hasGeometry ;
+    skos:definition "c.f. https://www.ogc.org/standards/geosparql, 1.0, OGC GeoSPARQL - A Geographic Query Language for RDF Data, 11-052r4, Annex B, B.1"@en .
+
+foaf:Person a owl:Class ;
+    rdfs:label "Person"@en ;
+    rdfs:comment "The Person class represents people. Something is a Person if it is a person. We don't nitpic about whether they're alive, dead, real, or imaginary. The Person class is a sub-class of the Agent class, since all people are considered 'agents' in FOAF."@en ;
+    rdfs:subClassOf prov:Agent .
+
+crm:E22_Human-Made_Object a owl:Class ;
+    rdfs:label "Künstlicher Gegenstand"@de,
+        "Human-Made Object"@en ;
+    rdfs:comment """This class comprises all persistent physical objects of any size that are purposely created by human activity and have physical boundaries that separate them completely in an objective way from other objects.
+The class also includes all aggregates of objects made for functional purposes of whatever kind, independent of physical coherence, such as a set of chessmen."""@en ;
+    rdfs:subClassOf crm:E24_Physical_Man-Made_Thing .
+
+ogham:GeographicLocation a owl:Class ;
+    rdfs:label "Geographic Location"@en ;
+    rdfs:subClassOf ogham:Place .
+
+skos:Concept a owl:Class ;
+    rdfs:label "Concept"@en ;
+    dc:description """The class skos:Concept is the class of SKOS concepts.
+
+A SKOS concept can be viewed as an idea or notion; a unit of thought. However, what constitutes a unit of thought is subjective, and this definition is meant to be suggestive, rather than restrictive.
+
+The notion of a SKOS concept is useful when describing the conceptual or intellectual structure of a knowledge organization system, and when referring to specific ideas or meanings established within a KOS."""@en ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
+ogham:OghamSite a owl:Class ;
+    rdfs:label "Ogham Site"@en ;
+    rdfs:subClassOf ogham:OghamClusterRegion .
+
+ontology:Word a owl:Class ;
+    rdfs:label "Word"@en ;
+    rdfs:subClassOf crm:E36_Visual_Item .
+
+ogham:Book a owl:Class ;
+    rdfs:label "Book"@en ;
+    rdfs:subClassOf crm:E22_Human-Made_Object .
+
+ogham:OghamStone a owl:Class ;
+    rdfs:label "Ogham Stone"@en ;
+    rdfs:subClassOf ogham:OghamCollection .
+
+geo:SpatialObject a owl:Class ;
+    rdfs:label "Spatial Object"@en ;
+    rdfs:subClassOf crm:E53_Place .
+
+<https://www.w3.org/2000/01/rdf-schema#Resource> a owl:Class ;
+    rdfs:label "Resource"@en ;
+    skos:definition "The class resource, everything."@en .
+

@@ -63,10 +63,12 @@ data:inscription_I_COR_030 a ogham:Inscription,
     rdfs:label "CASSITTAS MAQI MUCOI CALLITI" ;
     ogham:identifiedAs data:reading_I_COR_030_OGHAM_NW .
 
-data:person_I_COR_030_CALLITI a crm:E21_Person ;
+data:person_I_COR_030_CALLITI a ogham:Person,
+        crm:E21_Person ;
     rdfs:label "CALLITI" .
 
-data:person_I_COR_030_CASSITTAS a crm:E21_Person ;
+data:person_I_COR_030_CASSITTAS a ogham:Person,
+        crm:E21_Person ;
     rdfs:label "CASSITTAS" .
 
 data:place_I_COR_030 a crm:E53_Place ;

@@ -830,8 +830,15 @@ Four classes are declared differently on the two sides:
 |---|---|---|
 | `ogham:Material` | `⊑ crm:E57_Material` | `⊑ crm:E55_Type` |
 | `ogham:Person` | `⊑ crm:E21_Person` | `⊑ foaf:Person` |
-| `ogham:Inscription` | `⊑ crmtex:TX1_Written_Text` | the same class, wrong namespace |
-| `ogham:Reading` | `⊑ crmtex:TX6_Transcription` | the same, and the class does not exist |
+| `ogham:Inscription` | `⊑ crmtex:TX1_Written_Text` | the same class, under a namespace that defines nothing |
+
+`ogham:Reading` is no longer among them. CRMtex has no class for a reading *text* —
+`TX6` is Transliteration, an activity, and `TX14_Reading` is an argumentation — so
+`ogham:Reading` is the anchor class in its own right and the ogham column has
+nothing further to add. Filling both columns with it briefly made the class its own
+superclass; a start-up check now refuses that, alongside one that catches a
+duplicate key in `CROSSWALK_EXTRA` (a dict literal shadows silently, which is how
+`ogham:Material` lost its entry).
 
 The crosswalk keeps stating its own alignment rather than importing the ontology's,
 for a concrete reason: the chain `teiapp:X ⊑ ogham:Y ⊑ crm:Z ⊑ E1_CRM_Entity` is what
@@ -843,6 +850,46 @@ So both sides say what they mean and `py/validate.py` reports the gap on every r
 Neither silently wins, and the four rows above are a decision for whoever owns the
 ontology rather than something a script should settle.
 
+### Correcting and extending the ontology
+
+`ontologies/upstream/` holds the published files and is never edited.
+`py/ontology_patch.py` reads `upstream/ogham.owl`, applies a declared list of
+corrections and additions, and writes `ontologies/ogham.ttl` plus
+`ontologies/CHANGES.md`. Both are regenerated on every run, so a new upstream
+release can be dropped in and the patch replayed.
+
+**The corrections are a CRMtex version migration.** The published file embeds its
+own copy of CRMtex under `…/cidoc-crm/crmtex/` — a namespace CRMtex has never used —
+and the copy is **version 1.0**, where `TX5` was *Reading* and `TX6` was
+*Transcription*. CRMtex 2.0 keeps the numbers and renames them to *Text Recognition*
+and *Transliteration*, and adds `TX14_Reading`, which sits under
+`crminf:I1_Argumentation` — the natural bridge to axis 2. Twenty-six triples of the
+stale copy were removed and the references moved to the real namespace.
+
+Two axioms were dropped because they inverted the reference ontologies:
+`crm:E36_Visual_Item ⊑ TX7_Written_Text_Segment` and
+`TX7_Written_Text_Segment ⊑ ogham:Inscription`. Together they put CRM classes
+*underneath* ogham ones, which is why `ogham:Person` came out with
+`TX1_Written_Text` among its ancestors.
+
+`ogham:shows` declared its range twice, which in RDFS is an intersection no instance
+can satisfy; it is now `owl:unionOf`. And `ogham:Reading`, orphaned by the TX6
+rename, is now `⊑ crmtex:TX7_Written_Text_Segment` — *"portions of text considered
+to be of particular significance by scholars"*, which is what a competing reading is.
+That is the one substantive modelling choice, and `CHANGES.md` sets out the
+alternative: model the *act* of reading as `TX14_Reading` and hang the text off it.
+
+**The fourteen properties are now declared, not logged.** Each carries a domain, a
+range, a comment, and `rdfs:isDefinedBy` pointing at this repository so its origin
+stays visible. The validator no longer lists them every run; if one ever appears
+that is declared nowhere, *that* is reported, because it means a property was added
+to the crosswalk and not to the ontology.
+
+The patch immediately caught two faults in itself — the validator did not understand
+a union range, and `geocodedFrom` had a domain too narrow for museum places, which
+are `E53` but not `ogham:Place`. Which is the point of running it in the pipeline
+rather than once by hand.
+
 ### What is left, and why it is left
 
 Five uses of `ogham:shows` fail a range check because the ontology declares that
@@ -850,12 +897,13 @@ range **twice**, as `ogham:Person` *and* `ogham:Word`. In RDFS that is an
 intersection no instance can satisfy; it wants `owl:unionOf`. That is a bug in
 `ogham.owl`, so the validator reports it rather than the crosswalk working around it.
 
-Fourteen properties are still minted here and are not in `ogham.owl`:
-`geoStatus`, `geoCertainty`, `coordinateSource`, `corpusCommit`, `corpusCommitDate`,
-`corpusEditionCount`, `geocodedFrom`, `matchMode`, `matchedVariant`, `matchSource`,
-plus the four `match*` ones the repository already used. They carry uncertainty and
-provenance, which the ontology does not currently model. They are listed on every
-run so they are a decision, not a drift.
+Two subclass divergences remain, and both sides are defensible, so neither was
+quietly changed: `ogham:Material` (the ontology says `E55_Type`, the crosswalk emits
+`E57_Material`, and `P45_consists_of` requires `E57` for its range) and
+`ogham:Person` (`foaf:Person` against `crm:E21_Person`). `CHANGES.md` sets out both
+and proposes declaring `ogham:Person` under both parents, which costs nothing.
+
+**Domain and range violations: none.**
 
 ## Crosswalk ontology & SHACL validation
 
@@ -919,6 +967,7 @@ tei--epidoc-crosswalk/
 │   ├── words.py               # formulaic vocabulary across all readings
 │   ├── dissent.py             # comparison of competing readings
 │   ├── grid.py                # Irish Grid and ITM to WGS84, self-checking
+│   ├── ontology_patch.py      # corrects and extends ogham.owl, reproducibly
 │   ├── validate.py            # A-box check against the reference ontologies
 │   ├── worklist.py            # what is still missing, by priority
 │   ├── keepers.py             # geocoding of the holding institutions

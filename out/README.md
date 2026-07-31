@@ -18,7 +18,7 @@ The crosswalk runs through an **intermediate domain layer**: each EpiDoc element
 | `<material>` | `ogham:Material` | `crm:E57_Material` | `P45_consists_of` | — |
 | `inscribed surface / <layout>` | `—` | `crm:E25_Human-Made_Feature` | `P56_bears_feature` | — |
 | `<div type=edition>` | `ogham:Inscription` | `crmtex:TX1_Written_Text` | `P128_carries` | CRMtex |
-| `<div type=edition> / <rdg>` | `ogham:Reading` | `ogham:Reading` | `TXP4_has_segment + prov:wasAttributedTo` | CRMtex, PROV-O |
+| `<div type=edition> / <rdg>` | `—` | `ogham:Reading` | `ogham:identifiedAs (⊑ TXP4) + prov:wasAttributedTo` | CRMtex, PROV-O |
 | `<origPlace> + <geo>` | `ogham:Place` | `crm:E53_Place` | `P53_has_former_or_current_location` | GeoSPARQL |
 | `<placeName type=townland\|parish\|county\|…>` | `ogham:Place` | `crm:E53_Place` | `P89_falls_within (chained)` | — |
 | `<ref target=logainm\|rcahmw\|coflein>` | `ogham:Place` | `crm:E53_Place` | `skos:closeMatch (weighted)` | SKOS, AMT |

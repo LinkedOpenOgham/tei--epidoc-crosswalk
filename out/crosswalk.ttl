@@ -137,6 +137,10 @@ ogham:Person a owl:Class ;
     rdfs:isDefinedBy ogham: ;
     rdfs:subClassOf crm:E21_Person .
 
+ogham:Reading a owl:Class ;
+    ogham:nfdiCoreMatch schema1:CreativeWork ;
+    rdfs:subClassOf crm:E1_CRM_Entity .
+
 crm:E21_Person a owl:Class ;
     ogham:nfdiCoreMatch schema1:Person ;
     rdfs:subClassOf crm:E1_CRM_Entity .
@@ -172,12 +176,6 @@ crm:E57_Material a owl:Class ;
 crmtex:TX1_Written_Text a owl:Class ;
     ogham:nfdiCoreMatch schema1:CreativeWork ;
     rdfs:subClassOf crm:E1_CRM_Entity .
-
-ogham:Reading a owl:Class ;
-    ogham:nfdiCoreMatch schema1:CreativeWork ;
-    rdfs:isDefinedBy ogham: ;
-    rdfs:subClassOf ogham:Reading,
-        crm:E1_CRM_Entity .
 
 ogham:Place a owl:Class ;
     rdfs:isDefinedBy ogham: ;
