@@ -8,7 +8,8 @@ is what GitHub Pages serves (Settings -> Pages -> Source: main, /docs), so the
 map is live as soon as the directory is pushed.
 
 The point data is inlined into the HTML, so the file also opens straight from
-disk. Only the basemap tiles and the two Leaflet libraries come off the network.
+disk. Only the basemap (OpenFreeMap vector tiles) and the map libraries -- Leaflet,
+MapLibre GL and their binding -- come off the network.
 
 Called from ``main.py`` after ``places.run()``; nothing here re-parses the XML,
 so the map cannot drift away from the graph.
@@ -254,7 +255,15 @@ FOOT = r"""</script>
 </html>
 """
 
+# Library versions are pinned. MapLibre GL JS stays on 5.x on purpose: 6.x ships as
+# an ES module only, and these pages load their scripts the classic way. The order
+# matters -- the binding looks for the globals `L` and `maplibregl` when it loads.
+MAPLIBRE_CSS = ('<link rel="stylesheet" '
+                'href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css">\n')
+
 SCRIPTS = r"""<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.1.4/dist/leaflet-maplibre-gl.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script>
 """
@@ -266,29 +275,22 @@ EXPORT_JS = r"""
 // the filters. Points are drawn individually even when the screen shows clusters:
 // a figure wants the distribution, not the bubbles.
 //
-// Basemap tiles are cross-origin. Rather than putting `crossOrigin` on the live
-// tile layer -- which would break the map outright if the server ever stopped
-// sending CORS headers -- the tiles are re-fetched with it only at export time,
-// and the export degrades to a vector-only file if that fails.
+// The basemap is a WebGL canvas (see addBasemap), so the export copies that canvas
+// instead of re-fetching tile images. maplibre-gl-leaflet makes the canvas 10%
+// larger than the map pane on every side, so panning never shows an edge; only the
+// middle part -- what is on screen -- is copied. If there is no basemap, or its
+// pixels cannot be read, the export degrades to a vector-only file over a plain
+// background and says so.
 let scene = { points: [], hexes: [], legend: null, title: "", noun: "stone" };
 
-function tileURLs(mapEl, rect) {
-  return [...mapEl.querySelectorAll("img.leaflet-tile")]
-    .filter(i => i.src && i.complete && i.naturalWidth)
-    .map(i => {
-      const r = i.getBoundingClientRect();
-      return { src: i.src, x: r.left - rect.left, y: r.top - rect.top,
-               w: r.width, h: r.height };
-    });
-}
-
-function loadCORS(src) {
+// Resolves true once the style and every tile in view have loaded, false if that
+// has not happened within `ms` (slow connection, tile server down).
+function basemapSettled(gl, ms) {
   return new Promise(resolve => {
-    const im = new Image();
-    im.crossOrigin = "anonymous";
-    im.onload = () => resolve(im);
-    im.onerror = () => resolve(null);
-    im.src = src;
+    if (gl.loaded()) return resolve(true);
+    const timer = setTimeout(() => { gl.off("idle", done); resolve(false); }, ms);
+    function done() { clearTimeout(timer); resolve(true); }
+    gl.once("idle", done);
   });
 }
 
@@ -299,23 +301,25 @@ async function basemapRaster(scale) {
   canvas.width = Math.round(rect.width * scale);
   canvas.height = Math.round(rect.height * scale);
   const ctx = canvas.getContext("2d");
-  ctx.fillStyle = "#e8e6df";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  const tiles = tileURLs(mapEl, rect);
-  const images = await Promise.all(tiles.map(t => loadCORS(t.src)));
-  let drawn = 0;
-  images.forEach((im, i) => {
-    if (!im) return;
-    const t = tiles[i];
-    ctx.drawImage(im, t.x * scale, t.y * scale, t.w * scale, t.h * scale);
-    drawn++;
-  });
-  try {
-    return { canvas, ctx, dataURL: canvas.toDataURL("image/png"),
-             complete: drawn === tiles.length && drawn > 0 };
-  } catch (e) {                       // tainted despite the CORS attempt
+  const plain = () => {
     ctx.fillStyle = "#e8e6df";
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+  };
+  plain();
+  const gl = basemap && basemap.getMaplibreMap && basemap.getMaplibreMap();
+  if (!gl) return { canvas, ctx, dataURL: null, complete: false };
+  try {
+    const settled = await basemapSettled(gl, 8000);
+    const src = gl.getCanvas();
+    // Measure where the canvas actually sits, not where it should: the binding
+    // rounds its position to whole pixels, and the export should match the screen.
+    const box = basemap.getContainer().getBoundingClientRect();
+    const k = src.width / box.width;                    // device pixels per CSS pixel
+    ctx.drawImage(src, (rect.left - box.left) * k, (rect.top - box.top) * k,
+                  rect.width * k, rect.height * k, 0, 0, canvas.width, canvas.height);
+    return { canvas, ctx, dataURL: canvas.toDataURL("image/png"), complete: settled };
+  } catch (e) {
+    plain();
     return { canvas, ctx, dataURL: null, complete: false };
   }
 }
@@ -334,7 +338,7 @@ function projected() {
   };
 }
 
-const ATTRIB = "\u00a9 OpenStreetMap contributors \u00a9 CARTO \u00b7 editions: OG(H)AM (CC BY 4.0)";
+const ATTRIB = BASEMAP_CREDIT + " \u00b7 editions: OG(H)AM (CC BY 4.0)";
 
 function download(blob, name) {
   const url = URL.createObjectURL(blob);
@@ -430,7 +434,7 @@ async function exportVector() {
     out.push(`<g id="basemap"><image x="0" y="0" width="${w}" height="${h}" `
            + `xlink:href="${dataURL}"/></g>`);
   } else {
-    out.push(`<!-- basemap omitted: tiles could not be read cross-origin -->`);
+    out.push(`<!-- basemap omitted: the map canvas could not be read -->`);
   }
   out.push('<g id="data">');
   for (const hx of geo.hexes) {
@@ -480,6 +484,47 @@ wireExport("dl-jpg", exportRaster);
 """
 
 MAPUI_JS = r"""
+// --- basemap ------------------------------------------------------------------
+// OpenFreeMap "Positron": open vector tiles built from OpenStreetMap, no API key,
+// and the same light, low-contrast look the map had before. MapLibre GL draws it
+// on one canvas inside Leaflet's tile pane (maplibre-gl-leaflet), so markers,
+// clusters and the density layer above it are untouched Leaflet.
+//
+// The style URL is the only thing to change to point the maps at another style --
+// or at a self-hosted copy of one. The credit is kept as plain text as well,
+// because the exports carry it without any HTML.
+const BASEMAP_STYLE = "https://tiles.openfreemap.org/styles/positron";
+const BASEMAP_CREDIT = "OpenFreeMap © OpenMapTiles Data from OpenStreetMap";
+const BASEMAP_CREDIT_HTML =
+  '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> ' +
+  '<a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">&copy; OpenMapTiles</a> ' +
+  'Data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>' +
+  ' &middot; editions: OG(H)AM (CC BY 4.0)';
+
+let basemap = null;                     // the maplibre-gl-leaflet layer, once added
+
+function addBasemap(map) {
+  // Leaflet takes a map's zoom limits from its tile layers, and only from those.
+  // The MapLibre layer is not one, so the limit is set on the map itself -- and
+  // before anything else, because the marker clusters refuse to work on a map
+  // without a maximum zoom, whether or not the basemap managed to load.
+  map.setMaxZoom(19);
+  // If the libraries did not load, or the browser has no WebGL, the map still
+  // works: the findspots simply sit on a plain background.
+  try {
+    basemap = L.maplibreGL({
+      style: BASEMAP_STYLE,
+      attributionControl: { customAttribution: BASEMAP_CREDIT_HTML },
+      maxZoom: 19,
+      // Lets the export copy the finished frame off the WebGL canvas.
+      canvasContextAttributes: { preserveDrawingBuffer: true }
+    }).addTo(map);
+  } catch (e) {
+    basemap = null;
+    console.warn("Basemap unavailable; showing the data on a plain background.", e);
+  }
+}
+
 // --- map controls -------------------------------------------------------------
 // Zoom sits top-left so the bottom-right corner is free for the density legend,
 // which is where the legend also lands in an exported figure. Full screen uses the
@@ -749,10 +794,7 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 
 const map = L.map("map", {zoomControl:false}).setView([54.2,-6.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 // Clusters are styled here rather than by MarkerCluster's default stylesheet,
 // which ships sprite-sheet backgrounds that do not match this palette.
@@ -1223,10 +1265,7 @@ const STAY = "#5b8c5a", CROSS = "#b0413e", KEEPER_COLOUR = "#3f7d8c";
 
 const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -1526,10 +1565,7 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 
 const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -1804,10 +1840,7 @@ const BRIDGED = "#b07d2b", LOCAL = "#5b8c5a";
 
 const map = L.map("map", {zoomControl:false}).setView([53.4,-7.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -2258,10 +2291,7 @@ const STAY = "#5b8c5a", CROSS = "#b0413e", KEEPER_COLOUR = "#3f7d8c";
 
 const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -2561,10 +2591,7 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;
 
 const map = L.map("map", {zoomControl:false}).setView([53.8,-6.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -2839,10 +2866,7 @@ const BRIDGED = "#b07d2b", LOCAL = "#5b8c5a";
 
 const map = L.map("map", {zoomControl:false}).setView([53.4,-7.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -3295,10 +3319,7 @@ const BAND_ORDER = ["far apart","diverging","close","identical"];
 
 const map = L.map("map", {zoomControl:false}).setView([53.6,-7.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -3552,10 +3573,7 @@ const GROUPS = [["formula","Formula words"],["element","Name elements"],["compou
 
 const map = L.map("map", {zoomControl:false}).setView([53.6,-7.5], 6);
 addMapControls(map);
-L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-  attribution:'&copy; OpenStreetMap contributors &copy; CARTO · editions: OG(H)AM (CC BY 4.0)',
-  subdomains:"abcd", maxZoom:19
-}).addTo(map);
+addBasemap(map);
 
 const cluster = L.markerClusterGroup({
   maxClusterRadius: 40, showCoverageOnHover:false, spiderfyDistanceMultiplier:1.6,
@@ -4069,9 +4087,14 @@ def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],
 def _page(head: str, body: str, js: str) -> str:
     """Assemble a page from the shared shell. Empty js means no map libraries."""
     shell = head.replace("__CSS__", CSS) + body
+    if not js:
+        return shell + "</body>\n</html>\n"
+    # The MapLibre stylesheet goes last in <head>, so the pages that draw a map
+    # all get it without each head template having to list it.
+    shell = shell.replace("</head>", MAPLIBRE_CSS + "</head>", 1)
     # EXPORT_JS declares `scene`, which the page scripts write to as soon as they
     # first draw, so it has to be in scope before them.
-    return shell + SCRIPTS + MAPUI_JS + HEX_JS + EXPORT_JS + js + FOOT if js else shell + "</body>\n</html>\n"
+    return shell + SCRIPTS + MAPUI_JS + HEX_JS + EXPORT_JS + js + FOOT
 
 
 def _slim(rec: dict) -> dict:

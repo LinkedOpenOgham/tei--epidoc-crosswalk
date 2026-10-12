@@ -708,17 +708,29 @@ filename records what it is: `ogham-words-mucoi-2026-07-30.svg`.
 - **JPG** is a flat composite at 2× the on-screen size.
 
 Both carry the density legend (bottom right, where it sits on screen) and the
-OpenStreetMap/CARTO/OG(H)AM attribution, so an exported figure stays properly
-credited without anyone having to remember. The zoom and full-screen controls sit
-top left and are never part of the export.
+OpenFreeMap/OpenMapTiles/OpenStreetMap and OG(H)AM attribution, so an exported
+figure stays properly credited without anyone having to remember. The zoom and
+full-screen controls sit top left and are never part of the export.
 
 Two details worth knowing. **Points are always drawn individually**, even when the
 screen shows clusters — a figure wants the distribution, not the bubbles. And the
-basemap tiles are cross-origin, so they are re-fetched with CORS *at export time
-only*: putting `crossOrigin` on the live tile layer would break the map outright if
-the tile server ever stopped sending those headers. If the re-fetch fails the export
-still succeeds, with the data layer over a plain background and the fact noted in
-the file.
+basemap is a single WebGL canvas, so the export copies the frame that is on screen
+rather than fetching tiles a second time. If that canvas cannot be read — no WebGL,
+or the tiles had not loaded within eight seconds — the export still succeeds, with
+the data layer over a plain background and the fact noted in the file.
+
+### Basemap
+
+The basemap is [OpenFreeMap](https://openfreemap.org)'s *Positron* style: vector
+tiles built from OpenStreetMap data, free of charge and without an API key, in the
+same light, low-contrast look as the CARTO *Positron* tiles the maps used before
+(CARTO now answers requests without a key with watermarked tiles). MapLibre GL draws
+it inside Leaflet through [maplibre-gl-leaflet](https://github.com/maplibre/maplibre-gl-leaflet),
+so everything above it — findspot markers, clusters, the hex density layer — is
+unchanged. The style URL is the constant `BASEMAP_STYLE` in `py/webmap.py`; pointing
+the maps at another MapLibre style, or at a self-hosted OpenFreeMap instance, is a
+one-line change plus the matching credit in `BASEMAP_CREDIT`. The library versions
+are pinned in `SCRIPTS` (MapLibre stays on 5.x, because 6.x is an ES module only).
 
 ### Map controls
 
@@ -771,7 +783,8 @@ templates and hoping the links stay in step.
 To publish: **Settings → Pages → Source: Deploy from a branch → `main` / `/docs`**.
 A `.nojekyll` file is written alongside so Pages serves the directory as-is. The
 page also opens straight from disk (`open docs/index.html`); only the basemap
-tiles and the two Leaflet libraries come off the network.
+tiles and the map libraries (Leaflet, MapLibre GL and its Leaflet binding) come off
+the network.
 
 ## The formulaic vocabulary (`docs/words.html`)
 
