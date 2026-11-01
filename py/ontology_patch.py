@@ -25,7 +25,6 @@ never resolvable.
 """
 from __future__ import annotations
 
-import datetime as dt
 from pathlib import Path
 
 from rdflib import BNode, Graph, Literal, Namespace, URIRef
@@ -272,7 +271,7 @@ def _write_changes(path: Path, log: dict, upstream: Path, out: Path) -> None:
     L = []
     add = L.append
     add("# What this repository changes in `ogham.owl`\n")
-    add(f"> **Generated** by `py/ontology_patch.py` on {dt.date.today().isoformat()}. "
+    add("> **Generated** by `py/ontology_patch.py`. "
         f"`{rel(upstream)}` is the published file and is never edited; "
         f"`{rel(out)}` is the corrected and extended version the pipeline "
         f"validates against. Re-running regenerates both this file and that one.\n")

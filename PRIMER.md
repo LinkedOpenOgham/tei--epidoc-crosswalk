@@ -2,7 +2,7 @@
 
 Arbeitsplan für das Repository `LinkedOpenOgham/tei--epidoc-crosswalk` (Achse 1: strukturelle Interoperabilität). Wird zu Beginn jedes Chats hochgeladen und am Ende zurückgeschrieben. Alles Nach-außen-Sichtbare (Code, README, Ontologie, Docs) ist britisches Englisch, dieses Dokument ist deutsch.
 
-Stand: 2026-11-01, Release 0.2.0. Das Repo wurde ohne PRIMER angelegt; dieser ist beim ersten Patch (S1 bis S6) entstanden.
+Stand: 2026-11-01, Release 0.2.1. Das Repo wurde ohne PRIMER angelegt; dieser ist beim ersten Patch (S1 bis S6) entstanden.
 
 ---
 
@@ -21,7 +21,7 @@ Nicht neu bauen: Ortsschicht, Halterschicht, Wortschicht, Lesungsansicht, Ontolo
 
 **Befunde** (geprüft 2026-11-01):
 
-- **Der Build ist in der Sandbox reproduzierbar, aber nicht uhrfrei.** Mit `--offline --no-fetch` gegen den Corpus-Stand `bb62ccd` stimmt die Ausgabe mit dem eingecheckten Stand überein, bis auf drei Stellen, an denen eine Uhr in der Ausgabe steht: `prov:generatedAtTime` in `out/places.crm.ttl`, der Satz „Generated <Datum>" in `docs/*.html`, und das Datum in `ontologies/CHANGES.md`. Ein zweiter Lauf ändert daher `out/places.crm.ttl`. Das war schon vorher so, siehe S9.
+- **Der Build war nicht uhrfrei, jetzt ist er es (0.2.1, S9).** Bis 0.2.0 standen an drei Stellen Uhrzeiten in der Ausgabe: `prov:generatedAtTime` in `out/places.crm.ttl`, „Generated <Datum>" in `docs/*.html`, das Datum in `ontologies/CHANGES.md`. Das Datum kommt jetzt aus dem Corpus-Commit (`commit_date`). Zwei Läufe in der Sandbox: alle Dateien in `out/`, `docs/`, `element-docs/`, `ontologies/`, `reconciliation/` byte-identisch. **Rest:** `element-docs/README.md` schreibt den Corpus-Pfad mit dem Trenner des Betriebssystems (`data\origin` unter Windows), ein Build auf einer anderen Plattform unterscheidet sich dort in einer Zeile.
 - **Die drei neuen Steine und das Poster.** Die Zählung (Transliteration plus Apparat) stimmt mit dem Poster überein: Dyke 12 `unclear`, 9 `gap`, 3 `choice`, 1 `app`; Blackwaterfoot 1: 2 `unclear`, 3 `gap`, 1 `choice`, 9 `app`, 6 `rdg`; Bishop Loch: 2 `gap`, 1 `app`; Garranes: 3 `supplied`. Geprüft mit `context/scripts/count_doubt.py` und mit `doubt_profile()`.
 - **Bishop Loch hat zwei Koordinaten, aber nur einen Fundort.** `<geo>` im Provenienz-Teil (55.876389, -4.100278, Old Monkland, NS 68700 66800) ist der Fundort. `idno type="geo"` (55.946991, -3.1891831) liegt in Edinburgh und ist der Aufbewahrungsort (National Museums Scotland, Q1967502), den die Halterschicht ohnehin getrennt führt. Kein Konflikt, `geoStatus` ist `asserted`. Der einzige `app`-Eintrag ist eine Notiz zur Leserichtung, kein Zweifel am Befund.
 - **Bishop Loch ist die Grenze der Methode.** Dass die Zeichen vielleicht kein Ogham sind, steht nur in Prosa („ogham-like markings", „the purported ogham inscription", „the alleged ogham inscription" in Provenienz, Zustand, Layout und Handnotiz). Das Markup kennt zwei Lücken. Das Zweifelsprofil liest sich daher als „wenig Zweifel" für den zweifelhaftesten Stein.
@@ -52,7 +52,7 @@ Eigenschaften, die das Ergebnis haben muss:
 2. Jeder Stein-Knoten trägt `ogham:recordStatus`, jeder Einzelgraph zusätzlich die sechs Zählungen, und die Zählungen stimmen mit `count_doubt.py` überein.
 3. Kein `<rdg>` ohne `@source` hat ein `prov:wasAttributedTo`.
 4. Der A-Box-Check meldet keinen unbekannten Begriff (neue Terme sind in `py/ontology_patch.py` deklariert).
-5. Zwei Läufe hintereinander ändern, abgesehen von den drei Uhr-Stellen (A1, S9), keine Datei.
+5. Zwei Läufe hintereinander (gleiche Plattform, gleicher Corpus) ändern keine Datei.
 
 ## A3 Querschnittsregeln
 
@@ -62,7 +62,7 @@ Eigenschaften, die das Ergebnis haben muss:
 - Der Corpus wird nur im eigenen Schritt geholt (`--fetch-corpus`); `--offline --no-fetch` baut gegen das, was in `data/origin/` liegt. Der Stand steht im eingecheckten Manifest.
 - Neue `ogham:`-Terme gehören nach `ADDITIONS` in `py/ontology_patch.py` (mit Domäne, Bereich, Kommentar) und sind als „Proposed term" zu kennzeichnen, solange die Ontologie sie nicht übernommen hat.
 - Doppelte Edition: jede OG(H)AM-Datei trägt den Text zweimal (`subtype="ogham"`, `"transliteration"`) und den Apparat getrennt. Gezählt wird nur Transliteration plus Apparat.
-- Keine Uhr in neuen Ausgaben. (Drei bestehende Stellen sind offen, S9.)
+- Keine Uhr in der Ausgabe. Datumsangaben kommen aus dem Corpus-Commit oder aus den Daten, nie aus `now()`/`today()`.
 - Britisches Englisch außen, Deutsch hier. Befehle für Windows `cmd`, je eine Zeile.
 - Änderungen kommen als Patch-ZIP (Skill `patch-zip-delivery`), nur Quellen, gegen eine frische Kopie des Originals geprüft.
 
@@ -77,6 +77,10 @@ Eigenschaften, die das Ergebnis haben muss:
 | Lesungsklasse | `ogham:Reading`, im gepatchten Ontologie-Auszug ⊑ `crmtex:TX7_Written_Text_Segment`; kein `TX6_Transcription` | 2026-11-01 (Flo, D9 geklärt) |
 | Lesung ohne `@source` | keine Attribution, kein erfundener Agent | Vorschlag 2026-11-01 |
 | Bishop Loch: welche Koordinate? | `<geo>` im Provenienz-Teil ist der Fundort, `idno type="geo"` der Aufbewahrungsort | 2026-11-01 (aus den Daten) |
+| Termnamen (S7) | `recordStatus` und die sechs Zählungen bleiben unter diesen Namen, weiterhin als Vorschlag; Abstimmung mit dem Ontologie-Team später, Umbenennung wäre ein Suchen-und-Ersetzen | 2026-11-01 (Flo) |
+| Uhr in der Ausgabe (S9) | Datum aus `commit_date` des Corpus; `prov:generatedAtTime` trägt das Corpus-Datum; Seitentext „Built from the corpus state of …" | 2026-11-01 (Flo) |
+| Lesungen: `<rdg>` pro Quelle, mehrere Inschriften pro Datei (D1, D3) | nicht hier entscheiden, sondern im AMT-Chat, wo sichtbar wird, ob Gewichte pro Lesung oder pro Variante nötig sind; hier nur dokumentiert | 2026-11-01 (Flo) |
+| Version und Tags | `v0.1.0` auf `cff6341`, `v0.2.0` auf `6ea33a9`, 0.2.1 mit dem Uhr-Patch; ORCID in `CITATION.cff` | 2026-11-01 (Flo) |
 | Gewichte | keine in diesem Repo, `amt:weight` gehört nach `tei--epidoc-amt` | 2026-11-01 (Flo) |
 | Corpus-Stand | bleibt `bb62ccd`; kein `--fetch-corpus` in diesem Patch, damit der Patch nur die eigenen Änderungen zeigt | 2026-11-01 |
 | Skelett | `py/main.py` bleibt Einstiegspunkt, kein Umbau auf Familien-Skelett | Vorschlag 2026-11-01 |
@@ -105,9 +109,9 @@ Nicht hochladen: `.venv/`, `.git/`, `data/origin/`, `docs/*.csv`, `out/*.csv`. F
 | S4 | Zweifelsprofil am Stein | crosswalk | S2 | erledigt 2026-11-01 |
 | S5 | D9: TX6 aus Text und Docstrings | crosswalk | | erledigt 2026-11-01 |
 | S6 | Grenze der Methode dokumentieren | crosswalk | S4 | erledigt 2026-11-01 |
-| S7 | Termnamen mit dem Ontologie-Team abstimmen | crosswalk / Ontologie | S3, S4 | offen |
+| S7 | Termnamen mit dem Ontologie-Team abstimmen | crosswalk / Ontologie | S3, S4 | offen (bleiben vorerst, siehe A4) |
 | S8 | `<origDate>` abbilden (cert, precision) | crosswalk | S7 | offen |
-| S9 | Uhr aus der Ausgabe nehmen | crosswalk | | offen |
+| S9 | Uhr aus der Ausgabe nehmen | crosswalk | | erledigt 2026-11-01 |
 | S10 | Übergabe an `tei--epidoc-amt` (Chat 3) | amt | S2 | offen |
 
 S7, S8 und S9 sind voneinander unabhängig. S10 braucht nur S2 bis S4 und kann sofort beginnen.
@@ -174,9 +178,13 @@ Zu klären: `P4_has_time-span` hat als Domäne `E2_Temporal_Entity`, die Zeile i
 
 **Ziel:** Zwei Läufe hintereinander ändern keine Datei.
 
-Drei Stellen: `prov:generatedAtTime` (`py/places.py`), „Generated <Datum>" (`py/webmap.py`), das Datum in `py/ontology_patch.py`. Das Datum soll aus dem Corpus-Manifest (`commit_date`) kommen, nicht aus der Uhr.
+Drei Stellen: `prov:generatedAtTime` (`py/places.py`), „Generated <Datum>" (`py/webmap.py`), das Datum in `py/ontology_patch.py`. Das Datum kommt aus dem Corpus (`commit_date`), nicht aus der Uhr.
 
 **Abnahme:** zwei Läufe, `git status` sauber.
+
+### Erledigt 2026-11-01
+
+Umgesetzt in 0.2.1. Zwei Sandbox-Läufe: alle erzeugten Dateien byte-identisch. Gegenüber dem gepushten Stand ändern sich nur die Datumszeilen (sieben `docs/*.html`, `docs/index.html`, `out/places.crm.ttl`, `ontologies/CHANGES.md`) und die Pfadzeile in `element-docs/` (Plattform). Die Seiten sagen jetzt „Built from the corpus state of <Datum>".
 
 ## S10 — Übergabe an `tei--epidoc-amt` (Chat 3)
 
@@ -196,6 +204,7 @@ Was dieses Repo jetzt liefert:
 - **D2 `<origDate>`** (S8): das Zeitspannen-Modell festlegen.
 - **D3 Mehrere Inschriften in einer Datei.** Blackwaterfoot 1 hat drei; modelliert wird die erste. Reicht das, oder braucht jede Inschrift einen Knoten?
 - **D4 `I-FER-X01`** trägt in der Ortshierarchie kein Land; Irland zählt 12 statt 13. Ist das ein Fehler der Edition oder der Hierarchie-Ableitung (`py/places.py`)?
-- **D5 Versionsnummer.** Gab es für den Stand vor diesem Patch einen Tag? Wenn nein, den Eintrag 0.1.0 im CHANGELOG anpassen. ORCID in `CITATION.cff` fehlt (Flo).
+- **D5 erledigt** (2026-11-01, siehe A4): Tags `v0.1.0` auf `cff6341`, `v0.2.0` auf `6ea33a9`; ORCID eingetragen.
 - **D6 Adresse der Engine** für die README: nur falls das Repo darauf verweist (`n4o-rse/amt-engine` laut Abstract, `alpaca-fair-framework/amt-engine` laut AMT-README). Für dieses Repo ohne Belang.
+- **D8 Plattform-Pfad** in `element-docs/README.md` (`data\origin` gegen `data/origin`): mit `Path.as_posix()` ausgeben, damit Windows und Linux dieselben Bytes liefern.
 - **D7 Corpus-Stand.** Der Upstream-Corpus ist bei `9a68afd`, hier gepinnt `bb62ccd`. Bei einem `--fetch-corpus` ändern sich viele Dateien in `out/` und `docs/`; das sollte ein eigener Schritt mit eigenem Commit sein.

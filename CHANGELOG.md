@@ -3,6 +3,28 @@
 All notable changes to this repository. Dates are release dates. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.1] - 2026-11-01
+
+Makes the build clock-free: two runs over the same corpus give the same bytes.
+
+### Fixed
+- `prov:generatedAtTime` in `out/places.crm.ttl` is the date of the corpus commit (`ogham:corpusCommitDate`),
+  not the time of the run.
+- The pages in `docs/` say "Built from the corpus state of <date of the corpus commit>" instead of
+  "Generated <today>"; the landing page footer likewise.
+- `ontologies/CHANGES.md` no longer carries a date.
+
+### Added
+- ORCID of the author in `CITATION.cff`.
+
+### Unchanged
+- Every triple apart from the one `prov:generatedAtTime` value. Tags: `v0.1.0` on `cff6341` (the state before
+  the changelog), `v0.2.0` on `6ea33a9`.
+
+### Known
+- `element-docs/README.md` writes the corpus path with the separator of the operating system
+  (`data\origin` on Windows, `data/origin` on Linux), so a build on another platform differs on that line.
+
 ## [0.2.0] - 2026-11-01
 
 Takes in the three stones that the CAA UK 2026 poster ("Purported, Alleged, Undetermined: Four Degrees of
@@ -42,4 +64,4 @@ Doubt in the Ogham Corpus") needs and makes the status and the doubt markup of a
 ## [0.1.0]
 
 State before this changelog: four stones, crosswalk ontology and SHACL, place, keeper, word and reading
-layers, GitHub Pages. (Version number given retroactively, see PRIMER D5.)
+layers, GitHub Pages. Tagged `v0.1.0` retroactively on `cff6341`.

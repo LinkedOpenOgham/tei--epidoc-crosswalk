@@ -16,7 +16,6 @@ so the map cannot drift away from the graph.
 """
 from __future__ import annotations
 
-import datetime as dt
 import json
 from pathlib import Path
 
@@ -772,7 +771,7 @@ __NAV__
         <a href="places.geojson" download>Download GeoJSON</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions © the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -1054,7 +1053,7 @@ __NAV__
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -1150,7 +1149,7 @@ __NAV__
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -1246,7 +1245,7 @@ __NAV__
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -1546,7 +1545,7 @@ __NAV__
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -1820,7 +1819,7 @@ __NAV__
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -2115,7 +2114,7 @@ __NAV__
         <a href="persons.csv" download>Download relations (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -2182,7 +2181,7 @@ __NAV__
         <a href="setting.csv" download>Download settings (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -2272,7 +2271,7 @@ __NAV__
         <a href="keepers.csv" download>Download displacements (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -2572,7 +2571,7 @@ __NAV__
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -2846,7 +2845,7 @@ __NAV__
         <a href="words.csv" download>Download matches (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -3141,7 +3140,7 @@ __NAV__
         <a href="persons.csv" download>Download relations (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -3208,7 +3207,7 @@ __NAV__
         <a href="setting.csv" download>Download settings (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -3298,7 +3297,7 @@ __NAV__
         <a href="keepers.csv" download>Download displacements (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -3554,7 +3553,7 @@ __NAV__
         <a href="readings.csv" download>Download comparisons (CSV)</a><br>
         <a href="https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk">Source &amp; RDF on GitHub</a>
       </p>
-      <p class="note" style="margin-top:16px">Generated <span id="built">__BUILT__</span> by
+      <p class="note" style="margin-top:16px">Built from the corpus state of <span id="built">__BUILT__</span> by
       <code>py/webmap.py</code> from __PROV__. Editions &copy; the OG(H)AM project,
       CC BY 4.0.</p>
     </div>
@@ -3825,6 +3824,15 @@ PAGES = [
 ]
 
 
+def built_on(provenance: dict | None) -> str:
+    """Date shown as "built": that of the corpus commit, never the clock.
+
+    A page is a function of the corpus state, so two runs over the same corpus
+    must give the same bytes.
+    """
+    return ((provenance or {}).get("commit_date") or "")[:10] or "an unrecorded corpus state"
+
+
 def nav_html(active_slug: str) -> str:
     """Navigation shared by the map pages; the landing page navigates by its cards."""
     links = ['      <nav>', '        <a href="index.html">Overview</a>']
@@ -3911,7 +3919,7 @@ def build_readings(analysis: list[dict], place_records: list[dict], summary: dic
             .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
             .replace("__BANDS__", json.dumps({"bands": bands, "editors": editors},
                                              ensure_ascii=False, separators=(",", ":")))
-            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__BUILT__", built_on(provenance))
             .replace("__PROV__", _provenance_html(provenance or {})))
     (docs / "readings.html").write_text(html, encoding="utf-8")
 
@@ -3946,7 +3954,7 @@ def build_keepers(links: list[dict], docs: Path, root: Path | None = None,
             .replace("__UNDRAWN__", json.dumps(
                 [{"id": u["ogham_id"], "keeper": u["keeper"], "why": u["why"]}
                  for u in (undrawn or [])], ensure_ascii=False, separators=(",", ":")))
-            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__BUILT__", built_on(provenance))
             .replace("__PROV__", _provenance_html(provenance or {})))
     (docs / "keepers.html").write_text(html, encoding="utf-8")
 
@@ -4011,7 +4019,7 @@ def build_setting(place_records: list[dict], docs: Path, root: Path | None = Non
             .replace("__CATS__", json.dumps(cats, ensure_ascii=False, separators=(",", ":")))
             .replace("__CUSTODY__", json.dumps(setting_mod.CUSTODY_LABEL,
                                                ensure_ascii=False, separators=(",", ":")))
-            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__BUILT__", built_on(provenance))
             .replace("__PROV__", _provenance_html(provenance or {})))
     (docs / "setting.html").write_text(html, encoding="utf-8")
 
@@ -4033,7 +4041,7 @@ def build_persons(stones: list[dict], bridges: list[dict], relations: dict,
             .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
             .replace("__BRIDGES__", json.dumps(bridges, ensure_ascii=False, separators=(",", ":")))
             .replace("__RELATIONS__", json.dumps(relations, ensure_ascii=False, separators=(",", ":")))
-            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__BUILT__", built_on(provenance))
             .replace("__PROV__", _provenance_html(provenance or {})))
     (docs / "persons.html").write_text(html, encoding="utf-8")
     rel = (lambda x: x.relative_to(root)) if root else (lambda x: x)
@@ -4067,12 +4075,12 @@ def build_landing(docs: Path, figures: dict[str, list[tuple[str, str]]],
         foot = (f'Built from OG(H)AM corpus commit '
                 f'<a href="{tree}" target="_blank" rel="noopener"><code>{prov["commit"][:7]}</code></a> '
                 f'({(prov.get("commit_date") or "")[:10]}), {prov.get("edition_count", "?")} editions. '
-                f'Generated {dt.date.today().isoformat()}.<br>'
+                f'Generated from the corpus state of {built_on(prov)}.<br>'
                 f'Editions &copy; the OG(H)AM project, CC BY 4.0. '
                 f'Word list from <a href="https://github.com/LinkedOpenOgham/o3d-epidoc-extractor">'
                 f'o3d-epidoc-extractor</a>, MIT.')
     else:
-        foot = (f'Generated {dt.date.today().isoformat()}. Editions &copy; the OG(H)AM '
+        foot = (f'Generated from the corpus state of {built_on(prov)}. Editions &copy; the OG(H)AM '
                 f'project, CC BY 4.0.')
 
     html = (_page(HEAD_LANDING, LANDING, "")
@@ -4145,7 +4153,7 @@ def build(records: list[dict], docs: Path, root: Path | None = None,
             .replace("__NAV__", nav_html("findspots.html"))
             .replace("__DATA__", json.dumps(mapped, ensure_ascii=False, separators=(",", ":")))
             .replace("__MISSING__", json.dumps(missing, ensure_ascii=False, separators=(",", ":")))
-            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__BUILT__", built_on(provenance))
             .replace("__PROV__", _provenance_html(provenance or {})))
     (docs / "findspots.html").write_text(html, encoding="utf-8")
 
@@ -4218,7 +4226,7 @@ def build_words(word_records: list[dict], place_records: list[dict],
             .replace("__NAV__", nav_html("words.html"))
             .replace("__WORDS__", json.dumps(vocab, ensure_ascii=False, separators=(",", ":")))
             .replace("__STONES__", json.dumps(stones, ensure_ascii=False, separators=(",", ":")))
-            .replace("__BUILT__", dt.date.today().isoformat())
+            .replace("__BUILT__", built_on(provenance))
             .replace("__PROV__", _provenance_html(provenance or {})))
     (docs / "words.html").write_text(html, encoding="utf-8")
 

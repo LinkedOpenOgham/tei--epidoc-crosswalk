@@ -9,9 +9,10 @@ type: software
 authors:
   - family-names: Thiery
     given-names: Florian
+    orcid: "https://orcid.org/0000-0002-3246-3531"
     affiliation: "LEIZA - Leibniz-Zentrum für Archäologie"
 license: MIT
-version: "0.2.0"
+version: "0.2.1"
 date-released: "2026-11-01"
 repository-code: "https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk"
 keywords:

@@ -313,14 +313,14 @@ def add_provenance(g: Graph, prov: dict) -> None:
     """
     if not prov:
         return
-    import datetime as _dt
     g.bind("prov", PROV)
     node = DATA_NS["places-graph"]
     g.add((node, RDF.type, PROV.Entity))
     g.add((node, RDFS.label, Literal("OG(H)AM findspots -- corpus-wide place layer")))
-    g.add((node, PROV.generatedAtTime,
-           Literal(_dt.datetime.now(_dt.timezone.utc).replace(microsecond=0).isoformat(),
-                   datatype=XSD.dateTime)))
+    # The graph is a function of the corpus state, so its time is the corpus
+    # commit's, not the clock's: two runs over one corpus give the same bytes.
+    if prov.get("commit_date"):
+        g.add((node, PROV.generatedAtTime, Literal(prov["commit_date"], datatype=XSD.dateTime)))
     if prov.get("tree_url"):
         g.add((node, PROV.wasDerivedFrom, URIRef(prov["tree_url"])))
     elif prov.get("source"):

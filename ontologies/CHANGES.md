@@ -1,6 +1,6 @@
 # What this repository changes in `ogham.owl`
 
-> **Generated** by `py/ontology_patch.py` on 2026-11-01. `ontologies/upstream/ogham.owl` is the published file and is never edited; `ontologies/ogham.ttl` is the corrected and extended version the pipeline validates against. Re-running regenerates both this file and that one.
+> **Generated** by `py/ontology_patch.py`. `ontologies/upstream/ogham.owl` is the published file and is never edited; `ontologies/ogham.ttl` is the corrected and extended version the pipeline validates against. Re-running regenerates both this file and that one.
 
 817 triples in, 943 out.
 
