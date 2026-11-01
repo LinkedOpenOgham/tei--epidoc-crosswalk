@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng"
+schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng"
+schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="en">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Bishop Loch</title>
+             <editor role="editor" xml:id="NW"><persName>Nora White</persName>                  
+                 <orgName>Maynooth University, Department of Early Irish</orgName></editor>
+                <editor role="editor" xml:id="XS">
+                    <persName>Xenia Spanachi</persName>
+                    <orgName>University of Glasgow</orgName>
+                </editor>
+                <editor role="editor" xml:id="POC"><persName>Patricia O Connor</persName>
+                <orgName>Maynooth University, Department of Early Irish</orgName></editor> 
+                <funder>Irish Research Council (grant no. IRC/W001985/1) and Arts and Humanities Research Council (grant no. AH/W001985/1)</funder>
+                <funder>
+                <ref target="https://research.ie/funding/uk-ireland-collaboration-in-the-digital-humanities-research-grants%e2%80%af/?f=principal-investigator-led">UK-Ireland Collaboration in the Digital Humanities Research Grant</ref>
+                </funder>
+                <respStmt>
+                <name ref="https://orcid.org/0000-0001-7957-651X">Nora White</name>
+                <resp>data collection, editing and encoding</resp>
+                </respStmt>
+                 <respStmt>
+                    <name xml:id="JB">Jef Bucas</name>
+                      <orgName>Dublin Institute for Advanced Studies</orgName>
+                    <resp>batch conversion to EpiDoc</resp>
+                </respStmt>
+                 <respStmt>
+                    <name>Xenia Spanachi</name>
+                    <resp>encoding and editing</resp>
+                </respStmt>
+                <respStmt>
+                <name ref="https://orcid.org/0000-0001-5880-4704">Patricia O Connor</name>
+                <resp>editing and encoding</resp>
+                </respStmt>
+                <respStmt>
+                    <name ref="https://orcid.org/0000-0003-1011-7539" xml:id="MK">Megan Kasten</name>
+                     <orgName>University of Glasgow (OG(H)AM project)</orgName>
+                    <resp>Capture: Photogrammetry  <date when="2023-05-10"/>; Software: Agisoft Metashape.</resp>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <authority>OG(H)AM</authority>
+                <idno type="filename">S-LKS-X01</idno>
+                 <idno type="CIIC"/>
+                <idno type="CISP">x</idno>
+                 <availability>
+                    <licence target="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</licence>   
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                         <country>Scotland</country>
+                        <repository>National Museums of Scotland</repository>
+                        <idno type="invNo">X.HT 102</idno>
+                        <altIdentifier>
+                            <idno type="geo">55.946991, -3.1891831</idno>
+                        </altIdentifier>
+                    </msIdentifier>
+                    <msContents>
+                          <msItem>                            
+                            <textLang mainLang="und-Ogam">Undetermined language written in ogham script</textLang> 
+                           <!-- <textLang mainLang="pgl-Latn">Primitive Irish written in Latin script</textLang>
+                            <textLang mainLang="xpi-Ogam" cert="low">Possibly Pictish written in ogham script</textLang>-->                               
+                           </msItem>
+                    </msContents>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support><p><ref target="https://www.trove.scot/place/44987">Trove</ref> <idno type="Trove">44987</idno></p>
+                                    <material type="wood">Wood</material> 
+                                    <objectType key="portableObject">Stick</objectType>                                     
+                                    <!--<dimensions unit="m">                                         
+                                            <height></height>
+                                            <width></width>
+                                            <depth></depth>
+                                        <!-\-<dim type="diameter">if circular, etc</dim>-\->
+                                     </dimensions>-->         
+                                </support>
+                                <condition>One side of the wooden stick has two deep fissures as well as several cracks on the surface. The side bearing the purported ogham inscription seems to be in relatively good condition, devoid of cracks. The outer markings are still clearly apparent while the inner markings are faded and no longer legible. </condition>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout style="other">The alleged ogham inscription occupies one side of the piece of bone stem. There is no discernible stem-line. </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>The purported ogham markings appear to have been <rs type="execution"  key="scored">knife-scored</rs>. <height></height>
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin>
+                            <origPlace><placeName type="parish">Old Monkland</placeName>, <placeName type="county">Lanarkshire</placeName>, <placeName type="country">Scotland</placeName>
+                                <geo>55.876389, -4.100278</geo>
+                            <note>National Grid Reference: NS 68700 66800</note></origPlace>
+                            <origDate/><!--usually not known-->
+                        </origin>
+                        <provenance type="found" when="1905">A stick of carbonized wood bearing ogham-like markings discovered along with other artifacts such as thick coarse pottery, a metal-worker's crucible, and a socketed iron axe head, during the excavation of the crannog at Bishop’s Loch, near Gartcosh, between <date>1905-1906</date>. The piece was sent to Trevor Cowie by Allan Mackenzie, North Lanarkshire Council 27/1/2006.
+                        </provenance>
+                        <provenance type="observed">Now in National Museums Scotland <ref target="https://www.nms.ac.uk/search-our-collections/collection-search-results?entry=166179">X.HT 102</ref>.
+                        </provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+             <encodingDesc xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include href="../charDecl.xml" parse="xml" xpointer="symbols"/></encodingDesc>
+        <profileDesc>
+            <calendarDesc>
+                <calendar xml:id="julian">
+                    <p>Julian Calendar</p>
+                </calendar>
+            </calendarDesc>
+            <langUsage>
+                <language ident="en">English</language>
+                <language ident="la">Latin</language>
+                <language ident="pgl">Primitive Irish</language>
+                <language ident="sga">Old Irish</language>
+                <language ident="mga">Middle Irish</language>
+                <language ident="ga">Irish</language>
+                <language ident="xpi">Pictish</language>   
+
+            </langUsage>
+            <textClass>     
+                <keywords scheme="https://ontology.inscriptiones.org/type_of_inscription/#vocabularies">
+                    <term ref="https://ontology.inscriptiones.org/type_of_inscription/#Commemorative">Commemorative</term>
+                    <!--<term xml:lang="en">graffiti</term>-->
+                </keywords>
+            </textClass>
+            <!-- <creation>Transcription from previous editor</creation> if not read by OG(H)AM team-->
+        </profileDesc>
+        <revisionDesc status="draft">
+            <listChange>
+                <change when="2022-09-28" who="#JB">Jef Bucas autogenerated EpiDoc output from spreadsheet</change>   
+                <change when="2024-01-22" who="NW">Nora White updated template, including removing # from bibl tag</change>
+                <change when="2024-06-19" who="#NW">Updated template for Scottish oghams autogeneration from spreadsheet</change>
+                <change when="2024-07-13" who="#XS">Xenia Spanachi updated body to include ogham characters and transliteration</change>
+                <change when="2024-07-25" who="#POC">Added encodingDesc for character encoding.</change>
+                <change when="2024-09-10" who="#POC">Added paragraph to support and NGR details to origPlace, closed unused elements, commented out apparatus and translation</change>
+                <change when="2025-03-27" who="#POC">Added attributes for filtering, added country to origPlace, added and encoded information, including provenance, objectType, secondary location coordinates, commented out media</change>
+                <change when="2025-04-30" who="#POC">Added and encoded information based on NMS image.</change>
+                <change when="2025-05-02" who="#POC">Add NMS image, updated transliteration edition with encoding for unclear section</change>
+                <change when="2025-05-16" who="#POC">Update language encoding in edition and text lang</change>
+                <change when="2025-05-19" who="#POC">Remove Scottish Gaelic</change>   
+                <change when="2025-05-20" who="#POC">Replace Canmore with Trove link</change>
+                <change when="2025-05-21" who="#POC">Add information to commentary, corrected material, object type and parish name, updated execution type term to knife-scored removed ref to EAGLE </change>
+                <change when="2025-06-03" who="#POC">Correct execution type</change>
+                <change when="2025-05-26" who="#POC">Update image link</change>
+                <change when="2025-06-27" who="#POC">Add ab (string without diacritics) for display list to edition</change> 
+                <change when="2025-08-19" who="#MK">Added 3D resp.</change>
+                <change when="2026-02-13" who="#POC">Replace scaled images with originals</change>
+            </listChange>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="SCO/S-LKS-X01-BishopLoch-NMS.jpg"><desc>Image of Bishop Loch ogham inscription © <ref target="https://www.nms.ac.uk/search-our-collections/collection-search-results?entry=166179">National Museums of Scotland</ref></desc></graphic>
+         <!--<media url="3D recorded by MK" mimeType="text/html"><desc><!-\-3d model by Megan/Gary/? on SketchFab/3dhop-\-></desc></media>-->
+    </facsimile>    
+    <text>
+        <body>
+             <div type="edition" subtype="ogham" xml:space="preserve" xml:lang="und-Ogam" resp="#NW">             
+                <ab>
+                    <lb n="1" style="text-direction:up"/>ᚐᚈ<gap reason="lost" extent="unknown" unit="character"/>ᚆ<gap reason="lost" extent="unknown" unit="character"/>
+                    <lb n="2" style="text-direction:up" break="no"/>ᚐᚂ
+                </ab> 
+            </div>
+            <div type="edition" subtype="transliteration" xml:lang="und-Ogam" xml:space="preserve" resp="#NW">
+                <ab>
+                    <lb n="1" style="text-direction:up"/>AT<gap reason="lost" extent="unknown" unit="character"/>H<gap reason="lost" extent="unknown" unit="character"/> 
+                    <lb n="2" style="text-direction:up"/>AL
+                </ab>
+                <ab type="list">AT[---]H[---] AL</ab>
+            </div>
+            <div type="apparatus">
+                <listApp>
+                <app n="1">
+<note>As a portable object, there is no way to know definitively which way the inscription was meant to be read as the interpretation depends upon the direction in which the object is held.</note>                    
+                </app>
+                </listApp>
+            </div>
+            <div type="translation">
+                <p>An exact translation of the inscription cannot be readily determined.</p>
+            </div>
+            <div type="commentary">
+<p>The marks have been made intentionally and in a way that is consistent with the rules of ogham. They could therefore be the remains of an ogham inscription, but if so, too little remains for a confident reading. Alternatively the resemblance to ogham could be fortuitous. In which case the marks could be the remains of a tally or some other form of notation.</p>
+            </div>
+            <div type="bibliography">
+                 <listBibl>
+                     <bibl><ptr target="MAL2021"/>
+                         <citedRange/>
+                     </bibl>
+                 </listBibl>
+            </div>
+        </body>
+    </text>
+</TEI>
+
+

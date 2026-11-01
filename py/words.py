@@ -11,7 +11,7 @@ the earlier version could not do, because its source had one reading per stone:
 **every reading is scanned separately.** A stone whose current edition reads
 CASSITTAS MAQI MUCOI CALLITI and whose 1945 reading did not have MUCOI is not a
 stone that "has MUCOI"; it is a stone where one editor saw MUCOI and another did
-not. The word occurrences therefore hang off the `crmtex:TX6_Transcription`
+not. The word occurrences therefore hang off the `ogham:Reading`
 nodes the crosswalk already mints, not off the stone.
 
 The word list (`data/words.csv`) is taken unchanged from the earlier project,

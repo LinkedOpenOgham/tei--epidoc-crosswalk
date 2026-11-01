@@ -32,9 +32,16 @@ data:match_type_Pillar a rdf:Statement ;
 data:stone_I_COR_030 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Garrán | Garranes (CIIC 81)" ;
+    ogham:appCount 1 ;
     ogham:carries data:inscription_I_COR_030 ;
+    ogham:choiceCount 0 ;
+    ogham:gapCount 0 ;
+    ogham:rdgCount 0 ;
+    ogham:recordStatus "numbered" ;
     ogham:shows data:person_I_COR_030_CALLITI,
         data:person_I_COR_030_CASSITTAS ;
+    ogham:suppliedCount 3 ;
+    ogham:unclearCount 0 ;
     crm:P1_is_identified_by data:id_I_COR_030_CIIC,
         data:id_I_COR_030_CISP,
         data:id_I_COR_030_SMR ;

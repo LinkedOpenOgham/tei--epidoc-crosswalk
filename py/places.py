@@ -48,6 +48,8 @@ from lxml import etree
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, XSD
 
+import worklist    # local module (py/worklist.py) -- the X / L series vocabulary
+
 TEI = "http://www.tei-c.org/ns/1.0"
 CRM = Namespace("http://www.cidoc-crm.org/cidoc-crm/")
 GEO = Namespace("http://www.opengis.net/ont/geosparql#")
@@ -385,6 +387,7 @@ def build_place_graph(records: list[dict], prov: dict | None = None) -> tuple[Gr
         label = rec["title"] or rec["ogham_id"]
         g.add((stone, RDFS.label, Literal(f"{label} ({rec['ogham_id']})")))
         g.add((stone, CRM["P1_is_identified_by"], Literal(rec["ogham_id"])))
+        g.add((stone, OGHAM.recordStatus, Literal(worklist.SERIES[worklist.series_of(rec["ogham_id"])][0])))
 
         hierarchy = rec.get("hierarchy") or []
         if not hierarchy and rec.get("lat") is None:
@@ -467,6 +470,7 @@ def add_ontology_terms(g: Graph) -> None:
     documented in ``out/crosswalk.ttl`` alongside the reconciliation properties."""
     from rdflib.namespace import OWL
     for prop, lbl in (
+        ("recordStatus", "catalogue status from the identifier series (numbered/lost/doubtful)"),
         ("geoStatus", "findspot coordinate status (asserted/qualified/textual_only/missing)"),
         ("geoCertainty", "editorial @cert on the <geo> value"),
         ("matchSource", "gazetteer the close match points into"),

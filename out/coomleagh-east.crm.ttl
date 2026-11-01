@@ -32,10 +32,17 @@ data:match_type_Pillar a rdf:Statement ;
 data:stone_I_COR_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Com Liath Thoir | Coomleagh East (CIIC 55)" ;
+    ogham:appCount 1 ;
     ogham:carries data:inscription_I_COR_001 ;
+    ogham:choiceCount 0 ;
+    ogham:gapCount 1 ;
+    ogham:rdgCount 1 ;
+    ogham:recordStatus "numbered" ;
     ogham:shows data:person_I_COR_001_OGALA,
         data:person_I_COR_001_SAINA,
         data:person_I_COR_001_TEMOCA ;
+    ogham:suppliedCount 0 ;
+    ogham:unclearCount 1 ;
     crm:P1_is_identified_by data:id_I_COR_001_CIIC,
         data:id_I_COR_001_CISP,
         data:id_I_COR_001_SMR,

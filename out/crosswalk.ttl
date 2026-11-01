@@ -42,6 +42,9 @@ ogham:nfdiCoreMatch a owl:AnnotationProperty ;
     rdfs:label "aligns with NFDI Core term" ;
     rdfs:comment "Indicative class-level alignment to the NFDI Core Metadata Profile (schema.org / DCAT / DataCite via the N4O OCMDP)." .
 
+ogham:recordStatus a owl:AnnotationProperty ;
+    rdfs:label "catalogue status from the identifier series (numbered/lost/doubtful)" .
+
 ogham:tei-application a owl:Ontology ;
     rdfs:label "TEI/EpiDoc → CIDOC CRM crosswalk ontology (Linked Open Ogham)" .
 

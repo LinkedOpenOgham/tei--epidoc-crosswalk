@@ -1,8 +1,8 @@
 # What this repository changes in `ogham.owl`
 
-> **Generated** by `py/ontology_patch.py` on 2026-07-31. `ontologies/upstream/ogham.owl` is the published file and is never edited; `ontologies/ogham.ttl` is the corrected and extended version the pipeline validates against. Re-running regenerates both this file and that one.
+> **Generated** by `py/ontology_patch.py` on 2026-11-01. `ontologies/upstream/ogham.owl` is the published file and is never edited; `ontologies/ogham.ttl` is the corrected and extended version the pipeline validates against. Re-running regenerates both this file and that one.
 
-817 triples in, 901 out.
+817 triples in, 943 out.
 
 ## Corrections
 
@@ -38,12 +38,19 @@ It is now `⊑ crmtex:TX7_Written_Text_Segment`, whose definition is *"portions 
 
 `rdfs:range` twice means an intersection: an instance would have to be both a `Person` and a `Word`. It is now `owl:unionOf`.
 
-## Additions — 18 properties
+## Additions — 25 properties
 
 The crosswalk records uncertainty and provenance, which the published ontology does not yet model. Rather than list them in a log on every run, they are declared here, each with a domain, a range and a comment, and each carrying `rdfs:isDefinedBy` pointing at this repository so their origin stays visible.
 
 | property | what it says |
 |---|---|
+| `ogham:recordStatus` | catalogue status of the record |
+| `ogham:unclearCount` | number of <unclear> in the edition |
+| `ogham:suppliedCount` | number of <supplied> in the edition |
+| `ogham:gapCount` | number of <gap> in the edition |
+| `ogham:choiceCount` | number of <choice> in the edition |
+| `ogham:appCount` | number of <app> entries |
+| `ogham:rdgCount` | number of <rdg> alternatives |
 | `ogham:geoStatus` | findspot coordinate status |
 | `ogham:geoCertainty` | editorial certainty on the coordinate |
 | `ogham:coordinateSource` | source of a supplied coordinate |

@@ -35,8 +35,8 @@ Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC vocabulari
 |---|---|---|---|
 | **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TXP4_has_segment` (via `ogham:identifiedAs`) |
 | **GeoSPARQL** (OGC) | `geo:` | geometry of places | `geo:asWKT` on `E53_Place` |
-| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |
-| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |
+| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `ogham:Reading` that names a source |
+| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | not yet emitted by the per-stone crosswalk (PRIMER.md D2) |
 | **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |
 | **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | weighted `skos:closeMatch` (materials/types/editors) with `ogham:matchConfidence` + P31/P279 `ogham:matchTypeCheck` |
 | **AMT** | `amt:` | making the match a weighted belief | each match is a reified `amt:weight` quadruple; `skos:closeMatch` is typed `amt:Role` (AMT-conformant, aligned with axis 2) |
@@ -44,7 +44,7 @@ Beyond CIDOC CRM / CRMtex, the crosswalk draws on established W3C/OGC vocabulari
 ## 4. Resolved modelling decisions
 
 - **Material → `E57_Material` via `P45_consists_of`.** `E57_Material` is the CRM class for the substance an object is made of and is itself `rdfs:subClassOf E55_Type`; the ontology's `Material ⊑ E55` should be tightened to `⊑ E57` so `P45` is type-consistent.
-- **Readings → `ogham:Reading`, linked by `ogham:identifiedAs` (a sub-property of `crmtex:TXP4_has_segment`) from the `TX1`, `prov:wasAttributedTo` the editor.** This follows the ontology (`Reading ⊑ TX6`, `identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2.
+- **Readings → `ogham:Reading`, linked by `ogham:identifiedAs` (a sub-property of `crmtex:TXP4_has_segment`) from the `TX1`, `prov:wasAttributedTo` the editor.** This follows the ontology (patched in `ontologies/ogham.ttl`: `Reading ⊑ TX7_Written_Text_Segment`, `identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2. A `<rdg>` with no `@source` is a reading without a recorded author and gets no `prov:wasAttributedTo`.
 - **Place → `P53_has_former_or_current_location`** (the recorded `<geo>` is the site/findspot), matching the ontology's `disclosedAt ⊑ P53`; a reconstructed origin would use `E12_Production` / `P7_took_place_at` instead.
 
 ## 5. Where CIDOC CRM sits in the NFDI reference stack
@@ -156,9 +156,82 @@ A SHACL shapes file (`shapes/crosswalk-shapes.ttl`) then validates every applica
 | `<rdg> (edition)` | OG(H)AM edition (NW): CCICAMINIvac. MAQQ[… | `ogham:Reading` | `data:reading_I_KER_020_OGHAM_NW` |
 | `<origPlace> + <geo>` | Ballinrannig (Baile an Reannaigh) · POINT… | `E53_Place` | `data:place_I_KER_020` |
 
+### Dyke (S-MOR-001)
+
+`dyke.crm.ttl` — 10 mapped elements.
+
+| EpiDoc element | extracted value | → CRM class | node |
+|---|---|---|---|
+| `<support>` | Dyke | `E22_Human-Made_Object` | `data:stone_S_MOR_001` |
+| `<idno type=CISP>` | BROD/1 | `E42_Identifier` | `data:id_S_MOR_001_CISP` |
+| `<idno type=Trove>` | 15529 | `E42_Identifier` | `data:id_S_MOR_001_Trove` |
+| `<objectType>` | Cross-slab | `E55_Type` | `data:type_Cross_slab` |
+| `<material>` | Sandstone | `E57_Material` | `data:material_Sandstone` |
+| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_S_MOR_001` |
+| `<div type=edition>` | [---]RRMOQQDITTOSSS[---] [---]EDDARRNON V… | `crmtex:TX1_Written_Text` | `data:inscription_S_MOR_001` |
+| `<rdg> (edition)` | OG(H)AM edition (LH): [---]RRMOQQDITTOSSS… | `ogham:Reading` | `data:reading_S_MOR_001_OGHAM_LH` |
+| `<origPlace> + <geo>` | Dyke and Moy · POINT(-3.701111 57.5975) | `E53_Place` | `data:place_S_MOR_001` |
+| `<name nymRef>` | EDDRRNON | `E21_Person` | `data:person_S_MOR_001_EDDRRNON` |
+
+### Blackwaterfoot 1 (S-BUT-001)
+
+`blackwaterfoot-1.crm.ttl` — 15 mapped elements.
+
+| EpiDoc element | extracted value | → CRM class | node |
+|---|---|---|---|
+| `<support>` | Blackwaterfoot 1 | `E22_Human-Made_Object` | `data:stone_S_BUT_001` |
+| `<idno type=CISP>` | BLFOO/3 | `E42_Identifier` | `data:id_S_BUT_001_CISP` |
+| `<idno type=Trove>` | 39229 | `E42_Identifier` | `data:id_S_BUT_001_Trove` |
+| `<objectType>` | Cave wall | `E55_Type` | `data:type_Cave_wall` |
+| `<material>` | Sandstone | `E57_Material` | `data:material_Sandstone` |
+| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_S_BUT_001` |
+| `<div type=edition>` | [---]MEQE[---] | `crmtex:TX1_Written_Text` | `data:inscription_S_BUT_001` |
+| `<rdg> (edition)` | OG(H)AM edition (KF): [---]MEQE[---] | `ogham:Reading` | `data:reading_S_BUT_001_OGHAM_KF` |
+| `<rdg> (historical)` | OGHAM edition: EOMEDTE or EOMEQE | `ogham:Reading` | `data:reading_S_BUT_001_EOMEDTE_or_EOMEQE` |
+| `<rdg> (historical)` | OGHAM edition: EVLEMOE or ENEMOE | `ogham:Reading` | `data:reading_S_BUT_001_EVLEMOE_or_ENEMOE` |
+| `<rdg> (historical)` | OGHAM edition: H(i/e)OMEQ(i/e)[~] | `ogham:Reading` | `data:reading_S_BUT_001_H_i_e_OMEQ_i_e` |
+| `<rdg> (historical)` | Forsyth 1996: ADLEUV | `ogham:Reading` | `data:reading_S_BUT_001_FOR1996` |
+| `<rdg> (historical)` | Forsyth 1996: BLUEDLA | `ogham:Reading` | `data:reading_S_BUT_001_FOR1996` |
+| `<rdg> (historical)` | Fis 2001: LUEDBH | `ogham:Reading` | `data:reading_S_BUT_001_FIS2001` |
+| `<origPlace> + <geo>` | Kilmory · POINT(-5.353333 55.526111) | `E53_Place` | `data:place_S_BUT_001` |
+
+### Bishop Loch (S-LKS-X01)
+
+`bishop-loch.crm.ttl` — 9 mapped elements.
+
+| EpiDoc element | extracted value | → CRM class | node |
+|---|---|---|---|
+| `<support>` | Bishop Loch | `E22_Human-Made_Object` | `data:stone_S_LKS_X01` |
+| `<idno type=CISP>` | x | `E42_Identifier` | `data:id_S_LKS_X01_CISP` |
+| `<idno type=Trove>` | 44987 | `E42_Identifier` | `data:id_S_LKS_X01_Trove` |
+| `<objectType>` | Stick | `E55_Type` | `data:type_Stick` |
+| `<material>` | Wood | `E57_Material` | `data:material_Wood` |
+| `inscribed surface` | inscribed face | `E25_Human-Made_Feature` | `data:surface_S_LKS_X01` |
+| `<div type=edition>` | AT[---]H[---] AL | `crmtex:TX1_Written_Text` | `data:inscription_S_LKS_X01` |
+| `<rdg> (edition)` | OG(H)AM edition (NW): AT[---]H[---] AL | `ogham:Reading` | `data:reading_S_LKS_X01_OGHAM_NW` |
+| `<origPlace> + <geo>` | Old Monkland · POINT(-4.100278 55.876389) | `E53_Place` | `data:place_S_LKS_X01` |
+
+### Doubt markup per stone
+
+What the edition's own markup records, counted in the transliteration edition(s) and the apparatus of each file (the ogham-script edition repeats the same text and is not counted). Exported on each stone as `ogham:unclearCount`, `ogham:suppliedCount`, `ogham:gapCount`, `ogham:choiceCount`, `ogham:appCount` and `ogham:rdgCount`; the catalogue series (X doubtful, L lost) as `ogham:recordStatus`.
+
+| stone | id | record status | unclear | supplied | gap | choice | app | rdg |
+|---|---|---|---|---|---|---|---|---|
+| Gigha 1 | `S-ARL-001` | numbered | 2 | 0 | 3 | 0 | 5 | 4 |
+| An Com Liath Thoir / Coomleagh East | `I-COR-001` | numbered | 1 | 0 | 1 | 0 | 1 | 1 |
+| An Garrán / Garranes | `I-COR-030` | numbered | 0 | 3 | 0 | 0 | 1 | 0 |
+| Baile an Reannaigh / Ballinrannig 6 | `I-KER-020` | numbered | 0 | 0 | 0 | 0 | 0 | 0 |
+| Dyke | `S-MOR-001` | numbered | 12 | 0 | 9 | 3 | 1 | 0 |
+| Blackwaterfoot 1 | `S-BUT-001` | numbered | 2 | 0 | 3 | 1 | 9 | 6 |
+| Bishop Loch | `S-LKS-X01` | doubtful | 0 | 0 | 2 | 0 | 1 | 0 |
+
+**Limit of the method.** The crosswalk can only export doubt that the editors marked up. Bishop Loch (`S-LKS-X01`) shows where that stops. Its markup records two gaps and nothing else (the one `<app>` is a note on the direction of reading), while whether the marks on the carbonised wooden stick are ogham at all is said only in words: “ogham-like markings” in the provenance, “the purported ogham inscription” in the condition and the hand note, “the alleged ogham inscription” in the layout. That is doubt about the status of the object, not about a letter, and no element in the edition carries it. The counts above therefore read as little doubt for the stone about which the edition is most doubtful. `ogham:recordStatus` (`doubtful`, from the X series) is the only signal the graph has, and it comes from the identifier, not from the text.
+
+**Several inscriptions on one object.** Where an edition file holds more than one inscription (Blackwaterfoot 1 has three `transliteration` divisions), the per-stone graph models the first one as the inscription, while the counts above cover the whole file. A `<rdg>` in the apparatus may be a variant of one letter group and not a reading of the whole text; it is exported as a reading of the stone all the same, and a `<rdg>` without `@source` has no attribution.
+
 ## 8. The place layer across the whole corpus (`places.crm.ttl`)
 
-`main.py` crosswalks a few stones in full; the place layer crosswalks **one aspect across every EpiDoc file it is given** (`--corpus`, default `data/`). This run read **506 files** (504 editions, 2 template/test files skipped) and produced **391 distinct places** over 12 administrative levels, 146 gazetteer links and 10053 triples.
+`main.py` crosswalks a few stones in full; the place layer crosswalks **one aspect across every EpiDoc file it is given** (`--corpus`, default `data/`). This run read **506 files** (504 editions, 2 template/test files skipped) and produced **391 distinct places** over 12 administrative levels, 146 gazetteer links and 10557 triples.
 
 | EpiDoc | Linked Open Ogham class | CIDOC CRM | property |
 |---|---|---|---|

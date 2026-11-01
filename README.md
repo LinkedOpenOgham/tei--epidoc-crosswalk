@@ -28,7 +28,7 @@ serialised as Turtle (`out/<stone>.crm.ttl`):
 | `<material>` | `crm:E57_Material` | `P45_consists_of` |
 | inscribed surface | `crm:E25_Human-Made_Feature` | `P56_bears_feature` |
 | `<div type="edition">` | `crmtex:TX1_Written_Text` | `P128_carries` |
-| `<div type="edition">` / `<rdg>` (readings) | `crmtex:TX6_Transcription` | `TXP4_has_segment` + `prov:wasAttributedTo` |
+| `<div type="edition">` / `<rdg>` (readings) | `ogham:Reading` (⊑ `crmtex:TX7_Written_Text_Segment` in the patched ontology) | `ogham:identifiedAs` (⊑ `TXP4_has_segment`) + `prov:wasAttributedTo` |
 | `<origPlace>` + `<geo>` | `crm:E53_Place` (+ `geo:asWKT`) | `P53_has_former_or_current_location` |
 | `<placeName type="townland\|parish\|county\|…">` | `crm:E53_Place` + `crm:E55_Type` | `P89_falls_within` (chained) |
 | `<ref target="logainm\|rcahmw\|coflein">` | gazetteer anchor | weighted `skos:closeMatch` |
@@ -113,7 +113,7 @@ anything else on the machine: an unrelated checkout of unknown vintage would
 silently produce a graph that looks complete and is not. `--corpus PATH` and
 `$OGHAM_CORPUS` still override, explicitly. If `data/origin/` is empty the editions
 are fetched automatically on first run — 8 MB is a better default than quietly
-mapping four stones. Use `--no-fetch`, or `--offline`, to suppress that; then the
+mapping seven stones. Use `--no-fetch`, or `--offline`, to suppress that; then the
 place layer falls back to the samples in `data/` and says so loudly.
 
 `data/origin/` is skipped when `data/` itself is scanned, so the sample stones are
@@ -661,15 +661,15 @@ Coomleagh East (I-COR-001) is the case in miniature. The current edition reads
 and three formula words hang on which reading you take.
 
 **This page adds no triples.** It is a view over structure the crosswalk already
-carries — every reading is a `crmtex:TX6_Transcription` `prov:wasAttributedTo` its
+carries — every reading is an `ogham:Reading` `prov:wasAttributedTo` its
 editor — so the same question is one query away:
 
 ```sparql
 SELECT ?stone (COUNT(DISTINCT ?reading) AS ?n) WHERE {
-  ?stone crm:P128_carries ?inscription .
-  ?inscription crmtex:TXP4_has_segment ?reading .
-  ?reading a crmtex:TX6_Transcription ; prov:wasAttributedTo ?editor .
-} GROUP BY ?stone HAVING (?n > 1)
+  ?stone ogham:carries ?inscription .
+  ?inscription ogham:identifiedAs ?reading .
+  ?reading a ogham:Reading ; prov:wasAttributedTo ?editor .
+} GROUP BY ?stone HAVING (COUNT(DISTINCT ?reading) > 1)
 ```
 
 What *is* computed is the degree of disagreement, and `out/readings.csv` labels it
@@ -812,7 +812,7 @@ Popups show each reading with the matched token highlighted.
 | file | what |
 |---|---|
 | `out/words.csv` | one row per (stone, reading, word) with variant, token, gloss, QID |
-| `out/words.crm.ttl` | occurrences as `crmtex:TX7_Written_Text_Segment` of the `TX6` reading |
+| `out/words.crm.ttl` | occurrences as `crmtex:TX7_Written_Text_Segment` of the `ogham:Reading` |
 | `out/readings.csv` | one row per competing reading, with its distance from the current edition |
 | `docs/words.html` | the filter map |
 
@@ -851,6 +851,45 @@ carries `ogham:geoStatus`, and the editors' own wording is kept verbatim in a
 Axis 1 records **that** the editors hedged and **how**; turning that into an
 `amt:weight`-bearing statement over `geo:asWKT`, bridged to `crminf:I2_Belief`, is
 axis 2's job in `tei--epidoc-amt`.
+
+## Doubt, status and where the markup is blind
+
+Seven stones are mapped one by one (`STONES` in `py/main.py`): the four original samples
+plus Dyke, Blackwaterfoot 1 and Bishop Loch, chosen because their editions carry very
+different amounts of doubt markup. Two things are exported for the axis-2 work on
+weighted statements, and both are **proposed terms** that the ontology team has not yet
+agreed (`ontologies/CHANGES.md` lists them as additions):
+
+- **`ogham:recordStatus`** on every stone, in the per-stone graphs and in
+  `places.crm.ttl`: `numbered`, `lost` (series L) or `doubtful` (series X), read from
+  the identifier. Counting doubtful records in a country is then a query rather than a
+  count of file names:
+
+  ```sparql
+  SELECT (COUNT(DISTINCT ?stone) AS ?n) WHERE {
+    ?stone ogham:recordStatus "doubtful" ;
+           crm:P53_has_former_or_current_location/crm:P89_falls_within+ ?place .
+    ?place rdfs:label "Scotland"@en .
+  }
+  ```
+
+- **A doubt profile** on every per-stone graph: `ogham:unclearCount`,
+  `suppliedCount`, `gapCount`, `choiceCount`, `appCount`, `rdgCount`. They are counted in
+  the `transliteration` edition(s) and the apparatus only: every OG(H)AM file repeats the
+  text in an `ogham`-script edition, and counting the whole file doubles every figure.
+
+**The method has a blind spot, and Bishop Loch is the stone that shows it.** Its edition
+marks two gaps and nothing else; that the marks are *purported* or *alleged* ogham, and
+that the object is a stick bearing "ogham-like markings", is said in the prose of the
+condition, layout and hand notes only. The profile therefore reads as little doubt for the
+stone about which the edition is most doubtful, and `recordStatus = doubtful`, which
+comes from the identifier, is the only signal the graph carries. Doubt about the status
+of an object is not something the crosswalk can export until the edition marks it up.
+
+Two further limits show up on these stones. Blackwaterfoot 1 holds three inscriptions in
+one file; the per-stone graph models the first, while the profile counts the file. And
+a `<rdg>` in the apparatus may vary one letter group rather than the whole text, yet it is
+exported as a reading; one without `@source` is exported without an attribution.
 
 ## Checking the graph against the ontologies (`py/validate.py`)
 
@@ -1001,6 +1040,9 @@ SHACL-valid.
 
 ```
 tei--epidoc-crosswalk/
+├── PRIMER.md                  # work plan (German): standing rules, decisions, steps
+├── CHANGELOG.md               # what changed, release by release
+├── CITATION.cff               # how to cite this repository
 ├── data/                      # inputs only (EpiDoc XML)
 │   ├── origin/                # OG(H)AM editions, fetched on demand (gitignored)
 │   ├── corpus-manifest.yaml   # which upstream state that is (generated, committed)
@@ -1008,7 +1050,10 @@ tei--epidoc-crosswalk/
 │   ├── S-ARL-001.xml          # Gigha 1 (CIIC 506)
 │   ├── I-COR-001.xml          # Coomleagh East (CIIC 55)
 │   ├── I-COR-030.xml          # Garranes (CIIC 81)
-│   └── I-KER-020.xml          # Ballinrannig 6 (CIIC 153)
+│   ├── I-KER-020.xml          # Ballinrannig 6 (CIIC 153)
+│   ├── S-MOR-001.xml          # Dyke
+│   ├── S-BUT-001.xml          # Blackwaterfoot 1
+│   └── S-LKS-X01.xml          # Bishop Loch (X series: doubtful)
 ├── out/                       # generated outputs
 │   ├── README.md              # documentation (generated)
 │   ├── *.crm.ttl              # one CIDOC CRM instance graph per stone (generated)
@@ -1075,7 +1120,7 @@ Run from the repository root:
 python py/main.py
 ```
 
-This processes all four stones and writes one `out/<stone>.crm.ttl` per stone,
+This processes all seven stones and writes one `out/<stone>.crm.ttl` per stone,
 plus `out/README.md`. Single-file mode:
 
 ```
@@ -1099,9 +1144,11 @@ python py/main.py --no-words                # skip the formulaic-word layer
 - **Material** → `E57_Material` via `P45_consists_of`. `E57_Material` is the CRM class for
   the substance an object is made of and is `rdfs:subClassOf E55_Type`; the ontology's
   `Material ⊑ E55` should be tightened to `⊑ E57` so `P45` is type-consistent.
-- **Readings** → `crmtex:TX6_Transcription`, `TXP4_has_segment` from the `TX1`,
-  `prov:wasAttributedTo` the editor — following the ontology (`Reading ⊑ TX6`,
-  `identifiedAs ⊑ TXP4_has_segment`). The `amt:weight` belief stays in axis 2.
+- **Readings** → `ogham:Reading`, linked by `ogham:identifiedAs` (⊑ `TXP4_has_segment`)
+  from the `TX1`, `prov:wasAttributedTo` the editor — following the ontology as patched
+  here (`Reading ⊑ TX7_Written_Text_Segment`, `identifiedAs ⊑ TXP4_has_segment`; the
+  published `ogham.owl` declares `Reading ⊑ TX6_Transcription`, a class CRMtex 2.0 does
+  not have). The `amt:weight` belief stays in axis 2.
 - **Place** → `P53_has_former_or_current_location` (the recorded `<geo>` is the
   findspot), matching the ontology's `disclosedAt ⊑ P53`; a reconstructed origin
   would use `E12_Production` / `P7_took_place_at`.

@@ -68,7 +68,14 @@ data:match_type_Pillar a rdf:Statement ;
 data:stone_S_ARL_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gigha 1 (CIIC 506)" ;
+    ogham:appCount 5 ;
     ogham:carries data:inscription_S_ARL_001 ;
+    ogham:choiceCount 0 ;
+    ogham:gapCount 3 ;
+    ogham:rdgCount 4 ;
+    ogham:recordStatus "numbered" ;
+    ogham:suppliedCount 0 ;
+    ogham:unclearCount 2 ;
     crm:P1_is_identified_by data:id_S_ARL_001_CIIC,
         data:id_S_ARL_001_CISP,
         data:id_S_ARL_001_Trove ;

@@ -1,0 +1,60 @@
+@prefix crm: <http://www.cidoc-crm.org/cidoc-crm/> .
+@prefix crmtex: <http://www.cidoc-crm.org/extensions/crmtex/> .
+@prefix data: <http://data.ogham.link/crm/> .
+@prefix geo: <http://www.opengis.net/ont/geosparql#> .
+@prefix ogham: <http://ontology.ogham.link/> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+data:stone_S_LKS_X01 a ogham:OghamStone,
+        crm:E22_Human-Made_Object ;
+    rdfs:label "Bishop Loch (S-LKS-X01)" ;
+    ogham:appCount 1 ;
+    ogham:carries data:inscription_S_LKS_X01 ;
+    ogham:choiceCount 0 ;
+    ogham:gapCount 2 ;
+    ogham:rdgCount 0 ;
+    ogham:recordStatus "doubtful" ;
+    ogham:suppliedCount 0 ;
+    ogham:unclearCount 0 ;
+    crm:P1_is_identified_by data:id_S_LKS_X01_CISP,
+        data:id_S_LKS_X01_Trove ;
+    crm:P2_has_type data:type_Stick ;
+    crm:P45_consists_of data:material_Wood ;
+    crm:P53_has_former_or_current_location data:place_S_LKS_X01 ;
+    crm:P56_bears_feature data:surface_S_LKS_X01 .
+
+data:agent_OGHAM_NW a prov:Agent ;
+    rdfs:label "OG(H)AM edition (NW)" .
+
+data:id_S_LKS_X01_CISP a crm:E42_Identifier ;
+    rdfs:label "x" ;
+    crm:P2_has_type "CISP" .
+
+data:id_S_LKS_X01_Trove a crm:E42_Identifier ;
+    rdfs:label "44987" ;
+    crm:P2_has_type "Trove" .
+
+data:inscription_S_LKS_X01 a ogham:Inscription,
+        crmtex:TX1_Written_Text ;
+    rdfs:label "AT[---]H[---] AL" ;
+    ogham:identifiedAs data:reading_S_LKS_X01_OGHAM_NW .
+
+data:material_Wood a crm:E57_Material ;
+    rdfs:label "Wood" .
+
+data:place_S_LKS_X01 a crm:E53_Place ;
+    rdfs:label "Old Monkland" ;
+    geo:asWKT "POINT(-4.100278 55.876389)"^^geo:wktLiteral .
+
+data:reading_S_LKS_X01_OGHAM_NW a ogham:Reading ;
+    rdfs:label "AT[---]H[---] AL" ;
+    prov:wasAttributedTo data:agent_OGHAM_NW .
+
+data:surface_S_LKS_X01 a crm:E25_Human-Made_Feature ;
+    rdfs:label "inscribed surface" .
+
+data:type_Stick a crm:E55_Type ;
+    rdfs:label "Stick" .
+

@@ -3,15 +3,15 @@
 """dissent.py -- where the editors disagree.
 
 The crosswalk already models every competing reading as a
-``crmtex:TX6_Transcription`` attributed to its editor with PROV-O. This module
+``ogham:Reading`` attributed to its editor with PROV-O. This module
 adds no triples: it is a **view over structure the graph already carries**, which
 is the point — the same question is one SPARQL query away:
 
     SELECT ?stone (COUNT(DISTINCT ?reading) AS ?n) WHERE {
-      ?stone crm:P128_carries ?inscription .
-      ?inscription crmtex:TXP4_has_segment ?reading .
-      ?reading a crmtex:TX6_Transcription ; prov:wasAttributedTo ?editor .
-    } GROUP BY ?stone HAVING (?n > 1)
+      ?stone ogham:carries ?inscription .
+      ?inscription ogham:identifiedAs ?reading .
+      ?reading a ogham:Reading ; prov:wasAttributedTo ?editor .
+    } GROUP BY ?stone HAVING (COUNT(DISTINCT ?reading) > 1)
 
 What it computes is the *degree* of disagreement, and that is an analytical aid,
 not an assertion: a character-level similarity between the current OG(H)AM edition

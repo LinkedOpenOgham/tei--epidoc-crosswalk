@@ -1472,3030 +1472,3534 @@ data:places-graph a prov:Entity ;
     ogham:corpusCommit "bb62ccd146cc34e75c1304e60204744e742e3109" ;
     ogham:corpusCommitDate "2026-07-02T12:07:30+01:00" ;
     ogham:corpusEditionCount 504 ;
-    prov:generatedAtTime "2026-07-31T09:17:38+00:00"^^xsd:dateTime ;
+    prov:generatedAtTime "2026-11-01T10:26:15+00:00"^^xsd:dateTime ;
     prov:wasDerivedFrom <https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML> .
 
 data:stone_E_CON_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Worthyvale (E-CON-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-CON-001" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_001 .
 
 data:stone_E_CON_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lannwenek | Lewannick 1 (E-CON-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-CON-002" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_002 .
 
 data:stone_E_CON_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lannwenek | Lewannick 2 (E-CON-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-CON-003" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_003 .
 
 data:stone_E_CON_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lanndohow | St Kew (E-CON-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-CON-004" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_004 .
 
 data:stone_E_CON_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Pennwydh | Penwith (E-CON-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-CON-005" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_005 .
 
 data:stone_E_CON_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lewannick 3 (E-CON-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "E-CON-X01" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_X01 .
 
 data:stone_E_CON_X02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lancarffe (E-CON-X02)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "E-CON-X02" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_X02 .
 
 data:stone_E_CON_X03 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Clement (E-CON-X03)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "E-CON-X03" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_X03 .
 
 data:stone_E_CON_X04 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Endellion (E-CON-X04)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "E-CON-X04" ;
     crm:P53_has_former_or_current_location data:findspot_E_CON_X04 .
 
 data:stone_E_DEV_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Fardel (E-DEV-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-DEV-001" ;
     crm:P53_has_former_or_current_location data:findspot_E_DEV_001 .
 
 data:stone_E_DEV_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Roborough Down (E-DEV-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-DEV-002" ;
     crm:P53_has_former_or_current_location data:findspot_E_DEV_002 .
 
 data:stone_E_DEV_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Brendon (E-DEV-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "E-DEV-X01" ;
     crm:P53_has_former_or_current_location data:findspot_E_DEV_X01 .
 
 data:stone_E_HAM_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Silchester (E-HAM-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-HAM-001" ;
     crm:P53_has_former_or_current_location data:findspot_E_HAM_001 .
 
 data:stone_E_NFK_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Weeting-with-Broomhill (E-NFK-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-NFK-001" ;
     crm:P53_has_former_or_current_location data:findspot_E_NFK_001 .
 
 data:stone_E_STS_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Uttoxeter (E-STS-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-STS-001" ;
     crm:P53_has_former_or_current_location data:findspot_E_STS_001 .
 
 data:stone_E_WAR_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Coventry (E-WAR-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-WAR-001" ;
     crm:P53_has_former_or_current_location data:findspot_E_WAR_001 .
 
 data:stone_E_WRY_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Vale of York brooch fragment (E-WRY-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "E-WRY-001" ;
     crm:P53_has_former_or_current_location data:findspot_E_WRY_001 .
 
 data:stone_I_ANT_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Carn Coim | Carncome 1 (I-ANT-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ANT-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_ANT_001 .
 
 data:stone_I_ANT_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Carn Coim | Carncome 2 (I-ANT-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ANT-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_ANT_002 .
 
 data:stone_I_ANT_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gartree (I-ANT-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ANT-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_ANT_003 .
 
 data:stone_I_ARM_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Droim Conmhaoil | Drumconwell (I-ARM-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ARM-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_ARM_001 .
 
 data:stone_I_CAR_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cluain Mhór | Clonmore (I-CAR-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-CAR-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_CAR_001 .
 
 data:stone_I_CAR_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Tobar Phádraig | Patrickswell (I-CAR-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-CAR-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_CAR_002 .
 
 data:stone_I_CAR_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Ráth Ghlas | Rathglass (I-CAR-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-CAR-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_CAR_003 .
 
 data:stone_I_CAR_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Tuca Mín | Tuckamine (I-CAR-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-CAR-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_CAR_004 .
 
 data:stone_I_CLA_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inis | Ennis bead (I-CLA-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-CLA-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_CLA_003 .
 
 data:stone_I_CLA_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Dalua | Killaloe (I-CLA-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-CLA-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_CLA_004 .
 
 data:stone_I_CLA_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inis Cathaigh | Scattery Island (I-CLA-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-CLA-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_CLA_005 .
 
 data:stone_I_COR_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Com Liath Thoir | Coomleagh East (I-COR-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_001 .
 
 data:stone_I_COR_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth an Tóiteáin | Burnfort (I-COR-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_002 .
 
 data:stone_I_COR_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Plácas | Greenhill 1 (I-COR-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_003 .
 
 data:stone_I_COR_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Plácas | Greenhill 2 (I-COR-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_004 .
 
 data:stone_I_COR_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile na bPórtach | Ballynabortagh 1 (I-COR-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_005 .
 
 data:stone_I_COR_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile na bPórtach | Ballynabortagh 2 (I-COR-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-006" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_006 .
 
 data:stone_I_COR_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile na bPórtach | Ballynabortagh 3 (I-COR-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-007" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_007 .
 
 data:stone_I_COR_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile na bPórtach | Ballynabortagh 4 (I-COR-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-008" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_008 .
 
 data:stone_I_COR_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Oileán an Easpaig | Bishop’s Island (I-COR-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-009" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_009 .
 
 data:stone_I_COR_010 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dún Bolg | Dunbulloge (I-COR-010)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-010" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_010 .
 
 data:stone_I_COR_011 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gleann an Mhuilinn | Glenawillin 1 (I-COR-011)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-011" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_011 .
 
 data:stone_I_COR_012 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gleann an Mhuilinn | Glenawillin 2 (I-COR-012)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-012" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_012 .
 
 data:stone_I_COR_013 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Ghobáin | Rathcobane (I-COR-013)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-013" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_013 .
 
 data:stone_I_COR_014 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Fánchoill agus Na Coillte | Faunkill and the Woods (I-COR-014)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-014" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_014 .
 
 data:stone_I_COR_015 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gamhair | Gour (I-COR-015)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-015" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_015 .
 
 data:stone_I_COR_016 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Chill Cháscann | Kilcaskan (I-COR-016)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-016" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_016 .
 
 data:stone_I_COR_017 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Achadh Loiscthe | Ahalisky 1 (I-COR-017)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-017" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_017 .
 
 data:stone_I_COR_018 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Achadh Loiscthe | Ahalisky 2 (I-COR-018)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-018" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_018 .
 
 data:stone_I_COR_019 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Achadh Loiscthe | Ahalisky 3 (I-COR-019)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-019" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_019 .
 
 data:stone_I_COR_020 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Alltach | Aultagh (I-COR-020)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-020" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_020 .
 
 data:stone_I_COR_021 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ceathrú Bhaldair | Carhoovauler 1 (I-COR-021)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-021" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_021 .
 
 data:stone_I_COR_022 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ceathrú Bhaldair | Carhoovauler 2 (I-COR-022)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-022" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_022 .
 
 data:stone_I_COR_023 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ceathrú Bhaldair | Carhoovauler 3 (I-COR-023)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-023" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_023 .
 
 data:stone_I_COR_024 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Caoinráth | Keenrath (I-COR-024)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-024" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_024 .
 
 data:stone_I_COR_025 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Teampall Brianaid Thuaidh | Templebryan North (I-COR-025)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-025" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_025 .
 
 data:stone_I_COR_026 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Bhuirgéiseach | Burgatia (I-COR-026)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-026" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_026 .
 
 data:stone_I_COR_027 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil an Fhéich | Coolineagh 3 (I-COR-027)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-027" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_027 .
 
 data:stone_I_COR_028 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gleann an Phúca | Glenaphuca 1 (I-COR-028)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-028" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_028 .
 
 data:stone_I_COR_029 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gleann an Phúca | Glenaphuca 2 (I-COR-029)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-029" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_029 .
 
 data:stone_I_COR_030 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Garrán | Garranes (I-COR-030)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-030" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_030 .
 
 data:stone_I_COR_031 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 1 (I-COR-031)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-031" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_031 .
 
 data:stone_I_COR_032 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 2 (I-COR-032)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-032" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_032 .
 
 data:stone_I_COR_033 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 3 (I-COR-033)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-033" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_033 .
 
 data:stone_I_COR_034 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 4 (I-COR-034)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-034" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_034 .
 
 data:stone_I_COR_035 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 5 (I-COR-035)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-035" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_035 .
 
 data:stone_I_COR_036 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 6 (I-COR-036)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-036" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_036 .
 
 data:stone_I_COR_037 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 7 (I-COR-037)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-037" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_037 .
 
 data:stone_I_COR_038 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 8 (I-COR-038)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-038" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_038 .
 
 data:stone_I_COR_039 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 9 (I-COR-039)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-039" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_039 .
 
 data:stone_I_COR_040 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 10 (I-COR-040)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-040" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_040 .
 
 data:stone_I_COR_041 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 11 (I-COR-041)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-041" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_041 .
 
 data:stone_I_COR_042 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 12 (I-COR-042)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-042" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_042 .
 
 data:stone_I_COR_043 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 13 (I-COR-043)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-043" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_043 .
 
 data:stone_I_COR_044 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 14 (I-COR-044)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-044" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_044 .
 
 data:stone_I_COR_045 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Chamhaicigh Thuaidh | Ballyknock North 15 (I-COR-045)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-045" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_045 .
 
 data:stone_I_COR_046 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Sheanc | Ballyhank 1 (I-COR-046)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-046" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_046 .
 
 data:stone_I_COR_047 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Sheanc | Ballyhank 2 (I-COR-047)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-047" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_047 .
 
 data:stone_I_COR_048 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Sheanc | Ballyhank 3 (I-COR-048)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-048" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_048 .
 
 data:stone_I_COR_049 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Sheanc | Ballyhank 4 (I-COR-049)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-049" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_049 .
 
 data:stone_I_COR_050 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Sheanc | Ballyhank 5 (I-COR-050)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-050" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_050 .
 
 data:stone_I_COR_051 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Sheanc | Ballyhank 6 (I-COR-051)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-051" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_051 .
 
 data:stone_I_COR_052 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Barr an Chárthainn | Barrahaurin (I-COR-052)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-052" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_052 .
 
 data:stone_I_COR_053 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil an Fhéich | Coolineagh 1 (I-COR-053)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-053" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_053 .
 
 data:stone_I_COR_054 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil an Fhéich | Coolineagh 2 (I-COR-054)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-054" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_054 .
 
 data:stone_I_COR_055 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Duílis | Deelish (I-COR-055)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-055" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_055 .
 
 data:stone_I_COR_056 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gleann na gCloch Thuaidh | Glenaglogh (I-COR-056)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-056" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_056 .
 
 data:stone_I_COR_057 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuilinn Theas | Kilcullen South (I-COR-057)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-057" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_057 .
 
 data:stone_I_COR_058 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Martan Íochtarach | Kilmartin Lower (I-COR-058)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-058" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_058 .
 
 data:stone_I_COR_059 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Ramhar | Knockrour 1 (I-COR-059)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-059" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_059 .
 
 data:stone_I_COR_060 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Ramhar | Knockrour 2 (I-COR-060)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-060" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_060 .
 
 data:stone_I_COR_061 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Ramhar | Knockrour 3 (I-COR-061)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-061" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_061 .
 
 data:stone_I_COR_062 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Seanmhaí | Knockshanawee 1 (I-COR-062)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-062" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_062 .
 
 data:stone_I_COR_063 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Seanmhaí | Knockshanawee 2 (I-COR-063)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-063" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_063 .
 
 data:stone_I_COR_064 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Seanmhaí | Knockshanawee 3 (I-COR-064)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-064" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_064 .
 
 data:stone_I_COR_065 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Seanmhaí | Knockshanawee 4 (I-COR-065)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-065" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_065 .
 
 data:stone_I_COR_066 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Seanmhaí | Knockshanawee 5 (I-COR-066)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-066" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_066 .
 
 data:stone_I_COR_067 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Seanmhaí | Knockshanawee 6 (I-COR-067)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-067" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_067 .
 
 data:stone_I_COR_068 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Caisleán Chúirt an Bharraigh | Barryscourt Castle (I-COR-068)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-068" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_068 .
 
 data:stone_I_COR_069 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Móin an tSagairt | Monataggart 1 (I-COR-069)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-069" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_069 .
 
 data:stone_I_COR_070 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Móin an tSagairt | Monataggart 2 (I-COR-070)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-070" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_070 .
 
 data:stone_I_COR_071 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Móin an tSagairt | Monataggart 3 (I-COR-071)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-071" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_071 .
 
 data:stone_I_COR_072 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Móin an tSagairt | Monataggart 4 (I-COR-072)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-072" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_072 .
 
 data:stone_I_COR_073 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc idir Dhá Abhainn | Mountrivers 1 (I-COR-073)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-073" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_073 .
 
 data:stone_I_COR_074 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc idir Dhá Abhainn | Mountrivers 2 (I-COR-074)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-074" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_074 .
 
 data:stone_I_COR_076 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Rú Mór | Rooves More 1 (I-COR-076)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-076" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_076 .
 
 data:stone_I_COR_077 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Rú Mór | Rooves More 2 (I-COR-077)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-077" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_077 .
 
 data:stone_I_COR_078 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Rú Mór | Rooves More 3 (I-COR-078)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-078" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_078 .
 
 data:stone_I_COR_079 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Tulaigh Mhór | Tullig More (I-COR-079)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-079" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_079 .
 
 data:stone_I_COR_080 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Carraig an Ghiolla | Carrigagulla (I-COR-080)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-080" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_080 .
 
 data:stone_I_COR_081 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Chúil Dorcha | Cooldorragha (I-COR-081)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-081" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_081 .
 
 data:stone_I_COR_082 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Crionna Lua | Crinnaloo (I-COR-082)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-082" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_082 .
 
 data:stone_I_COR_083 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tSeanchluain | Shanacloon 1 (I-COR-083)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-083" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_083 .
 
 data:stone_I_COR_084 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tSeanchluain | Shanacloon 2 (I-COR-084)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-084" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_084 .
 
 data:stone_I_COR_085 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tSeanchluain | Shanacloon 3 (I-COR-085)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-085" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_085 .
 
 data:stone_I_COR_086 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Caolmhagh Mór | Kealvaugh More (I-COR-086)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-086" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_086 .
 
 data:stone_I_COR_087 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Amhráin | Mountmusic (I-COR-087)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-087" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_087 .
 
 data:stone_I_COR_088 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bun an Chnoic | Underhill 1 (I-COR-088)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-088" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_088 .
 
 data:stone_I_COR_089 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bun an Chnoic | Underhill 2 (I-COR-089)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-089" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_089 .
 
 data:stone_I_COR_090 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bun an Chnoic | Underhill 3 (I-COR-090)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-090" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_090 .
 
 data:stone_I_COR_091 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lios Catháin | Liscahane 1 (I-COR-091)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-091" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_091 .
 
 data:stone_I_COR_092 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lios Catháin | Liscahane 2 (I-COR-092)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-092" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_092 .
 
 data:stone_I_COR_093 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bun Coille | Bunkilla (I-COR-093)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-093" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_093 .
 
 data:stone_I_COR_094 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Leaca Bhán | Lackabane (I-COR-094)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-094" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_094 .
 
 data:stone_I_COR_095 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Na Barraí | Barrees (I-COR-095)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-095" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_095 .
 
 data:stone_I_COR_096 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na hEorna | Kilbrittain/Barleyfield (I-COR-096)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-096" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_096 .
 
 data:stone_I_COR_097 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Crosdoire | Crushterra (I-COR-097)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-COR-097" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_097 .
 
 data:stone_I_COR_L11 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Eoghain | Coolowen (I-COR-L11)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-COR-L11" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_L11 .
 
 data:stone_I_COR_L13 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc Uí Ruairc | Knockyrourke (I-COR-L13)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-COR-L13" ;
     crm:P53_has_former_or_current_location data:findspot_I_COR_L13 .
 
 data:stone_I_DON_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Machaire Riabhach | Magherareagh (I-DON-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-DON-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_DON_001 .
 
 data:stone_I_FER_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Mullach an Chnoic | Topped Mountain (I-FER-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-FER-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_FER_001 .
 
 data:stone_I_FER_L01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drumnarullagh (I-FER-L01)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-FER-L01" ;
     crm:P53_has_former_or_current_location data:findspot_I_FER_L01 .
 
 data:stone_I_FER_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ballydoolagh (I-FER-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-FER-X01" ;
     crm:P53_has_former_or_current_location data:findspot_I_FER_X01 .
 
 data:stone_I_KER_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ard Fhearta | Ardfert 1 (I-KER-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_001 .
 
 data:stone_I_KER_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ard Fhearta | Ardfert 2 (I-KER-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_002 .
 
 data:stone_I_KER_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Deirc | Derk (I-KER-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_003 .
 
 data:stone_I_KER_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clochán Ruairc | Fortwilliam (I-KER-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_004 .
 
 data:stone_I_KER_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Áth an Charbaill | Aghacarrible 1 (I-KER-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_005 .
 
 data:stone_I_KER_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Áth an Charbaill | Aghacarrible 2 (I-KER-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-006" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_006 .
 
 data:stone_I_KER_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Áth an Charbaill | Aghacarrible 3 (I-KER-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-007" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_007 .
 
 data:stone_I_KER_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Eaglais | Aglish 1 (I-KER-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-008" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_008 .
 
 data:stone_I_KER_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Eaglais | Aglish 2 (I-KER-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-009" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_009 .
 
 data:stone_I_KER_010 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Áth na gCeap | Annagap (I-KER-010)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-010" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_010 .
 
 data:stone_I_KER_011 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ard Draighneáin | Ardrinane (I-KER-011)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-011" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_011 .
 
 data:stone_I_KER_012 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Airghleann | Arraglen (I-KER-012)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-012" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_012 .
 
 data:stone_I_KER_013 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Riasc | Reask (Ballineanig) (I-KER-013)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-013" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_013 .
 
 data:stone_I_KER_014 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Ístínigh | Ballineesteenig (I-KER-014)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-014" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_014 .
 
 data:stone_I_KER_015 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 1 (I-KER-015)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-015" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_015 .
 
 data:stone_I_KER_016 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 2 (I-KER-016)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-016" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_016 .
 
 data:stone_I_KER_017 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 3 (I-KER-017)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-017" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_017 .
 
 data:stone_I_KER_018 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 4 (I-KER-018)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-018" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_018 .
 
 data:stone_I_KER_019 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 5 (I-KER-019)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-019" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_019 .
 
 data:stone_I_KER_020 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 6 (I-KER-020)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-020" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_020 .
 
 data:stone_I_KER_021 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 7 (I-KER-021)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-021" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_021 .
 
 data:stone_I_KER_022 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 1 (I-KER-022)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-022" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_022 .
 
 data:stone_I_KER_023 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 2 (I-KER-023)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-023" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_023 .
 
 data:stone_I_KER_024 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 3 (I-KER-024)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-024" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_024 .
 
 data:stone_I_KER_025 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 4 (I-KER-025)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-025" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_025 .
 
 data:stone_I_KER_026 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 5 (I-KER-026)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-026" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_026 .
 
 data:stone_I_KER_027 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 6 (I-KER-027)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-027" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_027 .
 
 data:stone_I_KER_028 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 7 (I-KER-028)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-028" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_028 .
 
 data:stone_I_KER_029 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 8 (I-KER-029)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-029" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_029 .
 
 data:stone_I_KER_030 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 9 (I-KER-030)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-030" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_030 .
 
 data:stone_I_KER_031 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an tSagairt | Ballintaggart 10 (I-KER-031)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-031" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_031 .
 
 data:stone_I_KER_032 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Tearmainn | Ballintermon 1 (I-KER-032)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-032" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_032 .
 
 data:stone_I_KER_033 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Tearmainn | Ballintermon 2 (I-KER-033)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-033" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_033 .
 
 data:stone_I_KER_034 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Bhóthair | Ballinvoher (I-KER-034)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-034" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_034 .
 
 data:stone_I_KER_035 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Aindrín | Ballyandreen 1 (I-KER-035)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-035" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_035 .
 
 data:stone_I_KER_036 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Aindrín | Ballyandreen 2 (I-KER-036)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-036" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_036 .
 
 data:stone_I_KER_037 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Baile Íochtarach | Ballyeightragh (I-KER-037)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-037" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_037 .
 
 data:stone_I_KER_038 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Baile Riabhach | Ballymorereagh (I-KER-038)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-038" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_038 .
 
 data:stone_I_KER_039 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile na Hunta | Ballynahunt (I-KER-039)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-039" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_039 .
 
 data:stone_I_KER_040 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Uí Bhaoithín | Ballywiheen (I-KER-040)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-040" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_040 .
 
 data:stone_I_KER_041 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Bhreac-chluain | Brackloon (I-KER-041)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-041" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_041 .
 
 data:stone_I_KER_042 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Brandon Mountain (I-KER-042)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-042" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_042 .
 
 data:stone_I_KER_043 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Ghóilín | Burnham (I-KER-043)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-043" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_043 .
 
 data:stone_I_KER_044 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Com | Camp 1 (I-KER-044)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-044" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_044 .
 
 data:stone_I_KER_045 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Com | Camp 2 (I-KER-045)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-045" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_045 .
 
 data:stone_I_KER_046 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Com Dhíneol Thuaidh | Coumeenoole North (I-KER-046)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-046" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_046 .
 
 data:stone_I_KER_047 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Daingean Uí Chúis | Dingle (I-KER-047)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-047" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_047 .
 
 data:stone_I_KER_048 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Imleach Dhún Séann | Emlagh East (I-KER-048)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-048" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_048 .
 
 data:stone_I_KER_049 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Imleach an Daingin | Emlagh West (I-KER-049)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-049" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_049 .
 
 data:stone_I_KER_050 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Gleann Mór | Glanmore (I-KER-050)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-050" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_050 .
 
 data:stone_I_KER_051 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gleann Fán | Glanfahan (I-KER-051)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-051" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_051 .
 
 data:stone_I_KER_052 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na gCuileannach | Gortnagullanagh (I-KER-052)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-052" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_052 .
 
 data:stone_I_KER_053 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inis Mhic Aoibhleáin | Inishvickillane (I-KER-053)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-053" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_053 .
 
 data:stone_I_KER_054 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Fhiontain | Kilfountan (I-KER-054)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-054" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_054 .
 
 data:stone_I_KER_055 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Maoilchéadair | Kilmalkedar (I-KER-055)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-055" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_055 .
 
 data:stone_I_KER_056 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cinn Aird | Kinard East 1 (I-KER-056)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-056" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_056 .
 
 data:stone_I_KER_057 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cinn Aird | Kinard East 2 (I-KER-057)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-057" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_057 .
 
 data:stone_I_KER_058 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Log na gCapall | Lugnagappul 1 (I-KER-058)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-058" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_058 .
 
 data:stone_I_KER_059 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Log na gCapall | Lugnagappul 2 (I-KER-059)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-059" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_059 .
 
 data:stone_I_KER_060 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Martromán | Martramane (I-KER-060)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-060" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_060 .
 
 data:stone_I_KER_061 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Mám an Óraigh | Maumanorig (I-KER-061)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-061" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_061 .
 
 data:stone_I_KER_062 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Ráth Dubh | Rathduff 1 (I-KER-062)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-062" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_062 .
 
 data:stone_I_KER_063 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Ráth Dubh | Rathduff 2 (I-KER-063)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-063" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_063 .
 
 data:stone_I_KER_064 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Málóid | Rathmalode 1 (I-KER-064)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-064" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_064 .
 
 data:stone_I_KER_065 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Málóid | Rathmalode 2 (I-KER-065)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-065" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_065 .
 
 data:stone_I_KER_066 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Má Gort | Coolmagort 1 (I-KER-066)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-066" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_066 .
 
 data:stone_I_KER_067 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Má Gort | Coolmagort 2 (I-KER-067)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-067" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_067 .
 
 data:stone_I_KER_068 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Má Gort | Coolmagort 3 (I-KER-068)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-068" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_068 .
 
 data:stone_I_KER_069 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Má Gort | Coolmagort 4 (I-KER-069)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-069" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_069 .
 
 data:stone_I_KER_070 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Má Gort | Coolmagort 5 (I-KER-070)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-070" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_070 .
 
 data:stone_I_KER_071 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Má Gort | Coolmagort 6 (I-KER-071)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-071" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_071 .
 
 data:stone_I_KER_072 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cúil Má Gort | Coolmagort 7 (I-KER-072)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-072" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_072 .
 
 data:stone_I_KER_073 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Currach Mór Thoir | Curraghmore East (I-KER-073)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-073" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_073 .
 
 data:stone_I_KER_074 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "\"Derrygarriv\" Doire Coinche | Derryquin 1 (I-KER-074)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-074" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_074 .
 
 data:stone_I_KER_075 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 1 (I-KER-075)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-075" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_075 .
 
 data:stone_I_KER_076 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 2 (I-KER-076)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-076" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_076 .
 
 data:stone_I_KER_077 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 3 (I-KER-077)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-077" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_077 .
 
 data:stone_I_KER_078 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 4 (I-KER-078)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-078" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_078 .
 
 data:stone_I_KER_079 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 5 (I-KER-079)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-079" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_079 .
 
 data:stone_I_KER_080 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 6 (I-KER-080)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-080" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_080 .
 
 data:stone_I_KER_081 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 7 (I-KER-081)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-081" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_081 .
 
 data:stone_I_KER_082 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Chuallachta Thoir | Kilcoolaght East 8 (I-KER-082)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-082" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_082 .
 
 data:stone_I_KER_083 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Ghobnait |Kilgobnet (I-KER-083)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-083" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_083 .
 
 data:stone_I_KER_084 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Ghobnait |Kilgobnet (I-KER-084)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-084" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_084 .
 
 data:stone_I_KER_085 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bánchluain | Whitefield 1 (I-KER-085)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-085" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_085 .
 
 data:stone_I_KER_086 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bánchluain | Whitefield 2 (I-KER-086)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-086" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_086 .
 
 data:stone_I_KER_087 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bánchluain | Whitefield 3 (I-KER-087)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-087" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_087 .
 
 data:stone_I_KER_088 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bánchluain | Whitefield 4 (I-KER-088)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-088" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_088 .
 
 data:stone_I_KER_089 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bánchluain | Whitefield 5 (I-KER-089)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-089" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_089 .
 
 data:stone_I_KER_090 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Doire Ghearráin Theas | Derrygarrane South (I-KER-090)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-090" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_090 .
 
 data:stone_I_KER_091 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Doire Fhíonáin Beag |Darrynane Beg (I-KER-091)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-091" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_091 .
 
 data:stone_I_KER_092 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Loiscthe | Dromlusk (I-KER-092)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-092" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_092 .
 
 data:stone_I_KER_093 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Mhangarta | Mangerton (I-KER-093)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-093" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_093 .
 
 data:stone_I_KER_094 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "\"Parknasilla\" Doire Coinche | Derryquin 2\" (I-KER-094)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-094" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_094 .
 
 data:stone_I_KER_095 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom an tSeabhaic | Dromatouk (I-KER-095)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-095" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_095 .
 
 data:stone_I_KER_096 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "\"\"\"Gortmaccree\"\" (Gurteenmacree, later Gurteen, parish of Kilgarvan)\" (I-KER-096)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-096" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_096 .
 
 data:stone_I_KER_097 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inse na nEach | Inchinanagh (I-KER-097)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-097" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_097 .
 
 data:stone_I_KER_098 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Lománach | Lomanagh (I-KER-098)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-098" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_098 .
 
 data:stone_I_KER_099 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Na Ceathrúna | Carhoona (I-KER-099)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-099" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_099 .
 
 data:stone_I_KER_100 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ceann Boirinn | Canburrin (I-KER-100)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-100" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_100 .
 
 data:stone_I_KER_101 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clochán Cárthainn | Cloghanecarhan (I-KER-101)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-101" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_101 .
 
 data:stone_I_KER_102 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Chúil Thoir | Cool East 1 (I-KER-102)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-102" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_102 .
 
 data:stone_I_KER_103 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Chúil Thoir | Cool East 2 (I-KER-103)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-103" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_103 .
 
 data:stone_I_KER_104 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Caor | Dromkeare (I-KER-104)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-104" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_104 .
 
 data:stone_I_KER_105 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Choimhtheach | Kilkeehagh (I-KER-105)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-105" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_105 .
 
 data:stone_I_KER_106 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Ó gCróin | Killogrone (I-KER-106)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-106" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_106 .
 
 data:stone_I_KER_107 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Urlaí | Killurly 1 (I-KER-107)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-107" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_107 .
 
 data:stone_I_KER_108 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Leitir | Letter (I-KER-108)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-108" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_108 .
 
 data:stone_I_KER_109 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Leitir Thiar | Letter West (I-KER-109)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-109" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_109 .
 
 data:stone_I_KER_110 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Tír Ó Maoil | Teeromoyle (I-KER-110)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-110" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_110 .
 
 data:stone_I_KER_111 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Bheanáin | Kilbonane (I-KER-111)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-111" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_111 .
 
 data:stone_I_KER_112 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Páirc an Mhóinéir | Parkavonear 1 (I-KER-112)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-112" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_112 .
 
 data:stone_I_KER_113 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na Cloiche Meánach | Rockfield Middle 1 (I-KER-113)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-113" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_113 .
 
 data:stone_I_KER_114 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na Cloiche Meánach | Rockfield Middle 2 (I-KER-114)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-114" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_114 .
 
 data:stone_I_KER_115 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na Cloiche Meánach | Rockfield Middle 3 (I-KER-115)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-115" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_115 .
 
 data:stone_I_KER_116 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na Cloiche Meánach | Rockfield Middle 4 (I-KER-116)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-116" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_116 .
 
 data:stone_I_KER_117 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Aird Chánachta | Ardcanaght 1 (I-KER-117)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-117" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_117 .
 
 data:stone_I_KER_118 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Aird Chánachta | Ardcanaght 2 (I-KER-118)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-118" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_118 .
 
 data:stone_I_KER_119 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ard Uí Mhánaigh | Ardywanig (I-KER-119)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-119" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_119 .
 
 data:stone_I_KER_120 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bán an Ghleanna | Bawnaglanna (I-KER-120)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-120" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_120 .
 
 data:stone_I_KER_121 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Bhreac-choill | Brackhill (I-KER-121)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-121" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_121 .
 
 data:stone_I_KER_122 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Corcaigh Bhuí | Corkaboy (I-KER-122)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-122" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_122 .
 
 data:stone_I_KER_123 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Chraig | Crag (I-KER-123)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-123" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_123 .
 
 data:stone_I_KER_124 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Garrán Darach | Garraundarragh ('Gurrane') (I-KER-124)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-124" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_124 .
 
 data:stone_I_KER_125 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Orglan | Killorglin I ('near') (I-KER-125)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-125" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_125 .
 
 data:stone_I_KER_126 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Fearann na gCat | Churchtown (I-KER-126)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-126" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_126 .
 
 data:stone_I_KER_127 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Tigh na hAille | Tinnahally 1 (I-KER-127)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-127" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_127 .
 
 data:stone_I_KER_128 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Tigh na hAille | Tinnahally 2 (I-KER-128)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-128" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_128 .
 
 data:stone_I_KER_129 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cluain na Lobhar | Cloonalour (Tralee) (I-KER-129)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-129" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_129 .
 
 data:stone_I_KER_130 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Bhromáin | Ballybroman (I-KER-130)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-130" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_130 .
 
 data:stone_I_KER_131 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Cionaoith | Rathkenny 1 (I-KER-131)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-131" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_131 .
 
 data:stone_I_KER_132 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Cionaoith | Rathkenny 2 (I-KER-132)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-132" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_132 .
 
 data:stone_I_KER_133 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Cionaoith | Rathkenny 3 (I-KER-133)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-133" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_133 .
 
 data:stone_I_KER_134 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Cionaoith | Rathkenny 4 (I-KER-134)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-134" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_134 .
 
 data:stone_I_KER_135 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Ghuilbin Thoir | Kilgulbin East (I-KER-135)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-135" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_135 .
 
 data:stone_I_KER_136 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Oileán an Teampaill | Church Island (I-KER-136)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-136" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_136 .
 
 data:stone_I_KER_137 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Gaorthadh Theas | Gearha South (I-KER-137)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-137" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_137 .
 
 data:stone_I_KER_138 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Caol na bhFuarán | Brookhill (I-KER-138)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-138" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_138 .
 
 data:stone_I_KER_139 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Teas | Ratass (I-KER-139)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-139" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_139 .
 
 data:stone_I_KER_140 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnoc an Gharráin | Knockagarrane (I-KER-140)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-140" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_140 .
 
 data:stone_I_KER_141 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Com an Lóndraigh | Coumlanders (I-KER-141)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-141" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_141 .
 
 data:stone_I_KER_142 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inse an Chomair | Inchincummer (I-KER-142)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-142" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_142 .
 
 data:stone_I_KER_143 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Trá Lí | Tralee (I-KER-143)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-143" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_143 .
 
 data:stone_I_KER_144 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bun Binne | Bunbinnia (I-KER-144)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-144" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_144 .
 
 data:stone_I_KER_145 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Tiobraid Bheag | Tubrid Beg (I-KER-145)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-145" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_145 .
 
 data:stone_I_KER_146 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Ciaráin | Rathkieran (I-KER-146)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-146" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_146 .
 
 data:stone_I_KER_147 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Gabhlán | Gowlane (I-KER-147)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-147" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_147 .
 
 data:stone_I_KER_148 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Breac | Knockbrack (I-KER-148)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-148" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_148 .
 
 data:stone_I_KER_149 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Mhaoile Theas | Kilmoyly South (I-KER-149)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-149" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_149 .
 
 data:stone_I_KER_150 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Formaoil |Fermoyle (I-KER-150)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-150" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_150 .
 
 data:stone_I_KER_151 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "BAILE MÓR THIAR (I-KER-151)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-151" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_151 .
 
 data:stone_I_KER_152 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ballyvelly (I-KER-152)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-152" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_152 .
 
 data:stone_I_KER_153 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Unknown (Dunraven Collection) (I-KER-153)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-153" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_153 .
 
 data:stone_I_KER_154 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Chillín Liath | Killeenleagh (I-KER-154)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KER-154" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_154 .
 
 data:stone_I_KER_L01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Reannaigh | Ballinrannig 8? (I-KER-L01)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L01" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L01 .
 
 data:stone_I_KER_L02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Baile Íochtarach | Ballyeightragh (I-KER-L02)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L02" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L02 .
 
 data:stone_I_KER_L03 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile an Ghóilín | Burnham (I-KER-L03)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L03" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L03 .
 
 data:stone_I_KER_L04 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Coolnagoppoge (I-KER-L04)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L04" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L04 .
 
 data:stone_I_KER_L05 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Urlaí | Killurly 2 (I-KER-L05)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L05" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L05 .
 
 data:stone_I_KER_L06 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Lóthar | Loher (I-KER-L06)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L06" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L06 .
 
 data:stone_I_KER_L07 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Páirc an Mhóinéir | Parkavonear 2 (I-KER-L07)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L07" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L07 .
 
 data:stone_I_KER_L08 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na Cloiche Meánach | Rockfield Middle 5 (I-KER-L08)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L08" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L08 .
 
 data:stone_I_KER_L09 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gort na Cloiche Meánach | Rockfield Middle 6 (I-KER-L09)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L09" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L09 .
 
 data:stone_I_KER_L10 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ard Uí Mhánaigh | Ardywanig (I-KER-L10)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L10" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L10 .
 
 data:stone_I_KER_L11 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Castleconway (I-KER-L11)" ;
+    ogham:recordStatus "lost" ;
     crm:P1_is_identified_by "I-KER-L11" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_L11 .
 
 data:stone_I_KER_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bushmount (I-KER-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X01" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X01 .
 
 data:stone_I_KER_X02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "PÁIRC AN TEAMPAILL (I-KER-X02)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X02" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X02 .
 
 data:stone_I_KER_X03 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clonsharagh (I-KER-X03)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X03" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X03 .
 
 data:stone_I_KER_X04 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gortacurraun (I-KER-X04)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X04" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X04 .
 
 data:stone_I_KER_X05 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Vicarstown (I-KER-X05)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X05" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X05 .
 
 data:stone_I_KER_X06 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Mhangarta | Mangerton (I-KER-X06)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X06" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X06 .
 
 data:stone_I_KER_X07 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Doirín | Derreen (I-KER-X07)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X07" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X07 .
 
 data:stone_I_KER_X08 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Leathfhearann Theas | Laharan South 1 (I-KER-X08)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X08" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X08 .
 
 data:stone_I_KER_X09 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Leathfhearann Theas | Laharan South 2 (I-KER-X09)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X09" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X09 .
 
 data:stone_I_KER_X10 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cathair Néid |Cahernead (I-KER-X10)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-KER-X10" ;
     crm:P53_has_former_or_current_location data:findspot_I_KER_X10 .
 
 data:stone_I_KID_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Choilbín | Colbinstown 1 (I-KID-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KID-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_KID_001 .
 
 data:stone_I_KID_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Choilbín | Colbinstown 2 (I-KID-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KID-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_KID_002 .
 
 data:stone_I_KID_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Choilbín | Colbinstown 4 (I-KID-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KID-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_KID_004 .
 
 data:stone_I_KID_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Choilbín | Colbinstown 5 (I-KID-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KID-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_KID_005 .
 
 data:stone_I_KID_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Choilbín | Colbinstown 7 (I-KID-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KID-007" ;
     crm:P53_has_former_or_current_location data:findspot_I_KID_007 .
 
 data:stone_I_KID_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Domhnach Mór | Donaghmore (I-KID-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KID-008" ;
     crm:P53_has_former_or_current_location data:findspot_I_KID_008 .
 
 data:stone_I_KIK_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Uí Spealáin | Ballyspellan (I-KIK-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_001 .
 
 data:stone_I_KIK_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clárach an Teampaill | Churchclara 1 (I-KIK-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_002 .
 
 data:stone_I_KIK_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clárach an Teampaill | Churchclara 2 (I-KIK-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_003 .
 
 data:stone_I_KIK_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Feadán Uachtarach | Fiddaun Upper (I-KIK-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-006" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_006 .
 
 data:stone_I_KIK_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gabhrán | Gowran (I-KIK-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-007" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_007 .
 
 data:stone_I_KIK_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Liagán | Legan (I-KIK-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-008" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_008 .
 
 data:stone_I_KIK_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Tulaigh Thirim | Tullaherin 1 (I-KIK-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-009" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_009 .
 
 data:stone_I_KIK_010 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Tulaigh Thirim | Tullaherin 2 (I-KIK-010)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-010" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_010 .
 
 data:stone_I_KIK_011 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lamóg | Lamoge 1 (I-KIK-011)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-011" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_011 .
 
 data:stone_I_KIK_012 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lamóg | Lamoge 2 (I-KIK-012)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-012" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_012 .
 
 data:stone_I_KIK_013 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Mhuadáin | Ballyboodan (I-KIK-013)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-013" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_013 .
 
 data:stone_I_KIK_014 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tSeanchill |Shankill (I-KIK-014)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-KIK-014" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_014 .
 
 data:stone_I_LDY_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dún Oilí Uachtarach | Dunalis Upper (I-LDY-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-LDY-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_LDY_001 .
 
 data:stone_I_LOU_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Bhalraic | Ballybarrack (I-LOU-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-LOU-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_LOU_002 .
 
 data:stone_I_MAY_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tOileán | Island (I-MAY-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_001 .
 
 data:stone_I_MAY_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Mhainín | Kilmannin (I-MAY-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_002 .
 
 data:stone_I_MAY_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Roisín Thiar | Rusheens West (I-MAY-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_003 .
 
 data:stone_I_MAY_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Baile Beag | Ballybeg (I-MAY-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_004 .
 
 data:stone_I_MAY_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Corr Odhar | Corrower (I-MAY-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_005 .
 
 data:stone_I_MAY_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dumhach Mhic Eoghain | Dooghmakeon (I-MAY-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-006" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_006 .
 
 data:stone_I_MAY_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Achadh Liag | Aghaleague (I-MAY-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-007" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_007 .
 
 data:stone_I_MAY_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bréisteach | Breastagh (I-MAY-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-008" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_008 .
 
 data:stone_I_MAY_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Mainistir na Croise | Cross Abbey (I-MAY-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-009" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_009 .
 
 data:stone_I_MAY_010 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill na nGarbhán | Kilgarvan (I-MAY-010)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MAY-010" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_010 .
 
 data:stone_I_MAY_X02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Caol Thiar | Keel West (I-MAY-X02)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-MAY-X02" ;
     crm:P53_has_former_or_current_location data:findspot_I_MAY_X02 .
 
 data:stone_I_MEA_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile Phaghain | Painestown (I-MEA-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MEA-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_MEA_001 .
 
 data:stone_I_MEA_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Moynagh Lough (I-MEA-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MEA-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_MEA_003 .
 
 data:stone_I_MEA_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Sí an Bhrú | Newgrange (I-MEA-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-MEA-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_MEA_004 .
 
 data:stone_I_OFF_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cluain Mhic Nóis | Clonmacnoise (I-OFF-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-OFF-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_OFF_001 .
 
 data:stone_I_OFF_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Baile na hInse | Ballynahinch (Ballinderry Crannóg) (I-OFF-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-OFF-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_OFF_002 .
 
 data:stone_I_OFF_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Liath Beag | Leabeg (I-OFF-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-OFF-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_OFF_005 .
 
 data:stone_I_ROS_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Dromainn | Drummin 1 (I-ROS-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ROS-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_ROS_001 .
 
 data:stone_I_ROS_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Dromainn | Drummin 2 (I-ROS-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ROS-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_ROS_002 .
 
 data:stone_I_ROS_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Cruachan | Rathcroghan 1 (I-ROS-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ROS-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_ROS_003 .
 
 data:stone_I_ROS_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ráth Cruachan | Rathcroghan 2 (I-ROS-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-ROS-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_ROS_004 .
 
 data:stone_I_TIP_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Liath | Leigh (I-TIP-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "I-TIP-X01" ;
     crm:P53_has_former_or_current_location data:findspot_I_TIP_X01 .
 
 data:stone_I_TYR_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Achadh Scríobach | Aghascrebagh (I-TYR-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-TYR-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_TYR_001 .
 
 data:stone_I_WAT_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Suí Mochuda | Seemochuda (I-WAT-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_001 .
 
 data:stone_I_WAT_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Aird Mhór | Ardmore 1 (I-WAT-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_002 .
 
 data:stone_I_WAT_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Aird Mhór | Ardmore 2 (I-WAT-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_003 .
 
 data:stone_I_WAT_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Aird Mhór | Ardmore 3 (I-WAT-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_004 .
 
 data:stone_I_WAT_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Drom Mór | Dromore 1 (Cill Tíre) (I-WAT-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_005 .
 
 data:stone_I_WAT_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Drom Mór | Dromore 2 (Cill Tíre) (I-WAT-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-006" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_006 .
 
 data:stone_I_WAT_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Drom Mór | Dromore 3 (Cill Tíre) (I-WAT-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-007" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_007 .
 
 data:stone_I_WAT_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ceathrú an Teampaill | Mill and Churchquarter (Grange) (I-WAT-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-008" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_008 .
 
 data:stone_I_WAT_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tSráidbhaile Mór | Stradbally More 1 (I-WAT-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-009" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_009 .
 
 data:stone_I_WAT_010 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tSráidbhaile Mór | Stradbally More 2 (I-WAT-010)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-010" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_010 .
 
 data:stone_I_WAT_011 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 1 (I-WAT-011)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-011" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_011 .
 
 data:stone_I_WAT_012 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 2 (I-WAT-012)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-012" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_012 .
 
 data:stone_I_WAT_013 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 3 (I-WAT-013)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-013" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_013 .
 
 data:stone_I_WAT_014 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 4 (I-WAT-014)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-014" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_014 .
 
 data:stone_I_WAT_015 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 5 (I-WAT-015)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-015" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_015 .
 
 data:stone_I_WAT_016 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 6 (I-WAT-016)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-016" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_016 .
 
 data:stone_I_WAT_017 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 7 (I-WAT-017)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-017" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_017 .
 
 data:stone_I_WAT_018 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 8 (I-WAT-018)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-018" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_018 .
 
 data:stone_I_WAT_019 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 9 (I-WAT-019)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-019" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_019 .
 
 data:stone_I_WAT_020 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Drom Lócháin | Drumlohan 10 (I-WAT-020)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-020" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_020 .
 
 data:stone_I_WAT_021 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Baile Beag | Fox’s Castle (I-WAT-021)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-021" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_021 .
 
 data:stone_I_WAT_024 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Chill Bheag | Kilbeg (I-WAT-024)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-024" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_024 .
 
 data:stone_I_WAT_025 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Ghruabháin | Kilgrovan 1 (I-WAT-025)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-025" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_025 .
 
 data:stone_I_WAT_030 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Ghruabháin | Kilgrovan 6 (I-WAT-030)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-030" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_030 .
 
 data:stone_I_WAT_031 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cill Ghruabháin | Kilgrovan 7 (I-WAT-031)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-031" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_031 .
 
 data:stone_I_WAT_033 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 1 (I-WAT-033)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-033" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_033 .
 
 data:stone_I_WAT_034 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 2 (I-WAT-034)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-034" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_034 .
 
 data:stone_I_WAT_035 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 3 (I-WAT-035)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-035" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_035 .
 
 data:stone_I_WAT_036 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 4 (I-WAT-036)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-036" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_036 .
 
 data:stone_I_WAT_037 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 5 (I-WAT-037)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-037" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_037 .
 
 data:stone_I_WAT_038 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 6 (I-WAT-038)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-038" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_038 .
 
 data:stone_I_WAT_039 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 7 (I-WAT-039)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-039" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_039 .
 
 data:stone_I_WAT_040 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 8 (I-WAT-040)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-040" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_040 .
 
 data:stone_I_WAT_041 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoc Buí | Knockboy 9 (I-WAT-041)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-041" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_041 .
 
 data:stone_I_WAT_042 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An tOileán | Island (I-WAT-042)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-042" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_042 .
 
 data:stone_I_WAT_048 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bearna na Gaoithe | Windgap (I-WAT-048)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-048" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_048 .
 
 data:stone_I_WAT_049 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnocán Machan | Knockmahon 1 (I-WAT-049)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-049" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_049 .
 
 data:stone_I_WAT_050 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cnocán Machan | Knockmahon 2 (I-WAT-050)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-050" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_050 .
 
 data:stone_I_WEX_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Geata an Phóirtéaraigh | Portersgate (I-WEX-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WEX-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_WEX_003 .
 
 data:stone_I_WIC_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cáisleán tSíomoin | Castletimon (I-WIC-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WIC-001" ;
     crm:P53_has_former_or_current_location data:findspot_I_WIC_001 .
 
 data:stone_I_WIC_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dún Ard | Donard (I-WIC-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WIC-002" ;
     crm:P53_has_former_or_current_location data:findspot_I_WIC_002 .
 
 data:stone_I_WIC_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bealach Conglais | Baltinglass (I-WIC-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WIC-003" ;
     crm:P53_has_former_or_current_location data:findspot_I_WIC_003 .
 
 data:stone_I_WIC_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Buaile an Charraigín | Boleycarrigeen (I-WIC-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WIC-004" ;
     crm:P53_has_former_or_current_location data:findspot_I_WIC_004 .
 
 data:stone_I_WIC_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "An Cnoicín | Knickeen (I-WIC-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WIC-005" ;
     crm:P53_has_former_or_current_location data:findspot_I_WIC_005 .
 
 data:stone_M_IOM_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ballaqueeney 1 (M-IOM-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-001" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_001 .
 
 data:stone_M_IOM_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ballaqueeney 2 (M-IOM-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-002" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_002 .
 
 data:stone_M_IOM_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bimaken Friary 1 (M-IOM-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-003" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_003 .
 
 data:stone_M_IOM_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bimaken Friary 2 (M-IOM-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-004" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_004 .
 
 data:stone_M_IOM_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Kirk Michael (M-IOM-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-005" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_005 .
 
 data:stone_M_IOM_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Maghal | Maughold 2 (M-IOM-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-006" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_006 .
 
 data:stone_M_IOM_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Knoc y Doonee (M-IOM-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-007" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_007 .
 
 data:stone_M_IOM_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ballavarkish (M-IOM-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-008" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_008 .
 
 data:stone_M_IOM_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Speke Farm Keeill Stone (M-IOM-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "M-IOM-009" ;
     crm:P53_has_former_or_current_location data:findspot_M_IOM_009 .
 
 data:stone_S_ABD_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Newton (S-ABD-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ABD-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_ABD_001 .
 
 data:stone_S_ABD_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Logie Elphinstone (S-ABD-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ABD-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_ABD_002 .
 
 data:stone_S_ABD_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Formaston (S-ABD-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ABD-003" ;
     crm:P53_has_former_or_current_location data:findspot_S_ABD_003 .
 
 data:stone_S_ABD_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Brandsbutt (S-ABD-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ABD-004" ;
     crm:P53_has_former_or_current_location data:findspot_S_ABD_004 .
 
 data:stone_S_ABD_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Afforsk (S-ABD-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ABD-005" ;
     crm:P53_has_former_or_current_location data:findspot_S_ABD_005 .
 
 data:stone_S_ABD_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dyce (S-ABD-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ABD-006" ;
     crm:P53_has_former_or_current_location data:findspot_S_ABD_006 .
 
 data:stone_S_ABD_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Chapel of Garioch (S-ABD-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ABD-007" ;
     crm:P53_has_former_or_current_location data:findspot_S_ABD_007 .
 
 data:stone_S_ANS_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Vigeans (S-ANS-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ANS-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_ANS_001 .
 
 data:stone_S_ANS_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Kirriemuir (S-ANS-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ANS-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_ANS_002 .
 
 data:stone_S_ANS_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Monifieth (S-ANS-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ANS-003" ;
     crm:P53_has_former_or_current_location data:findspot_S_ANS_003 .
 
 data:stone_S_ARL_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gigha 1 (S-ARL-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ARL-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_ARL_001 .
 
 data:stone_S_ARL_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Poltalloch (S-ARL-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ARL-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_ARL_002 .
 
 data:stone_S_ARL_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dún Ad | Dunadd (S-ARL-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ARL-003" ;
     crm:P53_has_former_or_current_location data:findspot_S_ARL_003 .
 
 data:stone_S_ARL_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lochgoilhead (S-ARL-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ARL-004" ;
     crm:P53_has_former_or_current_location data:findspot_S_ARL_004 .
 
 data:stone_S_BUT_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Blackwaterfoot 1 (S-BUT-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-BUT-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_BUT_001 .
 
 data:stone_S_BUT_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inchmarnock 1 (S-BUT-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-BUT-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_BUT_002 .
 
 data:stone_S_BUT_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inchmarnock 2 (S-BUT-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-BUT-003" ;
     crm:P53_has_former_or_current_location data:findspot_S_BUT_003 .
 
 data:stone_S_BUT_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inchmarnock 3 (S-BUT-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-BUT-004" ;
     crm:P53_has_former_or_current_location data:findspot_S_BUT_004 .
 
 data:stone_S_CAI_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ackergill (S-CAI-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-CAI-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_CAI_001 .
 
 data:stone_S_DGY_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lochnaw (S-DGY-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-DGY-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_DGY_001 .
 
 data:stone_S_FIF_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Scoonie (S-FIF-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-FIF-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_FIF_001 .
 
 data:stone_S_INV_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bac Mhic Connain (S-INV-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-INV-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_INV_001 .
 
 data:stone_S_INV_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bornais (S-INV-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-INV-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_INV_002 .
 
 data:stone_S_KCD_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Auquhollie (S-KCD-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-KCD-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_KCD_001 .
 
 data:stone_S_KCD_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Fordoun (S-KCD-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-KCD-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_KCD_002 .
 
 data:stone_S_LKS_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bishop Loch (S-LKS-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "S-LKS-X01" ;
     crm:P53_has_former_or_current_location data:findspot_S_LKS_X01 .
 
 data:stone_S_MOR_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dyke (S-MOR-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-MOR-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_MOR_001 .
 
 data:stone_S_MOR_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Altyre (S-MOR-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-MOR-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_MOR_002 .
 
 data:stone_S_ORK_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Burrian (S-ORK-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_001 .
 
 data:stone_S_ORK_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gurness (S-ORK-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_002 .
 
 data:stone_S_ORK_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Birsay 1 (S-ORK-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-003" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_003 .
 
 data:stone_S_ORK_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Birsay 2 (S-ORK-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-004" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_004 .
 
 data:stone_S_ORK_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Buckquoy (S-ORK-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-005" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_005 .
 
 data:stone_S_ORK_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Birsay 3 (S-ORK-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-006" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_006 .
 
 data:stone_S_ORK_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Birsay 4 (S-ORK-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-007" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_007 .
 
 data:stone_S_ORK_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Pool 1 (S-ORK-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-ORK-008" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_008 .
 
 data:stone_S_ORK_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Pool 2 (S-ORK-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "S-ORK-X01" ;
     crm:P53_has_former_or_current_location data:findspot_S_ORK_X01 .
 
 data:stone_S_PER_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Abernethy 1 (S-PER-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-PER-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_PER_001 .
 
 data:stone_S_PER_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Abernethy 2 (S-PER-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-PER-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_PER_002 .
 
 data:stone_S_PER_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Inchyra (S-PER-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-PER-003" ;
     crm:P53_has_former_or_current_location data:findspot_S_PER_003 .
 
 data:stone_S_PER_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Old Kilmadock (S-PER-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-PER-004" ;
     crm:P53_has_former_or_current_location data:findspot_S_PER_004 .
 
 data:stone_S_PER_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Duncroisk (S-PER-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "S-PER-X01" ;
     crm:P53_has_former_or_current_location data:findspot_S_PER_X01 .
 
 data:stone_S_SEL_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Selkirk (S-SEL-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "S-SEL-X01" ;
     crm:P53_has_former_or_current_location data:findspot_S_SEL_X01 .
 
 data:stone_S_SHE_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bressay (S-SHE-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_001 .
 
 data:stone_S_SHE_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cunningsburgh 1 (S-SHE-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_002 .
 
 data:stone_S_SHE_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cunningsburgh 2 (S-SHE-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-003" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_003 .
 
 data:stone_S_SHE_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Ninian's Isle 1 (S-SHE-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-004" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_004 .
 
 data:stone_S_SHE_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Ninian's Isle 2 (S-SHE-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-005" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_005 .
 
 data:stone_S_SHE_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Ninian's Isle 3 (S-SHE-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-006" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_006 .
 
 data:stone_S_SHE_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Lunnasting (S-SHE-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-007" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_007 .
 
 data:stone_S_SHE_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cunningsburgh 3 (S-SHE-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-008" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_008 .
 
 data:stone_S_SHE_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cunningsburgh 4 (S-SHE-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-009" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_009 .
 
 data:stone_S_SHE_010 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Whiteness (S-SHE-010)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-010" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_010 .
 
 data:stone_S_SHE_011 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bigton (S-SHE-011)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SHE-011" ;
     crm:P53_has_former_or_current_location data:findspot_S_SHE_011 .
 
 data:stone_S_SUT_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Golspie (S-SUT-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SUT-001" ;
     crm:P53_has_former_or_current_location data:findspot_S_SUT_001 .
 
 data:stone_S_SUT_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Latheron (S-SUT-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "S-SUT-002" ;
     crm:P53_has_former_or_current_location data:findspot_S_SUT_002 .
 
 data:stone_W_AGY_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llanfaelog (W-AGY-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-AGY-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_AGY_001 .
 
 data:stone_W_BRE_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llanddeti (W-BRE-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_001 .
 
 data:stone_W_BRE_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Crai | Llywel (W-BRE-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-002" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_002 .
 
 data:stone_W_BRE_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ystradfellte (W-BRE-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-003" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_003 .
 
 data:stone_W_BRE_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Crickhowell (W-BRE-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-004" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_004 .
 
 data:stone_W_BRE_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Trallwng (W-BRE-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-005" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_005 .
 
 data:stone_W_BRE_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Pentre Poeth | Llywel (W-BRE-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-006" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_006 .
 
 data:stone_W_BRE_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Defynnog (W-BRE-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-007" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_007 .
 
 data:stone_W_BRE_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Aberhydfer | Llywel (W-BRE-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-BRE-008" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_008 .
 
 data:stone_W_BRE_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bwlch (W-BRE-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-BRE-X01" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_X01 .
 
 data:stone_W_BRE_X02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Ystradfellte (W-BRE-X02)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-BRE-X02" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_X02 .
 
 data:stone_W_BRE_X03 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llanfihangel Cwm Du (W-BRE-X03)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-BRE-X03" ;
     crm:P53_has_former_or_current_location data:findspot_W_BRE_X03 .
 
 data:stone_W_CAE_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dolbenmaen 2 (W-CAE-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-CAE-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_CAE_001 .
 
 data:stone_W_CAE_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Treflys (W-CAE-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-CAE-X01" ;
     crm:P53_has_former_or_current_location data:findspot_W_CAE_X01 .
 
 data:stone_W_CGN_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llanwenog (W-CGN-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-CGN-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_CGN_001 .
 
 data:stone_W_CGN_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llandysul (W-CGN-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-CGN-X01" ;
     crm:P53_has_former_or_current_location data:findspot_W_CGN_X01 .
 
 data:stone_W_CMN_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llangeler (W-CMN-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-CMN-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_CMN_001 .
 
 data:stone_W_CMN_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llanwinio (W-CMN-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-CMN-002" ;
     crm:P53_has_former_or_current_location data:findspot_W_CMN_002 .
 
 data:stone_W_CMN_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llandawke (W-CMN-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-CMN-003" ;
     crm:P53_has_former_or_current_location data:findspot_W_CMN_003 .
 
 data:stone_W_CMN_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Eglwys Gymyn (W-CMN-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-CMN-004" ;
     crm:P53_has_former_or_current_location data:findspot_W_CMN_004 .
 
 data:stone_W_CMN_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Castell Dwyran (W-CMN-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-CMN-005" ;
     crm:P53_has_former_or_current_location data:findspot_W_CMN_005 .
 
 data:stone_W_CMN_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Henllan Amgoed (W-CMN-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-CMN-X01" ;
     crm:P53_has_former_or_current_location data:findspot_W_CMN_X01 .
 
 data:stone_W_CMN_X02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Ishmaels (W-CMN-X02)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-CMN-X02" ;
     crm:P53_has_former_or_current_location data:findspot_W_CMN_X02 .
 
 data:stone_W_DEN_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clocaenog (W-DEN-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-DEN-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_DEN_001 .
 
 data:stone_W_DEN_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Pentrefoelas (W-DEN-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-DEN-X01" ;
     crm:P53_has_former_or_current_location data:findspot_W_DEN_X01 .
 
 data:stone_W_GLA_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Egylwys Nynnid | Margam (W-GLA-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-GLA-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_GLA_001 .
 
 data:stone_W_GLA_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Loughor (W-GLA-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-GLA-002" ;
     crm:P53_has_former_or_current_location data:findspot_W_GLA_002 .
 
 data:stone_W_GLA_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Gelli-Gaer (W-GLA-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-GLA-X01" ;
     crm:P53_has_former_or_current_location data:findspot_W_GLA_X01 .
 
 data:stone_W_GLA_X02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Margam (W-GLA-X02)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-GLA-X02" ;
     crm:P53_has_former_or_current_location data:findspot_W_GLA_X02 .
 
 data:stone_W_PEM_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Dogmaels (W-PEM-001)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-001" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_001 .
 
 data:stone_W_PEM_002 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clydai 3 (W-PEM-002)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-002" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_002 .
 
 data:stone_W_PEM_003 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llandeilo 2 (W-PEM-003)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-003" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_003 .
 
 data:stone_W_PEM_004 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Cilgerran (W-PEM-004)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-004" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_004 .
 
 data:stone_W_PEM_005 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clydai 2 (W-PEM-005)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-005" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_005 .
 
 data:stone_W_PEM_006 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Bridell (W-PEM-006)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-006" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_006 .
 
 data:stone_W_PEM_007 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Caldy Island (W-PEM-007)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-007" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_007 .
 
 data:stone_W_PEM_008 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Nevern 2 (W-PEM-008)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-008" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_008 .
 
 data:stone_W_PEM_009 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "St Dogwells (W-PEM-009)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-009" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_009 .
 
 data:stone_W_PEM_010 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Steynton (W-PEM-010)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-010" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_010 .
 
 data:stone_W_PEM_011 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Brawdy 2 (W-PEM-011)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-011" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_011 .
 
 data:stone_W_PEM_012 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Brawdy 3 (W-PEM-012)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-012" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_012 .
 
 data:stone_W_PEM_013 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Jordanston (W-PEM-013)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-013" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_013 .
 
 data:stone_W_PEM_014 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Nevern 1 (W-PEM-014)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-014" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_014 .
 
 data:stone_W_PEM_015 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Llanfyrnach 2 (W-PEM-015)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-015" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_015 .
 
 data:stone_W_PEM_016 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Mathry (W-PEM-016)" ;
+    ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "W-PEM-016" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_016 .
 
 data:stone_W_PEM_X01 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Spittal (W-PEM-X01)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-PEM-X01" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_X01 .
 
 data:stone_W_PEM_X02 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Clydai 1 (W-PEM-X02)" ;
+    ogham:recordStatus "doubtful" ;
     crm:P1_is_identified_by "W-PEM-X02" ;
     crm:P53_has_former_or_current_location data:findspot_W_PEM_X02 .
 

@@ -85,6 +85,9 @@ STONES = [
     ("I-COR-001.xml", "coomleagh-east"),
     ("I-COR-030.xml", "garranes"),
     ("I-KER-020.xml", "ballinrannig6"),
+    ("S-MOR-001.xml", "dyke"),
+    ("S-BUT-001.xml", "blackwaterfoot-1"),
+    ("S-LKS-X01.xml", "bishop-loch"),
 ]
 
 ID_SYSTEMS = ["CIIC", "CISP", "TM", "SMR", "Trove"]
@@ -143,7 +146,8 @@ MAPPING = [
     # CRMtex has no class for a reading *text*: TX6 is Transliteration (an activity)
     # and TX14_Reading is an argumentation. ogham:Reading is therefore the anchor
     # class itself, and the ogham column has nothing further to add -- filling both
-    # would make the class its own superclass.
+    # would make the class its own superclass. In the patched ontology
+    # (ontologies/ogham.ttl) ogham:Reading is a subclass of TX7_Written_Text_Segment.
     dict(el="<div type=edition> / <rdg>", role="readings", ogham="\u2014",
          crm="ogham:Reading", prop="ogham:identifiedAs (\u2291 TXP4) + prov:wasAttributedTo",
          vocab="CRMtex, PROV-O"),
@@ -200,6 +204,36 @@ def editor_label(source_id: str) -> str:
     return f"{EDITOR_PREFIXES.get(m.group(1).upper(), m.group(1).title())} {m.group(2)}"
 
 
+def record_status(ogham_id: str) -> str:
+    """numbered / lost / doubtful, from the series letter of the OG(H)AM identifier."""
+    return worklist.SERIES[worklist.series_of(ogham_id)][0]
+
+
+# ogham property -> TEI element counted. Proposed terms, see PRIMER.md A4.
+DOUBT_PROPS = [("unclearCount", "unclear"), ("suppliedCount", "supplied"),
+               ("gapCount", "gap"), ("choiceCount", "choice"),
+               ("appCount", "app"), ("rdgCount", "rdg")]
+
+
+def doubt_profile(tree) -> dict:
+    """Count the doubt markup of one edition file.
+
+    Every OG(H)AM edition carries its text twice (``subtype="ogham"`` and
+    ``subtype="transliteration"``) and the variants in a separate
+    ``<div type="apparatus">``. Counting the whole file would double every figure,
+    so: the transliteration editions plus the apparatus, nothing else.
+    """
+    ns = {"t": TEI}
+    out: Counter = Counter()
+    for div in tree.xpath('//t:div[@type="edition"][@subtype="transliteration"]', namespaces=ns):
+        for _, tag in DOUBT_PROPS:
+            out[tag] += len(div.xpath(f".//t:{tag}", namespaces=ns))
+    for div in tree.xpath('//t:div[@type="apparatus"]', namespaces=ns):
+        for tag in ("app", "rdg"):
+            out[tag] += len(div.xpath(f".//t:{tag}", namespaces=ns))
+    return dict(out)
+
+
 def parse(tree) -> dict:
     """Extract the core elements that the crosswalk maps."""
     d: dict = {}
@@ -234,6 +268,7 @@ def parse(tree) -> dict:
             readings.append({"id": src, "editor": editor_label(src), "text": txt, "edition": False})
     d["edition"] = edition_text
     d["readings"] = readings
+    d["doubt"] = doubt_profile(tree)
 
     # place of origin -----------------------------------------------------------
     placeName = tree.find(f".//{{{TEI}}}origPlace//{{{TEI}}}placeName")
@@ -272,6 +307,13 @@ def build_graph(d: dict):
     g.add((stone, RDFS.label, Literal(f"{d['title'] or 'Ogham stone'} ({d['label_id']})")))
     records.append(("<support>", d["title"], "E22_Human-Made_Object", f"data:stone_{sid}"))
 
+    # catalogue status from the identifier series (X doubtful, L lost): a property,
+    # so "how many doubtful records are British" is a query, not a file-name count
+    g.add((stone, OGHAM.recordStatus, Literal(record_status(d["ogham_id"]))))
+    # how much doubt the markup records (a profile; weights belong to axis 2)
+    for prop, tag in DOUBT_PROPS:
+        g.add((stone, OGHAM[prop], Literal(d["doubt"].get(tag, 0), datatype=XSD.integer)))
+
     for system, value in d["ids"].items():
         idn = DATA_NS[f"id_{sid}_{system}"]
         g.add((idn, RDF.type, CRM["E42_Identifier"]))
@@ -309,7 +351,7 @@ def build_graph(d: dict):
     g.add((stone, OGHAM["carries"], inscr))
     records.append(("<div type=edition>", d["edition"], "crmtex:TX1_Written_Text", f"data:inscription_{sid}"))
 
-    # competing readings (TX6 Transcription), segments of the TX1, per editor ----
+    # competing readings (ogham:Reading), segments of the TX1, per editor --------
     # (structural only -- the amt:weight belief layer is added in tei--epidoc-amt)
     for r in d["readings"]:
         rd = DATA_NS[f"reading_{sid}_{_slug(r['id'] or r['text'])}"]
@@ -317,10 +359,11 @@ def build_graph(d: dict):
         g.add((rd, RDF.type, OGHAM.Reading))
         g.add((rd, RDFS.label, Literal(r["text"])))
         g.add((inscr, OGHAM["identifiedAs"], rd))     # ontology: ogham:identifiedAs
-        agent = DATA_NS[f"agent_{_slug(r['id'])}"]
-        g.add((agent, RDF.type, PROV.Agent))
-        g.add((agent, RDFS.label, Literal(r["editor"])))
-        g.add((rd, PROV.wasAttributedTo, agent))
+        if r["id"]:      # a <rdg> without @source names no editor: do not invent one
+            agent = DATA_NS[f"agent_{_slug(r['id'])}"]
+            g.add((agent, RDF.type, PROV.Agent))
+            g.add((agent, RDFS.label, Literal(r["editor"])))
+            g.add((rd, PROV.wasAttributedTo, agent))
         kind = "edition" if r["edition"] else "historical"
         records.append((f"<rdg> ({kind})", f"{r['editor']}: {r['text']}",
                         "ogham:Reading", f"data:reading_{sid}_{_slug(r['id'] or r['text'])}"))
@@ -356,6 +399,46 @@ def build_graph(d: dict):
         records.append(("<name nymRef>", name, "E21_Person", f"data:person_{sid}_{_slug(name)}"))
 
     return g, records
+
+
+def doubt_readme_section() -> list[str]:
+    """Doubt markup per stone, and the one place where the method is blind to it."""
+    rows = []
+    for f, base in STONES:
+        d = parse(etree.parse(str(DATA / f)))
+        rows.append((d["title"] or base, d["ogham_id"], record_status(d["ogham_id"]), d["doubt"]))
+    L = ["### Doubt markup per stone\n",
+         "What the edition's own markup records, counted in the transliteration edition(s) "
+         "and the apparatus of each file (the ogham-script edition repeats the same text "
+         "and is not counted). Exported on each stone as `ogham:unclearCount`, "
+         "`ogham:suppliedCount`, `ogham:gapCount`, `ogham:choiceCount`, `ogham:appCount` and "
+         "`ogham:rdgCount`; the catalogue series (X doubtful, L lost) as "
+         "`ogham:recordStatus`.\n",
+         "| stone | id | record status | unclear | supplied | gap | choice | app | rdg |",
+         "|---|---|---|---|---|---|---|---|---|"]
+    for title, oid, status, c in rows:
+        L.append(f"| {title.replace('|', '/')} | `{oid}` | {status} | " +
+                 " | ".join(str(c.get(t, 0)) for _, t in DOUBT_PROPS) + " |")
+    L.append("")
+    L.append("**Limit of the method.** The crosswalk can only export doubt that the editors "
+             "marked up. Bishop Loch (`S-LKS-X01`) shows where that stops. Its markup records "
+             "two gaps and nothing else (the one `<app>` is a note on the direction of "
+             "reading), while whether the marks on the carbonised wooden stick are ogham at "
+             "all is said only in words: \u201cogham-like markings\u201d in the provenance, "
+             "\u201cthe purported ogham inscription\u201d in the condition and the hand note, "
+             "\u201cthe alleged ogham inscription\u201d in the layout. That is doubt about the "
+             "status of the object, not about a letter, and no element in the edition carries "
+             "it. The counts above therefore read as little doubt for the stone about which "
+             "the edition is most doubtful. `ogham:recordStatus` (`doubtful`, from the X "
+             "series) is the only signal the graph has, and it comes from the identifier, "
+             "not from the text.\n")
+    L.append("**Several inscriptions on one object.** Where an edition file holds more than "
+             "one inscription (Blackwaterfoot 1 has three `transliteration` divisions), the "
+             "per-stone graph models the first one as the inscription, while the counts above "
+             "cover the whole file. A `<rdg>` in the apparatus may be a variant of one "
+             "letter group and not a reading of the whole text; it is exported as a reading "
+             "of the stone all the same, and a `<rdg>` without `@source` has no attribution.\n")
+    return L
 
 
 def write_out_readme(results: list[tuple], places_summary: dict | None = None) -> None:
@@ -397,8 +480,8 @@ def write_out_readme(results: list[tuple], places_summary: dict | None = None) -
     add("|---|---|---|---|")
     add("| **CRMtex** (CIDOC CRM text extension) | `crmtex:` | the inscription and its readings | `TX1_Written_Text`, `TXP4_has_segment` (via `ogham:identifiedAs`) |")
     add("| **GeoSPARQL** (OGC) | `geo:` | geometry of places | `geo:asWKT` on `E53_Place` |")
-    add("| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `TX6` |")
-    add("| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | when `<origDate>` is present (none in this corpus yet) |")
+    add("| **PROV-O** (W3C) | `prov:` | attribution of readings to editors | `prov:wasAttributedTo` on each `ogham:Reading` that names a source |")
+    add("| **OWL-Time** (W3C) | `time:` | time-spans, aligned with `E52_Time-Span` | not yet emitted by the per-stone crosswalk (PRIMER.md D2) |")
     add("| **RDFS** (W3C) | `rdfs:` | human-readable labels | `rdfs:label` throughout |")
     add("| **SKOS + Wikidata** | `skos:` / `wd:` | anchoring terms to Wikidata QIDs | "
         "weighted `skos:closeMatch` (materials/types/editors) with `ogham:matchConfidence` + "
@@ -415,7 +498,10 @@ def write_out_readme(results: list[tuple], places_summary: dict | None = None) -
     add("- **Readings → `ogham:Reading`, linked by `ogham:identifiedAs` (a sub-property "
         "of `crmtex:TXP4_has_segment`) from the `TX1`, "
         "`prov:wasAttributedTo` the editor.** This follows the ontology "
-        "(`Reading ⊑ TX6`, `identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2.")
+        "(patched in `ontologies/ogham.ttl`: `Reading ⊑ TX7_Written_Text_Segment`, "
+        "`identifiedAs ⊑ TXP4_has_segment`); weights stay in axis 2. A `<rdg>` with no "
+        "`@source` is a reading without a recorded author and gets no "
+        "`prov:wasAttributedTo`.")
     add("- **Place → `P53_has_former_or_current_location`** (the recorded `<geo>` is the "
         "site/findspot), matching the ontology's `disclosedAt ⊑ P53`; a reconstructed origin "
         "would use `E12_Production` / `P7_took_place_at` instead.\n")
@@ -467,6 +553,8 @@ def write_out_readme(results: list[tuple], places_summary: dict | None = None) -
             v = v if len(v) <= 44 else v[:41] + "…"
             add(f"| `{esc(el)}` | {esc(v) or '—'} | `{esc(klass)}` | `{esc(node)}` |")
         add("")
+
+    L.extend(doubt_readme_section())
 
     if places_summary:
         L.extend(places.readme_section(places_summary))

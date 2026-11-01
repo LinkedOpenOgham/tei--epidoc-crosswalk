@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng"
+schematypens="http://relaxng.org/ns/structure/1.0"?>
+<?xml-model href="https://epidoc.stoa.org/schema/latest/tei-epidoc.rng"
+schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:space="preserve" xml:lang="en">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Blackwaterfoot 1</title>
+                <editor role="editor" xml:id="NW">
+                    <persName>Nora White</persName>
+                    <orgName>Maynooth University, Department of Early Irish</orgName>
+                </editor>
+                <editor role="editor" xml:id="XS">
+                    <persName>Xenia Spanachi</persName>
+                    <orgName>University of Glasgow</orgName>
+                </editor>
+                <editor role="editor" xml:id="POC"><persName>Patricia O Connor</persName>
+                <orgName>Maynooth University, Department of Early Irish</orgName></editor>
+                <funder>Irish Research Council (grant no. IRC/W001985/1) and Arts and Humanities Research Council (grant no. AH/W001985/1)</funder>
+                <funder>
+                    <ref target="https://research.ie/funding/uk-ireland-collaboration-in-the-digital-humanities-research-grants%e2%80%af/?f=principal-investigator-led">UK-Ireland Collaboration in the Digital Humanities Research Grant</ref>
+                </funder>
+                <respStmt>
+                    <name ref="https://orcid.org/0000-0001-7957-651X">Nora White</name>
+                    <resp>data collection, editing and encoding</resp>
+                </respStmt>
+                <respStmt>
+                    <name xml:id="JB">Jeff Bucas</name>
+                    <orgName>Dublin Institute for Advanced Studies</orgName>
+                    <resp>batch conversion to EpiDoc</resp>
+                </respStmt>
+                <respStmt>
+                    <name>Xenia Spanachi</name>
+                    <resp>editing and encoding</resp>
+                </respStmt>
+                <respStmt>
+                    <name ref="https://orcid.org/0000-0003-1011-7539" xml:id="MK">Megan Kasten</name>
+                     <orgName>University of Glasgow (OG(H)AM project)</orgName>
+                    <resp>Capture: Photogrammetry  <date when="2025-06-26"/>; Software: Agisoft Metashape.</resp>
+                </respStmt>
+                <respStmt>
+                <name ref="https://orcid.org/0000-0001-5880-4704">Patricia O Connor</name>
+                <resp>editing and encoding</resp>
+                </respStmt>
+            </titleStmt>
+            <publicationStmt>
+                <authority>OG(H)AM</authority>
+                <idno type="filename">S-BUT-001</idno>
+                <idno type="CISP" corresp="https://www.ucl.ac.uk/archaeology/cisp/database/stone/blfoo_1.html">BLFOO/1</idno>
+                <idno type="CISP" corresp="https://www.ucl.ac.uk/archaeology/cisp/database/stone/blfoo_2.html">BLFOO/2</idno>
+                <idno type="CISP" corresp="https://www.ucl.ac.uk/archaeology/cisp/database/stone/blfoo_3.html">BLFOO/3</idno>
+                <availability>
+                    <licence target="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 Internantional License</licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <msDesc>
+                    <msIdentifier>
+                        <country>Scotland</country>
+                    </msIdentifier>
+                    <msContents>
+                        <msItem>
+                            <textLang mainLang="sga-Ogam">Possibly Old Irish written in ogham script</textLang>  
+                        </msItem>
+                    </msContents>
+                    <physDesc>
+                        <objectDesc>
+                            <supportDesc>
+                                <support><p><ref target="https://www.trove.scot/place/39229">Trove</ref> <idno type="Trove">39229</idno>: King's Cave Drumadoon</p>
+                                    <material type="stone">Sandstone</material>
+                                    <objectType key="monument">Cave wall</objectType>
+                                    <!--<dimensions unit="m">
+                                        <depth>37</depth>
+                                        <width>9</width>
+                                        <height>15 in greatest height</height>CAVE DIMENSIONS-->
+                                    <!--</dimensions>-->       
+                                    <desc type="decoration">The walls of the cave exhibit carvings which span from perhaps the Bronze Age to the present day. The south aisle of the cave is decorated with carvings of <rs type="decoration" key="zoomorphic">horses</rs>, <rs type="decoration" key="zoomorphic">deer</rs>, and <rs type="decoration" key="geometric">concentric circles</rs>. The buttress bears <rs type="decoration" key="cross">a large and a small cross</rs> and the figure of <rs type="decoration" key="anthropomorphic">a man with raised hands holding a curved object above his head</rs>. Towards the entrance, on the south wall there are <rs type="decoration" key="geometric">two triangles</rs> and on the north wall of the south aisle there is a group of <rs type="decoration" key="zoomorphic">serpent-like spirals</rs> (Forsyth 1996, 94-95).</desc>
+                                </support>
+                                <condition>A large irregularly shaped cave divided into two aisles by a rock buttress. There are opposing rows of small holes cut into the rock about 1.5-2m above the present floor which have been interpreted as sockets for small bars of wood (Forsyth 1996, 94). The walls of the cave are full of natural fissures but the south aisle of the cave also exhibits two ogham inscriptions (S-BUT-001, S-BUT-002), an ogham text written in pigment (S-BUT-003), and what appears to be another ogham inscription but may be natural fissures (S-BUT-X01). <q>The condition of the stone does not rule out the possibility that letters have been lost from the beginning and the end of</q> the first inscription, Blackwaterfoot 1 (S-BUT-001) (Forsyth 1996, 96). The inscription is <q>apparently incomplete at both ends</q> (Fisher 2001, 66).
+                                </condition>
+                            </supportDesc>
+                            <layoutDesc>
+                                <layout style="vertical" rend="arris_up">The ogham inscriptions are located on the left-hand wall of the cave, about <height unit="m">2m</height> above the present floor. The Blackwaterfoot 1 (S-BUT-001) inscription is <q>immediately left of the main group of serpents</q> about <dim type="depth" unit="m">9m</dim> from the entrance gate (Fisher 2001, 66). The stem-line is a curving crack of <q>natural origin</q> which runs vertically between two patches of wear, the lower <height unit="m">2.60m</height>, the upper <height unit="m">0.84m</height> (Fisher 2001, 66; Forsyth 1996, 95). Immediately after the end of the upper patch there is a clear cross-stroke where the natural stem appears to end. There is a potential similar stroke below the lower patch, but not absolutely clear. These two end-strokes are about <dim type="length" unit="m">5m</dim> apart. Nothing is visible in the upper patch of wear, in the lower there may be traces of occasional strokes, but these are very faint (Forsyth 1996, 94). The inscription is likely missing letters at both the beginning and the end, there is room for at least 6 letters at the beginning but only a few would fit in the space at the end.
+                                    The Blackwaterfoot 2 inscription (S-BUT-002) is about 1.6m to the right of the Blackwaterfoot 1 inscription and about <depth unit="m">11m</depth> from the entrance of the cave. The Blackwaterfoot 2 inscription has a near vertical stem-line which appears to be artificial. The stem-line <q>extends to the underside of an oblique overhang</q> and is about 300m long (Fisher 2001, 66). It is possible that the Blackwaterfoot 2 inscription might have commenced lower down, in the rough patch immediately before the start of the extant portion of the text. The inscription is unlikely to have extended higher because of a protrubance on the rock face (Forsyth 1996, 97). The stem leans slightly to the right <q>as if the upper part was getting beyond the reach of the carver</q>, suggesting that the inscription was intended to be read from the bottom upwards (Fisher 2001, 98). 
+                                    The pigment-based Blackwaterfoot 3 (S-BUT-003) inscription is painted parallel to and to the right of the Blackwaterfoot 1 inscription (S-BUT-001) on the left-hand wall of the cave, about <height unit="m">2m</height> above the present floor. 
+                                    Forsyth (1996, 95) observed what appears <q>to be further ogham-like marking</q> on what Fisher (2001, 66) described as <q>a shorter natural stem-line</q> to the left of the Blackwaterfoot 1 (S-BUT-001) ogham inscription on the left-hand wall of the cave, about <height unit="m">2m</height> above the present floor. 
+                                </layout>
+                            </layoutDesc>
+                        </objectDesc>
+                        <handDesc>
+                            <handNote>Between the areas of wear, the extant central portion of the inscription exhibits a series of fairly clear ogham strokes between <dim type="length" unit="mm">30 and 40mm</dim> long that are carefully <rs type="execution" key="graffiti" ref="https://www.eagle-network.eu/voc/writing/lod/1.html">chiselled</rs> and neatly spaced.</handNote>
+                            <handNote>The Blackwaterfoot 2 inscription is <rs type="execution" key="graffiti" ref="https://www.eagle-network.eu/voc/writing/lod/1.html">chiselled</rs> in a different hand from the Blackwaterfoot 1 ogham (S-BUT-001) inscription. The strokes and letters are more widely spaced, less carefully parallel and of a more varied length than the Blackwaterfoot 1 inscription. Forsyth (1996, 97) described the Blackwaterfoot 2 inscription as <q>less neat and compact than</q> the Blackwaterfoot 1 inscription. <q>The strokes appear V-shaped in section and are slashed across the surface of the rock. Some strokes, especially to the right of the stem, seem exceptionally long</q>, appearing to extend into the natural fissures (Forsyth 1996, 97).
+                            </handNote>
+                            <handNote>The inscription is <q>not cut into the rock but seems to be scribed in pencil or some kind of ink</q> (Forsyth 1996, 95). Jackson (1973, 95) attributes this <rs type="execution" key="graffiti">painted</rs> ogham inscription to a <q>recent vandal</q>.  <!--<height></height>-->
+                            </handNote>
+                             <handNote>Fisher (2001, 66) noted that the natural stem-line is spanned by <q>a few oblique and transverse strokes which appear to be artificial</q>, but offered no description of the execution technique which remains <rs type="execution" key="graffiti">unknown</rs>. However, Forsyth (1996, 95) cautioned that these markings may <q>be natural fissures in the rock face with only a coincidental resemblance to ogham</q>.<!--<height></height>-->
+                            </handNote>
+                        </handDesc>
+                    </physDesc>
+                    <history>
+                        <origin> 
+                        <origPlace>
+                            <placeName type="parish">Kilmory</placeName>, <placeName type="county">Bute</placeName>, <placeName type="country">Scotland</placeName>
+                            <geo>55.526111, -5.353333</geo>
+                            <note>National Grid Reference: NR 8844 3092</note>
+                        </origPlace>
+                            <origDate notBefore-custom="600" precision="low" evidence="lettering">Sixth to eighth century</origDate>
+                        </origin>
+                        <provenance type="found" when="1968">One of four ogham inscriptions (S-BUT-002; S-BUT-003; S-BUT-X01) found in King's Cave at <placeName type="townland">Drumadoon (<distinct xml:lang="sga">Druim an Dúin</distinct> 'ridge of the fort')</placeName> about 3km north of <placeName type="townland">Blackwaterfoot</placeName>. The animal and geometric carvings in the cave have been known since at least the end of the seventeenth century, but the presence of the Blackwaterfoot 1 (S-BUT-001) ogham inscription was not noticed until about <date>1968</date> (Forsyth 1996, 94). Kenneth Steer and Kenneth Jackson arranged a trip to the cave to examine, measure, and draw the inscription in <date>September 1971</date> (Forsyth 1996, 94). Jackson (1973, 53-54) published the ogham inscription in 1973 and also mentioned another possible ogham text written in pigment, Blackwaterfoot 3 (S-BUT-003), which is parallel to and to the right of this inscription. However, Jackson (1973, 53-54) did not mention the Blackwaterfoot 4 (S-BUT-X01), the <q>ogham-like marking to the left</q> of the Blackwaterfoot 1 (S-BUT-001) inscription, or the Blackwaterfoot 2 ogham inscription (Forsyth 1996, 95). 
+                        </provenance>
+                         <provenance type="found" when="1992">One of four ogham inscriptions (S-BUT-001, S-BUT-003, S-BUT-X01) found in King's Cave at <placeName type="townland">Drumadoon (<distinct xml:lang="sga">Druim an Dúin</distinct> 'ridge of the fort')</placeName> about 3km north of <placeName type="townland">Blackwaterfoot</placeName>. The animal and geometric carvings in the cave have been known since at least the end of the seventeenth century, but the <name xml:id="S-BUT-002">Blackwaterfoot 2</name> ogham inscription was not discovered until <date>1992</date> when Ian Fisher of the Royal Commission on the Ancient and Historical Monuments of Scotland was conducting further survey work on the cave (Forsyth 1996, 94). Kenneth Steer and Kenneth Jackson had previously visited the cave in <date>September 1971</date> to examine, measure, and draw the Blackwater 1 (S-BUT-001) inscription, but the Blackwater 2 (S-BUT-002) inscription went unnoticed even though it is only a short distance away from the Blackwaterfoot 1 (S-BUT-001) inscription. Jackson (1973, 53-54) does not mention the Blackwater 2 (S-BUT-002) inscription in his 1973 publication, nor does he mention the Blackwaterfoot 4 (S-BUT-X01) ogham inscription, however, he does mention another possible ogham text written in pigment, Blackwaterfoot 3 (S-BUT-003), which is parallel to and to the right of Blackwaterfoot 1 (Forsyth 1996, 95).                          
+                        </provenance>
+                        <provenance type="found" when="1921">One of four ogham inscriptions (S-BUT-001, S-BUT-002, S-BUT-X01) found in King's Cave at <placeName type="townland">Drumadoon (<distinct xml:lang="sga">Druim an Dúin</distinct> 'ridge of the fort')</placeName> about 3km north of <placeName type="townland">Blackwaterfoot</placeName>. The animal and geometric carvings in the cave have been known since at least the end of the seventeenth century, but the presence of ogham was not noticed until about <date>1968</date> (Forsyth 1996, 94). However, in <date>1921</date>, L. M. Mann recorded that <q>he cleaned parts of the walls and roof "thoroughly" and he identified oghams adjoining the serpents on the NW wall</q> (Fisher 2001, 160). Although Mann noted the presence of this painted ogham text in a letter to G Baldwin Brown, no publication resulted from Brown's proposed visit (Fisher 2001, 160). As a result, the ogham inscriptions went unnoticed until Kenneth Steer and Kenneth Jackson visited the cave to examine, measure, and draw the Blackwaterfoot 1 inscription in <date>September 1971</date> (Forsyth 1996, 94). Jackson (1973, 53-54) published the Blackwaterfoot 1 (S-BUT-001) ogham inscription in <date>1973</date> and also mentioned this painted ogham text Blackwaterfoot 3 (S-BUT-003), but did not mention the Blackwaterfoot 4 (S-BUT-X01) or the Blackwaterfoot 2 ogham inscriptions (Forsyth 1996, 95). 
+                        </provenance>
+                         <provenance type="found" when="1973">One of four ogham inscriptions (S-BUT-001, S-BUT-002, S-BUT-003) found in King's Cave at <placeName type="townland">Drumadoon (<distinct xml:lang="sga">Druim an Dúin</distinct> 'ridge of the fort')</placeName> about 3km north of <placeName type="townland">Blackwaterfoot</placeName>. The animal and geometric carvings in the cave have been known since at least the end of the seventeenth century, but the presence of these ogham-like marks went unnoticed until they were noted by Forsyth in <date>1996</date> (95). Fisher (2001, 66) provided a short description of the potential ogham inscription in his publication. Although Jackson (1973, 53-54) mentioned both the Blackwaterfoot 1 (S-BUT-001) inscription and the pigment ogham text Blackwaterfoot 3 (S-BUT-003) in his <date>1973</date> publication, he did not mention this inscription (S-BUT-X01) or the Blackwaterfoot 2 (S-BUT-002) inscription.  
+                        </provenance>
+                        <provenance type="observed">In situ. 
+                        </provenance>
+                    </history>
+                </msDesc>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc xmlns:xi="http://www.w3.org/2001/XInclude"><xi:include href="../charDecl.xml" parse="xml" xpointer="symbols"/></encodingDesc>
+        <profileDesc>
+            <calendarDesc>
+                <calendar xml:id="julian">
+                    <p>Julian Calendar</p>
+                </calendar>
+            </calendarDesc>
+            <langUsage>
+                <language ident="en">English</language>
+                <language ident="la">Latin</language>
+                <language ident="pgl">Primitive Irish</language>
+                <language ident="sga">Old Irish</language>
+                <language ident="mga">Middle Irish</language>
+                <language ident="ga">Irish</language>
+                <language ident="xpi">Pictish</language>   
+
+            </langUsage>
+            <textClass> 
+                <keywords scheme="https://ontology.inscriptiones.org/type_of_inscription/#vocabularies">
+                    <term ref="https://ontology.inscriptiones.org/type_of_inscription/Unable_to_determine">Unable to determine</term>
+                </keywords>
+            </textClass>
+            <!--<creation></creation>-->
+        </profileDesc>
+        <revisionDesc status="draft">
+            <listChange>
+                <change when="2022-09-28" who="#JB">Jef Bucas autogenerated EpiDoc output from spreadsheet</change>   
+                <change when="2024-01-22" who="NW">Nora White updated template, including removing # from bibl tag</change>
+                <change when="2024-06-22" who="XS">Xenia Spanachi added and encoded further data, including information on layout, condition, execution and provenance</change>
+                <change when="2024-06-27" who="#XS">Xenia Spanachi updated languageUsage to include Goedelic/Scottish Gaelic and mainLang accordingly</change>
+                <change when="2024-06-28" who="#XS">Xenia Spanachi updated all mm measurements to cm or m</change>
+                <change when="2024-07-10" who="#XS">Xenia updated transcription and transliteration according to new updated readings spreadsheet</change>
+                <change when="2024-07-25" who="#POC">Added encodingDesc for character encoding.</change>
+                <change when="2024-09-05" who="#POC">Added paragraph to support and National Grid Reference details, closed unused elements, updated handNote, commented out apparatus and translation</change>
+                <change when="2025-02-19" who="#POC">Proofreading updates</change>                       
+                <change when="2025-03-06" who="#POC">Proofreading updates, added more information from Forsyth 1996, added images and date range</change> 
+                <change when="2025-03-10" who="#POC">Proofreading updates, corrected bibl reference and added citedRange details, updated layout and condition</change>
+                <change when="2025-03-11" who="#POC">Proofreading updates, updated provenance, condition, layout, bibl, handNote, apparatus, translation, and commentary</change>
+                <change when="2025-03-12" who="#POC">Added Jackson's remarks on the inscription, added attribute to material</change>
+                <change when="2025-03-18" who="#POC">Added key to objectType, added decoration section, removed enter key spaces from edition to fix stemline.</change>
+                <change when="2025-03-19" who="#POC">Update objectType key attribute value, added style attribute to layout, added country placename to origPlace section, added CISP link, added key for decorative elements</change>
+                <change when="2025-03-27" who="#POC">Updated decoration attributes for filtering</change>
+                <change when="2025-04-14" who="#POC">Updated execution type</change>
+                <change when="2025-05-12" who="#POC">Condense provenance and condition, added persName to personal names mentioned in commentary</change>
+                <change when="2025-05-16" who="#POC">Update text lang and translation</change>
+                <change when="2025-05-19" who="#POC">Remove Scottish Gaelic, corrected lang code</change>
+                <change when="2025-05-20" who="#POC">Replace Canmore with Trove link</change>
+                <change when="2025-06-04" who="#POC">Update execution encoding key to graffiti and remove graffiti reference from object type value</change>
+                <change when="2025-05-26" who="#POC">Update image link</change>
+                <change when="2025-06-27" who="#POC">Add ab (string without diacritics) for display list to edition</change>
+                <change when="2025-08-19" who="#MK">Renumbering of Bute/Arran inscriptions; all inscriptions from Blackwaterfoot will be listed under S-BUT-001. Inchmarnock slates will occupy S-BUT-002, 3 and 4. S-BUT-001 needs further work - more inscriptions were discovered.</change>
+                <change when="2026-02-13" who="#POC">Replace scaled images with originals, removed superfluous respStmt tag</change>
+            </listChange>
+        </revisionDesc>
+    </teiHeader>
+    <facsimile>
+        <graphic url="SCO/S-BUT-001-Blackwaterfoot1.JPG"><desc>Photograph by Megan Kasten</desc></graphic>
+        <graphic url="SCO/Kings-Cave-a.JPG"><desc>Photograph by Megan Kasten</desc></graphic>
+        <graphic url="SCO/Kings-Cave-b.JPG"><desc>Photograph by Megan Kasten</desc></graphic>
+        <graphic url="SCO/Kings-Cave-c.JPG"><desc>Photograph by Megan Kasten</desc></graphic>
+        <media url="example.jpg" mimeType="html"><desc>[e.g. 3d model by Megan on SketchFab]</desc></media>
+    </facsimile>
+    <text>
+        <body>
+            <div type="edition" subtype="ogham" xml:space="preserve" xml:lang="sga-Ogam" source="JAC1973" resp="XS"> 
+                <div type="textpart" n="1">
+                <ab>
+                    <lb n="1" style="text-direction:up"/><gap reason="lost" extent="unknown" unit="character"/>ᚋᚓᚊ<choice resp="KF"><unclear cert="low">ᚓ</unclear><unclear cert="low">ᚔ</unclear></choice><gap reason="lost" extent="unknown" unit="character"/>
+                </ab>
+            </div>
+            </div>
+            <div type="edition" subtype="transliteration" xml:lang="sga-Ogam" xml:space="preserve" resp="#KF">
+                <ab>
+                   <lb n="1" style="text-direction:up"/><gap reason="lost" extent="unknown" unit="character"/>MEQ<choice resp="KF"><unclear cert="low">E</unclear><unclear cert="low">I</unclear></choice><gap reason="lost" extent="unknown" unit="character"/>
+                </ab>
+                <ab type="list">[---]MEQE[---]</ab>
+            </div>
+            <div type="edition" subtype="ogham" xml:space="preserve" xml:lang="und-Ogam" resp="#XS">   
+                <div type="textpart" n="2">
+                <ab>
+                    <lb n="1" style="text-direction:up"/><gap reason="lost" extent="unknown" unit="character"/>ᚃᚒᚓᚇᚂᚐ
+                </ab>
+                </div>
+            </div>
+            <div type="edition" subtype="transliteration" xml:lang="und-Ogam" xml:space="preserve" resp="#KF">
+                <ab>
+                    <lb n="1" style="text-direction:up"/><gap reason="lost" extent="unknown" unit="character"/>VUEDLA
+                </ab>
+                <ab type="list">[---]VUEDLA</ab>
+            </div>
+        <!--<div type="edition" subtype="ogham" xml:space="preserve" xml:lang="und-Ogam" resp="#NW"><!-\-update lang and resp here-\->     
+            <div type="textpart" n="3">
+                <ab>
+                    <lb n="1" style="text-direction:up"/>
+                    
+                </ab> 
+            </div>
+            </div>-->
+            <!--<div type="edition" subtype="transliteration" xml:lang="und-Ogam" xml:space="preserve" resp="#NW">
+                <ab>
+                    <lb n="1" style="text-direction:up"/>
+                </ab>
+            </div>-->
+            <div type="edition" subtype="ogham" xml:space="preserve" xml:lang="und-Ogam" resp="#NW"> 
+                 <div type="textpart" n="4">
+                <ab>
+                    <lb n="1" style="text-direction:up"/>
+                    
+                </ab> 
+            </div>
+            </div>
+            <div type="edition" subtype="transliteration" xml:lang="und-Ogam" xml:space="preserve" resp="#NW">
+                <ab>
+                    <lb n="1" style="text-direction:up"/>
+                </ab>
+            </div>
+            <div type="apparatus">
+                <listApp>
+                    <app n="1">
+                        <note>For the first inscription, Jackson (1973, 54) observed that the <q>inscription lacks any typically Pictish features such as the frequent opposing diagonal slope in the H-series versus the B-series of consonants, the not uncommon line linking the ends of all strokes ("bind-ogams"), the appearance of the  <distinct xml:lang="ga">forfeda</distinct>, or the use of the "feather symbol" at the beginning and ends</q>.</note>
+                    </app>
+                    <app n="2">
+                     <note>For the first inscription, Jackson (1973, 53) read:  </note>
+                        <rdg>EOMEDTE or EOMEQE</rdg>
+                    </app>
+                    <app n="3">
+                        <note>For the first inscription, in the unlikely event of the text being read downwards, Jackson (1973, 53) also read: </note>
+                        <rdg>EVLEMOE or ENEMOE</rdg>
+                    </app>
+                    <app n="4">
+                        <note>For the first inscription, Forsyth (1996, 96) proposed the following reading: </note>
+                        <rdg>H(i/e)OMEQ(i/e)[~]</rdg>
+                    </app>
+                    <app n="5">
+                        <note>For the second inscription, as Forsyth (1996, 98) remarks, precedent is firmly against a top-down reading of the inscription which would produce:</note>
+                        <rdg source="FOR1996">ADLEUV</rdg>
+                    </app>
+                <app n="6">  
+                    <note>For the second inscription, the first letter consists of three strokes to the right - V. However, the second stroke appears to run obliquely. The divergence of the second stroke to the first letter raises the possibility that this group of three strokes is meant to be interpreted as two letters from the same  <distinct xml:lang="ga">aicme</distinct>, B and L, which would yield the following reading:</note>
+                    <rdg source="FOR1996">BLUEDLA</rdg>
+                </app>
+                    <app n="7">
+                        <note>For the second inscription, Fisher (2001, 66) maintains that <q>several of the horizontal lines which abut or span</q> the inscription <q>are probably natural cracks</q> and that <q>no interpretation can be suggested for the possible reading</q>:</note>
+                        <rdg source="FIS2001">LUEDBH</rdg></app>
+                    <app n="8">
+                        <note>For the third inscription, Jackson (1973, 54) considered this <q>a piece of modern vandalism</q> and did not supply a reading (Forsyth 1996, 95).</note>  </app>
+                    <app n="9">  
+                    <note>For the fourth inscription, Fisher (2001) maintained that <q>no transcription can be suggested</q> and did not provide a reading.</note>
+                </app>
+            
+                </listApp>
+            </div>
+            <div type="translation">
+                <div type="textpart" n="1">
+                <p>1: ? son of ?</p>
+            </div>
+                <div type="textpart" n="2">
+                <p>2: No translation can be provided.</p>
+                </div>
+                 <div type="textpart" n="3">
+                     <p>No translation can be provided.</p>
+                 </div>
+                 <div type="textpart" n="4">
+                     <p>No translation can be provided.</p>
+                 </div>
+            </div>
+            <div type="commentary">      
+                <p>For the first inscription, the MEQ may represent OIr. <distinct xml:lang="sga"><ref target="https://dil.ie/31166">maicc</ref></distinct> (gen. of macc) which means 'son' (Forsyth 1996, 96). It is likely that the inscription followed the traditional formula 'X MAQQI Y', but only <q>the last two letters of the first name, and at most, the first letter of the second</q> survive (Forsyth 1996, 96).</p>
+                <p>For the second inscription, the name Vuedla calls to mind the uidlua, 'wise woman, witch' from *<distinct xml:lang="xtg">wid</distinct> which means 'to see, to know', of the famous Gaulish inscription from Larzac. The Irish reflex (*<distinct xml:lang="sga">widlma</distinct>) appears as the name of the seeress <persName xml:lang="sga">Fedelm</persName>, in <title>Táin Bó Cuailgne</title>, and of a number of famous early Irish women, legendary and historical (Forsyth 1996, 99).</p>
+                <p>As Forsyth observed (1996, 97), if the inscription is as late as the eighth century, the -eo could be the genitival ending of an i-stem personal name, eg. <persName xml:lang="sga">Fedlimd</persName>, <persName xml:lang="sga">Fedlimtheo</persName>. Alternatively, it could be the end of the nominative of a name such as <persName xml:lang="sga">Reo</persName>, <persName xml:lang="sga">Buaidbeo</persName> or one of the compounds with second element <distinct xml:lang="sga"><ref target="https://dil.ie/33151">Nia/Nio</ref></distinct>, such as <persName xml:lang="sga">Flaithnia</persName> and <persName xml:lang="sga">Maicnio</persName>.</p>
+                                <p>That the Blackwaterfoot 1 and Blackwaterfoot 2 (S-BUT-002) ogham inscriptions are contemporary with one another or with any other of the carvings in the cave cannot be proved (Forsyth 1996, 95). However, it is clear that both are examples of casual graffiti.</p> 
+                <p>According to Forsyth (19996, 99), the Blackwaterfoot inscriptions <q>could be as early as the Pool ogham (sixth century) or later than Dunadd (late eighth century?)</q>.</p>
+                <p>For the third inscription, the OG(H)AM team's examination of the 3D model confirmed that the ogham text is written in pigment and not incised. </p>
+                <p>For the fourth inscription, information about the inscription and its possible language and meaning is limited due to lack of publications.</p>
+            </div>
+            <div type="bibliography">
+                <listBibl>
+                    <bibl>
+                        <ptr target="FIS2001"/>
+                        <citedRange>65-69; 159-160</citedRange>
+                    </bibl>
+                    <bibl>
+                        <ptr target="FOR1996"/>
+                            <citedRange>93-100</citedRange>
+                    </bibl>
+                    <bibl>
+                        <ptr target="JAC1973"/>
+                    <citedRange>53-54</citedRange>
+                    </bibl>
+                </listBibl>
+            </div>
+        </body>
+    </text>
+</TEI>

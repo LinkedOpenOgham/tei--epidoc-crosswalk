@@ -145,6 +145,13 @@ ogham:anonymousInEdition a owl:DatatypeProperty ;
     rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
     rdfs:range xsd:boolean .
 
+ogham:appCount a owl:DatatypeProperty ;
+    rdfs:label "number of <app> entries" ;
+    rdfs:comment "Apparatus entries, in the edition and in the separate apparatus division. Proposed term." ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:integer .
+
 ogham:brash_1879 a ogham:Book,
         owl:NamedIndividual ;
     rdfs:label "Brash (1879)"@en ;
@@ -166,6 +173,13 @@ ogham:centroid a owl:ObjectProperty ;
     rdfs:domain geo:SpatialObject ;
     rdfs:range geo:SpatialObject ;
     rdfs:subPropertyOf ogham:hasPointGeometry .
+
+ogham:choiceCount a owl:DatatypeProperty ;
+    rdfs:label "number of <choice> in the edition" ;
+    rdfs:comment "Places where the edition gives alternatives (for example sic/corr). Proposed term." ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:integer .
 
 ogham:clusteredArea a owl:ObjectProperty ;
     rdfs:label "has clustered area"@en ;
@@ -256,6 +270,13 @@ ogham:form a owl:DatatypeProperty ;
     rdfs:domain ogham:OghamStone ;
     rdfs:isDefinedBy <https://www.ucl.ac.uk/archaeology/cisp/database/manual/node3.html#SECTION00335000000000000000> ;
     rdfs:range xsd:string .
+
+ogham:gapCount a owl:DatatypeProperty ;
+    rdfs:label "number of <gap> in the edition" ;
+    rdfs:comment "Stretches of lost or illegible text. Proposed term." ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:integer .
 
 ogham:geoCertainty a owl:DatatypeProperty ;
     rdfs:label "editorial certainty on the coordinate" ;
@@ -500,6 +521,20 @@ ogham:raftery_1960 a ogham:Book,
     rdfs:label "Raftery (1960)"@en ;
     rdfs:isDefinedBy "Raftery, B. (1960) `National Museum of Ireland, Arch. acquisitions 1958' Journal of the Royal Society of Antiquaries of Ireland 90: 1--40."@en .
 
+ogham:rdgCount a owl:DatatypeProperty ;
+    rdfs:label "number of <rdg> alternatives" ;
+    rdfs:comment "Variant readings recorded in apparatus entries. One <rdg> is not always a reading of the whole text. Proposed term." ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:integer .
+
+ogham:recordStatus a owl:DatatypeProperty ;
+    rdfs:label "catalogue status of the record" ;
+    rdfs:comment "numbered (an extant, catalogued stone), lost (series L: the stone is gone) or doubtful (series X: not accepted as ogham, or findspot uncertain). Read from the series letter of the OG(H)AM identifier, e.g. S-LKS-X01. Proposed term." ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:string .
+
 ogham:reference a owl:DatatypeProperty ;
     rdfs:label "reference work"@en ;
     rdfs:domain ontology:Word ;
@@ -573,6 +608,13 @@ ogham:smr_no a owl:DatatypeProperty ;
     rdfs:domain ogham:OghamStone ;
     rdfs:range xsd:string .
 
+ogham:suppliedCount a owl:DatatypeProperty ;
+    rdfs:label "number of <supplied> in the edition" ;
+    rdfs:comment "Letters the editor restored where the stone is damaged. Proposed term." ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:integer .
+
 ogham:t_status a owl:DatatypeProperty ;
     rdfs:label "thickness staus"@en ;
     rdfs:domain ogham:OghamStone ;
@@ -587,6 +629,13 @@ ogham:translation a owl:DatatypeProperty ;
     rdfs:label "translation"@en ;
     rdfs:domain ontology:Word ;
     rdfs:range xsd:string .
+
+ogham:unclearCount a owl:DatatypeProperty ;
+    rdfs:label "number of <unclear> in the edition" ;
+    rdfs:comment "Letters the editor could read only with doubt. Counted in the transliteration edition(s) of the file, not in the duplicate ogham edition. Proposed term." ;
+    rdfs:domain ogham:OghamStone ;
+    rdfs:isDefinedBy <https://github.com/LinkedOpenOgham/tei--epidoc-crosswalk> ;
+    rdfs:range xsd:integer .
 
 ogham:w_status a owl:DatatypeProperty ;
     rdfs:label "width status"@en ;
@@ -1163,10 +1212,6 @@ ogham:Book a owl:Class ;
     rdfs:label "Book"@en ;
     rdfs:subClassOf crm:E22_Human-Made_Object .
 
-ogham:OghamStone a owl:Class ;
-    rdfs:label "Ogham Stone"@en ;
-    rdfs:subClassOf ogham:OghamCollection .
-
 geo:SpatialObject a owl:Class ;
     rdfs:label "Spatial Object"@en ;
     rdfs:subClassOf crm:E53_Place .
@@ -1174,4 +1219,8 @@ geo:SpatialObject a owl:Class ;
 <https://www.w3.org/2000/01/rdf-schema#Resource> a owl:Class ;
     rdfs:label "Resource"@en ;
     skos:definition "The class resource, everything."@en .
+
+ogham:OghamStone a owl:Class ;
+    rdfs:label "Ogham Stone"@en ;
+    rdfs:subClassOf ogham:OghamCollection .
 

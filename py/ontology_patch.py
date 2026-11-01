@@ -59,6 +59,33 @@ DROP = [
 # Properties the crosswalk needs and the ontology does not yet carry.
 # (name, kind, domain, range, label, comment)
 ADDITIONS = [
+    ("recordStatus", OWL.DatatypeProperty, OG["OghamStone"], XSD.string,
+     "catalogue status of the record",
+     "numbered (an extant, catalogued stone), lost (series L: the stone is gone) or "
+     "doubtful (series X: not accepted as ogham, or findspot uncertain). Read from the "
+     "series letter of the OG(H)AM identifier, e.g. S-LKS-X01. Proposed term."),
+    ("unclearCount", OWL.DatatypeProperty, OG["OghamStone"], XSD.integer,
+     "number of <unclear> in the edition",
+     "Letters the editor could read only with doubt. Counted in the transliteration "
+     "edition(s) of the file, not in the duplicate ogham edition. Proposed term."),
+    ("suppliedCount", OWL.DatatypeProperty, OG["OghamStone"], XSD.integer,
+     "number of <supplied> in the edition",
+     "Letters the editor restored where the stone is damaged. Proposed term."),
+    ("gapCount", OWL.DatatypeProperty, OG["OghamStone"], XSD.integer,
+     "number of <gap> in the edition",
+     "Stretches of lost or illegible text. Proposed term."),
+    ("choiceCount", OWL.DatatypeProperty, OG["OghamStone"], XSD.integer,
+     "number of <choice> in the edition",
+     "Places where the edition gives alternatives (for example sic/corr). "
+     "Proposed term."),
+    ("appCount", OWL.DatatypeProperty, OG["OghamStone"], XSD.integer,
+     "number of <app> entries",
+     "Apparatus entries, in the edition and in the separate apparatus division. "
+     "Proposed term."),
+    ("rdgCount", OWL.DatatypeProperty, OG["OghamStone"], XSD.integer,
+     "number of <rdg> alternatives",
+     "Variant readings recorded in apparatus entries. One <rdg> is not always a "
+     "reading of the whole text. Proposed term."),
     ("geoStatus", OWL.DatatypeProperty, OG["Place"], XSD.string,
      "findspot coordinate status",
      "How the coordinate of a findspot stands in the edition: asserted (a plain "

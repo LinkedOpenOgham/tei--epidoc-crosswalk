@@ -10,73 +10,73 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 data:match_keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q17779528 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum .
 
 data:match_keeper_Brecknock_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q15204378 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Brecknock_Museum .
 
 data:match_keeper_British_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q6373 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_British_Museum .
 
 data:match_keeper_Bute_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q17775932 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Bute_Museum .
 
 data:match_keeper_Cork_Public_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q24041450 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Cork_Public_Museum .
 
 data:match_keeper_Dumfries_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q5313798 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Dumfries_Museum .
 
 data:match_keeper_Dunrobin_Castle_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q72011449 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Dunrobin_Castle_Museum .
 
 data:match_keeper_Herbert_Art_Gallery_and_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q917262 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Herbert_Art_Gallery_and_Museum .
 
 data:match_keeper_Kerry_County_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q6394504 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Kerry_County_Museum .
@@ -98,17 +98,17 @@ data:match_keeper_M_saem_Chorca_Dhuibhne a rdf:Statement ;
     rdf:subject data:keeper_M_saem_Chorca_Dhuibhne .
 
 data:match_keeper_Manx_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q11988082 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Manx_Museum .
 
 data:match_keeper_Margam_Stones_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q6759082 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Margam_Stones_Museum .
@@ -122,121 +122,121 @@ data:match_keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway a rdf:Statement ;
     rdf:subject data:keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway .
 
 data:match_keeper_National_Museum_Wales a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q1321874 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_National_Museum_Wales .
 
 data:match_keeper_National_Museum_of_Ireland a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q1672840 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_National_Museum_of_Ireland .
 
 data:match_keeper_National_Museums_of_Scotland a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q1967502 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_National_Museums_of_Scotland .
 
 data:match_keeper_Norwich_Castle_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q55361621 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Norwich_Castle_Museum .
 
 data:match_keeper_Orkney_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q2383929 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Orkney_Museum .
 
 data:match_keeper_Perth_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q122199223 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Perth_Museum .
 
 data:match_keeper_Pitt_Rivers_Museum_Oxford a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q1456119 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Pitt_Rivers_Museum_Oxford .
 
 data:match_keeper_Reading_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q6941004 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Reading_Museum .
 
 data:match_keeper_Rothe_House_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q3752845 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Rothe_House_Museum .
 
 data:match_keeper_Royal_Cornwall_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q1251321 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Royal_Cornwall_Museum .
 
 data:match_keeper_Shetland_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q2278527 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Shetland_Museum .
 
 data:match_keeper_Swansea_Museum a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q7653706 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Swansea_Museum .
 
 data:match_keeper_Trinity_College_Dublin a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q258464 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Trinity_College_Dublin .
 
 data:match_keeper_Ulster_Museum_Belfast a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q3547979 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_Ulster_Museum_Belfast .
 
 data:match_keeper_University_College_Cork a rdf:Statement ;
-    amt:weight 0.70 ;
-    ogham:matchConfidence 0.70 ;
-    ogham:matchStatus "auto" ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchStatus "verified" ;
     rdf:object wd:Q1574185 ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:keeper_University_College_Cork .
@@ -901,37 +901,37 @@ data:keeper_Ulster_Museum_Belfast a crm:E74_Group ;
 
 data:place_keeper_Armagh_Robinson_library_No_5_Vicars_Hill_Museum a crm:E53_Place ;
     rdfs:label "Armagh Robinson library (No 5 Vicars’ Hill Museum) (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-6.65715 54.3486)"^^geo:wktLiteral .
 
 data:place_keeper_Brecknock_Museum a crm:E53_Place ;
     rdfs:label "Brecknock Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.3893 51.9462)"^^geo:wktLiteral .
 
 data:place_keeper_Bute_Museum a crm:E53_Place ;
     rdfs:label "Bute Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-5.05489 55.8359)"^^geo:wktLiteral .
 
 data:place_keeper_Cyfarthfa_Museum a crm:E53_Place ;
     rdfs:label "Cyfarthfa Museum (present location)" ;
-    ogham:geocodedFrom "osm" ;
+    ogham:geocodedFrom "osm-id" ;
     geo:asWKT "POINT(-3.389848 51.756656)"^^geo:wktLiteral .
 
 data:place_keeper_Dumfries_Museum a crm:E53_Place ;
     rdfs:label "Dumfries Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.6146 55.0652)"^^geo:wktLiteral .
 
 data:place_keeper_Dunrobin_Castle_Museum a crm:E53_Place ;
     rdfs:label "Dunrobin Castle Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.942489 57.982333)"^^geo:wktLiteral .
 
 data:place_keeper_Herbert_Art_Gallery_and_Museum a crm:E53_Place ;
     rdfs:label "Herbert Art Gallery and Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-1.506222 52.407222)"^^geo:wktLiteral .
 
 data:place_keeper_Live_Borders_Library_HQ_Selkirk a crm:E53_Place ;
@@ -961,32 +961,32 @@ data:place_keeper_Museum_nan_Eilean_in_Ste_rnabhagh_Stornoway a crm:E53_Place ;
 
 data:place_keeper_Norwich_Castle_Museum a crm:E53_Place ;
     rdfs:label "Norwich Castle Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(1.2964 52.6286)"^^geo:wktLiteral .
 
 data:place_keeper_Perth_Museum a crm:E53_Place ;
     rdfs:label "Perth Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.4294 56.39585)"^^geo:wktLiteral .
 
 data:place_keeper_Reading_Museum a crm:E53_Place ;
     rdfs:label "Reading Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-0.969885 51.457134)"^^geo:wktLiteral .
 
 data:place_keeper_Rothe_House_Museum a crm:E53_Place ;
     rdfs:label "Rothe House Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-7.254954 52.654709)"^^geo:wktLiteral .
 
 data:place_keeper_Royal_Cornwall_Museum a crm:E53_Place ;
     rdfs:label "Royal Cornwall Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-5.0548 50.2637)"^^geo:wktLiteral .
 
 data:place_keeper_Shetland_Museum a crm:E53_Place ;
     rdfs:label "Shetland Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-1.150111 60.157833)"^^geo:wktLiteral .
 
 data:place_keeper_St_Brynach_s_Church a crm:E53_Place ;
@@ -996,17 +996,17 @@ data:place_keeper_St_Brynach_s_Church a crm:E53_Place ;
 
 data:place_keeper_St_Vigeans_Museum a crm:E53_Place ;
     rdfs:label "St Vigeans Museum (present location)" ;
-    ogham:geocodedFrom "osm" ;
+    ogham:geocodedFrom "osm-id" ;
     geo:asWKT "POINT(-2.590367 56.577007)"^^geo:wktLiteral .
 
 data:place_keeper_Swansea_Museum a crm:E53_Place ;
     rdfs:label "Swansea Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.9381 51.6178)"^^geo:wktLiteral .
 
 data:place_keeper_Ulster_Museum_Belfast a crm:E53_Place ;
     rdfs:label "Ulster Museum, Belfast (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-5.935 54.582)"^^geo:wktLiteral .
 
 data:keeper_Margam_Stones_Museum a crm:E74_Group ;
@@ -1021,22 +1021,22 @@ data:keeper_Trinity_College_Dublin a crm:E74_Group ;
 
 data:place_keeper_Carmarthen_Museum_Abergwili a crm:E53_Place ;
     rdfs:label "Carmarthen Museum, Abergwili (present location)" ;
-    ogham:geocodedFrom "osm" ;
+    ogham:geocodedFrom "osm-id" ;
     geo:asWKT "POINT(-4.265748 51.865495)"^^geo:wktLiteral .
 
 data:place_keeper_Margam_Stones_Museum a crm:E53_Place ;
     rdfs:label "Margam Stones Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.73057 51.56327)"^^geo:wktLiteral .
 
 data:place_keeper_Millstreet_Museum a crm:E53_Place ;
     rdfs:label "Millstreet Museum (present location)" ;
-    ogham:geocodedFrom "osm" ;
+    ogham:geocodedFrom "osm-id" ;
     geo:asWKT "POINT(-9.06717 52.059744)"^^geo:wktLiteral .
 
 data:place_keeper_Trinity_College_Dublin a crm:E53_Place ;
     rdfs:label "Trinity College Dublin (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-6.2577 53.3444)"^^geo:wktLiteral .
 
 data:keeper_Kerry_County_Museum a crm:E74_Group ;
@@ -1061,22 +1061,22 @@ data:keeper_Pitt_Rivers_Museum_Oxford a crm:E74_Group ;
 
 data:place_keeper_Kerry_County_Museum a crm:E53_Place ;
     rdfs:label "Kerry County Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-9.7059 52.2669)"^^geo:wktLiteral .
 
 data:place_keeper_National_Museum_Wales a crm:E53_Place ;
     rdfs:label "National Museum Wales (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.177128 51.485577)"^^geo:wktLiteral .
 
 data:place_keeper_Orkney_Museum a crm:E53_Place ;
     rdfs:label "Orkney Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-2.96084 58.98152)"^^geo:wktLiteral .
 
 data:place_keeper_Pitt_Rivers_Museum_Oxford a crm:E53_Place ;
     rdfs:label "Pitt-Rivers Museum, Oxford (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-1.255 51.758611)"^^geo:wktLiteral .
 
 data:keeper_Cork_Public_Museum a crm:E74_Group ;
@@ -1091,7 +1091,7 @@ data:keeper_M_saem_Chorca_Dhuibhne a crm:E74_Group ;
 
 data:place_keeper_Cork_Public_Museum a crm:E53_Place ;
     rdfs:label "Cork Public Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-8.4943 51.8961)"^^geo:wktLiteral .
 
 data:place_keeper_M_saem_Chorca_Dhuibhne a crm:E53_Place ;
@@ -1106,7 +1106,7 @@ data:keeper_Manx_Museum a crm:E74_Group ;
 
 data:place_keeper_Manx_Museum a crm:E53_Place ;
     rdfs:label "Manx Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-4.48187 54.15445)"^^geo:wktLiteral .
 
 data:keeper_British_Museum a crm:E74_Group ;
@@ -1116,7 +1116,7 @@ data:keeper_British_Museum a crm:E74_Group ;
 
 data:place_keeper_British_Museum a crm:E53_Place ;
     rdfs:label "British Museum (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-0.126944 51.519444)"^^geo:wktLiteral .
 
 data:keeper_National_Museums_of_Scotland a crm:E74_Group ;
@@ -1126,7 +1126,7 @@ data:keeper_National_Museums_of_Scotland a crm:E74_Group ;
 
 data:place_keeper_National_Museums_of_Scotland a crm:E53_Place ;
     rdfs:label "National Museums of Scotland (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-3.189 55.947)"^^geo:wktLiteral .
 
 data:keeper_University_College_Cork a crm:E74_Group ;
@@ -1136,7 +1136,7 @@ data:keeper_University_College_Cork a crm:E74_Group ;
 
 data:place_keeper_University_College_Cork a crm:E53_Place ;
     rdfs:label "University College Cork (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-8.49289 51.89291)"^^geo:wktLiteral .
 
 data:keeper_National_Museum_of_Ireland a crm:E74_Group ;
@@ -1146,6 +1146,6 @@ data:keeper_National_Museum_of_Ireland a crm:E74_Group ;
 
 data:place_keeper_National_Museum_of_Ireland a crm:E53_Place ;
     rdfs:label "National Museum of Ireland (present location)" ;
-    ogham:geocodedFrom "wikidata" ;
+    ogham:geocodedFrom "wikidata-qid" ;
     geo:asWKT "POINT(-6.254722 53.340278)"^^geo:wktLiteral .
 
