@@ -231,7 +231,7 @@ What the edition's own markup records, counted in the transliteration edition(s)
 
 ## 8. The place layer across the whole corpus (`places.crm.ttl`)
 
-`main.py` crosswalks a few stones in full; the place layer crosswalks **one aspect across every EpiDoc file it is given** (`--corpus`, default `data/`). This run read **506 files** (504 editions, 2 template/test files skipped) and produced **391 distinct places** over 12 administrative levels, 146 gazetteer links and 10557 triples.
+`main.py` crosswalks a few stones in full; the place layer crosswalks **one aspect across every EpiDoc file it is given** (`--corpus`, default `data/`). This run read **508 files** (506 editions, 2 template/test files skipped) and produced **393 distinct places** over 12 administrative levels, 148 gazetteer links and 10616 triples.
 
 | EpiDoc | Linked Open Ogham class | CIDOC CRM | property |
 |---|---|---|---|
@@ -250,7 +250,7 @@ What the edition's own markup records, counted in the transliteration edition(s)
 
 | `ogham:geoStatus` | n | meaning |
 |---|---|---|
-| `asserted` | 475 | bare coordinate pair, no hedge |
+| `asserted` | 477 | bare coordinate pair, no hedge |
 | `qualified` | 6 | coordinates plus `@cert` or a textual hedge |
 | `textual_only` | 3 | prose in `<geo>`, no numbers |
 | `supplied` | 3 | empty in the edition, filled from an outside source |
@@ -260,7 +260,7 @@ This is the **hand-over point to axis 2**: `tei--epidoc-amt` turns `geoStatus`/`
 
 ### Side outputs
 
-`places.csv` (504 rows) and `places.geojson` (484 points, WGS84) are written from the same parse, so the table, the map layer and the graph cannot drift apart. Each GeoJSON feature carries the URI of its `data:findspot_*` node, which is how a map click gets back into the graph.
+`places.csv` (506 rows) and `places.geojson` (486 points, WGS84) are written from the same parse, so the table, the map layer and the graph cannot drift apart. Each GeoJSON feature carries the URI of its `data:findspot_*` node, which is how a map click gets back into the graph.
 
 ### Which corpus state this is
 
@@ -268,10 +268,10 @@ The editions are a living repository, so the graph records what it was built fro
 
 | | |
 |---|---|
-| upstream commit | `bb62ccd146cc` (2026-07-02) |
-| fetched | 2026-07-30 |
-| editions | 504 |
-| tree | <https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML> |
+| upstream commit | `9a68afd5157d` (2026-10-29) |
+| fetched | 2026-11-01 |
+| editions | 506 |
+| tree | <https://github.com/lguariento/og-h-am/tree/9a68afd5157dec5998252cc0b6e43732b283246d/XML> |
 
-`py/webmap.py` publishes the same records as a Leaflet map in `docs/` (484 points), which is what GitHub Pages serves. Nothing there re-parses the XML, so map, table and graph cannot disagree.
+`py/webmap.py` publishes the same records as a Leaflet map in `docs/` (486 points), which is what GitHub Pages serves. Nothing there re-parses the XML, so map, table and graph cannot disagree.
 

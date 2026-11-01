@@ -9227,6 +9227,35 @@
   },
   {
    "type": "Feature",
+   "id": "I-KIK-015",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -7.1286,
+     52.5317
+    ]
+   },
+   "properties": {
+    "file": "I-KIK-015.xml",
+    "stone_key": "I-KIK-015",
+    "ogham_id": "I-KIK-015",
+    "title": "Cloch an Bhródaigh | Cloghabrody",
+    "cisp": "THOTO/1",
+    "cisp_url": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/THOTO/1.html",
+    "smr": "KK028-101----",
+    "origplace_text": "Cloghabrody (Cloch an Bhródaigh) Co. Kilkenny Ireland 52.5317, -7.1286 Approximate coordinates",
+    "pn_townland": "Cloghabrody",
+    "pn_county": "Co. Kilkenny",
+    "pn_country": "Ireland",
+    "pn_vernacular": "Cloch an Bhródaigh (ga)",
+    "geo_raw": "52.5317, -7.1286",
+    "geo_status": "asserted",
+    "gazetteer_uris": "https://www.logainm.ie/en/27351",
+    "uri": "http://data.ogham.link/crm/findspot_I_KIK_015"
+   }
+  },
+  {
+   "type": "Feature",
    "id": "I-LDY-001",
    "geometry": {
     "type": "Point",
@@ -11073,6 +11102,38 @@
     "grid_raw": "610460, 591390",
     "gazetteer_uris": "https://www.logainm.ie/en/49839",
     "uri": "http://data.ogham.link/crm/findspot_I_WAT_042"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "I-WAT-046",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -7.385601,
+     52.327085
+    ]
+   },
+   "properties": {
+    "file": "I-WAT-046.xml",
+    "stone_key": "I-WAT-046",
+    "ogham_id": "I-WAT-046",
+    "title": "An Chreathánach | Crehanagh",
+    "ciic": "304",
+    "cisp": "CREHS/1",
+    "cisp_url": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/CREHS/1.html",
+    "tm": "172530",
+    "smr": "WA003-030----",
+    "origplace_text": "Crehanagh South (An Chreathánach Theas) Co. Waterford Ireland 52.327085, -7.385601 ITM Coordinates: 641879 , 619673",
+    "pn_townland": "Crehanagh South",
+    "pn_county": "Co. Waterford",
+    "pn_country": "Ireland",
+    "pn_vernacular": "An Chreathánach Theas (ga)",
+    "geo_raw": "52.327085, -7.385601",
+    "geo_status": "asserted",
+    "grid_raw": "641879 , 619673",
+    "gazetteer_uris": "https://www.logainm.ie/en/49066",
+    "uri": "http://data.ogham.link/crm/findspot_I_WAT_046"
    }
   },
   {

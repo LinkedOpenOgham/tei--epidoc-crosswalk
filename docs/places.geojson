@@ -7148,6 +7148,29 @@
   },
   {
    "type": "Feature",
+   "id": "I-KIK-015",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -7.1286,
+     52.5317
+    ]
+   },
+   "properties": {
+    "id": "I-KIK-015",
+    "title": "Cloch an Bhródaigh | Cloghabrody",
+    "cisp": "THOTO/1",
+    "smr": "KK028-101----",
+    "townland": "Cloghabrody",
+    "county": "Co. Kilkenny",
+    "country": "Ireland",
+    "vern": "Cloch an Bhródaigh (ga)",
+    "cispUrl": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/THOTO/1.html",
+    "logainm": "https://www.logainm.ie/en/27351"
+   }
+  },
+  {
+   "type": "Feature",
    "id": "I-LDY-001",
    "geometry": {
     "type": "Point",
@@ -8574,6 +8597,31 @@
     "country": "Ireland",
     "vern": "An tOileán (ga)",
     "logainm": "https://www.logainm.ie/en/49839"
+   }
+  },
+  {
+   "type": "Feature",
+   "id": "I-WAT-046",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     -7.385601,
+     52.327085
+    ]
+   },
+   "properties": {
+    "id": "I-WAT-046",
+    "title": "An Chreathánach | Crehanagh",
+    "ciic": "304",
+    "cisp": "CREHS/1",
+    "tm": "172530",
+    "smr": "WA003-030----",
+    "townland": "Crehanagh South",
+    "county": "Co. Waterford",
+    "country": "Ireland",
+    "vern": "An Chreathánach Theas (ga)",
+    "cispUrl": "https://www.ucl.ac.uk/archaeology/cisp/database/stone/CREHS/1.html",
+    "logainm": "https://www.logainm.ie/en/49066"
    }
   },
   {

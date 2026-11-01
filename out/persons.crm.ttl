@@ -719,7 +719,25 @@ data:relation_I_KIK_014_78 a rdf:Statement ;
     rdf:subject data:person_I_KIK_014_anon0_2 ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_LOU_002_79 a rdf:Statement ;
+data:relation_I_KIK_015_79 a rdf:Statement ;
+    rdfs:label "of the kin of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "muccoviias" ;
+    rdf:object data:tribe_I_KIK_015_anon0_2 ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_vedelmiatis ;
+    rdfs:comment "MUCOI" .
+
+data:relation_I_KIK_015_80 a rdf:Statement ;
+    rdfs:label "grandson or descendant of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "avias" ;
+    rdf:object data:person_name_munic ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_I_KIK_015_anon0_2 ;
+    rdfs:comment "AVVI" .
+
+data:relation_I_LOU_002_81 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -728,7 +746,7 @@ data:relation_I_LOU_002_79 a rdf:Statement ;
     rdf:subject data:person_name ;
     rdfs:comment "MAQI" .
 
-data:relation_I_MAY_003_80 a rdf:Statement ;
+data:relation_I_MAY_003_82 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -737,7 +755,7 @@ data:relation_I_MAY_003_80 a rdf:Statement ;
     rdf:subject data:person_name_allatis ;
     rdfs:comment "MAQI" .
 
-data:relation_I_MAY_005_81 a rdf:Statement ;
+data:relation_I_MAY_005_83 a rdf:Statement ;
     rdfs:label "grandson or descendant of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "avias" ;
@@ -746,7 +764,7 @@ data:relation_I_MAY_005_81 a rdf:Statement ;
     rdf:subject data:person_name_ceragnas ;
     rdfs:comment "AVI" .
 
-data:relation_I_MEA_001_82 a rdf:Statement ;
+data:relation_I_MEA_001_84 a rdf:Statement ;
     rdfs:label "grandson or descendant of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "avias" ;
@@ -755,7 +773,7 @@ data:relation_I_MEA_001_82 a rdf:Statement ;
     rdf:subject data:person_name_maqqas_cairatini ;
     rdfs:comment "AVI" .
 
-data:relation_I_WAT_002_83 a rdf:Statement ;
+data:relation_I_WAT_002_85 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 0.90 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -764,7 +782,7 @@ data:relation_I_WAT_002_83 a rdf:Statement ;
     rdf:subject data:person_name_lugudics ;
     rdfs:comment "MAQI MUCOI" .
 
-data:relation_I_WAT_005_84 a rdf:Statement ;
+data:relation_I_WAT_005_86 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 0.90 ;
     ogham:relationLemma "muccoviias" ;
@@ -773,7 +791,7 @@ data:relation_I_WAT_005_84 a rdf:Statement ;
     rdf:subject data:person_name_coilabuts ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_WAT_005_85 a rdf:Statement ;
+data:relation_I_WAT_005_87 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -782,7 +800,7 @@ data:relation_I_WAT_005_85 a rdf:Statement ;
     rdf:subject data:person_name_lugus ;
     rdfs:comment "MAQI" .
 
-data:relation_I_WAT_006_86 a rdf:Statement ;
+data:relation_I_WAT_006_88 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -791,7 +809,7 @@ data:relation_I_WAT_006_86 a rdf:Statement ;
     rdf:subject data:person_name_medusias ;
     rdfs:comment "MACI" .
 
-data:relation_I_WAT_006_87 a rdf:Statement ;
+data:relation_I_WAT_006_89 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 0.90 ;
     ogham:relationLemma "muccoviias" ;
@@ -800,7 +818,7 @@ data:relation_I_WAT_006_87 a rdf:Statement ;
     rdf:subject data:person_I_WAT_006_anon0_2 ;
     rdfs:comment "MOCOI" .
 
-data:relation_I_WAT_011_88 a rdf:Statement ;
+data:relation_I_WAT_011_90 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "muccoviias" ;
@@ -809,7 +827,7 @@ data:relation_I_WAT_011_88 a rdf:Statement ;
     rdf:subject data:person_I_WAT_011_anon0_1 ;
     rdfs:comment "MOCOI" .
 
-data:relation_I_WAT_012_89 a rdf:Statement ;
+data:relation_I_WAT_012_91 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -818,7 +836,7 @@ data:relation_I_WAT_012_89 a rdf:Statement ;
     rdf:subject data:person_I_WAT_012_anon0_0 ;
     rdfs:comment "MAQI MUCOI" .
 
-data:relation_I_WAT_014_90 a rdf:Statement ;
+data:relation_I_WAT_014_92 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -827,7 +845,7 @@ data:relation_I_WAT_014_90 a rdf:Statement ;
     rdf:subject data:person_I_WAT_014_anon0_0 ;
     rdfs:comment "MAQI" .
 
-data:relation_I_WAT_014_91 a rdf:Statement ;
+data:relation_I_WAT_014_93 a rdf:Statement ;
     rdfs:label "client or follower of and grandson or descendant of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "cēlias+avias" ;
@@ -836,7 +854,7 @@ data:relation_I_WAT_014_91 a rdf:Statement ;
     rdf:subject data:person_I_WAT_014_anon0_2 ;
     rdfs:comment "CELI AVI" .
 
-data:relation_I_WAT_015_92 a rdf:Statement ;
+data:relation_I_WAT_015_94 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -845,7 +863,7 @@ data:relation_I_WAT_015_92 a rdf:Statement ;
     rdf:subject data:person_I_WAT_015_anon0_0 ;
     rdfs:comment "MAQI" .
 
-data:relation_I_WAT_016_93 a rdf:Statement ;
+data:relation_I_WAT_016_95 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -854,7 +872,7 @@ data:relation_I_WAT_016_93 a rdf:Statement ;
     rdf:subject data:person_I_WAT_016_anon0_0 ;
     rdfs:comment "MAQI MUCOI" .
 
-data:relation_I_WAT_018_94 a rdf:Statement ;
+data:relation_I_WAT_018_96 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "muccoviias" ;
@@ -863,7 +881,7 @@ data:relation_I_WAT_018_94 a rdf:Statement ;
     rdf:subject data:person_I_WAT_018_anon0_0 ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_WAT_024_95 a rdf:Statement ;
+data:relation_I_WAT_024_97 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 0.90 ;
     ogham:relationLemma "muccoviias" ;
@@ -872,7 +890,7 @@ data:relation_I_WAT_024_95 a rdf:Statement ;
     rdf:subject data:person_name_bivaid ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_WAT_025_96 a rdf:Statement ;
+data:relation_I_WAT_025_98 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 0.90 ;
     ogham:relationLemma "muccoviias" ;
@@ -881,7 +899,7 @@ data:relation_I_WAT_025_96 a rdf:Statement ;
     rdf:subject data:person_name_lugudics ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_WAT_033_97 a rdf:Statement ;
+data:relation_I_WAT_033_99 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "muccoviias" ;
@@ -890,7 +908,7 @@ data:relation_I_WAT_033_97 a rdf:Statement ;
     rdf:subject data:person_I_WAT_033_anon0_0 ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_WAT_036_98 a rdf:Statement ;
+data:relation_I_WAT_036_100 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "muccoviias" ;
@@ -899,7 +917,7 @@ data:relation_I_WAT_036_98 a rdf:Statement ;
     rdf:subject data:person_I_WAT_036_anon0_0 ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_WAT_039_99 a rdf:Statement ;
+data:relation_I_WAT_039_101 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -908,7 +926,7 @@ data:relation_I_WAT_039_99 a rdf:Statement ;
     rdf:subject data:person_I_WAT_039_anon0_0 ;
     rdfs:comment "MAQI MOCOI" .
 
-data:relation_I_WAT_040_100 a rdf:Statement ;
+data:relation_I_WAT_040_102 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -917,7 +935,7 @@ data:relation_I_WAT_040_100 a rdf:Statement ;
     rdf:subject data:person_I_WAT_040_anon0_0 ;
     rdfs:comment "MAQI" .
 
-data:relation_I_WAT_042_101 a rdf:Statement ;
+data:relation_I_WAT_042_103 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 0.90 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -926,7 +944,16 @@ data:relation_I_WAT_042_101 a rdf:Statement ;
     rdf:subject data:person_I_WAT_042_anon0_0 ;
     rdfs:comment "MAQI MUCOI" .
 
-data:relation_I_WAT_048_102 a rdf:Statement ;
+data:relation_I_WAT_046_104 a rdf:Statement ;
+    rdfs:label "son of" ;
+    amt:weight 1.00 ;
+    ogham:relationLemma "maqqas" ;
+    rdf:object data:person_name_curitas ;
+    rdf:predicate ogham:relatedTo ;
+    rdf:subject data:person_name_vocagnas ;
+    rdfs:comment "MAQI" .
+
+data:relation_I_WAT_048_105 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -935,7 +962,7 @@ data:relation_I_WAT_048_102 a rdf:Statement ;
     rdf:subject data:person_name_moddagnas ;
     rdfs:comment "MAQI" .
 
-data:relation_I_WAT_048_103 a rdf:Statement ;
+data:relation_I_WAT_048_106 a rdf:Statement ;
     rdfs:label "of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "muccoviias" ;
@@ -944,7 +971,7 @@ data:relation_I_WAT_048_103 a rdf:Statement ;
     rdf:subject data:person_name_gattagnas ;
     rdfs:comment "MUCOI" .
 
-data:relation_I_WAT_049_104 a rdf:Statement ;
+data:relation_I_WAT_049_107 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -953,7 +980,7 @@ data:relation_I_WAT_049_104 a rdf:Statement ;
     rdf:subject data:person_I_WAT_049_anon0_0 ;
     rdfs:comment "MAQI MUCOI" .
 
-data:relation_I_WAT_050_105 a rdf:Statement ;
+data:relation_I_WAT_050_108 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -962,7 +989,7 @@ data:relation_I_WAT_050_105 a rdf:Statement ;
     rdf:subject data:person_I_WAT_050_anon0_0 ;
     rdfs:comment "MAQI" .
 
-data:relation_M_IOM_001_106 a rdf:Statement ;
+data:relation_M_IOM_001_109 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -971,7 +998,7 @@ data:relation_M_IOM_001_106 a rdf:Statement ;
     rdf:subject data:person_name_dovaid ;
     rdfs:comment "MA QI" .
 
-data:relation_M_IOM_002_107 a rdf:Statement ;
+data:relation_M_IOM_002_110 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 0.90 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -980,7 +1007,7 @@ data:relation_M_IOM_002_107 a rdf:Statement ;
     rdf:subject data:person_name_bivaid ;
     rdfs:comment "MAQI MUCOI" .
 
-data:relation_M_IOM_007_108 a rdf:Statement ;
+data:relation_M_IOM_007_111 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -989,7 +1016,7 @@ data:relation_M_IOM_007_108 a rdf:Statement ;
     rdf:subject data:person_name_ambicatus ;
     rdfs:comment "MAQI" .
 
-data:relation_S_SHE_001_109 a rdf:Statement ;
+data:relation_S_SHE_001_112 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -998,7 +1025,7 @@ data:relation_S_SHE_001_109 a rdf:Statement ;
     rdf:subject data:person_S_SHE_001_anon0_2 ;
     rdfs:comment "ME" .
 
-data:relation_W_CMN_002_110 a rdf:Statement ;
+data:relation_W_CMN_002_113 a rdf:Statement ;
     rdfs:label "grandson or descendant of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "avias" ;
@@ -1007,7 +1034,7 @@ data:relation_W_CMN_002_110 a rdf:Statement ;
     rdf:subject data:person_name_bivadias ;
     rdfs:comment "AVVI" .
 
-data:relation_W_PEM_001_111 a rdf:Statement ;
+data:relation_W_PEM_001_114 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -1016,7 +1043,7 @@ data:relation_W_PEM_001_111 a rdf:Statement ;
     rdf:subject data:person_name_sagragnas ;
     rdfs:comment "MAQI" .
 
-data:relation_W_PEM_003_112 a rdf:Statement ;
+data:relation_W_PEM_003_115 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -1025,7 +1052,7 @@ data:relation_W_PEM_003_112 a rdf:Statement ;
     rdf:subject data:person_name_andegellas ;
     rdfs:comment "MACU" .
 
-data:relation_W_PEM_004_113 a rdf:Statement ;
+data:relation_W_PEM_004_116 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -1034,7 +1061,7 @@ data:relation_W_PEM_004_113 a rdf:Statement ;
     rdf:subject data:person_name_trenagussus ;
     rdfs:comment "MAQI" .
 
-data:relation_W_PEM_006_114 a rdf:Statement ;
+data:relation_W_PEM_006_117 a rdf:Statement ;
     rdfs:label "son of and of the kin of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas+muccoviias" ;
@@ -1043,7 +1070,7 @@ data:relation_W_PEM_006_114 a rdf:Statement ;
     rdf:subject data:person_name_nets_sagri ;
     rdfs:comment "MAQI MUCOI" .
 
-data:relation_W_PEM_014_115 a rdf:Statement ;
+data:relation_W_PEM_014_118 a rdf:Statement ;
     rdfs:label "son of" ;
     amt:weight 1.00 ;
     ogham:relationLemma "maqqas" ;
@@ -1341,12 +1368,12 @@ data:stone_I_KID_004 ogham:shows data:person_name_a,
 data:stone_I_KID_008 ogham:shows data:person_name_neta_vraicas,
         data:person_name_trenalugus .
 
-data:stone_I_KIK_001 ogham:shows data:person_name_M_el_Maire,
-        data:person_name_M_el_adach,
-        data:person_name_Minodor,
-        data:person_name_Muad,
-        data:person_name_cellach,
-        data:person_name_cn_imsech .
+data:stone_I_KIK_001 ogham:shows data:person_name_cellach,
+        data:person_name_cn_imsech,
+        data:person_name_m_ad,
+        data:person_name_m_el_f_ataig,
+        data:person_name_m_el_maire,
+        data:person_name_m_nodor .
 
 data:stone_I_KIK_003 ogham:shows data:person_I_KIK_003_anon0_0 .
 
@@ -1371,6 +1398,10 @@ data:stone_I_KIK_013 ogham:shows data:person_I_KIK_013_anon0_0,
 data:stone_I_KIK_014 ogham:shows data:person_I_KIK_014_anon0_0,
         data:person_I_KIK_014_anon0_2,
         data:person_I_KIK_014_anon0_4 .
+
+data:stone_I_KIK_015 ogham:shows data:person_I_KIK_015_anon0_2,
+        data:person_name_munic,
+        data:person_name_vedelmiatis .
 
 data:stone_I_LDY_001 ogham:shows data:person_name_brocagnas .
 
@@ -1493,6 +1524,9 @@ data:stone_I_WAT_040 ogham:shows data:person_I_WAT_040_anon0_0,
 
 data:stone_I_WAT_042 ogham:shows data:person_I_WAT_042_anon0_0,
         data:person_I_WAT_042_anon0_3 .
+
+data:stone_I_WAT_046 ogham:shows data:person_name_curitas,
+        data:person_name_vocagnas .
 
 data:stone_I_WAT_048 ogham:shows data:person_name_gattagnas,
         data:person_name_lugunias,
@@ -1977,26 +2011,6 @@ data:person_W_PEM_015_anon0_0 a ogham:Person,
     rdfs:label "GʷASUGN" ;
     ogham:anonymousInEdition true .
 
-data:person_name_M_el_Maire a ogham:Person,
-        crm:E21_Person ;
-    rdfs:label "MALMAIR" ;
-    ogham:nymReference "Máel_Maire" .
-
-data:person_name_M_el_adach a ogham:Person,
-        crm:E21_Person ;
-    rdfs:label "MALUADAIG" ;
-    ogham:nymReference "Máel_Úadach" .
-
-data:person_name_Minodor a ogham:Person,
-        crm:E21_Person ;
-    rdfs:label "MINODOR" ;
-    ogham:nymReference "Minodor" .
-
-data:person_name_Muad a ogham:Person,
-        crm:E21_Person ;
-    rdfs:label "MUAD" ;
-    ogham:nymReference "Muad" .
-
 data:person_name_a a ogham:Person,
         crm:E21_Person ;
     rdfs:label "AI" ;
@@ -2292,6 +2306,26 @@ data:person_name_luguvics a ogham:Person,
     rdfs:label "LUGUVVECCA" ;
     ogham:nymReference "luguvics" .
 
+data:person_name_m_ad a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MUAD" ;
+    ogham:nymReference "múad" .
+
+data:person_name_m_el_f_ataig a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MALḞUADAIG" ;
+    ogham:nymReference "máel_fúataig" .
+
+data:person_name_m_el_maire a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MALMAIR" ;
+    ogham:nymReference "máel_maire" .
+
+data:person_name_m_nodor a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MINODOR" ;
+    ogham:nymReference "mínodor" .
+
 data:person_name_maeldumcail a ogham:Person,
         crm:E21_Person ;
     rdfs:label "MAELDUMCAIL" ;
@@ -2543,6 +2577,10 @@ data:tribe_I_KIK_014_anon0_4 a ogham:OghamTribe ;
     rdfs:label "kin of COSCIEAS" ;
     ogham:nymReference "" .
 
+data:tribe_I_KIK_015_anon0_2 a ogham:OghamTribe ;
+    rdfs:label "kin of LOGIDDEAS" ;
+    ogham:nymReference "" .
+
 data:tribe_I_WAT_011_anon0_3 a ogham:OghamTribe ;
     rdfs:label "kin of MACORBO" ;
     ogham:nymReference "" .
@@ -2792,6 +2830,12 @@ data:person_I_KIK_014_anon0_0 a ogham:Person,
     ogham:anonymousInEdition true ;
     ogham:relatedTo data:person_I_KIK_014_anon0_2 ;
     crm:P152_has_parent data:person_I_KIK_014_anon0_2 .
+
+data:person_I_KIK_015_anon0_2 a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "LOGIDDEAS" ;
+    ogham:anonymousInEdition true ;
+    ogham:relatedTo data:person_name_munic .
 
 data:person_I_WAT_011_anon0_1 a ogham:Person,
         crm:E21_Person ;
@@ -3265,6 +3309,11 @@ data:person_name_vedacuna a ogham:Person,
     crm:P152_has_parent data:person_name_tobira ;
     skos:closeMatch lod:OP400508 .
 
+data:person_name_vedelmiatis a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VEDDELLEMETTO" ;
+    ogham:nymReference "vedelmiatis" .
+
 data:person_name_veqoanai a ogham:Person,
         crm:E21_Person ;
     rdfs:label "VEQOANAI" ;
@@ -3280,6 +3329,13 @@ data:person_name_vergoso a ogham:Person,
     ogham:relatedTo data:person_name_llominacca ;
     crm:P152_has_parent data:person_name_llominacca ;
     skos:closeMatch lod:OP400519 .
+
+data:person_name_vocagnas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "VOCAGNI" ;
+    ogham:nymReference "vocagnas" ;
+    ogham:relatedTo data:person_name_curitas ;
+    crm:P152_has_parent data:person_name_curitas .
 
 data:tribe_name_lugus a ogham:OghamTribe ;
     rdfs:label "kin of LUG" ;
@@ -3388,6 +3444,11 @@ data:person_name_maqqas_deceddas a ogham:Person,
     ogham:relatedTo data:person_name_marinus,
         data:person_name_turania ;
     crm:P152_has_parent data:person_name_marinus .
+
+data:person_name_munic a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "MUNICCONA" ;
+    ogham:nymReference "municú?" .
 
 data:person_name_netta_slogi a ogham:Person,
         crm:E21_Person ;
@@ -3573,6 +3634,11 @@ data:person_name_culidovas a ogham:Person,
         crm:E21_Person ;
     rdfs:label "CULIDOVI" ;
     ogham:nymReference "culidovas" .
+
+data:person_name_curitas a ogham:Person,
+        crm:E21_Person ;
+    rdfs:label "CURIT" ;
+    ogham:nymReference "curitas?" .
 
 data:person_name_dali a ogham:Person,
         crm:E21_Person ;

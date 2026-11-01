@@ -78,6 +78,8 @@ I-KIK-012,DOVATUCQI,avias,AVI,grandson or descendant of,TULOTANAGIA,no,no,yes,ye
 I-KIK-013,CORBI,koi+maqqas,OI MAQI,here (lies) and son of,LABRID,no,no,yes,yes
 I-KIK-014,MAQICUNALIGEAS,maqqas,MAQI,son of,COILLI,no,no,yes,yes
 I-KIK-014,COILLI,muccoviias,MUCOI,of the kin of,COSCIEAS,yes,no,yes,yes
+I-KIK-015,VEDDELLEMETTO,muccoviias,MUCOI,of the kin of,LOGIDDEAS,yes,no,no,yes
+I-KIK-015,LOGIDDEAS,avias,AVVI,grandson or descendant of,MUNICCONA,no,no,yes,no
 I-LOU-002,MAQICORABIR,maqqas,MAQI,son of,TANB,no,no,no,no
 I-MAY-003,ALATTOS,maqqas,MAQI,son of,BR,no,no,no,yes
 I-MAY-005,CERAN,avias,AVI,grandson or descendant of,ADECETAIMIN,no,no,no,yes
@@ -101,6 +103,7 @@ I-WAT-036,QECCIAS,muccoviias,MUCOI,of the kin of,BROENIONAS,yes,no,yes,yes
 I-WAT-039,VEDABAR,maqqas+muccoviias,MAQI MOCOI,son of and of the kin of,ODR,yes,no,yes,yes
 I-WAT-040,MAQIMOGʷEDIAS,maqqas,MAQI,son of,MUIBITI,no,no,yes,yes
 I-WAT-042,CUNANETAS,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,NETASEGAMONAS,yes,yes,yes,yes
+I-WAT-046,VOCAGNI,maqqas,MAQI,son of,CURIT,no,no,no,no
 I-WAT-048,MODDAGNI,maqqas,MAQI,son of,GATTAGNI,no,no,no,no
 I-WAT-048,GATTAGNI,muccoviias,MUCOI,of the kin of,LUGUNI,yes,no,no,no
 I-WAT-049,SENAQ,maqqas+muccoviias,MAQI MUCOI,son of and of the kin of,ENA,yes,no,yes,yes

@@ -927,6 +927,16 @@ data:match_place_Ireland_Co_Kilkenny_Churchclara_26739 a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:place_Ireland_Co_Kilkenny_Churchclara .
 
+data:match_place_Ireland_Co_Kilkenny_Cloghabrody_27351 a rdf:Statement ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchSource "Logainm (Placenames Database of Ireland)" ;
+    ogham:matchStatus "source-asserted" ;
+    ogham:matchTypeCheck "curated" ;
+    rdf:object <https://www.logainm.ie/en/27351> ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:place_Ireland_Co_Kilkenny_Cloghabrody .
+
 data:match_place_Ireland_Co_Kilkenny_Fiddaun_Upper_27197 a rdf:Statement ;
     amt:weight 1.00 ;
     ogham:matchConfidence 1.00 ;
@@ -1207,6 +1217,16 @@ data:match_place_Ireland_Co_Waterford_Ardmore_2367 a rdf:Statement ;
     rdf:predicate skos:closeMatch ;
     rdf:subject data:place_Ireland_Co_Waterford_Ardmore .
 
+data:match_place_Ireland_Co_Waterford_Crehanagh_South_49066 a rdf:Statement ;
+    amt:weight 1.00 ;
+    ogham:matchConfidence 1.00 ;
+    ogham:matchSource "Logainm (Placenames Database of Ireland)" ;
+    ogham:matchStatus "source-asserted" ;
+    ogham:matchTypeCheck "curated" ;
+    rdf:object <https://www.logainm.ie/en/49066> ;
+    rdf:predicate skos:closeMatch ;
+    rdf:subject data:place_Ireland_Co_Waterford_Crehanagh_South .
+
 data:match_place_Ireland_Co_Waterford_Dromore_49454 a rdf:Statement ;
     amt:weight 1.00 ;
     ogham:matchConfidence 1.00 ;
@@ -1469,11 +1489,11 @@ data:match_place_Wales_Cardiganshire_0252a52c_5493_4800_8ba3_5f020d3907b9_v_Cere
 
 data:places-graph a prov:Entity ;
     rdfs:label "OG(H)AM findspots -- corpus-wide place layer" ;
-    ogham:corpusCommit "bb62ccd146cc34e75c1304e60204744e742e3109" ;
-    ogham:corpusCommitDate "2026-07-02T12:07:30+01:00" ;
-    ogham:corpusEditionCount 504 ;
-    prov:generatedAtTime "2026-07-02T12:07:30+01:00"^^xsd:dateTime ;
-    prov:wasDerivedFrom <https://github.com/lguariento/og-h-am/tree/bb62ccd146cc34e75c1304e60204744e742e3109/XML> .
+    ogham:corpusCommit "9a68afd5157dec5998252cc0b6e43732b283246d" ;
+    ogham:corpusCommitDate "2026-10-29T15:52:21Z" ;
+    ogham:corpusEditionCount 506 ;
+    prov:generatedAtTime "2026-10-29T15:52:21+00:00"^^xsd:dateTime ;
+    prov:wasDerivedFrom <https://github.com/lguariento/og-h-am/tree/9a68afd5157dec5998252cc0b6e43732b283246d/XML> .
 
 data:stone_E_CON_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
@@ -3736,6 +3756,13 @@ data:stone_I_KIK_014 a ogham:OghamStone,
     crm:P1_is_identified_by "I-KIK-014" ;
     crm:P53_has_former_or_current_location data:findspot_I_KIK_014 .
 
+data:stone_I_KIK_015 a ogham:OghamStone,
+        crm:E22_Human-Made_Object ;
+    rdfs:label "Cloch an Bhródaigh | Cloghabrody (I-KIK-015)" ;
+    ogham:recordStatus "numbered" ;
+    crm:P1_is_identified_by "I-KIK-015" ;
+    crm:P53_has_former_or_current_location data:findspot_I_KIK_015 .
+
 data:stone_I_LDY_001 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
     rdfs:label "Dún Oilí Uachtarach | Dunalis Upper (I-LDY-001)" ;
@@ -4155,6 +4182,13 @@ data:stone_I_WAT_042 a ogham:OghamStone,
     ogham:recordStatus "numbered" ;
     crm:P1_is_identified_by "I-WAT-042" ;
     crm:P53_has_former_or_current_location data:findspot_I_WAT_042 .
+
+data:stone_I_WAT_046 a ogham:OghamStone,
+        crm:E22_Human-Made_Object ;
+    rdfs:label "An Chreathánach | Crehanagh (I-WAT-046)" ;
+    ogham:recordStatus "numbered" ;
+    crm:P1_is_identified_by "I-WAT-046" ;
+    crm:P53_has_former_or_current_location data:findspot_I_WAT_046 .
 
 data:stone_I_WAT_048 a ogham:OghamStone,
         crm:E22_Human-Made_Object ;
@@ -7824,6 +7858,14 @@ data:findspot_I_KIK_014 a ogham:Place,
     crm:P89_falls_within data:place_Ireland_Co_Kilkenny_Shankill ;
     geo:asWKT "POINT(-7.0094 52.6873)"^^geo:wktLiteral .
 
+data:findspot_I_KIK_015 a ogham:Place,
+        crm:E53_Place ;
+    rdfs:label "findspot of I-KIK-015 (Cloghabrody, Co. Kilkenny, Ireland)" ;
+    ogham:geoStatus "asserted" ;
+    crm:P2_has_type data:placetype_findspot ;
+    crm:P89_falls_within data:place_Ireland_Co_Kilkenny_Cloghabrody ;
+    geo:asWKT "POINT(-7.1286 52.5317)"^^geo:wktLiteral .
+
 data:findspot_I_LDY_001 a ogham:Place,
         crm:E53_Place ;
     rdfs:label "findspot of I-LDY-001 (Dunalis Upper, Co. Derry | Londonderry, Northern Ireland)" ;
@@ -8353,6 +8395,15 @@ data:findspot_I_WAT_042 a ogham:Place,
     crm:P3_has_note "national grid: 610460, 591390" ;
     crm:P89_falls_within data:place_Ireland_Co_Waterford_Island ;
     geo:asWKT "POINT(-7.4816 52.1138)"^^geo:wktLiteral .
+
+data:findspot_I_WAT_046 a ogham:Place,
+        crm:E53_Place ;
+    rdfs:label "findspot of I-WAT-046 (Crehanagh South, Co. Waterford, Ireland)" ;
+    ogham:geoStatus "asserted" ;
+    crm:P2_has_type data:placetype_findspot ;
+    crm:P3_has_note "national grid: 641879 , 619673" ;
+    crm:P89_falls_within data:place_Ireland_Co_Waterford_Crehanagh_South ;
+    geo:asWKT "POINT(-7.385601 52.327085)"^^geo:wktLiteral .
 
 data:findspot_I_WAT_048 a ogham:Place,
         crm:E53_Place ;
@@ -11115,6 +11166,14 @@ data:place_Ireland_Co_Kilkenny_Ballyspellan a ogham:Place,
     crm:P89_falls_within data:place_Ireland_Co_Kilkenny ;
     skos:closeMatch <https://www.logainm.ie/en/27449> .
 
+data:place_Ireland_Co_Kilkenny_Cloghabrody a ogham:Place,
+        crm:E53_Place ;
+    rdfs:label "Cloghabrody"@en,
+        "Cloch an Bhródaigh"@ga ;
+    crm:P2_has_type data:placetype_townland ;
+    crm:P89_falls_within data:place_Ireland_Co_Kilkenny ;
+    skos:closeMatch <https://www.logainm.ie/en/27351> .
+
 data:place_Ireland_Co_Kilkenny_Fiddaun_Upper a ogham:Place,
         crm:E53_Place ;
     rdfs:label "Fiddaun Upper"@en,
@@ -11312,6 +11371,14 @@ data:place_Ireland_Co_Waterford_Ardmore a ogham:Place,
     crm:P2_has_type data:placetype_civil_parish ;
     crm:P89_falls_within data:place_Ireland_Co_Waterford ;
     skos:closeMatch <https://www.logainm.ie/ga/2367> .
+
+data:place_Ireland_Co_Waterford_Crehanagh_South a ogham:Place,
+        crm:E53_Place ;
+    rdfs:label "Crehanagh South"@en,
+        "An Chreathánach Theas"@ga ;
+    crm:P2_has_type data:placetype_townland ;
+    crm:P89_falls_within data:place_Ireland_Co_Waterford ;
+    skos:closeMatch <https://www.logainm.ie/en/49066> .
 
 data:place_Ireland_Co_Waterford_Dromore a ogham:Place,
         crm:E53_Place ;

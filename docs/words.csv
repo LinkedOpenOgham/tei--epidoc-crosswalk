@@ -112,7 +112,7 @@ I-COR-046,97,Baile Sheanc | Ballyhank 1,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,
 I-COR-047,98,Baile Sheanc | Ballyhank 2,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,KOI,formula,KOI,KOI,here,http://www.wikidata.org/entity/Q68000462,"McManus 1991,§6.27",CORBAGNI KOI MAQI MOCCOI COROTANI
 I-COR-047,98,Baile Sheanc | Ballyhank 2,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",CORBAGNI KOI MAQI MOCCOI COROTANI
 I-COR-047,98,Baile Sheanc | Ballyhank 2,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,CORBAGNI,compound,CORBAGNI,CORBAGNI,defiles,,"McManus 1991,§6.12",CORBAGNI KOI MAQI MOCCOI COROTANI
-I-COR-048,99,Baile Sheanc | Ballyhank 3,OGHAM_POC,OG(H)AM edition (POC),ogham,yes,CATTU,element,CAT,SACATTINI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",SACATTINI
+I-COR-048,99,Baile Sheanc | Ballyhank 3,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,CATTU,element,CAT,SACATTINI,battle,http://www.wikidata.org/entity/Q67383338,"McManus 1991,§6.3",SACATTINI
 I-COR-050,101,Baile Sheanc | Ballyhank 5,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQIESEA MAQI DOMANEQI
 I-COR-053,104,Cúil an Fhéich | Coolineagh 1,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,ANM,formula,ANM,ANM,name,http://www.wikidata.org/entity/Q68000035,"McManus 1991,§6.27",ANM CORRE MAQVI UDDGLOMETT
 I-COR-053,104,Cúil an Fhéich | Coolineagh 1,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,CORRE,compound,CORRE,CORRE,heron,,"McManus 1991,§6.11",ANM CORRE MAQVI UDDGLOMETT
@@ -465,6 +465,9 @@ I-KIK-013,38,Baile Mhuadáin | Ballyboodan,OGHAM_POC,OG(H)AM edition (POC),ogham
 I-KIK-014,,An tSeanchill |Shankill,OGHAM_POC,OG(H)AM edition (POC),ogham,yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQICUNALIGEAS MAQI COILLI MUCOI COSCIEAS
 I-KIK-014,,An tSeanchill |Shankill,OGHAM_POC,OG(H)AM edition (POC),ogham,yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MAQICUNALIGEAS MAQI COILLI MUCOI COSCIEAS
 I-KIK-014,,An tSeanchill |Shankill,OGHAM_POC,OG(H)AM edition (POC),ogham,yes,CUNA,element,CUNA,MAQICUNALIGEAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",MAQICUNALIGEAS MAQI COILLI MUCOI COSCIEAS
+I-KIK-015,,Cloch an Bhródaigh | Cloghabrody,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",VEDDELLEMETTO MUCOI LOGIDDEAS AVVI MUNICCONA
+I-KIK-015,,Cloch an Bhródaigh | Cloghabrody,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,CUNA,element,CONA,MUNICCONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",VEDDELLEMETTO MUCOI LOGIDDEAS AVVI MUNICCONA
+I-KIK-015,,Cloch an Bhródaigh | Cloghabrody,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,CUNA,element,CON,MUNICCONA,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",VEDDELLEMETTO MUCOI LOGIDDEAS AVVI MUNICCONA
 I-LDY-001,316,Dún Oilí Uachtarach | Dunalis Upper,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",BROCAGNI MAQI MU
 I-LDY-001,316,Dún Oilí Uachtarach | Dunalis Upper,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,BROCAGNI,compound,BROCAGNI,BROCAGNI,badger,,"McManus 1991,§6.12",BROCAGNI MAQI MU
 I-LOU-002,,Baile Bhalraic | Ballybarrack,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MAQICORABIR MAQI TANB NETASALAGIA MAQI MUCOI
@@ -573,6 +576,7 @@ I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MAQI,
 I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",CUNANETAS MAQI MUCOI NETASEGAMONAS
 I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,CUNA,element,CUNA,CUNANETAS,"dog, hound",http://www.wikidata.org/entity/Q67382235,"McManus 1991,§6.3",CUNANETAS MAQI MUCOI NETASEGAMONAS
 I-WAT-042,300,An tOileán | Island,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,CUNANETAS,compound,CUNANETAS,CUNANETAS,champion of the wolves,https://www.wikidata.org/wiki/Q101349712,"McManus 1991,§6.10",CUNANETAS MAQI MUCOI NETASEGAMONAS
+I-WAT-046,304,An Chreathánach | Crehanagh,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",VOCAGNI MAQI CURIT
 I-WAT-048,307,Bearna na Gaoithe | Windgap,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MAQI,formula,MAQI,MAQI,son,http://www.wikidata.org/entity/Q67381254,"McManus 1991,§6.27",MODDAGNI MAQI GATTAGNI MUCOI LUGUNI
 I-WAT-048,307,Bearna na Gaoithe | Windgap,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,MUCOI,formula,MUCOI,MUCOI,"túath, tribe",http://www.wikidata.org/entity/Q67999759,"McManus 1991,§6.27",MODDAGNI MAQI GATTAGNI MUCOI LUGUNI
 I-WAT-048,307,Bearna na Gaoithe | Windgap,OGHAM_NW,OG(H)AM edition (NW),ogham,yes,LUG,element,LUG,LUGUNI,god,http://www.wikidata.org/entity/Q67383482,"McManus 1991,§6.5",MODDAGNI MAQI GATTAGNI MUCOI LUGUNI

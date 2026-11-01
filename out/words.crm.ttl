@@ -311,7 +311,7 @@ data:stone_I_COR_047 ogham:carries data:inscription_I_COR_047 ;
         data:word_occ_I_COR_047_OGHAM_NW_MAQI_formula .
 
 data:stone_I_COR_048 ogham:carries data:inscription_I_COR_048 ;
-    ogham:shows data:word_occ_I_COR_048_OGHAM_POC_CATTU_element .
+    ogham:shows data:word_occ_I_COR_048_OGHAM_NW_CATTU_element .
 
 data:stone_I_COR_050 ogham:carries data:inscription_I_COR_050 ;
     ogham:shows data:word_occ_I_COR_050_OGHAM_NW_MAQI_formula .
@@ -945,6 +945,10 @@ data:stone_I_KIK_014 ogham:carries data:inscription_I_KIK_014 ;
         data:word_occ_I_KIK_014_OGHAM_POC_MAQI_formula,
         data:word_occ_I_KIK_014_OGHAM_POC_MUCOI_formula .
 
+data:stone_I_KIK_015 ogham:carries data:inscription_I_KIK_015 ;
+    ogham:shows data:word_occ_I_KIK_015_OGHAM_NW_CUNA_element,
+        data:word_occ_I_KIK_015_OGHAM_NW_MUCOI_formula .
+
 data:stone_I_LDY_001 ogham:carries data:inscription_I_LDY_001 ;
     ogham:shows data:word_occ_I_LDY_001_OGHAM_NW_BROCAGNI_compound,
         data:word_occ_I_LDY_001_OGHAM_NW_MAQI_formula .
@@ -1138,6 +1142,9 @@ data:stone_I_WAT_042 ogham:carries data:inscription_I_WAT_042 ;
         data:word_occ_I_WAT_042_OGHAM_NW_CUNA_element,
         data:word_occ_I_WAT_042_OGHAM_NW_MAQI_formula,
         data:word_occ_I_WAT_042_OGHAM_NW_MUCOI_formula .
+
+data:stone_I_WAT_046 ogham:carries data:inscription_I_WAT_046 ;
+    ogham:shows data:word_occ_I_WAT_046_OGHAM_NW_MAQI_formula .
 
 data:stone_I_WAT_048 ogham:carries data:inscription_I_WAT_048 ;
     ogham:shows data:word_occ_I_WAT_048_OGHAM_NW_LUG_element,
@@ -1697,7 +1704,7 @@ data:inscription_I_COR_046 ogham:identifiedAs data:reading_I_COR_046_OGHAM_NW .
 
 data:inscription_I_COR_047 ogham:identifiedAs data:reading_I_COR_047_OGHAM_NW .
 
-data:inscription_I_COR_048 ogham:identifiedAs data:reading_I_COR_048_OGHAM_POC .
+data:inscription_I_COR_048 ogham:identifiedAs data:reading_I_COR_048_OGHAM_NW .
 
 data:inscription_I_COR_050 ogham:identifiedAs data:reading_I_COR_050_OGHAM_NW .
 
@@ -2019,6 +2026,8 @@ data:inscription_I_KIK_013 ogham:identifiedAs data:reading_I_KIK_013_OGHAM_POC .
 
 data:inscription_I_KIK_014 ogham:identifiedAs data:reading_I_KIK_014_OGHAM_POC .
 
+data:inscription_I_KIK_015 ogham:identifiedAs data:reading_I_KIK_015_OGHAM_NW .
+
 data:inscription_I_LDY_001 ogham:identifiedAs data:reading_I_LDY_001_OGHAM_NW .
 
 data:inscription_I_LOU_002 ogham:identifiedAs data:reading_I_LOU_002_OGHAM_NW .
@@ -2116,6 +2125,8 @@ data:inscription_I_WAT_039 ogham:identifiedAs data:reading_I_WAT_039_OGHAM_POC .
 data:inscription_I_WAT_040 ogham:identifiedAs data:reading_I_WAT_040_OGHAM_NW .
 
 data:inscription_I_WAT_042 ogham:identifiedAs data:reading_I_WAT_042_OGHAM_NW .
+
+data:inscription_I_WAT_046 ogham:identifiedAs data:reading_I_WAT_046_OGHAM_NW .
 
 data:inscription_I_WAT_048 ogham:identifiedAs data:reading_I_WAT_048_OGHAM_NW .
 
@@ -2527,10 +2538,10 @@ data:reading_I_COR_047_OGHAM_NW a ogham:Reading ;
     ogham:script "ogham" ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
-data:reading_I_COR_048_OGHAM_POC a ogham:Reading ;
+data:reading_I_COR_048_OGHAM_NW a ogham:Reading ;
     rdfs:label "SACATTINI" ;
     ogham:script "ogham" ;
-    prov:wasAttributedTo data:agent_OGHAM_POC .
+    prov:wasAttributedTo data:agent_OGHAM_NW .
 
 data:reading_I_COR_050_OGHAM_NW a ogham:Reading ;
     rdfs:label "MAQIESEA MAQI DOMANEQI" ;
@@ -3373,6 +3384,11 @@ data:reading_I_KIK_014_OGHAM_POC a ogham:Reading ;
     ogham:script "ogham" ;
     prov:wasAttributedTo data:agent_OGHAM_POC .
 
+data:reading_I_KIK_015_OGHAM_NW a ogham:Reading ;
+    rdfs:label "VEDDELLEMETTO MUCOI LOGIDDEAS AVVI MUNICCONA" ;
+    ogham:script "ogham" ;
+    prov:wasAttributedTo data:agent_OGHAM_NW .
+
 data:reading_I_LDY_001_OGHAM_NW a ogham:Reading ;
     rdfs:label "BROCAGNI MAQI MU" ;
     ogham:script "ogham" ;
@@ -3635,6 +3651,11 @@ data:reading_I_WAT_040_OGHAM_NW a ogham:Reading ;
 
 data:reading_I_WAT_042_OGHAM_NW a ogham:Reading ;
     rdfs:label "CUNANETAS MAQI MUCOI NETASEGAMONAS" ;
+    ogham:script "ogham" ;
+    prov:wasAttributedTo data:agent_OGHAM_NW .
+
+data:reading_I_WAT_046_OGHAM_NW a ogham:Reading ;
+    rdfs:label "VOCAGNI MAQI CURIT" ;
     ogham:script "ogham" ;
     prov:wasAttributedTo data:agent_OGHAM_NW .
 
@@ -4883,7 +4904,7 @@ data:word_occ_I_COR_047_OGHAM_NW_MAQI_formula a ogham:FormulaWord ;
     ogham:matchedVariant "MAQI" ;
     crm:P2_has_type data:word_MAQI_formula .
 
-data:word_occ_I_COR_048_OGHAM_POC_CATTU_element a ogham:NomenclatureWord ;
+data:word_occ_I_COR_048_OGHAM_NW_CATTU_element a ogham:NomenclatureWord ;
     rdfs:label "SACATTINI" ;
     ogham:matchMode "element" ;
     ogham:matchedVariant "CAT" ;
@@ -6880,6 +6901,19 @@ data:word_occ_I_KIK_014_OGHAM_POC_MUCOI_formula a ogham:FormulaWord ;
     ogham:matchedVariant "MUCOI" ;
     crm:P2_has_type data:word_MUCOI_formula .
 
+data:word_occ_I_KIK_015_OGHAM_NW_CUNA_element a ogham:NomenclatureWord ;
+    rdfs:label "MUNICCONA" ;
+    ogham:matchMode "element" ;
+    ogham:matchedVariant "CON",
+        "CONA" ;
+    crm:P2_has_type data:word_CUNA_element .
+
+data:word_occ_I_KIK_015_OGHAM_NW_MUCOI_formula a ogham:FormulaWord ;
+    rdfs:label "MUCOI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MUCOI" ;
+    crm:P2_has_type data:word_MUCOI_formula .
+
 data:word_occ_I_LDY_001_OGHAM_NW_BROCAGNI_compound a ogham:Word ;
     rdfs:label "BROCAGNI" ;
     ogham:matchMode "compound" ;
@@ -7507,6 +7541,12 @@ data:word_occ_I_WAT_042_OGHAM_NW_MUCOI_formula a ogham:FormulaWord ;
     ogham:matchMode "formula" ;
     ogham:matchedVariant "MUCOI" ;
     crm:P2_has_type data:word_MUCOI_formula .
+
+data:word_occ_I_WAT_046_OGHAM_NW_MAQI_formula a ogham:FormulaWord ;
+    rdfs:label "MAQI" ;
+    ogham:matchMode "formula" ;
+    ogham:matchedVariant "MAQI" ;
+    crm:P2_has_type data:word_MAQI_formula .
 
 data:word_occ_I_WAT_048_OGHAM_NW_LUG_element a ogham:NomenclatureWord ;
     rdfs:label "LUGUNI" ;

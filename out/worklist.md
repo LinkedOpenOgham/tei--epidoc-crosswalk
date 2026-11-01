@@ -119,14 +119,14 @@ Findspots someone has looked for and concluded cannot be recovered. They are lis
 | `I-KER-043` | Burnham, Co. Kerry. The edition records "(original provenance is unrecorded)" in the <geo> field. The stone now stands at Burnham East, which belongs in the keeper layer, not here: supplying that as a findspot would assert exactly what the editors marked… |
 | `I-KER-153` | "Unknown (Dunraven Collection)", Co. Kerry. No CIIC, no CISP, no SMR and no townland: the stone is known through the collection of the Earl of Dunraven and its origin was already unrecorded when it entered it. Checked; not recoverable. |
 
-## 7. CISP links that do not resolve — 200
+## 7. CISP links that do not resolve — 202
 
 Not a research task but a corpus fix. CISP publishes a stone at `.../stone/wvale_1.html`; the `corresp` on `<idno type="CISP">` often carries the *identifier* form instead, or nothing at all.
 
 | form in the corpus | stones | example | what resolves |
 |---|---|---|---|
 | empty | 40 | `.html` | `—` |
-| identifier form | 160 | `TMINE/1.html` | `tmine_1.html` |
+| identifier form | 162 | `TMINE/1.html` | `tmine_1.html` |
 
 The identifier-form ones convert mechanically — lowercase, and `/` becomes `_` — so the links in this worklist are already repaired. The empty ones have no CISP identifier in the edition either, so they need one before a link can exist.
 
@@ -140,5 +140,5 @@ The identifier-form ones convert mechanically — lowercase, and `/` becomes `_`
 | doubtful without findspot | 10 |
 | without edition text | 38 |
 | closed as not recoverable | 3 |
-| broken cisp links | 200 |
+| broken cisp links | 202 |
 
