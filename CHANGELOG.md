@@ -3,6 +3,24 @@
 All notable changes to this repository. Dates are release dates. The format follows
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [0.2.2] - 2026-11-01
+
+Moves the corpus from `bb62ccd` (2026-07-02) to `9a68afd` (2026-10-29): 41 upstream commits, two new
+editions (`I-KIK-015`, `I-WAT-046`) and 13 changed ones. The code is unchanged.
+
+### Changed
+- Stones in the place layer: 504 to 506 (393 distinct places, 148 gazetteer links); findspot coordinates
+  `asserted` 475 to 477.
+- Word layer: 290 to 292 stones with a match, 673 to 677 occurrences.
+- Person layer: 365 people, 35 kin groups, 119 relations in 99 groups.
+- Setting layer: 214 out in the landscape (was 213), 59 indoors but visitable (was 58).
+- `data/corpus-manifest.yaml`, `out/`, `docs/`, `element-docs/`. README figures brought up to date.
+
+### Unchanged
+- The seven per-stone graphs (none of their editions changed upstream) and the record-status and
+  doubt-profile properties. The two new editions are `numbered`, so the status counts are 458 numbered,
+  14 lost, 34 doubtful.
+
 ## [0.2.1] - 2026-11-01
 
 Makes the build clock-free: two runs over the same corpus give the same bytes.

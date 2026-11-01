@@ -47,7 +47,7 @@ the complementary thing: it applies the same CIDOC CRM modelling to *one aspect*
 the geography — across **every EpiDoc file it is pointed at**.
 
 The editions live in a separate repository,
-[`lguariento/og-h-am`](https://github.com/lguariento/og-h-am) (504 editions). Fetch
+[`lguariento/og-h-am`](https://github.com/lguariento/og-h-am) (506 editions). Fetch
 them once and everything after that needs no flags:
 
 ```
@@ -82,12 +82,12 @@ produced `out/` and `docs/`:
 ```yaml
 source: https://github.com/lguariento/og-h-am.git
 subdirectory: XML
-fetched: '2026-07-30T14:23:11+00:00'
-commit: bb62ccd146cc34e75c1304e60204744e742e3109
-commit_date: '2026-07-02T12:07:30+01:00'
-commit_subject: Update I-KER-048.xml
-file_count: 508
-edition_count: 504
+fetched: '2026-11-01T10:40:39+00:00'
+commit: 9a68afd5157dec5998252cc0b6e43732b283246d
+commit_date: '2026-10-29T15:52:21Z'
+commit_subject: Update I-WAT-004.xml
+file_count: 510
+edition_count: 506
 files:
   XML/E-CON/E-CON-001.xml: e47aed0907abea513ea80144b9e272a05382befb
   …
@@ -140,8 +140,8 @@ drift apart:
 | `docs/persons.html` | who is named, how they are related, and where names recur |
 | `docs/places.geojson` | the same point layer, published beside the map |
 
-Over the full corpus: **504 stones, 395 distinct places** across 12 administrative
-levels, 146 gazetteer links, ~10 000 triples. The stone URIs are the same ones the
+Over the full corpus: **506 stones, 393 distinct places** across 12 administrative
+levels, 148 gazetteer links, ~10 000 triples. The stone URIs are the same ones the
 per-stone graphs mint, so `out/*.crm.ttl` and `out/places.crm.ttl` merge directly.
 
 ### The map (GitHub Pages)
@@ -165,8 +165,8 @@ The relationship does not have to be inferred from word order — the corpus mar
 </persName>
 ```
 
-**360 people and 34 kin groups**, **116 relations** the inscriptions assert, in **97
-groups** — of which 82 are a single pair, 11 a triple, and four have four members.
+**365 people and 35 kin groups**, **119 relations** the inscriptions assert, in **99
+groups** (at corpus commit `bb62ccd`, 97 groups: 82 a single pair, 11 a triple, four with four members).
 No force-directed layout: this is not a hairball, so each stone's kinship is drawn
 as a small diagram in its popup instead.
 
@@ -229,9 +229,9 @@ So the reading runs on two axes. **Custody** is coarse and mostly reliable:
 
 | | stones |
 |---|---|
-| out in the landscape | 213 |
+| out in the landscape | 214 |
 | in an institution | 183 |
-| indoors, but visitable | 58 |
+| indoors, but visitable | 59 |
 | not described | 35 |
 | lost or unlocated | 15 |
 
@@ -843,7 +843,7 @@ carries `ogham:geoStatus`, and the editors' own wording is kept verbatim in a
 
 | `ogham:geoStatus` | n | meaning |
 |---|---|---|
-| `asserted` | 475 | bare coordinate pair, no hedge |
+| `asserted` | 477 | bare coordinate pair, no hedge |
 | `qualified` | 6 | coordinates plus `@cert` or a textual hedge |
 | `textual_only` | 3 | prose in `<geo>`, no numbers |
 | `missing` | 20 | empty `<geo/>` |
@@ -1197,5 +1197,5 @@ and reviewed by Florian Thiery.
 - Data licence / attribution for the EpiDoc input (OG(H)AM project)
 - ORCID / affiliation
 - Dimensions (`<dimensions>`) → `E54_Dimension`
-- Reconcile the 395 places against Wikidata / GeoNames via the existing Logainm and
+- Reconcile the 393 places against Wikidata / GeoNames via the existing Logainm and
   RCAHMW anchors

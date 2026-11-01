@@ -2,7 +2,7 @@
 
 Arbeitsplan für das Repository `LinkedOpenOgham/tei--epidoc-crosswalk` (Achse 1: strukturelle Interoperabilität). Wird zu Beginn jedes Chats hochgeladen und am Ende zurückgeschrieben. Alles Nach-außen-Sichtbare (Code, README, Ontologie, Docs) ist britisches Englisch, dieses Dokument ist deutsch.
 
-Stand: 2026-11-01, Release 0.2.1. Das Repo wurde ohne PRIMER angelegt; dieser ist beim ersten Patch (S1 bis S6) entstanden.
+Stand: 2026-11-01, Release 0.2.2. Das Repo wurde ohne PRIMER angelegt; dieser ist beim ersten Patch (S1 bis S6) entstanden.
 
 ---
 
@@ -14,7 +14,7 @@ Stand: 2026-11-01, Release 0.2.1. Das Repo wurde ohne PRIMER angelegt; dieser is
 |---|---|---|
 | `LinkedOpenOgham/tei--epidoc-crosswalk` | dieses Repo: OG(H)AM-EpiDoc nach CIDOC CRM / CRMtex, Orts-, Halter-, Wort- und Lesungsschicht, Pages | 0.2.0 |
 | `LinkedOpenOgham/tei--epidoc-amt` | Achse 2: gewichtete Aussagen mit AMT, hat eine eigene `STONES`-Liste | nicht angefasst |
-| `lguariento/og-h-am` | die Editionen (Quelle), per `--fetch-corpus` nach `data/origin/` | hier gepinnt auf `bb62ccd` (2026-07-02), 504 Editionen; Upstream steht inzwischen bei `9a68afd` |
+| `lguariento/og-h-am` | die Editionen (Quelle), per `--fetch-corpus` nach `data/origin/` | hier gepinnt auf `9a68afd` (2026-10-29), 506 Editionen (bis 0.2.1 `bb62ccd`, 504) |
 | `florianthiery/poster-kit` | Poster CAA UK 2026, nutzt die Zahlen dieses Repos | nur gelesen |
 
 Nicht neu bauen: Ortsschicht, Halterschicht, Wortschicht, Lesungsansicht, Ontologie-Patch, SHACL-Prüfung. Sie liefen vor diesem Patch und sind unverändert.
@@ -82,7 +82,7 @@ Eigenschaften, die das Ergebnis haben muss:
 | Lesungen: `<rdg>` pro Quelle, mehrere Inschriften pro Datei (D1, D3) | nicht hier entscheiden, sondern im AMT-Chat, wo sichtbar wird, ob Gewichte pro Lesung oder pro Variante nötig sind; hier nur dokumentiert | 2026-11-01 (Flo) |
 | Version und Tags | `v0.1.0` auf `cff6341`, `v0.2.0` auf `6ea33a9`, 0.2.1 mit dem Uhr-Patch; ORCID in `CITATION.cff` | 2026-11-01 (Flo) |
 | Gewichte | keine in diesem Repo, `amt:weight` gehört nach `tei--epidoc-amt` | 2026-11-01 (Flo) |
-| Corpus-Stand | bleibt `bb62ccd`; kein `--fetch-corpus` in diesem Patch, damit der Patch nur die eigenen Änderungen zeigt | 2026-11-01 |
+| Corpus-Stand | `9a68afd` seit 0.2.2, als eigener Commit; vorher `bb62ccd`, damit der Patch 0.2.0 nur die eigenen Änderungen zeigte | 2026-11-01 |
 | Skelett | `py/main.py` bleibt Einstiegspunkt, kein Umbau auf Familien-Skelett | Vorschlag 2026-11-01 |
 | Versionsnummer | 0.2.0; 0.1.0 rückwirkend für den Stand davor | Vorschlag 2026-11-01 |
 
@@ -113,6 +113,7 @@ Nicht hochladen: `.venv/`, `.git/`, `data/origin/`, `docs/*.csv`, `out/*.csv`. F
 | S8 | `<origDate>` abbilden (cert, precision) | crosswalk | S7 | offen |
 | S9 | Uhr aus der Ausgabe nehmen | crosswalk | | erledigt 2026-11-01 |
 | S10 | Übergabe an `tei--epidoc-amt` (Chat 3) | amt | S2 | offen |
+| S11 | Corpus auf `9a68afd` | crosswalk | | erledigt 2026-11-01 |
 
 S7, S8 und S9 sind voneinander unabhängig. S10 braucht nur S2 bis S4 und kann sofort beginnen.
 
@@ -207,4 +208,5 @@ Was dieses Repo jetzt liefert:
 - **D5 erledigt** (2026-11-01, siehe A4): Tags `v0.1.0` auf `cff6341`, `v0.2.0` auf `6ea33a9`; ORCID eingetragen.
 - **D6 Adresse der Engine** für die README: nur falls das Repo darauf verweist (`n4o-rse/amt-engine` laut Abstract, `alpaca-fair-framework/amt-engine` laut AMT-README). Für dieses Repo ohne Belang.
 - **D8 Plattform-Pfad** in `element-docs/README.md` (`data\origin` gegen `data/origin`): mit `Path.as_posix()` ausgeben, damit Windows und Linux dieselben Bytes liefern.
-- **D7 Corpus-Stand.** Der Upstream-Corpus ist bei `9a68afd`, hier gepinnt `bb62ccd`. Bei einem `--fetch-corpus` ändern sich viele Dateien in `out/` und `docs/`; das sollte ein eigener Schritt mit eigenem Commit sein.
+- **D7 erledigt** (2026-11-01): Corpus auf `9a68afd`, eigener Commit `e3e565d`, Tag `v0.2.2`. Die sieben Beispielgraphen blieben unverändert; `ogham:recordStatus` zählt jetzt 458 numbered, 14 lost, 34 doubtful (die zwei neuen Editionen sind numbered).
+- **D9 Manifest-Vergleich meldet zu viel.** Beim Update meldete `--fetch-corpus` »changed 507«, obwohl upstream nur 13 Editionen geändert wurden. Vermutung (nicht geprüft): Blob-Hashes der Windows-Arbeitskopie (CRLF) gegen die des früheren Manifests (anderer Zeilenumbruch). Prüfen, ob `blob_sha()` in `py/corpus.py` Zeilenenden normalisieren muss; betrifft nur die Meldung, nicht die Ausgabe.
